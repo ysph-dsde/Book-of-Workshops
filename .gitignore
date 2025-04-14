@@ -1,4 +1,18 @@
-.Rproj.user
+.
+..
+.DS_Store
 .Rhistory
+.Rprofile
 .RData
+.Rproj.user
 .Ruserdata
+
+/.quarto/
+/docs/
+/_book/
+sites_libs/
+*.docx
+*.html
+*_files
+
+Git and GitHub/Population Estimates and Projections/Not Used Data Sets
