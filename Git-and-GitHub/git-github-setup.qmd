@@ -7,5 +7,3 @@
   toc: true
   toc-depth: 3
 ---
-
-![](/Git-and-GitHub/git-github_Video1_10.30.2024.mp4)

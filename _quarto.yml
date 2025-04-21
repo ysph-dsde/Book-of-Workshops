@@ -20,6 +20,8 @@ book:
         - Git-and-GitHub/git-github-worked-through-example.qmd
         - Git-and-GitHub/git-github_references.qmd
     - part: Data-Visualization-with-ggplot2/index.qmd
+      chapters: 
+        - Data-Visualization-with-ggplot2/visualization-worked-through-example.qmd
   page-footer:
     background: light 
     left: "This site was built on a ysph-dsde.github.io page. It was rendered using Quarto (v 1.6.3) and theme [bookup-html](https://github.com/juba/bookup-html/tree/main)." 
