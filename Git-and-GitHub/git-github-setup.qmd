@@ -8,4 +8,4 @@
   toc-depth: 3
 ---
 
-![](/Git-and-GitHub/git-github_Video1_10.30.2024.mp4)
+{{< video git-github_Video1_10302024.mp4 >}}
