@@ -45,9 +45,6 @@ The cleaned and harmonized version of the RSV-NET dataset was compiled as part o
 
 Download the complete slide deck with annotations and the in-person workshop handout. Comments were saved in the bottom left of each slide, and references for this webpage are in its **Appendix**.
 
-{{< downloadthis "Workshop Slide Deck with Comments.pdf" label="Complete Slide Deck" id=download_btn >}}
-
-{{< downloadthis "Handout.pdf" label="Handout" id=download_btn >}}
 
 ### Codespaces
 

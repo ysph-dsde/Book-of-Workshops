@@ -18,8 +18,10 @@ book:
       chapters: 
         - Git-and-GitHub/git-github-setup.qmd
         - Git-and-GitHub/git-github-worked-through-example.qmd
-    - summary.qmd
-    - references.qmd
+        - Git-and-GitHub/git-github_references.qmd
+    - part: Data-Visualization-with-ggplot2/index.qmd
+      chapters: 
+        - Data-Visualization-with-ggplot2/Worked-Through-Example.qmd
   page-footer:
     background: light 
     left: "This site was built on a ysph-dsde.github.io page. It was rendered using Quarto (v 1.6.3) and theme [bookup-html](https://github.com/juba/bookup-html/tree/main)." 
@@ -33,8 +35,6 @@ book:
       - icon: envelope 
         href: mailto:admin.dsdeysph@yale.edu
       - text: "(203) 737-8644"
-
-bibliography: references.bib
 
 format:
   bookup-html:
