@@ -1,6 +1,7 @@
 ---
   title: "Worked Through Example"
   editor: source
+  format: html
   from: markdown+emoji
   markdown: 
   editor_options: 
