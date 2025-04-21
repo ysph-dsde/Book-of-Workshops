@@ -8,4 +8,3 @@
   toc-depth: 3
 ---
 
-{{< video git-github_Video1_10302024.mp4 >}}
