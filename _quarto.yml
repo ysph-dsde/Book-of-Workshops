@@ -3,7 +3,7 @@ project:
 
 book:
   title: "Book of Workshops"
-  downloads: [pdf, epub]
+  #downloads: [pdf, epub]
   repo-url: https://github.com/ysph-dsde/Book-of-Workshops
   repo-actions: edit
   search: true
@@ -14,17 +14,15 @@ book:
   date-format: long
   chapters:
     - index.qmd
-    - intro.qmd
+    - part: Git-and-GitHub/index.qmd
+      chapters: 
+        - Git-and-GitHub/git-github-setup.qmd
+        - Git-and-GitHub/git-github-worked-through-example.qmd
     - summary.qmd
     - references.qmd
   page-footer:
     background: light 
     left: "This site was built on a ysph-dsde.github.io page. It was rendered using Quarto (v 1.6.3) and theme [bookup-html](https://github.com/juba/bookup-html/tree/main)." 
-    center:
-      - text: People
-      - text: Software
-      - text: Publications
-      - text: Education and Outreach
     right: 
       - icon: globe
         href: https://ysph.yale.edu/public-health-research-and-practice/research-centers-and-initiatives/public-health-data-science-and-data-equity/
@@ -43,8 +41,9 @@ format:
     html-math-method: katex
     toc: true
     toc-depth: 3
+    callout-appearance: default
   pdf:
     documentclass: scrreprt
 
-editor: visual
+editor: source
 

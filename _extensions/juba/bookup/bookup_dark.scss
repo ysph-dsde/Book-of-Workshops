@@ -24,10 +24,9 @@ $footer-fg: #cad2dd;
     --figure-img-border: 1px solid #5d6173;
     --figure-img-shadow: none;
 
-    --code-block-color: #9dbed8;
-    --code-block-bg: #2d3143;
-    --code-color: #9dbed8;
-    --code-bg: #2d3143;
+    --code-block-color: #d3d3d3;
+    --code-block-bg: #303030;
+    --code-color: #e37b95;
 
     --hl-code-comments: #8e8d8c;
 
@@ -40,17 +39,17 @@ $footer-fg: #cad2dd;
     --reader-toggle-bg: #2d3143;
     --reader-toggle-border: #5d6173;
 
-    --callout-color: #000;
-    --callout-warning-bg: #ffe99f;
-    --callout-warning-title: #af8300;
-    --callout-note-bg: #b4d3ff;
-    --callout-note-title: #2f65b8;
-    --callout-important-bg: #f8bcc0;
-    --callout-important-title: #900;
-    --callout-caution-bg: #ffdabd;
-    --callout-caution-title: #be7200;
-    --callout-tip-bg: #bafcde;
-    --callout-tip-title: #050;
+    --callout-color: #c5c4c4;
+    --callout-warning-bg: #c2a85b;
+    --callout-warning-title: #faedc2;
+    --callout-note-bg: #6081b1;
+    --callout-note-title: #d2e4fe;
+    --callout-important-bg: #af4e4e;
+    --callout-important-title: #f9d9db;
+    --callout-caution-bg: #d59b45;
+    --callout-caution-title: #ffe3ce;
+    --callout-tip-bg: #5f8d5f;
+    --callout-tip-title: #bafcd0;
 
     --listing-card-border: #5d6173;
     --listing-card-shadow: rgba(255, 255, 255, 0.04);
@@ -66,4 +65,332 @@ $footer-fg: #cad2dd;
 
 body {
     color-scheme: dark;
+}
+
+
+
+/* quarto syntax highlight colors */
+/* https://scm.vcu.edu/projects/EFD/repos/cs-24-330-capstone/browse/reports/project-overview_files/libs/quarto-html/quarto-syntax-highlighting.css?at=fb52a987f9659d13b8785a2047341b3363008694 */
+/* modified to zenburn */
+/* https://github.com/quarto-dev/quarto-cli/blob/main/src/resources/pandoc/highlight-styles/zenburn.theme */
+/* format list: https://emilhvitfeldt.com/post/slidecraft-code-output/#use-fonts-with-ligatures */
+
+:root {
+    --zenburn-hl-ot-color: #efef8f;
+    --zenburn-hl-at-color: null;
+    --zenburn-hl-ss-color: #cc9393;
+    --zenburn-hl-an-color: #7f9f7f;
+    --zenburn-hl-fu-color: #efef8f;
+    --zenburn-hl-st-color: #cc9393;
+    --zenburn-hl-cf-color: #f0dfaf;
+    --zenburn-hl-op-color: #f0efd0;
+    --zenburn-hl-er-color: #c3bf9f;
+    --zenburn-hl-bn-color: #dca3a3;
+    --zenburn-hl-al-color: #ffcfaf;
+    --zenburn-hl-va-color: null;
+    --zenburn-hl-bu-color: inherit;
+    --zenburn-hl-ex-color: inherit;
+    --zenburn-hl-pp-color: #ffcfaf;
+    --zenburn-hl-in-color: #7f9f7f;
+    --zenburn-hl-vs-color: #cc9393;
+    --zenburn-hl-wa-color: #7f9f7f;
+    --zenburn-hl-do-color: #7f9f7f;
+    --zenburn-hl-im-color: null;
+    --zenburn-hl-ch-color: #dca3a3;
+    --zenburn-hl-dt-color: #dfdfbf;
+    --zenburn-hl-fl-color: #c0bed1;
+    --zenburn-hl-co-color: #7f9f7f;
+    --zenburn-hl-cv-color: #7f9f7f;
+    --zenburn-hl-cn-color: #dca3a3;
+    --zenburn-hl-sc-color: #dca3a3;
+    --zenburn-hl-dv-color: #dcdccc;
+    --zenburn-hl-kw-color: #f0dfaf;
+}
+
+
+/* other quarto variables */
+:root {
+    --zenburn-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+pre>code.sourceCode>span {
+    color: var(--code-color);
+}
+
+code span {
+    color: var(--code-color);
+}
+
+code.sourceCode>span {
+    color: var(--code-color);
+}
+
+div.sourceCode,
+div.sourceCode pre.sourceCode {
+    color: var(--code-color);
+}
+
+code span.ot {
+    color: var(--zenburn-hl-ot-color);
+    font-style: inherit;
+    background-color: null;
+}
+
+code span.at {
+    color: var(--zenburn-hl-at-color);
+    font-style: inherit;
+    background-color: null;
+}
+
+code span.ss {
+    color: var(--zenburn-hl-ss-color);
+    font-style: inherit;
+    background-color: null;
+}
+
+code span.an {
+    color: var(--zenburn-hl-an-color);
+    font-style: inherit;
+    background-color: null;
+    font-weight: bold;
+}
+
+code span.fu {
+    color: var(--zenburn-hl-fu-color);
+    font-style: inherit;
+    background-color: null;
+}
+
+code span.st {
+    color: var(--zenburn-hl-st-color);
+    font-style: inherit;
+    background-color: null;
+}
+
+code span.cf {
+    color: var(--zenburn-hl-cf-color);
+    font-style: inherit;
+    background-color: null;
+}
+
+code span.op {
+    color: var(--zenburn-hl-op-color);
+    font-style: inherit;
+    background-color: null;
+}
+
+code span.er {
+    color: var(--zenburn-hl-er-color);
+    font-style: inherit;
+    background-color: null;
+}
+
+code span.bn {
+    color: var(--zenburn-hl-bn-color);
+    font-style: inherit;
+    background-color: null;
+}
+
+code span.al {
+    color: var(--zenburn-hl-al-color);
+    font-style: inherit;
+    background-color: null;
+}
+
+code span.va {
+    color: var(--zenburn-hl-va-color);
+    font-style: inherit;
+    background-color: null;
+}
+
+code span.bu {
+    font-style: inherit;
+}
+
+code span.ex {
+    font-style: inherit;
+}
+
+code span.pp {
+    color: var(--zenburn-hl-pp-color);
+    font-style: inherit;
+    background-color: null;
+    font-weight: bold;
+}
+
+code span.in {
+    color: var(--zenburn-hl-in-color);
+    font-style: inherit;
+    background-color: null;
+    font-weight: bold;
+}
+
+code span.vs {
+    color: var(--zenburn-hl-vs-color);
+    font-style: inherit;
+    background-color: null;
+}
+
+code span.wa {
+    color: var(--zenburn-hl-wa-color);
+    font-style: italic;
+    background-color: null;
+    font-weight: bold;
+}
+
+code span.do {
+    color: var(--zenburn-hl-do-color);
+    font-style: italic;
+    background-color: null;
+}
+
+code span.im {
+    color: var(--zenburn-hl-im-color);
+    font-style: inherit;
+    background-color: null;
+}
+
+code span.ch {
+    color: var(--zenburn-hl-ch-color);
+    font-style: inherit;
+    background-color: null;
+}
+
+code span.dt {
+    color: var(--zenburn-hl-dt-color);
+    font-style: inherit;
+    background-color: null;
+}
+
+code span.fl {
+    color: var(--zenburn-hl-fl-color);
+    font-style: inherit;
+    background-color: null;
+}
+
+code span.co {
+    color: var(--zenburn-hl-co-color);
+    font-style: inherit;
+    background-color: null;
+}
+
+code span.cv {
+    color: var(--zenburn-hl-cv-color);
+    font-style: italic;
+    background-color: null;
+    font-weight: bold;
+}
+
+code span.cn {
+    color: var(--zenburn-hl-cn-color);
+    font-style: inherit;
+    background-color: null;
+    font-weight: bold;
+}
+
+code span.sc {
+    color: var(--zenburn-hl-sc-color);
+    font-style: inherit;
+    background-color: null;
+}
+
+code span.dv {
+    color: var(--zenburn-hl-dv-color);
+    font-style: inherit;
+    background-color: null;
+}
+
+code span.kw {
+    color: var(--zenburn-hl-kw-color);
+    font-style: inherit;
+    background-color: null;
+}
+
+.prevent-inlining {
+    content: "</";
+}
+
+/*# sourceMappingURL=debc5d5d77c3f9108843748ff7464032.css.map */
+
+
+/* Callouts - modified from the light version */
+
+
+.callout-icon {
+    filter: brightness(200%);
+}
+
+.callout-body {
+    font-weight: var(--bs-body-font-weight);
+    color: var(--bs-body-color);
+}
+
+/* Inline code in callout */
+p>code,
+a code,
+ul code,
+ol code {
+    color: var(--callout-color);
+    background-color: hsl(from var(--callout-color) h s l / 30%);
+    border: none;
+    padding: 2px 4px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 100%;
+}
+
+.callout-warning {
+    background-color: hsl(from var(--callout-warning-bg) h s l / 30%);
+    border-top-color: var(--callout-warning-bg);
+    border-right-color: var(--callout-warning-bg);
+    border-bottom-color: var(--callout-warning-bg);
+
+    .callout-header {
+        color: var(--callout-warning-title);
+    }
+}
+
+.callout-note {
+    background-color: hsl(from var(--callout-note-bg) h s l / 30%);
+    border-top-color: var(--callout-note-bg);
+    border-right-color: var(--callout-note-bg);
+    border-bottom-color: var(--callout-note-bg);
+
+
+    .callout-header {
+        color: var(--callout-note-title);
+    }
+}
+
+.callout-important {
+    background-color: hsl(from var(--callout-important-bg) h s l / 30%);
+    border-top-color: var(--callout-important-bg);
+    border-right-color: var(--callout-important-bg);
+    border-bottom-color: var(--callout-important-bg);
+
+    .callout-header {
+        color: var(--callout-important-title);
+    }
+}
+
+.callout-caution {
+    background-color: hsl(from var(--callout-caution-bg) h s l / 30%);
+    border-top-color: var(--callout-caution-bg);
+    border-right-color: var(--callout-caution-bg);
+    border-bottom-color: var(--callout-caution-bg);
+
+    .callout-header {
+        color: var(--callout-caution-title);
+    }
+}
+
+.callout-tip {
+    background-color: hsl(from var(--callout-tip-bg) h s l / 30%);
+    border-top-color: var(--callout-tip-bg);
+    border-right-color: var(--callout-tip-bg);
+    border-bottom-color: var(--callout-tip-bg);
+
+    .callout-header {
+        color: var(--callout-tip-title);
+    }
 }

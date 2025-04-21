@@ -29,6 +29,7 @@ suppressPackageStartupMessages({
   library("tidyr")      # Convert data frames into tidy format
   library("dplyr")      # For data manipulation
   library("stringr")    # For string manipulation
+  library("lubridate")  # Facilitates working with dates and times
   library("MMWRweek")   # Convert Dates to MMWR day, week, and year
   library("stats")      # Compilation of statistical functions
   library("ggplot2")    # For creating static visualizations
@@ -58,6 +59,10 @@ df.url <- "https://raw.githubusercontent.com/govex/COVID-19/refs/heads/master/da
 df     <- read_csv(file = df.url, show_col_types = FALSE) |>
   as.data.frame()
 
+# glimpse() allows us to see the dimensions of the dataset, column names,
+# the first few entries, and the vector class in one view.
+df |> glimpse()
+
 
 ## The JHU Coronavirus Resource Center (JHU CRC) GovEX repository includes a
 ## census population file with intercensal estimates and projections from 2010:
@@ -67,19 +72,10 @@ df     <- read_csv(file = df.url, show_col_types = FALSE) |>
 ##
 ## This file only covers U.S. population estimates from 2010 to 2018, and do not
 ## include representation of the U.S. Territories, with the exception of Puerto
-## Rico. 
-
-
-
-
-######## CHANGE LOCATION
-###In the GitHub for this project, file "Population Estimates and 
-## Projections" describes how three files from U.S. Census Bureau and one from
-## the U.S. Department of Agriculture with census year population number, 
+## Rico. In the GitHub for this project, file "Git and GitHub/Population Estimates 
+## and Projections" describes how three files from U.S. Census Bureau and one
+## from the U.S. Department of Agriculture with census year population number, 
 ## estimates, and projections were harmonized.
-
-
-
 
 ## We load this harmonized file. It spans population intercensal estimations
 ## and projections from 2010 to 2023 based on the 2010 and 2020 U.S. Census'.
@@ -92,15 +88,9 @@ df     <- read_csv(file = df.url, show_col_types = FALSE) |>
 ##    - Official U.S. Estimates   denoted by OE
 ##    - International Database    denoted by IDB
 
-
 census_2010to2023 <- read.csv(
-  "Population Estimates and Projections/US_Census Population Estimates_2010 to 2023.csv",
+  "Git and GitHub/Population Estimates and Projections/US_Census Population Estimates_2010 to 2023.csv",
   header = TRUE)
-
-
-# glimpse() allows us to see the dimensions of the dataset, column names,
-# the first few entries, and the vector class in one view.
-df |> glimpse()
 
 
 
@@ -111,6 +101,11 @@ df |> glimpse()
 ## Check the variable class of each column.
 ## NOTE: sapply() works better than apply() in this scenario.
 sapply(df, class) |> as.data.frame()
+
+
+## Format some of the column names.
+colnames(df)[5:8] <- c("Doses", "People_At_Least_One_Dose", 
+                       "People_Fully_Vaccinated", "Total_Additional_Doses")
 
 
 ## The variable classes look as we'd expect. Now we'll check for missing values.
@@ -143,12 +138,14 @@ length(unique_provinces)
 
 ## We have an excess of 5 rows, which are not states or territories.
 ## What are they?
-us_states       = c(datasets::state.name, "District of Columbia") %>% sort()
+us_states       = c(datasets::state.name, "District of Columbia") |> sort()
 us_territories  = c("American Samoa", "Guam", "Northern Mariana Islands", 
                     "Puerto Rico", "Virgin Islands")
 
-extra_provinces = unique_provinces %>% .[. %!in% c("United States", us_states, us_territories)]
-extra_provinces
+extra_provinces = unique_provinces |>
+  (\(x) { x[x %!in% c("United States", us_states, us_territories)] }) ()
+
+  extra_provinces
 ## NOTE: Some of these extra types of provinces will double count individuals
 ## that are also represented in the state/territory-level classification.
 
@@ -166,7 +163,7 @@ df <- df |>
 ## plots to appear monotonic.
 df |>
   filter(Province_State %in% us_states) |>
-  ggplot(data = _, aes(x = Date, y = People_at_least_one_dose)) +
+  ggplot(data = _, aes(x = Date, y = People_At_Least_One_Dose)) +
       geom_line(aes(color = Province_State)) +
       scale_y_continuous(labels = unit_format(unit = "M", scale = 1e-6)) +
       scale_x_date(date_breaks = "4 month", date_labels =  "%b %Y") +
@@ -243,7 +240,7 @@ apply(monotonic_result, 1, function(x) all(x)) |> table()
 result <- list()
 for (i in 1:length(unique(df$Province_State))) {
   # Separate out the dates vector associated with one "Province_State" entry.
-  subset      <- df[df$Province_State %in% unique(df$Province_State)[i], "Date"]
+  subset <- df[df$Province_State %in% unique(df$Province_State)[i], "Date"]
   
   # Store the date ranges that occur more than once.
   result[[i]] <- table(subset)[table(subset) %!in% 1]
@@ -270,7 +267,7 @@ df <- df[!duplicated(df), ]
 
 df |>
   filter(Province_State %in% us_states) |>
-  ggplot(data = _, aes(x = Date, y = People_at_least_one_dose)) +
+  ggplot(data = _, aes(x = Date, y = People_At_Least_One_Dose)) +
       geom_line(aes(color = Province_State)) +
       scale_y_continuous(labels = unit_format(unit = "M", scale = 1e-6)) +
       scale_x_date(date_breaks = "4 month", date_labels =  "%b %Y") +
@@ -428,7 +425,7 @@ df_monotonic <- merge(df, result, by = c("Date", "Province_State"))
 ## indeed have our monotonic data.
 df_monotonic |>
   filter(Province_State %in% us_states) |>
-  ggplot(data = _, aes(x = Date, y = People_at_least_one_dose_yf)) +
+  ggplot(data = _, aes(x = Date, y = People_At_Least_One_Dose_yf)) +
       geom_line(aes(color = Province_State)) +
       scale_y_continuous(labels = unit_format(unit = "M", scale = 1e-6)) +
       scale_x_date(date_breaks = "4 month", date_labels =  "%b %Y") +
@@ -471,7 +468,7 @@ for (i in 1:length(unique(df_monotonic$Province_State))) {
   result[[i]] <- do.call(cbind, counts) |> 
     as.data.frame() |>
     (\(x) { cbind(subset[, c("Date", "Province_State")], x) }) () |>
-    `colnames<-`(c("Date", "Province_State", str_c(make_daily_counts_yf, "_daily")))
+    `colnames<-`(c("Date", "Province_State", str_c(make_daily_counts_yf, "_Daily")))
 }
 # Combine the results (list format) into a data frame by adding rows. Each
 # row reflects the results for one "Province_State" and each column
@@ -487,7 +484,7 @@ df_daily <- merge(df_monotonic, result, by = c("Date", "Province_State"))
 ## daily count values.
 df_daily |>
   filter(Province_State %in% us_states[c(1, 4, 20)]) |>
-  ggplot(data = _, aes(x = Date, y = Doses_admin_yf_daily)) +
+  ggplot(data = _, aes(x = Date, y = Doses_yf_Daily)) +
       geom_bar(stat = "identity", alpha = 0.25, 
                aes(color = Province_State, fill = Province_State)) +
       #geom_line(aes(color = Province_State, fill = Province_State)) +
@@ -505,8 +502,8 @@ df_daily |>
 ## number of days. The Boolean test is TRUE when all provinces have the same
 ## number of time-stamped entries.
 
-table(df_daily$Province_State, df_daily$Date) %>%
-  sapply(., function(x) x == 1) %>% all()
+table(df_daily$Province_State, df_daily$Date) |>
+  sapply(., function(x) x == 1) |> all()
 
 
 
@@ -533,12 +530,12 @@ df_daily <- df_daily |>
 # In the aggregation, retain only the max value of the cumulative counts.
 # Organize aggregation by unique "Province_State" entries and dates
 # rounded down to the nearest month.
-maxCumulative <- aggregate(. ~ week + Province_State, df_daily[, -c(1, 3:8, 13:16)], max) %>%
-  `colnames<-`(c("Week", colnames(.)[-1]))
+maxCumulative <- aggregate(. ~ week + Province_State, df_daily[, -c(1, 3:8, 13:16)], max) |>
+  `colnames<-`(c("Week", colnames(df_daily)[c(2, 9:12)]))
 
 # Do the same aggregation over the daily counts, but retain the sum.
-sumDaily <- aggregate(. ~ week + Province_State, df_daily[, -c(1, 3:12)], sum) %>%
-  `colnames<-`(c("Week", colnames(.)[-1]))
+sumDaily <- aggregate(. ~ week + Province_State, df_daily[, -c(1, 3:12)], sum) |>
+  `colnames<-`(c("Week", colnames(df_daily)[c(2, 13:16)]))
 
 # Merge these two aggregated data sets, combining by unique matches with the
 # "Date" and "Province_State" columns.
@@ -553,7 +550,7 @@ dim(df_byWeek)
 # the monotonically increasing feature.
 df_byWeek |>
   filter(Province_State %in% us_states) |>
-  ggplot(data = _, aes(x = Week, y = People_at_least_one_dose_yf)) +
+  ggplot(data = _, aes(x = Week, y = People_At_Least_One_Dose_yf)) +
       geom_line(aes(color = Province_State)) +
       scale_y_continuous(labels = unit_format(unit = "M", scale = 1e-6)) +
       scale_x_date(date_breaks = "4 month", date_labels =  "%b %Y") +
@@ -565,7 +562,7 @@ df_byWeek |>
 # Plot the daily vaccination counts, to confirm there are no unexpected features.
 df_byWeek |>
   filter(Province_State %in% us_states) |>
-  ggplot(data = _, aes(x = Week, y = Doses_admin_yf_daily)) +
+  ggplot(data = _, aes(x = Week, y = Doses_yf_Daily)) +
       geom_line(aes(color = Province_State)) +
       scale_y_continuous(labels = unit_format(unit = "M", scale = 1e-6)) +
       scale_x_date(date_breaks = "4 month", date_labels =  "%b %Y") +
@@ -617,24 +614,6 @@ df_byWeek[, -c(1:2)] <- sapply(df_byWeek[, -c(1:2)], floor)
 
 
 
-# In our following analysis, it will be useful to report the dates in the
-# standard epidemiologic year format: MMWR.
-epiDates <- df_byWeek[!is.na(df_byWeek$Week), ] |> 
-  (\(x) { cbind(x, MMWRweek(x$Week)) }) () |> 
-  mutate(MMWRyear = MMWRyear, 
-         MMWRyear = if_else(MMWRweek <= 26, MMWRyear - 1 , MMWRyear),
-         MMWRweek = if_else(MMWRweek <= 26, MMWRweek + 52, MMWRweek),
-         MMWRweek = MMWRweek - 26
-  ) 
-
-# Integrate these new columns into the full dataset.
-df_byWeek <- left_join(df_byWeek, epiDates) |>
-  # Reorder the columns for clarity.
-  select(`Province_State`, Week, MMWRyear, MMWRweek, MMWRday, 
-         colnames(df_byWeek)[c(3:10)])
-
-
-
 
 ## ----------------------------------------------------------------------------
 ## NORMALIZE TO GET PERCENTAGE OF POPULATION VACCINATED
@@ -648,15 +627,9 @@ df_byWeek <- left_join(df_byWeek, epiDates) |>
 ## and only spans the dates between the recent census year to the last
 ## intercensal year preceding the next census. The harmonized data set combines
 ## vintages from the 2010 to 2019 census estimates and the 2020 to 2023
-## census estimates. 
-
-
-############## CHANGE THE LOCATION
-#############
-##Additional details can be found in the "Population 
-## Estimates and Projections" subdirectory of this projects GitHub repo.
-
-
+## census estimates. Additional details can be found in the "Git and GitHub/
+## Population Estimates and Projections" subdirectory of this projects GitHub 
+## repo.
 
 colnames(census_2010to2023)
 
@@ -679,23 +652,27 @@ colnames(subset_census)
 ## that are included in this census data set.
 
 # All uniquely represented state, territories, and regions.
-census_2010to2023$NAME %>% unique()
+census_2010to2023$NAME |> unique()
 
 # State, territories, and regions represented more than once.
-census_2010to2023$NAME %>% table() %>% .[. > 1] %>% as.data.frame()
+census_2010to2023$NAME |> table() |>
+  (\(x) { x[x > 1] }) () |>
+  as.data.frame()
 
 # "Province_State" entries not represented in the U.S. Census data.
-unique(df_cleaned$Province_State) %>% .[. %!in% unique(census_2010to2023$NAME)]
+unique(df_byWeek$Province_State) |>
+  (\(x) { x[x %!in% unique(census_2010to2023$NAME)] }) ()
 
 
 ## The first thing to notice is the Virgin Islands is represented in the
 ## U.S. Census data, but with a different string: "Virgin Islands, U.S.". We
-## can correct this by changing the df_cleaned name.
+## can correct this by changing the df_byWeek name.
 
-df_cleaned$Province_State[df_cleaned$Province_State %in% "Virgin Islands"] <- "Virgin Islands, U.S."
+df_byWeek$Province_State[df_byWeek$Province_State %in% "Virgin Islands"] <- "Virgin Islands, U.S."
 
 # Double check that the Virgin Islands entry is identified as a match.
-unique(df_cleaned$Province_State) %>% .[. %!in% unique(census_2010to2023$NAME)]
+unique(df_byWeek$Province_State) |> 
+  (\(x) { x[x %!in% unique(census_2010to2023$NAME)] }) ()
 
 
 ## The second thing to notice is that the United States and Puerto Rico
@@ -705,7 +682,7 @@ unique(df_cleaned$Province_State) %>% .[. %!in% unique(census_2010to2023$NAME)]
 ## and International Database (IDB). On their website, they recommend using
 ## the OE for both metrics for the United States, and the OE for population
 ## estimates and IDB for population projections for Puerto Rico.
-##
+## 
 ## We filter the census data to reflect this recommendation.
 
 subset_census <- subset_census[!c(subset_census$NAME == "United States" & subset_census$METHOD == "IDB") &
@@ -714,13 +691,15 @@ subset_census <- subset_census[!c(subset_census$NAME == "United States" & subset
 
 ## Now we can filter out the extra entries that are not represented in the
 ## census data set.
-df_filtered <- filter(df_cleaned, df_cleaned$Province_State %in% subset_census$NAME)
+df_filtered <- filter(df_byWeek, df_byWeek$Province_State %in% subset_census$NAME)
 
 
 ## There are a few regional calculations in the census data that we do not
 ## have in the vaccination data set.
 
-missing_entries <- unique(census_2010to2023$NAME) %>% .[. %!in% unique(df_cleaned$Province_State)]
+missing_entries <- unique(census_2010to2023$NAME) |>
+  (\(x) { x[x %!in% unique(df_byWeek$Province_State)] }) ()
+
 missing_entries
 
 
@@ -729,10 +708,10 @@ missing_entries
 ## ----------------------------------------------------------------------------
 ## ADD MISSING REGIONS AND DIVISIONS TO MAIN DATA SET
 
-
 ## We can generate those using the regional and division map provided by
-## the U.S. Census Bureau. Refer to this projects GitHub, folder "Population 
-## Estimates and Projections" subdirectory README for additional information.
+## the U.S. Census Bureau. Refer to this projects GitHub, folder "Git and GitHub/
+## Population Estimates and Projections" subdirectory README for additional 
+## information.
 
 # Create a reference to map census counts when aggregating sums.
 us_regions_divisions <- 
@@ -765,29 +744,30 @@ us_regions_divisions <-
 
 # Remove the regions that are not represented in the us_regions_divisions
 # reference table.
-filtered_search_space <- df_cleaned[df_cleaned$Province_State %in% us_regions_divisions$Province_State, 
-                                    c(1:2, which(str_detect(colnames(df_cleaned), "daily") ))] %>% 
+filtered_search_space <- df_byWeek[df_byWeek$Province_State %in% us_regions_divisions$Province_State, 
+                                    c(1:2, which(str_detect(colnames(df_byWeek), "Daily") ))] |>
   `rownames<-`(NULL)
 
 # Add a U.S. divisions column by merging the two data sets by "Province_State".
 added_regions <- merge(us_regions_divisions, filtered_search_space, by = c("Province_State"))
 
 
-# Add the newly aggregated sums by rows.
+# Make aggregated sums by rows.
 filtered_search_space <- rbind(
   filtered_search_space,
-  # Sum over the regions by "Province_State" and "Month" to get their aggregate sums.
-  aggregate(added_regions[, -c(1:4)], list(added_regions$Region, added_regions$Month), sum) %>% 
-    `colnames<-`(c("Province_State", "Month", colnames(.)[-c(1:2)])),
-  # Sum over the divisions by "Province_State" and "Month" to get their aggregate sums.
-  aggregate(added_regions[, -c(1:4)], list(added_regions$Division, added_regions$Month), sum) %>% 
-    `colnames<-`(c("Province_State", "Month", colnames(.)[-c(1:2)]))
+  # Sum over the regions by "Province_State" and "Week" to get their aggregate sums.
+  aggregate(added_regions[, -c(1:4)], list(added_regions$Region, added_regions$Week), sum) |>
+    `colnames<-`(c("Province_State", "Week", colnames(added_regions)[c(5:8)])),
+  # Sum over the divisions by "Province_State" and "Week" to get their aggregate sums.
+  aggregate(added_regions[, -c(1:4)], list(added_regions$Division, added_regions$Week), sum) |>
+    `colnames<-`(c("Province_State", "Week", colnames(added_regions)[c(5:8)]))
 )
 
 # We can confirm that we now have all of the regional sums. Only the territories
 # and total U.S. counts are showing up, which is good because we used a filtered
 # data set to generate our aggregates.
-unique(census_2010to2023$NAME) %>% .[. %!in% unique(filtered_search_space$Province_State)]
+unique(census_2010to2023$NAME) |>
+  (\(x) { x[x %!in% unique(filtered_search_space$Province_State)] }) ()
 
 # The ordered search space to generate counts.
 querry <- c(unique(us_regions_divisions$Region)[c(1, 2, 4, 3)],
@@ -802,23 +782,25 @@ for(i in 1:length(querry)){
                  filtered_search_space[filtered_search_space$Province_State == querry[i], ] %>% 
                    # The following four lines generate the cumulative sums and add them
                    # as a new column to the data set.
-                   mutate(Doses_admin_yf = cumsum(Doses_admin_yf_daily) ) %>% 
-                   mutate(People_at_least_one_dose_yf = cumsum(People_at_least_one_dose_yf_daily)) %>% 
-                   mutate(People_fully_vaccinated_yf = cumsum(People_fully_vaccinated_yf_daily)) %>% 
-                   mutate(Total_additional_doses_yf = cumsum(Total_additional_doses_yf_daily))
+                   mutate(Doses_yf = cumsum(Doses_yf_Daily) ) |>
+                   mutate(People_At_Least_One_Dose_yf = cumsum(People_At_Least_One_Dose_yf_Daily)) |>
+                   mutate(People_Fully_Vaccinated_yf = cumsum(People_Fully_Vaccinated_yf_Daily)) |>
+                   mutate(Total_Additional_Doses_yf = cumsum(Total_Additional_Doses_yf_Daily))
   )
 }
 
 # Confirm the column name orders are correct before rejoining the newly
-# constructed data back into the main df_cleaned.
-all(colnames(build[, c(1:2, 7:10, 3:6)]) == colnames(df_cleaned))
+# constructed data back into the main df_byWeek.
+all(colnames(build[, c(2:1, 7, 10, 8:9, 3:6)]) %in% colnames(df_byWeek))
 
 # Commit the changes.
-df <- rbind(build[, c(1:2, 7:10, 3:6)], df_cleaned)
+df <- bind_rows(build[, c(2:1, 7, 10, 8:9, 3:6)], df_byWeek)
 
 # Confirm that the different state regions and divisions. Boolean test will
 # say TRUE if this is completed.
-unique(census_2010to2023$NAME) %>% .[. %!in% unique(df$Province_State)] %>% length(.) == 0
+unique(census_2010to2023$NAME) |>
+  (\(x) { x[x %!in% unique(df$Province_State)] }) () |>
+  (\(y) { length(y) == 0 }) ()
 
 
 ## Now we'll normalize the vaccination daily counts by the population estimates
@@ -831,10 +813,11 @@ daily_counts      <- colnames(df)[7:10]
 result = list()
 for (i in 1:length(subset_census$NAME)) {
   # Separate out the rows associated with one "Province_State" entry.
-  subset <- df %>% .[.$Province_State %in% subset_census$NAME[i], ]
+  subset <- df |> 
+    (\(x) { x[x$Province_State %in% subset_census$NAME[i], ] }) ()
   
   # Collect the year that the observation was made.
-  staged_dates <- subset[, "Month"] %>% year()
+  staged_dates <- subset[, "Week"] %>% year()
   
   relevant_pop_est = c()
   for (j in 1:length(staged_dates)) {
@@ -843,28 +826,41 @@ for (i in 1:length(subset_census$NAME)) {
     relevant_pop_est[j] <- subset_census[i, str_detect(colnames(subset_census), as.character(staged_dates[j]))]
   }
   
-  # Normalize over all columns for vaccination daily counts. Excluding doses
-  # administered because it does not mean as much as the other metrics when
-  # normalized by the total population.
-  percentages <- subset[, daily_counts[-1]] %>% sapply(., function(x)
-    round((x / relevant_pop_est) * 100, 0))
+  # Normalize over all columns for vaccination daily counts.
+  population  <- relevant_pop_est |> unlist()
+  percentages <- subset[, daily_counts] |>
+    (\(y) { 
+      sapply(y, function(x) {
+        round((x / population) * 100, 0)
+      }) 
+    }) ()
   
   # Save the results and join them with the metadata columns for merging 
   # back to the main data set.
-  result[[i]] <- cbind(subset[, c("Province_State", "Month")], percentages)
+  result[[i]] <- cbind(subset[, c("Province_State", "Week")], population, percentages)
 }
 # Combine the results (list format) into a data frame by adding rows. Each
 # row reflects the percentage results for one "Province_State" and each column
 # represents the vaccine counting method.
-result <- do.call(rbind, result) %>% as.data.frame() %>%
-  `colnames<-`(c("Province_State", "Month", str_c(cumulative_counts[-1], "_percent")))
+result <- do.call(rbind, result) |>
+  as.data.frame() |>
+  `colnames<-`(c("Province_State", "Week", "Population_Estimate", str_c(daily_counts, "_Percent")))
+
 
 # Merge the previous data set with the normalized daily counts, combining by
 # unique matches with the "Month" and "Province_State" columns.
-df_total <- merge(df, result, by = c("Province_State", "Month"))
+df_total <- merge(df, result, by = c("Province_State", "Week"))
 
 
-## For convenience, we'll order the rows by granular regions, starting
+# We will reorder the dates so that they are in ascending order.
+df_total <- df_total |>
+  select(colnames(df_total)[c(1:2)], "Population_Estimate", colnames(df_total)[c(3:10, 12:15)]) |>
+  group_by(Province_State) |>
+  arrange(Week, .by_group = TRUE) |>
+  ungroup()
+
+
+## For convenience, we'll also order the rows by granular regions, starting
 ## from the complete United States to regions to states/territories.
 order_by <- c("United States", querry,
               sort(c(datasets::state.name, "District of Columbia")), 
@@ -882,9 +878,24 @@ for (i in 1:length(order_by)) {
 }
 
 # Commit the full, row organized data set and clear the row names.
-df_total <- build %>% `rownames<-`(NULL)
+df_total <- build |> `rownames<-`(NULL)
 
 
+# In our following analysis, it will be useful to report the dates in the
+# standard epidemiologic year format: MMWR.
+epiDates <- df_total[!is.na(df_total$Week), ] |> 
+  (\(x) { cbind(x, MMWRweek(x$Week)) }) () |> 
+  mutate(MMWRyear = MMWRyear, 
+         MMWRyear = if_else(MMWRweek <= 26, MMWRyear - 1 , MMWRyear),
+         MMWRweek = if_else(MMWRweek <= 26, MMWRweek + 52, MMWRweek),
+         MMWRweek = MMWRweek - 26
+  ) 
+
+# Integrate these new columns into the full dataset.
+df_final <- left_join(df_total, epiDates) |>
+  # Reorder the columns for clarity.
+  select(`Province_State`, Week, MMWRyear, MMWRweek, MMWRday, 
+         colnames(df_total)[c(3:15)])
 
 
 
@@ -901,7 +912,7 @@ df_total <- build %>% `rownames<-`(NULL)
 ## will be discussed in the tutorial itself.
 
 
-write.csv(df_byWeek, "Git and GitHub/Vaccinations Aggregated by Week.csv")
+write.csv(df_final, "Git and GitHub/Vaccinations Aggregated by Week.csv")
 
 
 

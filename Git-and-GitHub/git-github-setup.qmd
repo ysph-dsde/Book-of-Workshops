@@ -1,0 +1,42 @@
+---
+  title: "Accounts and Configurations"
+  editor: source
+  markdown: 
+  editor_options: 
+  chunk_output_type: console
+  toc: true
+  toc-depth: 3
+---
+
+This is a book created from markdown and executable code.
+
+See @knuth84 for additional discussion of literate programming.
+
+```{r}
+1 + 1
+```
+
+
+```{r setup}
+#| message: FALSE
+#| warning: FALSE
+#| output: FALSE
+
+# NOTE: renv initializing might need to be run twice after the repo is
+#       first copied.
+#renv::init()
+renv::restore()
+
+suppressPackageStartupMessages({
+  library("dplyr")         # For data manipulation
+  library("ggplot2")       # For creating static visualizations
+  library("plotly")        # For interactive plots
+  library("RColorBrewer")  # Load Color Brewer color palettes
+  library("viridis")       # Load the Viridis color pallet
+})
+
+# Function to select "Not In"
+'%!in%' <- function(x,y)!('%in%'(x,y))
+
+
+```

@@ -1,0 +1,256 @@
+---
+  title: "Getting Started with Git and GitHub"
+  subtitle: "Introduction"
+  author:
+  - name: Shelby Golden
+    degrees: M.S.
+    email: shelby.golden@yale.edu
+    icon: calendar3
+    affiliations:
+      - ref: ysph
+  affiliations:
+    - id: ysph
+      name: Yale School of Public Health Data Science and Data Equity (DSDE)
+      department: Biostatistics
+      city: New Haven
+      state: CT
+  date: 03/27/2025
+  date-format: long
+  markdown: 
+  editor_options: 
+  chunk_output_type: console
+  toc: true
+  toc-depth: 3
+  highlight-style: github
+---
+
+## Introduction
+
+In this workshop we delve deeper into the domain specific language of statistical graphics that underpins the `tidyverse` `ggplot2` package syntax: the "Grammar of Graphics". We will explore each discrete grammar layer using laboratory-confirmed RSV hospitalizations data collected by the CDC's Respiratory Virus Hospitalization Surveillance Network (RESP-NET) surveillance program.
+
+With a better understanding of the syntax fundamentals, we will then get introduced to some advanced uses of `ggplot2` that are commonly used in public health:
+
+-   Making plots interactive with `plotly`
+-   Projecting data to a map
+
+We will close the workshop by asking [Yale's Clarity Platform](https://ai.yale.edu/yales-ai-tools-and-resources/clarity-platform) to reproduce our code from the plot image alone to exhibit how AI can be used to support data visualization work. Clarity is an AI chatbot that offers similar functions to OpenAI’s ChatGPT and Microsoft Copilot with additional data protection. Find out more about [Clarity's security](https://ai.yale.edu/yales-ai-tools-and-resources/clarity-platform/clarity-platform-security?check_logged_in=1) guidelines on "AI at Yale".
+
+The cleaned and harmonized version of the RSV-NET dataset was compiled as part of the YSPH's very own PopHIVE project. Special thanks to [Professor Daniel Weinberger](https://ysph.yale.edu/profile/daniel-weinberger/) for allow us to adopt his plot code in this workshop.
+
+
+
+## Accessing the Materials
+
+### Slides, Handouts, and Other Materials
+
+Download the complete slide deck with annotations and the in-person workshop handout. Comments were saved in the bottom left of each slide, and references for this webpage are in its **Appendix**.
+
+{{< downloadthis "Workshop Slide Deck with Comments.pdf" label="Complete Slide Deck" id=download_btn >}}
+
+{{< downloadthis "Handout.pdf" label="Handout" id=download_btn >}}
+
+### Codespaces
+
+In this workshop you will need to access the R code we have prepared for the worked through example and challenge questions. If you have not already, you will need to download [R](https://cran.r-project.org/) to your local device, and we suggest using the integrated development environment (IDE) software [RStudio](https://posit.co/download/rstudio-desktop/). Accessing the code for this workshop requires that you have git installed on your local device, a GitHub account, and you have configured the two. If you have not done this, go through [Accounts and Configurations](git-github-setup.html) first.
+
+::: {.callout-important collapse="true"}
+This workshop was generated using R (v 4.4.3) in the RStudio IDE (v 2024.12.1+563). `renv()` is included to reproduce the same coding enviroment, storing all the relevant packages and package versions needed in the code. If you experience trouble running the scripts, you might want to check that the environment was initialized and that you are using the same version of R and RStudio.
+:::
+
+Two GitHub repositories have been created to practice using git and GitHub:
+
+-  Solo projects: [ysph-dsde/JHU-CRC-Vaccinations](https://github.com/ysph-dsde/JHU-CRC-Vaccinations)
+-  Group projects: [ysph-dsde/JHU-CRC-Cases-and-Deaths](https://github.com/ysph-dsde/JHU-CRC-Cases-and-Deaths)
+
+In order to practice your skills with git and GitHub using our codespaces, you will need to create a "clean-break" copy of both repositories. This will fully decouple the codespace connections from the ysph-dsde GitHub accout, and allow you full access to its contents. There are two methods to do this: by the "GitHub Importer" tool or your command-line application (i.e. Terminal for Macs and Windows Terminal for windows).
+
+Below we have detailed how you can create a "clean-break" by both methods. We suggest you attempt the "GitHub Importer" tool option first, and if that fails to follow the command-line steps. Please note that the importer tool will sometimes take a few minutes to fully transfer over the files.
+
+
+### Making a Clean-Break Copy
+
+#### METHOD 1: Copying Using GitHub Importer
+
+::: {.callout-note}
+This method is not a Fork. You can learn more about GitHub Importer [here](https://docs.github.com/en/migrations/importing-source-code/using-github-importer/importing-a-repository-with-github-importer).
+:::
+
+1. [Log in](https://github.com/login) to your personal GitHub account.
+
+2. In the top-right of the page navigation bar, select the [ {{< iconify octicon:plus-16 >}} {{< iconify octicon:triangle-down-24 >}} ]{style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px; padding-left: 5px; padding-right: 5px; border-radius: 5px;"} dropdown menu and click [ {{< iconify octicon:repo-push-24 >}} Import repository]{style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px;"}.
+
+
+3. Fill out the following sections:
+
+    a. **Your source repository details:** Paste the https url of the repositories listed above. No credentials are required for this action.
+
+    b. **Your new repository details:** Adjust the GitHub account owner as needed and create the name for the new repository. It is good practice to initially set the repository to "Private".
+
+4. Click the [ Begin import ]{style="white-space: nowrap; background-color: #1f6feb; color: #ffffff; border: 1px solid #0d1117; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px;"} button to copy the codespace.
+
+5. After a few minutes, the newly created GitHub repository webpage will open up.
+
+If this method is successful, then proceed to the [Cloning the Copied Repository](#cloning-the-copied-repository) section. If this is not successful, you can try using the command-line application menthod detailed in [Method 2](#method-2-copying-using-the-command-line-application).
+
+#### METHOD 2: Copying Using The Command-Line Application
+
+These directions follow GitHub's [duplicating a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/duplicating-a-repository) page.
+
+1. [Log in](https://github.com/login) to your personal GitHub account.
+
+2. Navigate to the ysph-dsde GitHub repository you want to copy by either searching for it by name or opening the url provided above.
+
+3. Near the right side of the page there will be a [ {{< iconify octicon:code-16 >}} \ Begin import {{< iconify octicon:triangle-down-24 >}} ]{style="white-space: nowrap; background-color: #1f6feb; color: #ffffff; border: 1px solid #0d1117; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px;"} button to click. In its drop down menu under the "Local" tab you will see options to copy the SSH key or HTTPS url to the repository. 
+
+    For example, if the repository name is "ORIGINAL-REPOSITORY" they will look like:
+
+    ```bash
+    # SSH
+    git@github.com:ysph-dsde/ORIGINAL-REPOSITORY.git
+    ```
+   
+    ```bash
+    # HTTPS
+    https://github.com/ysph-dsde/ORIGINAL-REPOSITORY.git
+    ```
+    
+    Depending on your Git/GitHub configurations, you will copy one of these for the remainder of the steps.
+    
+:::{.callout-important}
+SSH keys or HTTPS urls are file transfer protocols that are used to pass information between your local git configured directory to the remote GitHub repository. Only one protocol can be set up for one Git/GitHub connection.
+:::
+   
+4. Open the command-line application (i.e. Terminal for Macs and Windows Terminal for windows) and navigate to the file location you want to temporarily store the repository copy.
+
+   ```bash
+   cd "/file_location/"
+```
+
+5. Clone a bare copy of the original repository using its SSH key or HTTPS url:
+
+   ```bash
+    # SSH
+    git clone --bare git@github.com:ysph-dsde/ORIGINAL-REPOSITORY.git
+    ```
+   
+    ```bash
+    # HTTPS
+    git clone --bare https://github.com/ysph-dsde/ORIGINAL-REPOSITORY.git
+    ```
+   
+6. Open the project file.
+
+    ```bash
+    cd "ORIGINAL-REPOSITORY.git"
+    ```
+    
+7. Back in GitHub, in the top-right of the page navigation bar select the [ {{< iconify octicon:plus-16 >}} {{< iconify octicon:triangle-down-24 >}} ]{style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px; padding-left: 5px; padding-right: 5px; border-radius: 5px;"} dropdown menu and click [ {{< iconify octicon:repo-24 >}} New repository]{style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px;"}.
+
+8. Fill out the following sections:
+
+    a. Adjust the GitHub account owner as needed and create the name for the new repository.
+    
+    c. It is good practice to initially set the repository to "Private".
+    
+    d. Do **[NOT]{.underline}** use a template or include a description, `README.md`, `.gitignore`, or license.
+    
+9. In the newly created GitHub repository under "Quick setup" you will find the repository's SSH key or HTTPS url. Copy this.
+   
+10. Back in the command-line application, push a mirror of the cloned git file to your newly created GitHub repository using its SSH key or HTPPS url:
+
+    ```bash
+    # SSH
+    git push --mirror git@github.com:EXAMPLE-USER/NEW-REPOSITORY.git
+    ```
+
+    ```bash
+    # HTTPS
+    git push --mirror https://github.com/EXAMPLE-USER/NEW-REPOSITORY.git
+    ```
+    
+    Refresh the new GitHub reposiotry webpage to confirm the push was successful.
+
+11. Delete the bare cloned file used to create a new remote repository.
+
+    ```bash
+    cd ..                                   # Go back one file location
+    rm -rf ORIGINAL-REPOSITORY.git          # Delete the bare clone
+    ```
+    
+12. This completes creating a clean-break copy of the ysph-dsde repository codespace. Proceed with cloning the newly made repository to your local device in the following section.
+
+### Cloning the Copied Repository
+
+Now that you have copied this repository into your own GitHub, you are ready to proceed with a standard clone to your local device.
+  
+1. Copy the SSH key or HTTPS url to the newly created repository in your GitHub account by finding the codes under the [ {{< iconify octicon:code-16 >}} \ Begin import {{< iconify octicon:triangle-down-24 >}} ]{style="white-space: nowrap; background-color: #1f6feb; color: #ffffff; border: 1px solid #0d1117; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px;"} button. 
+
+    ```bash
+    # SSH
+    git@github.com:ysph-dsde/NEW-REPOSITORY.git
+    ```
+   
+    ```bash
+    # HTTPS
+    https://github.com/ysph-dsde/NEW-REPOSITORY.git
+    ```
+  
+2. In the command-line application (i.e. Terminal for Macs and Windows Terminal for windows) navigate to the file location you want to store the repository.
+
+   ```bash
+   cd "/file_location/"
+   ```
+   
+3. Clone the the repository.
+
+   ```bash
+   # using SSH
+   git clone git@github.com:EXAMPLE-USER/NEW-REPOSITORY.git
+
+   # or using HTTPS
+   git clone https://github.com/EXAMPLE-USER/NEW-REPOSITORY.git
+   ```
+
+4. **OPTIONAL:** You can reset the repository history, which will clear the previous commits, by running the following block of code (Source: [StackExchange by Zeelot](https://stackoverflow.com/questions/9683279/make-the-current-commit-the-only-initial-commit-in-a-git-repository)).
+    
+    ```bash
+    git checkout --orphan tempBranch         # Create a temporary branch
+    git add -A                               # Add all files and commit them
+    git commit -m "Reset the repo"
+    git branch -D main                       # Deletes the main branch
+    git branch -m main                       # Rename the current branch to main
+    git push -f origin main                  # Force push main branch to GitHub
+    git gc --aggressive --prune=all          # Remove the old files
+    ```
+
+### Initializing the Environment
+
+After cloning the codespace to your local device, you will need to initialize the environment using `renv()`. This will install all packages and versions used in the workshop, thus creating a reproducible coding environemnt.
+
+1. In the command-line application (i.e. Terminal for Macs and Windows Terminal for windows) navigate to the file location you want to store the repository.
+
+   ```bash
+   cd "/file_location/"
+   ```
+
+2. Launch the project by opening the `*.Rproj` in RStudio.
+
+4. In the R console, activate the enviroment by runing the following lines of code:
+
+     ```r
+    renv::init()          # initialize the project
+    renv::restore()       # download packages and their version saved in the lockfile.
+    ```
+
+:::{.callout-note}
+If you are asked to update packages, say no. The `renv()` is intended to recreate the same environment under which the project was created, making it reproducible. You are ready to proceed when running `renv::restore()` gives the output:
+
+```{.r}
+- The library is already synchronized with the lockfile.
+```
+
+If you experience any trouble with this step, you might want to confirm that you are using  R (v 4.4.3) in the RStudio IDE (v 2024.12.1+563). You can also read more about `renv()` in their [vignette](https://rstudio.github.io/renv/articles/renv.html).
+:::
+
+
+

@@ -29,12 +29,9 @@ $h4-font-size: 1.25em;
     --figure-img-border: 1px solid #ddd;
     --figure-img-shadow: 1px 1px 10px #ddd;
 
-    --code-block-color: #555;
-    --code-block-bg: #f7f7f7;
+    --code-block-color: #b5b4b4;
+    --code-block-bg: #efefef;
     --code-color: #c7254e;
-    --code-bg: #f9f2f4;
-
-    --hl-code-comments: #696867;
 
     --header-footer-border: #dee2e6;
 
@@ -61,6 +58,267 @@ $h4-font-size: 1.25em;
     --listing-card-shadow: rgba(0, 0, 0, 0.04);
     --listing-card-shadow-hover: rgba(0, 0, 0, 0.1);
 }
+
+
+
+/* quarto syntax highlight colors */
+/* https://scm.vcu.edu/projects/EFD/repos/cs-24-330-capstone/browse/reports/project-overview_files/libs/quarto-html/quarto-syntax-highlighting.css?at=fb52a987f9659d13b8785a2047341b3363008694 */
+/* modified to tango */
+/* https://github.com/quarto-dev/quarto-cli/blob/main/src/resources/pandoc/highlight-styles/tango.theme */
+/* format list: https://emilhvitfeldt.com/post/slidecraft-code-output/#use-fonts-with-ligatures */
+
+:root {
+    --tango-hl-ot-color: #8f5902;
+    --tango-hl-at-color: #204a87;
+    --tango-hl-ss-color: #4e9a06;
+    --tango-hl-an-color: #8f5902;
+    --tango-hl-fu-color: #204a87;
+    --tango-hl-st-color: #4e9a06;
+    --tango-hl-cf-color: #f0dfaf;
+    --tango-hl-op-color: #ce5c00;
+    --tango-hl-er-color: #a40000;
+    --tango-hl-bn-color: #0000cf;
+    --tango-hl-al-color: #ef2929;
+    --tango-hl-va-color: #000000;
+    --tango-hl-bu-color: inherit;
+    --tango-hl-ex-color: inherit;
+    --tango-hl-pp-color: #8f5902;
+    --tango-hl-in-color: #7f9f7f;
+    --tango-hl-vs-color: #cc9393;
+    --tango-hl-wa-color: #7f9f7f;
+    --tango-hl-do-color: #8f5902;
+    --tango-hl-im-color: null;
+    --tango-hl-ch-color: #4e9a06;
+    --tango-hl-dt-color: #204a87;
+    --tango-hl-fl-color: #0000cf;
+    --tango-hl-co-color: #8f5902;
+    --tango-hl-cv-color: #8f5902;
+    --tango-hl-cn-color: #8f5902;
+    --tango-hl-sc-color: #ce5c00;
+    --tango-hl-dv-color: #0000cf;
+    --tango-hl-kw-color: #204a87;
+}
+
+
+/* other quarto variables */
+:root {
+    --tango-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+pre>code.sourceCode>span {
+    color: #003B4F;
+}
+
+code span {
+    color: #003B4F;
+}
+
+code.sourceCode>span {
+    color: #003B4F;
+}
+
+div.sourceCode,
+div.sourceCode pre.sourceCode {
+    color: #003B4F;
+}
+
+code span.ot {
+    color: var(--tango-hl-ot-color);
+    font-style: inherit;
+    background-color: null;
+}
+
+code span.at {
+    color: var(--tango-hl-at-color);
+    font-style: inherit;
+    background-color: null;
+}
+
+code span.ss {
+    color: var(--tango-hl-ss-color);
+    font-style: inherit;
+    background-color: null;
+}
+
+code span.an {
+    color: var(--tango-hl-an-color);
+    font-style: inherit;
+    background-color: null;
+    font-weight: bold;
+    font-style: italic;
+}
+
+code span.fu {
+    color: var(--tango-hl-fu-color);
+    font-style: inherit;
+    background-color: null;
+    font-weight: bold;
+}
+
+code span.st {
+    color: var(--tango-hl-st-color);
+    font-style: inherit;
+    background-color: null;
+}
+
+code span.cf {
+    color: var(--tango-hl-cf-color);
+    font-style: inherit;
+    background-color: null;
+    font-weight: bold;
+}
+
+code span.op {
+    color: var(--tango-hl-op-color);
+    font-style: inherit;
+    background-color: null;
+    font-weight: bold;
+}
+
+code span.er {
+    color: var(--tango-hl-er-color);
+    font-style: inherit;
+    background-color: null;
+    font-weight: bold;
+}
+
+code span.bn {
+    color: var(--tango-hl-bn-color);
+    font-style: inherit;
+    background-color: null;
+}
+
+code span.al {
+    color: var(--tango-hl-al-color);
+    font-style: inherit;
+    background-color: null;
+    font-style: normal;
+}
+
+code span.va {
+    color: var(--tango-hl-va-color);
+    font-style: inherit;
+    background-color: null;
+}
+
+code span.bu {
+    font-style: inherit;
+}
+
+code span.ex {
+    font-style: inherit;
+}
+
+code span.pp {
+    color: var(--tango-hl-pp-color);
+    font-style: inherit;
+    background-color: null;
+    font-style: italic;
+}
+
+code span.in {
+    color: var(--tango-hl-in-color);
+    font-style: inherit;
+    background-color: null;
+    font-weight: bold;
+    font-style: italic;
+}
+
+code span.vs {
+    color: var(--tango-hl-vs-color);
+    font-style: inherit;
+    background-color: null;
+}
+
+code span.wa {
+    color: var(--tango-hl-wa-color);
+    font-style: italic;
+    background-color: null;
+    font-weight: bold;
+    font-style: italic;
+}
+
+code span.do {
+    color: var(--tango-hl-do-color);
+    font-style: italic;
+    background-color: null;
+    font-weight: bold;
+    font-style: italic;
+}
+
+code span.im {
+    color: var(--tango-hl-im-color);
+    font-style: inherit;
+    background-color: null;
+}
+
+code span.ch {
+    color: var(--tango-hl-ch-color);
+    font-style: inherit;
+    background-color: null;
+    font-weight: bold;
+}
+
+code span.dt {
+    color: var(--tango-hl-dt-color);
+    font-style: inherit;
+    background-color: null;
+}
+
+code span.fl {
+    color: var(--tango-hl-fl-color);
+    font-style: inherit;
+    background-color: null;
+}
+
+code span.co {
+    color: var(--tango-hl-co-color);
+    font-style: inherit;
+    background-color: null;
+    font-style: italic;
+}
+
+code span.cv {
+    color: var(--tango-hl-cv-color);
+    font-style: italic;
+    background-color: null;
+    font-weight: bold;
+    font-style: italic;
+}
+
+code span.cn {
+    color: var(--tango-hl-cn-color);
+    font-style: inherit;
+    background-color: null;
+}
+
+code span.sc {
+    color: var(--tango-hl-sc-color);
+    font-style: inherit;
+    background-color: null;
+}
+
+code span.dv {
+    color: var(--tango-hl-dv-color);
+    font-style: inherit;
+    background-color: null;
+}
+
+code span.kw {
+    color: var(--tango-hl-kw-color);
+    font-style: inherit;
+    background-color: null;
+    font-weight: bold;
+}
+
+.prevent-inlining {
+    content: "</";
+}
+
+/*# sourceMappingURL=debc5d5d77c3f9108843748ff7464032.css.map */
+
+
+
 
 .table,
 .dataTable {
@@ -501,8 +759,8 @@ p {
     ul code,
     ol code {
         color: var(--code-color);
-        background-color: var(--code-bg);
-        border-color: var(--code-bg);
+        background-color: var(--code-block-bg);
+        border-color: var(--code-block-bg);
         padding: 2px 4px;
         font-size: 85%;
         border-radius: 4px;
@@ -602,9 +860,11 @@ p {
         ul code,
         ol code {
             color: var(--callout-color);
-            background-color: transparent;
+            background-color: hsl(from var(--callout-color) h s l / 10%);
             border: none;
             padding: 2px 4px;
+            padding-left: 5px;
+            padding-right: 5px;
             font-size: 100%;
         }
 
@@ -612,7 +872,7 @@ p {
     }
 
     .callout-warning {
-        background-color: var(--callout-warning-bg);
+        background-color: hsl(from var(--callout-warning-bg) h s l / 30%);
         border-top-color: var(--callout-warning-bg);
         border-right-color: var(--callout-warning-bg);
         border-bottom-color: var(--callout-warning-bg);
@@ -623,7 +883,7 @@ p {
     }
 
     .callout-note {
-        background-color: var(--callout-note-bg);
+        background-color: hsl(from var(--callout-note-bg) h s l / 30%);
         border-top-color: var(--callout-note-bg);
         border-right-color: var(--callout-note-bg);
         border-bottom-color: var(--callout-note-bg);
@@ -635,7 +895,7 @@ p {
     }
 
     .callout-important {
-        background-color: var(--callout-important-bg);
+        background-color: hsl(from var(--callout-important-bg) h s l / 30%);
         border-top-color: var(--callout-important-bg);
         border-right-color: var(--callout-important-bg);
         border-bottom-color: var(--callout-important-bg);
@@ -646,7 +906,7 @@ p {
     }
 
     .callout-caution {
-        background-color: var(--callout-caution-bg);
+        background-color: hsl(from var(--callout-caution-bg) h s l / 30%);
         border-top-color: var(--callout-caution-bg);
         border-right-color: var(--callout-caution-bg);
         border-bottom-color: var(--callout-caution-bg);
@@ -657,7 +917,7 @@ p {
     }
 
     .callout-tip {
-        background-color: var(--callout-tip-bg);
+        background-color: hsl(from var(--callout-tip-bg) h s l / 30%);
         border-top-color: var(--callout-tip-bg);
         border-right-color: var(--callout-tip-bg);
         border-bottom-color: var(--callout-tip-bg);
