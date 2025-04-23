@@ -8,6 +8,7 @@
   chunk_output_type: console
   toc: true
   toc-depth: 3
+  number-sections: false
 ---
 
 ## Environment Set-Up and Data Description
