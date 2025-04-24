@@ -25,7 +25,9 @@ $footer-fg: #cad2dd;
     --figure-img-shadow: none;
 
     --code-block-color: #d3d3d3;
-    --code-block-bg: #303030;
+    --code-block-bg: #2e2e2e;
+    --code-block-bg-header: #424242;
+    --code-block-bg-boarder: #828282;
     --code-color: #e37b95;
 
     --hl-code-comments: #8e8d8c;
@@ -338,6 +340,51 @@ ol code {
     padding-right: 5px;
     font-size: 100%;
 }
+
+/* MODIED THE PRE */
+
+pre {
+    color: inherit;
+    background-color: null;
+    border-color: var(--code-block-bg-boarder);
+    border-radius: 6px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+pre.sourceCode {
+    border: solid;
+    border-color: var(--code-block-bg-boarder);
+    border-width: 1px;
+}
+
+div.sourceCode {
+    color: var(--code-block-color);
+    background-color: var(--code-block-bg);
+    border-color: var(--code-block-bg-boarder);
+    margin-bottom: 1.6em;
+    border: none;
+}
+
+div.code-with-filename .code-with-filename-file {
+    margin-bottom: -0.2rem;
+    background-color: var(--code-block-bg-header);
+    border-width: 1px;
+    border-color: var(--code-block-bg-boarder);
+}
+
+/* source: https://developer.mozilla.org/en-US/docs/Web/CSS/:not */
+div:is(.code-with-filename) {
+    pre.sourceCode {
+        border-radius: 0px 0px 6px 6px;
+    }
+
+    div.sourceCode {
+        border-radius: 0px 0px 6px 6px;
+    }
+}
+
+/* END MODIFICATION */
 
 .callout-warning {
     background-color: hsl(from var(--callout-warning-bg) h s l / 30%);

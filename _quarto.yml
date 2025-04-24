@@ -4,6 +4,7 @@ project:
 book:
   title: "Book of Workshops"
   #downloads: [pdf, epub]
+  sharing: [linkedin]
   repo-url: https://github.com/ysph-dsde/Book-of-Workshops
   repo-actions: edit
   search: true
@@ -16,12 +17,12 @@ book:
     - index.qmd
     - part: Git-and-GitHub/index.qmd
       chapters: 
-        - Git-and-GitHub/git-github-setup.qmd
-        - Git-and-GitHub/git-github-worked-through-example.qmd
-        - Git-and-GitHub/git-github_references.qmd
+        - Git-and-GitHub/Pages/git-github-setup.qmd
+        - Git-and-GitHub/Pages/git-github-overview-simple-example.qmd
     - part: Data-Visualization-with-ggplot2/index.qmd
       chapters: 
-        - Data-Visualization-with-ggplot2/visualization-worked-through-example.qmd
+        - Data-Visualization-with-ggplot2/Pages/visualization-more-to-come.qmd
+        - Data-Visualization-with-ggplot2/Pages/visualization-worked-through-example.qmd
   page-footer:
     background: light 
     left: "This site was built on a ysph-dsde.github.io page. It was rendered using Quarto (v 1.6.3) and theme [bookup-html](https://github.com/juba/bookup-html/tree/main)." 
@@ -36,14 +37,16 @@ book:
         href: mailto:admin.dsdeysph@yale.edu
       - text: "(203) 737-8644"
 
+comments:
+  hypothesis: true
+
 format:
   bookup-html:
     html-math-method: katex
     toc: true
     toc-depth: 3
     callout-appearance: default
-  pdf:
-    documentclass: scrreprt
 
 editor: source
+
 

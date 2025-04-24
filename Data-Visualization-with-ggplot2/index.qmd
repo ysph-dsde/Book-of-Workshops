@@ -1,6 +1,4 @@
 ---
-  title: "Data Visualization with ggplot2"
-  subtitle: "Introduction"
   author:
   - name: Shelby Golden
     degrees: M.S.
@@ -24,6 +22,8 @@
   highlight-style: github
 ---
 
+# Data Visualization with ggplot2 {.unnumbered}
+
 ## Introduction
 
 In this workshop we delve deeper into the domain specific language of statistical graphics that underpins the `tidyverse` `ggplot2` package syntax: the "Grammar of Graphics". We will explore each discrete grammar layer using laboratory-confirmed RSV hospitalizations data collected by the CDC's Respiratory Virus Hospitalization Surveillance Network (RESP-NET) surveillance program.
@@ -43,13 +43,13 @@ The cleaned and harmonized version of the RSV-NET dataset was compiled as part o
 
 ### Slides, Handouts, and Other Materials
 
-{{< downloadthis "Discussion and Challenge Questions Download_03.26.2025.zip" label="Codespace for Discussion and Challenge Questions" id=download_btn >}}
+{{< downloadthis "Data-Visualization-with-ggplot2/Materials/Discussion and Challenge Questions Download_03.26.2025.zip" label="Codespace for Discussion and Challenge Questions" id=download_btn >}}
 
 Download the complete slide deck with annotations and the in-person workshop handout. Comments were saved in the bottom left of each slide, and references for this webpage are in its **Appendix**.
 
-{{< downloadthis "Workshop Slide Deck with Comments.pdf" label="Complete Slide Deck" id=download_btn >}}
+{{< downloadthis "Data-Visualization-with-ggplot2/Materials/Workshop Slide Deck with Comments.pdf" label="Complete Slide Deck" id=download_btn >}}
 
-{{< downloadthis "Handout.pdf" label="Handout" id=download_btn >}}
+{{< downloadthis "Data-Visualization-with-ggplot2/Materials/Handout.pdf" label="Handout" id=download_btn >}}
 
 
 ### Codespaces

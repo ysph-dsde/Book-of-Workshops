@@ -1,0 +1,61 @@
+---
+  editor: source
+  markdown: 
+  editor_options: 
+  chunk_output_type: console
+  number-sections: false
+  toc: true
+  toc-depth: 3
+---
+
+# Pages In Progress {.unnumbered}
+
+```{r setup}
+#| message: FALSE
+#| warning: FALSE
+#| output: FALSE
+#| echo: FALSE
+
+suppressPackageStartupMessages({
+  library("arrow")         # For reading in the data
+  library("dplyr")         # For data manipulation
+  library("ggplot2")       # For creating static visualizations
+  library("plotly")        # For interactive plots
+  library("cowplot")       # ggplot add on for composing figures
+  library("tigris")        # Imports TIGER/Line shapefiles from the Census Bureau
+  library("sf")            # Handles "Special Features": spatial vector data
+  library("RColorBrewer")  # Load Color Brewer color palettes
+  library("viridis")       # Load the Viridis color pallet
+})
+
+# Function to select "Not In"
+'%!in%' <- function(x,y)!('%in%'(x,y))
+
+
+```
+
+
+Welcome! We are still working on the following pages for the workshop. Please check back in to see them!
+
+- "Brief history on data visualization"
+- "Challenge questions with solutions"
+- All the references. For now, find them at the end of the slide deck!
+
+
+```{=html}
+<figure>
+  <a href="https://www.youtube.com/watch?v=XfR9iY5y94s"><video loop="true" autoplay="true" controls="false" style="padding-bottom: 10px;" width="100%">
+  <source src="/Git-and-GitHub/Images/Men-at-Work_Down-Under-Clip.mp4" type="video/mp4">
+  </video></a>
+  
+  <figcaption style="text-align: left;">
+    Men At Work - Down Under (Official HD Video) from YouTube
+  </figcaption>
+</figure>
+```
+
+
+
+
+
+

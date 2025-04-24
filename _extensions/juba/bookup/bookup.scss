@@ -31,6 +31,8 @@ $h4-font-size: 1.25em;
 
     --code-block-color: #b5b4b4;
     --code-block-bg: #efefef;
+    --code-block-bg-header: #c5c5c5;
+    --code-block-bg-boarder: #333;
     --code-color: #c7254e;
 
     --header-footer-border: #dee2e6;
@@ -101,6 +103,7 @@ $h4-font-size: 1.25em;
 
 
 /* other quarto variables */
+
 :root {
     --tango-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
@@ -316,8 +319,6 @@ code span.kw {
 }
 
 /*# sourceMappingURL=debc5d5d77c3f9108843748ff7464032.css.map */
-
-
 
 
 .table,
@@ -623,7 +624,7 @@ p {
             color: var(--bs-body-color);
             font-style: italic;
             font-size: 0.9em;
-            margin-top: -1em;
+            margin-top: 0em;
         }
     }
 
@@ -760,29 +761,69 @@ p {
     ol code {
         color: var(--code-color);
         background-color: var(--code-block-bg);
-        border-color: var(--code-block-bg);
         padding: 2px 4px;
         font-size: 85%;
         border-radius: 4px;
     }
 
+    /* MODIED THE PRE */
+
     pre {
-        color: var(--code-block-color);
-        background-color: var(--code-block-bg);
-        border-radius: 6px;
-        padding: .8em 1.2em;
+        color: inherit;
+        background-color: null;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+    }
+
+    pre.sourceCode {
+        overflow-x: scroll;
+        display: grid;
     }
 
     div.sourceCode {
         color: var(--code-block-color);
         background-color: var(--code-block-bg);
-        border-radius: 6px;
         margin-bottom: 1.6em;
-        border: none;
+        border: solid;
+        border-width: 2px;
+        border-color: var(--code-block-bg-boarder);
+        border-radius: 6px;
     }
 
+    /* Manage the scroll bar to only show when needed */
+    #navcontainer {
+        overflow-x: scroll;
+        display: grid;
+        position: absolute;
+        /* absolute positioned contents will not affect their parents */
+        top: 0;
+        left: 0;
+        right: 0;
+        white-space: nowrap;
+    }
+
+    div.code-with-filename .code-with-filename-file {
+        margin-bottom: -0.2rem;
+        background-color: var(--code-block-bg-header);
+        border-width: 2px;
+        border-color: var(--code-block-bg-boarder);
+    }
+
+    /* source: https://developer.mozilla.org/en-US/docs/Web/CSS/:not */
+    div:is(.code-with-filename) {
+        div.sourceCode {
+            border-radius: 0px 0px 6px 6px;
+        }
+
+        strong {
+            font-weight: normal;
+        }
+    }
+    
+    /* END MODIFICATION */
+
     .code-annotation-gutter {
-        background-color: var(--code-block-bg);
+        background-color: var(---code-block-bg);
     }
 
     a.code-annotation-anchor:hover {
