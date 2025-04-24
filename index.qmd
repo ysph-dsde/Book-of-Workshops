@@ -1,3 +1,14 @@
+---
+  editor: source
+  markdown: 
+  editor_options: 
+  chunk_output_type: console
+  toc: true
+  toc-depth: 3
+  number-sections: false
+  unnumbered: true
+---
+
 # Preface {.unnumbered}
 
 This is a Quarto book.
