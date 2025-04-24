@@ -1,0 +1,112 @@
+---
+  editor: source
+  markdown: 
+  editor_options: 
+  chunk_output_type: console
+  number-sections: false
+  toc: true
+  toc-depth: 3
+---
+
+# What is git and GitHub? {.unnumbered}
+
+```{r setup}
+#| message: FALSE
+#| warning: FALSE
+#| output: FALSE
+#| echo: FALSE
+
+suppressPackageStartupMessages({
+  library("arrow")         # For reading in the data
+  library("dplyr")         # For data manipulation
+  library("ggplot2")       # For creating static visualizations
+  library("plotly")        # For interactive plots
+  library("cowplot")       # ggplot add on for composing figures
+  library("tigris")        # Imports TIGER/Line shapefiles from the Census Bureau
+  library("sf")            # Handles "Special Features": spatial vector data
+  library("RColorBrewer")  # Load Color Brewer color palettes
+  library("viridis")       # Load the Viridis color pallet
+})
+
+# Function to select "Not In"
+'%!in%' <- function(x,y)!('%in%'(x,y))
+
+
+```
+
+## Overview
+
+```{=html}
+<figure style="float: left; position: relative; padding-right: 30px; margin-top: 0.5em; margin-bottom: 1em;">
+  <video loop="true" autoplay="true" controls="false" style="padding-bottom: 10px;" width="400">
+  <source src="Images/Distributive%20Version%20Control_Atlasian.mp4" type="video/mp4">
+  </video>
+  
+  <figcaption style="text-align: left;">
+    Figure from "What is Version Control" by Atlassian.<br>Updated February 23rd, 2020. Accessed October 2025
+  </figcaption>
+</figure>
+```
+
+There are two types of version control systems that facilitate project sharing and collaboration: centralized and distributive. git is a distributive version control system, or DVCS. In a DVCS, a remote server stores the integrated copy of a project, and mirrors with the full-change history are distributed to individual contributors. Local changes are communicated in what is called “peer-to-peer” by synchronizing committed changes through patches that are sent over the server.
+
+\
+\
+
+```{=html}
+<figure style="float: right; position: relative; margin-left: 1em; margin-top: 0.5em; margin-bottom: 0.5em;">
+  <img src="Images/Git Logo 2Color_downloaded 10.16.2024.png" alt="git Logo" style="margin-bottom: 1em;" width="300">
+
+  <figcaption style="text-align: left; padding-bottom: 15px">
+    git logo. Downloaded October 10th, 2024.
+  </figcaption>
+  
+    <img src="Images/GitHub Logo_downloaded 10.16.2024.png" alt="GitHub Logo" style="margin-bottom: 1em;" width="300">
+
+  <figcaption style="text-align: left;">
+    GitHub logo. Downloaded October 10th, 2024.
+  </figcaption>
+</figure>
+```
+
+git was originally released in 2005 and is the most popular version control system offered, even compared with centralized systems. On its own it does not provide a framework for collaboration and lacks a graphical user interface, or GUI. Its bash script and regular expression commands are typically executed in command-line applications; a framework that proves to be a steep learning curve for new users.
+
+GitHub was designed in 2007 to improve on git and act as a centralized library of repositories. They also developed additional collaboration tools, such as the Fork. Canonically, GitHub is a developer platform built upon git repository management structures and commands.
+
+GitHub is first and foremost a host of free and open-sourced code, catering to over 100 million developers and hosting more than 420 million repositories as of 2024. Since 2015 it has out competed its primary rival, SourceForge, and became one of world’s largest hosts of source code since 2022/2023.
+
+## OK, but why use them?
+
+::: {layout="[[7,5]]"}
+```{r}
+#| echo: FALSE
+
+stackExchange_results <- data.frame("VersionControl" = c("git", "SVN", "Mercurial", "I don't use one"), "Values" = c(96.95, 5.96, 1.22, 1.38, 81.87, 1.41, 0.45, 17.18), "User" = c(rep("Professional (n = 53,374)", 4), rep("Learner (n = 6,157)", 4)))
+
+ggplot(stackExchange_results, aes(x = VersionControl, y = Values, color = User, fill = User)) +
+  geom_bar(stat = "identity", position = "dodge", alpha = 0.7) +
+  scale_color_manual(values=c("#00356A", "#A353FF")) +
+  scale_fill_manual(values=c("#00356A", "#A353FF")) +
+  labs(x = "", y = "", caption = 'Results from the "2022 Developer Survey" by StackOverflow. Published 2022.') +
+  theme_minimal_hgrid() +
+  theme(legend.position = "bottom", legend.title = element_blank(),
+        plot.caption = element_text(hjust = 0, vjust = -1, face = "italic"))
+
+```
+
+\
+git is by far the most used for both learners and professionals. A survey by StackOverflow in 2022 revealed that respondents overwhelmingly reported using git as compared with Mercurial or SVN. Over 95% of professionals self-reported that they use git in their work. <br><br>git is also predominately used by those learning to code, but they found that version control systems are generally underutilized by learners. About 17% say they do not use any kind of version control as compared with about 1% of professionals.
+:::
+
+
+```{=html}
+<figure style="float: right; position: relative; margin-left: 1em; margin-top: 0.5em; margin-bottom: 0.5em;">
+  <img src="Images/Globalized community_GitHub.png" alt="git Logo" style="margin-bottom: 1em;" width="400">
+
+  <figcaption style="text-align: left; padding-bottom: 15px">
+    A global community of developers." by GitHub, Octoverse <br>2022 report.
+  </figcaption>
+</figure>
+```
+
+GitHub is a highly sought-after resource for maintainers and contributors around the world, a finding that holds true for developers working for companies and nonprofits. The pie chart shown here highlights 20 communities outside of the US with the largest growth of users in 2022 since the previous year. In 2013, most users were based in the US, but with the year-over-year growth of users from India observed thus far it is expected that Indian programmers will match the US developer population in 2025.
