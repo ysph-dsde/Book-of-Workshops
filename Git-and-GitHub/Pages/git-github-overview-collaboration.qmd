@@ -1,0 +1,44 @@
+---
+  editor: source
+  markdown: 
+  editor_options: 
+  chunk_output_type: console
+  number-sections: false
+  toc: true
+  toc-depth: 3
+---
+
+# Accounts and Configurations {.unnumbered}
+
+```{r setup}
+#| message: FALSE
+#| warning: FALSE
+#| output: FALSE
+#| echo: FALSE
+
+suppressPackageStartupMessages({
+  library("arrow")         # For reading in the data
+  library("dplyr")         # For data manipulation
+  library("ggplot2")       # For creating static visualizations
+  library("plotly")        # For interactive plots
+  library("cowplot")       # ggplot add on for composing figures
+  library("tigris")        # Imports TIGER/Line shapefiles from the Census Bureau
+  library("sf")            # Handles "Special Features": spatial vector data
+  library("RColorBrewer")  # Load Color Brewer color palettes
+  library("viridis")       # Load the Viridis color pallet
+})
+
+# Function to select "Not In"
+'%!in%' <- function(x,y)!('%in%'(x,y))
+
+
+```
+
+
+
+
+
+
+
+
+

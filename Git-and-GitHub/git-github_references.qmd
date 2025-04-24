@@ -1,7 +1,0 @@
----
-title: References
-bibliography: git-github_references.bib
----
-
-:::{#ref}
-:::
