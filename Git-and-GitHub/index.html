@@ -186,7 +186,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../Git-and-GitHub/Pages/git-github-overview-simple-example.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Worked Through Example</span></a>
+ <span class="menu-text">Managing Version Control Locally</span></a>
   </div>
 </li>
       </ul>
@@ -225,6 +225,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#about-the-data" id="toc-about-the-data" class="nav-link" data-scroll-target="#about-the-data">About the Data</a></li>
   <li><a href="#our-choice-resources" id="toc-our-choice-resources" class="nav-link" data-scroll-target="#our-choice-resources">Our Choice Resources</a></li>
   <li><a href="#accessing-the-materials" id="toc-accessing-the-materials" class="nav-link" data-scroll-target="#accessing-the-materials">Accessing the Materials</a>
   <ul class="collapse">
@@ -279,14 +280,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>In this workshop we delve deeper into the domain specific language of statistical graphics that underpins the <code>tidyverse</code> <code>ggplot2</code> package syntax: the “Grammar of Graphics”. We will explore each discrete grammar layer using laboratory-confirmed RSV hospitalizations data collected by the CDC’s Respiratory Virus Hospitalization Surveillance Network (RESP-NET) surveillance program.</p>
-<p>With a better understanding of the syntax fundamentals, we will then get introduced to some advanced uses of <code>ggplot2</code> that are commonly used in public health:</p>
+<p>Git and GitHub are two of the most popular and often utilized development tools for project version control on the market. Regarless of their status, they remain challenging tools for new users to get started with. Many resources cover siloed or non-generalizable topics about one or the other. Few resources offer a one-stop-shop introduction that quickly takes users through initial set-up and through basic use cases with individual or collaborative projects.</p>
+<p>In this workshop, we aim to merge the worlds of Git and GitHub in an approachable but comprehensive format that is accessible to people who have never used Git or GitHub before or those interested in improving their existing workflows. Maybe you are like I was, flying blind using the bare minimum of what Git and GitHub has to offer!</p>
+<p>Over the course of the workshop chapter, we will take you through:</p>
 <ul>
-<li>Making plots interactive with <code>plotly</code></li>
-<li>Projecting data to a map</li>
+<li>Git and GitHub account set-up with configurations by either SSH keys or HTTPS urls.</li>
+<li>Detailed walk through the standard Git version control workflow and interactions with the remote repository stored in GitHub.</li>
+<li>Another detailed walk through collaborating on projects with a team through GitHub.</li>
 </ul>
-<p>We will close the workshop by asking <a href="https://ai.yale.edu/yales-ai-tools-and-resources/clarity-platform">Yale’s Clarity Platform</a> to reproduce our code from the plot image alone to exhibit how AI can be used to support data visualization work. Clarity is an AI chatbot that offers similar functions to OpenAI’s ChatGPT and Microsoft Copilot with additional data protection. Find out more about <a href="https://ai.yale.edu/yales-ai-tools-and-resources/clarity-platform/clarity-platform-security?check_logged_in=1">Clarity’s security</a> guidelines on “AI at Yale”.</p>
-<p>The cleaned and harmonized version of the RSV-NET dataset was compiled as part of the YSPH’s very own PopHIVE project. Special thanks to <a href="https://ysph.yale.edu/profile/daniel-weinberger/">Professor Daniel Weinberger</a> for allow us to adopt his plot code in this workshop.</p>
+<p>Real-world examples with questions/answers and challenge questions/solutions are provided for:</p>
+<ul>
+<li>Adding a local, Git initiated, project to GitHub for the first time.</li>
+<li>Cloning an existing repository as a “clean-break” copy for the first time.</li>
+<li>Collaborations with a shared GitHub repository (invite friends to have the full experience!)</li>
+</ul>
+</section>
+<section id="about-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="about-the-data">About the Data</h2>
+<p>The <a href="https://coronavirus.jhu.edu/">Johns Hopkins Coronavirus Resource Center</a> (JHU CRC) tracked and compiled global COVID-19 pandemic data from January 22, 2020 and March 10, 2023. These data are publically available through their two GitHub repositories. We imported two datasets for this workshop content:</p>
+<ul>
+<li>Cumulative vaccination counts for the U.S. from their <a href="https://github.com/govex/COVID-19/tree/master/data_tables/vaccine_data">GovEX/COVID-19</a> GitHub repository. The raw data used in the analysis script can be found in the <code>data_tables/vaccine_data/us_data/time_series</code> subdirectory (<a href="https://github.com/govex/COVID-19/blob/master/data_tables/vaccine_data/us_data/time_series/time_series_covid19_vaccine_us.csv">original source</a>).</li>
+<li>Cumulative case and death counts for the U.S. from their <a href="https://github.com/CSSEGISandData/COVID-19">CSSE GitHub</a>. The raw data for these two datasets used in the analysis can be found in the <code>csse_covid_19_data/csse_covid_19_time_series</code> subdirectory (<a href="https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series">original source</a>). Both <code>time_series_covid19_confirmed_US.csv</code> and <code>time_series_covid19_deaths_US.csv</code> were used.</li>
+</ul>
+<p>The data dictionaries provided by JHU CRC can be found here: <a href="https://github.com/govex/COVID-19/tree/master/data_tables/vaccine_data/us_data">Vaccinations Dataset Data Dictionary</a> and <a href="https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data#usa-daily-state-reports-csse_covid_19_daily_reports_us">Cases and Deaths Datasets Data Dictionary</a>. For our purposes, we conducted some data cleaning, harmonization, and smoothing using an isotonic regression. This included harmonizing the U.S. Census Bureau’s 2010 to 2019 population projections with 2020 to 2023 vintages.</p>
+<p>Details about these steps can be found in the <code>Git-and-GitHub/R</code> directory of this workshop’s GitHub repository (<a href="https://github.com/ysph-dsde/Book-of-Workshops/tree/main/Git-and-GitHub/R">Direct Link to Code</a>). The cleaned datasets used in this workshop can be found in the <code>Git-and-GitHub/Data</code> directory of this workshop’s GitHub repository (<a href="https://github.com/ysph-dsde/Book-of-Workshops/tree/main/Git-and-GitHub/Data">Direct Link to Code</a>)</p>
 </section>
 <section id="our-choice-resources" class="level2">
 <h2 class="anchored" data-anchor-id="our-choice-resources">Our Choice Resources</h2>
@@ -305,6 +322,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="slides-handouts-and-other-materials" class="level3">
 <h3 class="anchored" data-anchor-id="slides-handouts-and-other-materials">Slides, Handouts, and Other Materials</h3>
 <p>Download the complete slide deck with annotations and the in-person workshop handout. Comments were saved in the bottom left of each slide, and references for this webpage are in its <strong>Appendix</strong>.</p>
+<p><strong>COMING SOON</strong></p>
 </section>
 <section id="codespaces" class="level3">
 <h3 class="anchored" data-anchor-id="codespaces">Codespaces</h3>
@@ -519,8 +537,8 @@ Important
 <div class="code-with-filename-file">
 <pre><strong>RStudio Console</strong></pre>
 </div>
-<div class="sourceCode" id="cb12" data-filename="RStudio Console"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">init</span>()          <span class="co"># initialize the project</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()       <span class="co"># download packages and their version saved in the lockfile.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12" data-filename="RStudio Console"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">init</span>()          <span class="co"># Initialize the project</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()       <span class="co"># Download packages and their version saved in the lockfile.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 </ol>
 <div class="callout callout-style-default callout-note callout-titled" style="margin-left: 2rem">

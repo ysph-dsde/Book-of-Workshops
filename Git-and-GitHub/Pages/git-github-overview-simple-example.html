@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Worked Through Example – Book of Workshops</title>
+<title>Managing Version Control Locally – Book of Workshops</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -124,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../Git-and-GitHub/index.html">Getting Started with Git and GitHub</a></li><li class="breadcrumb-item"><a href="../../Git-and-GitHub/Pages/git-github-overview-simple-example.html">Worked Through Example</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../Git-and-GitHub/index.html">Getting Started with Git and GitHub</a></li><li class="breadcrumb-item"><a href="../../Git-and-GitHub/Pages/git-github-overview-simple-example.html">Managing Version Control Locally</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -183,7 +183,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../Git-and-GitHub/Pages/git-github-overview-simple-example.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Worked Through Example</span></a>
+ <span class="menu-text">Managing Version Control Locally</span></a>
   </div>
 </li>
       </ul>
@@ -221,19 +221,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#basics-of-gitgithub-interactions" id="toc-basics-of-gitgithub-interactions" class="nav-link active" data-scroll-target="#basics-of-gitgithub-interactions">Basics of git/GitHub Interactions</a></li>
-  <li><a href="#a-simplified-example" id="toc-a-simplified-example" class="nav-link" data-scroll-target="#a-simplified-example">A Simplified Example</a></li>
-  <li><a href="#solo-projects" id="toc-solo-projects" class="nav-link" data-scroll-target="#solo-projects">Solo Projects</a></li>
-  <li><a href="#group-collaborations" id="toc-group-collaborations" class="nav-link" data-scroll-target="#group-collaborations">Group Collaborations</a></li>
+  <li><a href="#basics-of-gitgithub-interactions" id="toc-basics-of-gitgithub-interactions" class="nav-link active" data-scroll-target="#basics-of-gitgithub-interactions">Basics of Git/GitHub Interactions</a></li>
+  <li><a href="#detailed-walk-through" id="toc-detailed-walk-through" class="nav-link" data-scroll-target="#detailed-walk-through">Detailed Walk Through</a>
+  <ul class="collapse">
+  <li><a href="#identify-and-save-local-changes" id="toc-identify-and-save-local-changes" class="nav-link" data-scroll-target="#identify-and-save-local-changes">Identify and Save Local Changes</a></li>
+  <li><a href="#preamble-to-sharing-changes-with-github" id="toc-preamble-to-sharing-changes-with-github" class="nav-link" data-scroll-target="#preamble-to-sharing-changes-with-github">Preamble to Sharing Changes with GitHub</a></li>
+  <li><a href="#pull-before-you-push" id="toc-pull-before-you-push" class="nav-link" data-scroll-target="#pull-before-you-push">Pull Before You Push</a></li>
+  <li><a href="#time-to-share-with-the-world" id="toc-time-to-share-with-the-world" class="nav-link" data-scroll-target="#time-to-share-with-the-world">Time to Share with the World</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/ysph-dsde/Book-of-Workshops/edit/main/Git-and-GitHub/Pages/git-github-overview-simple-example.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../Git-and-GitHub/index.html">Getting Started with Git and GitHub</a></li><li class="breadcrumb-item"><a href="../../Git-and-GitHub/Pages/git-github-overview-simple-example.html">Worked Through Example</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../Git-and-GitHub/index.html">Getting Started with Git and GitHub</a></li><li class="breadcrumb-item"><a href="../../Git-and-GitHub/Pages/git-github-overview-simple-example.html">Managing Version Control Locally</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Worked Through Example</h1>
+<h1 class="title">Managing Version Control Locally</h1>
 </div>
 
 
@@ -250,30 +254,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>asd</p>
-<p>When I had to take Organic Chemistry in undergrad, my professor said that a successful student will learn why things are happening, as opposed to rote memorization. This very much applies for users of git as well. Memorizing specific scenarios you copy-and-paste code will only get you so far with git, as it will inevitably become a frustrating chore when things go wrong. And we’re talking about tech, we know things will go wrong at some point!</p>
-<p>Unfortunately, we only have enough time to introduce you to the basic structures and workflows of git, today. I encourage you to read further about the different git commands and especially how information is moving through the git framework. You can start with some of the sources we’ve provided earlier in the workshop (<a href="../index.html#our-choice-resources">Our Choice Resources</a>) or some of the additional sources linked to below:</p>
+<p>When I had to take Organic Chemistry in undergrad, my professor said that a successful student will learn why things are happening, as opposed to rote memorization. This very much applies for users of Git as well. Memorizing specific scenarios you copy-and-paste code will only get you so far with Git, as it will inevitably become a frustrating chore when things go wrong. And we’re talking about tech, we know things will go wrong at some point!</p>
+<p>Unfortunately, we only have enough time to introduce you to the basic structures and workflows of Git, today. I encourage you to read further about the different Git commands and especially how information is moving through the Git framework. You can start with some of the sources we’ve provided earlier in the workshop (<a href="../index.html#our-choice-resources">Our Choice Resources</a>) or some of the additional sources linked to below.</p>
 <ul>
-<li><a href="https://medium.com/mindorks/what-is-git-commit-push-pull-log-aliases-fetch-config-clone-56bc52a3601c"><em>“What is git commit, push, pull, log, aliases, fetch, config &amp; clone”</em></a> by Amit Prajapati</li>
-<li><a href="https://graphite.dev/guides/topic/git"><em>“git Guides”</em></a> by various Graphite contributors</li>
+<li><a href="https://medium.com/mindorks/what-is-git-commit-push-pull-log-aliases-fetch-config-clone-56bc52a3601c"><em>“What is Git commit, push, pull, log, aliases, fetch, config &amp; clone”</em></a> by Amit Prajapati</li>
+<li><a href="https://graphite.dev/guides/topic/git"><em>“Git Guides”</em></a> by various Graphite contributors</li>
 <li><a href="https://cbea.ms/git-commit/"><em>“How to Write a Git Commit Message”</em></a> by cbeams</li>
-<li><a href="https://git-scm.com/downloads/guis">git Graphical User Interface (GUI) Clients</a> by various contributors</li>
+<li><a href="https://git-scm.com/downloads/guis">Git Graphical User Interface (GUI) Clients</a> by various contributors</li>
 </ul>
-<p>If you are beginner with git, be patient with yourself because this part takes time and practice, but as us Colorado skiers say “If there’s no pain <span class="emoji" data-emoji="ski">🎿</span>, there’s no Jane <span class="emoji" data-emoji="mount_fuji">🗻</span>!” Let’s get to it!</p>
+<p>If you are beginner with Git, be patient with yourself because this part takes time and practice, but as us Colorado skiers say “If there’s no pain <span class="emoji" data-emoji="ski">🎿</span>, there’s no Jane <span class="emoji" data-emoji="mount_fuji">🗻</span>!” Let’s get to it!</p>
 <section id="basics-of-gitgithub-interactions" class="level2">
-<h2 class="anchored" data-anchor-id="basics-of-gitgithub-interactions">Basics of git/GitHub Interactions</h2>
-<p>In an established git version-controlled environment, there are three primary domains: the <strong>Working Tree</strong>, <strong>Staged Edits</strong>, and <strong>Committed Edits</strong>. The figure below exhibits how information moves through git’s version control and tracking framework on your local device. Notice the <code>git *</code> bash commands that drive the transitions between the three domains. For most scenarios, these are the git commands you will be using.</p>
+<h2 class="anchored" data-anchor-id="basics-of-gitgithub-interactions">Basics of Git/GitHub Interactions</h2>
+<p>In an established Git version-controlled environment, there are three primary domains: the <strong>Working Tree</strong>, <strong>Staged Edits</strong>, and <strong>Committed Edits</strong>. The figure below exhibits how information moves through Git’s version control and tracking framework on your local device. Notice the <code>git *</code> bash commands that drive the transitions between the three domains. For most scenarios, these are the Git commands you will be using.</p>
 <figure style="float: right; position: relative; margin-top: 0.5em; margin-bottom: 0.5em;" class="figure">
-  <img src="../../Git-and-GitHub/Images/Basic Workflow.png" alt="git workflow" style="margin-bottom: 1em;" width="100%" class="figure-img">
+  <img src="../../Git-and-GitHub/Images/Basic Workflow.png" alt="Git workflow" style="margin-bottom: 1em;" width="100%" class="figure-img">
 
   <figcaption style="text-align: left; padding-bottom: 15px">
-    Figure inspired by "What is git commit, push, pull, log, aliases, fetch, config &amp; clone" by MindOrks Amit Prajapati.
+    Figure inspired by "What is Git commit, push, pull, log, aliases, fetch, config &amp; clone" by MindOrks Amit Prajapati.
   </figcaption>
 </figure>
 <p>Let’s look at each version control domain our project files can be in:</p>
 <ol type="1">
-<li><p>The <strong>Working Tree</strong> is the area where the developer makes changes to files in the project. In this domain, git is not actively tracking changes that are made; changes get recycled back into the same file with no record of interim changes.</p></li>
-<li><p>When you are ready for git to follow changes, you need to add them to the staged environment with <code>git add</code>. This prompts git to identify differences between <strong>Staged Edits</strong> and already committed versions that are stored in the <code>.git</code> directory.</p></li>
+<li><p>The <strong>Working Tree</strong> is the area where the developer makes changes to files in the project. In this domain, Git is not actively tracking changes that are made; changes get recycled back into the same file with no record of interim changes.</p></li>
+<li><p>When you are ready for Git to follow changes, you need to add them to the staged environment with <code>git add</code>. This prompts Git to identify differences between <strong>Staged Edits</strong> and already committed versions that are stored in the <code>.git</code> directory.</p></li>
 </ol>
 <div class="callout callout-style-default callout-note callout-titled" style="margin-left: 2rem">
 <div class="callout-header d-flex align-content-center">
@@ -285,7 +288,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>You will use the same commands even if there was no previous version of a file stored in the <code>.git</code> directory. When you check the version control status of your project with <code>git status</code>, git will automatically identify untracked files and prompt you to add them for tracking.</p>
+<p>You will use the same commands even if there was no previous version of a file stored in the <code>.git</code> directory. When you check the version control status of your project with <code>git status</code>, Git will automatically identify untracked files and prompt you to add them for tracking.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Code Like a Pro" style="margin-left: 2rem">
@@ -300,8 +303,8 @@ Code Like a Pro
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>git provides a robust framework to track changes within different files, including: storing comments explaining each change, tracing the file history, allowing recovery to older versions, and providing a line-by-line summary of changes from recent versions. Impressive!</p>
-<p>Yet with all of this, git doesn’t directly track file name changes. (What?!) Instead, file name changes are detected with a heuristic comparing the similarity of files committed in <code>.git</code> to renamed files that have been staged. This is an important distinction to be aware of because sometimes git associates changes incorrectly.</p>
+<p>Git provides a robust framework to track changes within different files, including: storing comments explaining each change, tracing the file history, allowing recovery to older versions, and providing a line-by-line summary of changes from recent versions. Impressive!</p>
+<p>Yet with all of this, Git doesn’t directly track file name changes. (What?!) Instead, file name changes are detected with a heuristic comparing the similarity of files committed in <code>.git</code> to renamed files that have been staged. This is an important distinction to be aware of because sometimes Git associates changes incorrectly.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -312,10 +315,10 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Moving a file within the git initiated environment is interpreted by git as a name change.</p>
+<p>Moving a file within the Git initiated environment is interpreted by Git as a name change.</p>
 </div>
 </div>
-<p>When committing a file name change, git deletes the file listed under the old name and replaces it with a new addition of the same file under the new name. The change history of a file leading up to a name change is always retained, but the transition between name changes are not explicitly tracked as such. It is therefore best practice to commit name changes with a message clearly stating this.</p>
+<p>When committing a file name change, Git deletes the file listed under the old name and replaces it with a new addition of the same file under the new name. The change history of a file leading up to a name change is always retained, but the transition between name changes are not explicitly tracked as such. It is therefore best practice to commit name changes with a message clearly stating this.</p>
 <p>The <code>git mv</code>, for move or rename, command supports clearly recording file name transitions. Example from <a href="https://graphite.dev/guides/rename-file-in-git"><em>How to rename a file in Git</em> by Kenny DuMez</a>:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -328,22 +331,30 @@ Important
 </div>
 </div>
 <ol start="3" type="1">
-<li>Once you have reviewed the detected changes and approve saving and sharing them, you use <code>git commit</code> to promote the staged version to become the most recent copy reflected in the <code>.git</code> directory. It is the most recent <strong>Committed Edits</strong> that get synched over the GitHub server through a “peer-to-peer” patch.</li>
+<li>Once you have reviewed the detected changes and approve saving and sharing them, you use <code>git commit</code> to promote the staged version to become the most recent copy reflected in the <code>.git</code> directory. It is the most recent <strong>Committed Edits</strong> that get synced over the GitHub server through a “peer-to-peer” patch.</li>
 </ol>
+<p>A configured local Git initiated project directory does not passively surveilling the remote repository’s contents. There are three core commands used to prompt your local Git to share information with the remote repository.</p>
+<ul>
+<li><code>git clone</code>: establish a Git initiated project locally by downloading the entire codebase stored in a GitHub repository. With a <code>git clone</code>, you set the transfer protocol (SSH key or HTML url) through which information is shared and assign the “origin” alias to the remote location.</li>
+<li><code>git pull</code>: download all of the information contained in GitHub and compare it with the last checked copy of the remote repository, integrating any new changes that are not yet reflected.</li>
+<li><code>git push</code>: upload the most current version of your project to GitHub and integrate the new changes to the remote copy. This command is used throughout the project lifetime, and is used to establish a new remote repository in GitHub from a local, Git initiated project.</li>
+</ul>
 </section>
-<section id="a-simplified-example" class="level2">
-<h2 class="anchored" data-anchor-id="a-simplified-example">A Simplified Example</h2>
-<p>Hopefully the explanations provided thus far are eliciting an aha moment for you. But if not, and you’re otherwise ready to pretend it makes perfect sense for a little longer, let’s go through an example. Later we are going to discuss version branches of your project. For now, all you need to know is we are in a git initialized project directory and on a version controlled branch called <code>main</code>.</p>
+<section id="detailed-walk-through" class="level2">
+<h2 class="anchored" data-anchor-id="detailed-walk-through">Detailed Walk Through</h2>
+<section id="identify-and-save-local-changes" class="level3">
+<h3 class="anchored" data-anchor-id="identify-and-save-local-changes">Identify and Save Local Changes</h3>
+<p>Hopefully the explanations provided thus far are eliciting an aha moment for you. But if not, and you’re otherwise ready to pretend it makes perfect sense for a little longer, let’s go through an example. Later we are going to discuss version branches of your project. For now, all you need to know is we are in a Git initialized project directory and on a version controlled branch called <code>main</code>.</p>
 <figure style="float: right; position: relative; margin-left: 1em; margin-top: 0em; margin-bottom: 0em;" class="figure">
   <a href="https://flowingdata.com/2021/11/08/painbow-color-scale/">
-  <img src="Images/XKCD_Painbow_downloaded 04.22.2025.png" alt="git Logo" style="margin-bottom: 1em;" width="350" class="figure-img">
+  <img src="../../Git-and-GitHub/Images/XKCD_Painbow_downloaded 04.22.2025.png" alt="xkcd Painbow comic" style="margin-bottom: 1em;" width="350" class="figure-img">
   </a>
 
   <figcaption style="text-align: left; padding-bottom: 0px">
     xkcd comic. Accessed from "Flowing Data" <br>April 22nd, 2025.
   </figcaption>
 </figure>
-<p>Imagine it. You have come up with what might be (and we’re scientists here so let’s not overstate) one of the best color schemes for your data <em>ever</em>. You generate this sweet looking, publication ready plot on the right and save the image as a file called <code>earth_shattering_color_scheme.png</code>. You’re now ready to record this version of your work and share it with the team through the projects GitHub (maybe even the world?), but the changes have not yet been recorded by git.</p>
+<p>Imagine it. You have come up with what might be (and we’re scientists here so let’s not overstate) one of the best color schemes for your data <em>ever</em>. You generate this sweet looking, publication ready plot on the right and save the image as a file called <code>earth_shattering_color_scheme.png</code>. You’re now ready to record this version of your work and share it with the team through the projects GitHub (maybe even the world?), but the changes have not yet been recorded by Git.</p>
 <p><strong>RECALL:</strong> The same steps are taken if this is your first image file for the plot or if you have tracked previous versions in the <code>.git</code> directory. For our example, it will be the former case.</p>
 <p>It is always best practice to start by checking the current status of your version controlled project directory. Say that you generated this image using R in a script called <code>making_cool_plots.R</code>. Running <code>git status</code> in the command-line application will give you something like this:</p>
 <style>
@@ -404,7 +415,7 @@ Important
 </div>
 <p>These outputs can be a little intimidating, so let’s break them down section-by-section.</p>
 <ol type="1">
-<li><p>The first statement is straight forward. git is letting us know that we are interacting with it in a version controlled branch called <code>main</code>.</p></li>
+<li><p>The first statement is straight forward. Git is letting us know that we are interacting with it in a version controlled branch called <code>main</code>.</p></li>
 <li><p><code>origin/main</code> refers to the remote GitHub repository version status of the same branch. “Origin” is an alias for the remote repository location. Equivalently, we can say something like: <code>git@github.com:ysph-dsde/PROJECT-REPOSITORY.git/main</code>.</p>
 <p>The output is telling us that our local copy of <code>main</code> is current with the last-checked status of the remote copy in GitHub. This means we don’t expect that there are local commits not yet reflected in the remote copy.</p></li>
 </ol>
@@ -418,17 +429,17 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Your local mirror of <code>origin/main</code> is not guaranteed to be a reflection of the remote repository contents in GitHub. Maybe you share the remote repository with a team who is actively pushing changes to the server, or maybe you changed a <code>README.md</code>, or uploaded a file directly in GitHub since you last synced your local copy. Your local git is not passively checking the status of the remote repository, so these changes will go undetected until we tell git to give GitHub a ring for a quick check-in.</p>
+<p>Your local mirror of <code>origin/main</code> is not guaranteed to be a reflection of the remote repository contents in GitHub. Maybe you share the remote repository with a team who is actively pushing changes to the server, or maybe you changed a <code>README.md</code>, or uploaded a file directly in GitHub since you last synced your local copy. Your local Git is not passively checking the status of the remote repository, so these changes will go undetected until we tell Git to give GitHub a ring for a quick check-in.</p>
 <p>It is therefore important to stipulate that <code>origin/main</code> in this context is the <em>last checked</em> status of the remote repository. Sometimes you might run into problems syncing locally committed changes with the remote repository because your local version of <code>origin/main</code> is not up to date.</p>
-<p>It is best practice to commit file versions you want to retain to the local <code>.git</code> directory <strong><em>prior</em></strong> to updating your local mirror of <code>origin/main</code>. Later we will discuss the different commands git uses to pass information from the remote repository to your local mirrored copy.</p>
+<p>It is best practice to commit file versions you want to retain to the local <code>.git</code> directory <strong><em>prior</em></strong> to updating your local mirror of <code>origin/main</code>. Later we will discuss the different commands Git uses to pass information from the remote repository to your local mirrored copy.</p>
 </div>
 </div>
 <ol start="3" type="1">
-<li><p>The next section lists version tracked files stored in the <code>.git</code> directory that have been changed. git conveniently provides a few suggestions pointing to next steps: <code>git add/rm/restore</code>. Above, we see the color pallet changes we made in the already version controlled R script have been detected.</p></li>
-<li><p>The “untracked files” section is where files not previously tracked by git are listed. This means that no previously committed file versions have sufficient similarity with this file to be considered an updated version. Again, git provides us with a suggestion on the next steps: <code>git add</code>.</p>
+<li><p>The next section lists version tracked files stored in the <code>.git</code> directory that have been changed. Git conveniently provides a few suggestions pointing to next steps: <code>git add/rm/restore</code>. Above, we see the color pallet changes we made in the already version controlled R script have been detected.</p></li>
+<li><p>The “untracked files” section is where files not previously tracked by Git are listed. This means that no previously committed file versions have sufficient similarity with this file to be considered an updated version. Again, Git provides us with a suggestion on the next steps: <code>git add</code>.</p>
 <p>As expected, this is where our newly created image file is listed.</p></li>
 </ol>
-<p>Up until this point, file iterations and changes are not recorded in git’s version history. Before we can store a snapshot of these edits, we need to first add them to the <strong>Staged Edits</strong> domain. This is done by using the git command <code>git add</code> in one of two ways:</p>
+<p>Up until this point, file iterations and changes are not recorded in Git’s version history. Before we can store a snapshot of these edits, we need to first add them to the <strong>Staged Edits</strong> domain. This is done by using the Git command <code>git add</code> in one of two ways:</p>
 <ol type="1">
 <li><p>Explicitly list out each file you want to add to <strong>Staged Edits</strong> OR</p></li>
 <li><p>Use the “wild card”, <code>.</code>, to add every file listed under the <code>git status</code> output.</p></li>
@@ -476,7 +487,7 @@ Code Like a Pro
 </div>
 <p>In our example, the two files we have staged are related and the changes we made are objectively flawless, so let’s proceed with committing the changes using <code>git commit</code>. Notice that a message is required with every commit action. It is easiest to add the message inline:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Revelatory message elucidating the hidden secrets of git."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Because the message is a mandatory element of a commit action, if you forget to include one git will always be there to forcibly remind you by opening an editor where you can include one. Thank you so much, git. If you have not specified the editor git will use in such circumstances, then it will open up the default <code>vi</code> editor.</p>
+<p>Because the message is a mandatory element of a commit action, if you forget to include one Git will always be there to forcibly remind you by opening an editor where you can include one. Thank you so much, Git. If you have not specified the editor Git will use in such circumstances, then it will open up the default <code>vi</code> editor.</p>
 <p>To show you how to navigate this outcome, we’re going to forget to include our message.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -515,7 +526,7 @@ Code Like a Pro
     
 </div>
 </div>
-<p>After entering <code>git commit</code> without a message, git automatically opens a <code>vi</code> window inside the command-line application. There are specific commands that you will need to use inside this application, some of which can be found here: <a href="https://www.redhat.com/en/blog/introduction-vi-editor">“<em>An introduction to the vi editor</em>” by Ken Hess</a>.</p>
+<p>After entering <code>git commit</code> without a message, Git automatically opens a <code>vi</code> window inside the command-line application. There are specific commands that you will need to use inside this application, some of which can be found here: <a href="https://www.redhat.com/en/blog/introduction-vi-editor">“<em>An introduction to the vi editor</em>” by Ken Hess</a>.</p>
 <p>To add a message you need to do the following steps:</p>
 <ol type="1">
 <li><p>When the <code>vi</code> window first opens it is in “command” mode. Hit either <code>a</code> or <code>i</code> on your keyboard to enter “insert” mode. When you do this, you might see <code>-- INSERT --</code> at the bottom of the application window.</p></li>
@@ -544,39 +555,239 @@ Code Like a Pro
     
 </div>
 </div>
-<p>Below the workflow overview is an example. Before staging the contents of the “main” branch in Git through git add, changes are not tracked, they are instead recycled into the main branch working copy. git add and commit will show the main branch is ahead of the origin/main copy. Origin, here, is the alias used to reference the remote repository and origin/main denotes the remote repository mirrored copied that is on the local device. Pushing these changes to the remote repository will cause the commit HEAD to merge with the main branch stored in the remote repository. HEAD is generally used to point to the latest commits in the checked-out branch.</p>
+<div>
+<div class="codeHeader">Command-Line Output</div>
+<div class="codeBlock">
+
+    <p class="codeP">[main f9b4cf2] Outstanding progress on color schemes for density plot<br> 
+    fill scaling.<br>
+    <span class="tab">2 files changed, 11 insertions (+), 2 deletions (-)</span><br>
+    <span class="tab">create mode 100644 earth_shattering_color_scheme.png</span></p>
+    
+</div>
+</div>
+<p>Successfully committing our staged edits to the <code>.git</code> directory gives the second output shown. Here, Git is affirming that we have associated the message “Outstanding progress on color schemes for density plot fill scaling.” to the commit hash ID <code>f9b4cf2</code> in the branch <code>main</code> version history.</p>
+<p>It then summarizes the total number of files changed, the total number of line insertions and deletions tallied, and finally it will summarize the file mode. In our example, we have edited two files which have a total of 11 line insertions and deletions between them. The newly created file is associated with directory object type, <code>100</code>, and attributes the writeable permissions, <code>644</code>. Together, <code>mode 100644</code> means <code>earth_shattering_color_scheme.png</code> will be a “regular” file with “non-executable group-writeable” permissions (<a href="https://stackoverflow.com/questions/737673/how-to-read-the-mode-field-of-git-ls-trees-output/8347325#8347325">StackExchange reply by Go Dan</a>).</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Code Like a Pro">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Code Like a Pro
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The commit ID is randomly assigned to any newly created version that has been successfully added to the <code>.git</code> directory. It is the same ID that will show up on GitHub to identify distinct versions and their parents, and it constitutes the first alphanumeric characters used in the 40 character SHA-1 checksum associated with the commit. Executing a <code>git log</code> will show the version history progression for the currently checkout branch, and will provide the entire SHA-1 checksum.</p>
+<p>Read more in <a href="https://www.atlassian.com/git/tutorials/inspecting-a-repository">Atlassian’s Advanced Git log</a>.</p>
+</div>
+</div>
+<p>We are now well on our way to sharing our updates with the remote repository.</p>
+</section>
+<section id="preamble-to-sharing-changes-with-github" class="level3">
+<h3 class="anchored" data-anchor-id="preamble-to-sharing-changes-with-github">Preamble to Sharing Changes with GitHub</h3>
+<p>In the series of detailed command-line outputs presented above, there were a few key status cues that indicate the projects version status relative to the remote repository. These cues are summarized in the flow diagram below. Recall that <code>origin/main</code> denote the remote copy of the project branch <code>main</code> housed in GitHub. More accurately, it is the <em>last checked</em> state of <code>origin/main</code>.</p>
 <figure style="float: right; position: relative; margin-top: 0.5em; margin-bottom: 0.5em;" class="figure">
-  <img src="Images/Example Workflow.png" alt="git Logo" style="margin-bottom: 1em;" width="100%" class="figure-img">
+  <img src="../../Git-and-GitHub/Images/Example Workflow.png" alt="summary workflow" style="margin-bottom: 1em;" width="100%" class="figure-img">
 
   <figcaption style="text-align: left; padding-bottom: 15px">
-    Figure inspired by "What is git commit, push, pull, log, aliases, fetch, config &amp; clone" by MindOrks Amit Prajapati.
+    Indicators of the projects local mirror's status relative to the copy housed in the GitHub remote repository.
   </figcaption>
 </figure>
+<p>Specifically take notice of the cue provided in the second box. Here, Git is telling us that our local copy of the branch <code>main</code> is ahead of the remote copy by one commit. Remember that changes made to files in the <strong>Working Tree</strong> go unnoticed by Git, and the committed changes are what get evaluated for version control management.</p>
+<p>What this prompt means is we have taken one step away from the cohesive version where Git recognized our local copy of the project to be the same as the remote copy. Subsequently committed versions will automatically inherit the history of the parent version along with the newly included modifications in a linear fashion. If we had instead changed three different aspects of the project, and committed these three like changes together in separate commit actions, then this message will say that we are three commits ahead.</p>
 </section>
-<section id="solo-projects" class="level2">
-<h2 class="anchored" data-anchor-id="solo-projects">Solo Projects</h2>
-</section>
-<section id="group-collaborations" class="level2">
-<h2 class="anchored" data-anchor-id="group-collaborations">Group Collaborations</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: renv initializing might need to be run twice after the repo is</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#       first copied.</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#renv::init()</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>({</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(<span class="st">"dplyr"</span>)         <span class="co"># For data manipulation</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(<span class="st">"ggplot2"</span>)       <span class="co"># For creating static visualizations</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(<span class="st">"plotly"</span>)        <span class="co"># For interactive plots</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(<span class="st">"RColorBrewer"</span>)  <span class="co"># Load Color Brewer color palettes</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(<span class="st">"viridis"</span>)       <span class="co"># Load the Viridis color pallet</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to select "Not In"</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="st">'%!in%'</span> <span class="ot">&lt;-</span> <span class="cf">function</span>(x,y)<span class="sc">!</span>(<span class="st">'%in%'</span>(x,y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="pull-before-you-push" class="level3">
+<h3 class="anchored" data-anchor-id="pull-before-you-push">Pull Before You Push</h3>
+<p>Before we update the remote copy of our branch <code>main</code> to reflect our changes with <code>git push</code>, it is good practice to review updates that might have occurred in the remote repository since we last prompted Git to access it. This is done with an action called <code>git pull</code>. There are two possible situations you can run into after executing a <code>git pull</code> at this stage of the process:</p>
+<ol type="1">
+<li><p>No changes have been made to <code>origin/main</code>, justifying no change to your local copy with <code>git pull</code>.</p></li>
+<li><p>Changes have been made to <code>origin/main</code>, requiring reconciliation of the divergent versions.</p></li>
+</ol>
+<p>The first case is straightforward, and so we will only discuss two methods available to reconciling the second case. Consider the diagram below showing an example divergent commit history of the local branch <code>main</code> from its remote copy.</p>
+<div>
+
 </div>
+<div class="quarto-layout-panel" data-layout="[10, 8]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 55.6%;justify-content: flex-start;">
+<figure style="float: left; position: relative; margin-right: 0em; margin-top: 0em; margin-bottom: 0em;" class="figure">
+  <a href="https://www.atlassian.com/git/tutorials/syncing/git-pull">
+  <img src="../../Git-and-GitHub/Images/Atlassian git Tutorials_git pull context_downloaded 04.24.2025.png" alt="Atlassian's Git Tutorials" style="margin-bottom: 1em;" width="450" class="figure-img">
+  </a>
+
+  <figcaption style="text-align: left; padding-bottom: 0px">
+    All three diagrams used here are from Atlassian's "Git Tutorials". Downloaded April 24th, 2025.
+  </figcaption>
+</figure>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 44.4%;justify-content: flex-start;">
+<p>In purple, we have the version of <code>origin/main</code> retained on our local device from which we have been working. This is the version of <code>origin/main</code> that our local Git uses to reference changes made in the same branch, represented in blue with the commits E-F-G. In green are additional changes made directly in GitHub or from another collaborator that have been integrated into <code>origin/main</code> with the commits A-B-C.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Code Like a Pro">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Code Like a Pro
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>There are a great deal of commands associated with Git’s version control framework. It is most helpful to slowly expand your Git vocabulary and tool box by exploring related commands, or commands that specifically address your workflow needs. Below are a couple of good places to start advancing your basic understanding of Git:</p>
+<ul>
+<li><code>git log</code> facilitates navigating the version history of your project. This command is most often used to understand version differences prior to merging or rebasing, such as following a <code>git fetch</code>. Read more from <a href="https://www.atlassian.com/git/tutorials/git-log">Atlassian’s <em>Git Tutorial</em>: “Advanced Git log”</a>.</li>
+<li>Atlassian’s comment on: <a href="https://www.atlassian.com/git/tutorials/merging-vs-rebasing">Merging vs.&nbsp;Rebasing</a>, specifically the section about the golden rule for rebasing.</li>
+</ul>
+</div>
+</div>
+</div>
+<p>In actuality, <code>git pull</code> is two Git actions wrapped into one command: <code>git fetch</code> and one of two integration protocols, <code>git merge</code> or <code>git rebase</code>. <code>git fetch</code> will download the files and version history currently reflected in the remote copy of <code>origin/main</code> as a temporary branch by the same name on your local device (read more from <a href="https://www.atlassian.com/git/tutorials/syncing/git-fetch">Atlassian’s <em>Git Tutorial</em>: Git fetch</a>). In the diagrams below, we see the different ways <code>git merge</code> and <code>git rebase</code> will interpret a coalescence of the two.</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" style="margin-top: -1em" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<section id="merge" class="level4 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<h4 class="anchored" data-anchor-id="merge">Merge</h4>
+<figure style="float: left; position: relative; margin-top: 0em; margin-bottom: 0em;" class="figure">
+  <a href="https://www.atlassian.com/git/tutorials/using-branches/git-merge">
+  <img src="../../Git-and-GitHub/Images/Atlassian git Tutorials_git merge_downloaded 04.24.2025.png" alt="Atlassian's Git Tutorials" style="margin-bottom: 1em;" width="350" class="figure-img">
+  </a>
+</figure>
+</section>
+<section id="rebase" class="level4 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<h4 class="anchored" data-anchor-id="rebase">Rebase</h4>
+<figure style="float: left; position: relative; margin-top: 0em; margin-bottom: 0em;" class="figure">
+  <a href="https://www.atlassian.com/git/tutorials/rewriting-history/git-rebase">
+  <img src="../../Git-and-GitHub/Images/Atlassian git Tutorials_git rebase context_downloaded 04.24.2025.png" alt="Atlassian's Git Tutorials" style="margin-bottom: 1em;" width="400" class="figure-img">
+  </a>
+</figure>
+</section>
+</div>
+</div>
+<p><code>git merge</code> conducts a three way commit: two inherited from the heads of each branch (versions C and G) and a third for the merge action that creates a new version that integrates changes relfected in C and G, here called H. <code>git rebase</code> will realign the commit histories of the two branches relative to one another by pasting the series of one branch at the head of the other. Doing this necessitates redefining the parent commit history for the newly appended commit series, from which we get the name “rebasing”. The figure above shows rebasing the <code>main</code> branch commits with <code>origin/main</code> A-B-C, creating the rebased versions of those commits, E’-F’-G’.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Application</strong></pre>
+</div>
+<div class="sourceCode" id="cb5" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># -----------</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Pull with one command.</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># OPTION #1: Integrate the fetched copy of "origin/main" into "main" with merge.</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull                        <span class="co"># Assuming the default protocol is a merge</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># OPTION #2: Rebases "main" with the new parent history reflected in "origin/main".</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull <span class="at">--rebase</span>               <span class="co"># Override the default merge to do a rebase</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Application</strong></pre>
+</div>
+<div class="sourceCode" id="cb6" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># -----------</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Two-step pull.</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Download branch main from the remote repository, origin.</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch origin main</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># If needed, return to the local copy of main, not the fetched branch.</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># OPTION #1: Integrate the fetched copy of "origin/main" into "main" with merge.</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge FETCH_HEAD</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># OPTION #2: Rebases "main" with the new parent history reflected in "origin/main".</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> rebase FETCH_HEAD</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co"># If needed, remove the fetched copy of "origin/main" saved as a branch.</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-d</span> FETCH_HEAD</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If you are new to Git and uncomfortable discerning when to use one option over the other, it is best to employ a <code>git merge</code>. Fortunately, this is the default protocol used by <code>git pull</code>! Regardless of your comfort level with Git, it is important to understand the different protocols and that there are times when one is better to use over the other.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The complete and current copy of your project is typically stored in the remote repository in the branch <code>origin/main</code>, where the development team or the public can access it. In development workflows, the publicly facing copy is treated as the current baseline on which further developments needs to based one.</p>
+<p>If you decide to try <code>git rebase</code>, it is best practice to never rebase the remote copy of <code>origin/main</code> for this reason. Instead, only rebase your local branches with the remote version.</p>
+</div>
+</div>
+<p>In general, use <code>git merge</code> when:</p>
+<ul>
+<li>you are new to Git or not comfortable using a rebase.</li>
+<li>you have longer periods over which you develop features that rarely get merged into the main workflow.</li>
+<li>you use <code>git merge</code> all the time for no reason, but also happen to be a wiz at using <code>git log</code> (and can possibly visualize in the fourth dimension), making sorting through the pile of commits a trivial task.</li>
+</ul>
+<p>Use <code>git rebase</code> when:</p>
+<ul>
+<li>you want to avoid over complicating the version history by keeping it linear.</li>
+<li>you want to update your base with the teams current base reference in GitHub.</li>
+<li>you are not adding many version tracked edits to a branch before coalescing them again.</li>
+<li>you are a meticulous and neat Git user, frequently committing your work in well messaged packages, limiting the possibility of wreaking havoc on the commit history with a rebase.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Notwithstanding conflicts between the branches, <code>git merge</code> is considered to be a non-destructive, but non-linear, way of integrating two version histories. <code>git rebase</code>, on the other hand, maintains a linear version history but can be destructive to the commit history or create complicated divergences that are harder to bring together if used improperly.</p>
+<p>When choosing your coalescing method, consider the position of your branch relative to the completely integrated copy of the project and the number of version tracked commits that differ between the branches.</p>
+</div>
+</div>
+</section>
+<section id="time-to-share-with-the-world" class="level3">
+<h3 class="anchored" data-anchor-id="time-to-share-with-the-world">Time to Share with the World</h3>
+<p>Whew! We’ve covered quite a bit of ground. To summarize, we have grouped similar project edits in one commit with a message explaining our work, advancing our projects <code>.git</code> directory one step forward. After committing all the changes in our repository, we prompted Git to check the status of <code>origin/main</code> stored in GitHub, and discussed two different coalescing strategies offered by <code>git pull</code>: <code>git merge</code> and <code>git rebase</code>.</p>
+<p>We are now prepared to update the remote repository with <code>git push</code>. Recall the figure above that summarizes key status cues:</p>
+<figure style="float: right; position: relative; margin-top: 0.5em; margin-bottom: 0.5em;" class="figure">
+  <img src="../../Git-and-GitHub/Images/Example Workflow.png" alt="summary workflow" style="margin-bottom: 1em;" width="100%" class="figure-img">
+
+  <figcaption style="text-align: left; padding-bottom: 15px">
+    Indicators of the projects local mirror's status relative to the copy housed in the GitHub remote repository.
+  </figcaption>
+</figure>
+<p>Pushing our changes to GitHub will cause the commit <code>HEAD</code> of our local copy of branch <code>main</code> to merge with the same branch stored in the remote repository. <code>HEAD</code> is a term describing the latest commits available in the <code>.git</code> directory for that checked-out branch. Sometimes, you might see it referred to as <code>main --&gt; main</code> instead.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Application</strong></pre>
+</div>
+<div class="sourceCode" id="cb7" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div>
+<div class="codeHeader">Command-Line Output</div>
+<div class="codeBlock">
+
+    <p class="codeP">Enumerating objects: 14, done.<br> 
+    Counting objects: 100% (14/14), done.<br>
+    Delta compression using up to 8 threads<br>
+    Compressing objects: 100% (9/9), done.<br>
+    Writing objects: 100% (9/9), 90.13 KiB | 22.53 MiB/s, done.<br>
+    Total 9 (delta 5), reused 0 (delta 0), pack-reused 0 (from 0)<br>
+    remote: Resolving deltas: 100% (5/5), completed with 5 local objects.<br>
+    To github.com:ysph-dsde/OUR-PROJECT.git<br>
+    <span class="tab">7d1b339..f9b4cf2  main -&gt; main</span></p>
+    
+</div>
+</div>
+<p>The <code>git push</code> output will look something like this. It indicates that our upload was completed successfully, and supplies some details about the update. For example, it gives the previously committed versions ID, which is now updated from <code>7d1b339</code> to <code>f9b4cf2</code>, the remote repository location, and the size of the objects we wrote to the remote repository.</p>
+<p>Congratulations! You have completed the in-depth walk through exhibiting standard Git mediated project version control and Git/GitHub interactions!</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
