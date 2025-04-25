@@ -87,7 +87,7 @@ covid19_confirmed_raw <- read_csv(file = covid19_confirmed_url, show_col_types =
 ##    - International Database    denoted by IDB
 
 census_2010to2023 <- read.csv(
-  "Git and GitHub/Population Estimates and Projections/US_Census Population Estimates_2010 to 2023.csv",
+  "Git-and-GitHub/Data/US_Census Population Estimates_2010 to 2023.csv",
   header = TRUE)
 
 
@@ -946,7 +946,7 @@ df_final <- left_join(df_total, epiDates) |>
 ## will be recorded here and an appended description of what was done
 ## will be discussed in the tutorial itself.
 
-write.csv(df_final, "Git and GitHub/Deaths and Cases Aggregated by Week.csv", row.names = FALSE)
+write.csv(df_final, "Git-and-GitHub/Data/Deaths and Cases Aggregated by Week.csv", row.names = FALSE)
 
 
 

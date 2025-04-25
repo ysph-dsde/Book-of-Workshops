@@ -67,10 +67,9 @@ git commit -m "Rename oldfilename.txt to newfilename.txt"
 
 A configured local Git initiated project directory does not passively surveilling the remote repository's contents. There are three core commands used to prompt your local Git to share information with the remote repository.
 
-- `git clone`: establish a Git initiated project locally by downloading the entire codebase stored in a GitHub repository. With a `git clone`, you set the transfer protocol (SSH key or HTML url) through which information is shared and assign the "origin" alias to the remote location.
-- `git pull`: download all of the information contained in GitHub and compare it with the last checked copy of the remote repository, integrating any new changes that are not yet reflected.
-- `git push`: upload the most current version of your project to GitHub and integrate the new changes to the remote copy. This command is used throughout the project lifetime, and is used to establish a new remote repository in GitHub from a local, Git initiated project.
-
+-   `git clone`: establish a Git initiated project locally by downloading the entire codebase stored in a GitHub repository. With a `git clone`, you set the transfer protocol (SSH key or HTML url) through which information is shared and assign the "origin" alias to the remote location.
+-   `git pull`: download all of the information contained in GitHub and compare it with the last checked copy of the remote repository, integrating any new changes that are not yet reflected.
+-   `git push`: upload the most current version of your project to GitHub and integrate the new changes to the remote copy. This command is used throughout the project lifetime, and is used to establish a new remote repository in GitHub from a local, Git initiated project.
 
 ## Detailed Walk Through
 
@@ -302,7 +301,31 @@ For our example, after I entered "insert" mode by typing `a` on the keyboard, I 
 </div>
 ```
 
-Successfully committing our staged edits to the `.git` directory completes the core steps most users need to take in Git version-controlled projects. We are now ready to share our updates with the remote repository.
+```{=html}
+<div>
+<div class="codeHeader">Command-Line Output</div>
+<div class="codeBlock">
+
+    <p class="codeP">[main f9b4cf2] Outstanding progress on color schemes for density plot<br> 
+    fill scaling.<br>
+    <span class="tab">2 files changed, 11 insertions (+), 2 deletions (-)</span><br>
+    <span class="tab">create mode 100644 earth_shattering_color_scheme.png</span></p>
+    
+</div>
+</div>
+```
+
+Successfully committing our staged edits to the `.git` directory gives the second output shown. Here, Git is affirming that we have associated the message "Outstanding progress on color schemes for density plot fill scaling." to the commit hash ID `f9b4cf2` in the branch `main` version history.
+
+It then summarizes the total number of files changed, the total number of line insertions and deletions tallied, and finally it will summarize the file mode. In our example, we have edited two files which have a total of 11 line insertions and deletions between them. The newly created file is associated with directory object type, `100`, and attributes the writeable permissions, `644`. Together, `mode 100644` means `earth_shattering_color_scheme.png` will be a "regular" file with "non-executable group-writeable" permissions ([StackExchange reply by Go Dan](https://stackoverflow.com/questions/737673/how-to-read-the-mode-field-of-git-ls-trees-output/8347325#8347325)).
+
+::: {.callout-tip title="Code Like a Pro"}
+The commit ID is randomly assigned to any newly created version that has been successfully added to the `.git` directory. It is the same ID that will show up on GitHub to identify distinct versions and their parents, and it constitutes the first alphanumeric characters used in the 40 character SHA-1 checksum associated with the commit. Executing a `git log` will show the version history progression for the currently checkout branch, and will provide the entire SHA-1 checksum.
+
+Read more in [Atlassian's Advanced Git log](https://www.atlassian.com/git/tutorials/inspecting-a-repository).
+:::
+
+We are now well on our way to sharing our updates with the remote repository.
 
 ### Preamble to Sharing Changes with GitHub
 
@@ -381,20 +404,35 @@ In actuality, `git pull` is two Git actions wrapped into one command: `git fetch
 
 `git merge` conducts a three way commit: two inherited from the heads of each branch (versions C and G) and a third for the merge action that creates a new version that integrates changes relfected in C and G, here called H. `git rebase` will realign the commit histories of the two branches relative to one another by pasting the series of one branch at the head of the other. Doing this necessitates redefining the parent commit history for the newly appended commit series, from which we get the name "rebasing". The figure above shows rebasing the `main` branch commits with `origin/main` A-B-C, creating the rebased versions of those commits, E'-F'-G'.
 
-``` bash
-# If needed, switch to the branch "main".
-git checkout main
+``` {.bash filename="Command-Line Application"}
+# -----------
+# Pull with one command.
 
 # OPTION #1: Integrate the fetched copy of "origin/main" into "main" with merge.
 git pull                        # Assuming the default protocol is a merge
-git merge origin/main           # If you did a git fetch first
 
 # OPTION #2: Rebases "main" with the new parent history reflected in "origin/main".
 git pull --rebase               # Override the default merge to do a rebase
-git rebase origin/main          # If you did a git fetch first
+```
+
+``` {.bash filename="Command-Line Application"}
+# -----------
+# Two-step pull.
+
+# Download branch main from the remote repository, origin.
+git fetch origin main
+
+# If needed, return to the local copy of main, not the fetched branch.
+git checkout main
+
+# OPTION #1: Integrate the fetched copy of "origin/main" into "main" with merge.
+git merge FETCH_HEAD
+
+# OPTION #2: Rebases "main" with the new parent history reflected in "origin/main".
+git rebase FETCH_HEAD
 
 # If needed, remove the fetched copy of "origin/main" saved as a branch.
-git branch -d origin/main
+git branch -d FETCH_HEAD
 ```
 
 If you are new to Git and uncomfortable discerning when to use one option over the other, it is best to employ a `git merge`. Fortunately, this is the default protocol used by `git pull`! Regardless of your comfort level with Git, it is important to understand the different protocols and that there are times when one is better to use over the other.
@@ -426,7 +464,7 @@ When choosing your coalescing method, consider the position of your branch relat
 
 ### Time to Share with the World
 
-We've covered quite a bit of ground to this point. To summarize, we have grouped similar project edits in one commit with a message explaining our work, advancing our projects `.git` directory one step forward. After committing all the changes in our repository, we prompted Git to check the status of `origin/main` stored in GitHub, and discussed two different coalescence stratagies offered by `git pull`: `git merge` and `git rebase`.
+Whew! We've covered quite a bit of ground. To summarize, we have grouped similar project edits in one commit with a message explaining our work, advancing our projects `.git` directory one step forward. After committing all the changes in our repository, we prompted Git to check the status of `origin/main` stored in GitHub, and discussed two different coalescing strategies offered by `git pull`: `git merge` and `git rebase`.
 
 We are now prepared to update the remote repository with `git push`. Recall the figure above that summarizes key status cues:
 
@@ -440,11 +478,31 @@ We are now prepared to update the remote repository with `git push`. Recall the 
 </figure>
 ```
 
-
 Pushing our changes to GitHub will cause the commit `HEAD` of our local copy of branch `main` to merge with the same branch stored in the remote repository. `HEAD` is a term describing the latest commits available in the `.git` directory for that checked-out branch. Sometimes, you might see it referred to as `main --> main` instead.
 
+``` {.bash filename="Command-Line Application"}
+git push origin main
+```
 
+```{=html}
+<div>
+<div class="codeHeader">Command-Line Output</div>
+<div class="codeBlock">
 
+    <p class="codeP">Enumerating objects: 14, done.<br> 
+    Counting objects: 100% (14/14), done.<br>
+    Delta compression using up to 8 threads<br>
+    Compressing objects: 100% (9/9), done.<br>
+    Writing objects: 100% (9/9), 90.13 KiB | 22.53 MiB/s, done.<br>
+    Total 9 (delta 5), reused 0 (delta 0), pack-reused 0 (from 0)<br>
+    remote: Resolving deltas: 100% (5/5), completed with 5 local objects.<br>
+    To github.com:ysph-dsde/OUR-PROJECT.git<br>
+    <span class="tab">7d1b339..f9b4cf2  main -> main</span></p>
+    
+</div>
+</div>
+```
 
+The `git push` output will look something like this. It indicates that our upload was completed successfully, and supplies some details about the update. For example, it gives the previously committed versions ID, which is now updated from `7d1b339` to `f9b4cf2`, the remote repository location, and the size of the objects we wrote to the remote repository.
 
-
+Congratulations! You have completed the in-depth walk through exhibiting standard Git mediated project version control and Git/GitHub interactions!
