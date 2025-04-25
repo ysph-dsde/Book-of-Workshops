@@ -7,56 +7,53 @@
   number-sections: false
 ---
 
-# Worked Through Example {.unnumbered}
+# Managing Version Control Locally {.unnumbered}
 
-asd
+When I had to take Organic Chemistry in undergrad, my professor said that a successful student will learn why things are happening, as opposed to rote memorization. This very much applies for users of Git as well. Memorizing specific scenarios you copy-and-paste code will only get you so far with Git, as it will inevitably become a frustrating chore when things go wrong. And we're talking about tech, we know things will go wrong at some point!
 
-When I had to take Organic Chemistry in undergrad, my professor said that a successful student will learn why things are happening, as opposed to rote memorization. This very much applies for users of git as well. Memorizing specific scenarios you copy-and-paste code will only get you so far with git, as it will inevitably become a frustrating chore when things go wrong. And we're talking about tech, we know things will go wrong at some point!
+Unfortunately, we only have enough time to introduce you to the basic structures and workflows of Git, today. I encourage you to read further about the different Git commands and especially how information is moving through the Git framework. You can start with some of the sources we’ve provided earlier in the workshop ([Our Choice Resources](#our-choice-resources)) or some of the additional sources linked to below.
 
-Unfortunately, we only have enough time to introduce you to the basic structures and workflows of git, today. I encourage you to read further about the different git commands and especially how information is moving through the git framework. You can start with some of the sources we’ve provided earlier in the workshop ([Our Choice Resources](#our-choice-resources)) or some of the additional sources linked to below:
-
--   [*"What is git commit, push, pull, log, aliases, fetch, config & clone"*](https://medium.com/mindorks/what-is-git-commit-push-pull-log-aliases-fetch-config-clone-56bc52a3601c) by Amit Prajapati
--   [*"git Guides"*](https://graphite.dev/guides/topic/git) by various Graphite contributors
+-   [*"What is Git commit, push, pull, log, aliases, fetch, config & clone"*](https://medium.com/mindorks/what-is-git-commit-push-pull-log-aliases-fetch-config-clone-56bc52a3601c) by Amit Prajapati
+-   [*"Git Guides"*](https://graphite.dev/guides/topic/git) by various Graphite contributors
 -   [*"How to Write a Git Commit Message"*](https://cbea.ms/git-commit/) by cbeams
--   [git Graphical User Interface (GUI) Clients](https://git-scm.com/downloads/guis) by various contributors
+-   [Git Graphical User Interface (GUI) Clients](https://git-scm.com/downloads/guis) by various contributors
 
-If you are beginner with git, be patient with yourself because this part takes time and practice, but as us Colorado skiers say “If there's no pain :ski:, there's no Jane :mount_fuji:!” Let’s get to it!
+If you are beginner with Git, be patient with yourself because this part takes time and practice, but as us Colorado skiers say “If there's no pain :ski:, there's no Jane :mount_fuji:!” Let’s get to it!
 
-## Basics of git/GitHub Interactions
+## Basics of Git/GitHub Interactions
 
-In an established git version-controlled environment, there are three primary domains: the **Working Tree**, **Staged Edits**, and **Committed Edits**. The figure below exhibits how information moves through git's version control and tracking framework on your local device. Notice the `git *` bash commands that drive the transitions between the three domains. For most scenarios, these are the git commands you will be using.
+In an established Git version-controlled environment, there are three primary domains: the **Working Tree**, **Staged Edits**, and **Committed Edits**. The figure below exhibits how information moves through Git's version control and tracking framework on your local device. Notice the `git *` bash commands that drive the transitions between the three domains. For most scenarios, these are the Git commands you will be using.
 
 ```{=html}
 <figure style="float: right; position: relative; margin-top: 0.5em; margin-bottom: 0.5em;">
-  <img src="/Git-and-GitHub/Images/Basic Workflow.png" alt="git workflow" style="margin-bottom: 1em;" width="100%">
+  <img src="/Git-and-GitHub/Images/Basic Workflow.png" alt="Git workflow" style="margin-bottom: 1em;" width="100%">
 
   <figcaption style="text-align: left; padding-bottom: 15px">
-    Figure inspired by "What is git commit, push, pull, log, aliases, fetch, config & clone" by MindOrks Amit Prajapati.
+    Figure inspired by "What is Git commit, push, pull, log, aliases, fetch, config & clone" by MindOrks Amit Prajapati.
   </figcaption>
 </figure>
 ```
 
-
 Let's look at each version control domain our project files can be in:
 
-1.  The **Working Tree** is the area where the developer makes changes to files in the project. In this domain, git is not actively tracking changes that are made; changes get recycled back into the same file with no record of interim changes.
+1.  The **Working Tree** is the area where the developer makes changes to files in the project. In this domain, Git is not actively tracking changes that are made; changes get recycled back into the same file with no record of interim changes.
 
-2.  When you are ready for git to follow changes, you need to add them to the staged environment with `git add`. This prompts git to identify differences between **Staged Edits** and already committed versions that are stored in the `.git` directory.
+2.  When you are ready for Git to follow changes, you need to add them to the staged environment with `git add`. This prompts Git to identify differences between **Staged Edits** and already committed versions that are stored in the `.git` directory.
 
 ::: {.callout-note style="margin-left: 2rem"}
-You will use the same commands even if there was no previous version of a file stored in the `.git` directory. When you check the version control status of your project with `git status`, git will automatically identify untracked files and prompt you to add them for tracking.
+You will use the same commands even if there was no previous version of a file stored in the `.git` directory. When you check the version control status of your project with `git status`, Git will automatically identify untracked files and prompt you to add them for tracking.
 :::
 
 :::: {.callout-tip title="Code Like a Pro" collapse="true" style="margin-left: 2rem"}
-git provides a robust framework to track changes within different files, including: storing comments explaining each change, tracing the file history, allowing recovery to older versions, and providing a line-by-line summary of changes from recent versions. Impressive!
+Git provides a robust framework to track changes within different files, including: storing comments explaining each change, tracing the file history, allowing recovery to older versions, and providing a line-by-line summary of changes from recent versions. Impressive!
 
-Yet with all of this, git doesn't directly track file name changes. (What?!) Instead, file name changes are detected with a heuristic comparing the similarity of files committed in `.git` to renamed files that have been staged. This is an important distinction to be aware of because sometimes git associates changes incorrectly.
+Yet with all of this, Git doesn't directly track file name changes. (What?!) Instead, file name changes are detected with a heuristic comparing the similarity of files committed in `.git` to renamed files that have been staged. This is an important distinction to be aware of because sometimes Git associates changes incorrectly.
 
 ::: callout-important
-Moving a file within the git initiated environment is interpreted by git as a name change.
+Moving a file within the Git initiated environment is interpreted by Git as a name change.
 :::
 
-When committing a file name change, git deletes the file listed under the old name and replaces it with a new addition of the same file under the new name. The change history of a file leading up to a name change is always retained, but the transition between name changes are not explicitly tracked as such. It is therefore best practice to commit name changes with a message clearly stating this.
+When committing a file name change, Git deletes the file listed under the old name and replaces it with a new addition of the same file under the new name. The change history of a file leading up to a name change is always retained, but the transition between name changes are not explicitly tracked as such. It is therefore best practice to commit name changes with a message clearly stating this.
 
 The `git mv`, for move or rename, command supports clearly recording file name transitions. Example from [*How to rename a file in Git* by Kenny DuMez](https://graphite.dev/guides/rename-file-in-git):
 
@@ -66,16 +63,25 @@ git commit -m "Rename oldfilename.txt to newfilename.txt"
 ```
 ::::
 
-3.  Once you have reviewed the detected changes and approve saving and sharing them, you use `git commit` to promote the staged version to become the most recent copy reflected in the `.git` directory. It is the most recent **Committed Edits** that get synched over the GitHub server through a "peer-to-peer" patch.
+3.  Once you have reviewed the detected changes and approve saving and sharing them, you use `git commit` to promote the staged version to become the most recent copy reflected in the `.git` directory. It is the most recent **Committed Edits** that get synced over the GitHub server through a "peer-to-peer" patch.
 
-## A Simplified Example
+A configured local Git initiated project directory does not passively surveilling the remote repository's contents. There are three core commands used to prompt your local Git to share information with the remote repository.
 
-Hopefully the explanations provided thus far are eliciting an aha moment for you. But if not, and you're otherwise ready to pretend it makes perfect sense for a little longer, let's go through an example. Later we are going to discuss version branches of your project. For now, all you need to know is we are in a git initialized project directory and on a version controlled branch called `main`.
+- `git clone`: establish a Git initiated project locally by downloading the entire codebase stored in a GitHub repository. With a `git clone`, you set the transfer protocol (SSH key or HTML url) through which information is shared and assign the "origin" alias to the remote location.
+- `git pull`: download all of the information contained in GitHub and compare it with the last checked copy of the remote repository, integrating any new changes that are not yet reflected.
+- `git push`: upload the most current version of your project to GitHub and integrate the new changes to the remote copy. This command is used throughout the project lifetime, and is used to establish a new remote repository in GitHub from a local, Git initiated project.
+
+
+## Detailed Walk Through
+
+### Identify and Save Local Changes
+
+Hopefully the explanations provided thus far are eliciting an aha moment for you. But if not, and you're otherwise ready to pretend it makes perfect sense for a little longer, let's go through an example. Later we are going to discuss version branches of your project. For now, all you need to know is we are in a Git initialized project directory and on a version controlled branch called `main`.
 
 ```{=html}
 <figure style="float: right; position: relative; margin-left: 1em; margin-top: 0em; margin-bottom: 0em;">
   <a href="https://flowingdata.com/2021/11/08/painbow-color-scale/">
-  <img src="Images/XKCD_Painbow_downloaded 04.22.2025.png" alt="git Logo" style="margin-bottom: 1em;" width="350">
+  <img src="/Git-and-GitHub/Images/XKCD_Painbow_downloaded 04.22.2025.png" alt="xkcd Painbow comic" style="margin-bottom: 1em;" width="350">
   </a>
 
   <figcaption style="text-align: left; padding-bottom: 0px">
@@ -84,7 +90,7 @@ Hopefully the explanations provided thus far are eliciting an aha moment for you
 </figure>
 ```
 
-Imagine it. You have come up with what might be (and we're scientists here so let's not overstate) one of the best color schemes for your data *ever*. You generate this sweet looking, publication ready plot on the right and save the image as a file called `earth_shattering_color_scheme.png`. You're now ready to record this version of your work and share it with the team through the projects GitHub (maybe even the world?), but the changes have not yet been recorded by git.
+Imagine it. You have come up with what might be (and we're scientists here so let's not overstate) one of the best color schemes for your data *ever*. You generate this sweet looking, publication ready plot on the right and save the image as a file called `earth_shattering_color_scheme.png`. You're now ready to record this version of your work and share it with the team through the projects GitHub (maybe even the world?), but the changes have not yet been recorded by Git.
 
 **RECALL:** The same steps are taken if this is your first image file for the plot or if you have tracked previous versions in the `.git` directory. For our example, it will be the former case.
 
@@ -151,27 +157,27 @@ It is always best practice to start by checking the current status of your versi
 
 These outputs can be a little intimidating, so let's break them down section-by-section.
 
-1.  The first statement is straight forward. git is letting us know that we are interacting with it in a version controlled branch called `main`.
+1.  The first statement is straight forward. Git is letting us know that we are interacting with it in a version controlled branch called `main`.
 
 2.  `origin/main` refers to the remote GitHub repository version status of the same branch. "Origin" is an alias for the remote repository location. Equivalently, we can say something like: `git@github.com:ysph-dsde/PROJECT-REPOSITORY.git/main`.
 
     The output is telling us that our local copy of `main` is current with the last-checked status of the remote copy in GitHub. This means we don't expect that there are local commits not yet reflected in the remote copy.
 
 ::: {.callout-note style="margin-left: 2rem"}
-Your local mirror of `origin/main` is not guaranteed to be a reflection of the remote repository contents in GitHub. Maybe you share the remote repository with a team who is actively pushing changes to the server, or maybe you changed a `README.md`, or uploaded a file directly in GitHub since you last synced your local copy. Your local git is not passively checking the status of the remote repository, so these changes will go undetected until we tell git to give GitHub a ring for a quick check-in.
+Your local mirror of `origin/main` is not guaranteed to be a reflection of the remote repository contents in GitHub. Maybe you share the remote repository with a team who is actively pushing changes to the server, or maybe you changed a `README.md`, or uploaded a file directly in GitHub since you last synced your local copy. Your local Git is not passively checking the status of the remote repository, so these changes will go undetected until we tell Git to give GitHub a ring for a quick check-in.
 
 It is therefore important to stipulate that `origin/main` in this context is the *last checked* status of the remote repository. Sometimes you might run into problems syncing locally committed changes with the remote repository because your local version of `origin/main` is not up to date.
 
-It is best practice to commit file versions you want to retain to the local `.git` directory ***prior*** to updating your local mirror of `origin/main`. Later we will discuss the different commands git uses to pass information from the remote repository to your local mirrored copy.
+It is best practice to commit file versions you want to retain to the local `.git` directory ***prior*** to updating your local mirror of `origin/main`. Later we will discuss the different commands Git uses to pass information from the remote repository to your local mirrored copy.
 :::
 
-3.  The next section lists version tracked files stored in the `.git` directory that have been changed. git conveniently provides a few suggestions pointing to next steps: `git add/rm/restore`. Above, we see the color pallet changes we made in the already version controlled R script have been detected.
+3.  The next section lists version tracked files stored in the `.git` directory that have been changed. Git conveniently provides a few suggestions pointing to next steps: `git add/rm/restore`. Above, we see the color pallet changes we made in the already version controlled R script have been detected.
 
-4.  The "untracked files" section is where files not previously tracked by git are listed. This means that no previously committed file versions have sufficient similarity with this file to be considered an updated version. Again, git provides us with a suggestion on the next steps: `git add`.
+4.  The "untracked files" section is where files not previously tracked by Git are listed. This means that no previously committed file versions have sufficient similarity with this file to be considered an updated version. Again, Git provides us with a suggestion on the next steps: `git add`.
 
     As expected, this is where our newly created image file is listed.
 
-Up until this point, file iterations and changes are not recorded in git's version history. Before we can store a snapshot of these edits, we need to first add them to the **Staged Edits** domain. This is done by using the git command `git add` in one of two ways:
+Up until this point, file iterations and changes are not recorded in Git's version history. Before we can store a snapshot of these edits, we need to first add them to the **Staged Edits** domain. This is done by using the Git command `git add` in one of two ways:
 
 1.  Explicitly list out each file you want to add to **Staged Edits** OR
 
@@ -217,7 +223,7 @@ In our example, the two files we have staged are related and the changes we made
 git commit -m "Revelatory message elucidating the hidden secrets of git."
 ```
 
-Because the message is a mandatory element of a commit action, if you forget to include one git will always be there to forcibly remind you by opening an editor where you can include one. Thank you so much, git. If you have not specified the editor git will use in such circumstances, then it will open up the default `vi` editor.
+Because the message is a mandatory element of a commit action, if you forget to include one Git will always be there to forcibly remind you by opening an editor where you can include one. Thank you so much, Git. If you have not specified the editor Git will use in such circumstances, then it will open up the default `vi` editor.
 
 To show you how to navigate this outcome, we're going to forget to include our message.
 
@@ -259,7 +265,7 @@ git commit
 </div>
 ```
 
-After entering `git commit` without a message, git automatically opens a `vi` window inside the command-line application. There are specific commands that you will need to use inside this application, some of which can be found here: ["*An introduction to the vi editor*" by Ken Hess](https://www.redhat.com/en/blog/introduction-vi-editor).
+After entering `git commit` without a message, Git automatically opens a `vi` window inside the command-line application. There are specific commands that you will need to use inside this application, some of which can be found here: ["*An introduction to the vi editor*" by Ken Hess](https://www.redhat.com/en/blog/introduction-vi-editor).
 
 To add a message you need to do the following steps:
 
@@ -296,47 +302,149 @@ For our example, after I entered "insert" mode by typing `a` on the keyboard, I 
 </div>
 ```
 
+Successfully committing our staged edits to the `.git` directory completes the core steps most users need to take in Git version-controlled projects. We are now ready to share our updates with the remote repository.
 
+### Preamble to Sharing Changes with GitHub
 
-
-
-
-Below the workflow overview is an example. Before staging the contents of the “main” branch in Git through git add, changes are not tracked, they are instead recycled into the main branch working copy. git add and commit will show the main branch is ahead of the origin/main copy. Origin, here, is the alias used to reference the remote repository and origin/main denotes the remote repository mirrored copied that is on the local device. Pushing these changes to the remote repository will cause the commit HEAD to merge with the main branch stored in the remote repository. HEAD is generally used to point to the latest commits in the checked-out branch.
+In the series of detailed command-line outputs presented above, there were a few key status cues that indicate the projects version status relative to the remote repository. These cues are summarized in the flow diagram below. Recall that `origin/main` denote the remote copy of the project branch `main` housed in GitHub. More accurately, it is the *last checked* state of `origin/main`.
 
 ```{=html}
 <figure style="float: right; position: relative; margin-top: 0.5em; margin-bottom: 0.5em;">
-  <img src="Images/Example Workflow.png" alt="git Logo" style="margin-bottom: 1em;" width="100%">
+  <img src="/Git-and-GitHub/Images/Example Workflow.png" alt="summary workflow" style="margin-bottom: 1em;" width="100%">
 
   <figcaption style="text-align: left; padding-bottom: 15px">
-    Figure inspired by "What is git commit, push, pull, log, aliases, fetch, config & clone" by MindOrks Amit Prajapati.
+    Indicators of the projects local mirror's status relative to the copy housed in the GitHub remote repository.
   </figcaption>
 </figure>
 ```
 
-## Solo Projects
+Specifically take notice of the cue provided in the second box. Here, Git is telling us that our local copy of the branch `main` is ahead of the remote copy by one commit. Remember that changes made to files in the **Working Tree** go unnoticed by Git, and the committed changes are what get evaluated for version control management.
 
-## Group Collaborations
+What this prompt means is we have taken one step away from the cohesive version where Git recognized our local copy of the project to be the same as the remote copy. Subsequently committed versions will automatically inherit the history of the parent version along with the newly included modifications in a linear fashion. If we had instead changed three different aspects of the project, and committed these three like changes together in separate commit actions, then this message will say that we are three commits ahead.
 
-```{r setup}
-#| message: FALSE
-#| warning: FALSE
-#| output: FALSE
+### Pull Before You Push
 
-# NOTE: renv initializing might need to be run twice after the repo is
-#       first copied.
-#renv::init()
-renv::restore()
+Before we update the remote copy of our branch `main` to reflect our changes with `git push`, it is good practice to review updates that might have occurred in the remote repository since we last prompted Git to access it. This is done with an action called `git pull`. There are two possible situations you can run into after executing a `git pull` at this stage of the process:
 
-suppressPackageStartupMessages({
-  library("dplyr")         # For data manipulation
-  library("ggplot2")       # For creating static visualizations
-  library("plotly")        # For interactive plots
-  library("RColorBrewer")  # Load Color Brewer color palettes
-  library("viridis")       # Load the Viridis color pallet
-})
+1)  No changes have been made to `origin/main`, justifying no change to your local copy with `git pull`.
 
-# Function to select "Not In"
-'%!in%' <- function(x,y)!('%in%'(x,y))
+2)  Changes have been made to `origin/main`, requiring reconciliation of the divergent versions.
 
+The first case is straightforward, and so we will only discuss two methods available to reconciling the second case. Consider the diagram below showing an example divergent commit history of the local branch `main` from its remote copy.
 
+::: {layout="[10, 8]"}
+```{=html}
+<figure style="float: left; position: relative; margin-right: 0em; margin-top: 0em; margin-bottom: 0em;">
+  <a href="https://www.atlassian.com/git/tutorials/syncing/git-pull">
+  <img src="/Git-and-GitHub/Images/Atlassian git Tutorials_git pull context_downloaded 04.24.2025.png" alt="Atlassian's Git Tutorials" style="margin-bottom: 1em;" width="450">
+  </a>
+
+  <figcaption style="text-align: left; padding-bottom: 0px">
+    All three diagrams used here are from Atlassian's "Git Tutorials". Downloaded April 24th, 2025.
+  </figcaption>
+</figure>
 ```
+
+In purple, we have the version of `origin/main` retained on our local device from which we have been working. This is the version of `origin/main` that our local Git uses to reference changes made in the same branch, represented in blue with the commits E-F-G. In green are additional changes made directly in GitHub or from another collaborator that have been integrated into `origin/main` with the commits A-B-C.
+:::
+
+::: {.callout-tip title="Code Like a Pro" collapse="true"}
+There are a great deal of commands associated with Git's version control framework. It is most helpful to slowly expand your Git vocabulary and tool box by exploring related commands, or commands that specifically address your workflow needs. Below are a couple of good places to start advancing your basic understanding of Git:
+
+-   `git log` facilitates navigating the version history of your project. This command is most often used to understand version differences prior to merging or rebasing, such as following a `git fetch`. Read more from [Atlassian's *Git Tutorial*: "Advanced Git log"](https://www.atlassian.com/git/tutorials/git-log).
+-   Atlassian's comment on: [Merging vs. Rebasing](https://www.atlassian.com/git/tutorials/merging-vs-rebasing), specifically the section about the golden rule for rebasing.
+:::
+
+In actuality, `git pull` is two Git actions wrapped into one command: `git fetch` and one of two integration protocols, `git merge` or `git rebase`. `git fetch` will download the files and version history currently reflected in the remote copy of `origin/main` as a temporary branch by the same name on your local device (read more from [Atlassian's *Git Tutorial*: Git fetch](https://www.atlassian.com/git/tutorials/syncing/git-fetch)). In the diagrams below, we see the different ways `git merge` and `git rebase` will interpret a coalescence of the two.
+
+::: {layout-ncol="2" style="margin-top: -1em"}
+#### Merge
+
+```{=html}
+<figure style="float: left; position: relative; margin-top: 0em; margin-bottom: 0em;">
+  <a href="https://www.atlassian.com/git/tutorials/using-branches/git-merge">
+  <img src="/Git-and-GitHub/Images/Atlassian git Tutorials_git merge_downloaded 04.24.2025.png" alt="Atlassian's Git Tutorials" style="margin-bottom: 1em;" width="350">
+  </a>
+</figure>
+```
+
+#### Rebase
+
+```{=html}
+<figure style="float: left; position: relative; margin-top: 0em; margin-bottom: 0em;">
+  <a href="https://www.atlassian.com/git/tutorials/rewriting-history/git-rebase">
+  <img src="/Git-and-GitHub/Images/Atlassian git Tutorials_git rebase context_downloaded 04.24.2025.png" alt="Atlassian's Git Tutorials" style="margin-bottom: 1em;" width="400">
+  </a>
+</figure>
+```
+:::
+
+`git merge` conducts a three way commit: two inherited from the heads of each branch (versions C and G) and a third for the merge action that creates a new version that integrates changes relfected in C and G, here called H. `git rebase` will realign the commit histories of the two branches relative to one another by pasting the series of one branch at the head of the other. Doing this necessitates redefining the parent commit history for the newly appended commit series, from which we get the name "rebasing". The figure above shows rebasing the `main` branch commits with `origin/main` A-B-C, creating the rebased versions of those commits, E'-F'-G'.
+
+``` bash
+# If needed, switch to the branch "main".
+git checkout main
+
+# OPTION #1: Integrate the fetched copy of "origin/main" into "main" with merge.
+git pull                        # Assuming the default protocol is a merge
+git merge origin/main           # If you did a git fetch first
+
+# OPTION #2: Rebases "main" with the new parent history reflected in "origin/main".
+git pull --rebase               # Override the default merge to do a rebase
+git rebase origin/main          # If you did a git fetch first
+
+# If needed, remove the fetched copy of "origin/main" saved as a branch.
+git branch -d origin/main
+```
+
+If you are new to Git and uncomfortable discerning when to use one option over the other, it is best to employ a `git merge`. Fortunately, this is the default protocol used by `git pull`! Regardless of your comfort level with Git, it is important to understand the different protocols and that there are times when one is better to use over the other.
+
+::: callout-important
+The complete and current copy of your project is typically stored in the remote repository in the branch `origin/main`, where the development team or the public can access it. In development workflows, the publicly facing copy is treated as the current baseline on which further developments needs to based one.
+
+If you decide to try `git rebase`, it is best practice to never rebase the remote copy of `origin/main` for this reason. Instead, only rebase your local branches with the remote version.
+:::
+
+In general, use `git merge` when:
+
+-   you are new to Git or not comfortable using a rebase.
+-   you have longer periods over which you develop features that rarely get merged into the main workflow.
+-   you use `git merge` all the time for no reason, but also happen to be a wiz at using `git log` (and can possibly visualize in the fourth dimension), making sorting through the pile of commits a trivial task.
+
+Use `git rebase` when:
+
+-   you want to avoid over complicating the version history by keeping it linear.
+-   you want to update your base with the teams current base reference in GitHub.
+-   you are not adding many version tracked edits to a branch before coalescing them again.
+-   you are a meticulous and neat Git user, frequently committing your work in well messaged packages, limiting the possibility of wreaking havoc on the commit history with a rebase.
+
+::: callout-note
+Notwithstanding conflicts between the branches, `git merge` is considered to be a non-destructive, but non-linear, way of integrating two version histories. `git rebase`, on the other hand, maintains a linear version history but can be destructive to the commit history or create complicated divergences that are harder to bring together if used improperly.
+
+When choosing your coalescing method, consider the position of your branch relative to the completely integrated copy of the project and the number of version tracked commits that differ between the branches.
+:::
+
+### Time to Share with the World
+
+We've covered quite a bit of ground to this point. To summarize, we have grouped similar project edits in one commit with a message explaining our work, advancing our projects `.git` directory one step forward. After committing all the changes in our repository, we prompted Git to check the status of `origin/main` stored in GitHub, and discussed two different coalescence stratagies offered by `git pull`: `git merge` and `git rebase`.
+
+We are now prepared to update the remote repository with `git push`. Recall the figure above that summarizes key status cues:
+
+```{=html}
+<figure style="float: right; position: relative; margin-top: 0.5em; margin-bottom: 0.5em;">
+  <img src="/Git-and-GitHub/Images/Example Workflow.png" alt="summary workflow" style="margin-bottom: 1em;" width="100%">
+
+  <figcaption style="text-align: left; padding-bottom: 15px">
+    Indicators of the projects local mirror's status relative to the copy housed in the GitHub remote repository.
+  </figcaption>
+</figure>
+```
+
+
+Pushing our changes to GitHub will cause the commit `HEAD` of our local copy of branch `main` to merge with the same branch stored in the remote repository. `HEAD` is a term describing the latest commits available in the `.git` directory for that checked-out branch. Sometimes, you might see it referred to as `main --> main` instead.
+
+
+
+
+
+
