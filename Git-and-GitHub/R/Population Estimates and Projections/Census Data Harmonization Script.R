@@ -61,15 +61,15 @@ source("Git-and-GitHub/R/Population Estimates and Projections/Functions.R")
 ## file for this projects GitHub repository subdirectory.
 
 census_2010to2019_raw <- read_csv(
-  "Git and GitHub/Population Estimates and Projections/U.S. Census Bureau_2010 to 2019 State Population Estimates_All Components_Downloaded 10.25.2024.csv",
+  "Git-and-GitHub/Data/Population Estimates and Projections/U.S. Census Bureau_2010 to 2019 State Population Estimates_All Components_Downloaded 10.25.2024.csv",
 ) |> as.data.frame()
 
 census_2020to2023_raw <- read_csv(
-  "Git and GitHub/Population Estimates and Projections/U.S. Census Bureau_2020 to 2023 State Population Estimates_All Components_Downloaded 10.25.2024.csv"
+  "Git-and-GitHub/Data/Population Estimates and Projections/U.S. Census Bureau_2020 to 2023 State Population Estimates_All Components_Downloaded 10.25.2024.csv"
 ) |> as.data.frame()
 
 census_idb_2010to2023_raw <- read_csv(
-  "Git and GitHub/Population Estimates and Projections/U.S. Census Bureau_2010 to 2023 IDB Population Estimates_Some Components_Downloaded 10.25.2024.csv",
+  "Git-and-GitHub/Data/Population Estimates and Projections/U.S. Census Bureau_2010 to 2023 IDB Population Estimates_Some Components_Downloaded 10.25.2024.csv",
 ) |> as.data.frame()
 
 
@@ -106,7 +106,7 @@ dim(census_idb_2010to2023_raw)
 
 # Read in alternative source for the 2020 Census data
 census_2020to2023_depAg_raw <- read_excel(
-  "Git and GitHub/Population Estimates and Projections/U.S. Department of Agriculture_Population Estimates 2020 to 2023_Downloaded 10.18.2024.xlsx",
+  "Git-and-GitHub/Data/Population Estimates and Projections/U.S. Department of Agriculture_Population Estimates 2020 to 2023_Downloaded 10.18.2024.xlsx",
   skip = 4
 ) |> as.data.frame()
 
@@ -743,7 +743,7 @@ census_2010to2023 <- build |> `rownames<-`(NULL)
 ## ----------------------------------------------------------------------------
 ## WRITING THE COMBINED FILE
 
-write.csv(census_2010to2023, "Git and GitHub/Population Estimates and Projections/US_Census Population Estimates_2010 to 2023.csv", row.names = FALSE)
+write.csv(census_2010to2023, "Git-and-GitHub/Data/US_Census Population Estimates_2010 to 2023.csv", row.names = FALSE)
 
 
 

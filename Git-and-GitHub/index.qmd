@@ -23,16 +23,32 @@
 
 ## Introduction
 
-In this workshop we delve deeper into the domain specific language of statistical graphics that underpins the `tidyverse` `ggplot2` package syntax: the "Grammar of Graphics". We will explore each discrete grammar layer using laboratory-confirmed RSV hospitalizations data collected by the CDC's Respiratory Virus Hospitalization Surveillance Network (RESP-NET) surveillance program.
+Git and GitHub are two of the most popular and often utilized development tools for project version control on the market. Regarless of their status, they remain challenging tools for new users to get started with. Many resources cover siloed or non-generalizable topics about one or the other. Few resources offer a one-stop-shop introduction that quickly takes users through initial set-up and through basic use cases with individual or collaborative projects.
 
-With a better understanding of the syntax fundamentals, we will then get introduced to some advanced uses of `ggplot2` that are commonly used in public health:
+In this workshop, we aim to merge the worlds of Git and GitHub in an approachable but comprehensive format that is accessible to people who have never used Git or GitHub before or those interested in improving their existing workflows. Maybe you are like I was, flying blind using the bare minimum of what Git and GitHub has to offer!
 
--   Making plots interactive with `plotly`
--   Projecting data to a map
+Over the course of the workshop chapter, we will take you through:
 
-We will close the workshop by asking [Yale's Clarity Platform](https://ai.yale.edu/yales-ai-tools-and-resources/clarity-platform) to reproduce our code from the plot image alone to exhibit how AI can be used to support data visualization work. Clarity is an AI chatbot that offers similar functions to OpenAI’s ChatGPT and Microsoft Copilot with additional data protection. Find out more about [Clarity's security](https://ai.yale.edu/yales-ai-tools-and-resources/clarity-platform/clarity-platform-security?check_logged_in=1) guidelines on "AI at Yale".
+* Git and GitHub account set-up with configurations by either SSH keys or HTTPS urls.
+* Detailed walk through the standard Git version control workflow and interactions with the remote repository stored in GitHub.
+* Another detailed walk through collaborating on projects with a team through GitHub.
 
-The cleaned and harmonized version of the RSV-NET dataset was compiled as part of the YSPH's very own PopHIVE project. Special thanks to [Professor Daniel Weinberger](https://ysph.yale.edu/profile/daniel-weinberger/) for allow us to adopt his plot code in this workshop.
+Real-world examples with questions/answers and challenge questions/solutions are provided for:
+
+* Adding a local, Git initiated, project to GitHub for the first time.
+* Cloning an existing repository as a "clean-break" copy for the first time.
+* Collaborations with a shared GitHub repository (invite friends to have the full experience!)
+
+### About the Data
+
+The [Johns Hopkins Coronavirus Resource Center](https://coronavirus.jhu.edu/) (JHU CRC) tracked and compiled global COVID-19 pandemic data from January 22, 2020 and March 10, 2023. These data are publically available through their two GitHub repositories. We imported two datasets for this workshop content:
+
+- Cumulative vaccination counts for the U.S. from their [GovEX/COVID-19](https://github.com/govex/COVID-19/tree/master/data_tables/vaccine_data) GitHub repository. The raw data used in the analysis script can be found in the `data_tables/vaccine_data/us_data/time_series` subdirectory ([original source](https://github.com/govex/COVID-19/blob/master/data_tables/vaccine_data/us_data/time_series/time_series_covid19_vaccine_us.csv)).
+- Cumulative case and death counts for the U.S. from their [CSSE GitHub](https://github.com/CSSEGISandData/COVID-19). The raw data for these two datasets used in the analysis can be found in the `csse_covid_19_data/csse_covid_19_time_series` subdirectory ([original source](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series)). Both `time_series_covid19_confirmed_US.csv` and `time_series_covid19_deaths_US.csv` were used.
+
+The data dictionaries provided by JHU CRC can be found here: [Vaccinations Dataset Data Dictionary](https://github.com/govex/COVID-19/tree/master/data_tables/vaccine_data/us_data) and [Cases and Deaths Datasets Data Dictionary](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data#usa-daily-state-reports-csse_covid_19_daily_reports_us). For our purposes, we conducted some data cleaning, harmonization, and smoothing using an isotonic regression. This included harmonizing the U.S. Census Bureau's 2010 to 2019 population projections with 2020 to 2023 vintages. 
+
+Details about these steps can be found in the `Git-and-GitHub/R` directory of this workshop's GitHub repository ([Direct Link to Code](https://github.com/ysph-dsde/Book-of-Workshops/tree/main/Git-and-GitHub/R)). The cleaned datasets used in this workshop can be found in the `Git-and-GitHub/Data` directory of this workshop's GitHub repository ([Direct Link to Code](https://github.com/ysph-dsde/Book-of-Workshops/tree/main/Git-and-GitHub/Data))
 
 
 ## Our Choice Resources
@@ -54,6 +70,7 @@ While there are many resources on Git and GitHub out there, we have curated a fe
 
 Download the complete slide deck with annotations and the in-person workshop handout. Comments were saved in the bottom left of each slide, and references for this webpage are in its **Appendix**.
 
+**COMING SOON**
 
 ### Codespaces
 
@@ -236,8 +253,8 @@ After cloning the codespace to your local device, you will need to initialize th
 4. In the R console, activate the enviroment by runing the following lines of code:
 
     ```{.r filename="RStudio Console"}
-    renv::init()          # initialize the project
-    renv::restore()       # download packages and their version saved in the lockfile.
+    renv::init()          # Initialize the project
+    renv::restore()       # Download packages and their version saved in the lockfile.
     ```
 
 :::{.callout-note style="margin-left: 2rem"}

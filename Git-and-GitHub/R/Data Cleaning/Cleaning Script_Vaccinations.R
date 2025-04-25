@@ -89,7 +89,7 @@ df |> glimpse()
 ##    - International Database    denoted by IDB
 
 census_2010to2023 <- read.csv(
-  "Git and GitHub/Population Estimates and Projections/US_Census Population Estimates_2010 to 2023.csv",
+  "Git-and-GitHub/Data/US_Census Population Estimates_2010 to 2023.csv",
   header = TRUE)
 
 
@@ -912,7 +912,7 @@ df_final <- left_join(df_total, epiDates) |>
 ## will be discussed in the tutorial itself.
 
 
-write.csv(df_final, "Git and GitHub/Vaccinations Aggregated by Week.csv")
+write.csv(df_final, "Git-and-GitHub/Data/Vaccinations Aggregated by Week.csv")
 
 
 

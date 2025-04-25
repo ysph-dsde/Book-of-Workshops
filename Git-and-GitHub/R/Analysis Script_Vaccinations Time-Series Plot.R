@@ -21,13 +21,16 @@
 renv::restore()
 
 ## Load in the R packages used in this script from the project library.
-library(readr)
-library(tidyr)
-library(dplyr)
-library(stringr)
-library(lubridate)
-library(scales)
-library(ggplot2)
+suppressPackageStartupMessages({
+  library("readr")      # Read in csv's
+  library("tidyr")      # Convert data frames into tidy format
+  library("dplyr")      # For data manipulation
+  library("stringr")    # For string manipulation
+  library("lubridate")  # For date manipulation
+  library("ggplot2")    # For creating static visualizations
+  library("scales")     # Override default ggplot2 axes and legend settings
+  library("plotly")     # For interactive plots
+})
 
 
 ## This function will check if an element is not in a vector.
