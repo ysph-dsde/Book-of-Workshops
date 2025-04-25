@@ -39,7 +39,7 @@ Real-world examples with questions/answers and challenge questions/solutions are
 * Cloning an existing repository as a "clean-break" copy for the first time.
 * Collaborations with a shared GitHub repository (invite friends to have the full experience!)
 
-### About the Data
+## About the Data
 
 The [Johns Hopkins Coronavirus Resource Center](https://coronavirus.jhu.edu/) (JHU CRC) tracked and compiled global COVID-19 pandemic data from January 22, 2020 and March 10, 2023. These data are publically available through their two GitHub repositories. We imported two datasets for this workshop content:
 
