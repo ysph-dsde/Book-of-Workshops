@@ -901,6 +901,117 @@ df_final <- left_join(df_total, epiDates) |>
 
 
 ## ----------------------------------------------------------------------------
+## CUMULATIVE VACCINATION TO SEPCIFIED DATE
+
+## Say we want to plot the changes in percent vaccinated over time. We
+## need to generate cumulative vaccination counts to specific dates
+## and normalize based on the projected population was that year. This will
+## require creating a new data set that spans discrete years instead of months.
+##
+## To make our life easier, we can extract the cumulative counts to specific
+## points of time for each unique "Province_State" entry. As a sanity check,
+## we will confirm that each "Province_State" has the same dates.
+
+# Search space for the sub setting is by unique "Province_State" entries.
+search_space = df_final$Province_State %>% unique()
+# Pull the unique months detected in the whole data set.
+unique_weeks = df_final$Week %>% unique()
+# Extract out the cumulative counts. These are columns that do not have
+# "..._daily" or "..._percent" in their column names.
+subset_cum_counts = df_final[, c(1:2, which(str_detect(colnames(df_final), "_yf\\b")))] %>%
+  as.data.frame()
+
+
+result = c()
+# Boolean test that each "Province_State" subset has the same months. Everything
+# should be ordered in increasing dates, and so we do an exact match test.
+for (i in 1:length(search_space)) {
+  # Extract the months listed for each "Province_State" and test for exact match
+  # with the reference unique_months vector.
+  test <- subset_cum_counts |>
+    (\(x) { x[x$Province_State %in% search_space[1], "Week"] == unique_weeks }) ()
+  
+  result[i] <- test |> all()
+  
+}
+# Organize the results into a data frame. Each row reflects the Boolean test
+# results for one "Province_State".
+as.data.frame(result) |> `rownames<-`(search_space) |> `colnames<-`("Same Dates?")
+
+
+## Looks like all results are true. Therefore, we will take the max month
+## listed under each year and save the row result that matches that date.
+
+data_range = str_c("20", c("20", "21", "22", "23"))
+
+build = list()
+for (i in 1:length(data_range)) {
+  querry     <- data.frame("Weeks" = unique_weeks, "Year" = year(unique_weeks)) |>
+    (\(x) { x[x$"Year" %in% data_range[i], "Weeks"] }) () |> max()
+  
+  build[[i]] <- subset_cum_counts |>
+    (\(x) { x[x$Week %in% querry, ] }) ()
+}
+# Combine the results (list format) into a data frame by adding rows. Each
+# list element includes the subset of our data set by the max month in
+# each year.
+df_cumulative <- do.call(rbind, build) |> `rownames<-`(NULL)
+
+
+## Now we'll normalize the vaccination daily counts by the population estimates
+## for that year to get the percent of the population that was vaccinated.
+
+result = list()
+for (i in 1:length(subset_census$NAME)) {
+  # Separate out the rows associated with one "Province_State" entry.
+  subset <- df_cumulative |>
+    (\(x) { x[x$Province_State %in% subset_census$NAME[i], ] }) ()
+  
+  # Collect the year that the observation was made.
+  staged_dates <- subset[, "Week"] |> year()
+  
+  relevant_pop_est = c()
+  for (j in 1:length(staged_dates)) {
+    # Create a vector with the appropriate intercensal year population estimates
+    # that matches the staged_dates vector entry-by-entry.
+    relevant_pop_est[j] <- subset_census[i, str_detect(colnames(subset_census), as.character(staged_dates[j]))]
+  }
+  
+  # Normalize over all columns for vaccination daily counts.
+  percentages <- subset[, str_detect(colnames(subset), "_yf")] |>
+    (\(y) { sapply(y, function(x){
+      round((x / relevant_pop_est) * 100, 0)
+    }) }) ()
+  
+  # Save the results and join them with the metadata columns for merging
+  # back to the main data set.
+  result[[i]] <- cbind(subset[, c("Province_State", "Week")], percentages)
+}
+# Combine the results (list format) into a data frame by adding rows. Each
+# row reflects the percentage results for one "Province_State" and each column
+# represents the vaccine counting method.
+result <- do.call(rbind, result) |> `colnames<-`(c("Province_State", "Week", str_c(colnames(subset)[str_detect(colnames(subset), "_yf")], "_Percent")))
+
+# Merge the previous data set with the normalized daily counts, combining by
+# unique matches with the "Month" and "Province_State" columns.
+df_cumulative <- merge(df_cumulative, result, by = c("Province_State", "Week"))
+
+
+## Because the raw data is imperfect, it is possible that cumulative counts will
+## reflect over 100% vaccinated. We can check which columns have this issue.
+
+sapply(df_cumulative[, str_detect(colnames(df_cumulative), "Percent")], function(x)
+  any(x > 100)) |> as.data.frame() |> `colnames<-`("Over 100%?")
+
+
+## Fix the values that are over 100% vaccinated and reset to 100%.
+df_cumulative$Doses_yf_Percent[df_cumulative$Doses_yf_Percent > 100] <- 100
+df_cumulative$People_At_Least_One_Dose_yf_Percent[df_cumulative$People_At_Least_One_Dose_yf_Percent > 100] <- 100
+
+
+
+
+## ----------------------------------------------------------------------------
 ## SAVE CLEANED DATA FOR ANALYSIS
 
 ## Now that basic Extract, Transforming, and Loading (ETL) has been completed,
@@ -913,6 +1024,7 @@ df_final <- left_join(df_total, epiDates) |>
 
 
 write.csv(df_final, "Git-and-GitHub/Data/Vaccinations Aggregated by Week.csv")
+write.csv(df_cumulative, "Git-and-GitHub/Data/Vaccinations Aggregated by Week_Annual Cumulative.csv")
 
 
 
