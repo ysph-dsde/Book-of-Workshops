@@ -838,7 +838,7 @@ unique(census_2010to2023$NAME) |>
   (\(y) { length(y) == 0 }) ()
 
 
-## Now we'll normalize the vaccination daily counts by the population estimates
+## Now we'll normalize the daily counts by the population estimates
 ## for that year to get the percent of the population that was vaccinated.
 
 # Store the column names we are interested in by cumulative and daily counts.
@@ -946,7 +946,9 @@ df_final <- left_join(df_total, epiDates) |>
 ## will be recorded here and an appended description of what was done
 ## will be discussed in the tutorial itself.
 
-write.csv(df_final, "Git-and-GitHub/Data/Deaths and Cases Aggregated by Week.csv", row.names = FALSE)
+
+# Remove the percentages, as they are too low to be useful.
+write.csv(df_final[, -c(11:12)], "Git-and-GitHub/Data/Deaths and Cases Aggregated by Week.csv", row.names = FALSE)
 
 
 
