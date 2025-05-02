@@ -77,8 +77,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-ab6496a1a679dc9f3d6952c9737550a4.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-5ef7f30e5defd2038fff1619beb8318f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-0ece249f9cbd1d589b82cb5dcbe8bd13.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-75e409511bbc5c8e442acac323dea28f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-0b651046b8ff8355b5f556ec520a383a.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../site_libs/quarto-contrib/bookup_fonts_gwf-0.0/fonts-embed.css" rel="stylesheet">
 <script src="../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
@@ -185,7 +185,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Git-and-GitHub/Pages/git-github-overview-simple-example.html" class="sidebar-item-text sidebar-link">
+  <a href="../Git-and-GitHub/Pages/git-github-overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Managing Version Control Locally</span></a>
   </div>
 </li>
@@ -225,8 +225,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#about-the-data" id="toc-about-the-data" class="nav-link" data-scroll-target="#about-the-data">About the Data</a></li>
-  <li><a href="#our-choice-resources" id="toc-our-choice-resources" class="nav-link" data-scroll-target="#our-choice-resources">Our Choice Resources</a></li>
+  <li><a href="#get-your-configurations" id="toc-get-your-configurations" class="nav-link" data-scroll-target="#get-your-configurations">Get Your Configurations</a></li>
   <li><a href="#accessing-the-materials" id="toc-accessing-the-materials" class="nav-link" data-scroll-target="#accessing-the-materials">Accessing the Materials</a>
   <ul class="collapse">
   <li><a href="#slides-handouts-and-other-materials" id="toc-slides-handouts-and-other-materials" class="nav-link" data-scroll-target="#slides-handouts-and-other-materials">Slides, Handouts, and Other Materials</a></li>
@@ -235,6 +234,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#cloning-the-copied-repository" id="toc-cloning-the-copied-repository" class="nav-link" data-scroll-target="#cloning-the-copied-repository">Cloning the Copied Repository</a></li>
   <li><a href="#initializing-the-environment" id="toc-initializing-the-environment" class="nav-link" data-scroll-target="#initializing-the-environment">Initializing the Environment</a></li>
   </ul></li>
+  <li><a href="#other-recommended-resources" id="toc-other-recommended-resources" class="nav-link" data-scroll-target="#other-recommended-resources">Other Recommended Resources</a></li>
+  <li><a href="#about-the-data" id="toc-about-the-data" class="nav-link" data-scroll-target="#about-the-data">About the Data</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/ysph-dsde/Book-of-Workshops/edit/main/Git-and-GitHub/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -295,34 +296,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Collaborations with a shared GitHub repository (invite friends to have the full experience!)</li>
 </ul>
 </section>
-<section id="about-the-data" class="level2">
-<h2 class="anchored" data-anchor-id="about-the-data">About the Data</h2>
-<p>The <a href="https://coronavirus.jhu.edu/">Johns Hopkins Coronavirus Resource Center</a> (JHU CRC) tracked and compiled global COVID-19 pandemic data from January 22, 2020 and March 10, 2023. These data are publically available through their two GitHub repositories. We imported two datasets for this workshop content:</p>
+<section id="get-your-configurations" class="level2">
+<h2 class="anchored" data-anchor-id="get-your-configurations">Get Your Configurations</h2>
+<p>In order to participate in the entire workshop, you will need to have:</p>
 <ul>
-<li>Cumulative vaccination counts for the U.S. from their <a href="https://github.com/govex/COVID-19/tree/master/data_tables/vaccine_data">GovEX/COVID-19</a> GitHub repository. The raw data used in the analysis script can be found in the <code>data_tables/vaccine_data/us_data/time_series</code> subdirectory (<a href="https://github.com/govex/COVID-19/blob/master/data_tables/vaccine_data/us_data/time_series/time_series_covid19_vaccine_us.csv">original source</a>).</li>
-<li>Cumulative case and death counts for the U.S. from their <a href="https://github.com/CSSEGISandData/COVID-19">CSSE GitHub</a>. The raw data for these two datasets used in the analysis can be found in the <code>csse_covid_19_data/csse_covid_19_time_series</code> subdirectory (<a href="https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series">original source</a>). Both <code>time_series_covid19_confirmed_US.csv</code> and <code>time_series_covid19_deaths_US.csv</code> were used.</li>
+<li>Git installed locally and configured with a user and email.</li>
+<li>GitHub account.</li>
+<li>A Git and GitHub transfer protocol configured and linked. Either SSH key or HTML url is acceptable, but we recommend using SSH key.</li>
 </ul>
-<p>The data dictionaries provided by JHU CRC can be found here: <a href="https://github.com/govex/COVID-19/tree/master/data_tables/vaccine_data/us_data">Vaccinations Dataset Data Dictionary</a> and <a href="https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data#usa-daily-state-reports-csse_covid_19_daily_reports_us">Cases and Deaths Datasets Data Dictionary</a>. For our purposes, we conducted some data cleaning, harmonization, and smoothing using an isotonic regression. This included harmonizing the U.S. Census Bureau’s 2010 to 2019 population projections with 2020 to 2023 vintages.</p>
-<p>Details about these steps can be found in the <code>Git-and-GitHub/R</code> directory of this workshop’s GitHub repository (<a href="https://github.com/ysph-dsde/Book-of-Workshops/tree/main/Git-and-GitHub/R">Direct Link to Code</a>). The cleaned datasets used in this workshop can be found in the <code>Git-and-GitHub/Data</code> directory of this workshop’s GitHub repository (<a href="https://github.com/ysph-dsde/Book-of-Workshops/tree/main/Git-and-GitHub/Data">Direct Link to Code</a>)</p>
-</section>
-<section id="our-choice-resources" class="level2">
-<h2 class="anchored" data-anchor-id="our-choice-resources">Our Choice Resources</h2>
-<p>While there are many resources on Git and GitHub out there, we have curated a few additional sites and tutorials that we found support and expound on our presentation. Some of these sources will cover the basics like we will be doing today, while others include advanced materials and guides that will help you develop more advanced skills as you gain experience.</p>
-<ul>
-<li>Yale’s Center for Research Computing workshop <em><a href="https://research.computing.yale.edu/training/version-control-git">“Version Control by Git”</a></em> by <a href="https://research.computing.yale.edu/about/leadership-team-staff/kaylea-nelson">Kaylea Nelson</a></li>
-<li>Yale’s Harvey Cushing/John Hay Whitney Medical Library workshop <em><a href="https://github.com/CWML/gitdemo/tree/main">“Git &amp; GitHub: An Introduction To Version Contro”</a></em> by <a href="https://library.medicine.yale.edu/about/staff/justin-demayo">Justin DeMayo</a></li>
-<li><em><a href="https://www.atlassian.com/git">“Getting Git Right”</a></em> by <a href="https://www.atlassian.com/">Atlassian</a></li>
-<li><a href="https://www.w3schools.com/git/default.asp?remote=github">Git and GitHub Tutorial</a> by <a href="https://www.w3schools.com/">W3 Schools</a></li>
-<li><a href="https://github.com/skills/introduction-to-github">Introduction to GitHub</a> by <a href="https://github.com/">GitHub</a></li>
-<li><em><a href="https://happygitwithr.com/">“Happy Git and GitHub for user”</a></em> by <a href="https://jennybryan.org/">Jenny Bryan</a></li>
-</ul>
+<p>Please watch the following video to learn how you can get set up. Soon, we will release a webpage that covers the same steps.</p>
+<div class="quarto-video ratio ratio-21x9"><iframe data-external="1" src="https://player.vimeo.com/video/1078706721?h=a002cb4bb7" frameborder="0" title="" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen=""></iframe></div>
 </section>
 <section id="accessing-the-materials" class="level2">
 <h2 class="anchored" data-anchor-id="accessing-the-materials">Accessing the Materials</h2>
 <section id="slides-handouts-and-other-materials" class="level3">
 <h3 class="anchored" data-anchor-id="slides-handouts-and-other-materials">Slides, Handouts, and Other Materials</h3>
-<p>Download the complete slide deck with annotations and the in-person workshop handout. Comments were saved in the bottom left of each slide, and references for this webpage are in its <strong>Appendix</strong>.</p>
-<p><strong>COMING SOON</strong></p>
+<p>Download the complete slide deck and the in-person workshop handout. For now, references for this webpage can be found in the slide deck <strong>Appendix</strong>.</p>
+<section id="workshop-part-2" class="level4">
+<h4 class="anchored" data-anchor-id="workshop-part-2">Workshop Part #2</h4>
+<p>The following content is from the second and final part of our workshop, where we covered the typical Git workflow and went through three worked-through examples.</p>
+<a href="Materials/Workshop Slide Deck.pdf">
+  <button class="btn"><i class="bi bi-download"></i>&nbsp; Complete Slide Deck</button>
+</a>
+
+<a href="Materials/Handout.pdf">
+  <button class="btn"><i class="bi bi-download"></i>&nbsp; Handout</button>
+</a>
+
+</section>
 </section>
 <section id="codespaces" class="level3">
 <h3 class="anchored" data-anchor-id="codespaces">Codespaces</h3>
@@ -561,9 +562,31 @@ Note
 <p>If you experience any trouble with this step, you might want to confirm that you are using R (v 4.4.3) in the RStudio IDE (v 2024.12.1+563). You can also read more about <code>renv()</code> in their <a href="https://rstudio.github.io/renv/articles/renv.html">vignette</a>.</p>
 </div>
 </div>
-
-
 </section>
+</section>
+<section id="other-recommended-resources" class="level2">
+<h2 class="anchored" data-anchor-id="other-recommended-resources">Other Recommended Resources</h2>
+<p>While there are many resources on Git and GitHub out there, we have curated a few additional sites and tutorials that we found support and expound on our presentation. Some of these sources will cover the basics like we will be doing today, while others include advanced materials and guides that will help you develop more advanced skills as you gain experience.</p>
+<ul>
+<li>Yale’s Center for Research Computing workshop <em><a href="https://research.computing.yale.edu/training/version-control-git">“Version Control by Git”</a></em> by <a href="https://research.computing.yale.edu/about/leadership-team-staff/kaylea-nelson">Kaylea Nelson</a></li>
+<li>Yale’s Harvey Cushing/John Hay Whitney Medical Library workshop <em><a href="https://github.com/CWML/gitdemo/tree/main">“Git &amp; GitHub: An Introduction To Version Contro”</a></em> by <a href="https://library.medicine.yale.edu/about/staff/justin-demayo">Justin DeMayo</a></li>
+<li><em><a href="https://www.atlassian.com/git">“Getting Git Right”</a></em> by <a href="https://www.atlassian.com/">Atlassian</a></li>
+<li><a href="https://www.w3schools.com/git/default.asp?remote=github">Git and GitHub Tutorial</a> by <a href="https://www.w3schools.com/">W3 Schools</a></li>
+<li><a href="https://github.com/skills/introduction-to-github">Introduction to GitHub</a> by <a href="https://github.com/">GitHub</a></li>
+<li><em><a href="https://happygitwithr.com/">“Happy Git and GitHub for user”</a></em> by <a href="https://jennybryan.org/">Jenny Bryan</a>s</li>
+</ul>
+</section>
+<section id="about-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="about-the-data">About the Data</h2>
+<p>The <a href="https://coronavirus.jhu.edu/">Johns Hopkins Coronavirus Resource Center</a> (JHU CRC) tracked and compiled global COVID-19 pandemic data from January 22, 2020 and March 10, 2023. These data are publically available through their two GitHub repositories. We imported two datasets for this workshop content:</p>
+<ul>
+<li>Cumulative vaccination counts for the U.S. from their <a href="https://github.com/govex/COVID-19/tree/master/data_tables/vaccine_data">GovEX/COVID-19</a> GitHub repository. The raw data used in the analysis script can be found in the <code>data_tables/vaccine_data/us_data/time_series</code> subdirectory (<a href="https://github.com/govex/COVID-19/blob/master/data_tables/vaccine_data/us_data/time_series/time_series_covid19_vaccine_us.csv">original source</a>).</li>
+<li>Cumulative case and death counts for the U.S. from their <a href="https://github.com/CSSEGISandData/COVID-19">CSSE GitHub</a>. The raw data for these two datasets used in the analysis can be found in the <code>csse_covid_19_data/csse_covid_19_time_series</code> subdirectory (<a href="https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series">original source</a>). Both <code>time_series_covid19_confirmed_US.csv</code> and <code>time_series_covid19_deaths_US.csv</code> were used.</li>
+</ul>
+<p>The data dictionaries provided by JHU CRC can be found here: <a href="https://github.com/govex/COVID-19/tree/master/data_tables/vaccine_data/us_data">Vaccinations Dataset Data Dictionary</a> and <a href="https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data#usa-daily-state-reports-csse_covid_19_daily_reports_us">Cases and Deaths Datasets Data Dictionary</a>. For our purposes, we conducted some data cleaning, harmonization, and smoothing using an isotonic regression. This included harmonizing the U.S. Census Bureau’s 2010 to 2019 population projections with 2020 to 2023 vintages.</p>
+<p>Details about these steps can be found in the <code>Git-and-GitHub/R</code> directory of this workshop’s GitHub repository (<a href="https://github.com/ysph-dsde/Book-of-Workshops/tree/main/Git-and-GitHub/R">link to code</a>). The cleaned datasets used in this workshop can be found in the <code>Git-and-GitHub/Data</code> directory of this workshop’s GitHub repository (<a href="https://github.com/ysph-dsde/Book-of-Workshops/tree/main/Git-and-GitHub/Data">link to data</a>).</p>
+
+
 </section>
 
 </main> <!-- /main -->
