@@ -8,7 +8,7 @@
   toc-depth: 3
 ---
 
-# Accounts and Configurations {.unnumbered}
+# Collaborating {.unnumbered}
 
 ```{r setup}
 #| message: FALSE
@@ -35,7 +35,13 @@ suppressPackageStartupMessages({
 ```
 
 
+``` {.bash filename="Command-Line Application"}
+# Create a new branch called "little-feature". 
+git branch little-feature
 
+# Move from the main branch into the new one.
+git checkout little-feature
+```
 
 
 

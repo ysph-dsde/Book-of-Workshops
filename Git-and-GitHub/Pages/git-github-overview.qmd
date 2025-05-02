@@ -11,7 +11,7 @@
 
 When I had to take Organic Chemistry in undergrad, my professor said that a successful student will learn why things are happening, as opposed to rote memorization. This very much applies for users of Git as well. Memorizing specific scenarios you copy-and-paste code will only get you so far with Git, as it will inevitably become a frustrating chore when things go wrong. And we're talking about tech, we know things will go wrong at some point!
 
-Unfortunately, we only have enough time to introduce you to the basic structures and workflows of Git, today. I encourage you to read further about the different Git commands and especially how information is moving through the Git framework. You can start with some of the sources we’ve provided earlier in the workshop ([Our Choice Resources](#our-choice-resources)) or some of the additional sources linked to below.
+Unfortunately, we only have enough time to introduce you to the basic structures and workflows of Git, today. I encourage you to read further about the different Git commands and especially how information is moving through the Git framework. You can start with some of the sources we’ve provided earlier in the workshop ([Other Recommended Resources](#other-recommended-resources)) or some of the additional sources linked to below.
 
 -   [*"What is Git commit, push, pull, log, aliases, fetch, config & clone"*](https://medium.com/mindorks/what-is-git-commit-push-pull-log-aliases-fetch-config-clone-56bc52a3601c) by Amit Prajapati
 -   [*"Git Guides"*](https://graphite.dev/guides/topic/git) by various Graphite contributors
@@ -69,7 +69,7 @@ A configured local Git initiated project directory does not passively surveillin
 
 -   `git clone`: establish a Git initiated project locally by downloading the entire codebase stored in a GitHub repository. With a `git clone`, you set the transfer protocol (SSH key or HTML url) through which information is shared and assign the "origin" alias to the remote location.
 -   `git pull`: download all of the information contained in GitHub and compare it with the last checked copy of the remote repository, integrating any new changes that are not yet reflected.
--   `git push`: upload the most current version of your project to GitHub and integrate the new changes to the remote copy. This command is used throughout the project lifetime, and is used to establish a new remote repository in GitHub from a local, Git initiated project.
+-   `git push`: upload the most current version of your project to GitHub and integrate the new changes to the remote copy. This command is used throughout the project lifetime and is used to establish a new remote repository in GitHub from a local, Git initiated project.
 
 ## Detailed Walk Through
 
@@ -94,6 +94,11 @@ Imagine it. You have come up with what might be (and we're scientists here so le
 **RECALL:** The same steps are taken if this is your first image file for the plot or if you have tracked previous versions in the `.git` directory. For our example, it will be the former case.
 
 It is always best practice to start by checking the current status of your version controlled project directory. Say that you generated this image using R in a script called `making_cool_plots.R`. Running `git status` in the command-line application will give you something like this:
+
+```{.bash filename="Command-Line Application"}
+git status
+```
+
 
 ```{=html}
 <style>
@@ -264,7 +269,7 @@ git commit
 </div>
 ```
 
-After entering `git commit` without a message, Git automatically opens a `vi` window inside the command-line application. There are specific commands that you will need to use inside this application, some of which can be found here: ["*An introduction to the vi editor*" by Ken Hess](https://www.redhat.com/en/blog/introduction-vi-editor).
+After entering `git commit` without a message, Git automatically opens a `vi` window inside the command-line application. There are specific commands that you will need to use inside this application. You can reference the ["*Vim Cheat Sheet*" by Richard Torruellas](https://vim.rtorr.com/) for help navigating this space.
 
 To add a message you need to do the following steps:
 
@@ -496,7 +501,7 @@ git push origin main
     Writing objects: 100% (9/9), 90.13 KiB | 22.53 MiB/s, done.<br>
     Total 9 (delta 5), reused 0 (delta 0), pack-reused 0 (from 0)<br>
     remote: Resolving deltas: 100% (5/5), completed with 5 local objects.<br>
-    To github.com:ysph-dsde/OUR-PROJECT.git<br>
+    To github.com:ysph-dsde/PROJECT-REPOSITORY.git<br>
     <span class="tab">7d1b339..f9b4cf2  main -> main</span></p>
     
 </div>

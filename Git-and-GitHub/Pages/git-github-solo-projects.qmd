@@ -8,7 +8,7 @@
   toc-depth: 3
 ---
 
-# Accounts and Configurations {.unnumbered}
+# Starting Projects {.unnumbered}
 
 ```{r setup}
 #| message: FALSE

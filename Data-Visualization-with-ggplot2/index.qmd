@@ -3,7 +3,6 @@
   - name: Shelby Golden
     degrees: M.S.
     email: shelby.golden@yale.edu
-    icon: calendar3
     affiliations:
       - ref: ysph
   affiliations:
@@ -12,14 +11,9 @@
       department: Biostatistics
       city: New Haven
       state: CT
-  date: 03/27/2025
-  date-format: long
-  markdown: 
-  editor_options: 
   chunk_output_type: console
   toc: true
   toc-depth: 3
-  highlight-style: github
 ---
 
 # Data Visualization with ggplot2 {.unnumbered}
@@ -43,13 +37,25 @@ The cleaned and harmonized version of the RSV-NET dataset was compiled as part o
 
 ### Slides, Handouts, and Other Materials
 
-{{< downloadthis "Data-Visualization-with-ggplot2/Materials/Discussion and Challenge Questions Download_03.26.2025.zip" label="Codespace for Discussion and Challenge Questions" id=download_btn >}}
+```{=html}
+<a href="Materials/Discussion and Challenge Questions Download_03.26.2025.zip">
+  <button class="btn" style="margin-bottom: 1rem;"><i class="bi bi-download"></i>&nbsp Codespace for Discussion and Challenge Questions</button>
+</a>
+
+```
 
 Download the complete slide deck with annotations and the in-person workshop handout. Comments were saved in the bottom left of each slide, and references for this webpage are in its **Appendix**.
 
-{{< downloadthis "Data-Visualization-with-ggplot2/Materials/Workshop Slide Deck with Comments.pdf" label="Complete Slide Deck" id=download_btn >}}
+```{=html}
+<a href="Materials/Workshop Slide Deck with Comments.pdf">
+  <button class="btn"><i class="bi bi-download"></i>&nbsp Complete Slide Deck</button>
+</a>
 
-{{< downloadthis "Data-Visualization-with-ggplot2/Materials/Handout.pdf" label="Handout" id=download_btn >}}
+<a href="Materials/Handout.pdf">
+  <button class="btn"><i class="bi bi-download"></i>&nbsp Handout</button>
+</a>
+
+```
 
 
 ### Codespaces
