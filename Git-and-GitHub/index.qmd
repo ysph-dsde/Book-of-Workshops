@@ -7,7 +7,6 @@
       - ref: ysph
   - name: Howard Baik
     degrees: M.S.
-    role: "Conceived and designed the study"
   affiliations:
   - id: ysph
     name: Data Science and Data Equity at the Yale School of Public Health
@@ -39,38 +38,40 @@ Real-world examples with questions/answers and challenge questions/solutions are
 * Cloning an existing repository as a "clean-break" copy for the first time.
 * Collaborations with a shared GitHub repository (invite friends to have the full experience!)
 
-## About the Data
 
-The [Johns Hopkins Coronavirus Resource Center](https://coronavirus.jhu.edu/) (JHU CRC) tracked and compiled global COVID-19 pandemic data from January 22, 2020 and March 10, 2023. These data are publically available through their two GitHub repositories. We imported two datasets for this workshop content:
+## Get Your Configurations
 
-- Cumulative vaccination counts for the U.S. from their [GovEX/COVID-19](https://github.com/govex/COVID-19/tree/master/data_tables/vaccine_data) GitHub repository. The raw data used in the analysis script can be found in the `data_tables/vaccine_data/us_data/time_series` subdirectory ([original source](https://github.com/govex/COVID-19/blob/master/data_tables/vaccine_data/us_data/time_series/time_series_covid19_vaccine_us.csv)).
-- Cumulative case and death counts for the U.S. from their [CSSE GitHub](https://github.com/CSSEGISandData/COVID-19). The raw data for these two datasets used in the analysis can be found in the `csse_covid_19_data/csse_covid_19_time_series` subdirectory ([original source](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series)). Both `time_series_covid19_confirmed_US.csv` and `time_series_covid19_deaths_US.csv` were used.
+In order to participate in the entire workshop, you will need to have:
 
-The data dictionaries provided by JHU CRC can be found here: [Vaccinations Dataset Data Dictionary](https://github.com/govex/COVID-19/tree/master/data_tables/vaccine_data/us_data) and [Cases and Deaths Datasets Data Dictionary](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data#usa-daily-state-reports-csse_covid_19_daily_reports_us). For our purposes, we conducted some data cleaning, harmonization, and smoothing using an isotonic regression. This included harmonizing the U.S. Census Bureau's 2010 to 2019 population projections with 2020 to 2023 vintages. 
+- Git installed locally and configured with a user and email.
+- GitHub account.
+- A Git and GitHub transfer protocol configured and linked. Either SSH key or HTML url is acceptable, but we recommend using SSH key.
 
-Details about these steps can be found in the `Git-and-GitHub/R` directory of this workshop's GitHub repository ([Direct Link to Code](https://github.com/ysph-dsde/Book-of-Workshops/tree/main/Git-and-GitHub/R)). The cleaned datasets used in this workshop can be found in the `Git-and-GitHub/Data` directory of this workshop's GitHub repository ([Direct Link to Code](https://github.com/ysph-dsde/Book-of-Workshops/tree/main/Git-and-GitHub/Data))
+Please watch the following video to learn how you can get set up. Soon, we will release a webpage that covers the same steps.
 
-
-## Our Choice Resources
-
-While there are many resources on Git and GitHub out there, we have curated a few additional sites and tutorials that we found support and expound on our presentation. Some of these sources will cover the basics like we will be doing today, while others include advanced materials and guides that will help you develop more advanced skills as you gain experience.
-
--   Yale’s Center for Research Computing workshop *["Version Control by Git"](https://research.computing.yale.edu/training/version-control-git)* by [Kaylea Nelson](https://research.computing.yale.edu/about/leadership-team-staff/kaylea-nelson)
--   Yale’s Harvey Cushing/John Hay Whitney Medical Library workshop *["Git & GitHub: An Introduction To Version Contro"](https://github.com/CWML/gitdemo/tree/main)* by [Justin DeMayo](https://library.medicine.yale.edu/about/staff/justin-demayo)
--   *["Getting Git Right"](https://www.atlassian.com/git)* by [Atlassian](https://www.atlassian.com/)
--   [Git and GitHub Tutorial](https://www.w3schools.com/git/default.asp?remote=github) by [W3 Schools](https://www.w3schools.com/)
--   [Introduction to GitHub](https://github.com/skills/introduction-to-github) by [GitHub](https://github.com/)
--   *["Happy Git and GitHub for user"](https://happygitwithr.com/)* by [Jenny Bryan](https://jennybryan.org/)
-
-
+{{< video https://vimeo.com/1078706721/a002cb4bb7?share=copy aspect-ratio="21x9" >}}
 
 ## Accessing the Materials
 
 ### Slides, Handouts, and Other Materials
 
-Download the complete slide deck with annotations and the in-person workshop handout. Comments were saved in the bottom left of each slide, and references for this webpage are in its **Appendix**.
+Download the complete slide deck and the in-person workshop handout. For now, references for this webpage can be found in the slide deck **Appendix**.
 
-**COMING SOON**
+#### Workshop Part #2
+
+The following content is from the second and final part of our workshop, where we covered the typical Git workflow and went through three worked-through examples.
+
+```{=html}
+<a href="Materials/Workshop Slide Deck.pdf">
+  <button class="btn"><i class="bi bi-download"></i>&nbsp Complete Slide Deck</button>
+</a>
+
+<a href="Materials/Handout.pdf">
+  <button class="btn"><i class="bi bi-download"></i>&nbsp Handout</button>
+</a>
+
+```
+
 
 ### Codespaces
 
@@ -268,4 +269,26 @@ If you experience any trouble with this step, you might want to confirm that you
 :::
 
 
+## Other Recommended Resources
+
+While there are many resources on Git and GitHub out there, we have curated a few additional sites and tutorials that we found support and expound on our presentation. Some of these sources will cover the basics like we will be doing today, while others include advanced materials and guides that will help you develop more advanced skills as you gain experience.
+
+-   Yale’s Center for Research Computing workshop *["Version Control by Git"](https://research.computing.yale.edu/training/version-control-git)* by [Kaylea Nelson](https://research.computing.yale.edu/about/leadership-team-staff/kaylea-nelson)
+-   Yale’s Harvey Cushing/John Hay Whitney Medical Library workshop *["Git & GitHub: An Introduction To Version Contro"](https://github.com/CWML/gitdemo/tree/main)* by [Justin DeMayo](https://library.medicine.yale.edu/about/staff/justin-demayo)
+-   *["Getting Git Right"](https://www.atlassian.com/git)* by [Atlassian](https://www.atlassian.com/)
+-   [Git and GitHub Tutorial](https://www.w3schools.com/git/default.asp?remote=github) by [W3 Schools](https://www.w3schools.com/)
+-   [Introduction to GitHub](https://github.com/skills/introduction-to-github) by [GitHub](https://github.com/)
+-   *["Happy Git and GitHub for user"](https://happygitwithr.com/)* by [Jenny Bryan](https://jennybryan.org/)s
+
+
+## About the Data
+
+The [Johns Hopkins Coronavirus Resource Center](https://coronavirus.jhu.edu/) (JHU CRC) tracked and compiled global COVID-19 pandemic data from January 22, 2020 and March 10, 2023. These data are publically available through their two GitHub repositories. We imported two datasets for this workshop content:
+
+- Cumulative vaccination counts for the U.S. from their [GovEX/COVID-19](https://github.com/govex/COVID-19/tree/master/data_tables/vaccine_data) GitHub repository. The raw data used in the analysis script can be found in the `data_tables/vaccine_data/us_data/time_series` subdirectory ([original source](https://github.com/govex/COVID-19/blob/master/data_tables/vaccine_data/us_data/time_series/time_series_covid19_vaccine_us.csv)).
+- Cumulative case and death counts for the U.S. from their [CSSE GitHub](https://github.com/CSSEGISandData/COVID-19). The raw data for these two datasets used in the analysis can be found in the `csse_covid_19_data/csse_covid_19_time_series` subdirectory ([original source](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series)). Both `time_series_covid19_confirmed_US.csv` and `time_series_covid19_deaths_US.csv` were used.
+
+The data dictionaries provided by JHU CRC can be found here: [Vaccinations Dataset Data Dictionary](https://github.com/govex/COVID-19/tree/master/data_tables/vaccine_data/us_data) and [Cases and Deaths Datasets Data Dictionary](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data#usa-daily-state-reports-csse_covid_19_daily_reports_us). For our purposes, we conducted some data cleaning, harmonization, and smoothing using an isotonic regression. This included harmonizing the U.S. Census Bureau's 2010 to 2019 population projections with 2020 to 2023 vintages. 
+
+Details about these steps can be found in the `Git-and-GitHub/R` directory of this workshop's GitHub repository ([link to code](https://github.com/ysph-dsde/Book-of-Workshops/tree/main/Git-and-GitHub/R)). The cleaned datasets used in this workshop can be found in the `Git-and-GitHub/Data` directory of this workshop's GitHub repository ([link to data](https://github.com/ysph-dsde/Book-of-Workshops/tree/main/Git-and-GitHub/Data)).
 

@@ -318,8 +318,19 @@ code span.kw {
     content: "</";
 }
 
-/*# sourceMappingURL=debc5d5d77c3f9108843748ff7464032.css.map */
 
+/* Style buttons */
+.btn {
+    background-color: var(--sidebar-fg);
+    border: solid;
+    color: var(--sidebar-bg-docked);
+    padding: 10px 10px;
+    cursor: pointer;
+    
+}
+
+
+/*# sourceMappingURL=debc5d5d77c3f9108843748ff7464032.css.map */
 
 .table,
 .dataTable {

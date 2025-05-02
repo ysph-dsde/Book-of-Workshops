@@ -18,7 +18,7 @@ book:
     - part: Git-and-GitHub/index.qmd
       chapters: 
         - Git-and-GitHub/Pages/git-github-setup.qmd
-        - Git-and-GitHub/Pages/git-github-overview-simple-example.qmd
+        - Git-and-GitHub/Pages/git-github-overview.qmd
     - part: Data-Visualization-with-ggplot2/index.qmd
       chapters: 
         - Data-Visualization-with-ggplot2/Pages/visualization-more-to-come.qmd

@@ -21,14 +21,7 @@ sites_libs/
 *.docx
 *.html
 *_files
-
-
-# --------------------
-# Getting Started with Git and GitHub Workshop
-
-Git-and-GitHub/Population Estimates and Projections/Not Used Data Sets
-Git-and-GitHub/YSPH DSDE Workshop Codespace Download_04.19.2025
-Git-and-GitHub/git-github_Video1_10.30.2024.mp4
+/_quarto_internal_scss_error.scss
 
 
 

@@ -11,10 +11,17 @@
 
 # Preface {.unnumbered}
 
-This is a Quarto book.
+Welcome! We are still working on the main page for our Book of Workshops.
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
 
-```{r}
-1 + 1
+```{=html}
+<figure>
+  <a href="https://www.youtube.com/watch?v=XfR9iY5y94s"><video loop="true" autoplay="true" controls="false" style="padding-bottom: 10px;" width="100%">
+  <source src="/Git-and-GitHub/Images/Men-at-Work_Down-Under-Clip.mp4" type="video/mp4">
+  </video></a>
+  
+  <figcaption style="text-align: left;">
+    Men At Work - Down Under (Official HD Video) from YouTube
+  </figcaption>
+</figure>
 ```
