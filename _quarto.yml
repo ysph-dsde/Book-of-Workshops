@@ -8,6 +8,7 @@ book:
   repo-url: https://github.com/ysph-dsde/Book-of-Workshops
   repo-actions: edit
   search: true
+  bread-crumbs: false
   reader-mode: true
   sidebar:
     style: "docked"
@@ -17,6 +18,7 @@ book:
     - index.qmd
     - part: Git-and-GitHub/index.qmd
       chapters: 
+        - Git-and-GitHub/Pages/git-github-what-is.qmd
         - Git-and-GitHub/Pages/git-github-setup.qmd
         - Git-and-GitHub/Pages/git-github-overview.qmd
     - part: Data-Visualization-with-ggplot2/index.qmd
