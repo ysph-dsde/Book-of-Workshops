@@ -1,15 +1,14 @@
 ---
-  editor: source
-  markdown: 
-  keep-md: true
-  editor_options: 
-  chunk_output_type: console
-  number-sections: false
-  toc: true
-  toc-depth: 3
+bibliography: references.bib
+csl: nature.csl
 ---
 
-# What is git and GitHub? {.unnumbered}
+# The What, Why, and How of Git and GitHub {.unnumbered}
+
+<body>
+    <script src="Views/definition_script.js"></script>
+</body>
+
 
 ```{r setup}
 #| message: FALSE
@@ -18,15 +17,8 @@
 #| echo: FALSE
 
 suppressPackageStartupMessages({
-  library("arrow")         # For reading in the data
-  library("dplyr")         # For data manipulation
   library("ggplot2")       # For creating static visualizations
-  library("plotly")        # For interactive plots
   library("cowplot")       # ggplot add on for composing figures
-  library("tigris")        # Imports TIGER/Line shapefiles from the Census Bureau
-  library("sf")            # Handles "Special Features": spatial vector data
-  library("RColorBrewer")  # Load Color Brewer color palettes
-  library("viridis")       # Load the Viridis color pallet
 })
 
 # Function to select "Not In"
@@ -35,7 +27,20 @@ suppressPackageStartupMessages({
 
 ```
 
-## Overview
+Git and GitHub are widely used tools in technical projects. Despite their prevalence, many rote memorize Git commands for straightforward tasks without fully understanding what these tools are, how they differ, and what roles they play in a project. In this section, I will provide an overview of Git and GitHub and explain why it is worthwhile to learn and use them over other available options.
+
+
+To help you build your technical vocabulary, I'll highlight 
+<span class="text-term" 
+  data-hover-text="Hovering gives the definition too!">
+  new terms</span> 
+and 
+<span class="code-term" 
+  data-hover-text="Hovering gives the definition too!">
+  git commands</span>
+, providing definitions for each. Hovering over these terms will show their definitions, and all terms are summarized at the end of each section where they are first introduced: [Section Glossary](#section-glossary).
+
+## What exactly are Git and GitHub?
 
 ```{=html}
 <figure style="float: left; position: relative; padding-right: 30px; margin-top: 0.5em; margin-bottom: 1em;">
@@ -44,63 +49,101 @@ suppressPackageStartupMessages({
   </video></a>
   
   <figcaption style="text-align: left;">
-    Figure from "What is Version Control" by Atlassian.<br>Updated February 23rd, 2020. Accessed October 2025
+    Figure from "What is Version Control" by Atlassian.<br>Updated February 23rd, 2020. Accessed October 2025.
   </figcaption>
 </figure>
 ```
 
-There are two types of version control systems that facilitate project sharing and collaboration: centralized and distributive. git is a distributive version control system, or DVCS. In a DVCS, a remote server stores the integrated copy of a project, and mirrors with the full-change history are distributed to individual contributors. Local changes are communicated in what is called “peer-to-peer” by synchronizing committed changes through patches that are sent over the server.
+There are two types of version control that facilitate project sharing and collaboration: centralized and distributed. Git is a 
+<span class="text-term" 
+  data-hover-text="The project codebase is copied as a mirror to each contributor's local computer. Local changes get synched via patches sent peer-to-peer through the server.">
+  Distributed Version Control System (DVCS)</span>, 
+which is depicted in the clip on the left\ [ @dvcs; @atlassian_video; @git_wiki]. In a DVCS, a remote
+<span class="text-term" 
+  data-hover-text="Servers are computers or systems that provides resources (i.e. data or programs) to other computers, known as clients, over a network.">
+  server</span> 
+stores the integrated copy of a project, while 
+<span class="text-term" 
+  data-hover-text="An exact copy of a project from a server, including al files, the version history, and branches.">
+  mirrors</span> 
+containing the full change history are distributed to individual contributors, who act as 
+<span class="text-term" 
+  data-hover-text="Servers are computers or systems that provides resources (i.e. data or programs) to other computers, known as clients, over a network.">
+  clients</span> 
+of the server\ [@server; @mirroring]. Local changes are communicated in what is called a 
+<span class="text-term" 
+  data-hover-text="Participants in a network act as both client and server by trading resources and services with one another.">
+  peer-to-peer</span> 
+manner, synchronizing committed changes through
+<span class="text-term" 
+  data-hover-text="Snippets of code or data used to update existing software.">
+  patches</span> 
+that are sent over the server\ [@dvcs; @anukruti162024; @patch].
 
-\
 \
 
 ```{=html}
 <figure style="float: right; position: relative; margin-left: 1em; margin-top: 0.5em; margin-bottom: 0.5em;">
-  <img src="Images/Git Logo 2Color_downloaded 10.16.2024.png" alt="git Logo" style="margin-bottom: 1em;" width="300">
-
-  <figcaption style="text-align: left; padding-bottom: 15px">
-    <a href="https://git-scm.com/downloads/logos">git logo</a>. Downloaded October 10th, 2024.
-  </figcaption>
+  <a href="https://git-scm.com/"><img src="Images/Git Logo 2Color_downloaded 10.16.2024.png" alt="git Logo" style="margin-bottom: 1em;" width="300"></a>
   
-    <img src="Images/GitHub Logo_downloaded 10.16.2024.png" alt="GitHub Logo" style="margin-bottom: 1em;" width="300">
+  </br>
+  
+  <a href="https://github.com/"><img src="Images/GitHub Logo_downloaded 10.16.2024.png" alt="GitHub Logo" style="margin-bottom: 1em;" width="300"></a>
 
   <figcaption style="text-align: left;">
-    <a href="https://github.com/logos">GitHub logo</a>. Downloaded October 10th, 2024.
+    <a href="https://git-scm.com/downloads/logos">git logo</a> and <a href="https://github.com/logos">GitHub logo</a>.</br>Downloaded October 10th, 2024.
   </figcaption>
 </figure>
 ```
 
-git was originally released in 2005 and is the most popular version control system offered, even compared with centralized systems. On its own it does not provide a framework for collaboration and lacks a graphical user interface, or GUI. Its bash script and regular expression commands are typically executed in command-line applications; a framework that proves to be a steep learning curve for new users.
 
-GitHub was designed in 2007 to improve on git and act as a centralized library of repositories. They also developed additional collaboration tools, such as the Fork. Canonically, GitHub is a developer platform built upon git repository management structures and commands.
+Git was first released in 2005 and is the most popular 
+<span class="text-term" 
+  data-hover-text="Manage, organize, and track different versions of files. Identify differences between versions and allows reverting to older versions.">
+  version control</span>
+system, even compared to centralized systems\ [@atlassian_video; @git_wiki; @stackoverflow_survey]. However, Git does not come with its own graphical user interface (GUI) and lacks the infrastructure for project sharing or collaborations. Users also need to execute Git commands through a 
+<span class="text-term" 
+  data-hover-text="A texted-base application that directly interacts with the computer’s operating system, manages files, and can run programs. It typically lacks a GUI.">
+  Command-Line Interface (CLI)</span>
+like Terminal, which utilizes Bash—a type of 
+<span class="text-term" 
+  data-hover-text="A program used by the CLI to mediate communication between the user and computer by interpreting commands and outputs. Examples: Bash, PowerShell, etc.">
+  shell</span>
+script; a framework that can prove to be a steep learning curve for new users\ [@terminal_shell; @medium_github].
 
-GitHub is first and foremost a host of free and open-sourced code, catering to over 100 million developers and hosting more than 420 million repositories as of 2024. Since 2015 it has out competed its primary rival, SourceForge, and became one of world’s largest hosts of source code since 2022/2023.
+GitHub was designed in 2007 to improve upon Git and act as a centralized library of repositories where projects can be shared and collaborated on\ [@github_wiki; @medium_github]. Essentially, GitHub is a developer platform built upon Git repository management structures and commands. While GitHub does not provide version control management independently of Git, it offers additional features designed to fit Git's paradigm for version control, such as the Fork and pull requests. GitHub also provides tools and settings that help development teams set milestones, assign responsibilities, and track issues or alternative suggestions\ [@github_wiki].
 
-## OK, but why use them?
+Together, Git and GitHub enable robust code-based project management for both individual and collaborative efforts. Both Git and GitHub are language-agnostic, meaning they support projects written in any programming language. They integrate seamlessly with many Integrated Development Environments (IDEs) that support them natively, or they can be used alongside IDEs that do not have built-in integration features\ [@medium_github].
+
+## OK, but why choose them over other options?
 
 ```{r survey, fig.show='hide'}
 #| output: FALSE
 #| echo: FALSE
 
-stackExchange_results <- data.frame("VersionControl" = c("git", "SVN", "Mercurial", "I don't use one"), "Values" = c(96.95, 5.96, 1.22, 1.38, 81.87, 1.41, 0.45, 17.18), "User" = c(rep("Professional (n = 53,374)", 4), rep("Learner (n = 6,157)", 4)))
+stackExchange_results <- data.frame("VersionControl" = c("Git", "SVN", "Mercurial", "I don't use one"), "Values" = c(96.95, 5.96, 1.22, 1.38, 81.87, 1.41, 0.45, 17.18), "User" = c(rep("Professional (n = 53,374)", 4), rep("Learner (n = 6,157)", 4)))
 
 ggplot(stackExchange_results, aes(x = VersionControl, y = Values, color = User, fill = User)) +
   geom_bar(stat = "identity", position = "dodge", alpha = 0.7) +
   scale_color_manual(values=c("#00356A", "#A353FF")) +
   scale_fill_manual(values=c("#00356A", "#A353FF")) +
-  labs(x = "", y = "", caption = 'Results from the "2022 Developer Survey" by StackOverflow. Published 2022.') +
+  labs(x = "", y = "") +
   theme_minimal_hgrid() +
-  theme(legend.position = "bottom", legend.title = element_blank(),
-        plot.caption = element_text(hjust = 0, vjust = -1, face = "italic"))
+  theme(
+    legend.position = "bottom",
+    legend.title = element_blank(),
+    legend.text = element_text(size = 16, family = "Helvetica"),
+    axis.text = element_text(size = 16, family = "Helvetica")
+  )
 
 ```
 
-::: {layout="[[7,5]]"}
-[![](`r knitr::fig_chunk('survey', 'png')`)](https://survey.stackoverflow.co/2022/#version-control-version-control-system-prof)
+::: {layout="[[7, 5]]"}
+[![Results from the "2022 Developer Survey" by StackOverflow.](`r knitr::fig_chunk('survey', 'png')`){style="display: block; margin-top: -1.5rem; text-align: left;"}](https://survey.stackoverflow.co/2022/#version-control-version-control-system-prof)
 
-
-git is by far the most used for both learners and professionals. A survey by StackOverflow in 2022 revealed that respondents overwhelmingly reported using git as compared with Mercurial or SVN. Over 95% of professionals self-reported that they use git in their work. <br><br>git is also predominately used by those learning to code, but they found that version control systems are generally underutilized by learners. About 17% say they do not use any kind of version control as compared with about 1% of professionals.
+Git is by far the most popular version control system among both learners and professionals. According to a survey conducted by StackOverflow in 2022, more than 95% of professionals reported using Git in their work, compared to other systems such as Mercurial or SVN\ [@stackoverflow_survey]. Git is also widely adopted by those learning to code, although version control systems remain underutilized by learners. Approximately 17% of learners indicated they do not use any version control, compared to just about 1% of professionals.
 :::
+
 
 ```{=html}
 <figure style="float: right; position: relative; margin-left: 1em; margin-top: 0.5em; margin-bottom: 0.5em;">
@@ -112,4 +155,295 @@ git is by far the most used for both learners and professionals. A survey by Sta
 </figure>
 ```
 
-GitHub is a highly sought-after resource for maintainers and contributors around the world, a finding that holds true for developers working for companies and nonprofits. The pie chart shown here highlights 20 communities outside of the US with the largest growth of users in 2022 since the previous year. In 2013, most users were based in the US, but with the year-over-year growth of users from India observed thus far it is expected that Indian programmers will match the US developer population in 2025.
+GitHub is a leading platform for hosting free and open-source code, serving over 100 million developers and hosting more than 420 million repositories as of 2024\ [@github_wiki; @medium_github]. Since 2015, it has surpassed its main competitor, SourceForge, and had become one of the world's largest hosts of source code by 2022/2023\ [@wired_github].
+
+GitHub is a highly sought-after resource for maintainers and contributors worldwide, including developers working for companies and nonprofits. The pie chart on the right highlights 20 communities outside the US with the largest user growth in 2022 compared to the previous year. In 2013, most users were based in the US, but with the year-over-year growth of users from India observed thus far it is expected that Indian programmers will match the US developer population in 2025\ [@github_global].
+
+# Essential Takeaways
+
+With this introduction, we're ready to start exploring _how_ these tools handle version control and code distribution. While the contextual overview presented thus far is valuable for new or beginner users of Git and GitHub, let's take a step back and review the core principles that you actually need to know before diving into the _how_.
+
+**The Motivations:** In a coding project, it is often advantageous to track changes made at each step. When something goes wrong, version control allows you to easily diagnose which changes caused the bug and revert to older, working versions while you isolate and fix the issue. Think of it like "going back to the last save" in a game. Robustly managing a code-based project is only part of the challenge; you also need to provide means for accessing the work for publishing, reporting, or collaboration.
+
+**The Short and Sweet Descriptions:** Git is a system that allows you to save, manage, and track code version histories, enabling you to revert to previously saved versions when necessary. GitHub builds on the Git framework, offering remote storage, distribution, and collaboration for Git-controlled projects\ [@atlassian_video; @github_wiki]. Some refer to GitHub as more than just a place to distribute code, but as a "social networking site for programmers"\ [@medium_github].
+
+# Unpacking How: Git and GitHub in Action
+
+In the following pages, we'll guide you through installing Git, setting up a GitHub account, and configuring both. The rest of the chapter will explore the intricacies of working with Git and GitHub through a realistic example and three common scenarios for managing project codebases. You'll also have the opportunity to practice these skills using pre-prepared problems.
+
+Before we jump into these, however, I want to address some common complaints about Git and GitHub introductions. Many find these resources present too much as need-to-know or give commands out of context, making it hard to see the big picture.
+
+These approaches makes it challenging to grasp Git and GitHub basics and often sends users down endless rabbit holes trying to piece together a cohesive understanding. It also complicates extending beyond basic usage, as it's not clear how these concepts apply to or can be implemented in your own work.
+
+To mitigate these sources of confusion, the following section offers high-level key takeaways about _how_ Git and GitHub interact with your project materials and with each other. We can divide this interaction into three main categories:
+
+1. Version control on your local device.
+2. Remote storage and distribution of your code.
+3. Secure information transfer between Git and GitHub.
+
+## Version Control on Your Device
+
+Recall that Git handles version control entirely, while GitHub is designed based on Git and provides limited extended features for collaboration and code sharing. Therefore, all necessary version control features for your projects are accessible on your device, often referred to as "local."
+
+Projects are typically stored in a folder, also called a directory, containing all the files and code relevant to that work. A Git-initialized project will include a `.git` folder in the 
+<span class="text-term" 
+  data-hover-text="The top-most directory in a branched hierarchy, containing all other files and directories. Your project’s root directory holds all the relevant files and code used your project.">
+  root directory</span>
+of your project, which contains all the information necessary for version controlling its contents.
+
+In a Git-initialized directory, Git interprets your project files to be in one of three domains at any given time: the **Working Tree**, **Staged Edits**, and **Committed Edits**\ [@Prajapati2019]. These domains and common transitional commands are demonstrated in the figure below, based on a diagram given in [_"What is git commit, push, pull, log, aliases, fetch, config & clone"_](https://medium.com/mindorks/what-is-git-commit-push-pull-log-aliases-fetch-config-clone-56bc52a3601c) \ [@Prajapati2019].
+
+::: {.callout-note}
+This workshop will not cover all the different ways to move tracked files through version control domains, but will focus on core commands necessary for all projects. Just know that you can perform various types of changes not described here that may better suit your coding needs.
+:::
+
+```{=html}
+<figure style="float: center; position: relative; margin-top: 1.5em; margin-bottom: 0.5em;">
+  <img src="/Git-and-GitHub/Images/Local Version Control Diagram.png" alt="git Logo" style="margin-bottom: 1em;" width="90%">
+</figure>
+```
+
+The **Working Tree** is the area where developers make changes to files in the project. In this domain, Git doesn't actively track changes; instead, changes are recycled back into the same file without recording interim revisions.
+
+When you are ready for Git to follow changes, you need to add them to the staged environment with
+<span class="code-term" 
+  data-hover-text="Prompt Git to track changes made to specified files and transition them from the <strong>Working Tree</strong> to the <strong>Staged Edits</strong> domain. Git compares the added files to any previously saved versions available in the <code>.git</code> directory.">
+  git add</span>\ [@Foster2024]. 
+  This prompts Git to identify differences between **Staged Edits** and already committed versions that are stored in the `.git` directory. Files can be unstaged and restored to the working tree with the 
+<span class="code-term" 
+  data-hover-text="Unstages changes to specified files, moving them from <strong>Staged Edits</strong> back to the <strong>Working Tree</strong> without altering the files’ versions in the <strong>Working Tree</strong>.">
+  git reset</span>
+command\ [@git_restore_reset; @git_reset].
+  
+
+::: {.callout-tip collapse="true"}
+## Code Like a Pro
+
+When prompted for tracking, Git uses a heuristic to compare files in your project directory to determine if a file has changed or is new. This method of change detection is not always perfect and may sometimes mistakenly identify significantly altered files as new ones\ [@DuMez2024].
+
+Depending on the version of Git used, this may be observed when renaming or moving a tracked file to a new folder in the project directory. Certain Git version will detect this as both the creation of a new file under the new name and the deletion of the file under the old name\ [@DuMez2024; @Houghton2024]. This can get confusing when reviewing the project’s version history!
+
+If you see this, it's best practice to track a file rename or move action with the
+<span class="code-term" 
+  data-hover-text="Moves or renames a specified file, directory, or symlink that is already tracked by Git.">
+  git mv</span>
+command and to stage the modification for its own commit with an appropriate message\ [@Houghton2024; @git_mv].
+
+```{.bash filename="Command-Line Application"}
+# Track moving a file
+git mv <source>/filename.txt <destination>/filename.txt
+git add <destination>/filename.txt
+git commit -m "Move filename.txt from <source> to <destination>."
+
+# Track renaming a file
+git mv oldfilename.txt newfilename.txt
+git add newfilename.txt
+git commit -m "Rename oldfilename.txt to newfilename.txt."
+```
+
+:::
+
+
+
+Once you have reviewed the detected changes and approve saving or sharing them, use
+<span class="code-term" 
+  data-hover-text="Promote the staged version of specified files to become the latest copy reflected in the .git directory. The <strong>Committed Edits</strong> version is what gets synced to the remote server as a &quot;peer-to-peer&quot; patch.">
+  git commit</span>
+to promote the staged version to become the latest copy reflected in the `.git` directory\ [@Foster2024]. The most recent **Committed Edits** are then synced to the GitHub server as a "peer-to-peer" patch.
+
+You will use the same commands even if there was no previous version of a file stored in the `.git` directory. When you use 
+<span class="code-term" 
+  data-hover-text="Summarizes the state of files in the <strong>Working Tree</strong> and <strong>Staged Edits</strong>, comparing changes to the latest, committed version in the .git directory.">
+  git status</span>
+to check the current state of your tracked project files, Git will automatically identify untracked files and prompt you to add them for tracking. If your project is connected to a GitHub repository, the local copy of the project does **NOT** continuously monitor the remote repository’s contents. Instead, it keeps a copy of the last-checked version of the remote repository’s contents\ [@Prajapati2019].
+
+
+## Remote Storage and Distribution
+
+```{=html}
+<figure style="float: center; position: relative; margin-top: 0.5em; margin-bottom: 0.5em;">
+  <img src="/Git-and-GitHub/Images/Remote Storage and Distribution Diagram.png" alt="git Logo" style="margin-bottom: 1em;" width="90%">
+</figure>
+```
+
+When you use Git to interact with a remote repository stored in GitHub, there are three core commands: clone, push, and pull. In the second part of this workshop, I cover these operations in greater detail, so do not worry too much about the exact purpose or definition of these commands right now.
+
+Cloning is a one-time command used to download and store a complete copy of a public repository distributed on GitHub to your local device. Doing this does not necessarily mean you have permissions to contribute changes to this same GitHub repository.
+
+Pushing is when you are ready to share your local copy of the codebase through GitHub. When you push, the most recent committed edits in the `.git` directory get shared with the remote version and evaluated for coalescence.
+
+Pulling is when you want to update your local copy of the codebase that might have differed in the remote location. Pulling is an action that constitutes two operations: fetch and either merge or rebase. A diagram describing these is shown on the right.
+
+Notice that pulling is not the same thing as cloning. Instead, it is used throughout the lifetime of the project to synchronize changes between your local and remote project copies.
+
+
+## Safeguarding Information Transfer Processes
+
+```{=html}
+<figure style="float: center; position: relative; margin-top: 0.5em; margin-bottom: 0.5em;">
+  <img src="/Git-and-GitHub/Images/SSH and HTTPS Diagram.png" alt="git Logo" style="margin-bottom: 1em;" width="90%">
+</figure>
+```
+
+When your local device interacts with GitHub, several security checks are performed. For instance:
+
+- You must verify that the communication is indeed with GitHub and not an impostor site.
+- You must confirm that you have the necessary permissions to access specific content on GitHub. 
+
+Additionally, encrypting your data ensures that it is securely transferred, safeguarding your content from potential intrusions.
+
+GitHub supports two authentication and communication protocols: Secure Shell (SSH) and Hypertext Transfer Protocol Secure (HTTPS). NOTE: Some firewalls and proxies might not allow SSH connections, but this should not be an issue with HTTPS. If you run into this problem, you can reference GitHub’s SSH Troubleshooting page for some guidance. 
+
+SSH operates by utilizing a pair of keys - a private key and a public key. Information gets encrypted when being sent between servers, and only a key pair match can decrypt the information when it is received.
+
+HTTPS facilitates the secure transmission of information over an encrypted internet connection. Decryption occurs when the correct username and Personal Access Token (PAT) are provided.
+
+
+# Section Glossary
+
+<table class="glossary-table">
+    <tbody>
+        <!-- Row 1 -->
+        <tr>
+            <td class="col1">Command-Line Interface (CLI)</td>
+            <td>
+              A texted-base application that directly interacts with the computer’s operating system, manages files, and can run programs. It typically lacks a GUI\ [@terminal_shell].
+            </td>
+        </tr>
+        <!-- Row 2 -->
+        <tr>
+            <td class="col1">Distributive Version Control System (DVCS)</td>
+            <td>
+              The project codebase is copied as a mirror to each contributor's local computer. Local changes get synched via patches sent peer-to-peer through the server\ [@atlassian_video; @dvcs].
+            </td>
+        </tr>
+        <!-- Row 3 -->
+        <tr>
+            <td class="col1"><code>git add</code></td>
+            <td>
+              Prompt Git to track changes made to specified files and transition them from the <strong>Working Tree</strong> to the <strong>Staged Edits</strong> domain. Git compares the added files to any previously saved versions available in the `.git` directory\ [@Foster2024].
+            </td>
+        </tr>
+        <!-- Row 4 -->
+        <tr>
+            <td class="col1"><code>git clone</code></td>
+            <td>
+              Copies an existing repository stored in a remote server to your own device, including all files, the version history, and branches\ [@git_clone].
+            </td>
+        </tr>
+        <!-- Row 5 -->
+        <tr>
+            <td class="col1"><code>git commit</code></td>
+            <td>
+              Promote the staged version of specified files to become the latest copy reflected in the .git directory. The <strong>Committed Edits</strong> version is what gets synced to the remote server as a “peer-to-peer” patch\ [@Foster2024].
+            </td>
+        </tr>
+        <!-- Row 6 -->
+        <tr>
+            <td class="col1"><code>git merge</code></td>
+            <td>
+              Downloads changes from a remote repository without coalescing with your local copy. Part of the <code>pull</code> action\ [@git_merge; @git_pull].
+            </td>
+        </tr>
+        <!-- Row 7 -->
+        <tr>
+            <td class="col1"><code>git mv</code></td>
+            <td>
+              Moves or renames a specified file, directory, or symlink that is already tracked by Git\ [@git_mv].
+            </td>
+        </tr>
+        <!-- Row 8 -->
+        <tr>
+            <td class="col1"><code>git fetch</code></td>
+            <td>
+              Summarizes the state of files in the <strong>Working Tree</strong> and <strong>Staged Edits</strong>, comparing changes to the latest, committed version in the .git directory\ [@git_fetch].
+            </td>
+        </tr>
+        <!-- Row 9 -->
+        <tr>
+            <td class="col1"><code>git pull</code></td>
+            <td>
+              The combined action of <code>fetch</code> and <code>merge</code> or <code>rebase</code>. Downloads changes from a remote repository and coalesces them with your local copy\ [@git_pull].
+            </td>
+        </tr>
+        <!-- Row 10 -->
+        <tr>
+            <td class="col1"><code>git push</code></td>
+            <td>
+              Upload your recent <strong>Committed Edits</strong> to a remote repository, synchronizing changes for others to see\ [@Foster2024].
+            </td>
+        </tr>
+        <!-- Row 11 -->
+        <tr>
+            <td class="col1"><code>git rebase</code></td>
+            <td>
+              An alternative to <code>merge</code>. The branch commit histories are realigned so that the leading one defines the commit parent history of the following branch, thus rebasing its commits\ [@git_pull].
+            </td>
+        </tr>
+        <!-- Row 12 -->
+        <tr>
+            <td class="col1"><code>git reset</code></td>
+            <td>
+              Unstages changes to specified files, moving them from <strong>Staged Edits</strong> back to the <strong>Working Tree</strong> without altering the files' versions in the <strong>Working Tree</strong>\ [@git_reset].
+            </td>
+        </tr>
+        <!-- Row 13 -->
+        <tr>
+            <td class="col1"><code>git status</code></td>
+            <td>
+              Summarizes the state of files in the <strong>Working Tree</strong> and <strong>Staged Edits</strong>, comparing changes to the latest, committed version in the .git directory.
+            </td>
+        </tr>
+        <!-- Row 14 -->
+        <tr>
+            <td class="col1">Mirror</td>
+            <td>
+              An exact copy of a project from a server, including al files, the version history, and branches\ [@mirroring].
+            </td>
+        </tr>
+        <!-- Row 15 -->
+        <tr>
+            <td class="col1">Patch</td>
+            <td>
+              Snippets of code or data used to update existing software\ [@patch].
+            </td>
+        </tr>
+        <!-- Row 16 -->
+        <tr>
+            <td class="col1">Peer-to-peer</td>
+            <td>
+              Participants in a network act as both client and server by trading resources and services with one another\ [@anukruti162024].
+            </td>
+        </tr>
+        <!-- Row 17 -->
+        <tr>
+            <td class="col1">Root directory</td>
+            <td>
+               The top-most directory in a branched hierarchy, containing all other files and directories. Your project's root directory holds all the relevant files and code used your project.
+            </td>
+        </tr>
+        <!-- Row 18 -->
+        <tr>
+            <td class="col1">Server and Client</td>
+            <td>
+              Servers are computers or systems that provides resources (i.e. data or programs) to other computers, known as clients, over a network\ [@server].
+            </td>
+        </tr>
+        <!-- Row 19 -->
+        <tr>
+            <td class="col1">Shell</td>
+            <td>
+              A program used by the CLI to mediate communication between the user and computer by interpreting commands and outputs. Examples: Bash, PowerShell, etc\ [@terminal_shell].
+            </td>
+        </tr>
+        <!-- Row 20 -->
+        <tr>
+            <td class="col1">Version Control</td>
+            <td>
+              Manage, organize, and track different versions of files. Identify differences between versions and allows reverting to older versions\ [@atlassian_video].
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+# References

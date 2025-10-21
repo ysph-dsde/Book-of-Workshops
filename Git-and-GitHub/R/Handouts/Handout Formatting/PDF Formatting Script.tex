@@ -1,0 +1,326 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DSDE Workshop Handout PDF Formatting
+% 
+% Add to *.qmd yaml 
+% "format:
+%   pdf:
+%     include-in-header: 
+%       - text: |
+%           \input{Handout Formatting/PDF Formatting Script.tex}"
+% 
+% Written by Shelby Golden, MS with the assistance of Yale's AI Clarity.
+% Written September 23rd, 2025
+
+
+% Global settings
+\usepackage{geometry}
+\usepackage{fontspec}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage[automark,headsepline,footsepline,markcase=upper,plainfootsepline]{scrlayer-scrpage}
+\usepackage[most]{tcolorbox}
+\usepackage{background}
+\usepackage{tikz}
+\usepackage{eso-pic}
+\usepackage{atbegshi}
+\usepackage{stackengine}
+\usepackage{fvextra}
+\usepackage{fancyvrb}
+\usepackage{mdframed}
+\usepackage{framed}
+\usepackage{listings}
+\usepackage{etoolbox}
+\usepackage{caption}
+\usepackage[none]{hyphenat}
+\usepackage{fontawesome5}
+\usepackage{graphicx}
+
+
+\setstackgap{L}{1.5\baselineskip} 
+\tcbuselibrary{listingsutf8}
+
+
+\definecolor{DSDEPurple}{HTML}{A353FF}
+\definecolor{DSDEBlue}{HTML}{00356B}
+
+
+% Custom header and footer settings
+\clearpairofpagestyles
+\ihead[]{}
+\ohead[]{\hfill \footnotesize\itshape\color{DSDEBlue} Printed \today}
+
+\ifoot[{%
+  \stackon[2mm]{\includegraphics[height=1cm]{Handout Formatting/Wordmark-Data-Science-and-Data-Equity-blues.png}}{}
+}]{%
+  \stackon[2mm]{\includegraphics[height=1cm]{Handout Formatting/Wordmark-Data-Science-and-Data-Equity-blues.png}}{}
+}
+\cfoot[\pagemark]{\pagemark}
+\ofoot[%
+       \footnotesize\itshape\color{DSDEBlue} Version: 003.09.19.25\\%
+       Generated using Quarto (v. 1.6.39)\\%
+       and RStudio (v. 2025.09.0+387)\\%
+       By Shelby Golden, M.S.
+]{%
+  \footnotesize\itshape\color{DSDEBlue} Version: 003.09.19.25\\%
+  Generated using Quarto (v. 1.6.39)\\%
+  and RStudio (v. 2025.09.0+387)\\%
+  By Shelby Golden, M.S.
+}
+
+% Disable "draft" watermark
+\backgroundsetup{
+  scale=1,
+  color=black,
+  opacity=1,
+  angle=0,
+  position=current page.center,
+  vshift=0cm,
+  hshift=0cm,
+  contents={}
+}
+
+% Define Backgrounds
+% Background for the first page
+\newcommand{\SetFirstPageBackground}{%
+  \AddToShipoutPictureBG*{%
+    \put(0,0){%
+      \includegraphics[width=\paperwidth,height=\paperheight]{Handout Formatting/Background_Binary Code.png}%
+    }%
+  }
+}
+
+% Background for other pages
+\newcommand{\SetOtherPagesBackground}{%
+  \AddToShipoutPictureBG*{%
+    \put(0,0){%
+      \includegraphics[width=\paperwidth,height=\paperheight]{Handout Formatting/Background.png}%
+    }%
+  }
+}
+
+% Ensure correct header/footer setup for all pages
+\AtBeginDocument{%
+  \AtBeginShipoutFirst{%
+    \SetFirstPageBackground
+  }
+  \AtBeginShipout{%
+    \ifnum\value{page}>1%
+    \SetOtherPagesBackground
+    \fi
+  }
+}
+
+% Define font for title, subtitle, author, and date
+\newcommand{\customtitlefont}{%
+  \fontspec[
+    Path=Handout Formatting/Yale_typeface/,
+    UprightFont=*-Roman,
+    BoldFont=*-Bold,
+    ItalicFont=*-Italic,
+    BoldItalicFont=*-BoldItalic
+  ]{YaleNew}\fontsize{30}{35}\selectfont\color{DSDEBlue}\bfseries
+}
+\newcommand{\customsubtitlefont}{\fontspec{Barlow}\fontsize{15}{14}\selectfont\color{DSDEBlue}}
+\newcommand{\customauthorfont}{\fontspec{Barlow}\fontsize{11}{0}\selectfont\color{DSDEBlue}\itshape}
+\newcommand{\customdatefont}{\fontspec{Barlow}\fontsize{11}{0}\selectfont\color{DSDEBlue}\itshape}
+
+% Define fonts for sectioning commands
+\newfontfamily\sectionfont[Color=DSDEBlue]{YaleNew}
+\newfontfamily\subsectionfont[Color=DSDEBlue]{Barlow}
+\newfontfamily\subsubsectionfont[Color=DSDEBlue]{Barlow}
+
+\addtokomafont{section}{\sectionfont}
+\addtokomafont{subsection}{\subsectionfont}
+\addtokomafont{subsubsection}{\subsubsectionfont}
+
+% Set main font for normal text
+\setmainfont{Barlow}
+\renewcommand{\normalsize}{\fontsize{11}{14}\selectfont\color{DSDEBlue}}
+\setlength{\parskip}{1em}
+
+% Set title page formatting
+\makeatletter
+\def\@maketitle{%
+  \newpage
+  \null
+  \begin{center}%
+  {\customtitlefont\@title\par}%
+  \ifx\@subtitle\@empty\else%
+  \vskip 2em%
+  {\customsubtitlefont\@subtitle\par}%
+  \fi%
+  \ifx\@author\@empty\else%
+  \vskip 1em%
+  {\customauthorfont\@author\par}%
+  \fi%
+  \ifx\b@date\@empty\else%
+  \vskip 1em%
+  {\customdatefont\@date\par}%
+  \fi%
+  \end{center}%
+  \vskip 1em%
+}
+\makeatother
+
+
+% Custom Verbatim environment for code blocks
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{backcolor}{rgb}{0.97,0.97,0.95}
+\definecolor{bordercolor}{rgb}{0.8,0.8,0.8}
+
+\mdfdefinestyle{highlighting}{
+  backgroundcolor=backcolor,
+  linecolor=bordercolor,
+  linewidth=0.5pt,
+  skipabove=10pt,
+  skipbelow=10pt,
+  innertopmargin=15pt,
+  innerleftmargin=13pt,
+  innerrightmargin=10pt,
+  roundcorner=0pt
+}
+
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{
+  commandchars=\\\{\},
+  breaklines=true,
+  frame=none,
+  rulecolor=\color{bordercolor}
+}
+
+% Redefine coded shaded environment
+% Comment/uncomment the following if there is code or not.
+\renewenvironment{Shaded}{
+  \begin{mdframed}[style=highlighting]
+  \setlength{\parindent}{0pt}
+  \setlength{\leftskip}{1em}  % Padding inside the left side of the shaded box
+  \setlength{\rightskip}{1em} % Padding inside the right side of the shaded box
+  \setlength{\topsep}{0.5em}  % Padding above the shaded content
+  \setlength{\partopsep}{0.5em} % Padding below the shaded content
+  \setlength{\parskip}{0pt}\small}
+{
+  \end{mdframed}
+}
+
+
+% Define style for output
+\newtcolorbox{outputbox}{
+  colback=backcolor,
+  colframe=bordercolor,
+  boxrule=0.5pt,
+  boxsep=2pt,
+  sharp corners,
+  fontupper=\ttfamily\footnotesize,
+  before skip=1em,
+  after skip=1em
+}
+
+% Redefine environment for knitr output
+\renewenvironment{verbatim}{\begin{outputbox}}{\end{outputbox}}
+
+
+% Custom callout boxes to allow indenting and other formatting
+\definecolor{NoteBordercolor}{HTML}{4581EC}
+\definecolor{NoteHeadercolor}{HTML}{F0F5FD}
+\definecolor{NoteIconcolor}{HTML}{0858E5}
+
+\newtcolorbox{callout-note}[1][]{
+  colframe=NoteBordercolor,
+  title={\textcolor{NoteIconcolor}{\faInfo}\ \  #1},
+  colbacktitle=NoteHeadercolor,
+  colback=white,
+  coltitle=black,
+  boxrule=0.2mm, 
+  leftrule=0.8mm, 
+  toptitle=1mm,
+  bottomtitle=1mm, 
+  titlerule=0pt,
+  left=2mm, 
+  right=2mm,
+  before skip=10pt,
+  after skip=10pt
+}
+
+\definecolor{WarningBordercolor}{HTML}{F0AD4E}
+\definecolor{WarningHeadercolor}{HTML}{FEF8F1}
+\definecolor{WarningIconcolor}{HTML}{EB9114}
+
+
+\newtcolorbox{callout-warning}[1][]{
+  colframe=WarningBordercolor,
+  title={\textcolor{WarningIconcolor}{\faExclamationTriangle}\ \  #1},
+  colbacktitle=WarningHeadercolor,
+  colback=white,
+  coltitle=black,
+  boxrule=0.2mm,
+  leftrule=0.8mm,
+  toptitle=1mm,
+  bottomtitle=1mm,
+  titlerule=0pt,
+  left=2mm,
+  right=2mm,
+  before skip=10pt,
+  after skip=10pt
+}
+                         
+\definecolor{ImportantBordercolor}{HTML}{D9534F}
+\definecolor{ImportantHeadercolor}{HTML}{FCF1F1}
+\definecolor{ImportantIconcolor}{HTML}{CC1915}
+
+\newtcolorbox{callout-important}[1][]{
+  colframe=ImportantBordercolor,
+  title={\textcolor{ImportantIconcolor}{\faExclamation}\ \  #1},
+  colbacktitle=ImportantHeadercolor,
+  colback=white,
+  coltitle=black,
+  boxrule=0.2mm,
+  leftrule=0.8mm,
+  toptitle=1mm,
+  bottomtitle=1mm,
+  titlerule=0pt,
+  left=2mm,
+  right=2mm,
+  before skip=10pt,
+  after skip=10pt
+}
+
+\definecolor{TipBordercolor}{HTML}{06B875}
+\definecolor{TipHeadercolor}{HTML}{F0FAF4}
+\definecolor{TiptIconcolor}{HTML}{01A047}
+
+\newtcolorbox{callout-tip}[1][]{
+  colframe=TipBordercolor,
+  title={\textcolor{TiptIconcolor}{\faLightbulb}\ \  #1},
+  colbacktitle=TipHeadercolor,
+  colback=white,
+  coltitle=black,
+  boxrule=0.2mm,
+  leftrule=0.8mm,
+  toptitle=1mm,
+  bottomtitle=1mm,
+  titlerule=0pt,
+  left=2mm,
+  right=2mm,
+  before skip=10pt,
+  after skip=10pt
+}
+
+\definecolor{CautionBordercolor}{HTML}{FD7E14}
+\definecolor{CautionpHeadercolor}{HTML}{FFF5F0}
+\definecolor{CautiontIconcolor}{HTML}{FC5401}
+
+\newtcolorbox{callout-caution}[1][]{
+  colframe=CautionBordercolor,
+  title={\textcolor{CautiontIconcolor}{\faFire}\ \  #1},
+  colbacktitle=CautionpHeadercolor,
+  colback=white,
+  coltitle=black,
+  boxrule=0.2mm,
+  leftrule=0.8mm,
+  toptitle=1mm,
+  bottomtitle=1mm,
+  titlerule=0pt,
+  left=2mm,
+  right=2mm,
+  before skip=10pt,
+  after skip=10pt
+}

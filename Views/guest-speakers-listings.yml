@@ -1,0 +1,72 @@
+# -----------
+# yaml listing for the Datasets page in the Yale School of 
+# Public Health (YSPH) Resource Navigation Tool github.io page.
+# 
+# Filter by three categories: 
+#   1. Region and/or affiliation 
+#   2. Dataset content type
+#   3. Accessibility
+# 
+# Sort by title and date updated.
+# 
+# Author: Shelby Golden, M.S.
+#   Date: May 10th, 2025
+# 
+# Last Updated: 
+
+items:
+  tiles:
+    - name: Wies Rafi, Ph.D.
+      date-added: 2025-10-19
+      date-updated: 2025-10-19
+      titles: |
+        Associate Chief Information Officer of the Health Sciences Division
+      bio: |
+        As Associate Chief Information Officer of the Health Sciences Division, Wies reports directly to the IT CIO, John Barden. In this role, he provides strategic IT guidance and support across multiple Yale schools and health entities, enhancing coordination, efficiencies, and communication in research computing, academic technologies, client services, administrative systems, and business analytics.
+        </br>
+        </br>
+        He was a lecturer for the Yale's AI Clarity Platform portion of the &quotInformation Session on HPC and AI/Clarity&quot on Monday, January 27<sup>th</sup>, 2025.
+      image: Views/Images/Guest Speakers/wies-rafi.png
+      ysph-site: https://your.yale.edu/information-technology/information-technology-senior-leadership/wies-rafi
+      group: https://research.computing.yale.edu/
+    - name: Hadar Call
+      date-added: 2025-10-19
+      date-updated: 2025-10-19
+      titles: |
+        Associate CIO, Enterprise Systems and Platforms
+      bio: |
+        Hadar was appointed Associate CIO of Enterprise Systems and Platforms in November 2023. In this role, she leads teams that manage systems for Yale Advancement, Cultural Heritage, and Facilities, and oversees the IT Learning and Development team to enhance the IT workforce through training and development initiatives.
+        </br>
+        </br>
+        She was a lecturer for the Yale's AI Clarity Platform portion of the &quotInformation Session on HPC and AI/Clarity&quot on Monday, January 27<sup>th</sup>, 2025.
+      image: Views/Images/Guest Speakers/hadar-call.png
+      ysph-site: https://your.yale.edu/information-technology/information-technology-senior-leadership/hadar-call
+      group: https://research.computing.yale.edu/
+      linkedin: https://www.linkedin.com/in/hadar-call-0430a53/
+    - name: Aya Nawano, Ph.D.
+      date-added: 2025-10-19
+      date-updated: 2025-10-19
+      titles: | 
+        Computational Research Support Analyst
+      bio: |
+        She was the lecturer for the HPC portion of the &quotInformation Session on HPC and AI/Clarity&quot on Monday, January 27<sup>th</sup>, 2025.
+      image: Views/Images/Guest Speakers/aya-nawano.png
+      email: aya.nawano@yale.edu
+      ysph-site: https://research.computing.yale.edu/profile/aya-nawano-phd
+      group: https://research.computing.yale.edu/
+      linkedin: https://www.linkedin.com/in/aya-nawano/
+    - name: Professor Thomas Lumley
+      date-added: 2025-10-19
+      date-updated: 2025-10-19
+      titles: | 
+        Chair in Biostatistics Statistics at the University of Auckland
+      bio: |
+        Thomas Lumley is a Professor in the Department of Statistics at the University of Auckland, specializing in statistical methodology and data analysis, particularly in epidemiology, bioinformatics, and complex surveys. He is known for his significant contributions to statistical software development and bridging the gap between theoretical and practical applications in the analysis of complex datasets.
+        </br>
+        </br>
+        He was the lecturer for the &quotChoosing Good Subsamples for Measuring New Variables&quot on Monday, February 3<sup>rd</sup> and &quotAnalyzing Larger Data in R&quot on Tuesday, February 4<sup>th</sup>, 2025.
+      image: Views/Images/Guest Speakers/thomas-lumley.png
+      email: t.lumley@auckland.ac.nz
+      ysph-site: https://profiles.auckland.ac.nz/t-lumley
+      linkedin: https://www.linkedin.com/in/thomas-lumley-59a325b/
+      

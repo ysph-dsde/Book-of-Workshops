@@ -25,7 +25,7 @@ $footer-fg: #cad2dd;
     --figure-img-shadow: none;
 
     --code-block-color: #d3d3d3;
-    --code-block-bg: #2e2e2e;
+    --code-block-bg: #3b3b3b;
     --code-block-bg-header: #424242;
     --code-block-bg-boarder: #828282;
     --code-color: #e37b95;
@@ -52,6 +52,8 @@ $footer-fg: #cad2dd;
     --callout-caution-title: #ffe3ce;
     --callout-tip-bg: #5f8d5f;
     --callout-tip-title: #bafcd0;
+    --callout-attention-bg: #453258;
+    --callout-attention-title: #E09EFF;
 
     --listing-card-border: #5d6173;
     --listing-card-shadow: rgba(255, 255, 255, 0.04);
@@ -70,6 +72,50 @@ body {
 }
 
 
+/* Term highlighting and popup */
+
+.text-term {
+    color: var(--dsde-purple-light);
+    font-weight: 500;
+    position: relative;
+}
+.code-term {
+    color: var(--dsde-purple-light);
+    background-color: var(--dsde-purple-dark);
+    font-family: "Fira Mono", "Menlo", "Andale Mono", monospace;
+    font-weight: 400;
+    padding: 2px 4px;
+    font-size: 0.85rem;
+    border-radius: 4px;
+    position: relative;
+}
+.text-term:hover .popup-text-term, .code-term:hover .popup-code-term {
+    display: block;
+}
+.popup-text-term, .popup-code-term {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--sidebar-bg-docked);
+    border: 1px solid var(--sidebar-fg);
+    font-family: var(--bs-body-font-family);
+    color: var(--bs-body-color);
+    font-weight: normal;
+}
+.popup-text-term {
+    font-size: 0.85rem;
+}
+.popup-code-term {
+    font-size: 0.85rem;
+}
+
+ /* Code highlighting */
+
+ header .quarto-secondary-nav a, header .quarto-secondary-nav .btn, header .quarto-secondary-nav code {
+    border-color: 0.4px solid var(--sidebar-input-border) !important;
+}
 
 /* quarto syntax highlight colors */
 /* https://scm.vcu.edu/projects/EFD/repos/cs-24-330-capstone/browse/reports/project-overview_files/libs/quarto-html/quarto-syntax-highlighting.css?at=fb52a987f9659d13b8785a2047341b3363008694 */
@@ -111,6 +157,7 @@ body {
 
 
 /* other quarto variables */
+
 :root {
     --zenburn-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
@@ -323,11 +370,113 @@ code span.kw {
 .callout-icon {
     filter: brightness(200%);
 }
-
 .callout-body {
     font-weight: var(--bs-body-font-weight);
     color: var(--bs-body-color);
+    margin-top: 20px !important;
 }
+
+.callout {
+
+    padding: .5em;
+    color: var(--callout-color);
+
+    .callout-header {
+        font-weight: bolder;
+        font-size: 110%;
+        background: none;
+    }
+    .callout-body {
+        font-weight: var(--bs-body-font-weight);
+    }
+    .callout-icon::before {
+        height: 1.1rem;
+        width: 1.1rem;
+        background-size: 1.1rem 1.1rem;
+    }
+
+    /* Inline code in callout */
+
+    p>code,
+    a code,
+    ul code,
+    ol code {
+        color: var(--callout-color);
+        background-color: hsl(from var(--callout-color) h s l / 10%);
+        border: none;
+        padding: 2px 4px;
+        padding-left: 5px;
+        padding-right: 5px;
+        font-size: 100%;
+    }
+
+
+    }
+
+    .callout-warning {
+        background-color: transparent !important;
+        z-index: 0;
+
+        .callout-header {
+            background-color: hsl(from var(--callout-warning-bg) h s l / 30%) !important;
+            position: relative;
+            padding: 8px 16px 10px 16px !important;
+            margin: -8px -9px -10px -9px !important;
+            z-index: 1;
+        }
+    }
+
+    .callout-note {
+        background-color: transparent !important;
+        z-index: 0;
+
+        .callout-header {
+            background-color: hsl(from var(--callout-note-bg) h s l / 30%) !important;
+            position: relative;
+            padding: 8px 16px 10px 16px !important;
+            margin: -8px -9px -10px -9px !important;
+            z-index: 1;
+        }
+    }
+
+    .callout-important {
+        background-color: transparent !important;
+        z-index: 0;
+
+        .callout-header {
+            background-color: hsl(from var(--callout-important-bg) h s l / 30%) !important;
+            position: relative;
+            padding: 8px 16px 10px 16px !important;
+            margin: -8px -9px -10px -9px !important;
+            z-index: 1;
+        }
+    }
+
+    .callout-caution {
+        background-color: transparent !important;
+        z-index: 0;
+
+        .callout-header {
+            background-color: hsl(from var(--callout-caution-bg) h s l / 30%) !important;
+            position: relative;
+            padding: 8px 16px 10px 16px !important;
+            margin: -8px -9px -10px -9px !important;
+            z-index: 1;
+        }
+    }
+
+    .callout-tip {
+        background-color: transparent !important;
+        z-index: 0;
+
+        .callout-header {
+            background-color: hsl(from var(--callout-tip-bg) h s l / 30%) !important;
+            position: relative;
+            padding: 8px 16px 10px 16px !important;
+            margin: -8px -9px -10px -9px !important;
+            z-index: 1;
+        }
+    }
 
 /* Inline code in callout */
 p>code,
@@ -357,7 +506,7 @@ pre {
 pre.sourceCode {
     border: solid;
     border-color: var(--code-block-bg-boarder);
-    border-width: 1px;
+    border-width: 0px;
 }
 
 div.sourceCode {
@@ -387,59 +536,3 @@ div:is(.code-with-filename) {
 }
 
 /* END MODIFICATION */
-
-.callout-warning {
-    background-color: hsl(from var(--callout-warning-bg) h s l / 30%);
-    border-top-color: var(--callout-warning-bg);
-    border-right-color: var(--callout-warning-bg);
-    border-bottom-color: var(--callout-warning-bg);
-
-    .callout-header {
-        color: var(--callout-warning-title);
-    }
-}
-
-.callout-note {
-    background-color: hsl(from var(--callout-note-bg) h s l / 30%);
-    border-top-color: var(--callout-note-bg);
-    border-right-color: var(--callout-note-bg);
-    border-bottom-color: var(--callout-note-bg);
-
-
-    .callout-header {
-        color: var(--callout-note-title);
-    }
-}
-
-.callout-important {
-    background-color: hsl(from var(--callout-important-bg) h s l / 30%);
-    border-top-color: var(--callout-important-bg);
-    border-right-color: var(--callout-important-bg);
-    border-bottom-color: var(--callout-important-bg);
-
-    .callout-header {
-        color: var(--callout-important-title);
-    }
-}
-
-.callout-caution {
-    background-color: hsl(from var(--callout-caution-bg) h s l / 30%);
-    border-top-color: var(--callout-caution-bg);
-    border-right-color: var(--callout-caution-bg);
-    border-bottom-color: var(--callout-caution-bg);
-
-    .callout-header {
-        color: var(--callout-caution-title);
-    }
-}
-
-.callout-tip {
-    background-color: hsl(from var(--callout-tip-bg) h s l / 30%);
-    border-top-color: var(--callout-tip-bg);
-    border-right-color: var(--callout-tip-bg);
-    border-bottom-color: var(--callout-tip-bg);
-
-    .callout-header {
-        color: var(--callout-tip-title);
-    }
-}

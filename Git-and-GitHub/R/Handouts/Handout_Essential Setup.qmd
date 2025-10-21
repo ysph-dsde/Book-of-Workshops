@@ -1,0 +1,240 @@
+---
+title: "Essential Setup: GitHub Account Creation and Git Installation"
+subtitle: |
+  Getting Started with Git and GitHub Part 1 \
+  Coffee, Cookies, and Coding (C-cubed) Workshops
+date: 9/29/2025
+date-format: long
+format:
+  pdf:
+    include-in-header: 
+      - text: |
+          \input{Handout Formatting/PDF Formatting Script.tex}
+      - text: |
+          % GitHub button formatting.
+          \definecolor{GitHubBackground}{HTML}{00023F}
+          \definecolor{GitHubBorder}{HTML}{D0D9E0}
+          \definecolor{GitHubFont}{HTML}{ffffff}
+          
+          \newtcbox{\GitHubSignUp}[1][GitHubBackground]{
+            on line, box align=center, colframe=GitHubBorder, colback=#1, halign=center,
+            boxrule=0.5pt, arc=3pt, left=6pt, right=6pt, top=3pt, bottom=3pt, boxsep=0pt, 
+            tcbox raise base, enhanced, fontupper=\fontspec{Arial}\color{GitHubFont}
+          }
+highlight-style: Handout Formatting/idle-fingers-light.theme
+editor: source
+bibliography: references.bib
+csl: nature.csl
+---
+
+If you have not yet, you will need to get a GitHub account and to install Git on your local device. This document was constructed from Atlassian's _[How to install Git](https://www.atlassian.com/git/tutorials/install-git)_ tutorial and Git-SCM's [download pages](https://git-scm.com/downloads)\ [@atlassian_git; @git_macs; @git_pc; @git_linux].
+
+\vspace{2ex}
+
+::: {.callout-important}
+## Directions Provided in Bash
+
+This workshop is designed to be compatible with Bash command-line interfaces, which is the default setting for macOS with Terminal and many Linux distributions. Windows users will need to ensure their command-line interface is Bash compatible, as not all commands will work in other environments.
+:::
+
+# Sign Up for GitHub Account
+
+To sign up for a GitHub account, navigate to [https://github.com/](https://github.com/) and click the  \GitHubSignUp{Sign up} button in the top right-hand corner. Fill in the required fields with your email, password, username, and country/region.
+
+Your GitHub username must consist of alphanumeric characters or single hyphens and cannot begin or end with a hyphen. It's important to carefully consider your username choice, especially if you plan to share it with professional collaborators or include it in your professional portfolio. Below are some suggestions to consider from the _[Happy Git and GitHub for the useR](https://happygitwithr.com/github-acct)_\ [@github_username]:
+
+- Include your name.
+- Keep it short and lowercase.
+- Keep it consistent with other accounts you want associated with your work.
+- Appropriate for sharing with an employer.
+- Avoid highlighting temporary affiliations, such as the current university you attend.
+- Ensure it's unique and doesn't have a special meaning in programming (e.g., avoid terms like `NA`).
+
+GitHub offers materials and short courses to help new users learn their interface: _[GitHub Skills](https://skills.github.com/)_, _[Repositories documentation](https://docs.github.com/en/repositories)_, and _[About GitHub Command-Line Interface (CLI)](https://docs.github.com/en/github-cli/github-cli/about-github-cli)_\ [@github_skills; @github_repos_docs; @github_cli].
+
+
+# Install Git
+
+For all systems, you can confirm Git installation in the command-line interface:
+
+\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{1pt}\vspace{-2.5ex}
+\small \textbf{Command-Line Interface} \normalsize\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-0.8ex}
+
+```{.bash}
+git --version
+```
+
+\vspace{-5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-2.2ex}
+\small \textbf{Output} \normalsize\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-0.8ex}
+
+```{.bash}
+git version 2.49.0               # For Mac's
+git version 2.51.0.windows.1     # For PC's
+```
+
+\vspace{-5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}
+
+If you do not get this output, you will need to install Git. In the following pages, we provide commonly applicable instructions for macOS, Windows, and the Debian/Ubuntu and Fedora Linux distributions.
+
+\newpage
+
+## Windows
+
+Windows, by default, provides the PowerShell command-line interface, which does not support Bash commands. To emulate a Linux command-line interface, you have several options. The simplest option is to install Git for Windows: [https://gitforwindows.org/](https://gitforwindows.org/), which provides both Git and Git Bash, a Bash shell environment\ [@git_for_windows].
+
+Alternatively, you can emulate Linux command-line interfaces through other methods, or search for alternative commands compatible with the command-line interface you are using. If the option you are choosing does not include Git, it can be installed directly from: [https://git-scm.com/download/win](https://git-scm.com/download/win)\ [@git_scm_config; @git_pc].
+
+After you download Git for Windows, open the installer and follow the prompts. For this workshop, you can accept all default settings, but you may adjust them as desired. Below are some specific settings to consider as you go through the installer prompts.
+
+\vspace{2ex}
+
+::: {.callout-note}
+## Customize the Default Branch
+The legacy Git system refers to the primary branch containing your files as "master." During installation, you can prompt Git to label this branch as "main" instead.
+:::
+
+::: {.callout-warning}
+## Install OpenSSH
+**SSH** stands for "Secure Shell", and it is the preferred secure transfer protocol used to communicate between your local device and the GitHub remote repository.
+\vspace{2ex}
+You will want to ensure that OpenSSH is installed. The Git installer will provide you with the option to install OpenSSH during the setup process, and we recommend that you select this option.
+:::
+
+::: {.callout-tip}
+## Suggest Beginners Use "Fast-Forward or Merge" for \texttt{git pull}
+Later in this workshop, we will discuss what Git is doing with the \texttt{git pull} action. It is recommended that beginners select "Fast-Forward or Merge" by default, as rebasing is not beginner-friendly.
+:::
+
+::: {.callout-tip}
+## Suggest Installing the Git Credential Manager
+The Git credential Mmanager will cache your authentication information, making it easier to interact with remote repositories\ [@credential_manager].
+:::
+
+## Mac
+
+If XCode _is_ installed in your Applications folder, Git is already available. However, you might not have the the osxkeychain credential manager, **git-credential-osxkeychain**, installed. If you plan to use HTTPS transfer protocols instead of SSH Keys, you might want to install this as it caches your authentication information in the macOS keychain, avoiding the need to re-enter them each time. You can skip to the directions for adding this capability if needed.
+
+If XCode _is not_ installed, you can install Git with the osxkeychain credential manager through either Homebrew (installation instructions at [https://brew.sh/](https://brew.sh/)) or MacPorts (installation instructions at [https://www.macports.org/install.php](https://www.macports.org/install.php))\ [@homebrew; @macports]. Assuming you have one of these already installed:
+
+\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{1pt}\vspace{-2.5ex}
+\small \textbf{Command-Line Interface} \normalsize\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-0.8ex}
+
+```{.bash}
+# With Homebrew
+brew install git
+
+# With MacPorts
+sudo port install git +bash_completion +credential_osxkeychain +doc
+```
+
+\vspace{-5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}
+
+Installing Git using Homebrew or MacPorts will automatically include the osxkeychain credential manager. You can confirm its installation by running the following command\ [@osxkeychain]:
+
+\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{1pt}\vspace{-2.5ex}
+\small \textbf{Command-Line Interface} \normalsize\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-0.8ex}
+
+```{.bash}
+git credential-osxkeychain
+```
+
+\vspace{-5.2ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-2.2ex}
+\small \textbf{Output} \normalsize\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-0.8ex}
+
+```{.bash}
+usage: git credential-osxkeychain <get|store|erase>
+```
+
+\vspace{-5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}
+
+
+If you do not get this output, run the following:
+
+\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{1pt}\vspace{-2.5ex}
+\small \textbf{Command-Line Interface} \normalsize\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-0.8ex}
+
+```{.bash}
+# 1. Install. Linebreak does NOT denote a space in the URL.
+curl -O http://github-media-downloads.s3.amazonaws.com/osx/git-credential -osxkeychain
+
+# 2. Relocate to ~/bin/.
+sudo mv git-credential-osxkeychain /usr/local/bin/
+
+# 3. Change file permissions to make it executable.
+chmod u+x /usr/local/bin/git-credential-osxkeychain
+
+# 4. Configure Git to use the osxkeychain credential manager.
+git config --global credential.helper osxkeychain
+```
+
+\vspace{-5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}
+
+If your OS X version is El Capitan (OS X 10.11) or earlier, you will need to download the tarball and build Git directly from the source.
+
+\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{1pt}\vspace{-2.5ex}
+\small \textbf{Command-Line Interface} \normalsize\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-0.8ex}
+
+```{.bash}
+# 1. If you do not have XCode Command Line Tools, install it.
+xcode-select --install
+
+# 2. Install openssl with Homebrew.
+brew install openssl
+
+# 3. Change file permissions to make it executable.
+git clone https://github.com/git/git.git
+
+# 4. Build Git from the source and adding flags.
+NO_GETTEXT=1 make CFLAGS="-I/usr/local/opt/openssl/include" LDFLAGS="-L/usr/local/opt/openssl/lib"
+```
+
+\vspace{-5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}
+
+## Linux and Unix
+
+Git recommends using the preferred package manager for your distribution to install Git. However, if you prefer to download and build Git from a tarball, you can follow the instructions provided by Atlassian under the section _Build Git from source on Linux_: [https://www.atlassian.com/git/tutorials/install-git](https://www.atlassian.com/git/tutorials/install-git).
+
+Below, we have included instructions for several distributions. For information on additional systems, please visit the Git-SCM download page: [https://git-scm.com/downloads/linux](https://git-scm.com/downloads/linux).
+
+\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{1pt}\vspace{-2.5ex}
+\small \textbf{Command-Line Interface} \normalsize\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-0.8ex}
+
+```{.bash}
+# Stable deployment of Debian/Ubuntu
+apt-get install git
+
+# Ubuntu Personal Package Archive (PPA)
+add-apt-repository ppa:git-core/ppa
+apt update
+apt install git
+
+# Fedora
+yum install git     # Up to Fedora 21
+dnf install git     # Fedora 22 and later
+```
+
+\vspace{-4ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}
+
+# References

@@ -1048,6 +1048,8 @@ $theme-name: null !default;
 // quarto-scss-analysis-annotation { "origin": "Defaults from user-defined SCSS" }
 
 
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&display=swap');
+
 $font-family-sans-serif: "Roboto", "Segoe UI", "Helvetica Neue", Helvetica, sans-serif;
 $font-family-monospace: "Fira Mono", "Menlo", "Andale Mono", monospace;
 $font-size-root: 16px;
@@ -1055,7 +1057,6 @@ $h1-font-size: 2.2em;
 $h2-font-size: 1.75em;
 $h3-font-size: 1.5em;
 $h4-font-size: 1.25em;
-
 
 
 // Heading font size customization
@@ -12840,13 +12841,215 @@ main.quarto-banner-title-block > section:first-child > h4 {
     --callout-caution-title: #d6850d;
     --callout-tip-bg: #e8f3ee;
     --callout-tip-title: #050;
+    --callout-attention-bg: #eedcff;
+    --callout-attention-title: #7634A6;
 
     --listing-card-border: #a1a7ac;
     --listing-card-shadow: rgba(0, 0, 0, 0.04);
     --listing-card-shadow-hover: rgba(0, 0, 0, 0.1);
+
+    --icon-color: #bd5319;
+    --icon-hover-color: darken($icon-color, 10%);
+
+    --dsde-purple: #7634a6;
+    --dsde-purple-light: #bd82fb;
+    --dsde-purple-dark: #451e62;
+    --dsde-blue: #00356b;
+    --dsde-blue-light: #3e70a1;
+}
+
+$icon-color: #bd5319;
+$icon-hover-color: darken($icon-color, 10%);
+
+$dsde-purple: #7634a6;
+$dsde-purple-light: #bd82fb;
+$dsde-purple-dark: #451e62;
+$dsde-blue: #00356b;
+$dsde-blue-light: #3e70a1;
+
+
+/* Term highlighting and popup */
+
+.text-term {
+    color: var(--dsde-purple);
+    font-weight: 700;
+    position: relative;
+}
+.code-term {
+    color: var(--dsde-purple);
+    background-color: lighten($dsde-purple-light, 22%);
+    font-family: "Fira Mono", "Menlo", "Andale Mono", monospace;
+    font-weight: 400;
+    padding: 2px 4px;
+    font-size: 0.85rem;
+    border-radius: 4px;
+    position: relative;
+}
+.text-term:hover .popup-text-term, .code-term:hover .popup-code-term {
+    display: block;
+}
+.popup-text-term, .popup-code-term {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--sidebar-bg-docked);
+    border: 1px solid var(--sidebar-fg);
+    font-family: var(--bs-body-font-family);
+    color: var(--bs-body-color);
+    font-weight: normal;
+    padding: 5px;
+    box-shadow: var(--figure-img-shadow);
+    z-index: 10;
+    width: max-content;
+    max-width: 200px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+.popup-text-term {
+    font-size: 0.85rem;
+}
+.popup-code-term {
+    font-size: 0.85rem;
 }
 
 
+/* Correct random quarto elements */
+
+.quarto-secondary-nav-title {
+    margin-top: .3em;
+    color: var(--sidebar-fg);
+    padding-top: 4px;
+}
+header .quarto-secondary-nav a, header .quarto-secondary-nav .btn, header .quarto-secondary-nav code {
+    padding: 10px;
+    background: var(--bs-body-bg);
+    border-color: var(--sidebar-border) !important;
+}
+#quarto-document-content figure figcaption {
+    text-align: left;
+}
+.nav-footer .nav-link {
+    padding: 0rem 0rem 0rem 0rem !important; /* top, right, bottom, left */
+}
+.nav-footer .nav-item {
+    padding: 0rem 1rem 0rem 1rem !important; /* top, right, bottom, left */
+}
+h4 > a.anchorjs-link {
+    display: none;
+}
+
+
+/* Session information */
+
+.session-details {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+.session-details summary {
+  cursor: pointer;
+  list-style: none;
+  outline: none;
+  font-weight: bold;
+}
+.session-details .summary-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.session-details h2 {
+  font-size: 1.5rem;
+  margin: 0;
+  flex-grow: 1;
+}
+.session-details h2 > a.anchorjs-link {
+  display: none;
+}
+.session-details .arrow {
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+details[open] .arrow {
+  transform: rotate(90deg);
+}
+.session-details p,
+.session-details ul {
+  margin-bottom: 20px;
+}
+.session-details code {
+  color: inherit !important;
+  background: none !important;
+  padding: 0 !important;
+  display: inline;
+}
+.session-details h3 {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-top: 20px;
+}
+.session-details h3 > a.anchorjs-link {
+  display: none;
+}
+.session-details ul {
+  padding-left: 20px;
+}
+.session-details strong {
+  font-weight: bold;
+}
+.instructors p {
+  margin: 5px 0;
+}
+.learning-goals ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+.session-details a {
+  color: #1a73e8;
+  text-decoration: none;
+}
+.session-details a:hover {
+  text-decoration: underline;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+  .session-details .summary-content {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-column-gap: 10px; /* Increase spacing before switching to overlay */
+    align-items: center;
+  }
+
+  .session-details h2 {
+    grid-row: 1;
+    grid-column: 1 / -1;
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  .session-details .arrow {
+    grid-row: 1;
+    grid-column: 2;
+    justify-self: end;
+    background-color: #f9f9f9; /* Match arrow's background to container's background */
+    padding: 10rem 1rem; /* Add some padding around the arrow */
+    z
+  }
+}
+
+/* Media query for smaller screens */
+
+
+/* Code highlighting */
 
 /* quarto syntax highlight colors */
 /* https://scm.vcu.edu/projects/EFD/repos/cs-24-330-capstone/browse/reports/project-overview_files/libs/quarto-html/quarto-syntax-highlighting.css?at=fb52a987f9659d13b8785a2047341b3363008694 */
@@ -12886,8 +13089,52 @@ main.quarto-banner-title-block > section:first-child > h4 {
     --tango-hl-kw-color: #204a87;
 }
 
+p code:not(.sourceCode), li code:not(.sourceCode), td code:not(.sourceCode) {
+    color: var(--code-color); /* Code snips - HTML */
+    background-color: var(--code-block-bg);
+    padding: 4px 6px;
+    font-size: 85%;
+    border-radius: 2px;
+}
 
-/* other quarto variables */
+#quarto-document-content p>code, #quarto-document-content a code, #quarto-document-content ul code, #quarto-document-content ol code {
+    color: var(--code-color); /* Code snips - Quarto */
+    background-color: var(--code-block-bg);
+    padding: 4px 6px;
+    font-size: 85%;
+    border-radius: 2px;
+}
+
+.callout-attention {
+    background-color: hsl(from var(--callout-attention-bg) h s l / 30%);
+    border-left: 5px solid var(--callout-attention-title);
+    border-radius: 0.2em;
+    padding: 0px 20px;
+    margin: 20px 0;
+}
+
+.callout-attention h2 {
+    color: var(--callout-attention-title);
+    padding-top: 0.5em;
+    padding-left: 22px;
+    font-family: var(--font-family-sans-serif);
+    font-size: 120%;
+    font-weight: 300;
+    position: relative;
+}
+
+.callout-attention h2::before {
+    content: "\f06a"; /* Font Awesome exclamation icon */
+    font-family: "Font Awesome 5 Free"; /* Specify the Font Awesome font */
+    font-weight: 900; /* Necessary for solid style icons */
+    color: var(--callout-attention-title); /* Same color as the attention title */
+    position: absolute;
+    left: 0px;
+    top: 52%;
+    transform: translateY(-50%);
+}
+
+/* Code highlighting */
 
 :root {
     --tango-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -13103,8 +13350,298 @@ code span.kw {
     content: "</";
 }
 
-/*# sourceMappingURL=debc5d5d77c3f9108843748ff7464032.css.map */
 
+/* Style buttons */
+.btn {
+    background-color: var(--sidebar-fg);
+    border: solid;
+    color: var(--sidebar-bg-docked);
+    padding: 10px 10px;
+    cursor: pointer;
+    
+}
+
+
+/*-- scss: about-us people titles --*/
+
+body.people {
+  margin: 0;
+  padding: 0;
+}
+.people .tile-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  height: auto;
+}
+.people .tile {
+  display: flex;
+  background-color: none;
+  border: none;
+  border-radius: 8px;
+  margin: 10px 0;
+  align-items: flex-start;
+  min-width: 300px; /* Adjusted for smaller screens */
+  height: auto;
+  box-sizing: border-box;
+  transition: all 0.3s ease; /* Smooth transition for the tile */
+}
+.people .img-container {
+  margin-right: 20px;
+  height: 250px;
+  transition: all 0.3s ease; /* Smooth transition for the image container */
+}
+.people .img-container img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  transition: all 0.3s ease; /* Smooth transition for the image */
+}
+.people .tile-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-height: 0;
+  height: auto;
+  box-sizing: border-box;
+  transition: all 0.3s ease; /* Smooth transition for the content */
+}
+.people .tile-content h2 {
+  font-size: 1.5em;
+  color: #333;
+  font-weight: bold;
+  padding-top: 0;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+.people h2 > a.anchorjs-link {
+  display: none;
+}
+.people .tile-content .title-paragraph {
+  font-size: 0.7em;
+  color: #666;
+  margin-bottom: 5px;
+  word-wrap: break-word;
+}
+.people .tile-content .description {
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+  overflow: auto;
+}
+.people .contact-info {
+  font-size: 0.9em;
+  color: #666;
+  margin-bottom: 10px;
+  margin-left: 0em;
+  word-wrap: break-word;
+}
+.people .contact-info a {
+  color: #0056b3 !important;
+  font-weight: 400;
+}
+.people .link-bar {
+  font-size: 1.2em;
+  margin-left: 0em;
+  margin-bottom: 0.5em;
+}
+.people .link-bar-text a {
+  color: var(--icon-color) !important;
+  text-decoration: none;
+  margin-right: 8px;
+}
+.people .link-bar-text a:hover {
+  text-decoration: underline;
+}
+.people .profile-link {
+  font-size: 0.9em;
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: var(--icon-color) !important;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  align-self: flex-start;
+}
+.people .profile-link:hover {
+  background-color: #0056b3;
+}
+/* Media queries for responsive design */
+
+/* Below 600px, image on top */
+@media (max-width: 600px) {
+  .people .tile {
+    flex-direction: column;
+    align-items: center;
+  }
+  .people .img-container {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+    height: auto;
+  }
+  .people .img-container img {
+    width: 50%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  .people .tile-content {
+    width: 100%;
+  }
+}
+
+/* Layout for screens smaller than 992px, image on left */
+@media (max-width: 992px) and (min-width: 600px) {
+  .people .tile {
+    flex-direction: row;
+    width: 100%;
+  }
+  .people .img-container {
+    flex: 0 0 180px;
+    margin-right: 20px;
+  }
+  .people .tile-content {
+    width: calc(100% - 200px);  /* Adjust width based on image container and margin */
+  }
+}
+
+/* Layout for screens between 992px and 1225px, image on top */
+@media (min-width: 992px) and (max-width: 1225px) {
+  .people .tile {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .people .img-container {
+    flex: none;
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  .people .img-container img {
+    width: 50%;
+    height: 250px;
+  }
+  .people .tile-content {
+    width: 100%;
+  }
+}
+
+/* Wider screens (≥ 1218px), image on top */
+@media (min-width: 1218px) {
+  .people .tile {
+    flex-direction: column;
+    align-items: center;
+    width: calc(50% - 10px);
+  }
+  .people .img-container {
+    flex: none;
+    width: 100%;
+    height: auto;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  .people .img-container img {
+    width: 50%;
+    height: 250px;
+  }
+  .people .tile-content {
+    width: 100%;
+  }
+}
+
+/*-- scss: about us page - headers and sections --*/
+
+.alt_header {
+  width: 100%;
+  padding: 20px;
+  padding-left: 16%;
+  padding-right: 16%;
+  margin: auto;
+  margin-bottom: 20px;
+  margin-top: -45px;
+  border-top: 0px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  background: linear-gradient(to right, 
+    rgba(211, 211, 211, 0) 0%, 
+    var(--light-header-background) 20%, 
+    var(--light-header-background) 80%, 
+    rgba(211, 211, 211, 0) 100%);
+}
+.alt_header ul {
+  margin-left: 40px;
+  text-align: left;
+}
+.alt_header ul li {
+  margin-bottom: 10px;
+}
+
+/* Media Queries to Adjust Padding */
+@media (max-width: 1200px) {
+  .alt_header {
+    padding-left: 12.5%;
+    padding-right: 12.5%;
+    margin-top: -45px;
+  }
+}
+@media (max-width: 992px) {
+  .alt_header {
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-top: -35px;
+  }
+}
+@media (max-width: 768px) {
+  .alt_header {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+
+.subheader {
+  width: 70%;
+  padding: 20px;
+  margin: auto; 
+  margin-bottom: 20px;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  background: linear-gradient(to right, 
+    rgba(211, 211, 211, 0) 0%, 
+    var(--light-header-background) 20%, 
+    var(--light-header-background) 80%, 
+    rgba(211, 211, 211, 0) 100%);
+  text-align: left;
+}
+.subheader ul {
+  margin-left: 40px;
+  text-align: left;
+}
+.subheader ul li {
+  margin-bottom: 10px;
+}
+
+@media (max-width: 1200px) {
+  .subheader {
+    width: 80%;
+  }
+}
+@media (max-width: 992px) {
+  .subheader {
+    width: 90%;
+  }
+}
+@media (max-width: 768px) {
+  .subheader {
+    width: 90%;
+  }
+}
+
+
+/*# sourceMappingURL=debc5d5d77c3f9108843748ff7464032.css.map */
 
 .table,
 .dataTable {
@@ -13482,6 +14019,36 @@ p {
         margin-right: 0;
     }
 
+    /* Glossary Table */
+
+    .glossary-table {
+        width: 90%;
+        border-collapse: collapse;
+    }
+    .glossary-table th, .glossary-table td {
+        padding: 8px;
+        text-align: left;
+    }
+    .glossary-table thead th {
+        border-bottom: 2px solid black;
+        background-color: #f2f2f2;
+        font-size: 1.2em;
+    }
+    .glossary-table tbody td {
+        border-bottom: 1px solid #ddd;
+    }
+    .glossary-table tr:first-child td {
+        border-top: 2px solid black;
+    }
+    .glossary-table tr:last-child td {
+        border-bottom: 2px solid black;
+    }
+    .glossary-table .col1 {
+        width: 30%;
+        text-align: right;
+        font-weight: bold;
+    }
+
     /* DT */
 
     .dataTables_wrapper,
@@ -13546,7 +14113,6 @@ p {
     ol code {
         color: var(--code-color);
         background-color: var(--code-block-bg);
-        border-color: var(--code-block-bg-boarder);
         padding: 2px 4px;
         font-size: 85%;
         border-radius: 4px;
@@ -13557,8 +14123,6 @@ p {
     pre {
         color: inherit;
         background-color: null;
-        border-color: var(--code-block-bg-boarder);
-        border-radius: 6px;
         padding-top: 0.5em;
         padding-bottom: 0.5em;
     }
@@ -13570,13 +14134,24 @@ p {
 
     div.sourceCode {
         color: var(--code-block-color);
-        border: solid;
-        \\\
-        border-color: var(--code-block-bg-boarder);
+        background-color: var(--code-block-bg);
         margin-bottom: 1.6em;
-        border: none;
+        border: solid;
+        border-width: 2px;
+        border-color: var(--code-block-bg-boarder);
+        border-radius: 6px;
+    }
+
+    /* Manage the scroll bar to only show when needed */
+    #navcontainer {
         overflow-x: scroll;
         display: grid;
+        position: absolute;
+        /* absolute positioned contents will not affect their parents */
+        top: 0;
+        left: 0;
+        right: 0;
+        white-space: nowrap;
     }
 
     div.code-with-filename .code-with-filename-file {
@@ -13588,10 +14163,6 @@ p {
 
     /* source: https://developer.mozilla.org/en-US/docs/Web/CSS/:not */
     div:is(.code-with-filename) {
-        pre.sourceCode {
-            border-radius: 0px 0px 6px 6px;
-        }
-
         div.sourceCode {
             border-radius: 0px 0px 6px 6px;
         }
@@ -13677,6 +14248,7 @@ p {
         }
 
         /* Inline code in callout */
+
         p>code,
         a code,
         ul code,
@@ -13748,7 +14320,6 @@ p {
             color: var(--callout-tip-title);
         }
     }
-
 
     /* Leaflet */
 

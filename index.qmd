@@ -1,27 +1,271 @@
 ---
-  editor: source
-  markdown: 
-  editor_options: 
-  chunk_output_type: console
-  toc: true
-  toc-depth: 3
-  number-sections: false
-  unnumbered: true
+  listing:
+    - id: creators
+      template: Views/index.ejs
+      contents: Views/people-listings.yml
+      categories: false
+      sort-ui: false
+      filter-ui: false
+    - id: guests
+      template: Views/index.ejs
+      contents: Views/guest-speakers-listings.yml
+      categories: false
+      sort-ui: false
+      filter-ui: false
 ---
 
-# Preface {.unnumbered}
+<style>
+  /* Change the color to the --toc-active-color from light mode */
 
-Welcome! We are still working on the main page for our Book of Workshops.
+  #quarto-margin-sidebar ul a.active, #quarto-margin-sidebar ul a:hover, #quarto-content .margin-sidebar ul a.active, #quarto-content .margin-sidebar ul a:hover, #quarto-sidebar #TOC ul a.active, #quarto-sidebar #TOC ul a:hover {
+      color: #0d6efd !important;
+      border-left: 1px solid #0d6efd;
+  }
+  
+  /* Change the color to the --bs-body-color and --toc-border-color from light mode */
+  
+  #quarto-content .page-navigation a {
+      color: #212529;
+  }
+  #quarto-margin-sidebar ul a, #quarto-content .margin-sidebar ul a, #quarto-sidebar #TOC ul a {
+      border-color: #e9ecef;
+  }
+  
+  /* Change the color to the --link-color from light mode */
+  
+  #quarto-document-content a, #quarto-document-content .btn-link {
+      color: #4183C4;
+  }
+  
+  /* Change the footer further to be the same as the other pages in dark mode */
+  
+  .nav-footer a {
+      color: #cad2dd;
+      text-decoration: underline;
+  }
+  .nav-footer a:hover {
+      color: #cad2dd;
+  }
+  
+  /* Change the color to the --code-color and --code-block-bg from light mode */
+  
+  #quarto-document-content p>code, #quarto-document-content a code, #quarto-document-content ul code, #quarto-document-content ol code{
+      color: #c7254e;
+      background-color: #efefef;
+      padding: 2px 4px;
+      font-size: 85%;
+      border-radius: 4px;
+  }
+</style>
+
+## Preface {.unnumbered}
+
+
+Yale's [Public Health Data Science and Data Equity (DSDE)](https://ysph.yale.edu/research/research-centers-and-initiatives/public-health-data-science-and-data-equity/) team hosts workshops, tutorials, and information sessions known as Coffee, Cookie and Coding ($C^3$) Workshops. These sessions are designed to help Public Health and Biostatistics masters-level students at Yale effectively leverage computational tools and analytical methods in their educational and professional endeavors. While primarily intended for the Yale community, all are welcome and encouraged to attend and benefit from our offerings.
+
+You can find out more about past and upcoming work on our [website](https://ysph.yale.edu/public-health-research-and-practice/research-centers-and-initiatives/public-health-data-science-and-data-equity/events/). Additional tutorials will soon be available on our YouTube channel. If you are affiliated with Yale, you can set up an office hour appointment with one of our data scientists on our [Bookings Page](https://outlook.office365.com/book/DataScienceDataEquityOfficeHours@yale.edu/?ismsaljsauthenabled=true).
+
+## List of Offerings
+
+### Workshops Adapted for Asynchronous Learning
+
+```{=html}
+<details class="session-details">
+  <summary>
+    <div class="summary-content">
+      <h2>Getting Started with Git and GitHub</h2>
+      <span class="arrow">&gt;</span>
+    </div>
+  </summary>
+  
+  <p>Find the session materials and other related content in the <a href="Git-and-GitHub/index.qmd">Book of Workshops</a> chapter. All code can be found on its <a href="https://github.com/ysph-dsde/Book-of-Workshops/tree/main/Git-and-GitHub">GitHub</a> page.</p>
+  
+  <div class="instructors">
+    <h3>Part 1 Instructor:</h3>
+    <p><a href="https://www.linkedin.com/in/shelby-golden/">Shelby Golden, M.S.</a>, Data Scientist I</p>
+    <h3>Part 2 Instructors:</h3>
+    <p><a href="https://www.linkedin.com/in/shelby-golden/">Shelby Golden, M.S.</a>, Data Scientist I</p>
+    <p><a href="https://www.linkedin.com/in/howard-baik/">Howard Baik, M.S.</a>, Former Data Scientist I at Yale School of Public Health</p>
+  </div>
+
+  <div class="learning-goals">
+    <h3>Part 1 Learning Goals:</h3>
+    <ul>
+      <li>Understand the purpose and value of Git and GitHub in managing coding projects.</li>
+      <li>Learn how Git manages files for version control locally and distributes them through GitHub.</li>
+      <li>Set up and configure your local Git and GitHub accounts using either HTTPS or SSH Keys.</li>
+    </ul>
+    <h3>Part 2 Learning Goals:</h3>
+    <ul>
+      <li>Understand why Git and GitHub are valuable tools for version control and managing coding projects.</li>
+      <li>Get hands-on experience using Git and GitHub for solo projects through a worked through example showing common workflows.</li>
+      <li>Learn how to use GitHub to support collaboration and teamwork on group projects. </li>
+    </ul>
+  </div>
+</details>
+```
 
 
 ```{=html}
-<figure>
-  <a href="https://www.youtube.com/watch?v=XfR9iY5y94s"><video loop="true" autoplay="true" controls="false" style="padding-bottom: 10px;" width="100%">
-  <source src="/Git-and-GitHub/Images/Men-at-Work_Down-Under-Clip.mp4" type="video/mp4">
-  </video></a>
+<details class="session-details">
+  <summary>
+    <div class="summary-content">
+      <h2>Data Visualization with <code>ggplot2</code></h2>
+      <span class="arrow">&gt;</span>
+    </div>
+  </summary>
   
-  <figcaption style="text-align: left;">
-    Men At Work - Down Under (Official HD Video) from YouTube
-  </figcaption>
-</figure>
+  <p>Find the session materials and other related content in the <a href="Data-Visualization-with-ggplot2/index.qmd">Book of Workshops</a> chapter. All code can be found on its <a href="https://github.com/ysph-dsde/Book-of-Workshops/tree/main/Data-Visualization-with-ggplot2">GitHub</a> page.</p>
+  
+  <div class="instructors">
+    <h3>Instructor:</h3>
+    <p><a href="https://www.linkedin.com/in/shelby-golden/">Shelby Golden, M.S.</a>, Data Scientist I</p>
+  </div>
+
+  <div class="learning-goals">
+    <h3>Learning Goals:</h3>
+    <ul>
+      <li>Classify the Grammar of Graphics layers used in <code>ggplot2</code> syntax.</li>
+      <li>Applications of different geometries, effective use of layering, and polishing the result.</li>
+      <li>Interactive plots, map projections, and leveraging AI-assisted coding.</li>
+    </ul>
+  </div>
+</details>
 ```
+
+### Live Workshop Content
+
+```{=html}
+<details class="session-details">
+  <summary>
+    <div class="summary-content">
+      <h2>Choosing Good Subsamples for Measuring New Variables</h2>
+      <span class="arrow">&gt;</span>
+    </div>
+  </summary>
+  
+  <p><strong>Date Held:</strong>  Monday, February 3<sup>rd</sup>, 2025</p>
+  
+  <p>Find the session materials and other related content on the <a href="https://github.com/ysph-dsde/Thomas-Lumley-Workshops/">GitHub</a> page.</p>
+  
+  <div class="instructors">
+    <h3>Instructor:</h3>
+    <p>
+      <a href="https://profiles.auckland.ac.nz/t-lumley">Professor Thomas Lumley</a>, Chair in Biostatistics Statistics at the University of Auckland
+    </p>
+  </div>
+
+  <div class="learning-goals">
+    <h3>Learning Goals:</h3>
+    <p>
+      Researchers often want to add more measurements to an existing database. These might be new assays on stored specimens, or coding of free-text responses, or validation of EHR data against clinical notes. It is expensive to measure the new variables on everyone, so subsampling is attractive. It is possible to do much better than simple random sampling when measuring additional data: any information you already have can be used to identify the most informative records to measure. It's also possible to recover a lot of information from the records that are not chosen in the subsample. Software already exists in R to support most analyses you would want to do of the subsampled data.
+    </p>
+  </div>
+</details>
+```
+
+```{=html}
+<details class="session-details">
+  <summary>
+    <div class="summary-content">
+      <h2>Analyzing Larger Data in R</h2>
+      <span class="arrow">&gt;</span>
+    </div>
+  </summary>
+  
+  <p><strong>Date Held:</strong>  Tuesday, February 4<sup>th</sup>, 2025</p>
+  
+  <p>Find the session materials and other related content on the <a href="https://github.com/ysph-dsde/Thomas-Lumley-Workshops/">GitHub</a> page.</p>
+  
+  <div class="instructors">
+    <h3>Instructor:</h3>
+    <p>
+      <a href="https://profiles.auckland.ac.nz/t-lumley">Professor Thomas Lumley</a>, Chair in Biostatistics Statistics at the University of Auckland
+    </p>
+  </div>
+
+  <div class="learning-goals">
+    <h3>Learning Goals:</h3>
+    <p>
+      Even with growing computer power, researchers sometimes want to work with datasets that are much bigger than computer memory. The interfaces to allow selection, summarization, and aggregation of very large datasets from R are increasingly transparent and easy to set up. I will demonstrate simple analysis of large datasets in R. I will also show how some more complicated analyses can be partitioned between R and a database to exploit the advantages of both systems. I will primarily use duckdb, but I will refer to other large-data interfaces.
+    </p>
+  </div>
+</details>
+```
+
+```{=html}
+<details class="session-details">
+  <summary>
+    <div class="summary-content">
+      <h2> Getting Started with R Shiny: Build and Deploy Interactive Web Apps</h2>
+      <span class="arrow">&gt;</span>
+    </div>
+  </summary>
+  
+  <p><strong>Date Held:</strong> Monday, February 17<sup>th</sup>, 2025
+  
+  <p>Find the session materials and other related content on the <a href="https://github.com/ysph-dsde/Getting-Started-with-R-Shiny-Workshop">GitHub</a> page.</p>
+  
+  <div class="instructors">
+    <h3>Instructor:</h3>
+    <p><a href="https://www.linkedin.com/in/howard-baik/">Howard Baik, M.S.</a>, Former Data Scientist I at Yale School of Public Health</p>
+  </div>
+
+  <div class="learning-goals">
+    <h3>Learning Goals:</h3>
+    <ul>
+      <li>Understand the structure of an R Shiny app, including UI (User Interface) and server components.</li>
+      <li>Use reactive elements to make your app dynamic and interactive.</li>
+      <li>Build a simple web application using a data example.</li>
+      <li>Deploy Shiny apps using a self-service platform like shinyapps.io.</li>
+    </ul>
+  </div>
+</details>
+```
+
+### Tutorials and Information Sessions
+
+```{=html}
+<details class="session-details">
+  <summary>
+    <div class="summary-content">
+      <h2>Information Session on HPC and AI/Clarity</h2>
+      <span class="arrow">&gt;</span>
+    </div>
+  </summary>
+  
+  <p><strong>Date Held:</strong> Monday, January 27<sup>th</sup>, 2025</p>
+  
+  <p>Find the session materials and other related content on the <a href="https://github.com/ysph-dsde/Information-Session-on-HPC-and-AI-Clarity">GitHub</a> page.</p>
+  
+  <div class="instructors">
+    <h3>The High-Performance Computing (HPC) Session Instructor:</h3>
+    <p><a href="https://research.computing.yale.edu/profile/aya-nawano-phd">Aya Nawano, Ph.D.</a>, Computational Research Support Analyst</p>
+    
+    <h3>The Yale’s AI Clarity Platform Session Instructors:</h3>
+    <p>
+      <a href="https://your.yale.edu/information-technology/information-technology-senior-leadership/wies-rafi">Weis Rafi, PhD.</a>, Associate Chief Information Officer of the Health Sciences Division<br>
+      <a href="https://your.yale.edu/information-technology/information-technology-senior-leadership/hadar-call">Hadar Call</a>, Associate Chief Information Officer, Enterprise Systems and Platforms
+    </p>
+  </div>
+
+  <div class="learning-goals">
+    <h3>Learning Goals:</h3>
+    <ul>
+      <li>Understand the services provided by the Yale Center for Research Computing (YCRC), including high-performance computing clusters (HPCs), and how they benefit researchers. Learn how to request access to YCRC’s HPC resources for your research needs.</li>
+      <li>Gain insights into Yale’s Clarity platform, its secure AI tools, and enhanced data protection features. Explore future capabilities of the Clarity platform, including creating custom chatbots and integrating AI models into research and teaching applications.</li>
+    </ul>
+  </div>
+</details>
+```
+
+## Meet The Creators
+
+::: {#creators}
+:::
+
+## Meet The Guest Speakers
+
+::: {#guests}
+:::
+

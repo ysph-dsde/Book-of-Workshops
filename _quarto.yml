@@ -28,6 +28,7 @@ book:
   page-footer:
     background: light 
     left: "This site was built on a ysph-dsde.github.io page. It was rendered using Quarto (v 1.6.3) and theme [bookup-html](https://github.com/juba/bookup-html/tree/main)." 
+    center: "If you are affiliated with Yale, please provide feedback [here](https://forms.office.com/Pages/ResponsePage.aspx?id=u76M3Tkh-E20EU4-h6vrXH-TvKDg8gZHqoE3FAMavy5URFBRQ1ZVUFlFVEY0MElSNTlSSzJTWkhXNS4u). If not, please provide feedback here."
     right: 
       - icon: globe
         href: https://ysph.yale.edu/public-health-research-and-practice/research-centers-and-initiatives/public-health-data-science-and-data-equity/
@@ -39,16 +40,23 @@ book:
         href: mailto:admin.dsdeysph@yale.edu
       - text: "(203) 737-8644"
 
-comments:
-  hypothesis: true
+
+hypothesis: true
 
 format:
   bookup-html:
     html-math-method: katex
     toc: true
     toc-depth: 3
+    number-sections: false
+    unnumbered: true
     callout-appearance: default
 
 editor: source
+
+markdown: 
+  keep-md: true
+  editor_options: 
+    chunk_output_type: console
 
 

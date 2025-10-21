@@ -24,6 +24,8 @@
 
 Git and GitHub are two of the most popular and often utilized development tools for project version control on the market. Regarless of their status, they remain challenging tools for new users to get started with. Many resources cover siloed or non-generalizable topics about one or the other. Few resources offer a one-stop-shop introduction that quickly takes users through initial set-up and through basic use cases with individual or collaborative projects.
 
+**Add something about being integrated development environment agnostic**
+
 In this workshop, we aim to merge the worlds of Git and GitHub in an approachable but comprehensive format that is accessible to people who have never used Git or GitHub before or those interested in improving their existing workflows. Maybe you are like I was, flying blind using the bare minimum of what Git and GitHub has to offer!
 
 Over the course of the workshop chapter, we will take you through:
@@ -37,6 +39,22 @@ Real-world examples with questions/answers and challenge questions/solutions are
 * Adding a local, Git initiated, project to GitHub for the first time.
 * Cloning an existing repository as a "clean-break" copy for the first time.
 * Collaborations with a shared GitHub repository (invite friends to have the full experience!)
+
+
+## Other Recommended Resources
+
+While there are many resources on Git and GitHub out there, we have curated a few additional sites and tutorials that we found support and expound on our presentation. Some of these sources will cover the basics like we will be doing today, while others include advanced materials and guides that will help you develop more advanced skills as you gain experience.
+
+-   Yale’s Center for Research Computing workshop *["Version Control by Git"](https://research.computing.yale.edu/training/version-control-git)* by [Kaylea Nelson](https://research.computing.yale.edu/about/leadership-team-staff/kaylea-nelson)
+-   Yale’s Harvey Cushing/John Hay Whitney Medical Library workshop *["Git & GitHub: An Introduction To Version Contro"](https://github.com/CWML/gitdemo/tree/main)* by [Justin DeMayo](https://library.medicine.yale.edu/about/staff/justin-demayo)
+-   *["Getting Git Right"](https://www.atlassian.com/git)* by [Atlassian](https://www.atlassian.com/)
+-   [Git and GitHub Tutorial](https://www.w3schools.com/git/default.asp?remote=github) by [W3 Schools](https://www.w3schools.com/)
+-   [Introduction to GitHub](https://github.com/skills/introduction-to-github) by [GitHub](https://github.com/)
+-   *["Happy Git and GitHub for user"](https://happygitwithr.com/)* by [Jenny Bryan](https://jennybryan.org/)
+-   [*"What is Git commit, push, pull, log, aliases, fetch, config & clone"*](https://medium.com/mindorks/what-is-git-commit-push-pull-log-aliases-fetch-config-clone-56bc52a3601c) by Amit Prajapati
+-   [*"Git Guides"*](https://graphite.dev/guides/topic/git) by various Graphite contributors
+-   [*"How to Write a Git Commit Message"*](https://cbea.ms/git-commit/) by cbeams
+-   [Git Graphical User Interface (GUI) Clients](https://git-scm.com/downloads/guis) by various contributors
 
 
 ## Get Your Configurations
@@ -124,7 +142,7 @@ These directions follow GitHub's [duplicating a repository](https://docs.github.
 
 2. Navigate to the ysph-dsde GitHub repository you want to copy by either searching for it by name or opening the url provided above.
 
-3. Near the right side of the page there will be a [ {{< iconify octicon:code-16 >}} \ Begin import {{< iconify octicon:triangle-down-24 >}} ]{style="white-space: nowrap; background-color: #1f6feb; color: #ffffff; border: 1px solid #0d1117; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px;"} button to click. In its drop down menu under the "Local" tab you will see options to copy the SSH key or HTTPS url to the repository. 
+3. Near the right side of the page there will be a [ {{< iconify octicon:code-16 >}} \ Code {{< iconify octicon:triangle-down-24 >}} ]{style="white-space: nowrap; background-color: #1f6feb; color: #ffffff; border: 1px solid #0d1117; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px;"} button to click. In its drop down menu under the "Local" tab you will see options to copy the SSH key or HTTPS url to the repository. 
 
     For example, if the repository name is "ORIGINAL-REPOSITORY" they will look like:
 
@@ -164,7 +182,7 @@ SSH keys or HTTPS urls are file transfer protocols that are used to pass informa
     cd "ORIGINAL-REPOSITORY.git"
     ```
     
-7. Back in GitHub, in the top-right of the page navigation bar select the [ {{< iconify octicon:plus-16 >}} {{< iconify octicon:triangle-down-24 >}} ]{style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px; padding-left: 5px; padding-right: 5px; border-radius: 5px;"} dropdown menu and click [ {{< iconify octicon:repo-24 >}} New repository]{style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px;"}.
+7. Back in GitHub, in the top-right of the page navigation bar select the [ {{< iconify octicon:plus-16 >}} {{< iconify octicon:triangle-down-24 >}} ]{style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px; padding-left: 5px; padding-right: 5px; border-radius: 5px;"} dropdown menu and click [ {{< iconify octicon:repo-24 >}} New repository]{style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px"}.
 
 8. Fill out the following sections:
 
@@ -267,18 +285,6 @@ If you are asked to update packages, say no. The `renv()` is intended to recreat
 
 If you experience any trouble with this step, you might want to confirm that you are using  R (v 4.4.3) in the RStudio IDE (v 2024.12.1+563). You can also read more about `renv()` in their [vignette](https://rstudio.github.io/renv/articles/renv.html).
 :::
-
-
-## Other Recommended Resources
-
-While there are many resources on Git and GitHub out there, we have curated a few additional sites and tutorials that we found support and expound on our presentation. Some of these sources will cover the basics like we will be doing today, while others include advanced materials and guides that will help you develop more advanced skills as you gain experience.
-
--   Yale’s Center for Research Computing workshop *["Version Control by Git"](https://research.computing.yale.edu/training/version-control-git)* by [Kaylea Nelson](https://research.computing.yale.edu/about/leadership-team-staff/kaylea-nelson)
--   Yale’s Harvey Cushing/John Hay Whitney Medical Library workshop *["Git & GitHub: An Introduction To Version Contro"](https://github.com/CWML/gitdemo/tree/main)* by [Justin DeMayo](https://library.medicine.yale.edu/about/staff/justin-demayo)
--   *["Getting Git Right"](https://www.atlassian.com/git)* by [Atlassian](https://www.atlassian.com/)
--   [Git and GitHub Tutorial](https://www.w3schools.com/git/default.asp?remote=github) by [W3 Schools](https://www.w3schools.com/)
--   [Introduction to GitHub](https://github.com/skills/introduction-to-github) by [GitHub](https://github.com/)
--   *["Happy Git and GitHub for user"](https://happygitwithr.com/)* by [Jenny Bryan](https://jennybryan.org/)s
 
 
 ## About the Data
