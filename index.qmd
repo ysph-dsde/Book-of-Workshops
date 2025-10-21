@@ -99,11 +99,12 @@ You can find out more about past and upcoming work on our [website](https://ysph
     <ul>
       <li>Understand why Git and GitHub are valuable tools for version control and managing coding projects.</li>
       <li>Get hands-on experience using Git and GitHub for solo projects through a worked through example showing common workflows.</li>
-      <li>Learn how to use GitHub to support collaboration and teamwork on group projects. </li>
+      <li>Learn how to use GitHub to support collaboration and teamwork on group projects.</li>
     </ul>
   </div>
 </details>
 ```
+
 
 
 ```{=html}
