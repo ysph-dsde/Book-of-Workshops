@@ -5,9 +5,9 @@ csl: nature.csl
 
 # The What, Why, and How of Git and GitHub {.unnumbered}
 
-<body>
-    <script src="Views/definition_script.js"></script>
-</body>
+```{=html}
+<script src="../Code/definition_script.js"></script>
+```
 
 
 ```{r setup}
@@ -28,17 +28,6 @@ suppressPackageStartupMessages({
 ```
 
 Git and GitHub are widely used tools in technical projects. Despite their prevalence, many rote memorize Git commands for straightforward tasks without fully understanding what these tools are, how they differ, and what roles they play in a project. In this section, I will provide an overview of Git and GitHub and explain why it is worthwhile to learn and use them over other available options.
-
-
-To help you build your technical vocabulary, I'll highlight 
-<span class="text-term" 
-  data-hover-text="Hovering gives the definition too!">
-  new terms</span> 
-and 
-<span class="code-term" 
-  data-hover-text="Hovering gives the definition too!">
-  git commands</span>
-, providing definitions for each. Hovering over these terms will show their definitions, and all terms are summarized at the end of each section where they are first introduced: [Section Glossary](#section-glossary).
 
 ## What exactly are Git and GitHub?
 
@@ -97,15 +86,7 @@ that are sent over the server\ [@dvcs; @anukruti162024; @patch].
 ```
 
 
-Git was first released in 2005 and is the most popular 
-<span class="text-term" 
-  data-hover-text="Manage, organize, and track different versions of files. Identify differences between versions and allows reverting to older versions.">
-  version control</span>
-system, even compared to centralized systems\ [@atlassian_video; @git_wiki; @stackoverflow_survey]. However, Git does not come with its own graphical user interface (GUI) and lacks the infrastructure for project sharing or collaborations. Users also need to execute Git commands through a 
-<span class="text-term" 
-  data-hover-text="A texted-base application that directly interacts with the computer’s operating system, manages files, and can run programs. It typically lacks a GUI.">
-  Command-Line Interface (CLI)</span>
-like Terminal, which utilizes Bash—a type of 
+Git was first released in 2005 and is the most popular version control system, even compared to centralized systems\ [@atlassian_video; @git_wiki; @stackoverflow_survey]. However, Git does not come with its own GUI and lacks the infrastructure for project sharing or collaborations. Users also need to execute Git commands through a CLI like Terminal, which utilizes Bash—a type of 
 <span class="text-term" 
   data-hover-text="A program used by the CLI to mediate communication between the user and computer by interpreting commands and outputs. Examples: Bash, PowerShell, etc.">
   shell</span>
@@ -305,142 +286,128 @@ HTTPS facilitates the secure transmission of information over an encrypted inter
     <tbody>
         <!-- Row 1 -->
         <tr>
-            <td class="col1">Command-Line Interface (CLI)</td>
-            <td>
-              A texted-base application that directly interacts with the computer’s operating system, manages files, and can run programs. It typically lacks a GUI\ [@terminal_shell].
-            </td>
-        </tr>
-        <!-- Row 2 -->
-        <tr>
             <td class="col1">Distributive Version Control System (DVCS)</td>
             <td>
               The project codebase is copied as a mirror to each contributor's local computer. Local changes get synched via patches sent peer-to-peer through the server\ [@atlassian_video; @dvcs].
             </td>
         </tr>
-        <!-- Row 3 -->
+        <!-- Row 2 -->
         <tr>
             <td class="col1"><code>git add</code></td>
             <td>
               Prompt Git to track changes made to specified files and transition them from the <strong>Working Tree</strong> to the <strong>Staged Edits</strong> domain. Git compares the added files to any previously saved versions available in the `.git` directory\ [@Foster2024].
             </td>
         </tr>
-        <!-- Row 4 -->
+        <!-- Row 3 -->
         <tr>
             <td class="col1"><code>git clone</code></td>
             <td>
               Copies an existing repository stored in a remote server to your own device, including all files, the version history, and branches\ [@git_clone].
             </td>
         </tr>
-        <!-- Row 5 -->
+        <!-- Row 4 -->
         <tr>
             <td class="col1"><code>git commit</code></td>
             <td>
               Promote the staged version of specified files to become the latest copy reflected in the .git directory. The <strong>Committed Edits</strong> version is what gets synced to the remote server as a “peer-to-peer” patch\ [@Foster2024].
             </td>
         </tr>
-        <!-- Row 6 -->
+        <!-- Row 5 -->
         <tr>
             <td class="col1"><code>git merge</code></td>
             <td>
-              Downloads changes from a remote repository without coalescing with your local copy. Part of the <code>pull</code> action\ [@git_merge; @git_pull].
+             One method to reconcile different committing histories in divergent branches. Creates a new version integrating the head of the two branches in a three-way commit\ [@git_merge; @git_pull].
             </td>
         </tr>
-        <!-- Row 7 -->
+        <!-- Row 6 -->
         <tr>
             <td class="col1"><code>git mv</code></td>
             <td>
               Moves or renames a specified file, directory, or symlink that is already tracked by Git\ [@git_mv].
             </td>
         </tr>
-        <!-- Row 8 -->
+        <!-- Row 7 -->
         <tr>
             <td class="col1"><code>git fetch</code></td>
             <td>
-              Summarizes the state of files in the <strong>Working Tree</strong> and <strong>Staged Edits</strong>, comparing changes to the latest, committed version in the .git directory\ [@git_fetch].
+              Downloads changes from a remote repository without coalescing with your local copy. Part of the <code>pull</code> action\ [@git_fetch].
             </td>
         </tr>
-        <!-- Row 9 -->
+        <!-- Row 8 -->
         <tr>
             <td class="col1"><code>git pull</code></td>
             <td>
               The combined action of <code>fetch</code> and <code>merge</code> or <code>rebase</code>. Downloads changes from a remote repository and coalesces them with your local copy\ [@git_pull].
             </td>
         </tr>
-        <!-- Row 10 -->
+        <!-- Row 9 -->
         <tr>
             <td class="col1"><code>git push</code></td>
             <td>
               Upload your recent <strong>Committed Edits</strong> to a remote repository, synchronizing changes for others to see\ [@Foster2024].
             </td>
         </tr>
-        <!-- Row 11 -->
+        <!-- Row 10 -->
         <tr>
             <td class="col1"><code>git rebase</code></td>
             <td>
               An alternative to <code>merge</code>. The branch commit histories are realigned so that the leading one defines the commit parent history of the following branch, thus rebasing its commits\ [@git_pull].
             </td>
         </tr>
-        <!-- Row 12 -->
+        <!-- Row 11 -->
         <tr>
             <td class="col1"><code>git reset</code></td>
             <td>
               Unstages changes to specified files, moving them from <strong>Staged Edits</strong> back to the <strong>Working Tree</strong> without altering the files' versions in the <strong>Working Tree</strong>\ [@git_reset].
             </td>
         </tr>
-        <!-- Row 13 -->
+        <!-- Row 12 -->
         <tr>
             <td class="col1"><code>git status</code></td>
             <td>
-              Summarizes the state of files in the <strong>Working Tree</strong> and <strong>Staged Edits</strong>, comparing changes to the latest, committed version in the .git directory.
+              Summarizes the state of files in the <strong>Working Tree</strong> and <strong>Staged Edits</strong>, comparing changes to the latest, committed version in the <code>.git</code> directory.
             </td>
         </tr>
-        <!-- Row 14 -->
+        <!-- Row 13 -->
         <tr>
             <td class="col1">Mirror</td>
             <td>
               An exact copy of a project from a server, including al files, the version history, and branches\ [@mirroring].
             </td>
         </tr>
-        <!-- Row 15 -->
+        <!-- Row 14 -->
         <tr>
             <td class="col1">Patch</td>
             <td>
               Snippets of code or data used to update existing software\ [@patch].
             </td>
         </tr>
-        <!-- Row 16 -->
+        <!-- Row 15 -->
         <tr>
             <td class="col1">Peer-to-peer</td>
             <td>
               Participants in a network act as both client and server by trading resources and services with one another\ [@anukruti162024].
             </td>
         </tr>
-        <!-- Row 17 -->
+        <!-- Row 16 -->
         <tr>
             <td class="col1">Root directory</td>
             <td>
                The top-most directory in a branched hierarchy, containing all other files and directories. Your project's root directory holds all the relevant files and code used your project.
             </td>
         </tr>
-        <!-- Row 18 -->
+        <!-- Row 17 -->
         <tr>
             <td class="col1">Server and Client</td>
             <td>
               Servers are computers or systems that provides resources (i.e. data or programs) to other computers, known as clients, over a network\ [@server].
             </td>
         </tr>
-        <!-- Row 19 -->
+        <!-- Row 18 -->
         <tr>
             <td class="col1">Shell</td>
             <td>
               A program used by the CLI to mediate communication between the user and computer by interpreting commands and outputs. Examples: Bash, PowerShell, etc\ [@terminal_shell].
-            </td>
-        </tr>
-        <!-- Row 20 -->
-        <tr>
-            <td class="col1">Version Control</td>
-            <td>
-              Manage, organize, and track different versions of files. Identify differences between versions and allows reverting to older versions\ [@atlassian_video].
             </td>
         </tr>
     </tbody>

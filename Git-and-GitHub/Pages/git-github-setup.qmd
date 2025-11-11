@@ -36,7 +36,7 @@ This workshop is designed to be compatible with Bash command-line interfaces, wh
 
 # Sign Up for GitHub Account
 
-To sign up for a GitHub account, navigate to [github.com/](https://github.com/) and click the  \GitHubSignUp{Sign up} button in the top right-hand corner. Fill in the required fields with your email, password, username, and country/region.
+To sign up for a GitHub account, navigate to [github.com/](https://github.com/) and click the [Sign up]{style="white-space: nowrap; background-color: #00023F; color: #ffffff; border: 1px solid #D0D9E0; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px"} button in the top right-hand corner. Fill in the required fields with your email, password, username, and country/region.
 
 Your GitHub username must consist of alphanumeric characters or single hyphens and cannot begin or end with a hyphen. It's important to carefully consider your username choice, especially if you plan to share it with professional collaborators or include it in your professional portfolio. Below are some suggestions to consider from the _[Happy Git and GitHub for the useR](https://happygitwithr.com/github-acct)_\ [@github_username]:
 

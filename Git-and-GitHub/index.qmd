@@ -1,121 +1,123 @@
 ---
-  author:
-  - name: Shelby Golden
-    degrees: M.S.
-    email: shelby.golden@yale.edu
-    affiliations:
-      - ref: ysph
-  - name: Howard Baik
-    degrees: M.S.
-  affiliations:
-  - id: ysph
-    name: Data Science and Data Equity at the Yale School of Public Health
-    department: Biostatistics
-    city: New Haven
-    state: CT
-  chunk_output_type: console
-  toc: true
-  toc-depth: 3
+bibliography: Pages/references.bib
+csl: Pages/nature.csl
 ---
 
 # Getting Started with Git and GitHub {.unnumbered}
 
+```{=html}
+<script src="Code/definition_script.js"></script>
+```
+
+
+This material is presented over two workshops. Part 1 was authored by Shelby Golden, M.S., and Part 2 is a collaborative effort by Shelby Golden, M.S., and Howard Baik, M.S. You can learn more about the instructors [here](../index.qmd#meet-the-creators).
+
 ## Introduction
 
-Git and GitHub are two of the most popular and often utilized development tools for project version control on the market. Regarless of their status, they remain challenging tools for new users to get started with. Many resources cover siloed or non-generalizable topics about one or the other. Few resources offer a one-stop-shop introduction that quickly takes users through initial set-up and through basic use cases with individual or collaborative projects.
+Git and GitHub are among the most popular and widely used tools for code-based project 
+<span class="text-term" 
+  data-hover-text="Manage, organize, and track different versions of files. Identify differences between versions and allows reverting to older versions.">
+  version control</span>\ [@atlassian_video]. Despite their prominence, they can be challenging for new users to get started with. Many resources focus on specific or non-generalizable aspects of Git or GitHub, rather than providing a comprehensive overview. Few resources offer a unified introduction that guides users from initial setup to basic use cases for both individual and collaborative projects.
 
-**Add something about being integrated development environment agnostic**
+One common limitation of many introductory resources is that they exclusively teach using third-party
+<span class="text-term" 
+  data-hover-text="An interface that allows users to interact with computers through visual elements like buttons and menus.">
+  Graphical User Interfaces (GUIs) </span> or integrations of Git in
+<span class="text-term" 
+  data-hover-text="A software application that combines tools for editing, building, testing, and debugging code into a single, user-friendly interface.">
+  Integrated Development Environments (IDEs) </span> 
+like RStudio\ [@gui; @ide]. However, Git is inherently designed as a 
+<span class="text-term" 
+  data-hover-text="A texted-base application that directly interacts with the computer’s operating system, manages files, and can run programs. It typically lacks a GUI.">
+  Command-Line Interface (CLI)</span>
+tool to be executed in environments like Mac's Terminal. Using the Git CLI allows users to directly execute Git operations, offering fine-grained control that is often not possible with third-party GUIs or IDEs. Consequently, relying solely on GUIs or IDEs can limit a learner's growth and understanding of the full capabilities of Git and its interaction with GitHub.
 
-In this workshop, we aim to merge the worlds of Git and GitHub in an approachable but comprehensive format that is accessible to people who have never used Git or GitHub before or those interested in improving their existing workflows. Maybe you are like I was, flying blind using the bare minimum of what Git and GitHub has to offer!
+## Workshop Learning Goals
+
+In this workshop, we aim to bridge the gap between Git and GitHub in an accessible and thorough format using the Git CLI. This content is designed for those who are new to Git and GitHub, as well as those looking to enhance their existing workflows. Our goal is to help you confidently navigate and utilize the full range of capabilities that Git and GitHub have to offer.
 
 Over the course of the workshop chapter, we will take you through:
 
-* Git and GitHub account set-up with configurations by either SSH keys or HTTPS urls.
-* Detailed walk through the standard Git version control workflow and interactions with the remote repository stored in GitHub.
-* Another detailed walk through collaborating on projects with a team through GitHub.
+#### Part 1 Learning Goals:
 
-Real-world examples with questions/answers and challenge questions/solutions are provided for:
+- Understand the purpose and value of Git and GitHub in managing coding projects.
+- Learn how Git manages files for version control locally and distributes them through GitHub.
+- Set up and configure your local Git and GitHub accounts using either HTTPS or SSH Keys.
 
-* Adding a local, Git initiated, project to GitHub for the first time.
-* Cloning an existing repository as a "clean-break" copy for the first time.
-* Collaborations with a shared GitHub repository (invite friends to have the full experience!)
+#### Part 2 Learning Goals:
 
+- Get hands-on experience using Git and GitHub for solo projects through a worked-through example showing common workflows.
+- Learn how to use GitHub to support collaboration and teamwork on group projects. Invite friends to have the full experience!
 
-## Other Recommended Resources
-
-While there are many resources on Git and GitHub out there, we have curated a few additional sites and tutorials that we found support and expound on our presentation. Some of these sources will cover the basics like we will be doing today, while others include advanced materials and guides that will help you develop more advanced skills as you gain experience.
-
--   Yale’s Center for Research Computing workshop *["Version Control by Git"](https://research.computing.yale.edu/training/version-control-git)* by [Kaylea Nelson](https://research.computing.yale.edu/about/leadership-team-staff/kaylea-nelson)
--   Yale’s Harvey Cushing/John Hay Whitney Medical Library workshop *["Git & GitHub: An Introduction To Version Contro"](https://github.com/CWML/gitdemo/tree/main)* by [Justin DeMayo](https://library.medicine.yale.edu/about/staff/justin-demayo)
--   *["Getting Git Right"](https://www.atlassian.com/git)* by [Atlassian](https://www.atlassian.com/)
--   [Git and GitHub Tutorial](https://www.w3schools.com/git/default.asp?remote=github) by [W3 Schools](https://www.w3schools.com/)
--   [Introduction to GitHub](https://github.com/skills/introduction-to-github) by [GitHub](https://github.com/)
--   *["Happy Git and GitHub for user"](https://happygitwithr.com/)* by [Jenny Bryan](https://jennybryan.org/)
--   [*"What is Git commit, push, pull, log, aliases, fetch, config & clone"*](https://medium.com/mindorks/what-is-git-commit-push-pull-log-aliases-fetch-config-clone-56bc52a3601c) by Amit Prajapati
--   [*"Git Guides"*](https://graphite.dev/guides/topic/git) by various Graphite contributors
--   [*"How to Write a Git Commit Message"*](https://cbea.ms/git-commit/) by cbeams
--   [Git Graphical User Interface (GUI) Clients](https://git-scm.com/downloads/guis) by various contributors
+We have prepared real-world examples, including challenge questions and answers, for the hands-on portion of this workshop. To fully engage with these materials, you will need to create a clean-break copy of the two GitHub repositories specifically prepared for this purpose. Detailed instructions for this process are provided below under [Accessing the Codespaces](#accessing-the-codespaces).
 
 
-## Get Your Configurations
+## Slides and Handouts
 
-In order to participate in the entire workshop, you will need to have:
-
-- Git installed locally and configured with a user and email.
-- GitHub account.
-- A Git and GitHub transfer protocol configured and linked. Either SSH key or HTML url is acceptable, but we recommend using SSH key.
-
-Please watch the following video to learn how you can get set up. Soon, we will release a webpage that covers the same steps.
-
-{{< video https://vimeo.com/1078706721/a002cb4bb7?share=copy aspect-ratio="21x9" >}}
-
-## Accessing the Materials
-
-### Slides, Handouts, and Other Materials
-
-Download the complete slide deck and the in-person workshop handout. For now, references for this webpage can be found in the slide deck **Appendix**.
-
-#### Workshop Part #2
-
-The following content is from the second and final part of our workshop, where we covered the typical Git workflow and went through three worked-through examples.
+#### Part 1 Materials:
 
 ```{=html}
-<a href="Materials/Workshop Slide Deck.pdf">
-  <button class="btn"><i class="bi bi-download"></i>&nbsp Complete Slide Deck</button>
+
+<a href="Materials/Part 1_Workshop Slide Deck_Annotated.pdf">
+  <button class="btn"><i class="bi bi-download"></i>&nbsp Annotated Slide Deck</button>
 </a>
 
-<a href="Materials/Handout.pdf">
-  <button class="btn"><i class="bi bi-download"></i>&nbsp Handout</button>
+<a href="Materials/Part 1_Handout_Essential Setup.pdf">
+  <button class="btn"><i class="bi bi-download"></i>&nbsp Essential Setup</button>
+</a>
+
+<a href="Materials/Part 1_Handout_Data Transfers.pdf">
+  <button class="btn"><i class="bi bi-download"></i>&nbsp Data Transfers</button>
 </a>
 
 ```
 
+#### Part 2 Materials:
 
-### Codespaces
-
-In this workshop you will need to access the R code we have prepared for the worked through example and challenge questions. If you have not already, you will need to download [R](https://cran.r-project.org/) to your local device, and we suggest using the integrated development environment (IDE) software [RStudio](https://posit.co/download/rstudio-desktop/). Accessing the code for this workshop requires that you have git installed on your local device, a GitHub account, and you have configured the two. If you have not done this, go through [Accounts and Configurations](git-github-setup.html) first.
-
-::: {.callout-important collapse="true"}
-This workshop was generated using R (v 4.4.3) in the RStudio IDE (v 2024.12.1+563). `renv()` is included to reproduce the same coding enviroment, storing all the relevant packages and package versions needed in the code. If you experience trouble running the scripts, you might want to check that the environment was initialized and that you are using the same version of R and RStudio.
+::: {.callout-tip}
+## Coming Soon!
 :::
 
-Two GitHub repositories have been created to practice using git and GitHub:
+
+Below are some helpful cheat sheets that summarize commands for navigating Git, Bash, and the command-line application text editor `vim`. These will be the primary languages and command series used in this module.
+
+- [Git Cheat Sheet](https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet) by Atlassian\ [@git_cheat_sheet]
+- [Vim Cheat Sheet](https://vim.rtorr.com/) by [Richard Torruellas](https://www.linkedin.com/in/richard-torruellas-8ba6a758/)\ [@Torruellas2013]
+- [Bash Shortcuts](https://gist.github.com/tuxfight3r/60051ac67c5f0445efee) by [Mohankumar Balasundaram](https://find-and-update.company-information.service.gov.uk/officers/vt4_ChxQXIwmL4wYZPLE_mhkzWA/appointments)\ [@Balasundaram2014]
+- [Command Line Cheat Sheet](https://www.git-tower.com/blog/command-line-cheat-sheet) by [Tobias G&uuml;nther](https://leaddev.com/community/tobias-gunther)\ [@Gunther2020]
+
+
+## Accessing the Codespaces
+
+In this workshop, you will need to access the R code we have prepared for the worked-through examples and challenge questions. If you haven't already, please download [R](https://cran.r-project.org/) to your local device. We also recommend using the IDE software [RStudio](https://posit.co/download/rstudio-desktop/). To access the code for this workshop, you will need Git installed on your local device, a GitHub account, and both configured. If you have not set this up yet, please follow the instructions in [Configurations and Credentials](Pages/git-github-setup.html) first.
+
+Two GitHub repositories have been created to practice using Git and GitHub:
 
 -  Solo projects: [ysph-dsde/JHU-CRC-Vaccinations](https://github.com/ysph-dsde/JHU-CRC-Vaccinations)
--  Group projects: [ysph-dsde/JHU-CRC-Cases-and-Deaths](https://github.com/ysph-dsde/JHU-CRC-Cases-and-Deaths)
+-  Collaborative projects: [ysph-dsde/JHU-CRC-Cases-and-Deaths](https://github.com/ysph-dsde/JHU-CRC-Cases-and-Deaths)
 
-In order to practice your skills with git and GitHub using our codespaces, you will need to create a "clean-break" copy of both repositories. This will fully decouple the codespace connections from the ysph-dsde GitHub accout, and allow you full access to its contents. After you have copied the repository to your personal GitHub, you will need to clone the codespace to your local device and initialize the environment.
+To practice your Git and GitHub skills using our codespaces, you need to create independent copies of both repositories, referred to as a "clean-break" copy. This will decouple the GitHub account connections and give you full access to their contents. Once copied to your personal GitHub account, you must clone the codespace to your local device and initialize the environment.
 
-Below we have detailed how to do all three steps. Notice that there are two methods to do this: by the [GitHub Importer](#method-1-copying-using-github-importer) tool or your [command-line application](#method-2-copying-using-the-command-line-application) (i.e. Terminal for Macs and Windows Terminal for windows). We suggest you attempt the "GitHub Importer" tool option first, and if that fails to follow the command-line steps. Please note that the importer tool will sometimes take a few minutes to fully transfer over the files.
+Detailed instructions for these steps are provided below. There are two methods you can use: the [GitHub Importer](#method-1-copying-using-github-importer) tool or your [command-line application](#method-2-copying-using-the-command-line-application) (i.e., Terminal for Macs or Git Bash for Windows). We recommend trying the GitHub Importer tool first; if it fails, proceed with the command-line steps. Please note that the importer tool may take a few minutes to transfer the files.
+
+::: {.callout-important}
+## Attribution and Ownership
+
+Please note that all materials provided in this workshop, including any code added to your personal repository, belongs to DSDE. When using or referencing this material, please ensure to cite it correctly to give proper credit to the original authors.
+:::
+
+::: {.callout-note collapse="true"}
+## Settings Used in Development
+
+This workshop was created using R (v 4.4.3) in the RStudio IDE (v 2024.12.1+563). The `renv()` package is included to reproduce the same coding environment, ensuring all relevant packages and package versions are stored. If you encounter issues running the scripts, please check that the environment is initialized and that you are using the same versions of R and RStudio.
+:::
 
 
 ### Making a Clean-Break Copy
 
-#### METHOD 1: Copying Using GitHub Importer
+#### METHOD 1: Copying Using GitHub Importer\ [@import_github]
 
-::: {.callout-note}
-This method is not a Fork. You can learn more about GitHub Importer [here](https://docs.github.com/en/migrations/importing-source-code/using-github-importer/importing-a-repository-with-github-importer).
-:::
+The method described here will not create a Fork. You can learn more about the GitHub Importer [here](https://docs.github.com/en/migrations/importing-source-code/using-github-importer/importing-a-repository-with-github-importer).
 
 1. [Log in](https://github.com/login) to your personal GitHub account.
 
@@ -124,7 +126,7 @@ This method is not a Fork. You can learn more about GitHub Importer [here](https
 
 3. Fill out the following sections:
 
-    a. **Your source repository details:** Paste the https url of the repositories listed above. No credentials are required for this action.
+    a. **Your source repository details:** Paste the https URL of the repositories listed above. No credentials are required for this action.
 
     b. **Your new repository details:** Adjust the GitHub account owner as needed and create the name for the new repository. It is good practice to initially set the repository to "Private".
 
@@ -140,9 +142,9 @@ These directions follow GitHub's [duplicating a repository](https://docs.github.
 
 1. [Log in](https://github.com/login) to your personal GitHub account.
 
-2. Navigate to the ysph-dsde GitHub repository you want to copy by either searching for it by name or opening the url provided above.
+2. Navigate to the ysph-dsde GitHub repository you want to copy by either searching for it by name or opening the URL provided [above](#accessing-the-codespaces).
 
-3. Near the right side of the page there will be a [ {{< iconify octicon:code-16 >}} \ Code {{< iconify octicon:triangle-down-24 >}} ]{style="white-space: nowrap; background-color: #1f6feb; color: #ffffff; border: 1px solid #0d1117; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px;"} button to click. In its drop down menu under the "Local" tab you will see options to copy the SSH key or HTTPS url to the repository. 
+3. Near the right side of the page there will be a [ {{< iconify octicon:code-16 >}} \ Code {{< iconify octicon:triangle-down-24 >}} ]{style="white-space: nowrap; background-color: #1f6feb; color: #ffffff; border: 1px solid #0d1117; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px;"} button to click. In its drop down menu under the "Local" tab you will see options to copy the SSH Key or HTTPS URL to the repository\ [@new_repo].
 
     For example, if the repository name is "ORIGINAL-REPOSITORY" they will look like:
 
@@ -157,16 +159,16 @@ These directions follow GitHub's [duplicating a repository](https://docs.github.
     Depending on your Git/GitHub configurations, you will copy one of these for the remainder of the steps.
     
 :::{.callout-important style="margin-left: 2rem"}
-SSH keys or HTTPS urls are file transfer protocols that are used to pass information between your local git configured directory to the remote GitHub repository. Only one protocol can be set up for one Git/GitHub connection.
+SSH keys or HTTPS URLs are file transfer protocols used to pass information between your local Git-configured directory and the remote GitHub repository. Only one protocol can be set up for a single Git/GitHub connection at a given time. More details can be found in the Transfer Protocols section of [Configurations and Credentials](Pages/git-github-setup.html#transfer-protocols).
 :::
    
-4. Open the command-line application (i.e. Terminal for Macs and Windows Terminal for windows) and navigate to the file location you want to temporarily store the repository copy.
+4. Open the command-line application (i.e. Terminal for Macs and Git Bash for Windows) and navigate to the file location you want to temporarily store the repository copy.
 
     ```{.bash filename="Command-Line Application"}
     cd "/file_location/"
     ```
 
-5. Clone a bare copy of the original repository using its SSH key or HTTPS url:
+5. Clone a bare copy of the original repository using its SSH Key or HTTPS URL\ [@duplicate_repo]:
 
     ```{.bash filename="Command-Line Application"}
     # SSH
@@ -192,9 +194,9 @@ SSH keys or HTTPS urls are file transfer protocols that are used to pass informa
     
     d. Do **[NOT]{.underline}** use a template or include a description, `README.md`, `.gitignore`, or license.
     
-9. In the newly created GitHub repository under "Quick setup" you will find the repository's SSH key or HTTPS url. Copy this.
+9. In the newly created GitHub repository under "Quick setup" you will find the repository's SSH Key or HTTPS URL. Copy this.
    
-10. Back in the command-line application, push a mirror of the cloned git file to your newly created GitHub repository using its SSH key or HTPPS url:
+10. Back in the command-line application, push a mirror of the cloned Git file to your newly created GitHub repository using its SSH Key or HTPPS URL:
 
     ```{.bash filename="Command-Line Application"}
     # SSH
@@ -204,7 +206,7 @@ SSH keys or HTTPS urls are file transfer protocols that are used to pass informa
     git push --mirror https://github.com/EXAMPLE-USER/NEW-REPOSITORY.git
     ```
     
-    Refresh the new GitHub reposiotry webpage to confirm the push was successful.
+    Refresh the new GitHub repository webpage to confirm the push was successful.
 
 11. Delete the bare cloned file used to create a new remote repository.
 
@@ -213,13 +215,13 @@ SSH keys or HTTPS urls are file transfer protocols that are used to pass informa
     rm -rf ORIGINAL-REPOSITORY.git          # Delete the bare clone
     ```
     
-12. This completes creating a clean-break copy of the ysph-dsde repository codespace. Proceed with cloning the newly made repository to your local device in the following section.
+This completes creating a clean-break copy of the ysph-dsde repository codespace. Proceed with cloning the newly made repository to your local device in the following section.
 
 ### Cloning the Copied Repository
 
 Now that you have copied this repository into your own GitHub, you are ready to proceed with a standard clone to your local device.
   
-1. Copy the SSH key or HTTPS url to the newly created repository in your GitHub account by finding the codes under the [ {{< iconify octicon:code-16 >}} \ Begin import {{< iconify octicon:triangle-down-24 >}} ]{style="white-space: nowrap; background-color: #1f6feb; color: #ffffff; border: 1px solid #0d1117; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px;"} button. 
+1. Copy the SSH Key or HTTPS URL to the newly created repository in your GitHub account by finding the codes under the [ {{< iconify octicon:code-16 >}} \ Code {{< iconify octicon:triangle-down-24 >}} ]{style="white-space: nowrap; background-color: #1f6feb; color: #ffffff; border: 1px solid #0d1117; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px;"} button. 
 
     ```{.bash filename="Command-Line Application"}
     # SSH
@@ -229,13 +231,13 @@ Now that you have copied this repository into your own GitHub, you are ready to 
     https://github.com/ysph-dsde/NEW-REPOSITORY.git
     ```
   
-2. In the command-line application (i.e. Terminal for Macs and Windows Terminal for windows) navigate to the file location you want to store the repository.
+2. In the command-line application (i.e. Terminal for Macs and Git Bash for Windows) navigate to the file location you want to store the repository.
 
     ```{.bash filename="Command-Line Application"}
     cd "/file_location/"
     ```
    
-3. Clone the the repository.
+3. Clone the repository.
 
     ```{.bash filename="Command-Line Application"}
     # using SSH
@@ -245,7 +247,7 @@ Now that you have copied this repository into your own GitHub, you are ready to 
     git clone https://github.com/EXAMPLE-USER/NEW-REPOSITORY.git
     ```
 
-4. **OPTIONAL:** You can reset the repository history, which will clear the previous commits, by running the following block of code (Source: [StackExchange by Zeelot](https://stackoverflow.com/questions/9683279/make-the-current-commit-the-only-initial-commit-in-a-git-repository)).
+4. **OPTIONAL:** You can reset the repository history, which will clear the previous commits, by running the following block of code (Source: [StackExchange by Zeelot](https://stackoverflow.com/questions/9683279/make-the-current-commit-the-only-initial-commit-in-a-git-repository))\ [@prune_commits].
     
     ```{.bash filename="Command-Line Application"}
     git checkout --orphan tempBranch         # Create a temporary branch
@@ -257,19 +259,20 @@ Now that you have copied this repository into your own GitHub, you are ready to 
     git gc --aggressive --prune=all          # Remove the old files
     ```
 
+
 ### Initializing the Environment
 
-After cloning the codespace to your local device, you will need to initialize the environment using `renv()`. This will install all packages and versions used in the workshop, thus creating a reproducible coding environemnt.
+After cloning the codespace to your local device, you will need to initialize the environment using `renv()`. This step will install all the packages and versions used in the workshop, ensuring a reproducible coding environment.
 
-1. In the command-line application (i.e. Terminal for Macs and Windows Terminal for windows) navigate to the file location you want to store the repository.
+1. In the command-line application (i.e., Terminal for Macs or Git Bash for Windows) navigate to the file location you want to store the repository.
 
     ```{.bash filename="Command-Line Application"}
     cd "/file_location/"
     ```
 
-2. Launch the project by opening the `*.Rproj` in RStudio.
+2. Launch the project by opening the `*.Rproj` file in RStudio.
 
-4. In the R console, activate the enviroment by runing the following lines of code:
+3. In the R console, activate the environment by running the following lines of code:
 
     ```{.r filename="RStudio Console"}
     renv::init()          # Initialize the project
@@ -283,18 +286,77 @@ If you are asked to update packages, say no. The `renv()` is intended to recreat
 - The library is already synchronized with the lockfile.
 ```
 
-If you experience any trouble with this step, you might want to confirm that you are using  R (v 4.4.3) in the RStudio IDE (v 2024.12.1+563). You can also read more about `renv()` in their [vignette](https://rstudio.github.io/renv/articles/renv.html).
+If you experience any trouble with this step, you might want to confirm that you are using R (v 4.4.3) in the RStudio IDE (v 2024.12.1+563). You can also read more about `renv()` in their [vignette](https://rstudio.github.io/renv/articles/renv.html)\ [@renv_intro].
 :::
-
 
 ## About the Data
 
-The [Johns Hopkins Coronavirus Resource Center](https://coronavirus.jhu.edu/) (JHU CRC) tracked and compiled global COVID-19 pandemic data from January 22, 2020 and March 10, 2023. These data are publically available through their two GitHub repositories. We imported two datasets for this workshop content:
+The [Johns Hopkins Coronavirus Resource Center](https://coronavirus.jhu.edu/) (JHU CRC) tracked and compiled global COVID-19 pandemic data from January 22, 2020, to March 10, 2023\ [@jhcrc]. This data is publicly available through their two GitHub repositories. For this workshop content, we imported two datasets:
 
-- Cumulative vaccination counts for the U.S. from their [GovEX/COVID-19](https://github.com/govex/COVID-19/tree/master/data_tables/vaccine_data) GitHub repository. The raw data used in the analysis script can be found in the `data_tables/vaccine_data/us_data/time_series` subdirectory ([original source](https://github.com/govex/COVID-19/blob/master/data_tables/vaccine_data/us_data/time_series/time_series_covid19_vaccine_us.csv)).
-- Cumulative case and death counts for the U.S. from their [CSSE GitHub](https://github.com/CSSEGISandData/COVID-19). The raw data for these two datasets used in the analysis can be found in the `csse_covid_19_data/csse_covid_19_time_series` subdirectory ([original source](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series)). Both `time_series_covid19_confirmed_US.csv` and `time_series_covid19_deaths_US.csv` were used.
+- Cumulative vaccination counts for the U.S. from their [GovEX/COVID-19](https://github.com/govex/COVID-19/tree/master/data_tables/vaccine_data) GitHub repository. The raw data used in the analysis script can be found in the `data_tables/vaccine_data/us_data/time_series` subdirectory ([original source](https://github.com/govex/COVID-19/blob/master/data_tables/vaccine_data/us_data/time_series/time_series_covid19_vaccine_us.csv))\ [@vaccines_time_series; @govex].
+- Cumulative case and death counts for the U.S. from their [CSSEGISandData](https://github.com/CSSEGISandData/COVID-19) GitHub repository. The raw data for these two datasets used in the analysis can be found in the `csse_covid_19_data/csse_covid_19_time_series` subdirectory ([original source](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series)). Both `time_series_covid19_confirmed_US.csv` and `time_series_covid19_deaths_US.csv were used`\ [@cases_time_series; @csse].
 
-The data dictionaries provided by JHU CRC can be found here: [Vaccinations Dataset Data Dictionary](https://github.com/govex/COVID-19/tree/master/data_tables/vaccine_data/us_data) and [Cases and Deaths Datasets Data Dictionary](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data#usa-daily-state-reports-csse_covid_19_daily_reports_us). For our purposes, we conducted some data cleaning, harmonization, and smoothing using an isotonic regression. This included harmonizing the U.S. Census Bureau's 2010 to 2019 population projections with 2020 to 2023 vintages. 
+The data dictionaries provided by JHU CRC can be found here: [Vaccinations Dataset Data Dictionary](https://github.com/govex/COVID-19/tree/master/data_tables/vaccine_data/us_data) and [Cases and Deaths Datasets Data Dictionary](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data#usa-daily-state-reports-csse_covid_19_daily_reports_us)\ [@vaccines_dictionary; @cases_dictionar]. For our purposes, we conducted data cleaning, harmonization, and smoothing using isotonic regression. This included harmonizing the U.S. Census Bureau's 2010 to 2019 population projections with the 2020 to 2023 vintages.
 
-Details about these steps can be found in the `Git-and-GitHub/R` directory of this workshop's GitHub repository ([link to code](https://github.com/ysph-dsde/Book-of-Workshops/tree/main/Git-and-GitHub/R)). The cleaned datasets used in this workshop can be found in the `Git-and-GitHub/Data` directory of this workshop's GitHub repository ([link to data](https://github.com/ysph-dsde/Book-of-Workshops/tree/main/Git-and-GitHub/Data)).
+Details about these steps can be found in the `Git-and-GitHub/R` directory of this workshop’s GitHub repository ([link to code](https://github.com/ysph-dsde/Book-of-Workshops/tree/main/Git-and-GitHub/R)). The cleaned datasets used in this workshop can be found in the `Git-and-GitHub/Data` directory of this workshop’s GitHub repository ([link to data](https://github.com/ysph-dsde/Book-of-Workshops/tree/main/Git-and-GitHub/Data)).
 
+
+## Other Recommended Resources
+
+Although there are numerous resources available on Git and GitHub, we have curated a selection of additional sites and tutorials that complement and expand upon our content. Some of these resources will reinforce the fundamentals covered in this workshop, while others offer advanced materials and guides to help you further develop your skills as you gain experience.
+
+### Fundamentals
+
+-   Yale’s Center for Research Computing workshop [*"Version Control by Git"*](https://www.youtube.com/watch?v=Boj3tFrTyF4) by [Kaylea Nelson, Ph.D.](https://research.computing.yale.edu/profile/kaylea-nelson-phd)\ [@ycrc_module]
+-   Yale’s Harvey Cushing/John Hay Whitney Medical Library workshop [*"Git & GitHub: An Introduction To Version Contro"*](https://github.com/CWML/gitdemo/tree/main) by [Justin DeMayo](https://library.medicine.yale.edu/about/staff/justin-demayo)\ [@med_school_module]
+-   *["Getting Git Right"](https://www.atlassian.com/git)* by Atlassian
+-   [Git and GitHub Tutorial](https://www.w3schools.com/git/default.asp?remote=github) by W3Schools\ [@w3schools]
+-   [*"Introduction to GitHub"*](https://github.com/skills/introduction-to-github) by GitHub\ [@github_intro_course]
+-   [*"Happy Git and GitHub for user"*](https://happygitwithr.com/) by [Professor Jenny Bryan](https://jennybryan.org/) (and Yale alumn!) and [Jim Hester](https://www.jimhester.com/)
+\ [@happy_git_github]
+
+### Beyond Basic Git and GitHub
+
+-   Reviewing the developer documentation: [git-scm.com/docs](https://git-scm.com/docs) and [docs.github.com](https://docs.github.com/en)\ [@github_docs; @git_docs]
+-   [*"What is Git commit, push, pull, log, aliases, fetch, config & clone"*](https://medium.com/mindorks/what-is-git-commit-push-pull-log-aliases-fetch-config-clone-56bc52a3601c) by Amit Prajapati\ [@Prajapati2019]
+-   [*"Git Guides"*](https://graphite.dev/guides/topic/git) by various Graphite contributors\ [@graphite_git]
+-   [*"How to Write a Git Commit Message"*](https://cbea.ms/git-commit/) by cbeams\ [@write_message]
+-   [Git Graphical User Interface (GUI) Clients](https://git-scm.com/downloads/guis) by various contributors\ [@git_guis]
+
+
+## Section Glossary
+
+<table class="glossary-table">
+    <tbody>
+        <!-- Row 1 -->
+        <tr>
+            <td class="col1">Command-Line Interface (CLI)</td>
+            <td>
+              A texted-base application that directly interacts with the computer’s operating system, manages files, and can run programs. It typically lacks a GUI\ [@terminal_shell].
+            </td>
+        </tr>
+        <!-- Row 2 -->
+        <tr>
+            <td class="col1">Graphical User Interface (GUI)</td>
+            <td>
+              An interface that allows users to interact with computers through visual elements like buttons and menus\ [@gui].
+            </td>
+        </tr>
+        <!-- Row 3 -->
+        <tr>
+            <td class="col1">Integrated Development Environment (IDE)</td>
+            <td>
+              A software application that combines tools for editing, building, testing, and debugging code into a single, user-friendly interface\ [@ide].
+            </td>
+        </tr>
+        <!-- Row 4 -->
+        <tr>
+            <td class="col1">Version Control</td>
+            <td>
+              Manage, organize, and track different versions of files. Identify differences between versions and allows reverting to older versions\ [@atlassian_video].
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+## References

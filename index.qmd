@@ -14,6 +14,9 @@
       filter-ui: false
 ---
 
+## Preface {.unnumbered}
+
+```{=html}
 <style>
   /* Change the color to the --toc-active-color from light mode */
 
@@ -58,12 +61,21 @@
   }
 </style>
 
-## Preface {.unnumbered}
-
+<script src="Views/definition_script.js"></script>
+```
 
 Yale's [Public Health Data Science and Data Equity (DSDE)](https://ysph.yale.edu/research/research-centers-and-initiatives/public-health-data-science-and-data-equity/) team hosts workshops, tutorials, and information sessions known as Coffee, Cookie and Coding ($C^3$) Workshops. These sessions are designed to help Public Health and Biostatistics masters-level students at Yale effectively leverage computational tools and analytical methods in their educational and professional endeavors. While primarily intended for the Yale community, all are welcome and encouraged to attend and benefit from our offerings.
 
 You can find out more about past and upcoming work on our [website](https://ysph.yale.edu/public-health-research-and-practice/research-centers-and-initiatives/public-health-data-science-and-data-equity/events/). Additional tutorials will soon be available on our YouTube channel. If you are affiliated with Yale, you can set up an office hour appointment with one of our data scientists on our [Bookings Page](https://outlook.office365.com/book/DataScienceDataEquityOfficeHours@yale.edu/?ismsaljsauthenabled=true).
+
+Each module adapted for asynchronous learning is presented as its own chapter. To help build your technical vocabulary, new key terms will be highlighted throughout. These terms will appear as 
+<span class="text-term" 
+  data-hover-text="Hovering gives the definition too!">
+  new terms</span> 
+and
+<span class="code-term" 
+  data-hover-text="Hovering gives the definition too!">
+  new code commands</span>, and hovering over them will display their definitions. All terms are summarized in a glossary at the end of each section where they are first introduced.
 
 ## List of Offerings
 
@@ -83,11 +95,8 @@ You can find out more about past and upcoming work on our [website](https://ysph
   <div class="instructors">
     <h3>Part 1 Instructor:</h3>
     <p><a href="https://www.linkedin.com/in/shelby-golden/">Shelby Golden, M.S.</a>, Data Scientist I</p>
-    <h3>Part 2 Instructors:</h3>
-    <p><a href="https://www.linkedin.com/in/shelby-golden/">Shelby Golden, M.S.</a>, Data Scientist I</p>
-    <p><a href="https://www.linkedin.com/in/howard-baik/">Howard Baik, M.S.</a>, Former Data Scientist I at Yale School of Public Health</p>
   </div>
-
+  
   <div class="learning-goals">
     <h3>Part 1 Learning Goals:</h3>
     <ul>
@@ -95,9 +104,18 @@ You can find out more about past and upcoming work on our [website](https://ysph
       <li>Learn how Git manages files for version control locally and distributes them through GitHub.</li>
       <li>Set up and configure your local Git and GitHub accounts using either HTTPS or SSH Keys.</li>
     </ul>
+  </div>
+  
+  <div class="instructors">
+    <h3>Part 2 Instructors:</h3>
+    <p><a href="https://www.linkedin.com/in/shelby-golden/">Shelby Golden, M.S.</a>, Data Scientist I</p>
+    <p><a href="https://www.linkedin.com/in/howard-baik/">Howard Baik, M.S.</a>, Former Data Scientist I at Yale School of Public Health</p>
+  </div>
+
+  <div class="learning-goals">
     <h3>Part 2 Learning Goals:</h3>
     <ul>
-      <li>Understand why Git and GitHub are valuable tools for version control and managing coding projects.</li>
+      <li>Understand the purpose and value of Git and GitHub in managing coding projects.</li>
       <li>Get hands-on experience using Git and GitHub for solo projects through a worked through example showing common workflows.</li>
       <li>Learn how to use GitHub to support collaboration and teamwork on group projects.</li>
     </ul>
