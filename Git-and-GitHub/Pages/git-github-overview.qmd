@@ -7,8 +7,7 @@
   number-sections: false
 ---
 
-# Detailed Walk Through {.unnumbered}
-
+# Detailed Walk-Through {.unnumbered}
 
 ## Identify and Save Local Changes
 
@@ -447,4 +446,4 @@ git push origin main
 
 The `git push` output will look something like this. It indicates that our upload was completed successfully, and supplies some details about the update. For example, it gives the previously committed versions ID, which is now updated from `7d1b339` to `f9b4cf2`, the remote repository location, and the size of the objects we wrote to the remote repository.
 
-Congratulations! You have completed the in-depth walk through exhibiting standard Git mediated project version control and Git/GitHub interactions!
+Congratulations! You have completed the in-depth walk-through exhibiting standard Git mediated project version control and Git/GitHub interactions!

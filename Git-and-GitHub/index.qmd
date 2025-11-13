@@ -318,7 +318,7 @@ Although there are numerous resources available on Git and GitHub, we have curat
 ### Beyond Basic Git and GitHub
 
 -   Reviewing the developer documentation: [git-scm.com/docs](https://git-scm.com/docs) and [docs.github.com](https://docs.github.com/en)\ [@github_docs; @git_docs]
--   [*"What is Git commit, push, pull, log, aliases, fetch, config & clone"*](https://medium.com/mindorks/what-is-git-commit-push-pull-log-aliases-fetch-config-clone-56bc52a3601c) by Amit Prajapati\ [@Prajapati2019]
+-   [*"What is Git commit, push, pull, log, aliases, fetch, config & clone"*](https://medium.com/mindorks/what-is-git-commit-push-pull-log-aliases-fetch-config-clone-56bc52a3601c) by [Amit Prajapati](https://medium.com/@thisAmit)\ [@Prajapati2019]
 -   [*"Git Guides"*](https://graphite.dev/guides/topic/git) by various Graphite contributors\ [@graphite_git]
 -   [*"How to Write a Git Commit Message"*](https://cbea.ms/git-commit/) by cbeams\ [@write_message]
 -   [Git Graphical User Interface (GUI) Clients](https://git-scm.com/downloads/guis) by various contributors\ [@git_guis]

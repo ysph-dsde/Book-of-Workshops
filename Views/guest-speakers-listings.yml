@@ -49,6 +49,9 @@ items:
       titles: | 
         Computational Research Support Analyst
       bio: |
+        Aya Nawano is a Computational Research Support Analyst at Yale Center for Research Computing, which supports the advanced computing needs of Yale’s research community. She primarily works with researchers in the Faculty of Arts and Sciences who use the Bouchet, Grace, and Milgram HPC clusters. Her expertise includes molecular dynamics, MATLAB, and tightly coupled parallel workflows (MPI).
+        </br>
+        </br>
         She was the lecturer for the HPC portion of the &quotInformation Session on HPC and AI/Clarity&quot on Monday, January 27<sup>th</sup>, 2025.
       image: Views/Images/Guest Speakers/aya-nawano.png
       email: aya.nawano@yale.edu
