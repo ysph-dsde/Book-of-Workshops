@@ -1,19 +1,6 @@
 ---
-  author:
-  - name: Shelby Golden
-    degrees: M.S.
-    email: shelby.golden@yale.edu
-    affiliations:
-      - ref: ysph
-  affiliations:
-    - id: ysph
-      name: Yale School of Public Health Data Science and Data Equity (DSDE)
-      department: Biostatistics
-      city: New Haven
-      state: CT
-  chunk_output_type: console
-  toc: true
-  toc-depth: 3
+bibliography: Pages/references.bib
+csl: ../../Code/nature.csl
 ---
 
 # Data Visualization with ggplot2 {.unnumbered}

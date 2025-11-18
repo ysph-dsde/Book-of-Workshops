@@ -1,18 +1,11 @@
 # -----------
-# yaml listing for the Datasets page in the Yale School of 
-# Public Health (YSPH) Resource Navigation Tool github.io page.
-# 
-# Filter by three categories: 
-#   1. Region and/or affiliation 
-#   2. Dataset content type
-#   3. Accessibility
-# 
-# Sort by title and date updated.
+# YAML listing showcasing the core team of the Yale School of Public Health Data
+# Science and Data Equity team who organized the Coffee, Cookies, and Coding Workshops.
 # 
 # Author: Shelby Golden, M.S.
 #   Date: May 10th, 2025
 # 
-# Last Updated: 
+# Last Updated: Nov 18th, 2025
 
 items:
   tiles:
@@ -23,7 +16,7 @@ items:
         Data Scientist I
       bio: |
         Shelby Golden is a data scientist with a background in computational mathematics, molecular biology, and biochemistry. She holds a Master of Science in Applied Computational Mathematics from Johns Hopkins University and dual Bachelor of Science degrees in Molecular, Cellular, Developmental Biology and Biochemistry with a minor in Engineering in Applied Mathematics.
-      image: Views/Images/Core People/shelby-golden.jpeg
+      image: /Images/Core People/shelby-golden.jpeg
       email: shelby.golden@yale.edu
       phone: 203-737-8644
       ysph-site: https://ysph.yale.edu/profile/shelby-golden/
@@ -37,7 +30,7 @@ items:
         Former Data Scientist I at Yale School of Public Health
       bio: |
         Howard Baik is a Data Scientist with a background in biostatistics and computer science. He holds a Master of Science in Biostatistics, and a Bachelor of Science in Statistics with a minor in Mathematics, both from the University of Washington. He is working towards a Post-Baccalaureate Degree in Computer Science from Oregon State University.
-      image: Views/Images/Core People/howard-baik.jpeg
+      image: /Images/Core People/howard-baik.jpeg
       linkedin: https://www.linkedin.com/in/howard-baik/
       github: https://github.com/howardbaik
       

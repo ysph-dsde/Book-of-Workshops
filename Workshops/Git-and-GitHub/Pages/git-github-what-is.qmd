@@ -1,12 +1,12 @@
 ---
 bibliography: references.bib
-csl: nature.csl
+csl: ../../../Code/nature.csl
 ---
 
 # The What, Why, and How of Git and GitHub {.unnumbered}
 
 ```{=html}
-<script src="../Code/definition_script.js"></script>
+<script src="../../../Code/definition_script.js"></script>
 ```
 
 
@@ -34,7 +34,7 @@ Git and GitHub are widely used tools in technical projects. Despite their preval
 ```{=html}
 <figure style="float: left; position: relative; padding-right: 30px; margin-top: 0.5em; margin-bottom: 1em;">
   <a href="https://www.atlassian.com/git/tutorials/what-is-version-control"><video loop="true" autoplay="true" controls="false" style="padding-bottom: 10px;" width="400">
-  <source src="/Git-and-GitHub/Images/Distributive Version Control_Atlasian.mp4" type="video/mp4">
+  <source src="../Images/Distributive Version Control_Atlasian.mp4" type="video/mp4">
   </video></a>
   
   <figcaption style="text-align: left;">
@@ -73,11 +73,11 @@ that are sent over the server\ [@dvcs; @anukruti162024; @patch].
 
 ```{=html}
 <figure style="float: right; position: relative; margin-left: 1em; margin-top: 0.5em; margin-bottom: 0.5em;">
-  <a href="https://git-scm.com/"><img src="Images/Git Logo 2Color_downloaded 10.16.2024.png" alt="git Logo" style="margin-bottom: 1em;" width="300"></a>
+  <a href="https://git-scm.com/"><img src="../Images/Git Logo 2Color_downloaded 10.16.2024.png" alt="git Logo" style="margin-bottom: 1em;" width="300"></a>
   
   </br>
   
-  <a href="https://github.com/"><img src="Images/GitHub Logo_downloaded 10.16.2024.png" alt="GitHub Logo" style="margin-bottom: 1em;" width="300"></a>
+  <a href="https://github.com/"><img src="../Images/GitHub Logo_downloaded 10.16.2024.png" alt="GitHub Logo" style="margin-bottom: 1em;" width="300"></a>
 
   <figcaption style="text-align: left;">
     <a href="https://git-scm.com/downloads/logos">git logo</a> and <a href="https://github.com/logos">GitHub logo</a>.</br>Downloaded October 10th, 2024.
@@ -128,7 +128,7 @@ Git is by far the most popular version control system among both learners and pr
 
 ```{=html}
 <figure style="float: right; position: relative; margin-left: 1em; margin-top: 0.5em; margin-bottom: 0.5em;">
-  <a href="https://octoverse.github.com/2022/global-tech-talent"><img src="Images/Globalized community_GitHub.png" alt="git Logo" style="margin-bottom: 1em;" width="400"></a>
+  <a href="https://octoverse.github.com/2022/global-tech-talent"><img src="../Images/Globalized community_GitHub.png" alt="Octoverse survey" style="margin-bottom: 1em;" width="400"></a>
 
   <figcaption style="text-align: left; padding-bottom: 15px">
     A global community of developers." by GitHub, Octoverse <br>2022 report.
@@ -180,7 +180,7 @@ This workshop will not cover all the different ways to move tracked files throug
 
 ```{=html}
 <figure style="float: center; position: relative; margin-top: 1.5em; margin-bottom: 0.5em;">
-  <img src="/Git-and-GitHub/Images/Local Version Control Diagram.png" alt="git Logo" style="margin-bottom: 1em;" width="90%">
+  <img src="../Images/Local Version Control Diagram.png" alt="Local device diagram" style="margin-bottom: 1em;" width="90%">
 </figure>
 ```
 
@@ -243,7 +243,7 @@ to check the current state of your tracked project files, Git will automatically
 
 ```{=html}
 <figure style="float: center; position: relative; margin-top: 0.5em; margin-bottom: 0.5em;">
-  <img src="/Git-and-GitHub/Images/Remote Storage and Distribution Diagram.png" alt="git Logo" style="margin-bottom: 1em;" width="90%">
+  <img src="../Images/Remote Storage and Distribution Diagram.png" alt="Remote storage and distribution diagram" style="margin-bottom: 1em;" width="90%">
 </figure>
 ```
 
@@ -262,7 +262,7 @@ Notice that pulling is not the same thing as cloning. Instead, it is used throug
 
 ```{=html}
 <figure style="float: center; position: relative; margin-top: 0.5em; margin-bottom: 0.5em;">
-  <img src="/Git-and-GitHub/Images/SSH and HTTPS Diagram.png" alt="git Logo" style="margin-bottom: 1em;" width="90%">
+  <img src="../Images/SSH and HTTPS Diagram.png" alt="Secure transfer" style="margin-bottom: 1em;" width="90%">
 </figure>
 ```
 

@@ -1,12 +1,12 @@
 ---
 bibliography: Pages/references.bib
-csl: Pages/nature.csl
+csl: ../../Code/nature.csl
 ---
 
 # Getting Started with Git and GitHub {.unnumbered}
 
 ```{=html}
-<script src="Code/definition_script.js"></script>
+<script src="../../Code/definition_script.js"></script>
 ```
 
 

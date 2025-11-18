@@ -1,13 +1,14 @@
 ---
-  editor: source
-  from: markdown+emoji
-  chunk_output_type: console
-  toc: true
-  toc-depth: 3
-  number-sections: false
+from: markdown+emoji
+bibliography: references.bib
+csl: ../../../Code/nature.csl
 ---
 
 # Detailed Walk-Through {.unnumbered}
+
+```{=html}
+<script src="../../../Code/definition_script.js"></script>
+```
 
 ## Identify and Save Local Changes
 
@@ -16,7 +17,7 @@ Hopefully the explanations provided thus far are eliciting an aha moment for you
 ```{=html}
 <figure style="float: right; position: relative; margin-left: 1em; margin-top: 0em; margin-bottom: 0em;">
   <a href="https://flowingdata.com/2021/11/08/painbow-color-scale/">
-  <img src="/Git-and-GitHub/Images/XKCD_Painbow_downloaded 04.22.2025.png" alt="xkcd Painbow comic" style="margin-bottom: 1em;" width="350">
+  <img src="../Images/XKCD_Painbow_downloaded 04.22.2025.png" alt="xkcd Painbow comic" style="margin-bottom: 1em;" width="350">
   </a>
 
   <figcaption style="text-align: left; padding-bottom: 0px">
@@ -274,7 +275,7 @@ In the series of detailed command-line outputs presented above, there were a few
 
 ```{=html}
 <figure style="float: right; position: relative; margin-top: 0.5em; margin-bottom: 0.5em;">
-  <img src="/Git-and-GitHub/Images/Example Workflow.png" alt="summary workflow" style="margin-bottom: 1em;" width="100%">
+  <img src="../Images/Example Workflow.png" alt="Summary workflow" style="margin-bottom: 1em;" width="100%">
 
   <figcaption style="text-align: left; padding-bottom: 15px">
     Indicators of the projects local mirror's status relative to the copy housed in the GitHub remote repository.
@@ -300,7 +301,7 @@ The first case is straightforward, and so we will only discuss two methods avail
 ```{=html}
 <figure style="float: left; position: relative; margin-right: 0em; margin-top: 0em; margin-bottom: 0em;">
   <a href="https://www.atlassian.com/git/tutorials/syncing/git-pull">
-  <img src="/Git-and-GitHub/Images/Atlassian git Tutorials_git pull context_downloaded 04.24.2025.png" alt="Atlassian's Git Tutorials" style="margin-bottom: 1em;" width="450">
+  <img src="../Images/Atlassian git Tutorials_git pull context_downloaded 04.24.2025.png" alt="Atlassian's Branches" style="margin-bottom: 1em;" width="450">
   </a>
 
   <figcaption style="text-align: left; padding-bottom: 0px">
@@ -327,7 +328,7 @@ In actuality, `git pull` is two Git actions wrapped into one command: `git fetch
 ```{=html}
 <figure style="float: left; position: relative; margin-top: 0em; margin-bottom: 0em;">
   <a href="https://www.atlassian.com/git/tutorials/using-branches/git-merge">
-  <img src="/Git-and-GitHub/Images/Atlassian git Tutorials_git merge_downloaded 04.24.2025.png" alt="Atlassian's Git Tutorials" style="margin-bottom: 1em;" width="350">
+  <img src="../Images/Atlassian git Tutorials_git merge_downloaded 04.24.2025.png" alt="Atlassian's Merge" style="margin-bottom: 1em;" width="350">
   </a>
 </figure>
 ```
@@ -337,7 +338,7 @@ In actuality, `git pull` is two Git actions wrapped into one command: `git fetch
 ```{=html}
 <figure style="float: left; position: relative; margin-top: 0em; margin-bottom: 0em;">
   <a href="https://www.atlassian.com/git/tutorials/rewriting-history/git-rebase">
-  <img src="/Git-and-GitHub/Images/Atlassian git Tutorials_git rebase context_downloaded 04.24.2025.png" alt="Atlassian's Git Tutorials" style="margin-bottom: 1em;" width="400">
+  <img src="../Images/Atlassian git Tutorials_git rebase context_downloaded 04.24.2025.png" alt="Atlassian's Rebase" style="margin-bottom: 1em;" width="400">
   </a>
 </figure>
 ```
@@ -411,7 +412,7 @@ We are now prepared to update the remote repository with `git push`. Recall the 
 
 ```{=html}
 <figure style="float: right; position: relative; margin-top: 0.5em; margin-bottom: 0.5em;">
-  <img src="/Git-and-GitHub/Images/Example Workflow.png" alt="summary workflow" style="margin-bottom: 1em;" width="100%">
+  <img src="../Images/Example Workflow.png" alt="Summary workflow" style="margin-bottom: 1em;" width="100%">
 
   <figcaption style="text-align: left; padding-bottom: 15px">
     Indicators of the projects local mirror's status relative to the copy housed in the GitHub remote repository.

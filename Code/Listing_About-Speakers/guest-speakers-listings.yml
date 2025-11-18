@@ -1,18 +1,11 @@
 # -----------
-# yaml listing for the Datasets page in the Yale School of 
-# Public Health (YSPH) Resource Navigation Tool github.io page.
-# 
-# Filter by three categories: 
-#   1. Region and/or affiliation 
-#   2. Dataset content type
-#   3. Accessibility
-# 
-# Sort by title and date updated.
+# YAML listing showcasing the guest speakers at the Yale School of Public Health
+# Data Science and Data Equity Coffee, Cookies, and Coding Workshops.
 # 
 # Author: Shelby Golden, M.S.
 #   Date: May 10th, 2025
 # 
-# Last Updated: 
+# Last Updated: Nov 18th, 2025
 
 items:
   tiles:
@@ -26,7 +19,7 @@ items:
         </br>
         </br>
         He was a lecturer for the Yale's AI Clarity Platform portion of the &quotInformation Session on HPC and AI/Clarity&quot on Monday, January 27<sup>th</sup>, 2025.
-      image: Views/Images/Guest Speakers/wies-rafi.png
+      image: /Images/Guest Speakers/wies-rafi.png
       ysph-site: https://your.yale.edu/information-technology/information-technology-senior-leadership/wies-rafi
       group: https://research.computing.yale.edu/
     - name: Hadar Call
@@ -39,7 +32,7 @@ items:
         </br>
         </br>
         She was a lecturer for the Yale's AI Clarity Platform portion of the &quotInformation Session on HPC and AI/Clarity&quot on Monday, January 27<sup>th</sup>, 2025.
-      image: Views/Images/Guest Speakers/hadar-call.png
+      image: /Images/Guest Speakers/hadar-call.png
       ysph-site: https://your.yale.edu/information-technology/information-technology-senior-leadership/hadar-call
       group: https://research.computing.yale.edu/
       linkedin: https://www.linkedin.com/in/hadar-call-0430a53/
@@ -53,7 +46,7 @@ items:
         </br>
         </br>
         She was the lecturer for the HPC portion of the &quotInformation Session on HPC and AI/Clarity&quot on Monday, January 27<sup>th</sup>, 2025.
-      image: Views/Images/Guest Speakers/aya-nawano.png
+      image: /Images/Guest Speakers/aya-nawano.png
       email: aya.nawano@yale.edu
       ysph-site: https://research.computing.yale.edu/profile/aya-nawano-phd
       group: https://research.computing.yale.edu/
@@ -68,7 +61,7 @@ items:
         </br>
         </br>
         He was the lecturer for the &quotChoosing Good Subsamples for Measuring New Variables&quot on Monday, February 3<sup>rd</sup> and &quotAnalyzing Larger Data in R&quot on Tuesday, February 4<sup>th</sup>, 2025.
-      image: Views/Images/Guest Speakers/thomas-lumley.png
+      image: /Images/Guest Speakers/thomas-lumley.png
       email: t.lumley@auckland.ac.nz
       ysph-site: https://profiles.auckland.ac.nz/t-lumley
       linkedin: https://www.linkedin.com/in/thomas-lumley-59a325b/

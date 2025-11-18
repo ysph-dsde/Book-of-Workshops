@@ -1,9 +1,13 @@
 ---
 bibliography: references.bib
-csl: nature.csl
+csl: ../../../Code/nature.csl
 ---
 
 # Configurations and Credentials {.unnumbered}
+
+```{=html}
+<script src="../../../Code/definition_script.js"></script>
+```
 
 ```{r setup}
 #| message: FALSE
