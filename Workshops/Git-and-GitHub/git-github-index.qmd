@@ -275,7 +275,7 @@ After cloning the codespace to your local device, you will need to initialize th
 3. In the R console, activate the environment by running the following lines of code:
 
     ```{.r filename="RStudio Console"}
-    renv::init()          # Initialize the project
+    renv::init()          # Initialize the project.
     renv::restore()       # Download packages and their version saved in the lockfile.
     ```
 

@@ -45,13 +45,21 @@ book:
 hypothesis: true
 
 format:
-  bookup-html:
+  html:
     html-math-method: katex
     toc: true
     toc-depth: 3
     number-sections: false
     unnumbered: true
     callout-appearance: default
+    theme:
+      light: 
+        - _styles/bookup/bookup.scss
+      dark: 
+        - _styles/bookup/bookup.scss
+        - _styles/bookup/bookup_dark.scss
+    filters: 
+      - _styles/bookup/embed-fonts.lua
 
 editor: source
 

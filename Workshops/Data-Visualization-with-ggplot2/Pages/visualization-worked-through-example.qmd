@@ -10,7 +10,7 @@
   number-sections: false
 ---
 
-# Worked Through Example {.unnumbered}
+# Worked-Through Example {.unnumbered}
 
 ## Environment Set-Up and Data Description
 
@@ -83,7 +83,7 @@ Description of the variables:
 ## Basic Uses of `ggplot2()`
 
 ::: img-float
-![Figure from "ggplot2 workshop part 1" by Thomas Lin<br>Pedersen. Accessed from YouTube March 15th, 2025.](Images/All Layers.png){style="float: left; position: relative; top: 0px; padding-right: 30px; margin: -1em auto -1.5em auto;" width="350"}
+![Figure from "ggplot2 workshop part 1" by Thomas Lin<br>Pedersen. Accessed from YouTube March 15th, 2025.](../Images/All Layers.png){style="float: left; position: relative; top: 0px; padding-right: 30px; margin: -1em auto -1.5em auto;" width="350"}
 :::
 
 ### The **Data** and **Mapping** Layers
@@ -398,7 +398,7 @@ Up until this point, we have covered layers that attribute variables to geometri
 
 It is the **Coordinates** layer that then plots these values on a graph. It's important to appreciate this subtlety because some scaled or statistically transformed values will look entirely different if the wrong coordinate system is applied. Such as, if we attempted to plot an angle on a Cartesian plane in Euclidean space instead of in polar coordinates.
 
-[![Figure 5.5 from "Data Visualization: From Theory to Practice" by James Baglin. Accessed March 22nd, 2025.](Images/Coordinates_Diagram.png){width="750" height="188"}](https://dark-star-161610.appspot.com/secured/_book/grammar-and-vocabulary.html#coord)
+[![Figure 5.5 from "Data Visualization: From Theory to Practice" by James Baglin. Accessed March 22nd, 2025.](../Images/Coordinates_Diagram.png){width="750" height="188"}](https://dark-star-161610.appspot.com/secured/_book/grammar-and-vocabulary.html#coord)
 
 **Coordinate** layer functions fall into two buckets:
 
