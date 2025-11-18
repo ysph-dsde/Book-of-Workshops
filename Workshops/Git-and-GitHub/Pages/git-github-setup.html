@@ -1,0 +1,1769 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Configurations and Credentials – Book of Workshops</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../Workshops/Git-and-GitHub/Pages/git-github-overview.html" rel="next">
+<link href="../../../Workshops/Git-and-GitHub/Pages/git-github-what-is.html" rel="prev">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-f2ed4b6a00c7d3487a84fd5a50ba4e45.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-ab6496a1a679dc9f3d6952c9737550a4.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-5b696210ae79204592cbe97a389ebe16.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-b809ba839b641f2807f7f5514540d996.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/quarto-contrib/bookup_fonts_embed-0.0/fonts-download.css" rel="stylesheet">
+<script src="../../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+          <h1 class="quarto-secondary-nav-title">Configurations and Credentials</h1>
+        </a>     
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../../">Book of Workshops</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/ysph-dsde/Book-of-Workshops" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=|url|" title="LinkedIn" class="quarto-navigation-tool px-1" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../Workshops/Git-and-GitHub/git-github-index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting Started with Git and GitHub</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../Workshops/Git-and-GitHub/Pages/git-github-what-is.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The What, Why, and How of Git and GitHub</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../Workshops/Git-and-GitHub/Pages/git-github-setup.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Configurations and Credentials</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../Workshops/Git-and-GitHub/Pages/git-github-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Detailed Walk-Through</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../Workshops/Git-and-GitHub/Pages/git-github-more-to-come.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pages In Progress</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../Workshops/Data-Visualization-with-ggplot2/visualization-index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Visualization with ggplot2</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../Workshops/Data-Visualization-with-ggplot2/Pages/visualization-worked-through-example.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Worked-Through Example</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../Workshops/Data-Visualization-with-ggplot2/Pages/visualization-more-to-come.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pages In Progress</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sign-up-for-github-account" id="toc-sign-up-for-github-account" class="nav-link active" data-scroll-target="#sign-up-for-github-account">Sign Up for GitHub Account</a></li>
+  <li><a href="#install-git" id="toc-install-git" class="nav-link" data-scroll-target="#install-git">Install Git</a>
+  <ul class="collapse">
+  <li><a href="#windows" id="toc-windows" class="nav-link" data-scroll-target="#windows">Windows</a></li>
+  <li><a href="#mac" id="toc-mac" class="nav-link" data-scroll-target="#mac">Mac</a></li>
+  <li><a href="#linux-and-unix" id="toc-linux-and-unix" class="nav-link" data-scroll-target="#linux-and-unix">Linux and Unix</a></li>
+  </ul></li>
+  <li><a href="#configure-git" id="toc-configure-git" class="nav-link" data-scroll-target="#configure-git">Configure Git</a></li>
+  <li><a href="#transfer-protocols" id="toc-transfer-protocols" class="nav-link" data-scroll-target="#transfer-protocols">Transfer Protocols</a>
+  <ul class="collapse">
+  <li><a href="#https" id="toc-https" class="nav-link" data-scroll-target="#https">HTTPS</a></li>
+  <li><a href="#ssh-keys" id="toc-ssh-keys" class="nav-link" data-scroll-target="#ssh-keys">SSH Keys</a></li>
+  </ul></li>
+  <li><a href="#advanced-configurations" id="toc-advanced-configurations" class="nav-link" data-scroll-target="#advanced-configurations">Advanced Configurations</a>
+  <ul class="collapse">
+  <li><a href="#multiple-git-configurations" id="toc-multiple-git-configurations" class="nav-link" data-scroll-target="#multiple-git-configurations">Multiple Git Configurations</a></li>
+  <li><a href="#configuring-ssh-keys-to-different-hosts" id="toc-configuring-ssh-keys-to-different-hosts" class="nav-link" data-scroll-target="#configuring-ssh-keys-to-different-hosts">Configuring SSH Keys to Different Hosts</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/ysph-dsde/Book-of-Workshops/edit/main/Workshops/Git-and-GitHub/Pages/git-github-setup.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Configurations and Credentials</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<script src="../../../Code/definition_script.js"></script>
+<p>If you have not yet, you will need to get a GitHub account and to install Git on your local device. This document was constructed from Atlassian’s <em><a href="https://www.atlassian.com/git/tutorials/install-git">How to install Git</a></em> tutorial and Git-SCM’s <a href="https://git-scm.com/downloads">download pages</a>&nbsp;<span class="citation" data-cites="atlassian_git git_macs git_pc git_linux"><sup><a href="#ref-atlassian_git" role="doc-biblioref">1</a>–<a href="#ref-git_linux" role="doc-biblioref">4</a></sup></span>.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Directions Provided in Bash
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This workshop is designed to be compatible with Bash command-line interfaces, which is the default setting for macOS with Terminal and many Linux distributions. Windows users will need to ensure their command-line interface is Bash compatible, as not all commands will work in other environments.</p>
+</div>
+</div>
+<section id="sign-up-for-github-account" class="level1">
+<h1>Sign Up for GitHub Account</h1>
+<p>To sign up for a GitHub account, navigate to <a href="https://github.com/">github.com/</a> and click the <span style="white-space: nowrap; background-color: #00023F; color: #ffffff; border: 1px solid #D0D9E0; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px">Sign up</span> button in the top right-hand corner. Fill in the required fields with your email, password, username, and country/region.</p>
+<p>Your GitHub username must consist of alphanumeric characters or single hyphens and cannot begin or end with a hyphen. It’s important to carefully consider your username choice, especially if you plan to share it with professional collaborators or include it in your professional portfolio. Below are some suggestions to consider from the <em><a href="https://happygitwithr.com/github-acct">Happy Git and GitHub for the useR</a></em>&nbsp;<span class="citation" data-cites="github_username"><sup><a href="#ref-github_username" role="doc-biblioref">5</a></sup></span>:</p>
+<ul>
+<li>Include your name.</li>
+<li>Keep it short and lowercase.</li>
+<li>Keep it consistent with other accounts you want associated with your work.</li>
+<li>Appropriate for sharing with an employer.</li>
+<li>Avoid highlighting temporary affiliations, such as the current university you attend.</li>
+<li>Ensure it’s unique and doesn’t have a special meaning in programming (e.g., avoid terms like <code>NA</code>).</li>
+</ul>
+<p>GitHub offers materials and short courses to help new users learn their interface: <em><a href="https://skills.github.com/">GitHub Skills</a></em>, <em><a href="https://docs.github.com/en/repositories">Repositories documentation</a></em>, and <em><a href="https://docs.github.com/en/github-cli/github-cli/about-github-cli">About GitHub Command-Line Interface (CLI)</a></em>&nbsp;<span class="citation" data-cites="github_skills github_repos_docs github_cli"><sup><a href="#ref-github_skills" role="doc-biblioref">6</a>–<a href="#ref-github_cli" role="doc-biblioref">8</a></sup></span>.</p>
+</section>
+<section id="install-git" class="level1">
+<h1>Install Git</h1>
+<p>For all systems, you can confirm Git installation in the command-line interface:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Interface</strong></pre>
+</div>
+<div class="sourceCode" id="cb1" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Output</strong></pre>
+</div>
+<div class="sourceCode" id="cb2" data-filename="Command-Line Output"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> version 2.49.0               <span class="co"># For Mac's</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> version 2.51.0.windows.1     <span class="co"># For PC's</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If you do not get this output, you will need to install Git. In the following pages, we provide commonly applicable instructions for macOS, Windows, and the Debian/Ubuntu and Fedora Linux distributions.</p>
+<section id="windows" class="level2">
+<h2 class="anchored" data-anchor-id="windows">Windows</h2>
+<p>Windows, by default, provides the PowerShell command-line interface, which does not support Bash commands. To emulate a Linux command-line interface, you have several options. The simplest option is to install <a href="https://gitforwindows.org/">Git for Windows</a>, which provides both Git and Git Bash, a Bash shell environment&nbsp;<span class="citation" data-cites="git_for_windows"><sup><a href="#ref-git_for_windows" role="doc-biblioref">9</a></sup></span>.</p>
+<p>Alternatively, you can emulate Linux command-line interfaces through other methods, or search for alternative commands compatible with the command-line interface you are using. If the option you are choosing does not include Git, it can be installed directly from: <a href="https://git-scm.com/download/win">Git-SCM</a>&nbsp;<span class="citation" data-cites="git_scm_config git_pc"><sup><a href="#ref-git_pc" role="doc-biblioref">3</a>,<a href="#ref-git_scm_config" role="doc-biblioref">10</a></sup></span>.</p>
+<p>After you download Git for Windows, open the installer and follow the prompts. For this workshop, you can accept all default settings, but you may adjust them as desired. Below are some specific settings to consider as you go through the installer prompts.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Customize the Default Branch
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The legacy Git system refers to the primary branch containing your files as “master.” During installation, you can prompt Git to label this branch as “main” instead.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Install OpenSSH
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>SSH</strong> stands for “Secure Shell”, and it is the preferred secure transfer protocol used to communicate between your local device and the GitHub remote repository. You will want to ensure that OpenSSH is installed. The Git installer will provide you with the option to install OpenSSH during the setup process, and we recommend that you select this option.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Suggest Beginners Use “Fast-Forward or Merge” for
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Later in this workshop, we will discuss what Git is doing with the action. It is recommended that beginners select “Fast-Forward or Merge” by default, as rebasing is not beginner-friendly.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Suggest Installing the Git Credential Manager
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The Git credential Mmanager will cache your authentication information, making it easier to interact with remote repositories&nbsp;<span class="citation" data-cites="credential_manager"><sup><a href="#ref-credential_manager" role="doc-biblioref">11</a></sup></span>.</p>
+</div>
+</div>
+</section>
+<section id="mac" class="level2">
+<h2 class="anchored" data-anchor-id="mac">Mac</h2>
+<p>If XCode <em>is</em> installed in your Applications folder, Git is already available. However, you might not have the the osxkeychain credential manager, <strong>git-credential-osxkeychain</strong>, installed. If you plan to use HTTPS transfer protocols instead of SSH Keys, you might want to install this as it caches your authentication information in the macOS keychain, avoiding the need to re-enter them each time. You can skip to the directions for adding this capability if needed.</p>
+<p>If XCode <em>is not</em> installed, you can install Git with the osxkeychain credential manager through either <a href="https://brew.sh/">Homebrew</a> or <a href="https://www.macports.org/install.php">MacPorts</a>&nbsp;<span class="citation" data-cites="homebrew macports"><sup><a href="#ref-homebrew" role="doc-biblioref">12</a>,<a href="#ref-macports" role="doc-biblioref">13</a></sup></span>. Assuming you have one of these already installed:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Interface</strong></pre>
+</div>
+<div class="sourceCode" id="cb3" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># With Homebrew</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install git</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># With MacPorts</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> port install git +bash_completion +credential_osxkeychain +doc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Installing Git using Homebrew or MacPorts will automatically include the osxkeychain credential manager. You can confirm its installation by running the following command&nbsp;<span class="citation" data-cites="osxkeychain"><sup><a href="#ref-osxkeychain" role="doc-biblioref">14</a></sup></span>:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Interface</strong></pre>
+</div>
+<div class="sourceCode" id="cb4" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> credential-osxkeychain</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Output</strong></pre>
+</div>
+<div class="sourceCode" id="cb5" data-filename="Command-Line Output"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">usage:</span> git credential-osxkeychain <span class="op">&lt;</span>get<span class="kw">|</span><span class="ex">store</span><span class="kw">|</span><span class="ex">erase</span><span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If you do not get this output, run the following:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Interface</strong></pre>
+</div>
+<div class="sourceCode" id="cb6" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Install. Linebreak does NOT denote a space in the URL.</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-O</span> http://github-media-downloads.s3.amazonaws.com/osx/git-credential <span class="at">-osxkeychain</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Relocate to ~/bin/.</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> mv git-credential-osxkeychain /usr/local/bin/</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Change file permissions to make it executable.</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> u+x /usr/local/bin/git-credential-osxkeychain</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Configure Git to use the osxkeychain credential manager.</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> credential.helper osxkeychain</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If your OS X version is El Capitan (OS X 10.11) or earlier, you will need to download the tarball and build Git directly from the source.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Interface</strong></pre>
+</div>
+<div class="sourceCode" id="cb7" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. If you do not have XCode Command Line Tools, install it.</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">xcode-select</span> <span class="at">--install</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Install openssl with Homebrew.</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install openssl</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Change file permissions to make it executable.</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/git/git.git</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Build Git from the source and adding flags.</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="va">NO_GETTEXT</span><span class="op">=</span>1 <span class="fu">make</span> CFLAGS=<span class="st">"-I/usr/local/opt/openssl/include"</span> LDFLAGS=<span class="st">"-L/usr/local/opt/openssl/lib"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="linux-and-unix" class="level2">
+<h2 class="anchored" data-anchor-id="linux-and-unix">Linux and Unix</h2>
+<p>Git recommends using the preferred package manager for your distribution to install Git. However, if you prefer to download and build Git from a tarball, you can follow the instructions provided by <a href="https://www.atlassian.com/git/tutorials/install-git">Atlassian</a> under the section <em>Build Git from source on Linux</em>.</p>
+<p>Below, we have included instructions for several distributions. For information on additional systems, please visit the <a href="https://git-scm.com/downloads/linux">Git-SCM</a> download page.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Interface</strong></pre>
+</div>
+<div class="sourceCode" id="cb8" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Stable deployment of Debian/Ubuntu</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-get</span> install git</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Ubuntu Personal Package Archive (PPA)</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="ex">add-apt-repository</span> ppa:git-core/ppa</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> update</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> install git</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Fedora</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="ex">yum</span> install git     <span class="co"># Up to Fedora 21</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="ex">dnf</span> install git     <span class="co"># Fedora 22 and later</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Once you have Git installed and a GitHub account set up, you need to configure them to securely and accurately transfer information between your local devices and your remote repository on GitHub.</p>
+</section>
+</section>
+<section id="configure-git" class="level1">
+<h1>Configure Git</h1>
+<p>Git associates a username and email address with the project versions you create. You have the option to configure these settings globally, applying one user profile to all repositories, or locally, applying a user profile to a specific repository. A local setting will override the global setting&nbsp;<span class="citation" data-cites="atlassian_config git_scm_config"><sup><a href="#ref-git_scm_config" role="doc-biblioref">10</a>,<a href="#ref-atlassian_config" role="doc-biblioref">15</a></sup></span>.</p>
+<p>Let’s begin by checking the current configurations on your system. Using <code>--list --show-origin</code> instead will display the file location for all configurations&nbsp;<span class="citation" data-cites="Answeredbykgf3JfUtW2017"><sup><a href="#ref-Answeredbykgf3JfUtW2017" role="doc-biblioref">16</a></sup></span>.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Interface</strong></pre>
+</div>
+<div class="sourceCode" id="cb9" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Output - Mac</strong></pre>
+</div>
+<div class="sourceCode" id="cb10" data-filename="Command-Line Output - Mac"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gpg.format=ssh</span>                              <span class="co"># SSH keys used for signing</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">commit.gpgsign=true</span>                         <span class="co"># Sign all GitHub actions</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">filter.lfs.clean=git-lfs</span> clean <span class="at">--</span> %f        <span class="co"># Cleanly stores large files</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ex">filter.lfs.smudge=git-lfs</span> smudge <span class="at">--</span> %f      <span class="co"># Retrieves the large files</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="ex">filter.lfs.process=git-lfs</span> filter-process   <span class="co"># Seamlessly manage large files</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="ex">filter.lfs.required=true</span>                    <span class="co"># List files in .gitattributes</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="ex">init.defaultbranch=main</span>                     <span class="co"># Default branch name is "main"</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="ex">credential.helper=osxkeychain</span>               <span class="co"># Store credentials in Keychain</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="ex">user.name=Shelby</span> Golden                     <span class="co"># Username for commits</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="ex">user.email=shelby.golden@yale.edu</span>           <span class="co"># Email for commits</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="ex">pack.packsizelimit=50M</span>                      <span class="co"># Sets size limit for pac files</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Output - PC</strong></pre>
+</div>
+<div class="sourceCode" id="cb11" data-filename="Command-Line Output - PC"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">http.sslbackend=schannel</span>                    <span class="co"># SSL backend for HTTPS</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">diff.astexplain.texconv=astextplain</span>         <span class="co"># Diffs as "astextplain"</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">filter.lfs.clean=git-lfs</span> clean <span class="at">--</span> %f        <span class="co"># Cleanly stores large files</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ex">filter.lfs.smudge=git-lfs</span> smudge <span class="at">--</span> %f      <span class="co"># Retrieves the large files</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ex">filter.lfs.process=git-lfs</span> filter-process   <span class="co"># Seamlessly manage large files</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="ex">filter.lfs.required=true</span>                    <span class="co"># List files in .gitattributes</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="ex">core.autocrlf=true</span>                          <span class="co"># Standardize line ends</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="ex">core.fscache=true</span>                           <span class="co"># Enable filesystem caching</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="ex">core.symlinks=false</span>                         <span class="co"># Disables symbolic links</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="ex">pull.rebase=false</span>                           <span class="co"># Use merge when pulling</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="ex">credential.helper=manager</span>                   <span class="co"># Credential manager for PC</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="ex">credential.https://dev.azure.com.usehttppath=true</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="ex">init.defaultbranch=main</span>                     <span class="co"># Default branch name is "main"</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="ex">user.name=Shelby</span> Golden                     <span class="co"># Username for commits</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="ex">user.email=shelby.golden@yale.edu</span>           <span class="co"># Email for commits</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The results above are examples of potential configurations you might see on your system. In this example, the <code>user.name</code> and <code>user.email</code> settings are already configured.</p>
+<p>If you do not see these configurations in your results, you will need to set them up on your system. We suggest you start by setting the global credential configurations. Use <code>--local</code> instead if you wish to apply the configurations to the currently open directory in your command-line interface.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Interface</strong></pre>
+</div>
+<div class="sourceCode" id="cb12" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"Your Name Here"</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"your@email.com"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If you make a mistake, you can use the <code>--unset</code> command to remove the configurations through the terminal, or you can modify the .gitconfig file directly&nbsp;<span class="citation" data-cites="Foster2024"><sup><a href="#ref-Foster2024" role="doc-biblioref">17</a></sup></span>.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Interface</strong></pre>
+</div>
+<div class="sourceCode" id="cb13" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> <span class="at">--unset</span> user.name</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> <span class="at">--unset</span> user.email</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>It is possible to automatically manage multiple credentials without needing to override the global settings in each folder. This is discussed in the <strong>Appendix</strong>.</p>
+</section>
+<section id="transfer-protocols" class="level1">
+<h1>Transfer Protocols</h1>
+<p>GitHub supports two types of authentication and file transfer protocols: Hypertext Transfer Protocol Secure (HTTPS) and Secure Shell (SSH) Keys. These protocols are used to securely and accurately communicate project access levels, rules, and, most importantly, to transfer files between your local device and the remote repository&nbsp;<span class="citation" data-cites="about_auth"><sup><a href="#ref-about_auth" role="doc-biblioref">18</a></sup></span>.</p>
+<p>Below is a list of pros and cons for both&nbsp;<span class="citation" data-cites="setup_auth ssh_vs_https new_ssh pat"><sup><a href="#ref-setup_auth" role="doc-biblioref">19</a>–<a href="#ref-pat" role="doc-biblioref">22</a></sup></span>:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 41%">
+<col style="width: 42%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Criteria</th>
+<th>SSH</th>
+<th>HTTPS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Setup</td>
+<td>More involved.</td>
+<td>Easier for beginners.</td>
+</tr>
+<tr class="even">
+<td>Ease of Use</td>
+<td>Low maintenance.</td>
+<td>Requires username and PAT with each interaction.</td>
+</tr>
+<tr class="odd">
+<td>Security</td>
+<td>More secure.</td>
+<td>Vulnerable to brute force attacks.</td>
+</tr>
+<tr class="even">
+<td>Permissions Control</td>
+<td>Fine- and coarse-grained options.</td>
+<td>Coarser permissions for PAT set by GitHub.</td>
+</tr>
+<tr class="odd">
+<td>Signing</td>
+<td>SSH Keys and GNU Privacy Guard (GPG)</td>
+<td>GPG and S/MIME</td>
+</tr>
+<tr class="even">
+<td>Other</td>
+<td>Additional security with Hardware Keys&nbsp;<span class="citation" data-cites="hardware"><sup><a href="#ref-hardware" role="doc-biblioref">23</a></sup></span>.</td>
+<td>Never blocked by firewalls and proxies&nbsp;<span class="citation" data-cites="about_auth"><sup><a href="#ref-about_auth" role="doc-biblioref">18</a></sup></span>.</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+PATs Replaced Username/Password
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Previously, GitHub allowed authentication with a username and password, but in 2021 the password requirement was replaced with PATs. Credential managers were adjusted to accommodate this change and should store the PAT accordingly.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Code Like a Pro
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You can use different protocols for different projects, and it is possible to change the protocol associated with a given project later. Directions for converting between the two transfer methods can be found in the <em>Managing remote repositories</em> article provided on docs.github.com&nbsp;<span class="citation" data-cites="ssh_https https_ssh"><sup><a href="#ref-ssh_https" role="doc-biblioref">24</a>,<a href="#ref-https_ssh" role="doc-biblioref">25</a></sup></span>.</p>
+</div>
+</div>
+<p>We provide basic instructions to configure your Git and GitHub for both methods. Advanced settings are not covered here, but relevant links are sometimes provided to help with these setups. Users are encouraged to explore these resources as needed for their individual projects.</p>
+<section id="https" class="level2">
+<h2 class="anchored" data-anchor-id="https">HTTPS</h2>
+<p>These directions were provided in the <em>Managing your personal access tokens</em> article provided on docs.github.com&nbsp;<span class="citation" data-cites="pat"><sup><a href="#ref-pat" role="doc-biblioref">22</a></sup></span>.</p>
+<ol type="1">
+<li>Go to your GitHub <a href="https://github.com/settings/profile">account settings page</a>.</li>
+<li>At the end of the left sidebar, click on “<iconify-icon role="img" inline="" icon="octicon:code-16" aria-label="Icon code-16 from octicon Iconify.design set." title="Icon code-16 from octicon Iconify.design set."></iconify-icon> Developer Settings”.</li>
+<li>In the left sidebar open the “<iconify-icon role="img" inline="" icon="octicon:key-16" aria-label="Icon key-16 from octicon Iconify.design set." title="Icon key-16 from octicon Iconify.design set."></iconify-icon> Personal access tokens” drop-down menu and click on “Tokens (classic)”.</li>
+<li>In the center of the window, there is a drop-down menu. Select “Generate new token (classic)”.</li>
+<li>Add a note describing what the PAT is for and set its expiration time-frame.</li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled" style="margin-left: 2rem">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Set an Expiration
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You have the option to select “No expiration,” but this option is strongly discouraged for security purposes.</p>
+</div>
+</div>
+<ol start="6" type="1">
+<li>In the “Select scopes” section, check “repo” for full control of private repositories.</li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled" style="margin-left: 2rem">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Fine-Tuning Scopes
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We do not cover the different ways repository access can be fine-tuned. If you wish to learn more about the access permission levels possible through GitHub, you can read the article provided on docs.github.com&nbsp;<span class="citation" data-cites="oath"><sup><a href="#ref-oath" role="doc-biblioref">26</a></sup></span>.</p>
+</div>
+</div>
+<ol start="7" type="1">
+<li>At the bottom of the page, click <span style="white-space: nowrap; background-color: #1F70EB; color: #ffffff; border: 1px solid #4686EE; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px">Generate token</span>.</li>
+<li>Copy the generated PAT and save it somewhere secure for later use, as you will not be able to access it again after you exit the window.</li>
+</ol>
+<p>Every time you interact with GitHub, you will enter your PAT instead of your account password. For example:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Interface</strong></pre>
+</div>
+<div class="sourceCode" id="cb14" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/USERNAME/REPO.git</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Username:</span> YOUR-USERNAME</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Password:</span> YOUR-PERSONAL-ACCESS-TOKEN</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="ssh-keys" class="level2">
+<h2 class="anchored" data-anchor-id="ssh-keys">SSH Keys</h2>
+<p>SSH Keys work by creating a private and public key pair. When interacting with the remote repository, the keys are compared to determine access permissions. We will use the command-line interface to generate these keys, and you will upload your public key to GitHub to complete the process&nbsp;<span class="citation" data-cites="new_ssh using_ssh ssh_on_github"><sup><a href="#ref-new_ssh" role="doc-biblioref">21</a>,<a href="#ref-using_ssh" role="doc-biblioref">27</a>,<a href="#ref-ssh_on_github" role="doc-biblioref">28</a></sup></span>.</p>
+<p>It is best practice to review your system for any existing private/public key pairs.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Interface</strong></pre>
+</div>
+<div class="sourceCode" id="cb15" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> –al ~/.ssh         <span class="co"># List all elements in the .ssh directory</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Output - SSH Keys Exist</strong></pre>
+</div>
+<div class="sourceCode" id="cb16" data-filename="Command-Line Output - SSH Keys Exist"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span>                               <span class="co"># Unix-like reference to current directory</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">..</span>                              <span class="co"># Unix-like reference to parent directory</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="ex">.DS_Store</span>                       <span class="co"># MacOS folder custom attributes metadata</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="ex">config</span>                          <span class="co"># SSH Key configurations</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="ex">id_ed25519</span>                      <span class="co"># SSH authentication local key</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="ex">id_ed25519.pub</span>                  <span class="co"># SSH authentication public key</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="ex">id_ed25519_signing</span>              <span class="co"># SSH signing local key</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="ex">id_ed25519_signing.pub</span>          <span class="co"># SSH signing public key</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="ex">known_hosts</span>                     <span class="co"># GitHub's SSH Key fingerprints</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Output - No Previous Keys Available</strong></pre>
+</div>
+<div class="sourceCode" id="cb17" data-filename="Command-Line Output - No Previous Keys Available"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ls:</span> cannot access <span class="kw">`</span><span class="ex">/c/Users/userID/.ssh</span><span class="kw">`</span>: No such file or directory</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In this example, you can see that I have two SSH key pairs: one for authentication and one for signing. They are configured to use the Edwards-curve Digital Signature Algorithm (<code>id_ed25519</code>), a type of public-key cryptography algorithm. You might also see Rivest-Shamir-Adleman (<code>id_rsa</code>) or Elliptic Curve Digital Signature Algorithm (<code>id_ecdsa</code>)&nbsp;<span class="citation" data-cites="ssh_algorithms rsa_vs_ed25519"><sup><a href="#ref-ssh_algorithms" role="doc-biblioref">29</a>,<a href="#ref-rsa_vs_ed25519" role="doc-biblioref">30</a></sup></span>.</p>
+<p>While RSA is widely used and is compatible with SHA-1 and SHA-2 hash algorithms, ED25519 is considered to be more efficient, faster, and more secure because of its elliptic curve design. It is also a more modern method for cryptography compared to RSA&nbsp;<span class="citation" data-cites="rsa_vs_ed25519"><sup><a href="#ref-rsa_vs_ed25519" role="doc-biblioref">30</a></sup></span>.</p>
+<p>We will show you how to generate an <code>id_ed25519</code> or <code>id_rsa</code> SSH key. Consider the points provided below when choosing an algorithm.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+DSA Keys No Longer Supported
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>As of March 15, 2022, GitHub no longer supports the <code>ssh-dss</code> algorithm. If your setup uses this algorithm, you will need to delete those keys and replace them with either <code>id_rsa</code> or <code>id_ed25519</code>&nbsp;<span class="citation" data-cites="new_ssh"><sup><a href="#ref-new_ssh" role="doc-biblioref">21</a></sup></span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Must Specify SHA-2 Hash Length for RSA
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>SSH keys generated using the RSA algorithm after November 2, 2021, must be specified to use the SHA-2 hash algorithm length. RSA keys with a valid_after date set before this date can use either SHA-1 or SHA-2&nbsp;<span class="citation" data-cites="new_ssh ssh_algorithms"><sup><a href="#ref-new_ssh" role="doc-biblioref">21</a>,<a href="#ref-ssh_algorithms" role="doc-biblioref">29</a></sup></span>.</p>
+<p>You can verify the key length with <code>ssh-keygen -l -f ~/.ssh/id_rsa.pub</code>, changing the file name as needed. If the length is 2048, the key is using SHA-1. If the length is 4096, it is using SHA-2&nbsp;<span class="citation" data-cites="ssh_algorithms"><sup><a href="#ref-ssh_algorithms" role="doc-biblioref">29</a></sup></span>.</p>
+<p>We suggest replacing any SHA-1 configured keys with SHA-2 configured keys.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Authentication vs Signing SSH Keys
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>GitHub requires different SSH Keys for account authentication and signing, which verify the authenticity and integrity of GitHub actions&nbsp;<span class="citation" data-cites="about_signature"><sup><a href="#ref-about_signature" role="doc-biblioref">31</a></sup></span>. At a minimum, you will need keys for authentication, while signing is optional. The same setup is applied for both options, except when specifying the purpose of the key to GitHub.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Code Like a Pro
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The astute student might have observed that my system is set to automatically sign all actions in GitHub with <code>commit.gpgsign=true</code> in the .gitconfig file. If you choose to create a pair of SSH keys for signing, it is recommended that you add this to your configuration with: <code>git config commit.gpgsign true</code>.</p>
+<p>The GPG Suite for macOS and Gpg4win for Windows will allow you to configure the GPG agent and save your signing credentials. You can learn more about signing commits in the <em>About commit signature verification</em> and <em>Signing commits</em> articles provided on docs.github.com&nbsp;<span class="citation" data-cites="about_signature signing_commits signing_tags"><sup><a href="#ref-about_signature" role="doc-biblioref">31</a>–<a href="#ref-signing_tags" role="doc-biblioref">33</a></sup></span>.</p>
+</div>
+</div>
+<p>Now that you have chosen an SSH algorithm from ED25519 or RSA, we can generate the public and private key pair.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Interface</strong></pre>
+</div>
+<div class="sourceCode" id="cb18" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ed25519</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519 <span class="at">-C</span> <span class="st">"your@email.com"</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># RSA with SHA-2</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> rsa <span class="at">-b</span> 4096 <span class="at">-C</span> <span class="st">"your@email.com"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Output - ED25519</strong></pre>
+</div>
+<div class="sourceCode" id="cb19" data-filename="Command-Line Output - ED25519"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Generating</span> public/private ed25519 key pair.</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Enter</span> a file in which to save the key <span class="er">(</span><span class="ex">/Users/userID/.ssh/id_ed25519</span><span class="kw">)</span><span class="bu">:</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Output - RSA</strong></pre>
+</div>
+<div class="sourceCode" id="cb20" data-filename="Command-Line Output - RSA"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Generating</span> public/private rsa key pair.</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Enter</span> a file in which to save the key <span class="er">(</span><span class="ex">/Users/userID/.ssh/id_rsa</span><span class="kw">)</span><span class="bu">:</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>After the keys have been created, you are given the option to specify where they will be stored, and you can modify the key name if desired. It is easier to keep the SSH key pairs stored in the ~/.ssh directory, avoiding additional configuration settings.</p>
+<p>If you want to change the key name, you <strong>must</strong> keep the <code>id_ed25519</code> or <code>id_rsa</code> prefix, as this tells your system which algorithm to use. For example:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Output - ED25519</strong></pre>
+</div>
+<div class="sourceCode" id="cb21" data-filename="Command-Line Output - ED25519"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hit enter to accept the default location and file name</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Enter</span> a file in which to save the key <span class="er">(</span><span class="ex">/Users/userID/.ssh/id_ed25519</span><span class="kw">)</span><span class="bu">:</span> </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify a new file name, keeping the default location</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Enter</span> a file in which to save the key <span class="er">(</span><span class="ex">/Users/userID/.ssh/id_ed25519</span><span class="kw">)</span><span class="bu">:</span> /Users/userID/.ssh/id_ed25519_modify_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Continuing with the ED25519 example, as the steps will be the same for RSA going forward, you will be given the option to add a password to your key. We highly suggest that you use a strong password and save it somewhere secure for later use. If needed, you can change the password down the line, but you will not be able to recover it if you lose it&nbsp;<span class="citation" data-cites="using_ssh"><sup><a href="#ref-using_ssh" role="doc-biblioref">27</a></sup></span></p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Output - ED25519</strong></pre>
+</div>
+<div class="sourceCode" id="cb22" data-filename="Command-Line Output - ED25519"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Enter</span> passphrase for <span class="st">"/Users/userID/.ssh/id_ed25519"</span> <span class="er">(</span><span class="ex">empty</span> for no passphrase<span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Enter</span> same passphrase again:</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Output - ED25519</strong></pre>
+</div>
+<div class="sourceCode" id="cb23" data-filename="Command-Line Output - ED25519"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Your</span> identification has been saved in /Users/userID/.ssh/id_ed25519</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Your</span> public key has been saved in /Users/userID/.ssh/id_ed25519.pub</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="ex">The</span> key fingerprint is:</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="ex">SHA256:nmQLX/8Tew2X1ju3sOb4wSNK+HIycT0LKEsPzYfN+Ms</span> shelby.golden@yale.edu</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="ex">The</span> key<span class="st">'s randomart image is:</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="st">+--[ED25519 256]--+</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="st">|                 |</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="st">|                 |</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="st">|                 |</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="st">|                 |</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="st">|      + S o     o|</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="st">|     + &amp;.X +. ooo|</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="st">|    . =.X...+=.=o|</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="st">|     . =+o..ooBo+|</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="st">|        =E..++.++|</span></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a><span class="st">+----[SHA256]-----+</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>When you have successfully created your keys, you will see the final output shown above. It is not necessary to save the fingerprint or randomart (visual representation of the fingerprint), but I personally save them in the notes section of my password manager.</p>
+<p>Similarly to HTTPS, it is possible to cache your SSH key password using agent forwarding. While we won’t cover the setup process here, you can learn more about it and find detailed instructions in the <em>Using SSH agent forwarding</em> and <em>Generating a new SSH key and adding it to the ssh-agent</em> articles on docs.github.com&nbsp;<span class="citation" data-cites="agent_forwarding adding_agent"><sup><a href="#ref-agent_forwarding" role="doc-biblioref">34</a>,<a href="#ref-adding_agent" role="doc-biblioref">35</a></sup></span>.</p>
+<p>With our public and private SSH key pairs created, we are ready to add the public one to our GitHub account. Start by copying the recently created public key.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Interface - ED25519</strong></pre>
+</div>
+<div class="sourceCode" id="cb24" data-filename="Command-Line Interface - ED25519"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pbcopy</span> <span class="op">&lt;</span> ~/.ssh/id_ed25519.pub</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="1">
+<li><p>Go to your GitHub <a href="https://github.com/settings/profile">account settings page</a>.</p></li>
+<li><p>In the “Access” section of the left sidebar, click on “<iconify-icon role="img" inline="" icon="octicon:code-16" aria-label="Icon code-16 from octicon Iconify.design set." title="Icon code-16 from octicon Iconify.design set."></iconify-icon> SSH and GPG Keys”.</p></li>
+<li><p>Click the <span style="white-space: nowrap; background-color: #1F70EB; color: #ffffff; border: 1px solid #4686EE; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px">New SSH key</span> button in the top right.</p></li>
+<li><p>Add a title explaining the use of the key (e.g., Personal laptop).</p></li>
+<li><p>Select “Authentication key” as the key type.</p></li>
+<li><p>In the “Key” field, paste the public key you copied above.</p></li>
+<li><p>Click <span style="white-space: nowrap; background-color: #1F70EB; color: #ffffff; border: 1px solid #4686EE; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px">Add SSH key</span> and follow the prompts.</p></li>
+<li><p>To ensure a valid connection with GitHub, you will need to open the ~/.ssh/known_hosts file and copy-and-paste GitHub’s <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints">SSH key fingerprints</a>&nbsp;<span class="citation" data-cites="fingerprints"><sup><a href="#ref-fingerprints" role="doc-biblioref">36</a></sup></span>.</p></li>
+</ol>
+<p>You can confirm that the keys are correctly configured with the following test. If you get the expected output shown below, then you are all set!</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Interface</strong></pre>
+</div>
+<div class="sourceCode" id="cb25" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-T</span> git@github.com</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Output</strong></pre>
+</div>
+<div class="sourceCode" id="cb26" data-filename="Command-Line Output"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Hi</span> USERNAME! You<span class="st">'ve successfully authenticated, but GitHub does not provide shell access.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="advanced-configurations" class="level1">
+<h1>Advanced Configurations</h1>
+<section id="multiple-git-configurations" class="level2">
+<h2 class="anchored" data-anchor-id="multiple-git-configurations">Multiple Git Configurations</h2>
+<p>Suppose you use two or more GitHub accounts and need different emails or usernames associated with Git commits made to those remote repositories. Reconfiguring every project directory for this purpose would be tedious.</p>
+<p>Instead, you can use an automatically expanded local setting to override the global configurations using “Conditional Includes”. This feature has been available since Git version 2.13&nbsp;<span class="citation" data-cites="AnsweredbyJanousek2017 Barochiya2021 Connolly2022"><sup><a href="#ref-AnsweredbyJanousek2017" role="doc-biblioref">37</a>–<a href="#ref-Connolly2022" role="doc-biblioref">39</a></sup></span>.</p>
+<p>In this framework, you need to organize your project directories such that those with an alternate configuration are in the same parent directory. We will refer to this parent directory as “Alternate.” The directions given here assume that you have already set up the global Git configurations.</p>
+<p>We start by locating and opening the .gitconfig file.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Interface</strong></pre>
+</div>
+<div class="sourceCode" id="cb27" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--list</span> <span class="at">--show-origin</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Abbreviated Output</strong></pre>
+</div>
+<div class="sourceCode" id="cb28" data-filename="Command-Line Abbreviated Output"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="bu">:</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="ex">file:/Users/userID/.gitconfig</span>   user.email=shelby.golden@yale.edu</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="ex">file:/Users/userID/.gitconfig</span>   user.name=Shelby Golden</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="bu">:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>When you open .gitconfig with Finder/File Explorer, you will see something like this:</p>
+<div class="line-thick">
+
+</div>
+<p style="margin-top: 0.4ex; margin-bottom: -0.3ex; margin-left: 1.2ex">
+<strong>~/Users/userID/.gitconfig</strong>
+</p>
+<div class="line-thin">
+
+</div>
+<p>  [user]<br>
+     email = shelby.golden@yale.edu<br>
+     name = Shelby Golden<br>
+     signingkey = /Users/userID/.ssh/id_ed25519_jhu_signing.pub<br>
+  [gpg]<br>
+     format = ssh<br>
+  [commit]<br>
+     gpgsign = true<br>
+  [init]<br>
+     defaultBranch = main<br>
+  [filter “lfs”]<br>
+     required = true<br>
+     clean = git-lfs clean – %f<br>
+     smudge = git-lfs smudge – %f<br>
+     process = git-lfs filter-process<br>
+  [pack]<br>
+     packSizeLimit = 50M</p>
+<div class="line-thin">
+
+</div>
+<p>After the [user] section, add the conditional include statement. The order of the sections does not matter, but the indentation is important to keep consistent.</p>
+<div class="line-thick">
+
+</div>
+<p style="margin-top: 0.4ex; margin-bottom: -0.3ex; margin-left: 1.2ex">
+<strong>~/Users/userID/.gitconfig</strong>
+</p>
+<div class="line-thin">
+
+</div>
+<p>  [user]<br>
+     email = shelby.golden@yale.edu<br>
+     name = Shelby Golden<br>
+     signingkey = /Users/userID/.ssh/id_ed25519_jhu_signing.pub<br>
+ [includeIf “gitdir:/Users/userID/Desktop/…/Alternate/”]<br>
+     path = /Users/userID/Desktop/DSDE/…/Alternate/.gitconfig<br>
+  :</p>
+<div class="line-thin">
+
+</div>
+<p>Now we need to create the Git configuration file applicable to all projects stored in ~/Alternate.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Interface</strong></pre>
+</div>
+<div class="sourceCode" id="cb29" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Navigate to the alternative account parent directory.</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="st">"/FILE_PATH/Alternate"</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Create a new configuration file.</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> .gitconfig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Open the ~/Alternate/.gitconfig file, either using the <code>vim</code> in the command-line interface or by opening it with Finder/File Explorer, and add the relevant Git configurations you want applied to this account.</p>
+<div class="line-thick">
+
+</div>
+<p style="margin-top: 0.4ex; margin-bottom: -0.3ex; margin-left: 1.2ex">
+<strong>~/Alternate/.gitconfig</strong>
+</p>
+<div class="line-thin">
+
+</div>
+<p>  [user]<br>
+     email = shelby.golden@gmail.com<br>
+     signingkey = /Users/userID/.ssh/id_ed25519_personal_signing.pub<br>
+  [gpg]<br>
+     formal = ssh<br>
+  [commit]<br>
+     gpgsign = true<br>
+  :</p>
+<div class="line-thin">
+
+</div>
+</section>
+<section id="configuring-ssh-keys-to-different-hosts" class="level2">
+<h2 class="anchored" data-anchor-id="configuring-ssh-keys-to-different-hosts">Configuring SSH Keys to Different Hosts</h2>
+<p>Suppose you want to use SSH Keys to interact with remote repositories stored on different domains, such as GitHub and GitLab. You will need to create a new document called config in the ~/.ssh directory.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Interface</strong></pre>
+</div>
+<div class="sourceCode" id="cb30" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Navigate to the .ssh directory.</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /Users/userID/.ssh</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Create a new configuration file.</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> config</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Open the ~/.ssh/config file, either using <code>vim</code> in the command-line interface or by opening it with Finder/File Explorer, and add the relevant SSH configurations necessary to coordinate file transfers between different remote account locations.</p>
+<p>For example, my configuration document looks like this:</p>
+<div class="line-thick">
+
+</div>
+<p style="margin-top: 0.4ex; margin-bottom: -0.3ex; margin-left: 1.2ex">
+<strong>~/.ssh/config</strong>
+</p>
+<div class="line-thin">
+
+</div>
+<p>  Host github.com<br>
+     User git<br>
+     AddKeysToAgent yes<br>
+     UseKeychain yes<br>
+     IdentityFile ~/.ssh/id_ed25519_github<br>
+  Host gitlab.com<br>
+     User git<br>
+     AddKeysToAgent yes<br>
+     IdentityFile ~/.ssh/id_ed25519_gitlab</p>
+<div class="line-thin">
+
+</div>
+</section>
+</section>
+<section id="references" class="level1">
+<h1>References</h1>
+
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-atlassian_git" class="csl-entry" role="listitem">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">Atlassian. <a href="https://www.atlassian.com/git/tutorials/install-git">Install git</a>. <em>Atlassian Tutorials</em>.</div>
+</div>
+<div id="ref-git_macs" class="csl-entry" role="listitem">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">Git-SCM. <a href="https://git-scm.com/downloads/mac">Download git for macs</a>.</div>
+</div>
+<div id="ref-git_pc" class="csl-entry" role="listitem">
+<div class="csl-left-margin">3. </div><div class="csl-right-inline">Git-SCM. <a href="https://git-scm.com/downloads/win">Download git for windows</a>.</div>
+</div>
+<div id="ref-git_linux" class="csl-entry" role="listitem">
+<div class="csl-left-margin">4. </div><div class="csl-right-inline">Git-SCM. <a href="https://git-scm.com/downloads/linux">Download git for linux</a>.</div>
+</div>
+<div id="ref-github_username" class="csl-entry" role="listitem">
+<div class="csl-left-margin">5. </div><div class="csl-right-inline">Bryan, J. &amp; Hester, J. <a href="https://happygitwithr.com/github-acct">Chapter 4 register a GitHub account | happy git and GitHub for the useR</a>. <em>Happy Git and GitHub for the useR</em>.</div>
+</div>
+<div id="ref-github_skills" class="csl-entry" role="listitem">
+<div class="csl-left-margin">6. </div><div class="csl-right-inline">GitHub. <a href="https://skills.github.com/">GitHub skills</a>. <em>GitHub Skills</em>.</div>
+</div>
+<div id="ref-github_repos_docs" class="csl-entry" role="listitem">
+<div class="csl-left-margin">7. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/repositories">Repositories documentation</a>. <em>GitHub Docs</em>.</div>
+</div>
+<div id="ref-github_cli" class="csl-entry" role="listitem">
+<div class="csl-left-margin">8. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/github-cli/github-cli/about-github-cli">About GitHub command line interface (CLI)</a>. <em>GitHub Docs</em>.</div>
+</div>
+<div id="ref-git_for_windows" class="csl-entry" role="listitem">
+<div class="csl-left-margin">9. </div><div class="csl-right-inline">Windows, G. for. <a href="https://gitforwindows.org/">Git for windows</a>.</div>
+</div>
+<div id="ref-git_scm_config" class="csl-entry" role="listitem">
+<div class="csl-left-margin">10. </div><div class="csl-right-inline">Git-SCM. <a href="https://git-scm.com/docs/git-config">Git config</a>. <em>Git-SCM Documents</em>.</div>
+</div>
+<div id="ref-credential_manager" class="csl-entry" role="listitem">
+<div class="csl-left-margin">11. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/get-started/git-basics/caching-your-github-credentials-in-git">Caching your GitHub credentials in git</a>. <em>GitHub Docs</em>.</div>
+</div>
+<div id="ref-homebrew" class="csl-entry" role="listitem">
+<div class="csl-left-margin">12. </div><div class="csl-right-inline">Howell, M. <a href="https://brew.sh/">Homebrew - the missing package manager for macOS (or linux)</a>. <em>Homebrew</em>.</div>
+</div>
+<div id="ref-macports" class="csl-entry" role="listitem">
+<div class="csl-left-margin">13. </div><div class="csl-right-inline">contributors, V. <a href="https://www.macports.org/install.php">Download &amp; installation</a>. <em>The MacPorts Project</em>.</div>
+</div>
+<div id="ref-osxkeychain" class="csl-entry" role="listitem">
+<div class="csl-left-margin">14. </div><div class="csl-right-inline">Atlassian. <a href="https://www.atlassian.com/git/tutorials/install-git#install-the-git-credential-osx">Install git - install the git-credential-osxkeychain helper</a>. <em>Atlassian Tutorial</em>.</div>
+</div>
+<div id="ref-atlassian_config" class="csl-entry" role="listitem">
+<div class="csl-left-margin">15. </div><div class="csl-right-inline">Atlassian. <a href="https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-config">Git config</a>. <em>Atlassian Tutorial</em>.</div>
+</div>
+<div id="ref-Answeredbykgf3JfUtW2017" class="csl-entry" role="listitem">
+<div class="csl-left-margin">16. </div><div class="csl-right-inline">kgf3JfUtW, A. by. <a href="https://stackoverflow.com/questions/12254076/how-do-i-show-my-global-git-configuration">How do i show my global git configuration? - stack overflow</a>. <em>StackOverflow</em> (2017).</div>
+</div>
+<div id="ref-Foster2024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">17. </div><div class="csl-right-inline">Foster, G. <a href="https://graphite.dev/guides/git-unset-config">Unsetting git configuration settings</a>. <em>Graphite</em> (2024).</div>
+</div>
+<div id="ref-about_auth" class="csl-entry" role="listitem">
+<div class="csl-left-margin">18. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github">About authentication to GitHub</a>. <em>GitHub Docs</em>.</div>
+</div>
+<div id="ref-setup_auth" class="csl-entry" role="listitem">
+<div class="csl-left-margin">19. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/get-started/getting-started-with-git/set-up-git#authenticating-with-github-from-git">Set up git - authenticating with GitHub from git</a>. <em>GitHub Docs</em>.</div>
+</div>
+<div id="ref-ssh_vs_https" class="csl-entry" role="listitem">
+<div class="csl-left-margin">20. </div><div class="csl-right-inline">Singh, Y. <a href="https://ysrazsingh.medium.com/difference-between-ssh-and-https-in-github-95ea7cf38f4c">Difference between SSH and HTTPS in GitHub</a>. <em>Medium</em> (2023).</div>
+</div>
+<div id="ref-new_ssh" class="csl-entry" role="listitem">
+<div class="csl-left-margin">21. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key">Generating a new SSH key and adding it to the ssh-agent - generating a new SSH key</a>. <em>GitHub Docs</em>.</div>
+</div>
+<div id="ref-pat" class="csl-entry" role="listitem">
+<div class="csl-left-margin">22. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens">Managing your personal access tokens</a>. <em>GitHub Docs</em>.</div>
+</div>
+<div id="ref-hardware" class="csl-entry" role="listitem">
+<div class="csl-left-margin">23. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key-for-a-hardware-security-key">Generating a new SSH key and adding it to the ssh-agent - generating a new SSH key for a hardware security key</a>. <em>GitHub Docs</em>.</div>
+</div>
+<div id="ref-ssh_https" class="csl-entry" role="listitem">
+<div class="csl-left-margin">24. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories#switching-remote-urls-from-ssh-to-https">Managing remote repositories - switching remote URLs from SSH to HTTPS</a>. <em>GitHub Docs</em>.</div>
+</div>
+<div id="ref-https_ssh" class="csl-entry" role="listitem">
+<div class="csl-left-margin">25. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories#switching-remote-urls-from-https-to-ssh">Managing remote repositories - switching remote URLs from HTTPS to SSH</a>. <em>GitHub Docs</em>.</div>
+</div>
+<div id="ref-oath" class="csl-entry" role="listitem">
+<div class="csl-left-margin">26. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/scopes-for-oauth-apps">Scopes for OAuth apps</a>. <em>GitHub Docs</em>.</div>
+</div>
+<div id="ref-using_ssh" class="csl-entry" role="listitem">
+<div class="csl-left-margin">27. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/working-with-ssh-key-passphrases">Working with SSH key passphrases</a>. <em>GitHub Docs</em>.</div>
+</div>
+<div id="ref-ssh_on_github" class="csl-entry" role="listitem">
+<div class="csl-left-margin">28. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account">Adding a new SSH key to your GitHub account</a>. <em>GitHub Docs</em>.</div>
+</div>
+<div id="ref-ssh_algorithms" class="csl-entry" role="listitem">
+<div class="csl-left-margin">29. </div><div class="csl-right-inline">StrongDM, S. T. Z. T. P. A. M. (PAM). <a href="https://www.strongdm.com/blog/comparing-ssh-keys">Comparing SSH keys: A comprehensive guide (RSA, DSA, ECDSA)</a>. (2025).</div>
+</div>
+<div id="ref-rsa_vs_ed25519" class="csl-entry" role="listitem">
+<div class="csl-left-margin">30. </div><div class="csl-right-inline">GeeksforGeeks. <a href="https://www.geeksforgeeks.org/devops/rsa-vs-ed25519-which-key-pair-is-right-for-your-security-needs/#what-is-ed25519">RSA vs Ed25519: Which key pair is right for your security needs?</a> <em>GeeksforGeeks</em> (2025).</div>
+</div>
+<div id="ref-about_signature" class="csl-entry" role="listitem">
+<div class="csl-left-margin">31. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification#ssh-commit-signature-verification">About commit signature verification - SSH commit signature verification</a>. <em>GitHub Docs</em>.</div>
+</div>
+<div id="ref-signing_commits" class="csl-entry" role="listitem">
+<div class="csl-left-margin">32. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits">Signing commits</a>. <em>GitHub Docs</em>.</div>
+</div>
+<div id="ref-signing_tags" class="csl-entry" role="listitem">
+<div class="csl-left-margin">33. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-tags">Signing tags</a>. <em>GitHub Docs</em>.</div>
+</div>
+<div id="ref-agent_forwarding" class="csl-entry" role="listitem">
+<div class="csl-left-margin">34. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/using-ssh-agent-forwarding">Using SSH agent forwarding</a>. <em>GitHub Docs</em>.</div>
+</div>
+<div id="ref-adding_agent" class="csl-entry" role="listitem">
+<div class="csl-left-margin">35. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#adding-your-ssh-key-to-the-ssh-agent">Generating a new SSH key and adding it to the ssh-agent - adding your SSH key to the ssh-agent</a>. <em>GitHub Docs</em>.</div>
+</div>
+<div id="ref-fingerprints" class="csl-entry" role="listitem">
+<div class="csl-left-margin">36. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints">GitHub’s SSH key fingerprints</a>. <em>GitHub Docs</em>.</div>
+</div>
+<div id="ref-AnsweredbyJanousek2017" class="csl-entry" role="listitem">
+<div class="csl-left-margin">37. </div><div class="csl-right-inline">Janousek, T. A. by. <a href="https://stackoverflow.com/questions/4220416/can-i-specify-multiple-users-for-myself-in-gitconfig">Git - can i specify multiple users for myself in .gitconfig?</a> <em>StackOverflow</em> (2017).</div>
+</div>
+<div id="ref-Barochiya2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">38. </div><div class="csl-right-inline">Barochiya, D. <a href="https://www.freecodecamp.org/news/how-to-handle-multiple-git-configurations-in-one-machine/">How to use multiple git configs on one computer</a>. <em>freeCodeCamp</em> (2021).</div>
+</div>
+<div id="ref-Connolly2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">39. </div><div class="csl-right-inline">Connolly, K. <a href="https://connkat.medium.com/setting-up-multiple-ssh-keys-on-one-computer-75f068d972d9">Setting up multiple SSH keys on one computer</a>. <em>Medium</em> (2022).</div>
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../Workshops/Git-and-GitHub/Pages/git-github-what-is.html" class="pagination-link" aria-label="The What, Why, and How of Git and GitHub">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">The What, Why, and How of Git and GitHub</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../Workshops/Git-and-GitHub/Pages/git-github-overview.html" class="pagination-link" aria-label="Detailed Walk-Through">
+        <span class="nav-page-text">Detailed Walk-Through</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>This site was built on a ysph-dsde.github.io page. It was rendered using Quarto (v 1.6.3) and theme <a href="https://github.com/juba/bookup-html/tree/main">bookup-html</a>.</p>
+</div>   
+    <div class="nav-footer-center">
+
+<div style="margin-top: 10px;">
+Have thoughts about this resource?<br>Yale affiliates, provide feedback <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=u76M3Tkh-E20EU4-h6vrXH-TvKDg8gZHqoE3FAMavy5UMjhSTjVOWjQ0MkFIM0hDS0pVQ0tZN1kzMi4u">here</a>.<br>Non-affiliates, provide feedback <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=u76M3Tkh-E20EU4-h6vrXH-TvKDg8gZHqoE3FAMavy5URFBRQ1ZVUFlFVEY0MElSNTlSSzJTWkhXNS4u">here</a>.
+</div>
+<ul class="footer-items list-unstyled" style="display:none;">
+<p>:::</p>
+<div class="hidden quarto-markdown-envelope-contents" data-render-id="Zm9vdGVyLXJpZ2h0LSgyMDMpIDczNy04NjQ0">
+<ol start="203" type="1">
+<li>737-8644</li>
+</ol>
+</div>
+<p>:::</p>
+
+</ul><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ysph-dsde/Book-of-Workshops/edit/main/Workshops/Git-and-GitHub/Pages/git-github-setup.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://ysph.yale.edu/public-health-research-and-practice/research-centers-and-initiatives/public-health-data-science-and-data-equity/">
+      <i class="bi bi-globe" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ysph-dsde">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/showcase/public-health-data-science-and-data-equity-at-yale/">
+      <i class="bi bi-linkedin" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:admin.dsdeysph@yale.edu">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item">
+ (203) 737-8644
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>The What, Why, and How of Git and GitHub – Book of Workshops</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../Workshops/Git-and-GitHub/Pages/git-github-setup.html" rel="next">
+<link href="../../../Workshops/Git-and-GitHub/git-github-index.html" rel="prev">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-f2ed4b6a00c7d3487a84fd5a50ba4e45.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-ab6496a1a679dc9f3d6952c9737550a4.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-5b696210ae79204592cbe97a389ebe16.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-b809ba839b641f2807f7f5514540d996.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/quarto-contrib/bookup_fonts_embed-0.0/fonts-download.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+          <h1 class="quarto-secondary-nav-title">The What, Why, and How of Git and GitHub</h1>
+        </a>     
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../../">Book of Workshops</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/ysph-dsde/Book-of-Workshops" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=|url|" title="LinkedIn" class="quarto-navigation-tool px-1" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../Workshops/Git-and-GitHub/git-github-index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting Started with Git and GitHub</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../Workshops/Git-and-GitHub/Pages/git-github-what-is.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">The What, Why, and How of Git and GitHub</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../Workshops/Git-and-GitHub/Pages/git-github-setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Configurations and Credentials</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../Workshops/Git-and-GitHub/Pages/git-github-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Detailed Walk-Through</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../Workshops/Git-and-GitHub/Pages/git-github-more-to-come.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pages In Progress</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../Workshops/Data-Visualization-with-ggplot2/visualization-index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Visualization with ggplot2</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../Workshops/Data-Visualization-with-ggplot2/Pages/visualization-worked-through-example.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Worked-Through Example</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../Workshops/Data-Visualization-with-ggplot2/Pages/visualization-more-to-come.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pages In Progress</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#what-exactly-are-git-and-github" id="toc-what-exactly-are-git-and-github" class="nav-link active" data-scroll-target="#what-exactly-are-git-and-github">What exactly are Git and GitHub?</a></li>
+  <li><a href="#ok-but-why-choose-them-over-other-options" id="toc-ok-but-why-choose-them-over-other-options" class="nav-link" data-scroll-target="#ok-but-why-choose-them-over-other-options">OK, but why choose them over other options?</a></li>
+  <li><a href="#essential-takeaways" id="toc-essential-takeaways" class="nav-link" data-scroll-target="#essential-takeaways">Essential Takeaways</a></li>
+  <li><a href="#unpacking-how-git-and-github-in-action" id="toc-unpacking-how-git-and-github-in-action" class="nav-link" data-scroll-target="#unpacking-how-git-and-github-in-action">Unpacking How: Git and GitHub in Action</a>
+  <ul class="collapse">
+  <li><a href="#version-control-on-your-device" id="toc-version-control-on-your-device" class="nav-link" data-scroll-target="#version-control-on-your-device">Version Control on Your Device</a></li>
+  <li><a href="#remote-storage-and-distribution" id="toc-remote-storage-and-distribution" class="nav-link" data-scroll-target="#remote-storage-and-distribution">Remote Storage and Distribution</a></li>
+  <li><a href="#safeguarding-information-transfer-processes" id="toc-safeguarding-information-transfer-processes" class="nav-link" data-scroll-target="#safeguarding-information-transfer-processes">Safeguarding Information Transfer Processes</a></li>
+  </ul></li>
+  <li><a href="#section-glossary" id="toc-section-glossary" class="nav-link" data-scroll-target="#section-glossary">Section Glossary</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/ysph-dsde/Book-of-Workshops/edit/main/Workshops/Git-and-GitHub/Pages/git-github-what-is.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">The What, Why, and How of Git and GitHub</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<script src="../../../Code/definition_script.js"></script>
+<p>Git and GitHub are widely used tools in technical projects. Despite their prevalence, many rote memorize Git commands for straightforward tasks without fully understanding what these tools are, how they differ, and what roles they play in a project. In this section, I will provide an overview of Git and GitHub and explain why it is worthwhile to learn and use them over other available options.</p>
+<section id="what-exactly-are-git-and-github" class="level2">
+<h2 class="anchored" data-anchor-id="what-exactly-are-git-and-github">What exactly are Git and GitHub?</h2>
+<figure style="float: left; position: relative; padding-right: 30px; margin-top: 0.5em; margin-bottom: 1em;" class="figure">
+  <a href="https://www.atlassian.com/git/tutorials/what-is-version-control"><video loop="true" autoplay="true" controls="false" style="padding-bottom: 10px;" width="400">
+  <source src="../Images/Distributive Version Control_Atlasian.mp4" type="video/mp4">
+  </video></a>
+  
+  <figcaption style="text-align: left;">
+    Figure from "What is Version Control" by Atlassian.<br>Updated February 23rd, 2020. Accessed October 2025.
+  </figcaption>
+</figure>
+<p>There are two types of version control that facilitate project sharing and collaboration: centralized and distributed. Git is a <span class="text-term" data-hover-text="The project codebase is copied as a mirror to each contributor's local computer. Local changes get synched via patches sent peer-to-peer through the server."> Distributed Version Control System (DVCS)</span>, which is depicted in the clip on the left&nbsp;<span class="citation" data-cites="dvcs atlassian_video git_wiki"><sup><a href="#ref-dvcs" role="doc-biblioref">1</a>–<a href="#ref-git_wiki" role="doc-biblioref">3</a></sup></span>. In a DVCS, a remote <span class="text-term" data-hover-text="Servers are computers or systems that provides resources (i.e. data or programs) to other computers, known as clients, over a network."> server</span> stores the integrated copy of a project, while <span class="text-term" data-hover-text="An exact copy of a project from a server, including al files, the version history, and branches."> mirrors</span> containing the full change history are distributed to individual contributors, who act as <span class="text-term" data-hover-text="Servers are computers or systems that provides resources (i.e. data or programs) to other computers, known as clients, over a network."> clients</span> of the server&nbsp;<span class="citation" data-cites="server mirroring"><sup><a href="#ref-server" role="doc-biblioref">4</a>,<a href="#ref-mirroring" role="doc-biblioref">5</a></sup></span>. Local changes are communicated in what is called a <span class="text-term" data-hover-text="Participants in a network act as both client and server by trading resources and services with one another."> peer-to-peer</span> manner, synchronizing committed changes through <span class="text-term" data-hover-text="Snippets of code or data used to update existing software."> patches</span> that are sent over the server&nbsp;<span class="citation" data-cites="dvcs anukruti162024 patch"><sup><a href="#ref-dvcs" role="doc-biblioref">1</a>,<a href="#ref-anukruti162024" role="doc-biblioref">6</a>,<a href="#ref-patch" role="doc-biblioref">7</a></sup></span>.</p>
+<p><br>
+</p>
+<figure style="float: right; position: relative; margin-left: 1em; margin-top: 0.5em; margin-bottom: 0.5em;" class="figure">
+  <a href="https://git-scm.com/"><img src="../Images/Git Logo 2Color_downloaded 10.16.2024.png" alt="git Logo" style="margin-bottom: 1em;" width="300" class="figure-img"></a>
+  
+  <br>
+  
+  <a href="https://github.com/"><img src="../Images/GitHub Logo_downloaded 10.16.2024.png" alt="GitHub Logo" style="margin-bottom: 1em;" width="300" class="figure-img"></a>
+
+  <figcaption style="text-align: left;">
+    <a href="https://git-scm.com/downloads/logos">git logo</a> and <a href="https://github.com/logos">GitHub logo</a>.<br>Downloaded October 10th, 2024.
+  </figcaption>
+</figure>
+<p>Git was first released in 2005 and is the most popular version control system, even compared to centralized systems&nbsp;<span class="citation" data-cites="atlassian_video git_wiki stackoverflow_survey"><sup><a href="#ref-atlassian_video" role="doc-biblioref">2</a>,<a href="#ref-git_wiki" role="doc-biblioref">3</a>,<a href="#ref-stackoverflow_survey" role="doc-biblioref">8</a></sup></span>. However, Git does not come with its own GUI and lacks the infrastructure for project sharing or collaborations. Users also need to execute Git commands through a CLI like Terminal, which utilizes Bash—a type of <span class="text-term" data-hover-text="A program used by the CLI to mediate communication between the user and computer by interpreting commands and outputs. Examples: Bash, PowerShell, etc."> shell</span> script; a framework that can prove to be a steep learning curve for new users&nbsp;<span class="citation" data-cites="terminal_shell medium_github"><sup><a href="#ref-terminal_shell" role="doc-biblioref">9</a>,<a href="#ref-medium_github" role="doc-biblioref">10</a></sup></span>.</p>
+<p>GitHub was designed in 2007 to improve upon Git and act as a centralized library of repositories where projects can be shared and collaborated on&nbsp;<span class="citation" data-cites="github_wiki medium_github"><sup><a href="#ref-medium_github" role="doc-biblioref">10</a>,<a href="#ref-github_wiki" role="doc-biblioref">11</a></sup></span>. Essentially, GitHub is a developer platform built upon Git repository management structures and commands. While GitHub does not provide version control management independently of Git, it offers additional features designed to fit Git’s paradigm for version control, such as the Fork and pull requests. GitHub also provides tools and settings that help development teams set milestones, assign responsibilities, and track issues or alternative suggestions&nbsp;<span class="citation" data-cites="github_wiki"><sup><a href="#ref-github_wiki" role="doc-biblioref">11</a></sup></span>.</p>
+<p>Together, Git and GitHub enable robust code-based project management for both individual and collaborative efforts. Both Git and GitHub are language-agnostic, meaning they support projects written in any programming language. They integrate seamlessly with many Integrated Development Environments (IDEs) that support them natively, or they can be used alongside IDEs that do not have built-in integration features&nbsp;<span class="citation" data-cites="medium_github"><sup><a href="#ref-medium_github" role="doc-biblioref">10</a></sup></span>.</p>
+</section>
+<section id="ok-but-why-choose-them-over-other-options" class="level2">
+<h2 class="anchored" data-anchor-id="ok-but-why-choose-them-over-other-options">OK, but why choose them over other options?</h2>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[[7, 5]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 58.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://survey.stackoverflow.co/2022/#version-control-version-control-system-prof"><img src="git-github-what-is_files/figure-html/survey-1.png" class="img-fluid figure-img" style="display: block; margin-top: -1.5rem; text-align: left;" alt="Results from the “2022 Developer Survey” by StackOverflow."></a></p>
+<figcaption>Results from the “2022 Developer Survey” by StackOverflow.</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 41.7%;justify-content: flex-start;">
+<p>Git is by far the most popular version control system among both learners and professionals. According to a survey conducted by StackOverflow in 2022, more than 95% of professionals reported using Git in their work, compared to other systems such as Mercurial or SVN&nbsp;<span class="citation" data-cites="stackoverflow_survey"><sup><a href="#ref-stackoverflow_survey" role="doc-biblioref">8</a></sup></span>. Git is also widely adopted by those learning to code, although version control systems remain underutilized by learners. Approximately 17% of learners indicated they do not use any version control, compared to just about 1% of professionals.</p>
+</div>
+</div>
+</div>
+<figure style="float: right; position: relative; margin-left: 1em; margin-top: 0.5em; margin-bottom: 0.5em;" class="figure">
+  <a href="https://octoverse.github.com/2022/global-tech-talent"><img src="../Images/Globalized community_GitHub.png" alt="Octoverse survey" style="margin-bottom: 1em;" width="400" class="figure-img"></a>
+
+  <figcaption style="text-align: left; padding-bottom: 15px">
+    A global community of developers." by GitHub, Octoverse <br>2022 report.
+  </figcaption>
+</figure>
+<p>GitHub is a leading platform for hosting free and open-source code, serving over 100 million developers and hosting more than 420 million repositories as of 2024&nbsp;<span class="citation" data-cites="github_wiki medium_github"><sup><a href="#ref-medium_github" role="doc-biblioref">10</a>,<a href="#ref-github_wiki" role="doc-biblioref">11</a></sup></span>. Since 2015, it has surpassed its main competitor, SourceForge, and had become one of the world’s largest hosts of source code by 2022/2023&nbsp;<span class="citation" data-cites="wired_github"><sup><a href="#ref-wired_github" role="doc-biblioref">12</a></sup></span>.</p>
+<p>GitHub is a highly sought-after resource for maintainers and contributors worldwide, including developers working for companies and nonprofits. The pie chart on the right highlights 20 communities outside the US with the largest user growth in 2022 compared to the previous year. In 2013, most users were based in the US, but with the year-over-year growth of users from India observed thus far it is expected that Indian programmers will match the US developer population in 2025&nbsp;<span class="citation" data-cites="github_global"><sup><a href="#ref-github_global" role="doc-biblioref">13</a></sup></span>.</p>
+</section>
+<section id="essential-takeaways" class="level1">
+<h1>Essential Takeaways</h1>
+<p>With this introduction, we’re ready to start exploring <em>how</em> these tools handle version control and code distribution. While the contextual overview presented thus far is valuable for new or beginner users of Git and GitHub, let’s take a step back and review the core principles that you actually need to know before diving into the <em>how</em>.</p>
+<p><strong>The Motivations:</strong> In a coding project, it is often advantageous to track changes made at each step. When something goes wrong, version control allows you to easily diagnose which changes caused the bug and revert to older, working versions while you isolate and fix the issue. Think of it like “going back to the last save” in a game. Robustly managing a code-based project is only part of the challenge; you also need to provide means for accessing the work for publishing, reporting, or collaboration.</p>
+<p><strong>The Short and Sweet Descriptions:</strong> Git is a system that allows you to save, manage, and track code version histories, enabling you to revert to previously saved versions when necessary. GitHub builds on the Git framework, offering remote storage, distribution, and collaboration for Git-controlled projects&nbsp;<span class="citation" data-cites="atlassian_video github_wiki"><sup><a href="#ref-atlassian_video" role="doc-biblioref">2</a>,<a href="#ref-github_wiki" role="doc-biblioref">11</a></sup></span>. Some refer to GitHub as more than just a place to distribute code, but as a “social networking site for programmers”&nbsp;<span class="citation" data-cites="medium_github"><sup><a href="#ref-medium_github" role="doc-biblioref">10</a></sup></span>.</p>
+</section>
+<section id="unpacking-how-git-and-github-in-action" class="level1">
+<h1>Unpacking How: Git and GitHub in Action</h1>
+<p>In the following pages, we’ll guide you through installing Git, setting up a GitHub account, and configuring both. The rest of the chapter will explore the intricacies of working with Git and GitHub through a realistic example and three common scenarios for managing project codebases. You’ll also have the opportunity to practice these skills using pre-prepared problems.</p>
+<p>Before we jump into these, however, I want to address some common complaints about Git and GitHub introductions. Many find these resources present too much as need-to-know or give commands out of context, making it hard to see the big picture.</p>
+<p>These approaches makes it challenging to grasp Git and GitHub basics and often sends users down endless rabbit holes trying to piece together a cohesive understanding. It also complicates extending beyond basic usage, as it’s not clear how these concepts apply to or can be implemented in your own work.</p>
+<p>To mitigate these sources of confusion, the following section offers high-level key takeaways about <em>how</em> Git and GitHub interact with your project materials and with each other. We can divide this interaction into three main categories:</p>
+<ol type="1">
+<li>Version control on your local device.</li>
+<li>Remote storage and distribution of your code.</li>
+<li>Secure information transfer between Git and GitHub.</li>
+</ol>
+<section id="version-control-on-your-device" class="level2">
+<h2 class="anchored" data-anchor-id="version-control-on-your-device">Version Control on Your Device</h2>
+<p>Recall that Git handles version control entirely, while GitHub is designed based on Git and provides limited extended features for collaboration and code sharing. Therefore, all necessary version control features for your projects are accessible on your device, often referred to as “local.”</p>
+<p>Projects are typically stored in a folder, also called a directory, containing all the files and code relevant to that work. A Git-initialized project will include a <code>.git</code> folder in the <span class="text-term" data-hover-text="The top-most directory in a branched hierarchy, containing all other files and directories. Your project’s root directory holds all the relevant files and code used your project."> root directory</span> of your project, which contains all the information necessary for version controlling its contents.</p>
+<p>In a Git-initialized directory, Git interprets your project files to be in one of three domains at any given time: the <strong>Working Tree</strong>, <strong>Staged Edits</strong>, and <strong>Committed Edits</strong>&nbsp;<span class="citation" data-cites="Prajapati2019"><sup><a href="#ref-Prajapati2019" role="doc-biblioref">14</a></sup></span>. These domains and common transitional commands are demonstrated in the figure below, based on a diagram given in <a href="https://medium.com/mindorks/what-is-git-commit-push-pull-log-aliases-fetch-config-clone-56bc52a3601c"><em>“What is git commit, push, pull, log, aliases, fetch, config &amp; clone”</em></a> &nbsp;<span class="citation" data-cites="Prajapati2019"><sup><a href="#ref-Prajapati2019" role="doc-biblioref">14</a></sup></span>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This workshop will not cover all the different ways to move tracked files through version control domains, but will focus on core commands necessary for all projects. Just know that you can perform various types of changes not described here that may better suit your coding needs.</p>
+</div>
+</div>
+<figure style="float: center; position: relative; margin-top: 1.5em; margin-bottom: 0.5em;" class="figure">
+  <img src="../Images/Local Version Control Diagram.png" alt="Local device diagram" style="margin-bottom: 1em;" width="90%" class="figure-img">
+</figure>
+<p>The <strong>Working Tree</strong> is the area where developers make changes to files in the project. In this domain, Git doesn’t actively track changes; instead, changes are recycled back into the same file without recording interim revisions.</p>
+<p>When you are ready for Git to follow changes, you need to add them to the staged environment with <span class="code-term" data-hover-text="Prompt Git to track changes made to specified files and transition them from the <strong>Working Tree</strong> to the <strong>Staged Edits</strong> domain. Git compares the added files to any previously saved versions available in the <code>.git</code> directory."> git add</span>&nbsp;<span class="citation" data-cites="Foster2024"><sup><a href="#ref-Foster2024" role="doc-biblioref">15</a></sup></span>. This prompts Git to identify differences between <strong>Staged Edits</strong> and already committed versions that are stored in the <code>.git</code> directory. Files can be unstaged and restored to the working tree with the <span class="code-term" data-hover-text="Unstages changes to specified files, moving them from <strong>Staged Edits</strong> back to the <strong>Working Tree</strong> without altering the files’ versions in the <strong>Working Tree</strong>."> git reset</span> command&nbsp;<span class="citation" data-cites="git_restore_reset git_reset"><sup><a href="#ref-git_restore_reset" role="doc-biblioref">16</a>,<a href="#ref-git_reset" role="doc-biblioref">17</a></sup></span>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Code Like a Pro
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>When prompted for tracking, Git uses a heuristic to compare files in your project directory to determine if a file has changed or is new. This method of change detection is not always perfect and may sometimes mistakenly identify significantly altered files as new ones&nbsp;<span class="citation" data-cites="DuMez2024"><sup><a href="#ref-DuMez2024" role="doc-biblioref">18</a></sup></span>.</p>
+<p>Depending on the version of Git used, this may be observed when renaming or moving a tracked file to a new folder in the project directory. Certain Git version will detect this as both the creation of a new file under the new name and the deletion of the file under the old name&nbsp;<span class="citation" data-cites="DuMez2024 Houghton2024"><sup><a href="#ref-DuMez2024" role="doc-biblioref">18</a>,<a href="#ref-Houghton2024" role="doc-biblioref">19</a></sup></span>. This can get confusing when reviewing the project’s version history!</p>
+<p>If you see this, it’s best practice to track a file rename or move action with the <span class="code-term" data-hover-text="Moves or renames a specified file, directory, or symlink that is already tracked by Git."> git mv</span> command and to stage the modification for its own commit with an appropriate message&nbsp;<span class="citation" data-cites="Houghton2024 git_mv"><sup><a href="#ref-Houghton2024" role="doc-biblioref">19</a>,<a href="#ref-git_mv" role="doc-biblioref">20</a></sup></span>.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Application</strong></pre>
+</div>
+<div class="sourceCode" id="cb1" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Track moving a file</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> mv <span class="op">&lt;</span>source<span class="op">&gt;</span>/filename.txt <span class="op">&lt;</span>destination<span class="op">&gt;</span>/filename.txt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="op">&lt;</span>destination<span class="op">&gt;</span>/filename.txt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Move filename.txt from &lt;source&gt; to &lt;destination&gt;."</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Track renaming a file</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> mv oldfilename.txt newfilename.txt</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add newfilename.txt</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Rename oldfilename.txt to newfilename.txt."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<p>Once you have reviewed the detected changes and approve saving or sharing them, use <span class="code-term" data-hover-text="Promote the staged version of specified files to become the latest copy reflected in the .git directory. The <strong>Committed Edits</strong> version is what gets synced to the remote server as a &quot;peer-to-peer&quot; patch."> git commit</span> to promote the staged version to become the latest copy reflected in the <code>.git</code> directory&nbsp;<span class="citation" data-cites="Foster2024"><sup><a href="#ref-Foster2024" role="doc-biblioref">15</a></sup></span>. The most recent <strong>Committed Edits</strong> are then synced to the GitHub server as a “peer-to-peer” patch.</p>
+<p>You will use the same commands even if there was no previous version of a file stored in the <code>.git</code> directory. When you use <span class="code-term" data-hover-text="Summarizes the state of files in the <strong>Working Tree</strong> and <strong>Staged Edits</strong>, comparing changes to the latest, committed version in the .git directory."> git status</span> to check the current state of your tracked project files, Git will automatically identify untracked files and prompt you to add them for tracking. If your project is connected to a GitHub repository, the local copy of the project does <strong>NOT</strong> continuously monitor the remote repository’s contents. Instead, it keeps a copy of the last-checked version of the remote repository’s contents&nbsp;<span class="citation" data-cites="Prajapati2019"><sup><a href="#ref-Prajapati2019" role="doc-biblioref">14</a></sup></span>.</p>
+</section>
+<section id="remote-storage-and-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="remote-storage-and-distribution">Remote Storage and Distribution</h2>
+<figure style="float: center; position: relative; margin-top: 0.5em; margin-bottom: 0.5em;" class="figure">
+  <img src="../Images/Remote Storage and Distribution Diagram.png" alt="Remote storage and distribution diagram" style="margin-bottom: 1em;" width="90%" class="figure-img">
+</figure>
+<p>When you use Git to interact with a remote repository stored in GitHub, there are three core commands: clone, push, and pull. In the second part of this workshop, I cover these operations in greater detail, so do not worry too much about the exact purpose or definition of these commands right now.</p>
+<p>Cloning is a one-time command used to download and store a complete copy of a public repository distributed on GitHub to your local device. Doing this does not necessarily mean you have permissions to contribute changes to this same GitHub repository.</p>
+<p>Pushing is when you are ready to share your local copy of the codebase through GitHub. When you push, the most recent committed edits in the <code>.git</code> directory get shared with the remote version and evaluated for coalescence.</p>
+<p>Pulling is when you want to update your local copy of the codebase that might have differed in the remote location. Pulling is an action that constitutes two operations: fetch and either merge or rebase. A diagram describing these is shown on the right.</p>
+<p>Notice that pulling is not the same thing as cloning. Instead, it is used throughout the lifetime of the project to synchronize changes between your local and remote project copies.</p>
+</section>
+<section id="safeguarding-information-transfer-processes" class="level2">
+<h2 class="anchored" data-anchor-id="safeguarding-information-transfer-processes">Safeguarding Information Transfer Processes</h2>
+<figure style="float: center; position: relative; margin-top: 0.5em; margin-bottom: 0.5em;" class="figure">
+  <img src="../Images/SSH and HTTPS Diagram.png" alt="Secure transfer" style="margin-bottom: 1em;" width="90%" class="figure-img">
+</figure>
+<p>When your local device interacts with GitHub, several security checks are performed. For instance:</p>
+<ul>
+<li>You must verify that the communication is indeed with GitHub and not an impostor site.</li>
+<li>You must confirm that you have the necessary permissions to access specific content on GitHub.</li>
+</ul>
+<p>Additionally, encrypting your data ensures that it is securely transferred, safeguarding your content from potential intrusions.</p>
+<p>GitHub supports two authentication and communication protocols: Secure Shell (SSH) and Hypertext Transfer Protocol Secure (HTTPS). NOTE: Some firewalls and proxies might not allow SSH connections, but this should not be an issue with HTTPS. If you run into this problem, you can reference GitHub’s SSH Troubleshooting page for some guidance.</p>
+<p>SSH operates by utilizing a pair of keys - a private key and a public key. Information gets encrypted when being sent between servers, and only a key pair match can decrypt the information when it is received.</p>
+<p>HTTPS facilitates the secure transmission of information over an encrypted internet connection. Decryption occurs when the correct username and Personal Access Token (PAT) are provided.</p>
+</section>
+</section>
+<section id="section-glossary" class="level1">
+<h1>Section Glossary</h1>
+<table class="glossary-table">
+<tbody>
+<!-- Row 1 -->
+<tr>
+<td class="col1">
+Distributive Version Control System (DVCS)
+</td>
+<td>
+The project codebase is copied as a mirror to each contributor’s local computer. Local changes get synched via patches sent peer-to-peer through the server&nbsp;<span class="citation" data-cites="atlassian_video dvcs"><sup><a href="#ref-dvcs" role="doc-biblioref">1</a>,<a href="#ref-atlassian_video" role="doc-biblioref">2</a></sup></span>.
+</td>
+</tr>
+<!-- Row 2 -->
+<tr>
+<td class="col1">
+<code>git add</code>
+</td>
+<td>
+Prompt Git to track changes made to specified files and transition them from the <strong>Working Tree</strong> to the <strong>Staged Edits</strong> domain. Git compares the added files to any previously saved versions available in the <code>.git</code> directory&nbsp;<span class="citation" data-cites="Foster2024"><sup><a href="#ref-Foster2024" role="doc-biblioref">15</a></sup></span>.
+</td>
+</tr>
+<!-- Row 3 -->
+<tr>
+<td class="col1">
+<code>git clone</code>
+</td>
+<td>
+Copies an existing repository stored in a remote server to your own device, including all files, the version history, and branches&nbsp;<span class="citation" data-cites="git_clone"><sup><a href="#ref-git_clone" role="doc-biblioref">21</a></sup></span>.
+</td>
+</tr>
+<!-- Row 4 -->
+<tr>
+<td class="col1">
+<code>git commit</code>
+</td>
+<td>
+Promote the staged version of specified files to become the latest copy reflected in the .git directory. The <strong>Committed Edits</strong> version is what gets synced to the remote server as a “peer-to-peer” patch&nbsp;<span class="citation" data-cites="Foster2024"><sup><a href="#ref-Foster2024" role="doc-biblioref">15</a></sup></span>.
+</td>
+</tr>
+<!-- Row 5 -->
+<tr>
+<td class="col1">
+<code>git merge</code>
+</td>
+<td>
+One method to reconcile different committing histories in divergent branches. Creates a new version integrating the head of the two branches in a three-way commit&nbsp;<span class="citation" data-cites="git_merge git_pull"><sup><a href="#ref-git_merge" role="doc-biblioref">22</a>,<a href="#ref-git_pull" role="doc-biblioref">23</a></sup></span>.
+</td>
+</tr>
+<!-- Row 6 -->
+<tr>
+<td class="col1">
+<code>git mv</code>
+</td>
+<td>
+Moves or renames a specified file, directory, or symlink that is already tracked by Git&nbsp;<span class="citation" data-cites="git_mv"><sup><a href="#ref-git_mv" role="doc-biblioref">20</a></sup></span>.
+</td>
+</tr>
+<!-- Row 7 -->
+<tr>
+<td class="col1">
+<code>git fetch</code>
+</td>
+<td>
+Downloads changes from a remote repository without coalescing with your local copy. Part of the <code>pull</code> action&nbsp;<span class="citation" data-cites="git_fetch"><sup><a href="#ref-git_fetch" role="doc-biblioref">24</a></sup></span>.
+</td>
+</tr>
+<!-- Row 8 -->
+<tr>
+<td class="col1">
+<code>git pull</code>
+</td>
+<td>
+The combined action of <code>fetch</code> and <code>merge</code> or <code>rebase</code>. Downloads changes from a remote repository and coalesces them with your local copy&nbsp;<span class="citation" data-cites="git_pull"><sup><a href="#ref-git_pull" role="doc-biblioref">23</a></sup></span>.
+</td>
+</tr>
+<!-- Row 9 -->
+<tr>
+<td class="col1">
+<code>git push</code>
+</td>
+<td>
+Upload your recent <strong>Committed Edits</strong> to a remote repository, synchronizing changes for others to see&nbsp;<span class="citation" data-cites="Foster2024"><sup><a href="#ref-Foster2024" role="doc-biblioref">15</a></sup></span>.
+</td>
+</tr>
+<!-- Row 10 -->
+<tr>
+<td class="col1">
+<code>git rebase</code>
+</td>
+<td>
+An alternative to <code>merge</code>. The branch commit histories are realigned so that the leading one defines the commit parent history of the following branch, thus rebasing its commits&nbsp;<span class="citation" data-cites="git_pull"><sup><a href="#ref-git_pull" role="doc-biblioref">23</a></sup></span>.
+</td>
+</tr>
+<!-- Row 11 -->
+<tr>
+<td class="col1">
+<code>git reset</code>
+</td>
+<td>
+Unstages changes to specified files, moving them from <strong>Staged Edits</strong> back to the <strong>Working Tree</strong> without altering the files’ versions in the <strong>Working Tree</strong>&nbsp;<span class="citation" data-cites="git_reset"><sup><a href="#ref-git_reset" role="doc-biblioref">17</a></sup></span>.
+</td>
+</tr>
+<!-- Row 12 -->
+<tr>
+<td class="col1">
+<code>git status</code>
+</td>
+<td>
+Summarizes the state of files in the <strong>Working Tree</strong> and <strong>Staged Edits</strong>, comparing changes to the latest, committed version in the <code>.git</code> directory.
+</td>
+</tr>
+<!-- Row 13 -->
+<tr>
+<td class="col1">
+Mirror
+</td>
+<td>
+An exact copy of a project from a server, including al files, the version history, and branches&nbsp;<span class="citation" data-cites="mirroring"><sup><a href="#ref-mirroring" role="doc-biblioref">5</a></sup></span>.
+</td>
+</tr>
+<!-- Row 14 -->
+<tr>
+<td class="col1">
+Patch
+</td>
+<td>
+Snippets of code or data used to update existing software&nbsp;<span class="citation" data-cites="patch"><sup><a href="#ref-patch" role="doc-biblioref">7</a></sup></span>.
+</td>
+</tr>
+<!-- Row 15 -->
+<tr>
+<td class="col1">
+Peer-to-peer
+</td>
+<td>
+Participants in a network act as both client and server by trading resources and services with one another&nbsp;<span class="citation" data-cites="anukruti162024"><sup><a href="#ref-anukruti162024" role="doc-biblioref">6</a></sup></span>.
+</td>
+</tr>
+<!-- Row 16 -->
+<tr>
+<td class="col1">
+Root directory
+</td>
+<td>
+The top-most directory in a branched hierarchy, containing all other files and directories. Your project’s root directory holds all the relevant files and code used your project.
+</td>
+</tr>
+<!-- Row 17 -->
+<tr>
+<td class="col1">
+Server and Client
+</td>
+<td>
+Servers are computers or systems that provides resources (i.e.&nbsp;data or programs) to other computers, known as clients, over a network&nbsp;<span class="citation" data-cites="server"><sup><a href="#ref-server" role="doc-biblioref">4</a></sup></span>.
+</td>
+</tr>
+<!-- Row 18 -->
+<tr>
+<td class="col1">
+Shell
+</td>
+<td>
+A program used by the CLI to mediate communication between the user and computer by interpreting commands and outputs. Examples: Bash, PowerShell, etc&nbsp;<span class="citation" data-cites="terminal_shell"><sup><a href="#ref-terminal_shell" role="doc-biblioref">9</a></sup></span>.
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="references" class="level1">
+<h1>References</h1>
+
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-dvcs" class="csl-entry" role="listitem">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline"><a href="https://en.wikipedia.org/wiki/Distributed_version_control">Distributed version control</a>. <em>Wikipedia</em>.</div>
+</div>
+<div id="ref-atlassian_video" class="csl-entry" role="listitem">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">Atlassian. <a href="https://www.atlassian.com/git/tutorials/what-is-version-control">What is version control</a>. <em>Atlassian Tutorials</em>.</div>
+</div>
+<div id="ref-git_wiki" class="csl-entry" role="listitem">
+<div class="csl-left-margin">3. </div><div class="csl-right-inline"><a href="https://en.wikipedia.org/wiki/Git">Git</a>. <em>Wikipedia</em>.</div>
+</div>
+<div id="ref-server" class="csl-entry" role="listitem">
+<div class="csl-left-margin">4. </div><div class="csl-right-inline">GmbH, P. <a href="https://www.paessler.com/it-explained/server">Server - definition and details</a>. <em>IT Explained</em>.</div>
+</div>
+<div id="ref-mirroring" class="csl-entry" role="listitem">
+<div class="csl-left-margin">5. </div><div class="csl-right-inline">SNIA. <a href="https://www.snia.org/education/what-is-mirroring">What is mirroring?</a> <em>SNIA</em>.</div>
+</div>
+<div id="ref-anukruti162024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">6. </div><div class="csl-right-inline">anukruti16. <a href="https://www.geeksforgeeks.org/what-is-p2p-peer-to-peer-process/">What is P2P (peer-to-peer process)?</a> <em>GeeksforGeeks</em> (2024).</div>
+</div>
+<div id="ref-patch" class="csl-entry" role="listitem">
+<div class="csl-left-margin">7. </div><div class="csl-right-inline">Buenning, M. <a href="https://www.ninjaone.com/blog/what-is-a-computer-patch/">What is a computer patch?</a> <em>ninjaOne</em> (2025).</div>
+</div>
+<div id="ref-stackoverflow_survey" class="csl-entry" role="listitem">
+<div class="csl-left-margin">8. </div><div class="csl-right-inline">StackOverflow. <a href="https://survey.stackoverflow.co/2022/#version-control-version-control-system-prof">Version control systems results</a>. <em>StackOverflow Developer Survey</em> (2022).</div>
+</div>
+<div id="ref-terminal_shell" class="csl-entry" role="listitem">
+<div class="csl-left-margin">9. </div><div class="csl-right-inline">Contributor, G. <a href="https://www.geeksforgeeks.org/difference-between-terminal-console-shell-and-command-line/">Difference between terminal, console, shell, and command line</a>. (2024).</div>
+</div>
+<div id="ref-medium_github" class="csl-entry" role="listitem">
+<div class="csl-left-margin">10. </div><div class="csl-right-inline">Chaudhary, S. <a href="https://srishtichy.medium.com/how-github-became-the-largest-source-code-host-a1c37ea5e5f">How GitHub became the largest source code host?</a> <em>Medium</em> (2022).</div>
+</div>
+<div id="ref-github_wiki" class="csl-entry" role="listitem">
+<div class="csl-left-margin">11. </div><div class="csl-right-inline"><a href="https://en.wikipedia.org/wiki/GitHub">GitHub</a>. <em>Wikipedia</em>.</div>
+</div>
+<div id="ref-wired_github" class="csl-entry" role="listitem">
+<div class="csl-left-margin">12. </div><div class="csl-right-inline">Finley, K. <a href="https://www.wired.com/2015/06/problem-putting-worlds-code-github/">The problem with putting all the world’s code in GitHub</a>. <em>WIRED Magazine</em> (2015).</div>
+</div>
+<div id="ref-github_global" class="csl-entry" role="listitem">
+<div class="csl-left-margin">13. </div><div class="csl-right-inline">GitHub. <a href="https://octoverse.github.com/2022/global-tech-talent">Global distribution of developers</a>. <em>GitHub Octoverse</em> (2022).</div>
+</div>
+<div id="ref-Prajapati2019" class="csl-entry" role="listitem">
+<div class="csl-left-margin">14. </div><div class="csl-right-inline">Prajapati, A. <a href="https://medium.com/mindorks/what-is-git-commit-push-pull-log-aliases-fetch-config-clone-56bc52a3601c">What is git commit, push, pull, log, aliases, fetch, config &amp; clone</a>. <em>Medium</em> (2019).</div>
+</div>
+<div id="ref-Foster2024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">15. </div><div class="csl-right-inline">Foster, G. <a href="https://graphite.dev/guides/git-unset-config">Unsetting git configuration settings</a>. <em>Graphite</em> (2024).</div>
+</div>
+<div id="ref-git_restore_reset" class="csl-entry" role="listitem">
+<div class="csl-left-margin">16. </div><div class="csl-right-inline">Lorenz, M. <a href="https://academind.com/tutorials/git-restore-and-git-reset">Git restore and git reset</a>. <em>Academind GmbH</em> (2023).</div>
+</div>
+<div id="ref-git_reset" class="csl-entry" role="listitem">
+<div class="csl-left-margin">17. </div><div class="csl-right-inline">Git-SCM. <a href="https://git-scm.com/docs/git-reset">Git reset</a>. <em>Git Documentation</em>.</div>
+</div>
+<div id="ref-DuMez2024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">18. </div><div class="csl-right-inline">DuMez, K. <a href="https://graphite.dev/guides/rename-file-in-git">How to rename a file in git</a>. <em>Graphite</em> (2024).</div>
+</div>
+<div id="ref-Houghton2024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">19. </div><div class="csl-right-inline">Houghton, J. <a href="https://devblogs.microsoft.com/visualstudio/boost-your-git-confidence-with-the-new-file-rename-notification/">Boost your git confidence with the new file rename notification</a>. (2024).</div>
+</div>
+<div id="ref-git_mv" class="csl-entry" role="listitem">
+<div class="csl-left-margin">20. </div><div class="csl-right-inline">Git-SCM. <a href="https://git-scm.com/docs/git-mv">Git mv</a>. <em>Git Documentation</em>.</div>
+</div>
+<div id="ref-git_clone" class="csl-entry" role="listitem">
+<div class="csl-left-margin">21. </div><div class="csl-right-inline">Atlasian. <a href="https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-clone">Git clone</a>. <em>Atlassian Tutorial</em>.</div>
+</div>
+<div id="ref-git_merge" class="csl-entry" role="listitem">
+<div class="csl-left-margin">22. </div><div class="csl-right-inline">Atlassian. <a href="https://www.atlassian.com/git/tutorials/using-branches/git-merge">Git merge</a>. <em>Atlassian Tutorial</em>.</div>
+</div>
+<div id="ref-git_pull" class="csl-entry" role="listitem">
+<div class="csl-left-margin">23. </div><div class="csl-right-inline">Atlassian. <a href="https://www.atlassian.com/git/tutorials/syncing/git-pull">Git pull</a>. <em>Atlassian Tutorial</em>.</div>
+</div>
+<div id="ref-git_fetch" class="csl-entry" role="listitem">
+<div class="csl-left-margin">24. </div><div class="csl-right-inline">Atlassian. <a href="https://www.atlassian.com/git/tutorials/syncing/git-fetch">Git fetch</a>. <em>Atlassian Tutorial</em>.</div>
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../Workshops/Git-and-GitHub/git-github-index.html" class="pagination-link" aria-label="Getting Started with Git and GitHub">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Getting Started with Git and GitHub</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../Workshops/Git-and-GitHub/Pages/git-github-setup.html" class="pagination-link" aria-label="Configurations and Credentials">
+        <span class="nav-page-text">Configurations and Credentials</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>This site was built on a ysph-dsde.github.io page. It was rendered using Quarto (v 1.6.3) and theme <a href="https://github.com/juba/bookup-html/tree/main">bookup-html</a>.</p>
+</div>   
+    <div class="nav-footer-center">
+
+<div style="margin-top: 10px;">
+Have thoughts about this resource?<br>Yale affiliates, provide feedback <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=u76M3Tkh-E20EU4-h6vrXH-TvKDg8gZHqoE3FAMavy5UMjhSTjVOWjQ0MkFIM0hDS0pVQ0tZN1kzMi4u">here</a>.<br>Non-affiliates, provide feedback <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=u76M3Tkh-E20EU4-h6vrXH-TvKDg8gZHqoE3FAMavy5URFBRQ1ZVUFlFVEY0MElSNTlSSzJTWkhXNS4u">here</a>.
+</div>
+<ul class="footer-items list-unstyled" style="display:none;">
+<p>:::</p>
+<div class="hidden quarto-markdown-envelope-contents" data-render-id="Zm9vdGVyLXJpZ2h0LSgyMDMpIDczNy04NjQ0">
+<ol start="203" type="1">
+<li>737-8644</li>
+</ol>
+</div>
+<p>:::</p>
+
+</ul><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ysph-dsde/Book-of-Workshops/edit/main/Workshops/Git-and-GitHub/Pages/git-github-what-is.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://ysph.yale.edu/public-health-research-and-practice/research-centers-and-initiatives/public-health-data-science-and-data-equity/">
+      <i class="bi bi-globe" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ysph-dsde">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/showcase/public-health-data-science-and-data-equity-at-yale/">
+      <i class="bi bi-linkedin" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:admin.dsdeysph@yale.edu">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item">
+ (203) 737-8644
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
