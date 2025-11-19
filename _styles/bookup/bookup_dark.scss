@@ -9,6 +9,11 @@ $footer-fg: #cad2dd;
 /*-- scss:rules --*/
 
 :root {
+    --body-bg: #1c1f2b;
+    --body-color: #cad2dd;
+    --footer-bg: #1c1f2b;
+    --footer-fg: #cad2dd;
+
     --link-color: #c1ff42;
 
     --toc-active-color: #c1ff42;
@@ -61,14 +66,38 @@ $footer-fg: #cad2dd;
 
 }
 
+
+/* Correct random quarto elements */
+
 .table,
 .dataTable {
     --bs-table-accent-bg: #35394b;
     --bs-table-striped-bg: #2d3143;
 }
-
 body {
     color-scheme: dark;
+}
+.nav-footer {
+    color: var(--footer-fg) !important;
+}
+.nav-footer a {
+    color: var(--link-color) !important;
+    text-decoration: none;
+}
+.nav-footer a:hover {
+      text-decoration: underline;
+}
+.nav-footer i {
+  color: var(--footer-fg) !important;
+}
+#quarto-margin-sidebar .toc-actions ul a.toc-action.active,
+#quarto-margin-sidebar .toc-actions ul a.toc-action:hover,
+#quarto-content .margin-sidebar .toc-actions ul a.toc-action.active,
+#quarto-content .margin-sidebar .toc-actions ul a.toc-action:hover,
+#quarto-sidebar #TOC .toc-actions ul a.toc-action.active,
+#quarto-sidebar #TOC .toc-actions ul a.toc-action:hover {
+  color: var(--toc-active-color) !important;
+  border-left: 0px solid var(--toc-active-color) !important;
 }
 
 
@@ -374,6 +403,14 @@ code span.kw {
     font-weight: var(--bs-body-font-weight);
     color: var(--bs-body-color);
     margin-top: 20px !important;
+}
+#quarto-document-content .callout .callout-body-container.callout-body:not(:has(p)) {
+    display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.btn:hover {
+    text-decoration: none !important;
 }
 
 .callout {

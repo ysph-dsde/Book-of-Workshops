@@ -10,7 +10,7 @@ csl: ../../Code/nature.csl
 ```
 
 
-This material is presented over two workshops. Part 1 was authored by Shelby Golden, M.S., and Part 2 is a collaborative effort by Shelby Golden, M.S., and Howard Baik, M.S. You can learn more about the instructors [here](../index.qmd#meet-the-creators).
+This material is presented over two workshops. Part 1 was authored by Shelby Golden, M.S., and Part 2 is a collaborative effort by Shelby Golden, M.S., and Howard Baik, M.S. You can learn more about the instructors [here](../../index.html#meet-the-creators).
 
 ## Introduction
 

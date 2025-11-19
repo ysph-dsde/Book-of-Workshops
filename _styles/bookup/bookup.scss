@@ -16,6 +16,11 @@ $h4-font-size: 1.25em;
     --bs-body-font-weight: 300;
     --link-color: #4183C4;
 
+    --body-bg: #1c1f2b;
+    --body-color: #cad2dd;
+    --footer-bg: #1c1f2b;
+    --footer-fg: #cad2dd;
+
     --toc-active-color: #0d6efd;
     --toc-border-color: #e9ecef;
 
@@ -130,6 +135,153 @@ $dsde-blue-light: #3e70a1;
     font-size: 0.85rem;
 }
 
+/* Popup for Feedback */
+
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+.popup-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px 30px 30px 30px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+}
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: #333 !important;
+    font-size: 28px !important;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+.close-button:hover,
+.close-button:focus {
+    color: #888 !important;
+}
+.form-links {
+    margin: 35px 0;
+    display: flex;
+    flex-direction: row; /* Default to side-by-side */
+    flex-wrap: wrap; /* Allow wrapping if needed */
+    gap: 15px;
+    justify-content: center;
+    align-items: stretch; /* Make buttons same height */
+}
+.form-link {
+    background-color: lighten($dsde-purple, 50%);
+    border-radius: .25rem;
+    border: 1px solid #444;
+    box-shadow: 0 .2rem .5rem #6c757d, 0 0 .05rem #6c757d;
+    color: #444;
+    text-decoration: none;
+    font-size: 0.9em;
+    text-align: center;
+    padding: 0.8rem;
+    transition: all 0.3s ease;
+    flex: 1; /* Buttons grow to fill available space */
+    min-width: 180px; /* Minimum width before wrapping */
+    max-width: 250px; /* Maximum width to prevent buttons from being too wide */
+    display: block;
+}
+#quarto-document-content .form-link a, 
+#quarto-document-content .form-link .btn-link {
+    color: #444 !important;
+}
+.form-link:hover {
+    background-color: lighten($dsde-purple, 10%);
+    color: #f4f4f4;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 .3rem .7rem #6c757d, 0 0 .1rem #6c757d;
+}
+.popup h2 {
+    color: #333;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+.popup h2 > a.anchorjs-link {
+    display: none;
+}
+.popup p {
+    color: #666;
+    line-height: 1.5;
+}
+
+@media (min-width: 1200px) {
+    .popup-content {
+        max-width: 600px; /* Allow popup to be wider on very large screens */
+    }
+    .form-link {
+        max-width: 250px; /* Cap button width on very large screens */
+    }
+}
+@media (max-width: 767px) {
+    .popup {
+        z-index: 9999; /* Increased z-index to appear above navbar */
+    }
+    .popup-content {
+        width: 90%;
+        /* Center the popup vertically and horizontally */
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin: 0; /* Remove auto margin since we're using transform */
+        padding: 20px;
+        max-height: 80vh; /* Prevent popup from being too tall */
+        overflow-y: auto; /* Allow scrolling if content is too long */
+    }
+    .form-links {
+        flex-direction: column; /* Force vertical stacking on mobile */
+        gap: 15px;
+        margin: 25px 0; /* Reduced margin for mobile */
+    }
+    .form-link {
+        font-size: 0.85em;
+        padding: 0.8rem 0.6rem;
+        width: 80%;
+        margin: auto;
+        max-width: none; /* Remove width constraints on mobile */
+        min-width: auto;
+    }
+    .form-links .form-link {
+        color: #444 !important;
+        text-decoration: none !important;
+    }
+    .form-links .form-link:hover {
+        color: #f4f4f4 !important;
+        text-decoration: none !important;
+    }
+    .close-button {
+        z-index: 10000; /* Ensure close button is above everything */
+    }
+    .popup h2 {
+        margin-top: 20px;
+    }
+}
 
 /* Correct random quarto elements */
 
@@ -150,12 +302,41 @@ header .quarto-secondary-nav a, header .quarto-secondary-nav .btn, header .quart
     padding: 0rem 0rem 0rem 0rem !important; /* top, right, bottom, left */
 }
 .nav-footer .nav-item {
-    padding: 0rem 1rem 0rem 1rem !important; /* top, right, bottom, left */
+    padding: 0rem 0.5rem 0rem 0.5rem !important; /* top, right, bottom, left */
+}
+.nav-footer {
+    color: var(--footer-bg) !important;
+}
+.nav-footer a {
+    color: var(--link-color) !important;
+    text-decoration: none;
+}
+.nav-footer a:hover {
+    text-decoration: underline;
+}
+.nav-footer i {
+  color: var(--footer-bg) !important;
 }
 h4 > a.anchorjs-link {
     display: none;
 }
-
+#quarto-margin-sidebar .toc-actions ul a.toc-action.active,
+#quarto-margin-sidebar .toc-actions ul a.toc-action:hover,
+#quarto-content .margin-sidebar .toc-actions ul a.toc-action.active,
+#quarto-content .margin-sidebar .toc-actions ul a.toc-action:hover,
+#quarto-sidebar #TOC .toc-actions ul a.toc-action.active,
+#quarto-sidebar #TOC .toc-actions ul a.toc-action:hover {
+  color: var(--toc-active-color) !important;
+  border-left: 0px solid var(--toc-active-color) !important;
+}
+#quarto-document-content a.btn-link,
+#quarto-document-content a:has(button) {
+    text-decoration: none !important;
+}
+#quarto-document-content a:hover .btn,
+#quarto-document-content a:has(button) {
+    text-decoration: none !important;
+}
 
 /* Session information */
 
@@ -1448,6 +1629,12 @@ p {
 
 
     /* Callouts */
+
+    #quarto-document-content .callout .callout-body-container.callout-body:not(:has(p)) {
+        display: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
 
     .callout {
 

@@ -5,6 +5,13 @@ csl: ../../Code/nature.csl
 
 # Data Visualization with ggplot2 {.unnumbered}
 
+```{=html}
+<script src="../../Code/definition_script.js"></script>
+```
+
+
+This material was authored by Shelby Golden, M.S. You can learn more about the instructors [here](../../index.html#meet-the-creators).
+
 ## Introduction
 
 In this workshop we delve deeper into the domain specific language of statistical graphics that underpins the `tidyverse` `ggplot2` package syntax: the "Grammar of Graphics". We will explore each discrete grammar layer using laboratory-confirmed RSV hospitalizations data collected by the CDC's Respiratory Virus Hospitalization Surveillance Network (RESP-NET) surveillance program.
@@ -19,17 +26,13 @@ We will close the workshop by asking [Yale's Clarity Platform](https://ai.yale.e
 The cleaned and harmonized version of the RSV-NET dataset was compiled as part of the YSPH's very own PopHIVE project. Special thanks to [Professor Daniel Weinberger](https://ysph.yale.edu/profile/daniel-weinberger/) for allow us to adopt his plot code in this workshop.
 
 
+## Workshop Learning Goals
 
-## Accessing the Materials
+- Classify the Grammar of Graphics layers used in `ggplot2` syntax.
+- Applications of different geometries, effective use of layering, and polishing the result.
+- Interactive plots, map projections, and leveraging AI-assisted coding.
 
-### Slides, Handouts, and Other Materials
-
-```{=html}
-<a href="Materials/Discussion and Challenge Questions Download_03.26.2025.zip">
-  <button class="btn" style="margin-bottom: 1rem;"><i class="bi bi-download"></i>&nbsp Codespace for Discussion and Challenge Questions</button>
-</a>
-
-```
+## Slides and Handouts
 
 Download the complete slide deck with annotations and the in-person workshop handout. Comments were saved in the bottom left of each slide, and references for this webpage are in its **Appendix**.
 
@@ -45,63 +48,91 @@ Download the complete slide deck with annotations and the in-person workshop han
 ```
 
 
-### Codespaces
-In this workshop you will need to access the R code we have prepared for the in-workshop discussion and after-workshop challenge questions. This assumes that you have downloaded [R](https://cran.r-project.org/) and [RStudio](https://posit.co/download/rstudio-desktop/) to your local device. After you download the code, you will need to:
+## Accessing the Codespaces
 
-1.  Move the unzipped directory to the file location you wish to house the project.
+In this workshop, you'll need to access the R code prepared for the workshop discussions and challenge questions. If you haven't already, please download the latest version of [R](https://cran.r-project.org/) to your device. We also recommend using the latest version of [RStudio](https://posit.co/download/rstudio-desktop/) as your
+<span class="text-term" 
+  data-hover-text="A software application that combines tools for editing, building, testing, and debugging code into a single, user-friendly interface.">
+  Integrated Development Environment (IDE) </span>\ [@ide].
 
-2.  Open `Data-Visualization-with-ggplot2.Rproj`.
+::: {.callout-important}
+## Attribution and Ownership
 
-3.  Open `Discussion and Challenge Questions.R`.
+Please note that all materials provided in this workshop, including any code added to your personal repository, belongs to DSDE. When using or referencing this material, please ensure to cite it correctly to give proper credit to the original authors.
+:::
 
-4.  Initialize the environment in the R console by running:
+::: {.callout-note collapse="true"}
+## Settings Used in Development
 
-    ```         
-    renv::init()               # initialize the project
-    renv::restore()            # download packages and their version saved in the lockfile.
-    ```
-
-**NOTE:** If you are asked to update packages, say no. The `renv()` is intended to recreate the same environment under which the project was created, making it reproducible. You are ready to proceed when running `renv::restore()` gives the output:
-
-```         
-- The library is already synchronized with the lockfile.
-```
-
-You can read more about `renv()` in their [vignette](https://rstudio.github.io/renv/articles/renv.html).
-In this workshop you will need to access the R code we have prepared for the worked through example and challenge questions. If you have not already, you will need to download [R](https://cran.r-project.org/) to your local device, and we suggest using the integrated development environment (IDE) software [RStudio](https://posit.co/download/rstudio-desktop/). Accessing the code for this workshop requires that you have git installed on your local device, a GitHub account, and you have configured the two. If you have not done this, go through [Accounts and Configurations](git-github-setup.html) first.
-
-::: {.callout-important collapse="true"}
-This workshop was generated using R (v 4.4.3) in the RStudio IDE (v 2024.12.1+563). `renv()` is included to reproduce the same coding enviroment, storing all the relevant packages and package versions needed in the code. If you experience trouble running the scripts, you might want to check that the environment was initialized and that you are using the same version of R and RStudio.
+This workshop was created using R (v 4.5.1) in the RStudio IDE (v 2025.09.2+418). The `renv()` package (v 1.1.5) is included to reproduce the same coding environment, ensuring all relevant packages and package versions are stored. If you encounter issues running the scripts, please check that the environment is initialized and that you are using the same versions of R and RStudio.
 :::
 
 ### Initializing the Environment
 
-After cloning the codespace to your local device, you will need to initialize the environment using `renv()`. This will install all packages and versions used in the workshop, thus creating a reproducible coding environemnt.
+1. Download the prepared codespace, which contains a comprehensive, Git-initialized code environment configured with the RStudio IDE for in-class discussions and challenge questions with solutions.
 
-1. In the command-line application (i.e. Terminal for Macs and Windows Terminal for windows) navigate to the file location you want to store the repository.
+::: {style="margin-left: 2rem"}
+```{=html}
+<a href="Materials/Data-Visualization-with-ggplot2.zip">
+  <button class="btn" style="margin-bottom: 1rem;"><i class="bi bi-download"></i>&nbsp Codespace</button>
+</a>
 
-   ```bash
-   cd "/file_location/"
-   ```
+```
+:::
 
-2. Launch the project by opening the `*.Rproj` in RStudio.
+2. Unzipped the downloaded directory and move it to the file location you wish to house the project.
 
-4. In the R console, activate the enviroment by runing the following lines of code:
-
-     ```r
-    renv::init()          # initialize the project
-    renv::restore()       # download packages and their version saved in the lockfile.
+    ```{.bash filename="Command-Line Application"}
+    cd "~/Downloads/"                                   # Open the directory the file was downloaded into
+    unzip Data-Visualization-with-ggplot2.zip           # Unzip the file
+    mv Data-Visualization-with-ggplot2 /new_location/   # Move the unzipped directory to the new location
     ```
 
-:::{.callout-note}
+3.  Launch the project by opening the `*.Rproj` file in RStudio.
+
+    ```{.bash filename="Command-Line Application"}
+    cd /new_location/Data-Visualization-with-ggplot2.  # Navigate to the new location directory
+    
+    # Open the .Rproj file using RStudio
+    open -a RStudio Data-Visualization-with-ggplot2.Rproj    # For macOS
+    start "" "Data-Visualization-with-ggplot2.Rproj"         # For Windows
+    ```
+
+4.  Open `Discussion and Challenge Questions.R`. To ensure this script opens in the correct project RStudio window, you can use the "Files" pane inside the RStudio coding window to launch the scripts.
+
+5.  In the R console, activate the environment by running the following lines of code. Please note that some of the packages used in this workshop, such as `arrow`, may take a while to install.
+
+    ```{.r filename="RStudio Console"}
+    renv::init()          # Initialize the project.
+    renv::restore()       # Download packages and their version saved in the lockfile.
+    ```
+
+:::{.callout-note style="margin-left: 2rem"}
 If you are asked to update packages, say no. The `renv()` is intended to recreate the same environment under which the project was created, making it reproducible. You are ready to proceed when running `renv::restore()` gives the output:
 
-```{.r}
+```{.r filename="RStudio Output"}
 - The library is already synchronized with the lockfile.
 ```
 
-If you experience any trouble with this step, you might want to confirm that you are using  R (v 4.4.3) in the RStudio IDE (v 2024.12.1+563). You can also read more about `renv()` in their [vignette](https://rstudio.github.io/renv/articles/renv.html).
+If you experience any trouble with this step, you might want to confirm that you are using R (v 4.5.1) in the RStudio IDE (v 2025.09.2+418). You can also read more about `renv()` in their [vignette](https://rstudio.github.io/renv/articles/renv.html)\ [@renv_intro].
 :::
 
+## About the Data
 
+
+## Section Glossary
+
+<table class="glossary-table">
+    <tbody>
+        <!-- Row 1 -->
+        <tr>
+            <td class="col1">Integrated Development Environment (IDE)</td>
+            <td>
+              A software application that combines tools for editing, building, testing, and debugging code into a single, user-friendly interface\ [@ide].
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+## References
 
