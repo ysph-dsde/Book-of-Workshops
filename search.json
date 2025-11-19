@@ -10,6 +10,16 @@
     ]
   },
   {
+    "objectID": "index.html#preface",
+    "href": "index.html#preface",
+    "title": "Book of Workshops",
+    "section": "We'd Love Your Feedback!",
+    "text": "×\n        We'd Love Your Feedback!\n        Thank you for visiting our website! We value your feedback and use it to continually enhance our services. At the end of the feedback survey, you will have the chance to suggest new workshops and asynchronous materials.\n        \n        \n            Link for Yale Affiliates\n            Link for Non-Yale Affiliates\n        \n        \n        Forms will open in a new tab",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
     "objectID": "index.html#list-of-offerings",
     "href": "index.html#list-of-offerings",
     "title": "Book of Workshops",
@@ -344,7 +354,7 @@
     "href": "Workshops/Data-Visualization-with-ggplot2/visualization-index.html",
     "title": "Data Visualization with ggplot2",
     "section": "",
-    "text": "Introduction\nIn this workshop we delve deeper into the domain specific language of statistical graphics that underpins the tidyverse ggplot2 package syntax: the “Grammar of Graphics”. We will explore each discrete grammar layer using laboratory-confirmed RSV hospitalizations data collected by the CDC’s Respiratory Virus Hospitalization Surveillance Network (RESP-NET) surveillance program.\nWith a better understanding of the syntax fundamentals, we will then get introduced to some advanced uses of ggplot2 that are commonly used in public health:\nWe will close the workshop by asking Yale’s Clarity Platform to reproduce our code from the plot image alone to exhibit how AI can be used to support data visualization work. Clarity is an AI chatbot that offers similar functions to OpenAI’s ChatGPT and Microsoft Copilot with additional data protection. Find out more about Clarity’s security guidelines on “AI at Yale”.\nThe cleaned and harmonized version of the RSV-NET dataset was compiled as part of the YSPH’s very own PopHIVE project. Special thanks to Professor Daniel Weinberger for allow us to adopt his plot code in this workshop.",
+    "text": "Introduction\nThis material was authored by Shelby Golden, M.S. You can learn more about the instructors here.\nIn this workshop we delve deeper into the domain specific language of statistical graphics that underpins the tidyverse ggplot2 package syntax: the “Grammar of Graphics”. We will explore each discrete grammar layer using laboratory-confirmed RSV hospitalizations data collected by the CDC’s Respiratory Virus Hospitalization Surveillance Network (RESP-NET) surveillance program.\nWith a better understanding of the syntax fundamentals, we will then get introduced to some advanced uses of ggplot2 that are commonly used in public health:\nWe will close the workshop by asking Yale’s Clarity Platform to reproduce our code from the plot image alone to exhibit how AI can be used to support data visualization work. Clarity is an AI chatbot that offers similar functions to OpenAI’s ChatGPT and Microsoft Copilot with additional data protection. Find out more about Clarity’s security guidelines on “AI at Yale”.\nThe cleaned and harmonized version of the RSV-NET dataset was compiled as part of the YSPH’s very own PopHIVE project. Special thanks to Professor Daniel Weinberger for allow us to adopt his plot code in this workshop.",
     "crumbs": [
       "Data Visualization with ggplot2"
     ]
@@ -360,11 +370,61 @@
     ]
   },
   {
-    "objectID": "Workshops/Data-Visualization-with-ggplot2/visualization-index.html#accessing-the-materials",
-    "href": "Workshops/Data-Visualization-with-ggplot2/visualization-index.html#accessing-the-materials",
+    "objectID": "Workshops/Data-Visualization-with-ggplot2/visualization-index.html#workshop-learning-goals",
+    "href": "Workshops/Data-Visualization-with-ggplot2/visualization-index.html#workshop-learning-goals",
     "title": "Data Visualization with ggplot2",
-    "section": "Accessing the Materials",
-    "text": "Accessing the Materials\n\nSlides, Handouts, and Other Materials\n\n    Codespace for Discussion and Challenge Questions\n\n\nDownload the complete slide deck with annotations and the in-person workshop handout. Comments were saved in the bottom left of each slide, and references for this webpage are in its Appendix.\n\n    Complete Slide Deck\n\n\n\n    Handout\n\n\n\n\nCodespaces\nIn this workshop you will need to access the R code we have prepared for the in-workshop discussion and after-workshop challenge questions. This assumes that you have downloaded R and RStudio to your local device. After you download the code, you will need to:\n\nMove the unzipped directory to the file location you wish to house the project.\nOpen Data-Visualization-with-ggplot2.Rproj.\nOpen Discussion and Challenge Questions.R.\nInitialize the environment in the R console by running:\nrenv::init()               # initialize the project\nrenv::restore()            # download packages and their version saved in the lockfile.\n\nNOTE: If you are asked to update packages, say no. The renv() is intended to recreate the same environment under which the project was created, making it reproducible. You are ready to proceed when running renv::restore() gives the output:\n- The library is already synchronized with the lockfile.\nYou can read more about renv() in their vignette. In this workshop you will need to access the R code we have prepared for the worked through example and challenge questions. If you have not already, you will need to download R to your local device, and we suggest using the integrated development environment (IDE) software RStudio. Accessing the code for this workshop requires that you have git installed on your local device, a GitHub account, and you have configured the two. If you have not done this, go through Accounts and Configurations first.\n\n\n\n\n\n\nImportant\n\n\n\n\n\nThis workshop was generated using R (v 4.4.3) in the RStudio IDE (v 2024.12.1+563). renv() is included to reproduce the same coding enviroment, storing all the relevant packages and package versions needed in the code. If you experience trouble running the scripts, you might want to check that the environment was initialized and that you are using the same version of R and RStudio.\n\n\n\n\n\nInitializing the Environment\nAfter cloning the codespace to your local device, you will need to initialize the environment using renv(). This will install all packages and versions used in the workshop, thus creating a reproducible coding environemnt.\n\nIn the command-line application (i.e. Terminal for Macs and Windows Terminal for windows) navigate to the file location you want to store the repository.\ncd \"/file_location/\"\nLaunch the project by opening the *.Rproj in RStudio.\nIn the R console, activate the enviroment by runing the following lines of code:\nrenv::init()          # initialize the project\nrenv::restore()       # download packages and their version saved in the lockfile.\n\n\n\n\n\n\n\nNote\n\n\n\nIf you are asked to update packages, say no. The renv() is intended to recreate the same environment under which the project was created, making it reproducible. You are ready to proceed when running renv::restore() gives the output:\n- The library is already synchronized with the lockfile.\nIf you experience any trouble with this step, you might want to confirm that you are using R (v 4.4.3) in the RStudio IDE (v 2024.12.1+563). You can also read more about renv() in their vignette.",
+    "section": "Workshop Learning Goals",
+    "text": "Workshop Learning Goals\n\nClassify the Grammar of Graphics layers used in ggplot2 syntax.\nApplications of different geometries, effective use of layering, and polishing the result.\nInteractive plots, map projections, and leveraging AI-assisted coding.",
+    "crumbs": [
+      "Data Visualization with ggplot2"
+    ]
+  },
+  {
+    "objectID": "Workshops/Data-Visualization-with-ggplot2/visualization-index.html#slides-and-handouts",
+    "href": "Workshops/Data-Visualization-with-ggplot2/visualization-index.html#slides-and-handouts",
+    "title": "Data Visualization with ggplot2",
+    "section": "Slides and Handouts",
+    "text": "Slides and Handouts\nDownload the complete slide deck with annotations and the in-person workshop handout. Comments were saved in the bottom left of each slide, and references for this webpage are in its Appendix.\n\n    Complete Slide Deck\n\n\n\n    Handout",
+    "crumbs": [
+      "Data Visualization with ggplot2"
+    ]
+  },
+  {
+    "objectID": "Workshops/Data-Visualization-with-ggplot2/visualization-index.html#accessing-the-codespaces",
+    "href": "Workshops/Data-Visualization-with-ggplot2/visualization-index.html#accessing-the-codespaces",
+    "title": "Data Visualization with ggplot2",
+    "section": "Accessing the Codespaces",
+    "text": "Accessing the Codespaces\nIn this workshop, you’ll need to access the R code prepared for the workshop discussions and challenge questions. If you haven’t already, please download the latest version of R to your device. We also recommend using the latest version of RStudio as your  Integrated Development Environment (IDE)  1.\n\n\n\n\n\n\nAttribution and Ownership\n\n\n\nPlease note that all materials provided in this workshop, including any code added to your personal repository, belongs to DSDE. When using or referencing this material, please ensure to cite it correctly to give proper credit to the original authors.\n\n\n\n\n\n\n\n\nSettings Used in Development\n\n\n\n\n\nThis workshop was created using R (v 4.5.1) in the RStudio IDE (v 2025.09.2+418). The renv() package (v 1.1.5) is included to reproduce the same coding environment, ensuring all relevant packages and package versions are stored. If you encounter issues running the scripts, please check that the environment is initialized and that you are using the same versions of R and RStudio.\n\n\n\n\nInitializing the Environment\n\nDownload the prepared codespace, which contains a comprehensive, Git-initialized code environment configured with the RStudio IDE for in-class discussions and challenge questions with solutions.\n\n\n\n    Codespace\n\n\n\n\nUnzipped the downloaded directory and move it to the file location you wish to house the project.\n\n\nCommand-Line Application\n\ncd \"~/Downloads/\"                                   # Open the directory the file was downloaded into\nunzip Data-Visualization-with-ggplot2.zip           # Unzip the file\nmv Data-Visualization-with-ggplot2 /new_location/   # Move the unzipped directory to the new location\n\nLaunch the project by opening the *.Rproj file in RStudio.\n\n\nCommand-Line Application\n\ncd /new_location/Data-Visualization-with-ggplot2.  # Navigate to the new location directory\n\n# Open the .Rproj file using RStudio\nopen -a RStudio Data-Visualization-with-ggplot2.Rproj    # For macOS\nstart \"\" \"Data-Visualization-with-ggplot2.Rproj\"         # For Windows\n\nOpen Discussion and Challenge Questions.R. To ensure this script opens in the correct project RStudio window, you can use the “Files” pane inside the RStudio coding window to launch the scripts.\nIn the R console, activate the environment by running the following lines of code. Please note that some of the packages used in this workshop, such as arrow, may take a while to install.\n\n\nRStudio Console\n\nrenv::init()          # Initialize the project.\nrenv::restore()       # Download packages and their version saved in the lockfile.\n\n\n\n\n\n\n\n\nNote\n\n\n\nIf you are asked to update packages, say no. The renv() is intended to recreate the same environment under which the project was created, making it reproducible. You are ready to proceed when running renv::restore() gives the output:\n\n\nRStudio Output\n\n- The library is already synchronized with the lockfile.\n\nIf you experience any trouble with this step, you might want to confirm that you are using R (v 4.5.1) in the RStudio IDE (v 2025.09.2+418). You can also read more about renv() in their vignette 2.",
+    "crumbs": [
+      "Data Visualization with ggplot2"
+    ]
+  },
+  {
+    "objectID": "Workshops/Data-Visualization-with-ggplot2/visualization-index.html#about-the-data",
+    "href": "Workshops/Data-Visualization-with-ggplot2/visualization-index.html#about-the-data",
+    "title": "Data Visualization with ggplot2",
+    "section": "About the Data",
+    "text": "About the Data",
+    "crumbs": [
+      "Data Visualization with ggplot2"
+    ]
+  },
+  {
+    "objectID": "Workshops/Data-Visualization-with-ggplot2/visualization-index.html#section-glossary",
+    "href": "Workshops/Data-Visualization-with-ggplot2/visualization-index.html#section-glossary",
+    "title": "Data Visualization with ggplot2",
+    "section": "Section Glossary",
+    "text": "Section Glossary\n\n\n\n\n\nIntegrated Development Environment (IDE)\n\n\nA software application that combines tools for editing, building, testing, and debugging code into a single, user-friendly interface 1.",
+    "crumbs": [
+      "Data Visualization with ggplot2"
+    ]
+  },
+  {
+    "objectID": "Workshops/Data-Visualization-with-ggplot2/visualization-index.html#references",
+    "href": "Workshops/Data-Visualization-with-ggplot2/visualization-index.html#references",
+    "title": "Data Visualization with ggplot2",
+    "section": "References",
+    "text": "References\n\n\n\n1. Services, Inc. A. W. What is an IDE (integrated development environment)?\n\n\n2. Ushey, K., Wickham, H. & Posit. Introduction to renv.",
     "crumbs": [
       "Data Visualization with ggplot2"
     ]

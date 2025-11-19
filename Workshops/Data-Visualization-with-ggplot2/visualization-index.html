@@ -54,7 +54,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -75,8 +95,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-ab6496a1a679dc9f3d6952c9737550a4.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-5b696210ae79204592cbe97a389ebe16.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-b809ba839b641f2807f7f5514540d996.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-f0384370346e305653b8252402f29a58.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-62edfbf33f06ec21d22b54c1a7593b05.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../../site_libs/quarto-contrib/bookup_fonts_embed-0.0/fonts-download.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
@@ -228,12 +248,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#accessing-the-materials" id="toc-accessing-the-materials" class="nav-link" data-scroll-target="#accessing-the-materials">Accessing the Materials</a>
+  <li><a href="#workshop-learning-goals" id="toc-workshop-learning-goals" class="nav-link" data-scroll-target="#workshop-learning-goals">Workshop Learning Goals</a></li>
+  <li><a href="#slides-and-handouts" id="toc-slides-and-handouts" class="nav-link" data-scroll-target="#slides-and-handouts">Slides and Handouts</a></li>
+  <li><a href="#accessing-the-codespaces" id="toc-accessing-the-codespaces" class="nav-link" data-scroll-target="#accessing-the-codespaces">Accessing the Codespaces</a>
   <ul class="collapse">
-  <li><a href="#slides-handouts-and-other-materials" id="toc-slides-handouts-and-other-materials" class="nav-link" data-scroll-target="#slides-handouts-and-other-materials">Slides, Handouts, and Other Materials</a></li>
-  <li><a href="#codespaces" id="toc-codespaces" class="nav-link" data-scroll-target="#codespaces">Codespaces</a></li>
   <li><a href="#initializing-the-environment" id="toc-initializing-the-environment" class="nav-link" data-scroll-target="#initializing-the-environment">Initializing the Environment</a></li>
   </ul></li>
+  <li><a href="#about-the-data" id="toc-about-the-data" class="nav-link" data-scroll-target="#about-the-data">About the Data</a></li>
+  <li><a href="#section-glossary" id="toc-section-glossary" class="nav-link" data-scroll-target="#section-glossary">Section Glossary</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/ysph-dsde/Book-of-Workshops/edit/main/Workshops/Data-Visualization-with-ggplot2/visualization-index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -259,6 +282,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<script src="../../Code/definition_script.js"></script>
+<p>This material was authored by Shelby Golden, M.S. You can learn more about the instructors <a href="../../index.html#meet-the-creators">here</a>.</p>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>In this workshop we delve deeper into the domain specific language of statistical graphics that underpins the <code>tidyverse</code> <code>ggplot2</code> package syntax: the “Grammar of Graphics”. We will explore each discrete grammar layer using laboratory-confirmed RSV hospitalizations data collected by the CDC’s Respiratory Virus Hospitalization Surveillance Network (RESP-NET) surveillance program.</p>
@@ -270,14 +295,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>We will close the workshop by asking <a href="https://ai.yale.edu/yales-ai-tools-and-resources/clarity-platform">Yale’s Clarity Platform</a> to reproduce our code from the plot image alone to exhibit how AI can be used to support data visualization work. Clarity is an AI chatbot that offers similar functions to OpenAI’s ChatGPT and Microsoft Copilot with additional data protection. Find out more about <a href="https://ai.yale.edu/yales-ai-tools-and-resources/clarity-platform/clarity-platform-security?check_logged_in=1">Clarity’s security</a> guidelines on “AI at Yale”.</p>
 <p>The cleaned and harmonized version of the RSV-NET dataset was compiled as part of the YSPH’s very own PopHIVE project. Special thanks to <a href="https://ysph.yale.edu/profile/daniel-weinberger/">Professor Daniel Weinberger</a> for allow us to adopt his plot code in this workshop.</p>
 </section>
-<section id="accessing-the-materials" class="level2">
-<h2 class="anchored" data-anchor-id="accessing-the-materials">Accessing the Materials</h2>
-<section id="slides-handouts-and-other-materials" class="level3">
-<h3 class="anchored" data-anchor-id="slides-handouts-and-other-materials">Slides, Handouts, and Other Materials</h3>
-<a href="Materials/Discussion and Challenge Questions Download_03.26.2025.zip">
-  <button class="btn" style="margin-bottom: 1rem;"><i class="bi bi-download"></i>&nbsp; Codespace for Discussion and Challenge Questions</button>
-</a>
-
+<section id="workshop-learning-goals" class="level2">
+<h2 class="anchored" data-anchor-id="workshop-learning-goals">Workshop Learning Goals</h2>
+<ul>
+<li>Classify the Grammar of Graphics layers used in <code>ggplot2</code> syntax.</li>
+<li>Applications of different geometries, effective use of layering, and polishing the result.</li>
+<li>Interactive plots, map projections, and leveraging AI-assisted coding.</li>
+</ul>
+</section>
+<section id="slides-and-handouts" class="level2">
+<h2 class="anchored" data-anchor-id="slides-and-handouts">Slides and Handouts</h2>
 <p>Download the complete slide deck with annotations and the in-person workshop handout. Comments were saved in the bottom left of each slide, and references for this webpage are in its <strong>Appendix</strong>.</p>
 <a href="Materials/Workshop Slide Deck with Comments.pdf">
   <button class="btn"><i class="bi bi-download"></i>&nbsp; Complete Slide Deck</button>
@@ -288,49 +315,81 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </a>
 
 </section>
-<section id="codespaces" class="level3">
-<h3 class="anchored" data-anchor-id="codespaces">Codespaces</h3>
-<p>In this workshop you will need to access the R code we have prepared for the in-workshop discussion and after-workshop challenge questions. This assumes that you have downloaded <a href="https://cran.r-project.org/">R</a> and <a href="https://posit.co/download/rstudio-desktop/">RStudio</a> to your local device. After you download the code, you will need to:</p>
-<ol type="1">
-<li><p>Move the unzipped directory to the file location you wish to house the project.</p></li>
-<li><p>Open <code>Data-Visualization-with-ggplot2.Rproj</code>.</p></li>
-<li><p>Open <code>Discussion and Challenge Questions.R</code>.</p></li>
-<li><p>Initialize the environment in the R console by running:</p>
-<pre><code>renv::init()               # initialize the project
-renv::restore()            # download packages and their version saved in the lockfile.</code></pre></li>
-</ol>
-<p><strong>NOTE:</strong> If you are asked to update packages, say no. The <code>renv()</code> is intended to recreate the same environment under which the project was created, making it reproducible. You are ready to proceed when running <code>renv::restore()</code> gives the output:</p>
-<pre><code>- The library is already synchronized with the lockfile.</code></pre>
-<p>You can read more about <code>renv()</code> in their <a href="https://rstudio.github.io/renv/articles/renv.html">vignette</a>. In this workshop you will need to access the R code we have prepared for the worked through example and challenge questions. If you have not already, you will need to download <a href="https://cran.r-project.org/">R</a> to your local device, and we suggest using the integrated development environment (IDE) software <a href="https://posit.co/download/rstudio-desktop/">RStudio</a>. Accessing the code for this workshop requires that you have git installed on your local device, a GitHub account, and you have configured the two. If you have not done this, go through <a href="git-github-setup.html">Accounts and Configurations</a> first.</p>
+<section id="accessing-the-codespaces" class="level2">
+<h2 class="anchored" data-anchor-id="accessing-the-codespaces">Accessing the Codespaces</h2>
+<p>In this workshop, you’ll need to access the R code prepared for the workshop discussions and challenge questions. If you haven’t already, please download the latest version of <a href="https://cran.r-project.org/">R</a> to your device. We also recommend using the latest version of <a href="https://posit.co/download/rstudio-desktop/">RStudio</a> as your <span class="text-term" data-hover-text="A software application that combines tools for editing, building, testing, and debugging code into a single, user-friendly interface."> Integrated Development Environment (IDE) </span>&nbsp;<span class="citation" data-cites="ide"><sup><a href="#ref-ide" role="doc-biblioref">1</a></sup></span>.</p>
 <div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Important
+Attribution and Ownership
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Please note that all materials provided in this workshop, including any code added to your personal repository, belongs to DSDE. When using or referencing this material, please ensure to cite it correctly to give proper credit to the original authors.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Settings Used in Development
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>This workshop was generated using R (v 4.4.3) in the RStudio IDE (v 2024.12.1+563). <code>renv()</code> is included to reproduce the same coding enviroment, storing all the relevant packages and package versions needed in the code. If you experience trouble running the scripts, you might want to check that the environment was initialized and that you are using the same version of R and RStudio.</p>
+<p>This workshop was created using R (v 4.5.1) in the RStudio IDE (v 2025.09.2+418). The <code>renv()</code> package (v 1.1.5) is included to reproduce the same coding environment, ensuring all relevant packages and package versions are stored. If you encounter issues running the scripts, please check that the environment is initialized and that you are using the same versions of R and RStudio.</p>
 </div>
 </div>
 </div>
-</section>
 <section id="initializing-the-environment" class="level3">
 <h3 class="anchored" data-anchor-id="initializing-the-environment">Initializing the Environment</h3>
-<p>After cloning the codespace to your local device, you will need to initialize the environment using <code>renv()</code>. This will install all packages and versions used in the workshop, thus creating a reproducible coding environemnt.</p>
 <ol type="1">
-<li><p>In the command-line application (i.e.&nbsp;Terminal for Macs and Windows Terminal for windows) navigate to the file location you want to store the repository.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="st">"/file_location/"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Launch the project by opening the <code>*.Rproj</code> in RStudio.</p></li>
-<li><p>In the R console, activate the enviroment by runing the following lines of code:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">init</span>()          <span class="co"># initialize the project</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()       <span class="co"># download packages and their version saved in the lockfile.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li>Download the prepared codespace, which contains a comprehensive, Git-initialized code environment configured with the RStudio IDE for in-class discussions and challenge questions with solutions.</li>
 </ol>
-<div class="callout callout-style-default callout-note callout-titled">
+<div style="margin-left: 2rem">
+<a href="Materials/Data-Visualization-with-ggplot2.zip">
+  <button class="btn" style="margin-bottom: 1rem;"><i class="bi bi-download"></i>&nbsp; Codespace</button>
+</a>
+
+</div>
+<ol start="2" type="1">
+<li><p>Unzipped the downloaded directory and move it to the file location you wish to house the project.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Application</strong></pre>
+</div>
+<div class="sourceCode" id="cb1" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="st">"~/Downloads/"</span>                                   <span class="co"># Open the directory the file was downloaded into</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span> Data-Visualization-with-ggplot2.zip           <span class="co"># Unzip the file</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> Data-Visualization-with-ggplot2 /new_location/   <span class="co"># Move the unzipped directory to the new location</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p>Launch the project by opening the <code>*.Rproj</code> file in RStudio.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Application</strong></pre>
+</div>
+<div class="sourceCode" id="cb2" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /new_location/Data-Visualization-with-ggplot2.  <span class="co"># Navigate to the new location directory</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Open the .Rproj file using RStudio</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">open</span> <span class="at">-a</span> RStudio Data-Visualization-with-ggplot2.Rproj    <span class="co"># For macOS</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">start</span> <span class="st">""</span> <span class="st">"Data-Visualization-with-ggplot2.Rproj"</span>         <span class="co"># For Windows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p>Open <code>Discussion and Challenge Questions.R</code>. To ensure this script opens in the correct project RStudio window, you can use the “Files” pane inside the RStudio coding window to launch the scripts.</p></li>
+<li><p>In the R console, activate the environment by running the following lines of code. Please note that some of the packages used in this workshop, such as <code>arrow</code>, may take a while to install.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>RStudio Console</strong></pre>
+</div>
+<div class="sourceCode" id="cb3" data-filename="RStudio Console"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">init</span>()          <span class="co"># Initialize the project.</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()       <span class="co"># Download packages and their version saved in the lockfile.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled" style="margin-left: 2rem">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -341,12 +400,47 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>If you are asked to update packages, say no. The <code>renv()</code> is intended to recreate the same environment under which the project was created, making it reproducible. You are ready to proceed when running <code>renv::restore()</code> gives the output:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> The library is already synchronized with the lockfile.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>If you experience any trouble with this step, you might want to confirm that you are using R (v 4.4.3) in the RStudio IDE (v 2024.12.1+563). You can also read more about <code>renv()</code> in their <a href="https://rstudio.github.io/renv/articles/renv.html">vignette</a>.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>RStudio Output</strong></pre>
+</div>
+<div class="sourceCode" id="cb4" data-filename="RStudio Output"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> The library is already synchronized with the lockfile.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If you experience any trouble with this step, you might want to confirm that you are using R (v 4.5.1) in the RStudio IDE (v 2025.09.2+418). You can also read more about <code>renv()</code> in their <a href="https://rstudio.github.io/renv/articles/renv.html">vignette</a>&nbsp;<span class="citation" data-cites="renv_intro"><sup><a href="#ref-renv_intro" role="doc-biblioref">2</a></sup></span>.</p>
 </div>
 </div>
-
 </section>
+</section>
+<section id="about-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="about-the-data">About the Data</h2>
+</section>
+<section id="section-glossary" class="level2">
+<h2 class="anchored" data-anchor-id="section-glossary">Section Glossary</h2>
+<table class="glossary-table">
+<tbody>
+<!-- Row 1 -->
+<tr>
+<td class="col1">
+Integrated Development Environment (IDE)
+</td>
+<td>
+A software application that combines tools for editing, building, testing, and debugging code into a single, user-friendly interface&nbsp;<span class="citation" data-cites="ide"><sup><a href="#ref-ide" role="doc-biblioref">1</a></sup></span>.
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-ide" class="csl-entry" role="listitem">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">Services, Inc. A. W. <a href="https://aws.amazon.com/what-is/ide/">What is an IDE (integrated development environment)?</a></div>
+</div>
+<div id="ref-renv_intro" class="csl-entry" role="listitem">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">Ushey, K., Wickham, H. &amp; Posit. <a href="https://rstudio.github.io/renv/articles/renv.html">Introduction to renv</a>.</div>
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->

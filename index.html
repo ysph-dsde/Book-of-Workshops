@@ -43,8 +43,8 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-ab6496a1a679dc9f3d6952c9737550a4.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5b696210ae79204592cbe97a389ebe16.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-b809ba839b641f2807f7f5514540d996.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-f0384370346e305653b8252402f29a58.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-62edfbf33f06ec21d22b54c1a7593b05.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="site_libs/quarto-contrib/bookup_fonts_embed-0.0/fonts-download.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
@@ -360,16 +360,6 @@ window.Quarto = {
       color: #4183C4;
   }
   
-  /* Change the footer further to be the same as the other pages in dark mode */
-  
-  .nav-footer a {
-      color: #cad2dd;
-      text-decoration: underline;
-  }
-  .nav-footer a:hover {
-      color: #cad2dd;
-  }
-  
   /* Change the color to the --code-color and --code-block-bg from light mode */
   
   #quarto-document-content p>code, #quarto-document-content a code, #quarto-document-content ul code, #quarto-document-content ol code{
@@ -379,7 +369,81 @@ window.Quarto = {
       font-size: 85%;
       border-radius: 4px;
   }
+  
+  /* Adjust the search bar padding */
+  
+  .aa-Autocomplete .aa-Form .aa-InputWrapperPrefix .aa-Label, 
+  .aa-Autocomplete .aa-Form .aa-InputWrapperPrefix .aa-LoadingIndicator, 
+  .aa-DetachedFormContainer .aa-Form .aa-InputWrapperPrefix .aa-Label, 
+  .aa-DetachedFormContainer .aa-Form .aa-InputWrapperPrefix .aa-LoadingIndicator {
+      padding-top: 0.5px;
+      margin-bottom: -0.001px;
+  }
+  
+  /* Change the highlighting to light mode */
+  
+  .text-term {
+      color: var(--dsde-purple);
+      font-weight: 700;
+      position: relative;
+  }
+  .code-term {
+      color: var(--dsde-purple);
+      background-color: #f6effe;
+      font-family: "Fira Mono", "Menlo", "Andale Mono", monospace;
+      font-weight: 400;
+      padding: 2px 4px;
+      font-size: 0.85rem;
+      border-radius: 4px;
+      position: relative;
+  }
+  .text-term:hover .popup-text-term, .code-term:hover .popup-code-term {
+      display: block;
+  }
+  .popup-text-term, .popup-code-term {
+      display: none;
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #fafafa;
+      border: 1px solid #333;
+      font-family: var(--bs-body-font-family);
+      color: #212529;
+      font-weight: normal;
+      padding: 5px;
+      box-shadow: 1px 1px 10px #ddd;
+      z-index: 10;
+      width: max-content;
+      max-width: 200px;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+  }
+  .popup-text-term {
+      font-size: 0.85rem;
+  }
+  .popup-code-term {
+      font-size: 0.85rem;
+  }
 </style>
+
+<div id="formsPopup" class="popup">
+    <div class="popup-content">
+        <span class="close-button">×</span>
+        <h2 class="anchored">We'd Love Your Feedback!</h2>
+        <p>Thank you for visiting our website! We value your feedback and use it to continually enhance our services. At the end of the feedback survey, you will have the chance to suggest new workshops and asynchronous materials.</p>
+        
+        <div class="form-links">
+            <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=u76M3Tkh-E20EU4-h6vrXH-TvKDg8gZHqoE3FAMavy5UMjhSTjVOWjQ0MkFIM0hDS0pVQ0tZN1kzMi4u" target="_blank" class="form-link">Link for Yale Affiliates</a>
+            <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=u76M3Tkh-E20EU4-h6vrXH-TvKDg8gZHqoE3FAMavy5URFBRQ1ZVUFlFVEY0MElSNTlSSzJTWkhXNS4u" target="_blank" class="form-link">Link for Non-Yale Affiliates</a>
+        </div>
+        
+        <p><small>Forms will open in a new tab</small></p>
+    </div>
+</div>
+
+<script src="Code/popup.js"></script>
 
 <script src="Code/definition_script.js"></script>
 <p>Yale’s <a href="https://ysph.yale.edu/research/research-centers-and-initiatives/public-health-data-science-and-data-equity/">Public Health Data Science and Data Equity (DSDE)</a> team hosts workshops, tutorials, and information sessions known as Coffee, Cookie and Coding <span class="math inline">\left(C^3\right)</span> Workshops. These sessions are designed to help Public Health and Biostatistics masters-level students at Yale effectively leverage computational tools and analytical methods in their educational and professional endeavors. While primarily intended for the Yale community, all are welcome and encouraged to attend and benefit from our offerings.</p>
