@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-ab6496a1a679dc9f3d6952c9737550a4.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-f0384370346e305653b8252402f29a58.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-62edfbf33f06ec21d22b54c1a7593b05.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-0e4dd4ed862a1a9e09a7bc5c842ea9ff.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-8147c3fd6f98d133745c3078a0248ff1.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../../../site_libs/quarto-contrib/bookup_fonts_embed-0.0/fonts-download.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
@@ -274,9 +274,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>It is always best practice to start by checking the current status of your version controlled project directory. Say that you generated this image using R in a script called <code>making_cool_plots.R</code>. Running <code>git status</code> in the command-line application will give you something like this:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>Command-Line Interface</strong></pre>
+<pre><strong>Command-Line Application</strong></pre>
 </div>
-<div class="sourceCode" id="cb1" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <style>
 .codeHeader {
@@ -367,9 +367,9 @@ Note
 </ol>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>Command-Line Interface</strong></pre>
+<pre><strong>Command-Line Application</strong></pre>
 </div>
-<div class="sourceCode" id="cb2" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># OPTION #1: List each file</span></span>
+<div class="sourceCode" id="cb2" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># OPTION #1: List each file</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="st">"making_cool_plots.R"</span> <span class="st">"earth_shattering_color_scheme.png"</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># OPTION #2: Use the wild card "." to add all files</span></span>
@@ -412,9 +412,9 @@ Code Like a Pro
 <p>To show you how to navigate this outcome, we’re going to forget to include our message.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>Command-Line Interface</strong></pre>
+<pre><strong>Command-Line Application</strong></pre>
 </div>
-<div class="sourceCode" id="cb4" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <style>
 #rectangle{
@@ -594,9 +594,9 @@ Code Like a Pro
 <p><code>git merge</code> conducts a three way commit: two inherited from the heads of each branch (versions C and G) and a third for the merge action that creates a new version that integrates changes relfected in C and G, here called H. <code>git rebase</code> will realign the commit histories of the two branches relative to one another by pasting the series of one branch at the head of the other. Doing this necessitates redefining the parent commit history for the newly appended commit series, from which we get the name “rebasing”. The figure above shows rebasing the <code>main</code> branch commits with <code>origin/main</code> A-B-C, creating the rebased versions of those commits, E’-F’-G’.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>Command-Line Interface</strong></pre>
+<pre><strong>Command-Line Application</strong></pre>
 </div>
-<div class="sourceCode" id="cb5" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># -----------</span></span>
+<div class="sourceCode" id="cb5" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># -----------</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Pull with one command.</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># OPTION #1: Integrate the fetched copy of "origin/main" into "main" with merge.</span></span>
@@ -607,9 +607,9 @@ Code Like a Pro
 </div>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>Command-Line Interface</strong></pre>
+<pre><strong>Command-Line Application</strong></pre>
 </div>
-<div class="sourceCode" id="cb6" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># -----------</span></span>
+<div class="sourceCode" id="cb6" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># -----------</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Two-step pull.</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Download branch main from the remote repository, origin.</span></span>
@@ -684,9 +684,9 @@ Note
 <p>Pushing our changes to GitHub will cause the commit <code>HEAD</code> of our local copy of branch <code>main</code> to merge with the same branch stored in the remote repository. <code>HEAD</code> is a term describing the latest commits available in the <code>.git</code> directory for that checked-out branch. Sometimes, you might see it referred to as <code>main --&gt; main</code> instead.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>Command-Line Interface</strong></pre>
+<pre><strong>Command-Line Application</strong></pre>
 </div>
-<div class="sourceCode" id="cb7" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div>
 <div class="codeHeader">Command-Line Output</div>
