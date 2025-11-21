@@ -1,14 +1,10 @@
 ---
+include-in-header: ../../_includes/feedback_popup.html
 bibliography: Pages/references.bib
 csl: ../../Code/nature.csl
 ---
 
 # Getting Started with Git and GitHub {.unnumbered}
-
-```{=html}
-<script src="../../Code/definition_script.js"></script>
-```
-
 
 This material is presented over two workshops. Part 1 was authored by Shelby Golden, M.S., and Part 2 is a collaborative effort by Shelby Golden, M.S., and Howard Baik, M.S. You can learn more about the instructors [here](../../index.html#meet-the-creators).
 
