@@ -58,7 +58,7 @@ GitHub offers materials and short courses to help new users learn their interfac
 
 For all systems, you can confirm Git installation in the command-line interface:
 
-```{.bash filename="Command-Line Interface"}
+```{.bash filename="Command-Line Application"}
 git --version
 ```
 
@@ -107,7 +107,7 @@ If XCode _is_ installed in your Applications folder, Git is already available. H
 If XCode _is not_ installed, you can install Git with the osxkeychain credential manager through either [Homebrew](https://brew.sh/) or [MacPorts](https://www.macports.org/install.php)\ [@homebrew; @macports]. Assuming you have one of these already installed:
 
 
-```{.bash filename="Command-Line Interface"}
+```{.bash filename="Command-Line Application"}
 # With Homebrew
 brew install git
 
@@ -119,7 +119,7 @@ sudo port install git +bash_completion +credential_osxkeychain +doc
 Installing Git using Homebrew or MacPorts will automatically include the osxkeychain credential manager. You can confirm its installation by running the following command\ [@osxkeychain]:
 
 
-```{.bash filename="Command-Line Interface"}
+```{.bash filename="Command-Line Application"}
 git credential-osxkeychain
 ```
 
@@ -132,7 +132,7 @@ usage: git credential-osxkeychain <get|store|erase>
 
 If you do not get this output, run the following:
 
-```{.bash filename="Command-Line Interface"}
+```{.bash filename="Command-Line Application"}
 # 1. Install. Linebreak does NOT denote a space in the URL.
 curl -O http://github-media-downloads.s3.amazonaws.com/osx/git-credential -osxkeychain
 
@@ -149,7 +149,7 @@ git config --global credential.helper osxkeychain
 If your OS X version is El Capitan (OS X 10.11) or earlier, you will need to download the tarball and build Git directly from the source.
 
 
-```{.bash filename="Command-Line Interface"}
+```{.bash filename="Command-Line Application"}
 # 1. If you do not have XCode Command Line Tools, install it.
 xcode-select --install
 
@@ -169,7 +169,7 @@ Git recommends using the preferred package manager for your distribution to inst
 
 Below, we have included instructions for several distributions. For information on additional systems, please visit the [Git-SCM](https://git-scm.com/downloads/linux) download page.
 
-```{.bash filename="Command-Line Interface"}
+```{.bash filename="Command-Line Application"}
 # Stable deployment of Debian/Ubuntu
 apt-get install git
 
@@ -192,7 +192,7 @@ Git associates a username and email address with the project versions you create
 
 Let's begin by checking the current configurations on your system. Using `--list --show-origin` instead will display the file location for all configurations\ [@Answeredbykgf3JfUtW2017].
 
-```{.bash filename="Command-Line Interface"}
+```{.bash filename="Command-Line Application"}
 git config --list
 ```
 
@@ -234,14 +234,14 @@ The results above are examples of potential configurations you might see on your
 
 If you do not see these configurations in your results, you will need to set them up on your system. We suggest you start by setting the global credential configurations. Use `--local` instead if you wish to apply the configurations to the currently open directory in your command-line interface.
 
-```{.bash filename="Command-Line Interface"}
+```{.bash filename="Command-Line Application"}
 git config --global user.name "Your Name Here"
 git config --global user.email "your@email.com"
 ```
 
 If you make a mistake, you can use the `--unset` command to remove the configurations through the terminal, or you can modify the .gitconfig file directly\ [@Foster2024].
 
-```{.bash filename="Command-Line Interface"}
+```{.bash filename="Command-Line Application"}
 git config --global --unset user.name
 git config --global --unset user.email
 ```
@@ -309,7 +309,7 @@ We do not cover the different ways repository access can be fine-tuned. If you w
 Every time you interact with GitHub, you will enter your PAT instead of your account password. For example:
 
 
-```{.bash filename="Command-Line Interface"}
+```{.bash filename="Command-Line Application"}
 git clone https://github.com/USERNAME/REPO.git
 
 Username: YOUR-USERNAME
@@ -322,7 +322,7 @@ SSH Keys work by creating a private and public key pair. When interacting with t
 
 It is best practice to review your system for any existing private/public key pairs.
 
-```{.bash filename="Command-Line Interface"}
+```{.bash filename="Command-Line Application"}
 ls –al ~/.ssh         # List all elements in the .ssh directory
 ```
 
@@ -380,7 +380,7 @@ The GPG Suite for macOS and Gpg4win for Windows will allow you to configure the 
 
 Now that you have chosen an SSH algorithm from ED25519 or RSA, we can generate the public and private key pair.
 
-```{.bash filename="Command-Line Interface"}
+```{.bash filename="Command-Line Application"}
 # Ed25519
 ssh-keygen -t ed25519 -C "your@email.com"
 
@@ -444,7 +444,7 @@ Similarly to HTTPS, it is possible to cache your SSH key password using agent fo
 
 With our public and private SSH key pairs created, we are ready to add the public one to our GitHub account. Start by copying the recently created public key.
 
-```{.bash filename="Command-Line Interface - ED25519"}
+```{.bash filename="Command-Line Application - ED25519"}
 pbcopy < ~/.ssh/id_ed25519.pub
 ```
 
@@ -466,7 +466,7 @@ pbcopy < ~/.ssh/id_ed25519.pub
 
 You can confirm that the keys are correctly configured with the following test. If you get the expected output shown below, then you are all set!
 
-```{.bash filename="Command-Line Interface"}
+```{.bash filename="Command-Line Application"}
 ssh -T git@github.com
 ```
 
@@ -487,7 +487,7 @@ In this framework, you need to organize your project directories such that those
 
 We start by locating and opening the .gitconfig file.
 
-```{.bash filename="Command-Line Interface"}
+```{.bash filename="Command-Line Application"}
 git config --list --show-origin
 ```
 
@@ -542,7 +542,7 @@ After the [user] section, add the conditional include statement. The order of th
 
 Now we need to create the Git configuration file applicable to all projects stored in ~/Alternate.
 
-```{.bash filename="Command-Line Interface"}
+```{.bash filename="Command-Line Application"}
 # 1. Navigate to the alternative account parent directory.
 cd "/FILE_PATH/Alternate"
 
@@ -571,7 +571,7 @@ Open the ~/Alternate/.gitconfig file, either using the `vim` in the command-line
 
 Suppose you want to use SSH Keys to interact with remote repositories stored on different domains, such as GitHub and GitLab. You will need to create a new document called config in the ~/.ssh directory.
 
-```{.bash filename="Command-Line Interface"}
+```{.bash filename="Command-Line Application"}
 # 1. Navigate to the .ssh directory.
 cd /Users/userID/.ssh
 

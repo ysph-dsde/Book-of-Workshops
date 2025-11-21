@@ -195,7 +195,7 @@ $dsde-blue-light: #3e70a1;
     border-radius: .25rem;
     border: 1px solid #444;
     box-shadow: 0 .2rem .5rem #6c757d, 0 0 .05rem #6c757d;
-    color: #444;
+    color: #444 !important;
     text-decoration: none;
     font-size: 0.9em;
     text-align: center;
@@ -206,14 +206,10 @@ $dsde-blue-light: #3e70a1;
     max-width: 250px; /* Maximum width to prevent buttons from being too wide */
     display: block;
 }
-#quarto-document-content .form-link a, 
-#quarto-document-content .form-link .btn-link {
-    color: #444 !important;
-}
 .form-link:hover {
     background-color: lighten($dsde-purple, 10%);
-    color: #f4f4f4;
-    text-decoration: none;
+    color: #f4f4f4 !important;
+    text-decoration: none !important;
     transform: translateY(-2px);
     box-shadow: 0 .3rem .7rem #6c757d, 0 0 .1rem #6c757d;
 }
@@ -315,7 +311,7 @@ header .quarto-secondary-nav a, header .quarto-secondary-nav .btn, header .quart
     text-decoration: underline;
 }
 .nav-footer i {
-  color: var(--footer-bg) !important;
+    color: var(--footer-bg) !important;
 }
 h4 > a.anchorjs-link {
     display: none;
@@ -326,8 +322,8 @@ h4 > a.anchorjs-link {
 #quarto-content .margin-sidebar .toc-actions ul a.toc-action:hover,
 #quarto-sidebar #TOC .toc-actions ul a.toc-action.active,
 #quarto-sidebar #TOC .toc-actions ul a.toc-action:hover {
-  color: var(--toc-active-color) !important;
-  border-left: 0px solid var(--toc-active-color) !important;
+    color: var(--toc-active-color) !important;
+    border-left: 0px solid var(--toc-active-color) !important;
 }
 #quarto-document-content a.btn-link,
 #quarto-document-content a:has(button) {

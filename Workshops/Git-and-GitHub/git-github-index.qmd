@@ -49,10 +49,12 @@ Over the course of the workshop chapter, we will take you through:
 - Get hands-on experience using Git and GitHub for solo projects through a worked-through example showing common workflows.
 - Learn how to use GitHub to support collaboration and teamwork on group projects. Invite friends to have the full experience!
 
-We have prepared real-world examples, including challenge questions and answers, for the hands-on portion of this workshop. To fully engage with these materials, you will need to create a clean-break copy of the two GitHub repositories specifically prepared for this purpose. Detailed instructions for this process are provided below under [Accessing the Codespaces](#accessing-the-codespaces).
+We have prepared real-world examples for the hands-on portion of this workshop. To fully engage with these materials, please create a clean-break copy of the two GitHub repositories that have been specifically prepared for this purpose. Detailed instructions for this process can be found below under [Accessing the Codespaces](#accessing-the-codespaces).
 
 
 ## Slides and Handouts
+
+Download the complete slide decks with annotations and the in-person workshop handouts. Comments have been saved in the bottom left corner of each slide, and references for this webpage are located in the **Appendix**.
 
 #### Part 1 Materials:
 
@@ -121,8 +123,7 @@ The method described here will not create a Fork. You can learn more about the G
 
 1. [Log in](https://github.com/login) to your personal GitHub account.
 
-2. In the top-right of the page navigation bar, select the [ {{< iconify octicon:plus-16 >}} {{< iconify octicon:triangle-down-24 >}} ]{style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px; padding-left: 5px; padding-right: 5px; border-radius: 5px;"} dropdown menu and click [ {{< iconify octicon:repo-push-24 >}} Import repository]{style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px;"}.
-
+2. In the top-right of the page navigation bar, select the [ {{< iconify octicon:plus-16 >}} {{< iconify octicon:triangle-down-24 >}} ]{style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px 5px; border-radius: 5px; vertical-align: middle;"} dropdown menu and click [ {{< iconify octicon:repo-push-24 >}} Import repository]{style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px 7px; border-radius: 5px; vertical-align: middle;"}.
 
 3. Fill out the following sections:
 
@@ -130,7 +131,7 @@ The method described here will not create a Fork. You can learn more about the G
 
     b. **Your new repository details:** Adjust the GitHub account owner as needed and create the name for the new repository. It is good practice to initially set the repository to "Private".
 
-4. Click the [ Begin import ]{style="white-space: nowrap; background-color: #1f6feb; color: #ffffff; border: 1px solid #0d1117; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px;"} button to copy the codespace.
+4. Click the [ Begin import ]{style="white-space: nowrap; background-color: #1f6feb; color: #ffffff; border: 1px solid #0d1117; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px; vertical-align: middle;"} button to copy the codespace.
 
 5. After a few minutes, the newly created GitHub repository webpage will open up.
 
@@ -144,7 +145,7 @@ These directions follow GitHub's [duplicating a repository](https://docs.github.
 
 2. Navigate to the ysph-dsde GitHub repository you want to copy by either searching for it by name or opening the URL provided [above](#accessing-the-codespaces).
 
-3. Near the right side of the page there will be a [ {{< iconify octicon:code-16 >}} \ Code {{< iconify octicon:triangle-down-24 >}} ]{style="white-space: nowrap; background-color: #1f6feb; color: #ffffff; border: 1px solid #0d1117; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px;"} button to click. In its drop down menu under the "Local" tab you will see options to copy the SSH Key or HTTPS URL to the repository\ [@new_repo].
+3. Near the right side of the page there will be a [ {{< iconify octicon:code-16 >}} \ Code {{< iconify octicon:triangle-down-24 >}} ]{style="white-space: nowrap; background-color: #1f6feb; color: #ffffff; border: 1px solid #0d1117; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px; vertical-align: middle;"} button to click. In its drop down menu under the "Local" tab you will see options to copy the SSH Key or HTTPS URL to the repository\ [@new_repo].
 
     For example, if the repository name is "ORIGINAL-REPOSITORY" they will look like:
 
@@ -165,7 +166,7 @@ SSH keys or HTTPS URLs are file transfer protocols used to pass information betw
 4. Open the command-line application (i.e. Terminal for Macs and Git Bash for Windows) and navigate to the file location you want to temporarily store the repository copy.
 
     ```{.bash filename="Command-Line Application"}
-    cd "/file_location/"
+    cd "/file_path/"
     ```
 
 5. Clone a bare copy of the original repository using its SSH Key or HTTPS URL\ [@duplicate_repo]:
@@ -184,7 +185,7 @@ SSH keys or HTTPS URLs are file transfer protocols used to pass information betw
     cd "ORIGINAL-REPOSITORY.git"
     ```
     
-7. Back in GitHub, in the top-right of the page navigation bar select the [ {{< iconify octicon:plus-16 >}} {{< iconify octicon:triangle-down-24 >}} ]{style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px; padding-left: 5px; padding-right: 5px; border-radius: 5px;"} dropdown menu and click [ {{< iconify octicon:repo-24 >}} New repository]{style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px"}.
+7. Back in GitHub, in the top-right of the page navigation bar select the [ {{< iconify octicon:plus-16 >}} {{< iconify octicon:triangle-down-24 >}} ]{style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px; padding-left: 5px; padding-right: 5px; border-radius: 5px; vertical-align: middle;"} dropdown menu and click [ {{< iconify octicon:repo-24 >}} New repository]{style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px; vertical-align: middle;"}.
 
 8. Fill out the following sections:
 
@@ -221,9 +222,9 @@ This completes creating a clean-break copy of the ysph-dsde repository codespace
 
 Now that you have copied this repository into your own GitHub, you are ready to proceed with a standard clone to your local device.
   
-1. Copy the SSH Key or HTTPS URL to the newly created repository in your GitHub account by finding the codes under the [ {{< iconify octicon:code-16 >}} \ Code {{< iconify octicon:triangle-down-24 >}} ]{style="white-space: nowrap; background-color: #1f6feb; color: #ffffff; border: 1px solid #0d1117; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px;"} button. 
+1. Copy the SSH or HTTPS URL from your GitHub repository by clicking the [ {{< iconify octicon:code-16 >}} Code {{< iconify octicon:triangle-down-24 >}} ]{style="white-space: nowrap; background-color: #1f6feb; color: #ffffff; border: 1px solid #0d1117; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px; vertical-align: middle;"} button.
 
-    ```{.bash filename="Command-Line Application"}
+    ```{.bash}
     # SSH
     git@github.com:ysph-dsde/NEW-REPOSITORY.git
 
@@ -234,7 +235,7 @@ Now that you have copied this repository into your own GitHub, you are ready to 
 2. In the command-line application (i.e. Terminal for Macs and Git Bash for Windows) navigate to the file location you want to store the repository.
 
     ```{.bash filename="Command-Line Application"}
-    cd "/file_location/"
+    cd "/file_path/"
     ```
    
 3. Clone the repository.
@@ -267,7 +268,7 @@ After cloning the codespace to your local device, you will need to initialize th
 1. In the command-line application (i.e., Terminal for Macs or Git Bash for Windows) navigate to the file location you want to store the repository.
 
     ```{.bash filename="Command-Line Application"}
-    cd "/file_location/"
+    cd "/file_path/"
     ```
 
 2. Launch the project by opening the `*.Rproj` file in RStudio.

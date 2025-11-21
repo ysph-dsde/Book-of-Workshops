@@ -32,7 +32,7 @@ Imagine it. You have come up with what might be (and we're scientists here so le
 
 It is always best practice to start by checking the current status of your version controlled project directory. Say that you generated this image using R in a script called `making_cool_plots.R`. Running `git status` in the command-line application will give you something like this:
 
-```{.bash filename="Command-Line Interface"}
+```{.bash filename="Command-Line Application"}
 git status
 ```
 
@@ -124,7 +124,7 @@ Up until this point, file iterations and changes are not recorded in Git's versi
 
 2.  Use the "wild card", `.`, to add every file listed under the `git status` output.
 
-``` {.bash filename="Command-Line Interface"}
+``` {.bash filename="Command-Line Application"}
 # OPTION #1: List each file
 git add "making_cool_plots.R" "earth_shattering_color_scheme.png"
 
@@ -168,7 +168,7 @@ Because the message is a mandatory element of a commit action, if you forget to 
 
 To show you how to navigate this outcome, we're going to forget to include our message.
 
-``` {.bash filename="Command-Line Interface"}
+``` {.bash filename="Command-Line Application"}
 git commit
 ```
 
@@ -346,7 +346,7 @@ In actuality, `git pull` is two Git actions wrapped into one command: `git fetch
 
 `git merge` conducts a three way commit: two inherited from the heads of each branch (versions C and G) and a third for the merge action that creates a new version that integrates changes relfected in C and G, here called H. `git rebase` will realign the commit histories of the two branches relative to one another by pasting the series of one branch at the head of the other. Doing this necessitates redefining the parent commit history for the newly appended commit series, from which we get the name "rebasing". The figure above shows rebasing the `main` branch commits with `origin/main` A-B-C, creating the rebased versions of those commits, E'-F'-G'.
 
-``` {.bash filename="Command-Line Interface"}
+``` {.bash filename="Command-Line Application"}
 # -----------
 # Pull with one command.
 
@@ -357,7 +357,7 @@ git pull                        # Assuming the default protocol is a merge
 git pull --rebase               # Override the default merge to do a rebase
 ```
 
-``` {.bash filename="Command-Line Interface"}
+``` {.bash filename="Command-Line Application"}
 # -----------
 # Two-step pull.
 
@@ -422,7 +422,7 @@ We are now prepared to update the remote repository with `git push`. Recall the 
 
 Pushing our changes to GitHub will cause the commit `HEAD` of our local copy of branch `main` to merge with the same branch stored in the remote repository. `HEAD` is a term describing the latest commits available in the `.git` directory for that checked-out branch. Sometimes, you might see it referred to as `main --> main` instead.
 
-``` {.bash filename="Command-Line Interface"}
+``` {.bash filename="Command-Line Application"}
 git push origin main
 ```
 

@@ -21,21 +21,21 @@ First, we will load the necessary libraries and any special functions used in th
 #| warning: FALSE
 #| output: FALSE
 
-# NOTE: renv initializing might need to be run twice after the repo is
+# NOTE: renv initialization might need to be run twice after the repo is
 #       first copied.
 #renv::init()
 renv::restore()
 
 suppressPackageStartupMessages({
-  library("arrow")         # For reading in the data
-  library("dplyr")         # For data manipulation
-  library("ggplot2")       # For creating static visualizations
-  library("plotly")        # For interactive plots
-  library("cowplot")       # ggplot add on for composing figures
-  library("tigris")        # Imports TIGER/Line shapefiles from the Census Bureau
-  library("sf")            # Handles "Special Features": spatial vector data
-  library("RColorBrewer")  # Load Color Brewer color palettes
-  library("viridis")       # Load the Viridis color pallet
+  library("arrow")        # For reading in the data
+  library("dplyr")        # For data manipulation
+  library("ggplot2")      # For creating static visualizations
+  library("plotly")       # For interactive plots
+  library("cowplot")      # ggplot add-on for composing figures
+  library("tigris")       # Imports TIGER/Line shapefiles from the Census Bureau
+  library("sf")           # Handles "Simple Features": spatial vector data
+  library("RColorBrewer") # Load ColorBrewer color palettes
+  library("viridis")      # Load the Viridis color palette
 })
 
 # Function to select "Not In"
