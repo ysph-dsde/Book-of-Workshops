@@ -6,10 +6,6 @@ csl: ../../../Code/nature.csl
 
 # Detailed Walk-Through {.unnumbered}
 
-```{=html}
-<script src="../../../Code/definition_script.js"></script>
-```
-
 ## Identify and Save Local Changes
 
 Hopefully the explanations provided thus far are eliciting an aha moment for you. But if not, and you're otherwise ready to pretend it makes perfect sense for a little longer, let's go through an example. Later we are going to discuss version branches of your project. For now, all you need to know is we are in a Git initialized project directory and on a version controlled branch called `main`.

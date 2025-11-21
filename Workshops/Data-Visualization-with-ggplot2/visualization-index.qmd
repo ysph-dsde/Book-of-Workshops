@@ -5,11 +5,6 @@ csl: ../../Code/nature.csl
 
 # Data Visualization with ggplot2 {.unnumbered}
 
-```{=html}
-<script src="../../Code/definition_script.js"></script>
-```
-
-
 This material was authored by Shelby Golden, M.S. You can learn more about the instructors [here](../../index.html#meet-the-creators). Special thanks to [Professor Daniel Weinberger](https://ysph.yale.edu/profile/daniel-weinberger/) for allowing us to use his plot code in this workshop.
 
 ## Introduction

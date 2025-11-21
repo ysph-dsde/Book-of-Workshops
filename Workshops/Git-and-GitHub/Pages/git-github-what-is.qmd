@@ -5,11 +5,6 @@ csl: ../../../Code/nature.csl
 
 # The What, Why, and How of Git and GitHub {.unnumbered}
 
-```{=html}
-<script src="../../../Code/definition_script.js"></script>
-```
-
-
 ```{r setup}
 #| message: FALSE
 #| warning: FALSE

@@ -50,6 +50,11 @@ hypothesis: true
 
 format:
   html:
+    include-in-header: 
+      - _includes/google_analytics.html
+      - _includes/definition_popup.html
+    before-body:
+      - _includes/feedback_popup_conditionally.html
     html-math-method: katex
     toc: true
     toc-depth: 3
