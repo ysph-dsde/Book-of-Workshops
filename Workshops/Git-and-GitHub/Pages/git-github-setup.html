@@ -126,6 +126,50 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
+<!--
+ * This script integrates Google Analytics with your webpage, enabling you to 
+ * track and analyze visitor traffic.
+ * 
+ * It includes the following features:
+ *    1. Asynchronously loading the Google Analytics tracking library.
+ *    2. Setting up the global `dataLayer` array used by Google Analytics.
+ *    3. Defining the `gtag` function for configuring and sending data to Google Analytics.
+ *    4. Initializing Google Analytics with your tracking ID.
+ *
+ * Author: Shelby Golden, M.S.
+ *   Date: November 2025
+-->
+
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-DCJ5HZFKG7"></script>
+<script>
+  // Initialize the dataLayer array if it doesn't already exist
+  window.dataLayer = window.dataLayer || [];
+  
+  // Define the gtag function to push arguments onto the dataLayer
+  function gtag(){dataLayer.push(arguments);}
+  
+  // Record a pageview with the current timestamp
+  gtag('js', new Date());
+
+  // Configure Google Analytics with your tracking ID
+  gtag('config', 'G-DCJ5HZFKG7');
+</script>
+<!--
+ * This script handles the functionality for displaying definitions as hover tooltips on the webpage.
+ * 
+ * It includes the following features:
+ *    1. Displaying a tooltip with additional information when hovering over specific terms or elements.
+ *    2. Customizable definitions that can be added to any term on the webpage.
+ *
+ * Author: Shelby Golden, M.S.
+ *   Date: November 2025
+ * 
+ * Note: Written with the assistance of Yale's AI, Clarity.
+ -->
+
+<!-- Include definition script -->
+<script src="../../../Code/definition_script.js"></script>
 
 
 </head>
@@ -292,7 +336,6 @@ div.csl-indent {
 </header>
 
 
-<script src="../../../Code/definition_script.js"></script>
 <p>If you have not yet, you will need to get a GitHub account and to install Git on your local device. This document was constructed from Atlassian’s <em><a href="https://www.atlassian.com/git/tutorials/install-git">How to install Git</a></em> tutorial and Git-SCM’s <a href="https://git-scm.com/downloads">download pages</a>&nbsp;<span class="citation" data-cites="atlassian_git git_macs git_pc git_linux"><sup><a href="#ref-atlassian_git" role="doc-biblioref">1</a>–<a href="#ref-git_linux" role="doc-biblioref">4</a></sup></span>.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">

@@ -105,6 +105,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<!--
+ * This script integrates Google Analytics with your webpage, enabling you to 
+ * track and analyze visitor traffic.
+ * 
+ * It includes the following features:
+ *    1. Asynchronously loading the Google Analytics tracking library.
+ *    2. Setting up the global `dataLayer` array used by Google Analytics.
+ *    3. Defining the `gtag` function for configuring and sending data to Google Analytics.
+ *    4. Initializing Google Analytics with your tracking ID.
+ *
+ * Author: Shelby Golden, M.S.
+ *   Date: November 2025
+-->
+
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-DCJ5HZFKG7"></script>
+<script>
+  // Initialize the dataLayer array if it doesn't already exist
+  window.dataLayer = window.dataLayer || [];
+  
+  // Define the gtag function to push arguments onto the dataLayer
+  function gtag(){dataLayer.push(arguments);}
+  
+  // Record a pageview with the current timestamp
+  gtag('js', new Date());
+
+  // Configure Google Analytics with your tracking ID
+  gtag('config', 'G-DCJ5HZFKG7');
+</script>
+<!--
+ * This script handles the functionality for displaying definitions as hover tooltips on the webpage.
+ * 
+ * It includes the following features:
+ *    1. Displaying a tooltip with additional information when hovering over specific terms or elements.
+ *    2. Customizable definitions that can be added to any term on the webpage.
+ *
+ * Author: Shelby Golden, M.S.
+ *   Date: November 2025
+ * 
+ * Note: Written with the assistance of Yale's AI, Clarity.
+ -->
+
+<!-- Include definition script -->
+<script src="../../../Code/definition_script.js"></script>
 
 
 </head>
@@ -256,7 +300,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<script src="../../../Code/definition_script.js"></script>
 <section id="identify-and-save-local-changes" class="level2">
 <h2 class="anchored" data-anchor-id="identify-and-save-local-changes">Identify and Save Local Changes</h2>
 <p>Hopefully the explanations provided thus far are eliciting an aha moment for you. But if not, and you’re otherwise ready to pretend it makes perfect sense for a little longer, let’s go through an example. Later we are going to discuss version branches of your project. For now, all you need to know is we are in a Git initialized project directory and on a version controlled branch called <code>main</code>.</p>
