@@ -10,8 +10,7 @@ You can find out more about past and upcoming work on our [website](https://ysph
 
 All workshop details and content, including slides, handouts, and adaptations for asynchronous learning, are available on our [Book of Workshops](https://ysph-dsde.github.io/Book-of-Workshops/Workshops/Data-Visualization-with-ggplot2/visualization-index.html) webpage for the session. Please note that the workshop slides paraphrase the code used to generate the plots in the Worked-Through Example. Users are encouraged to access the complete code on the Book of Workshops [Worked-Through Example](https://ysph-dsde.github.io/Book-of-Workshops/Workshops/Data-Visualization-with-ggplot2/Pages/visualization-worked-through-example.html) page for this session.
 
-**Instructor:**
-- [Shelby Golden, M.S.](https://www.linkedin.com/in/shelby-golden/), Data Scientist I
+**Instructor:** [Shelby Golden, M.S.](https://www.linkedin.com/in/shelby-golden/), Data Scientist I
 
 **Learning Goals:**
 
@@ -24,4 +23,5 @@ We have prepared real-world examples, including challenge questions and answers,
 ## Overview Of Contents
 
 This directory contains all the code (`*.R`, `*.qmd`), data, and media used to prepare the Book of Workshops pages and selected in-class materials. PDF versions of `*.docx` and `*.pptx` files are available here for download, while the raw forms of these documents are kept internally. Workshop code includes its own `*.RProj` project. Therefore, only the `*.zip` file for this codebase is included in this directory, while the complete version is maintained in an internal repository.
+
 
