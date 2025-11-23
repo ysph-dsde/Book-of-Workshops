@@ -9,7 +9,33 @@ format:
   pdf:
     include-in-header: 
       - text: |
-          \input{Handout Formatting/PDF Formatting Script.tex}
+          %%%%%%%%%%%%%%%%%%%% USAGE NOTE %%%%%%%%%%%%%%%%%%%%
+          % This LaTeX script sets up consistent formatting for DSDE Workshop handouts.
+          %
+          % To use:
+          % 1. Reference this LaTeX script in the YAML header of Quarto documents
+          %    with correct relative paths based on their directory depth.
+          % 2. Ensure that the "rootdir" and "stylesdir" paths in this LaTeX script
+          %    match those relative paths. Adjust as necessary.
+          % 
+          % The LaTeX script is located in "Code/Handout Formatting/PDF Formatting Script.tex".
+          %
+          % Example:
+          % For:
+          %   \input{../Code/Handout Formatting/PDF Formatting Script.tex}
+          % Set:
+          %   \newcommand{\rootdir}{../Code/Handout Formatting}
+          %   \newcommand{\stylesdir}{../_styles/Yale_typeface}
+          %
+          % For:
+          %   \input{../../../../Code/Handout Formatting/PDF Formatting Script.tex}
+          % Set:
+          %   \newcommand{\rootdir}{../../../../Code/Handout Formatting}
+          %   \newcommand{\stylesdir}{../../../../_styles/Yale_typeface}
+          %
+          %%%%%%%%%%%%%%%%%%%%%%
+          
+          \input{../../../../Code/Handout Formatting/PDF Formatting Script.tex}
       - text: |
           % GitHub button formatting.
           \definecolor{GitHubBackground}{HTML}{00023F}
@@ -21,10 +47,9 @@ format:
             boxrule=0.5pt, arc=3pt, left=6pt, right=6pt, top=3pt, bottom=3pt, boxsep=0pt, 
             tcbox raise base, enhanced, fontupper=\fontspec{Arial}\color{GitHubFont}
           }
-highlight-style: Handout Formatting/idle-fingers-light.theme
-editor: source
+highlight-style: ../../../../_styles/idle-fingers-light.theme
 bibliography: references.bib
-csl: nature.csl
+csl: ../../../../Code/nature.csl
 ---
 
 If you have not yet, you will need to get a GitHub account and to install Git on your local device. This document was constructed from Atlassian's _[How to install Git](https://www.atlassian.com/git/tutorials/install-git)_ tutorial and Git-SCM's [download pages](https://git-scm.com/downloads)\ [@atlassian_git; @git_macs; @git_pc; @git_linux].

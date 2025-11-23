@@ -1,16 +1,45 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DSDE Workshop Handout PDF Formatting
-% 
-% Add to *.qmd yaml 
+%
+% This LaTeX script is designed to format PDF handouts for the DSDE Workshop.
+% It ensures consistent styling, fonts, and layouts throughout the document.
+%
+% The script should be included in the YAML header of Quarto (.qmd) documents
+% structured within different workshop directories. The script manages:
+%
+% - Configuring global settings and packages for geometry, color, fonts, etc.
+% - Defining custom headers and footers with dynamic content
+% - Setting custom title page, section fonts, and callout boxes
+% - Including specific images and backgrounds
+%
+% To use, reference this LaTeX script in the YAML header of Quarto documents
+% with correct relative paths based on their directory depth, and ensure 
+% that the "rootdir" and "stylesdir" paths in this LaTeX script match those 
+% relative paths. Adjust as necessary.
+%
+% Examples:
+% For Quarto document located at "Workshops/proj1.qmd":
+% "format:
+%   pdf:
+%     include-in-header:
+%       - text: |
+%           \input{../Code/Handout Formatting/PDF Formatting Script.tex}"
+%
+% For Quarto document located at "Workshops/Git-GitHub/Code/proj2.qmd":
 % "format:
 %   pdf:
 %     include-in-header: 
 %       - text: |
-%           \input{Handout Formatting/PDF Formatting Script.tex}"
-% 
-% Written by Shelby Golden, MS with the assistance of Yale's AI Clarity.
-% Written September 23rd, 2025
+%           \input{../../../../Code/Handout Formatting/PDF Formatting Script.tex}"
+%
+% Author: Shelby Golden, M.S. (with assistance from Yale's AI Clarity)
+% Date: September 23rd, 2025
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Define root and styles directories using relative paths
+% Ensure "rootdir" and "stylesdir" are adjusted to match the paths referenced in the YAML.
+\newcommand{\rootdir}{../../../../Code/Handout Formatting} % Adjust relative path accordingly
+\newcommand{\stylesdir}{../../../../_styles/Yale_typeface} % Adjust relative path accordingly
 
 % Global settings
 \usepackage{geometry}
@@ -35,26 +64,30 @@
 \usepackage{fontawesome5}
 \usepackage{graphicx}
 
-
-\setstackgap{L}{1.5\baselineskip} 
+% Adjust space to avoid overlapping script lines
+\setstackgap{L}{1.5\baselineskip}
 \tcbuselibrary{listingsutf8}
 
-
+% Define colors used in the document
 \definecolor{DSDEPurple}{HTML}{A353FF}
 \definecolor{DSDEBlue}{HTML}{00356B}
-
 
 % Custom header and footer settings
 \clearpairofpagestyles
 \ihead[]{}
 \ohead[]{\hfill \footnotesize\itshape\color{DSDEBlue} Printed \today}
 
+% Use graphics paths for footers
 \ifoot[{%
-  \stackon[2mm]{\includegraphics[height=1cm]{Handout Formatting/Wordmark-Data-Science-and-Data-Equity-blues.png}}{}
+  \stackon[2mm]{\includegraphics[height=1cm]{\rootdir/Wordmark-Data-Science-and-Data-Equity-blues.png}}{}
 }]{%
-  \stackon[2mm]{\includegraphics[height=1cm]{Handout Formatting/Wordmark-Data-Science-and-Data-Equity-blues.png}}{}
+  \stackon[2mm]{\includegraphics[height=1cm]{\rootdir/Wordmark-Data-Science-and-Data-Equity-blues.png}}{}
 }
+
+% Page numbering
 \cfoot[\pagemark]{\pagemark}
+
+% Additional footer text & design
 \ofoot[%
        \footnotesize\itshape\color{DSDEBlue} Version: 003.09.19.25\\%
        Generated using Quarto (v. 1.6.39)\\%
@@ -84,8 +117,8 @@
 \newcommand{\SetFirstPageBackground}{%
   \AddToShipoutPictureBG*{%
     \put(0,0){%
-      \includegraphics[width=\paperwidth,height=\paperheight]{Handout Formatting/Background_Binary Code.png}%
-    }%
+      \includegraphics[width=\paperwidth,height=\paperheight]{\rootdir/Background_Binary Code.png}%
+    }
   }
 }
 
@@ -93,8 +126,8 @@
 \newcommand{\SetOtherPagesBackground}{%
   \AddToShipoutPictureBG*{%
     \put(0,0){%
-      \includegraphics[width=\paperwidth,height=\paperheight]{Handout Formatting/Background.png}%
-    }%
+      \includegraphics[width=\paperwidth,height=\paperheight]{\rootdir/Background.png}%
+    }
   }
 }
 
@@ -104,22 +137,24 @@
     \SetFirstPageBackground
   }
   \AtBeginShipout{%
-    \ifnum\value{page}>1%
+    \ifnum\value{page}>1
     \SetOtherPagesBackground
     \fi
   }
 }
 
 % Define font for title, subtitle, author, and date
+% Ensure the specified path correctly points to the fonts directory
 \newcommand{\customtitlefont}{%
   \fontspec[
-    Path=Handout Formatting/Yale_typeface/,
+    Path=\stylesdir/, % Correctly set the path to the font directory
     UprightFont=*-Roman,
     BoldFont=*-Bold,
     ItalicFont=*-Italic,
     BoldItalicFont=*-BoldItalic
   ]{YaleNew}\fontsize{30}{35}\selectfont\color{DSDEBlue}\bfseries
 }
+
 \newcommand{\customsubtitlefont}{\fontspec{Barlow}\fontsize{15}{14}\selectfont\color{DSDEBlue}}
 \newcommand{\customauthorfont}{\fontspec{Barlow}\fontsize{11}{0}\selectfont\color{DSDEBlue}\itshape}
 \newcommand{\customdatefont}{\fontspec{Barlow}\fontsize{11}{0}\selectfont\color{DSDEBlue}\itshape}
@@ -162,7 +197,6 @@
 }
 \makeatother
 
-
 % Custom Verbatim environment for code blocks
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{backcolor}{rgb}{0.97,0.97,0.95}
@@ -188,7 +222,7 @@
 }
 
 % Redefine coded shaded environment
-% Comment/uncomment the following if there is code or not.
+% Comment/uncomment if shading environment for code is needed
 \renewenvironment{Shaded}{
   \begin{mdframed}[style=highlighting]
   \setlength{\parindent}{0pt}
@@ -200,7 +234,6 @@
 {
   \end{mdframed}
 }
-
 
 % Define style for output
 \newtcolorbox{outputbox}{
@@ -217,8 +250,7 @@
 % Redefine environment for knitr output
 \renewenvironment{verbatim}{\begin{outputbox}}{\end{outputbox}}
 
-
-% Custom callout boxes to allow indenting and other formatting
+% Custom callout boxes to allow proper formatting
 \definecolor{NoteBordercolor}{HTML}{4581EC}
 \definecolor{NoteHeadercolor}{HTML}{F0F5FD}
 \definecolor{NoteIconcolor}{HTML}{0858E5}
@@ -244,7 +276,6 @@
 \definecolor{WarningHeadercolor}{HTML}{FEF8F1}
 \definecolor{WarningIconcolor}{HTML}{EB9114}
 
-
 \newtcolorbox{callout-warning}[1][]{
   colframe=WarningBordercolor,
   title={\textcolor{WarningIconcolor}{\faExclamationTriangle}\ \  #1},
@@ -261,7 +292,7 @@
   before skip=10pt,
   after skip=10pt
 }
-                         
+
 \definecolor{ImportantBordercolor}{HTML}{D9534F}
 \definecolor{ImportantHeadercolor}{HTML}{FCF1F1}
 \definecolor{ImportantIconcolor}{HTML}{CC1915}

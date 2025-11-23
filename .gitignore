@@ -17,12 +17,13 @@
 /.quarto/
 /docs/
 /_book/
+/_includes/
 /site_libs/
 *.docx
 *.html
 *_files
+
 /_quarto_internal_scss_error.scss
 Yale_typeface/
-
 
 
