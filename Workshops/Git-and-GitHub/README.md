@@ -10,8 +10,6 @@ You can find out more about past and upcoming work on our [website](https://ysph
 
 All workshop details and content, including slides, handouts, and adaptations for asynchronous learning, are available on our [Book of Workshops](https://ysph-dsde.github.io/Book-of-Workshops/Workshops/Git-and-GitHub/git-github-index.html) webpage for the session.
 
-**Workshop Title:** Getting Started with Git and GitHub
-
 **Part 1 Instructor:**
 - [Shelby Golden, M.S.](https://www.linkedin.com/in/shelby-golden/), Data Scientist I
 
