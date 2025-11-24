@@ -9,9 +9,16 @@ This material was authored by Shelby Golden, M.S. You can learn more about the i
 
 ## Introduction
 
+Throughout the data processing pipeline—whether immediately after data import for exploratory data analysis or in preparation for communicating results—researchers frequently visualize their data. Before Professor [Hadley Wickham](https://hadley.nz/) and his colleagues developed the `ggplot2` package as part of the `tidyverse`, creating complex or customized graphics beyond typical chart types was a challenging task. It often required tedious, verbose, and less maintainable code.
 
+In this workshop, we will explore the evolution of graphical representations of data, which led to the development of the Grammar of Graphics used by `ggplot2`. This approach transforms visualization principles from rigid chart types to flexible, customizable rules for generating graphs. In this session, you will come to realize that different chart types, such as pie charts and bar charts, often represent the same data visualization with only minor adjustments.
 
+> "the grammar of graphics takes us beyond a limited set of charts (words) to an almost unlimited world of graphical forms (statements).” 
+— Professor [Leland Wilkinson](https://www.niss.org/people/leland-wilkinson), Yale alumnus, in [*The Grammar of Graphics*](https://link.springer.com/book/10.1007/0-387-28695-0?page=1)
 
+With a better understanding of the domain language used by `ggplot2`, we will examine each grammatical layer that constitutes a graphical object. We will discuss how these layers are procedurally processed relative to one another, how data and aesthetic mappings are inherited in subsequent layers, and how to correctly utilize layers by their design.
+
+While the core focus of this workshop is on introducing students to the paradigm-shifting approach of visualizing data using graphical grammar instead of traditional charts, we will also discuss some of the advanced features that `ggplot2` offers. For example, we will briefly touch on map projections and interactive plots, although these topics will not be covered in-depth.
 
 ## Workshop Learning Goals
 
@@ -60,8 +67,14 @@ This workshop was created using R (v 4.5.1) in the RStudio IDE (v 2025.09.2+418)
 
 1. Download the prepared codespace, which contains a comprehensive code environment configured with the RStudio IDE for in-class discussions and challenge questions with solutions.
 
+::: {style="margin-left: 2rem"}
+```{=html}
+<a href="Materials/Data-Visualization-with-ggplot2.zip">
+  <button class="btn" style="margin-bottom: 1rem;"><i class="bi bi-download"></i>&nbsp Codespace</button>
+</a>
 
-
+```
+:::
 
 2. Unzipped the downloaded directory and move it to the file location you wish to house the project.
 
@@ -100,12 +113,6 @@ If you are asked to update packages, say no. The `renv()` is intended to recreat
 If you experience any trouble with this step, you might want to confirm that you are using R (v 4.5.1) in the RStudio IDE (v 2025.09.2+418). You can also read more about `renv()` in their [vignette](https://rstudio.github.io/renv/articles/renv.html)\ [@renv_intro].
 :::
 
-6. **OPTIONAL:** We recommend using version control with Git for all of your projects. To initiate version control in your copy, please initialize Git in the project's root directory.
-
-    ```{.bash filename="Command-Line Application"}
-    git init
-    ```
-
 :::{.callout-note style="margin-left: 2rem"}
 A `.gitignore` file has been included in the directory, specifying the files and file types that do not need to be version controlled or shared with GitHub. Please note that on some devices, this file might be hidden depending on your settings.
 :::
@@ -116,7 +123,7 @@ With a Git-initialized project, you can add it to a remote repository on GitHub.
 
 1. [Log in](https://github.com/login) to your personal GitHub account.
 
-2.  In the top-right of the page navigation bar, select the [ {{< iconify octicon:plus-16 >}} {{< iconify octicon:triangle-down-24 >}} ]{style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px 5px; border-radius: 5px; vertical-align: middle;"} dropdown menu and click [ {{< iconify octicon:repo-24 >}} New repository]{style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px 7px; border-radius: 5px; vertical-align: middle;"}.
+2.  In the top-right of the page navigation bar, select the [ {{< iconify octicon:plus-16 >}} {{< iconify octicon:triangle-down-24 >}} ]{style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px 5px; border-radius: 5px; vertical-align: middle;"} dropdown menu and click [ {{< iconify octicon:repo-24 >}} New repository]{style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px 7px; border-radius: 5px; vertical-align: middle;"}\ [@new_repo].
 
 3. Fill out the following sections:
 
@@ -201,6 +208,8 @@ The cleaned and harmonized version of the RSV-NET dataset was compiled as part o
 
 ## Other Recommended Resources
 
+In this workshop, we have limited time to cover deep concepts that normally take years to master in scientific data visualization. Below, you will find key resources we referenced, along with additional links to help you fully utilize `ggplot2`, identify and communicate data insights effectively, and apply these skills in advanced applications like package development.
+
 ### Fundamentals
 
 -   [*R for Data Science (2e)*](https://r4ds.hadley.nz/) by [Hadley Wickham](https://hadley.nz/), [Mine &Ccedil;etinkaya-Rundel](https://mine-cr.com/about/), and [Garrett Grolemund](https://education.rstudio.com/author/garrett/)\ [@r_for_data_sci]
@@ -219,7 +228,7 @@ The cleaned and harmonized version of the RSV-NET dataset was compiled as part o
 
 -   [*The Visual Display of Quantitative Information*](https://www.edwardtufte.com/book/the-visual-display-of-quantitative-information/) by Professor -   [Edward Tufte](https://www.edwardtufte.com/?_gl=1*eiltsb*_up*MQ..*_gs*MQ..&gclid=EAIaIQobChMI8IbFo_OJjAMVhm1HAR0xdyJaEAAYASAAEgLELPD_BwE)\ [@Tufte1983]
 -   [*Ten guidelines for effective data visualization in scientific publications*](https://www.sciencedirect.com/science/article/pii/S1364815210003270#bib10) by [Christa Kelleher](https://ce.lafayette.edu/people/christa-kelleher/) and [Thorsten Wagener](https://www.uni-potsdam.de/en/umwelt/institut/alle-mitarbeiterinnen/wagener-thorsten)\ [@Kelleher2011]
--   Recommendations from Professor [Wilkinson](https://www.niss.org/people/leland-wilkinson)’s *Grammar of Graphics*: [William Cleveland](https://www.stat.purdue.edu/~wsc/), [1985](https://www.amazon.com/exec/obidos/ASIN/0534037305/acmorg-20), [1995](https://www.amazon.com/Visualizing-Data-William-S-Cleveland/dp/0963488406) and [Edward Tufte](https://www.edwardtufte.com/?_gl=1*eiltsb*_up*MQ..*_gs*MQ..&gclid=EAIaIQobChMI8IbFo_OJjAMVhm1HAR0xdyJaEAAYASAAEgLELPD_BwE), [1990](https://www.edwardtufte.com/book/envisioning-information/), [1997](https://www.edwardtufte.com/book/visual-and-statistical-thinking-displays-of-evidence-for-making-decisions/)\ [@Tufte1997; @Tufte1990; @William1985; @William1995; @Leland1999]
+-   Recommendations from Professor [Wilkinson](https://www.niss.org/people/leland-wilkinson)’s [*The Grammar of Graphics*](https://link.springer.com/book/10.1007/0-387-28695-0?page=1): [William Cleveland](https://www.stat.purdue.edu/~wsc/), [1985](https://www.amazon.com/exec/obidos/ASIN/0534037305/acmorg-20), [1995](https://www.amazon.com/Visualizing-Data-William-S-Cleveland/dp/0963488406) and [Edward Tufte](https://www.edwardtufte.com/?_gl=1*eiltsb*_up*MQ..*_gs*MQ..&gclid=EAIaIQobChMI8IbFo_OJjAMVhm1HAR0xdyJaEAAYASAAEgLELPD_BwE), [1990](https://www.edwardtufte.com/book/envisioning-information/), [1997](https://www.edwardtufte.com/book/visual-and-statistical-thinking-displays-of-evidence-for-making-decisions/)\ [@Tufte1997; @Tufte1990; @William1985; @William1995; @Leland1999]
 
 
 ## Section Glossary

@@ -61,8 +61,8 @@ $h4-font-size: 1.25em;
     --callout-caution-title: #d6850d;
     --callout-tip-bg: #e8f3ee;
     --callout-tip-title: #050;
-    --callout-attention-bg: #eedcff;
-    --callout-attention-title: #7634A6;
+    --callout-discussion-bg: #eedcff;
+    --callout-discussion-title: #7634A6;
 
     --listing-card-border: #a1a7ac;
     --listing-card-shadow: rgba(0, 0, 0, 0.04);
@@ -506,33 +506,35 @@ p code:not(.sourceCode), li code:not(.sourceCode), td code:not(.sourceCode) {
     border-radius: 2px;
 }
 
-.callout-attention {
-    background-color: hsl(from var(--callout-attention-bg) h s l / 30%);
-    border-left: 5px solid var(--callout-attention-title);
-    border-radius: 0.2em;
-    padding: 0px 20px;
-    margin: 20px 0;
+.callout-discussion {
+    background-color: hsl(from var(--callout-discussion-bg) h s l / 30%);
+    border-left: 5px solid var(--callout-discussion-title);
+    margin: 1.25rem 0;
+    border-radius: .25rem;
+    overflow-wrap: break-word;
+    padding: 0.5em;
+    position: relative; /* Ensure relative positioning for before pseudo-element */
 }
-
-.callout-attention h2 {
-    color: var(--callout-attention-title);
-    padding-top: 0.5em;
-    padding-left: 22px;
-    font-family: var(--font-family-sans-serif);
-    font-size: 120%;
-    font-weight: 300;
+.callout-discussion h2 {
+    color: var(--callout-discussion-title);
+    font-family: "Roboto" !important;
+    line-height: var(--bs-body-line-height);
+    padding: 0.2em 0.2em 0 0.5em !important;
+    margin: 0 0 0.5em 0 !important;
+    font-size: 110%;
+    font-weight: bolder;
     position: relative;
 }
-
-.callout-attention h2::before {
-    content: "\f06a"; /* Font Awesome exclamation icon */
-    font-family: "Font Awesome 5 Free"; /* Specify the Font Awesome font */
-    font-weight: 900; /* Necessary for solid style icons */
-    color: var(--callout-attention-title); /* Same color as the attention title */
-    position: absolute;
-    left: 0px;
-    top: 52%;
-    transform: translateY(-50%);
+.callout-discussion h2 > a.anchorjs-link {
+  display: none;
+}
+.callout-discussion h2 i {
+    margin-right: 0.35em;
+}
+.callout-discussion p {
+    font-size: .9rem;
+    padding: 0.8rem 0.5em 0 0.5em;
+    margin-bottom: 0.1 !important;
 }
 
 /* Code highlighting */

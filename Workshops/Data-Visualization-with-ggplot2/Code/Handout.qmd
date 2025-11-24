@@ -1,0 +1,322 @@
+---
+title: "From Data to Insight"
+subtitle: |
+  Data Visualization with `ggplot2` \
+  Coffee, Cookies, and Coding (C-cubed) Workshops
+date: 11/24/2025
+date-format: long
+format:
+  pdf:
+    include-in-header: 
+      - text: |
+          %%%%%%%%%%%%%%%%%%%% USAGE NOTE %%%%%%%%%%%%%%%%%%%%
+          % This LaTeX script sets up consistent formatting for DSDE Workshop handouts.
+          %
+          % To use:
+          % 1. Reference this LaTeX script in the YAML header of Quarto documents
+          %    with correct relative paths based on their directory depth.
+          % 2. Ensure that the "rootdir" and "stylesdir" paths in this LaTeX script
+          %    match those relative paths. Adjust as necessary.
+          % 
+          % The LaTeX script is located in "Code/Handout Formatting/PDF Formatting Script.tex".
+          %
+          % Example:
+          % For:
+          %   \input{../Code/Handout Formatting/PDF Formatting Script.tex}
+          % Set:
+          %   \newcommand{\rootdir}{../Code/Handout Formatting}
+          %   \newcommand{\stylesdir}{../_styles/Yale_typeface}
+          %
+          % For:
+          %   \input{../../../../Code/Handout Formatting/PDF Formatting Script.tex}
+          % Set:
+          %   \newcommand{\rootdir}{../../../../Code/Handout Formatting}
+          %   \newcommand{\stylesdir}{../../../../_styles/Yale_typeface}
+          %
+          %%%%%%%%%%%%%%%%%%%%%%
+          
+          \input{../../../Code/Handout Formatting/PDF Formatting Script.tex}
+      - text: |
+          % GitHub button formatting.
+          \definecolor{GitHubBackground}{HTML}{00023F}
+          \definecolor{GitHubBorder}{HTML}{D0D9E0}
+          \definecolor{GitHubFont}{HTML}{ffffff}
+          
+          \newtcbox{\GitHubSignUp}[1][GitHubBackground]{
+            on line, box align=center, colframe=GitHubBorder, colback=#1, halign=center,
+            boxrule=0.5pt, arc=3pt, left=6pt, right=6pt, top=3pt, bottom=3pt, boxsep=0pt, 
+            tcbox raise base, enhanced, fontupper=\fontspec{Arial}\color{GitHubFont}
+          }
+highlight-style: ../../../_styles/idle-fingers-light.theme
+bibliography: references.bib
+csl: ../../../Code/nature.csl
+---
+
+This workshop includes two handouts:
+
+1. A codebase with starting code and solutions for discussion and challenge questions. Download and initialize it from the [Accessing the Codespaces](https://ysph-dsde.github.io/Book-of-Workshops/Workshops/Data-Visualization-with-ggplot2/visualization-index.html#accessing-the-codespaces) section.
+2. A webpage displaying all the code for the [Worked-Through Example](https://ysph-dsde.github.io/Book-of-Workshops/Workshops/Data-Visualization-with-ggplot2/Pages/visualization-worked-through-example.html) plots.
+
+All workshop materials, including annotated slides and usage instructions, are available on the session's [Book of Workshop](https://ysph-dsde.github.io/Book-of-Workshops/Workshops/Data-Visualization-with-ggplot2/visualization-index.html) webpage: [https://ysph-dsde.github.io/Book-of-Workshops/Workshops/Data-Visualization-with-ggplot2/visualization-index.html](https://ysph-dsde.github.io/Book-of-Workshops/Workshops/Data-Visualization-with-ggplot2/visualization-index.html).
+
+\begin{wrapfigure}[17]{l}{0.5\textwidth}
+    \includegraphics[width=\linewidth]{../Images/All Layers.png}
+    \caption{Figure from the \href{https://www.youtube.com/watch?v=h29g21z0a68}{ggplot2 workshop part 1} by \href{https://thomaslinpedersen.art/}{Thomas Lin Pedersen}. Accessed from YouTube March 15th, 2025.}
+    \label{fig:layers}
+\end{wrapfigure}
+
+The Grammar of Graphics is the standard domain language for describing the components of graphical representations of quantitative information. It was first formalized by Professor [Leland Wilkinson](https://www.niss.org/people/leland-wilkinson), and Yale alumnus, in his book [*The Grammar of Graphics*](https://link.springer.com/book/10.1007/0-387-28695-0?page=1), published in 1999\ [@Leland1999].
+
+Professor [Hadley Wickham](https://hadley.nz/) adapted this framework into a layered system, which he described in his 2010 article [*A Layered Grammar of Graphics*](https://www.jstor.org/stable/25651297?seq=1), published in the *Journal of Computational and Graphical Statistics*\ [@layered_grammar_graphics]. The figure shown on the left, created by one of the ggplot2 developers, [Thomas Lin Pedersen](https://thomaslinpedersen.art/), illustrates the different objects that constitute a complete graph\ [@pedersen_workshop1].
+
+The following sections summarize key takeaways for each layer, along with the code used in the slide decks\ [@elegant_graphs; @r_for_data_sci; @ggplot_docs; @cheat_sheet; @pedersen_workshop1; @function_index; @Freeman2019].
+
+# Data
+
+Specify the **Data** to be plotted, ensuring it is in a tidy format, meaning that:
+
+- Each variable is in its own column. Each column represents one variable.
+- Each row represents a single observation with all associated metadata. Each observation is reduced to one row.
+- Each cell contains a single value. Each value is contained in one cell.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{../Images/Tidy Data.png}
+    \caption{\href{https://r4ds.hadley.nz/data-tidy.html}{R for Data Science (2e) - Introduction Figure 5.1} by \href{https://hadley.nz/}{Hadley Wickham}, \href{https://mine-cr.com/about/}{Mine \c{C}etinkaya-Rundel}, and \href{https://education.rstudio.com/author/garrett/}{Garrett Grolemund}. Accessed March 16th, 2025.}
+    \label{fig:layers}
+\end{figure}
+
+As displayed below, our respiratory infections dataset is already in a tidy format.
+
+\begin{table}[H]
+\centering
+\caption{Select columns and rows from the RSV-NET dataset.}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{1.5cm}|>{\raggedright\arraybackslash}p{1.5cm}|>{\raggedright\arraybackslash}p{2cm}|r|>{\raggedright\arraybackslash}p{2.5cm}|r|r|r|r|}
+\hline
+\textbf{Region} & \textbf{Season} & \textbf{Week Observed} & \textbf{MMWRweek} & \textbf{Level} & \textbf{Positives Detected} & \textbf{Spline} & \textbf{Kernel} & \textbf{Crude Rate} \\
+\hline
+Georgia & 2018-19 & 2018-11-10 & 19 & 18-49 Years & 3 & 8.68 & 12.51 & 0.1 \\
+\hline
+Georgia & 2019-20 & 2020-04-04 & 40 & Male & 3 & 0.95 & 0.81 & 0.1 \\
+\hline
+Michigan & 2024-25 & 2024-07-27 & 4 & Female & 0 & 0.00 & 0.00 & 0.0 \\
+\hline
+Oregon & 2021-22 & 2021-08-07 & 5 & American Indian or Alaska Native & 0 & 2.49 & 0.00 & 0.0 \\
+\hline
+Oregon & 2019-20 & 2019-12-28 & 26 & White & 25 & 46.73 & 49.54 & 7.8 \\
+\hline
+Utah & 2021-22 & 2022-02-05 & 31 & Hispanic or Latino & 6 & 8.42 & 7.90 & 2.6 \\
+\hline
+\end{tabular}
+\end{adjustbox}
+\label{tab:raw_data}
+\end{table}
+
+\newpage
+
+# Mapping
+
+**Mapping** specifies which variables are used for which aesthetic features. Within `aes()`, we can define the position, color, size, or shape of the plotted values. This layer can be used to highlight underlying patterns in the data\ [@mapping_layer].
+
+\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{1pt}\vspace{-5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-0.8ex}
+
+```{.r}
+# Summarized layer-specific elements
+ggolot(data, aes(x, y, group)) +
+  [geom_*|stat_*](aes(color, fill, [size|linewidth], 
+				      [shape|linetype]))
+
+# Worked-Through Example
+ggplot(data = df, aes(x = MMWRweek, y = Kernel))
+```
+
+\vspace{-5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}
+
+# Geometry
+
+**Geometry** functions are the engines that transform data mappings into the desired plot type. They interpret statistical transformations and position adjustments to modulate the graph and can have their own aesthetic mappings defined, which override the defaults set in the `ggplot()` plot object.
+
+\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{1pt}\vspace{-5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-0.8ex}
+
+```{.r}
+# Summarized layer-specific elements
+ggolot() + 
+	geom_*(data, aes(x, y, group), position, statistics)
+
+# Worked-Through Example
+df |>
+  ggplot() +
+    geom_line(aes(x = MMWRweek, y = Kernel))
+```
+
+\vspace{-5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}
+
+# Statistics
+
+**Statistics** layers perform the statistical calculations used by geometric engines, and many can be swapped with their geometric counterparts.
+
+\vspace{2ex}
+
+:::{.callout-note}
+When using a statistically transformed variable for an aesthetic like fill or color, use` after_stat()` around the variable name to map it correctly onto the visual.
+:::
+
+\vspace{2ex}
+
+\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{1pt}\vspace{-5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-0.8ex}
+
+```{.r}
+# Summarized layer-specific elements
+ggolot() + 
+	stat_*(data, aes(x, y, group), geometry, parameters)
+
+# Worked-Through Example
+df |>
+  ggplot() +
+    geom_line(aes(x = MMWRweek, y = Kernel)) +
+    stat_smooth(aes(x = MMWRweek, y = `Scaled Positives`), 
+                geom = "smooth", method = "loess", se = FALSE)
+```
+
+\vspace{-5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}
+
+
+# Scales
+
+Scales convert aesthetic **Mappings** into plottable values and offer extensive customization, similar to how **Statistics** layers define transformations.
+
+\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{1pt}\vspace{-5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-0.8ex}
+
+```{.r}
+# Summarized layer-specific elements
+ggolot(data, aes(x, y, group)) + [geom_*|stat_*]() +
+  scale_*(parameters)
+
+# Worked-Through Example
+df |>
+  ggplot(aes(x = MMWRweek, y = Kernel, color = Season)) +
+    geom_line() +
+    labs(title, x, y) +
+    ylim(0, 100) +
+    scale_color_brewer(type = "qual", palette = "Dark2")
+
+```
+
+\vspace{-4ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}
+
+# Facets
+
+**Facets** split the plot into subgroups of a discrete variable using two functions:
+
+- `facet_grid()`: arranges groups into rows or columns.
+- `facet_wrap()`: arranges groups into a rectangular layout, ideal for numerous categories.
+
+
+\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{1pt}\vspace{-5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-0.8ex}
+
+```{.r}
+# Summarized layer-specific elements
+ggolot(data, aes(x, y, group)) + [geom_*|stat_*]() +
+   facet_*(discrete_variable)
+
+# Worked-Through Example
+df |>
+  ggplot(aes(…)) +
+    geom_line() +
+    …    
+    facet_grid(~Level)
+```
+
+\vspace{-5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}
+
+# Coordinates
+
+Coordinates plot values in a specified system. The Coordinates layer places these values on the graph, and the choice of coordinate system is crucial. Scaled or transformed values can look different with incorrect coordinates. For example, plotting an angle in Cartesian rather than polar coordinates\ [@coord_image; @coord_layer].
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{../Images/Coordinates Diagram.png}
+    \caption{\href{https://data-visualisation.stem.melbourne/grammar-and-vocabulary\#coord}{Data Visualisation: From Theory to Practice Figure 5.5} by \href{https://www.rmit.edu.au/profiles/b/james-baglin}{James Baglin}. Accessed March 22nd, 2025.}
+    \label{fig:coord}
+\end{figure}
+
+\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{1pt}\vspace{-5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-0.8ex}
+
+```{.r}
+# Summarized layer-specific elements
+ggolot(data, aes(x, y, group)) + [geom_*|stat_*]() +
+   coord_*()
+
+# Worked-Through Example
+# coord_cartesian() is applied by default.
+```
+
+\vspace{-5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}
+
+# Theme
+
+The Theme layer manages non-data aspects of the plot, such as fonts, axis ticks, backgrounds, and legend placement. It enhances visual appeal and style consistency without altering data transformations or geometries.
+
+\vspace{2ex}
+
+:::{.callout-tip}
+## Code Like a Pro
+
+When generating plots with consistent custom themes, there are two solutions to avoid redundancy\ [@custom_themes]:
+
+- `theme_set()`: Set a new global theme, overriding default settings.
+- Create a custom theme function: Modify an existing `theme_*()` or create one from scratch.
+:::
+
+\newpage
+
+\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{1pt}\vspace{-5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-0.8ex}
+
+```{.r}
+# Summarized layer-specific elements
+ggolot(data, aes(x, y, group)) + [geom_*|stat_*]() +
+   theme_*()
+
+# Worked-Through Example
+df |>
+  ggplot(aes(…)) +
+    geom_line() +
+    …    
+    theme_linedraw()
+```
+
+\vspace{-5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}
+
+# Glossary
+
+| \large \textbf{Term}        | \large \textbf{Description}                                                                               |
+|----------------------------:|-----------------------------------------------------------------------------------------------|
+|                             |                                                                                               |
+| **Map Projection**          | Interpreting the curved surface of the earth into a flat plane for 2D plotting\ [@ggplot_docs; @elegant_graphs].               |
+|                             |                                                                                               |
+| **Simple Feature (SF)**     | Standard vector data produced by the Open Geospatial Consortium (OGC) that translates projection data into plottable polygons\ [@elegant_graphs]. |
+|                             |                                                                                               |
+
+# References

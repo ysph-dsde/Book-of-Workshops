@@ -119,7 +119,7 @@ The method described here will not create a Fork. You can learn more about the G
 
 1. [Log in](https://github.com/login) to your personal GitHub account.
 
-2. In the top-right of the page navigation bar, select the [ {{< iconify octicon:plus-16 >}} {{< iconify octicon:triangle-down-24 >}} ]{style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px 5px; border-radius: 5px; vertical-align: middle;"} dropdown menu and click [ {{< iconify octicon:repo-push-24 >}} Import repository]{style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px 7px; border-radius: 5px; vertical-align: middle;"}.
+2. In the top-right of the page navigation bar, select the [ {{< iconify octicon:plus-16 >}} {{< iconify octicon:triangle-down-24 >}} ]{style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px 5px; border-radius: 5px; vertical-align: middle;"} dropdown menu and click [ {{< iconify octicon:repo-push-24 >}} Import repository]{style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px 7px; border-radius: 5px; vertical-align: middle;"}\ [@new_repo].
 
 3. Fill out the following sections:
 
@@ -141,7 +141,7 @@ These directions follow GitHub's [duplicating a repository](https://docs.github.
 
 2. Navigate to the ysph-dsde GitHub repository you want to copy by either searching for it by name or opening the URL provided [above](#accessing-the-codespaces).
 
-3. Near the right side of the page there will be a [ {{< iconify octicon:code-16 >}} \ Code {{< iconify octicon:triangle-down-24 >}} ]{style="white-space: nowrap; background-color: #1f6feb; color: #ffffff; border: 1px solid #0d1117; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px; vertical-align: middle;"} button to click. In its drop down menu under the "Local" tab you will see options to copy the SSH Key or HTTPS URL to the repository\ [@new_repo].
+3. Near the right side of the page there will be a [ {{< iconify octicon:code-16 >}} \ Code {{< iconify octicon:triangle-down-24 >}} ]{style="white-space: nowrap; background-color: #1f6feb; color: #ffffff; border: 1px solid #0d1117; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px; vertical-align: middle;"} button to click. In its drop down menu under the "Local" tab you will see options to copy the SSH Key or HTTPS URL to the repository.
 
     For example, if the repository name is "ORIGINAL-REPOSITORY" they will look like:
 
@@ -304,20 +304,20 @@ Although there are numerous resources available on Git and GitHub, we have curat
 
 ### Fundamentals
 
--   Yale’s Center for Research Computing workshop [*"Version Control by Git"*](https://www.youtube.com/watch?v=Boj3tFrTyF4) by [Kaylea Nelson, Ph.D.](https://research.computing.yale.edu/profile/kaylea-nelson-phd)\ [@ycrc_module]
--   Yale’s Harvey Cushing/John Hay Whitney Medical Library workshop [*"Git & GitHub: An Introduction To Version Contro"*](https://github.com/CWML/gitdemo/tree/main) by [Justin DeMayo](https://library.medicine.yale.edu/about/staff/justin-demayo)\ [@med_school_module]
--   *["Getting Git Right"](https://www.atlassian.com/git)* by Atlassian
+-   Yale’s Center for Research Computing workshop ["Version Control by Git"](https://www.youtube.com/watch?v=Boj3tFrTyF4) by [Kaylea Nelson, Ph.D.](https://research.computing.yale.edu/profile/kaylea-nelson-phd)\ [@ycrc_module]
+-   Yale’s Harvey Cushing/John Hay Whitney Medical Library workshop ["Git & GitHub: An Introduction To Version Contro"](https://github.com/CWML/gitdemo/tree/main) by [Justin DeMayo](https://library.medicine.yale.edu/about/staff/justin-demayo)\ [@med_school_module]
+-   ["Getting Git Right"](https://www.atlassian.com/git) by Atlassian
 -   [Git and GitHub Tutorial](https://www.w3schools.com/git/default.asp?remote=github) by W3Schools\ [@w3schools]
--   [*"Introduction to GitHub"*](https://github.com/skills/introduction-to-github) by GitHub\ [@github_intro_course]
--   [*"Happy Git and GitHub for user"*](https://happygitwithr.com/) by [Professor Jenny Bryan](https://jennybryan.org/) (and Yale alumn!) and [Jim Hester](https://www.jimhester.com/)
+-   ["Introduction to GitHub"](https://github.com/skills/introduction-to-github) by GitHub\ [@github_intro_course]
+-   [*Happy Git and GitHub for user*](https://happygitwithr.com/) by [Professor Jenny Bryan](https://jennybryan.org/) (and Yale alumn!) and [Jim Hester](https://www.jimhester.com/)
 \ [@happy_git_github]
 
 ### Beyond Basic Git and GitHub
 
 -   Reviewing the developer documentation: [git-scm.com/docs](https://git-scm.com/docs) and [docs.github.com](https://docs.github.com/en)\ [@github_docs; @git_docs]
--   [*"What is Git commit, push, pull, log, aliases, fetch, config & clone"*](https://medium.com/mindorks/what-is-git-commit-push-pull-log-aliases-fetch-config-clone-56bc52a3601c) by [Amit Prajapati](https://medium.com/@thisAmit)\ [@Prajapati2019]
--   [*"Git Guides"*](https://graphite.dev/guides/topic/git) by various Graphite contributors\ [@graphite_git]
--   [*"How to Write a Git Commit Message"*](https://cbea.ms/git-commit/) by cbeams\ [@write_message]
+-   ["What is Git commit, push, pull, log, aliases, fetch, config & clone"](https://medium.com/mindorks/what-is-git-commit-push-pull-log-aliases-fetch-config-clone-56bc52a3601c) by [Amit Prajapati](https://medium.com/@thisAmit)\ [@Prajapati2019]
+-   ["Git Guides"](https://graphite.dev/guides/topic/git) by various Graphite contributors\ [@graphite_git]
+-   ["How to Write a Git Commit Message"](https://cbea.ms/git-commit/) by cbeams\ [@write_message]
 -   [Git Graphical User Interface (GUI) Clients](https://git-scm.com/downloads/guis) by various contributors\ [@git_guis]
 
 

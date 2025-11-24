@@ -174,7 +174,15 @@ df |>
 
 ```
 
-**Discussion:** Can you think of reasons why you would choose one over the other?
+```{=html}
+<div class="callout-discussion">
+    <h2>
+        <i class="fa-regular fa-comments"></i>
+        Discussion Question
+    </h2>
+    <p>Can you think of reasons why you would choose one over the other?</p>
+</div> 
+```
 
 You might be asking yourself why I went through the pains of showing the thought process behind tuning the plot so that it shows one distinguishable trend line. Am I not simply covering the grammar of whatever to plot a simple trend line while you eat a delicious cookie and compartmentalize your upcoming exams?
 
@@ -320,11 +328,21 @@ legend <- get_legend(
 
 ```
 
-**Discussion:** We see that associating a variable with an `aes(color)` will also group by that same variable.
+```{=html}
+<div class="callout-discussion">
+    <h2>
+        <i class="fa-regular fa-comments"></i>
+        Discussion Question
+    </h2>
+    <p>We see that associating a variable with an <code>aes(color)</code> will also group by that same variable.</p>
+    <ul>
+            <li>What would happen if we only group the outcomes and exclude the color statement: i.e. <code>aes(group = Season)</code>?</li>
+            <li>Does adding a <code>scale_color_*()</code> statement change the result?</li>
+            <li>Why do you see the result you get?</li>
+        </ul>
+</div> 
+```
 
--   What would happen if we only group the outcomes and exclude the color statement: i.e. `aes(group = Season)`?
--   Does adding a `scale_color_*()` statement change the result?
--   Why do you see the result you get?
 
 ::: callout-important
 **Scales** allows you to modify the limits of axes (i.e. with `lims()` or `*lim()`) giving the illusion that you can "zoom" into the plot. This is not a good use of the **Scales** layer, as it will sometimes have the unintended effect of distorting your result. Instead use the **Coordinates** layer to zoom into a select portion of your plot.
@@ -398,7 +416,7 @@ Up until this point, we have covered layers that attribute variables to geometri
 
 It is the **Coordinates** layer that then plots these values on a graph. It's important to appreciate this subtlety because some scaled or statistically transformed values will look entirely different if the wrong coordinate system is applied. Such as, if we attempted to plot an angle on a Cartesian plane in Euclidean space instead of in polar coordinates.
 
-[![Figure 5.5 from "Data Visualization: From Theory to Practice" by James Baglin. Accessed March 22nd, 2025.](../Images/Coordinates_Diagram.png){width="750" height="188"}](https://dark-star-161610.appspot.com/secured/_book/grammar-and-vocabulary.html#coord)
+[![Figure 5.5 from "Data Visualization: From Theory to Practice" by James Baglin. Accessed March 22nd, 2025.](../Images/Coordinates Diagram.png){width="750" height="188"}](https://dark-star-161610.appspot.com/secured/_book/grammar-and-vocabulary.html#coord)
 
 **Coordinate** layer functions fall into two buckets:
 
@@ -436,7 +454,16 @@ As with any grammar, there are different ways we can make a statement. Say we ha
 -   **Scales**: `scale_*_log10()` or `scale_*_continuous(trans = "log10")`
 -   **Coordinates**: `coord_trans(* = "log10")`
 
-**Discussion:** If we apply each option individually, do they all plot the same way? If not, what do you think is happening and how would you fix the code?
+```{=html}
+<div class="callout-discussion">
+    <h2>
+        <i class="fa-regular fa-comments"></i>
+        Discussion Question
+    </h2>
+    <p>If we apply each option individually, do they all plot the same way? If not, what do you think is happening and how would you fix the code?</p>
+</div> 
+```
+
 :::
 
 ### The **Theme** Layer
@@ -661,26 +688,13 @@ We will now ask [Yale's Clarity Platform](https://ai.yale.edu/yales-ai-tools-and
 2.  Navigate to [ai-chat.yale.edu/signin-oidc](https://ai-chat.yale.edu/signin-oidc).
 3.  Upload the screenshot into the chat and ask ” Suggest R code that could make this plot in ggplot2.”
 
-**Discussion:** How did the AI chatbot do?
+```{=html}
+<div class="callout-discussion">
+    <h2>
+        <i class="fa-regular fa-comments"></i>
+        Discussion Question
+    </h2>
+    <p>How did the AI chatbot do?</p>
+</div> 
+```
 
-## Challenge Questions
-
-You can find the code for these questions and their suggested solutions in `Discussion and Challenge Questions.R`.
-
-1.  In the worked through example we leverage two of the three distinguishing variables: Season and Characteristic Level. In this questions, we want to focus on the third one, Region. Using the final line-graph code from the worked through example, add a row-wise facet to compare two states or HHS regions.
-
-2.  In the polished version of the line plot we layered an additional point on the graph that highlighted the most currently represented date in the active infection season. To get this data, we externally filtered down the dataset to give that point, repeating some of the filtering we are already doing before the plot gets generated.
-
-    a.  Can you modify this approach so that we no longer require the external dataset, thus simplifying our code?
-    b.  Now try using `stat_summary(filtered_data, geom = "point", fun = "max", color = "red")` instead of `geom_point()`. If you only filter to MMWRyear, do you get the same result, and if not why?
-
-3.  In our line graph we faceted by age groups. But we see that if we apply a simple **Facet** layer to our map plot the NA values get plotted in their own panel.
-
-    a)  Why is this happening?
-    b)  Fix this code to prevent this panel from being generated.
-
-## Appendix
-
-This workshop was generated using R (v 4.4.4) in the RStudio IDE (v 2024.12.1+563). `renv` was used to store all the relevant packages and package versions with the workshop codespace. All of the workshop materials can be accessed on the ysph-dsde GitHub: [Data Visualization with ggplo2](https://github.com/ysph-dsde/Data-Visualization-with-ggplot2/). All relevant citations for this document can be found in the **Appendix** of the slides.
-
-This site was built on a ysph-dsde.github.io page. It was rendered using Quarto (v 1.6.3) and theme [sandstone](https://bootswatch.com/sandstone/).

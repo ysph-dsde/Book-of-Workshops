@@ -38,8 +38,8 @@
 
 % Define root and styles directories using relative paths
 % Ensure "rootdir" and "stylesdir" are adjusted to match the paths referenced in the YAML.
-\newcommand{\rootdir}{../../../../Code/Handout Formatting} % Adjust relative path accordingly
-\newcommand{\stylesdir}{../../../../_styles/Yale_typeface} % Adjust relative path accordingly
+\newcommand{\rootdir}{../../../Code/Handout Formatting} % Adjust relative path accordingly
+\newcommand{\stylesdir}{../../../_styles/Yale_typeface} % Adjust relative path accordingly
 
 % Global settings
 \usepackage{geometry}
@@ -63,6 +63,12 @@
 \usepackage[none]{hyphenat}
 \usepackage{fontawesome5}
 \usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{adjustbox}
+\captionsetup{justification=raggedright, singlelinecheck=false, font=small}
+\usepackage{array}
 
 % Adjust space to avoid overlapping script lines
 \setstackgap{L}{1.5\baselineskip}
