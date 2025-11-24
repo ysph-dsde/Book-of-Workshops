@@ -9,12 +9,12 @@ This material was authored by Shelby Golden, M.S. You can learn more about the i
 
 ## Introduction
 
+> "the grammar of graphics takes us beyond a limited set of charts (words) to an almost unlimited world of graphical forms (statements).” 
+— Professor [Leland Wilkinson](https://www.niss.org/people/leland-wilkinson), Yale alumnus, in [*The Grammar of Graphics*](https://link.springer.com/book/10.1007/0-387-28695-0?page=1)
+
 Throughout the data processing pipeline—whether immediately after data import for exploratory data analysis or in preparation for communicating results—researchers frequently visualize their data. Before Professor [Hadley Wickham](https://hadley.nz/) and his colleagues developed the `ggplot2` package as part of the `tidyverse`, creating complex or customized graphics beyond typical chart types was a challenging task. It often required tedious, verbose, and less maintainable code.
 
 In this workshop, we will explore the evolution of graphical representations of data, which led to the development of the Grammar of Graphics used by `ggplot2`. This approach transforms visualization principles from rigid chart types to flexible, customizable rules for generating graphs. In this session, you will come to realize that different chart types, such as pie charts and bar charts, often represent the same data visualization with only minor adjustments.
-
-> "the grammar of graphics takes us beyond a limited set of charts (words) to an almost unlimited world of graphical forms (statements).” 
-— Professor [Leland Wilkinson](https://www.niss.org/people/leland-wilkinson), Yale alumnus, in [*The Grammar of Graphics*](https://link.springer.com/book/10.1007/0-387-28695-0?page=1)
 
 With a better understanding of the domain language used by `ggplot2`, we will examine each grammatical layer that constitutes a graphical object. We will discuss how these layers are procedurally processed relative to one another, how data and aesthetic mappings are inherited in subsequent layers, and how to correctly utilize layers by their design.
 
