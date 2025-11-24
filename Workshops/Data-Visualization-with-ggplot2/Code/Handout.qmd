@@ -61,13 +61,13 @@ All workshop materials, including annotated slides and usage instructions, are a
 
 \begin{wrapfigure}[17]{l}{0.5\textwidth}
     \includegraphics[width=\linewidth]{../Images/All Layers.png}
-    \caption{Figure from the \href{https://www.youtube.com/watch?v=h29g21z0a68}{ggplot2 workshop part 1} by \href{https://thomaslinpedersen.art/}{Thomas Lin Pedersen}. Accessed from YouTube March 15th, 2025.}
+    \caption{Figure from the \textit{\href{https://www.youtube.com/watch?v=h29g21z0a68}{ggplot2 workshop part 1}} by \href{https://thomaslinpedersen.art/}{Thomas Lin Pedersen}. Accessed from YouTube March 15th, 2025.}
     \label{fig:layers}
 \end{wrapfigure}
 
-The Grammar of Graphics is the standard domain language for describing the components of graphical representations of quantitative information. It was first formalized by Professor [Leland Wilkinson](https://www.niss.org/people/leland-wilkinson), and Yale alumnus, in his book [*The Grammar of Graphics*](https://link.springer.com/book/10.1007/0-387-28695-0?page=1), published in 1999\ [@Leland1999].
+The Grammar of Graphics is the standard domain language for describing the components of graphical representations of quantitative information. It was first formalized by Professor [Leland Wilkinson](https://www.niss.org/people/leland-wilkinson), a Yale alumnus, in his book [*The Grammar of Graphics*](https://link.springer.com/book/10.1007/0-387-28695-0?page=1), published in 1999\ [@Leland1999].
 
-Professor [Hadley Wickham](https://hadley.nz/) adapted this framework into a layered system, which he described in his 2010 article [*A Layered Grammar of Graphics*](https://www.jstor.org/stable/25651297?seq=1), published in the *Journal of Computational and Graphical Statistics*\ [@layered_grammar_graphics]. The figure shown on the left, created by one of the ggplot2 developers, [Thomas Lin Pedersen](https://thomaslinpedersen.art/), illustrates the different objects that constitute a complete graph\ [@pedersen_workshop1].
+Professor [Hadley Wickham](https://hadley.nz/) adapted this framework into a layered system, which he described in his 2010 article [*A Layered Grammar of Graphics*](https://www.jstor.org/stable/25651297?seq=1), published in the *Journal of Computational and Graphical Statistics*\ [@layered_grammar_graphics]. The figure shown on the left, created by one of the `ggplot2` developers, [Thomas Lin Pedersen](https://thomaslinpedersen.art/), illustrates the different objects that constitute a complete graph\ [@pedersen_workshop1].
 
 The following sections summarize key takeaways for each layer, along with the code used in the slide decks\ [@elegant_graphs; @r_for_data_sci; @ggplot_docs; @cheat_sheet; @pedersen_workshop1; @function_index; @Freeman2019].
 
@@ -82,7 +82,7 @@ Specify the **Data** to be plotted, ensuring it is in a tidy format, meaning tha
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{../Images/Tidy Data.png}
-    \caption{\href{https://r4ds.hadley.nz/data-tidy.html}{R for Data Science (2e) - Introduction Figure 5.1} by \href{https://hadley.nz/}{Hadley Wickham}, \href{https://mine-cr.com/about/}{Mine \c{C}etinkaya-Rundel}, and \href{https://education.rstudio.com/author/garrett/}{Garrett Grolemund}. Accessed March 16th, 2025.}
+    \caption{\textit{\href{https://r4ds.hadley.nz/data-tidy.html}{R for Data Science (2e) - Introduction Figure 5.1}} by \href{https://hadley.nz/}{Hadley Wickham}, \href{https://mine-cr.com/about/}{Mine \c{C}etinkaya-Rundel}, and \href{https://education.rstudio.com/author/garrett/}{Garrett Grolemund}. Accessed March 16th, 2025.}
     \label{fig:layers}
 \end{figure}
 
@@ -165,7 +165,7 @@ df |>
 \vspace{2ex}
 
 :::{.callout-note}
-When using a statistically transformed variable for an aesthetic like fill or color, use` after_stat()` around the variable name to map it correctly onto the visual.
+When using a statistically transformed variable for an aesthetic like fill or color, use `after_stat()` around the variable name to map it correctly onto the visual.
 :::
 
 \vspace{2ex}
@@ -247,12 +247,12 @@ df |>
 
 # Coordinates
 
-Coordinates plot values in a specified system. The Coordinates layer places these values on the graph, and the choice of coordinate system is crucial. Scaled or transformed values can look different with incorrect coordinates. For example, plotting an angle in Cartesian rather than polar coordinates\ [@coord_image; @coord_layer].
+**Coordinates** plot values on a graph within a specified spatial reference system, making the choice of the coordinate system crucial. Scaled or transformed values can look different with incorrect coordinates. For example, plotting an angle in Cartesian rather than polar coordinates\ [@coord_image; @coord_layer].
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{../Images/Coordinates Diagram.png}
-    \caption{\href{https://data-visualisation.stem.melbourne/grammar-and-vocabulary\#coord}{Data Visualisation: From Theory to Practice Figure 5.5} by \href{https://www.rmit.edu.au/profiles/b/james-baglin}{James Baglin}. Accessed March 22nd, 2025.}
+    \caption{Based on \textit{\href{https://data-visualisation.stem.melbourne/grammar-and-vocabulary\#coord}{Data Visualisation: From Theory to Practice Figure 5.5}} by \href{https://www.rmit.edu.au/profiles/b/james-baglin}{James Baglin}. Accessed March 22nd, 2025.}
     \label{fig:coord}
 \end{figure}
 
@@ -274,7 +274,7 @@ ggolot(data, aes(x, y, group)) + [geom_*|stat_*]() +
 
 # Theme
 
-The Theme layer manages non-data aspects of the plot, such as fonts, axis ticks, backgrounds, and legend placement. It enhances visual appeal and style consistency without altering data transformations or geometries.
+The **Theme** layer manages non-data aspects of the plot, such as fonts, axis ticks, backgrounds, and legend placement. It enhances visual appeal and style consistency without altering data transformations or geometries.
 
 \vspace{2ex}
 
@@ -306,7 +306,7 @@ df |>
     theme_linedraw()
 ```
 
-\vspace{-5ex}
+\vspace{-4.5ex}
 \noindent\rule[0.3ex]{\textwidth}{0.4pt}
 
 # Glossary
