@@ -42,7 +42,7 @@ The code used to generate the example graphs demonstrates how each layer contrib
   <button class="btn"><i class="bi bi-download"></i>&nbsp Annotated Slide Deck</button>
 </a>
 
-<a href="Materials/Handout.pdff">
+<a href="Materials/Handout.pdf">
   <button class="btn"><i class="bi bi-download"></i>&nbsp Handout</button>
 </a>
 
