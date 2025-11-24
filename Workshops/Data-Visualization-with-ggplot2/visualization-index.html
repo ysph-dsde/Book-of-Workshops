@@ -95,8 +95,8 @@ div.csl-indent {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-ab6496a1a679dc9f3d6952c9737550a4.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-0e4dd4ed862a1a9e09a7bc5c842ea9ff.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-8147c3fd6f98d133745c3078a0248ff1.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-ef14a24eb1f8e4d0e205b9889c0723ae.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-9885d1d78f100c9fc90675d40b2ad068.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../../site_libs/quarto-contrib/bookup_fonts_embed-0.0/fonts-download.css" rel="stylesheet">
 <script src="../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
@@ -170,6 +170,7 @@ div.csl-indent {
 
 <!-- Include definition script -->
 <script src="../../Code/definition_script.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
 
 </head>
@@ -337,6 +338,13 @@ div.csl-indent {
 <p>This material was authored by Shelby Golden, M.S. You can learn more about the instructors <a href="../../index.html#meet-the-creators">here</a>. Special thanks to <a href="https://ysph.yale.edu/profile/daniel-weinberger/">Professor Daniel Weinberger</a> for allowing us to use his plot code in this workshop.</p>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Throughout the data processing pipeline—whether immediately after data import for exploratory data analysis or in preparation for communicating results—researchers frequently visualize their data. Before Professor <a href="https://hadley.nz/">Hadley Wickham</a> and his colleagues developed the <code>ggplot2</code> package as part of the <code>tidyverse</code>, creating complex or customized graphics beyond typical chart types was a challenging task. It often required tedious, verbose, and less maintainable code.</p>
+<p>In this workshop, we will explore the evolution of graphical representations of data, which led to the development of the Grammar of Graphics used by <code>ggplot2</code>. This approach transforms visualization principles from rigid chart types to flexible, customizable rules for generating graphs. In this session, you will come to realize that different chart types, such as pie charts and bar charts, often represent the same data visualization with only minor adjustments.</p>
+<blockquote class="blockquote">
+<p>“the grammar of graphics takes us beyond a limited set of charts (words) to an almost unlimited world of graphical forms (statements).” — Professor <a href="https://www.niss.org/people/leland-wilkinson">Leland Wilkinson</a>, Yale alumnus, in <a href="https://link.springer.com/book/10.1007/0-387-28695-0?page=1"><em>The Grammar of Graphics</em></a></p>
+</blockquote>
+<p>With a better understanding of the domain language used by <code>ggplot2</code>, we will examine each grammatical layer that constitutes a graphical object. We will discuss how these layers are procedurally processed relative to one another, how data and aesthetic mappings are inherited in subsequent layers, and how to correctly utilize layers by their design.</p>
+<p>While the core focus of this workshop is on introducing students to the paradigm-shifting approach of visualizing data using graphical grammar instead of traditional charts, we will also discuss some of the advanced features that <code>ggplot2</code> offers. For example, we will briefly touch on map projections and interactive plots, although these topics will not be covered in-depth.</p>
 </section>
 <section id="workshop-learning-goals" class="level2">
 <h2 class="anchored" data-anchor-id="workshop-learning-goals">Workshop Learning Goals</h2>
@@ -392,7 +400,15 @@ Settings Used in Development
 <section id="initializing-the-environment" class="level3">
 <h3 class="anchored" data-anchor-id="initializing-the-environment">Initializing the Environment</h3>
 <ol type="1">
-<li><p>Download the prepared codespace, which contains a comprehensive code environment configured with the RStudio IDE for in-class discussions and challenge questions with solutions.</p></li>
+<li>Download the prepared codespace, which contains a comprehensive code environment configured with the RStudio IDE for in-class discussions and challenge questions with solutions.</li>
+</ol>
+<div style="margin-left: 2rem">
+<a href="Materials/Data-Visualization-with-ggplot2.zip">
+  <button class="btn" style="margin-bottom: 1rem;"><i class="bi bi-download"></i>&nbsp; Codespace</button>
+</a>
+
+</div>
+<ol start="2" type="1">
 <li><p>Unzipped the downloaded directory and move it to the file location you wish to house the project.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -443,15 +459,6 @@ Note
 <p>If you experience any trouble with this step, you might want to confirm that you are using R (v 4.5.1) in the RStudio IDE (v 2025.09.2+418). You can also read more about <code>renv()</code> in their <a href="https://rstudio.github.io/renv/articles/renv.html">vignette</a>&nbsp;<span class="citation" data-cites="renv_intro"><sup><a href="#ref-renv_intro" role="doc-biblioref">5</a></sup></span>.</p>
 </div>
 </div>
-<ol start="6" type="1">
-<li><p><strong>OPTIONAL:</strong> We recommend using version control with Git for all of your projects. To initiate version control in your copy, please initialize Git in the project’s root directory.</p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Command-Line Application</strong></pre>
-</div>
-<div class="sourceCode" id="cb5" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-</ol>
 <div class="callout callout-style-default callout-note callout-titled" style="margin-left: 2rem">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -471,7 +478,7 @@ Note
 <p>With a Git-initialized project, you can add it to a remote repository on GitHub. Below are instructions to help you establish a remote copy of this codebase on GitHub. If you are new to using Git and GitHub for code-based projects, please check out our workshop on the topic: <a href="../Git-and-GitHub/git-github-index.html">Getting Started with Git and GitHub</a>.</p>
 <ol type="1">
 <li><p><a href="https://github.com/login">Log in</a> to your personal GitHub account.</p></li>
-<li><p>In the top-right of the page navigation bar, select the <span style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px 5px; border-radius: 5px; vertical-align: middle;"><iconify-icon role="img" inline="" icon="octicon:plus-16" aria-label="Icon plus-16 from octicon Iconify.design set." title="Icon plus-16 from octicon Iconify.design set."></iconify-icon> <iconify-icon role="img" inline="" icon="octicon:triangle-down-24" aria-label="Icon triangle-down-24 from octicon Iconify.design set." title="Icon triangle-down-24 from octicon Iconify.design set."></iconify-icon></span> dropdown menu and click <span style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px 7px; border-radius: 5px; vertical-align: middle;"><iconify-icon role="img" inline="" icon="octicon:repo-24" aria-label="Icon repo-24 from octicon Iconify.design set." title="Icon repo-24 from octicon Iconify.design set."></iconify-icon> New repository</span>.</p></li>
+<li><p>In the top-right of the page navigation bar, select the <span style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px 5px; border-radius: 5px; vertical-align: middle;"><iconify-icon role="img" inline="" icon="octicon:plus-16" aria-label="Icon plus-16 from octicon Iconify.design set." title="Icon plus-16 from octicon Iconify.design set."></iconify-icon> <iconify-icon role="img" inline="" icon="octicon:triangle-down-24" aria-label="Icon triangle-down-24 from octicon Iconify.design set." title="Icon triangle-down-24 from octicon Iconify.design set."></iconify-icon></span> dropdown menu and click <span style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px 7px; border-radius: 5px; vertical-align: middle;"><iconify-icon role="img" inline="" icon="octicon:repo-24" aria-label="Icon repo-24 from octicon Iconify.design set." title="Icon repo-24 from octicon Iconify.design set."></iconify-icon> New repository</span>&nbsp;<span class="citation" data-cites="new_repo"><sup><a href="#ref-new_repo" role="doc-biblioref">6</a></sup></span>.</p></li>
 <li><p>Fill out the following sections:</p>
 <ol type="a">
 <li><p>Adjust the GitHub account owner as needed and create the name for the new repository.</p></li>
@@ -483,62 +490,62 @@ Note
 <div class="code-with-filename-file">
 <pre><strong>Command-Line Application</strong></pre>
 </div>
-<div class="sourceCode" id="cb6" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="st">"/file_path/Data-Visualization-with-ggplot2"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="st">"/file_path/Data-Visualization-with-ggplot2"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 <li><p>Confirm that Git has been initialized by checking the project status. If the project is initialized, you should see that Git is present and tracking files.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Command-Line Application</strong></pre>
 </div>
-<div class="sourceCode" id="cb7" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If instead, you see the following message, you will need to initialize Git as shown above in the section <a href="#initializing-the-environment">Initializing the Environment</a>.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Command-Line Output</strong></pre>
 </div>
-<div class="sourceCode" id="cb8" data-filename="Command-Line Output"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fatal:</span> not a git repository <span class="er">(</span><span class="ex">or</span> any of the parent directories<span class="kw">)</span><span class="bu">:</span> .git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7" data-filename="Command-Line Output"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fatal:</span> not a git repository <span class="er">(</span><span class="ex">or</span> any of the parent directories<span class="kw">)</span><span class="bu">:</span> .git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 <li><p>If <code>git status</code> shows untracked files or untracked changes to tracked files, add and commit these to the project’s <code>.git</code> directory. If this is your first time committing the directory contents, you will see all files listed as untracked.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Command-Line Application</strong></pre>
 </div>
-<div class="sourceCode" id="cb9" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .                       <span class="co"># Stage all changed and new files for version tracking.</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"first commit"</span><span class="kw">`</span>   <span class="co"># Commit the changes with a message.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .                       <span class="co"># Stage all changed and new files for version tracking.</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"first commit"</span><span class="kw">`</span>   <span class="co"># Commit the changes with a message.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 <li><p>Create a branch named <code>main</code>.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Command-Line Application</strong></pre>
 </div>
-<div class="sourceCode" id="cb10" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-a</span>                   <span class="co"># Check that the branch 'main' does not exist.</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-M</span> main              <span class="co"># If the main branch doesn’t exist, create it.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-a</span>                   <span class="co"># Check that the branch 'main' does not exist.</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-M</span> main              <span class="co"># If the main branch doesn’t exist, create it.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 <li><p>In the newly created GitHub repository, under “Quick setup,” you will find the repository’s SSH or HTTPS URL. Copy one of these URLs to define the remote location and transfer protocol you want to use between your local device and this GitHub repository.</p>
 <p>For example, if the repository name is “NEW-REPOSITORY,” the URLs will look like this:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SSH</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">git@github.com:EXAMPLE-USER/NEW-REPOSITORY.git</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># HTTPS</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ex">https://github.com/EXAMPLE-USER/NEW-REPOSITORY.git</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SSH</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">git@github.com:EXAMPLE-USER/NEW-REPOSITORY.git</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># HTTPS</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="ex">https://github.com/EXAMPLE-USER/NEW-REPOSITORY.git</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Set the GitHub repository location and save it as <code>origin</code>. Replace the placeholder URL with the repository URL you copied from GitHub in the previous step.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Command-Line Application</strong></pre>
 </div>
-<div class="sourceCode" id="cb12" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using SSH</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin git@github.com:EXAMPLE-USER/NEW-REPOSITORY.git</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># or using HTTPS</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin https://github.com/EXAMPLE-USER/NEW-REPOSITORY.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using SSH</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin git@github.com:EXAMPLE-USER/NEW-REPOSITORY.git</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># or using HTTPS</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin https://github.com/EXAMPLE-USER/NEW-REPOSITORY.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 <li><p>Finally, push the directory to your empty GitHub repository. Since you are establishing a new repository, use <code>-u origin main</code> to create and set the upstream branch in the GitHub repository.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Command-Line Application</strong></pre>
 </div>
-<div class="sourceCode" id="cb13" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin main         <span class="co"># Push to remote and set upstream.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin main         <span class="co"># Push to remote and set upstream.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 <li><p>Refresh the page to confirm the transfer and linking were successful.</p></li>
 </ol>
@@ -546,37 +553,38 @@ Note
 </section>
 <section id="about-the-data" class="level2">
 <h2 class="anchored" data-anchor-id="about-the-data">About the Data</h2>
-<p>Respiratory syncytial virus (RSV) is a common virus that infects the nose, throat, and lungs, spreading mainly in fall and winter, with peaks in December and January. While it often causes mild illness in healthy individuals, it can lead to hospitalization in infants under six months and older adults. RSV can cause severe illnesses like bronchiolitis and pneumonia, especially in children under one year, making it a leading cause of these conditions. For more information, visit the CDC’s <a href="https://www.cdc.gov/rsv/about/index.html">About RSV</a> page&nbsp;<span class="citation" data-cites="about_rsv"><sup><a href="#ref-about_rsv" role="doc-biblioref">6</a></sup></span>.</p>
-<p>National trends of RSV infections are monitored through the Centers for Disease Control and Prevention’s (CDC) Respiratory Virus Hospitalization Surveillance Network, known as RSV-NET. RSV-NET is one of three programs that make up the Respiratory Virus Hospitalization Surveillance Network (RESP-NET), alongside the Coronavirus Disease 2019 (COVID-19) Hospitalization Surveillance Network (COVID-NET) and the Influenza Hospitalization Surveillance Network (FluSurv-NET)&nbsp;<span class="citation" data-cites="resp_net_dashboard"><sup><a href="#ref-resp_net_dashboard" role="doc-biblioref">7</a></sup></span>.</p>
-<p>As of this writing, 161 counties and county equivalents across 13 states participate in RSV-NET by submitting data on laboratory-confirmed, RSV-associated hospitalizations among children and adults. This surveillance network covers approximately 30 million people, representing about 9% of the U.S. population. Although its demographic representation is comparable to the overall U.S. population, it may not be fully generalizable to the entire country. For more information, visit the CDC’s information page about <a href="https://www.cdc.gov/rsv/php/surveillance/rsv-net.html">RSV-NET</a>&nbsp;<span class="citation" data-cites="rsv_net"><sup><a href="#ref-rsv_net" role="doc-biblioref">8</a></sup></span>.</p>
-<p>The cleaned and harmonized version of the RSV-NET dataset was compiled as part of YSPH’s <a href="https://www.pophive.org/">PopHIVE</a> project&nbsp;<span class="citation" data-cites="pophive"><sup><a href="#ref-pophive" role="doc-biblioref">9</a></sup></span>. It reflects data downloaded from the <em>Weekly Rates of Laboratory-Confirmed RSV Hospitalizations from the RSV-NET Surveillance System</em> page on <a href="https://data.cdc.gov/Public-Health-Surveillance/Weekly-Rates-of-Laboratory-Confirmed-RSV-Hospitali/29hc-w46k/about_data">data.gov</a>, which is updated weekly and accessible via the RSV-NET surveillance program’s <a href="https://www.cdc.gov/rsv/php/surveillance/rsv-net.html">interactive dashboard</a>&nbsp;<span class="citation" data-cites="data_source rsv_net"><sup><a href="#ref-rsv_net" role="doc-biblioref">8</a>,<a href="#ref-data_source" role="doc-biblioref">10</a></sup></span>. The original data used was downloaded on December 23<sup>rd</sup>, 2024. The code used to prepare the dataset for this module can be found in the YSPH DSDE’s Book of Workshops GitHub repository: <a href="https://github.com/ysph-dsde/Book-of-Workshops/blob/main/Workshops/Data-Visualization-with-ggplot2/Code/Cleaning%20Script.R">Data-Visualization-with-ggplot2/Code/Cleaning Script.R</a>&nbsp;<span class="citation" data-cites="hong_ooi Zhu2024 mmwr_definition"><sup><a href="#ref-hong_ooi" role="doc-biblioref">11</a>–<a href="#ref-mmwr_definition" role="doc-biblioref">13</a></sup></span>.</p>
+<p>Respiratory syncytial virus (RSV) is a common virus that infects the nose, throat, and lungs, spreading mainly in fall and winter, with peaks in December and January. While it often causes mild illness in healthy individuals, it can lead to hospitalization in infants under six months and older adults. RSV can cause severe illnesses like bronchiolitis and pneumonia, especially in children under one year, making it a leading cause of these conditions. For more information, visit the CDC’s <a href="https://www.cdc.gov/rsv/about/index.html">About RSV</a> page&nbsp;<span class="citation" data-cites="about_rsv"><sup><a href="#ref-about_rsv" role="doc-biblioref">7</a></sup></span>.</p>
+<p>National trends of RSV infections are monitored through the Centers for Disease Control and Prevention’s (CDC) Respiratory Virus Hospitalization Surveillance Network, known as RSV-NET. RSV-NET is one of three programs that make up the Respiratory Virus Hospitalization Surveillance Network (RESP-NET), alongside the Coronavirus Disease 2019 (COVID-19) Hospitalization Surveillance Network (COVID-NET) and the Influenza Hospitalization Surveillance Network (FluSurv-NET)&nbsp;<span class="citation" data-cites="resp_net_dashboard"><sup><a href="#ref-resp_net_dashboard" role="doc-biblioref">8</a></sup></span>.</p>
+<p>As of this writing, 161 counties and county equivalents across 13 states participate in RSV-NET by submitting data on laboratory-confirmed, RSV-associated hospitalizations among children and adults. This surveillance network covers approximately 30 million people, representing about 9% of the U.S. population. Although its demographic representation is comparable to the overall U.S. population, it may not be fully generalizable to the entire country. For more information, visit the CDC’s information page about <a href="https://www.cdc.gov/rsv/php/surveillance/rsv-net.html">RSV-NET</a>&nbsp;<span class="citation" data-cites="rsv_net"><sup><a href="#ref-rsv_net" role="doc-biblioref">9</a></sup></span>.</p>
+<p>The cleaned and harmonized version of the RSV-NET dataset was compiled as part of YSPH’s <a href="https://www.pophive.org/">PopHIVE</a> project&nbsp;<span class="citation" data-cites="pophive"><sup><a href="#ref-pophive" role="doc-biblioref">10</a></sup></span>. It reflects data downloaded from the <em>Weekly Rates of Laboratory-Confirmed RSV Hospitalizations from the RSV-NET Surveillance System</em> page on <a href="https://data.cdc.gov/Public-Health-Surveillance/Weekly-Rates-of-Laboratory-Confirmed-RSV-Hospitali/29hc-w46k/about_data">data.gov</a>, which is updated weekly and accessible via the RSV-NET surveillance program’s <a href="https://www.cdc.gov/rsv/php/surveillance/rsv-net.html">interactive dashboard</a>&nbsp;<span class="citation" data-cites="data_source rsv_net"><sup><a href="#ref-rsv_net" role="doc-biblioref">9</a>,<a href="#ref-data_source" role="doc-biblioref">11</a></sup></span>. The original data used was downloaded on December 23<sup>rd</sup>, 2024. The code used to prepare the dataset for this module can be found in the YSPH DSDE’s Book of Workshops GitHub repository: <a href="https://github.com/ysph-dsde/Book-of-Workshops/blob/main/Workshops/Data-Visualization-with-ggplot2/Code/Cleaning%20Script.R">Data-Visualization-with-ggplot2/Code/Cleaning Script.R</a>&nbsp;<span class="citation" data-cites="hong_ooi Zhu2024 mmwr_definition"><sup><a href="#ref-hong_ooi" role="doc-biblioref">12</a>–<a href="#ref-mmwr_definition" role="doc-biblioref">14</a></sup></span>.</p>
 </section>
 <section id="other-recommended-resources" class="level2">
 <h2 class="anchored" data-anchor-id="other-recommended-resources">Other Recommended Resources</h2>
+<p>In this workshop, we have limited time to cover deep concepts that normally take years to master in scientific data visualization. Below, you will find key resources we referenced, along with additional links to help you fully utilize <code>ggplot2</code>, identify and communicate data insights effectively, and apply these skills in advanced applications like package development.</p>
 <section id="fundamentals" class="level3">
 <h3 class="anchored" data-anchor-id="fundamentals">Fundamentals</h3>
 <ul>
-<li><a href="https://r4ds.hadley.nz/"><em>R for Data Science (2e)</em></a> by <a href="https://hadley.nz/">Hadley Wickham</a>, <a href="https://mine-cr.com/about/">Mine Çetinkaya-Rundel</a>, and <a href="https://education.rstudio.com/author/garrett/">Garrett Grolemund</a>&nbsp;<span class="citation" data-cites="r_for_data_sci"><sup><a href="#ref-r_for_data_sci" role="doc-biblioref">14</a></sup></span></li>
-<li><a href="https://ggplot2-book.org/"><em>ggplot2: Elegant Graphics for Data Analysis (3e)</em></a> by <a href="https://hadley.nz/">Hadley Wickham</a>, <a href="https://djnavarro.net/">Danielle Navarro</a>, and <a href="https://thomaslinpedersen.art/">Thomas Lin Pedersen</a>&nbsp;<span class="citation" data-cites="elegant_graphs"><sup><a href="#ref-elegant_graphs" role="doc-biblioref">15</a></sup></span></li>
-<li>“ggplot2 workshop” <a href="https://www.youtube.com/watch?v=h29g21z0a68">part 1</a> and <a href="https://www.youtube.com/watch?v=0m4yywqNPVY">part 2</a> by <a href="https://thomaslinpedersen.art/">Thomas Lin Pedersen</a>&nbsp;<span class="citation" data-cites="pedersen_workshop1 pedersen_workshop2"><sup><a href="#ref-pedersen_workshop1" role="doc-biblioref">16</a>,<a href="#ref-pedersen_workshop2" role="doc-biblioref">17</a></sup></span></li>
+<li><a href="https://r4ds.hadley.nz/"><em>R for Data Science (2e)</em></a> by <a href="https://hadley.nz/">Hadley Wickham</a>, <a href="https://mine-cr.com/about/">Mine Çetinkaya-Rundel</a>, and <a href="https://education.rstudio.com/author/garrett/">Garrett Grolemund</a>&nbsp;<span class="citation" data-cites="r_for_data_sci"><sup><a href="#ref-r_for_data_sci" role="doc-biblioref">15</a></sup></span></li>
+<li><a href="https://ggplot2-book.org/"><em>ggplot2: Elegant Graphics for Data Analysis (3e)</em></a> by <a href="https://hadley.nz/">Hadley Wickham</a>, <a href="https://djnavarro.net/">Danielle Navarro</a>, and <a href="https://thomaslinpedersen.art/">Thomas Lin Pedersen</a>&nbsp;<span class="citation" data-cites="elegant_graphs"><sup><a href="#ref-elegant_graphs" role="doc-biblioref">16</a></sup></span></li>
+<li>“ggplot2 workshop” <a href="https://www.youtube.com/watch?v=h29g21z0a68">part 1</a> and <a href="https://www.youtube.com/watch?v=0m4yywqNPVY">part 2</a> by <a href="https://thomaslinpedersen.art/">Thomas Lin Pedersen</a>&nbsp;<span class="citation" data-cites="pedersen_workshop1 pedersen_workshop2"><sup><a href="#ref-pedersen_workshop1" role="doc-biblioref">17</a>,<a href="#ref-pedersen_workshop2" role="doc-biblioref">18</a></sup></span></li>
 </ul>
 </section>
 <section id="beyond-the-basics" class="level3">
 <h3 class="anchored" data-anchor-id="beyond-the-basics">Beyond the Basics</h3>
 <ul>
-<li>Community managed <a href="https://exts.ggplot2.tidyverse.org/gallery/">“ggplot2 extensions gallery”</a>&nbsp;<span class="citation" data-cites="extensions_gallery"><sup><a href="#ref-extensions_gallery" role="doc-biblioref">18</a></sup></span></li>
-<li><a href="https://r-graph-gallery.com/">“R Graph Gallery”</a> – fucuses on applications with <code>ggplot2</code>&nbsp;<span class="citation" data-cites="graph_gallery"><sup><a href="#ref-graph_gallery" role="doc-biblioref">19</a></sup></span></li>
-<li>Additional topics from <em>ggplot2: Elegant Graphics for Data Analysis (3e)</em>: <a href="https://ggplot2-book.org/statistical-summaries.html">“Chapter 5 Statistical summaries”</a>, <a href="https://ggplot2-book.org/networks.html">Chapter 7 Networks</a>, <a href="https://ggplot2-book.org/annotations.html">“Chapter 8 Annotations”</a>, <a href="https://ggplot2-book.org/programming.html">“Chapter 18 Programming with ggplo2”</a>, and <a href="https://ggplot2-book.org/extensions.html">“Chapter 20 Extending ggplot2”</a>&nbsp;<span class="citation" data-cites="elegant_graphs"><sup><a href="#ref-elegant_graphs" role="doc-biblioref">15</a></sup></span></li>
-<li><a href="https://ggplot2.tidyverse.org/articles/extending-ggplot2.html">“Extending ggplot2”</a> vignette&nbsp;<span class="citation" data-cites="extending_ggplot2"><sup><a href="#ref-extending_ggplot2" role="doc-biblioref">20</a></sup></span></li>
-<li><a href="https://ggplot2.tidyverse.org/articles/ggplot2-in-packages.html">“Using ggplot2 in packages”</a> vignette&nbsp;<span class="citation" data-cites="ggplot_in_packages"><sup><a href="#ref-ggplot_in_packages" role="doc-biblioref">21</a></sup></span></li>
+<li>Community managed <a href="https://exts.ggplot2.tidyverse.org/gallery/">“ggplot2 extensions gallery”</a>&nbsp;<span class="citation" data-cites="extensions_gallery"><sup><a href="#ref-extensions_gallery" role="doc-biblioref">19</a></sup></span></li>
+<li><a href="https://r-graph-gallery.com/">“R Graph Gallery”</a> – fucuses on applications with <code>ggplot2</code>&nbsp;<span class="citation" data-cites="graph_gallery"><sup><a href="#ref-graph_gallery" role="doc-biblioref">20</a></sup></span></li>
+<li>Additional topics from <em>ggplot2: Elegant Graphics for Data Analysis (3e)</em>: <a href="https://ggplot2-book.org/statistical-summaries.html">“Chapter 5 Statistical summaries”</a>, <a href="https://ggplot2-book.org/networks.html">Chapter 7 Networks</a>, <a href="https://ggplot2-book.org/annotations.html">“Chapter 8 Annotations”</a>, <a href="https://ggplot2-book.org/programming.html">“Chapter 18 Programming with ggplo2”</a>, and <a href="https://ggplot2-book.org/extensions.html">“Chapter 20 Extending ggplot2”</a>&nbsp;<span class="citation" data-cites="elegant_graphs"><sup><a href="#ref-elegant_graphs" role="doc-biblioref">16</a></sup></span></li>
+<li><a href="https://ggplot2.tidyverse.org/articles/extending-ggplot2.html">“Extending ggplot2”</a> vignette&nbsp;<span class="citation" data-cites="extending_ggplot2"><sup><a href="#ref-extending_ggplot2" role="doc-biblioref">21</a></sup></span></li>
+<li><a href="https://ggplot2.tidyverse.org/articles/ggplot2-in-packages.html">“Using ggplot2 in packages”</a> vignette&nbsp;<span class="citation" data-cites="ggplot_in_packages"><sup><a href="#ref-ggplot_in_packages" role="doc-biblioref">22</a></sup></span></li>
 </ul>
 </section>
 <section id="communicating-effectively-with-graphics" class="level3">
 <h3 class="anchored" data-anchor-id="communicating-effectively-with-graphics">Communicating Effectively with Graphics</h3>
 <ul>
-<li><a href="https://www.edwardtufte.com/book/the-visual-display-of-quantitative-information/"><em>The Visual Display of Quantitative Information</em></a> by Professor - <a href="https://www.edwardtufte.com/?_gl=1*eiltsb*_up*MQ..*_gs*MQ..&amp;gclid=EAIaIQobChMI8IbFo_OJjAMVhm1HAR0xdyJaEAAYASAAEgLELPD_BwE">Edward Tufte</a>&nbsp;<span class="citation" data-cites="Tufte1983"><sup><a href="#ref-Tufte1983" role="doc-biblioref">22</a></sup></span></li>
-<li><a href="https://www.sciencedirect.com/science/article/pii/S1364815210003270#bib10"><em>Ten guidelines for effective data visualization in scientific publications</em></a> by <a href="https://ce.lafayette.edu/people/christa-kelleher/">Christa Kelleher</a> and <a href="https://www.uni-potsdam.de/en/umwelt/institut/alle-mitarbeiterinnen/wagener-thorsten">Thorsten Wagener</a>&nbsp;<span class="citation" data-cites="Kelleher2011"><sup><a href="#ref-Kelleher2011" role="doc-biblioref">23</a></sup></span></li>
-<li>Recommendations from Professor <a href="https://www.niss.org/people/leland-wilkinson">Wilkinson</a>’s <em>Grammar of Graphics</em>: <a href="https://www.stat.purdue.edu/~wsc/">William Cleveland</a>, <a href="https://www.amazon.com/exec/obidos/ASIN/0534037305/acmorg-20">1985</a>, <a href="https://www.amazon.com/Visualizing-Data-William-S-Cleveland/dp/0963488406">1995</a> and <a href="https://www.edwardtufte.com/?_gl=1*eiltsb*_up*MQ..*_gs*MQ..&amp;gclid=EAIaIQobChMI8IbFo_OJjAMVhm1HAR0xdyJaEAAYASAAEgLELPD_BwE">Edward Tufte</a>, <a href="https://www.edwardtufte.com/book/envisioning-information/">1990</a>, <a href="https://www.edwardtufte.com/book/visual-and-statistical-thinking-displays-of-evidence-for-making-decisions/">1997</a>&nbsp;<span class="citation" data-cites="Tufte1997 Tufte1990 William1985 William1995 Leland1999"><sup><a href="#ref-Tufte1997" role="doc-biblioref">24</a>–<a href="#ref-Leland1999" role="doc-biblioref">28</a></sup></span></li>
+<li><a href="https://www.edwardtufte.com/book/the-visual-display-of-quantitative-information/"><em>The Visual Display of Quantitative Information</em></a> by Professor - <a href="https://www.edwardtufte.com/?_gl=1*eiltsb*_up*MQ..*_gs*MQ..&amp;gclid=EAIaIQobChMI8IbFo_OJjAMVhm1HAR0xdyJaEAAYASAAEgLELPD_BwE">Edward Tufte</a>&nbsp;<span class="citation" data-cites="Tufte1983"><sup><a href="#ref-Tufte1983" role="doc-biblioref">23</a></sup></span></li>
+<li><a href="https://www.sciencedirect.com/science/article/pii/S1364815210003270#bib10"><em>Ten guidelines for effective data visualization in scientific publications</em></a> by <a href="https://ce.lafayette.edu/people/christa-kelleher/">Christa Kelleher</a> and <a href="https://www.uni-potsdam.de/en/umwelt/institut/alle-mitarbeiterinnen/wagener-thorsten">Thorsten Wagener</a>&nbsp;<span class="citation" data-cites="Kelleher2011"><sup><a href="#ref-Kelleher2011" role="doc-biblioref">24</a></sup></span></li>
+<li>Recommendations from Professor <a href="https://www.niss.org/people/leland-wilkinson">Wilkinson</a>’s <a href="https://link.springer.com/book/10.1007/0-387-28695-0?page=1"><em>The Grammar of Graphics</em></a>: <a href="https://www.stat.purdue.edu/~wsc/">William Cleveland</a>, <a href="https://www.amazon.com/exec/obidos/ASIN/0534037305/acmorg-20">1985</a>, <a href="https://www.amazon.com/Visualizing-Data-William-S-Cleveland/dp/0963488406">1995</a> and <a href="https://www.edwardtufte.com/?_gl=1*eiltsb*_up*MQ..*_gs*MQ..&amp;gclid=EAIaIQobChMI8IbFo_OJjAMVhm1HAR0xdyJaEAAYASAAEgLELPD_BwE">Edward Tufte</a>, <a href="https://www.edwardtufte.com/book/envisioning-information/">1990</a>, <a href="https://www.edwardtufte.com/book/visual-and-statistical-thinking-displays-of-evidence-for-making-decisions/">1997</a>&nbsp;<span class="citation" data-cites="Tufte1997 Tufte1990 William1985 William1995 Leland1999"><sup><a href="#ref-Tufte1997" role="doc-biblioref">25</a>–<a href="#ref-Leland1999" role="doc-biblioref">29</a></sup></span></li>
 </ul>
 </section>
 </section>
@@ -615,74 +623,77 @@ A software application that combines tools for editing, building, testing, and d
 <div id="ref-renv_intro" class="csl-entry" role="listitem">
 <div class="csl-left-margin">5. </div><div class="csl-right-inline">Ushey, K., Wickham, H. &amp; Posit. <a href="https://rstudio.github.io/renv/articles/renv.html">Introduction to renv</a>.</div>
 </div>
+<div id="ref-new_repo" class="csl-entry" role="listitem">
+<div class="csl-left-margin">6. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository">Creating a new repository</a>. <em>GitHub Docs</em>.</div>
+</div>
 <div id="ref-about_rsv" class="csl-entry" role="listitem">
-<div class="csl-left-margin">6. </div><div class="csl-right-inline">Disease Control, C. for &amp; (CDC), P. <a href="https://www.cdc.gov/rsv/about/index.html">About RSV</a>. (2025).</div>
+<div class="csl-left-margin">7. </div><div class="csl-right-inline">Disease Control, C. for &amp; (CDC), P. <a href="https://www.cdc.gov/rsv/about/index.html">About RSV</a>. (2025).</div>
 </div>
 <div id="ref-resp_net_dashboard" class="csl-entry" role="listitem">
-<div class="csl-left-margin">7. </div><div class="csl-right-inline">Disease Control, C. for &amp; (CDC), P. <a href="https://www.cdc.gov/resp-net/dashboard/">Respiratory virus hospitalization surveillance network (RESP-NET)</a>. (2025).</div>
+<div class="csl-left-margin">8. </div><div class="csl-right-inline">Disease Control, C. for &amp; (CDC), P. <a href="https://www.cdc.gov/resp-net/dashboard/">Respiratory virus hospitalization surveillance network (RESP-NET)</a>. (2025).</div>
 </div>
 <div id="ref-rsv_net" class="csl-entry" role="listitem">
-<div class="csl-left-margin">8. </div><div class="csl-right-inline">Disease Control, C. for &amp; (CDC), P. <a href="https://www.cdc.gov/rsv/php/surveillance/rsv-net.html">Respiratory syncytial virus hospitalization surveillance network (RSV-NET)</a>. <em>cdc.gov</em> (2025).</div>
+<div class="csl-left-margin">9. </div><div class="csl-right-inline">Disease Control, C. for &amp; (CDC), P. <a href="https://www.cdc.gov/rsv/php/surveillance/rsv-net.html">Respiratory syncytial virus hospitalization surveillance network (RSV-NET)</a>. <em>cdc.gov</em> (2025).</div>
 </div>
 <div id="ref-pophive" class="csl-entry" role="listitem">
-<div class="csl-left-margin">9. </div><div class="csl-right-inline">Public Health, Y. S. of. <a href="https://www.pophive.org/">PopHIVE</a>.</div>
+<div class="csl-left-margin">10. </div><div class="csl-right-inline">Public Health, Y. S. of. <a href="https://www.pophive.org/">PopHIVE</a>.</div>
 </div>
 <div id="ref-data_source" class="csl-entry" role="listitem">
-<div class="csl-left-margin">10. </div><div class="csl-right-inline"><a href="https://data.cdc.gov/Public-Health-Surveillance/Weekly-Rates-of-Laboratory-Confirmed-RSV-Hospitali/29hc-w46k/about_data">Weekly rates of laboratory-confirmed RSV hospitalizations from the RSV-NET surveillance system</a>. <em>CDC’s data.gov</em>.</div>
+<div class="csl-left-margin">11. </div><div class="csl-right-inline"><a href="https://data.cdc.gov/Public-Health-Surveillance/Weekly-Rates-of-Laboratory-Confirmed-RSV-Hospitali/29hc-w46k/about_data">Weekly rates of laboratory-confirmed RSV hospitalizations from the RSV-NET surveillance system</a>. <em>CDC’s data.gov</em>.</div>
 </div>
 <div id="ref-hong_ooi" class="csl-entry" role="listitem">
-<div class="csl-left-margin">11. </div><div class="csl-right-inline">Hong Ooi, A. by. <a href="https://stackoverflow.com/questions/40060828/lm-within-mutate-in-group-by">Lm() within mutate() in group_by()</a>. <em>Stack Overflow</em> (2016).</div>
+<div class="csl-left-margin">12. </div><div class="csl-right-inline">Hong Ooi, A. by. <a href="https://stackoverflow.com/questions/40060828/lm-within-mutate-in-group-by">Lm() within mutate() in group_by()</a>. <em>Stack Overflow</em> (2016).</div>
 </div>
 <div id="ref-Zhu2024" class="csl-entry" role="listitem">
-<div class="csl-left-margin">12. </div><div class="csl-right-inline">Zhu, R. <a href="https://teazrq.github.io/SMLR/kernel-smoothing.html">Statistical learning and machine learning with r</a>. (2024).</div>
+<div class="csl-left-margin">13. </div><div class="csl-right-inline">Zhu, R. <a href="https://teazrq.github.io/SMLR/kernel-smoothing.html">Statistical learning and machine learning with r</a>. (2024).</div>
 </div>
 <div id="ref-mmwr_definition" class="csl-entry" role="listitem">
-<div class="csl-left-margin">13. </div><div class="csl-right-inline">Disease Control, C. for &amp; (CDC), P. <a href="https://ndc.services.cdc.gov/wp-content/uploads/MMWR_week_overview.pdf">MMWR weeks definition</a>.</div>
+<div class="csl-left-margin">14. </div><div class="csl-right-inline">Disease Control, C. for &amp; (CDC), P. <a href="https://ndc.services.cdc.gov/wp-content/uploads/MMWR_week_overview.pdf">MMWR weeks definition</a>.</div>
 </div>
 <div id="ref-r_for_data_sci" class="csl-entry" role="listitem">
-<div class="csl-left-margin">14. </div><div class="csl-right-inline">Wickham, H., Çetinkaya-Rundel, M. &amp; Grolemund, G. <em><a href="https://r4ds.hadley.nz/">R for Data Science</a></em>. <em>O’Reilly Media</em> (O’Reilly Media, 2023).</div>
+<div class="csl-left-margin">15. </div><div class="csl-right-inline">Wickham, H., Çetinkaya-Rundel, M. &amp; Grolemund, G. <em><a href="https://r4ds.hadley.nz/">R for Data Science</a></em>. <em>O’Reilly Media</em> (O’Reilly Media, 2023).</div>
 </div>
 <div id="ref-elegant_graphs" class="csl-entry" role="listitem">
-<div class="csl-left-margin">15. </div><div class="csl-right-inline">Wickham, H., Navarro, D. &amp; Pedersen, T. L. <em><a href="https://ggplot2-book.org/">Ggplot2: Elegant Graphics for Data Analysis</a></em>. (Springer, 2010).</div>
+<div class="csl-left-margin">16. </div><div class="csl-right-inline">Wickham, H., Navarro, D. &amp; Pedersen, T. L. <em><a href="https://ggplot2-book.org/">Ggplot2: Elegant Graphics for Data Analysis</a></em>. (Springer, 2010).</div>
 </div>
 <div id="ref-pedersen_workshop1" class="csl-entry" role="listitem">
-<div class="csl-left-margin">16. </div><div class="csl-right-inline">Pedersen, T. L. <a href="https://www.youtube.com/watch?v=h29g21z0a68">ggplot2 workshop part 1</a>. <em>YouTube</em> (2020).</div>
+<div class="csl-left-margin">17. </div><div class="csl-right-inline">Pedersen, T. L. <a href="https://www.youtube.com/watch?v=h29g21z0a68">ggplot2 workshop part 1</a>. <em>YouTube</em> (2020).</div>
 </div>
 <div id="ref-pedersen_workshop2" class="csl-entry" role="listitem">
-<div class="csl-left-margin">17. </div><div class="csl-right-inline">Pedersen, T. L. <a href="https://www.youtube.com/watch?v=0m4yywqNPVY">ggplot2 workshop part 2</a>. <em>YouTube</em> (2020).</div>
+<div class="csl-left-margin">18. </div><div class="csl-right-inline">Pedersen, T. L. <a href="https://www.youtube.com/watch?v=0m4yywqNPVY">ggplot2 workshop part 2</a>. <em>YouTube</em> (2020).</div>
 </div>
 <div id="ref-extensions_gallery" class="csl-entry" role="listitem">
-<div class="csl-left-margin">18. </div><div class="csl-right-inline">Emaasit, D. &amp; Various. <a href="https://exts.ggplot2.tidyverse.org/">ggplot2 extensions gallery</a>.</div>
+<div class="csl-left-margin">19. </div><div class="csl-right-inline">Emaasit, D. &amp; Various. <a href="https://exts.ggplot2.tidyverse.org/">ggplot2 extensions gallery</a>.</div>
 </div>
 <div id="ref-graph_gallery" class="csl-entry" role="listitem">
-<div class="csl-left-margin">19. </div><div class="csl-right-inline"><a href="https://r-graph-gallery.com/index.html">The r graph gallery</a>.</div>
+<div class="csl-left-margin">20. </div><div class="csl-right-inline"><a href="https://r-graph-gallery.com/index.html">The r graph gallery</a>.</div>
 </div>
 <div id="ref-extending_ggplot2" class="csl-entry" role="listitem">
-<div class="csl-left-margin">20. </div><div class="csl-right-inline">Wickham, H. <em>et al.</em> <a href="https://ggplot2.tidyverse.org/articles/extending-ggplot2.html">Extending ggplot2 vignette</a>. <em>ggplot2 Documentation</em>.</div>
+<div class="csl-left-margin">21. </div><div class="csl-right-inline">Wickham, H. <em>et al.</em> <a href="https://ggplot2.tidyverse.org/articles/extending-ggplot2.html">Extending ggplot2 vignette</a>. <em>ggplot2 Documentation</em>.</div>
 </div>
 <div id="ref-ggplot_in_packages" class="csl-entry" role="listitem">
-<div class="csl-left-margin">21. </div><div class="csl-right-inline">Wickham, H. <em>et al.</em> <a href="https://ggplot2.tidyverse.org/articles/ggplot2-in-packages.html">Using ggplot2 in packages vignette</a>. <em>ggplot2 Documentation</em>.</div>
+<div class="csl-left-margin">22. </div><div class="csl-right-inline">Wickham, H. <em>et al.</em> <a href="https://ggplot2.tidyverse.org/articles/ggplot2-in-packages.html">Using ggplot2 in packages vignette</a>. <em>ggplot2 Documentation</em>.</div>
 </div>
 <div id="ref-Tufte1983" class="csl-entry" role="listitem">
-<div class="csl-left-margin">22. </div><div class="csl-right-inline">Tufte, E. <em><a href="https://www.edwardtufte.com/book/the-visual-display-of-quantitative-information/">The Visual Display of Quantitative Information</a></em>. (Graphics Press, LLC, 1983).</div>
+<div class="csl-left-margin">23. </div><div class="csl-right-inline">Tufte, E. <em><a href="https://www.edwardtufte.com/book/the-visual-display-of-quantitative-information/">The Visual Display of Quantitative Information</a></em>. (Graphics Press, LLC, 1983).</div>
 </div>
 <div id="ref-Kelleher2011" class="csl-entry" role="listitem">
-<div class="csl-left-margin">23. </div><div class="csl-right-inline">Kelleher, C. &amp; Wagener, T. <a href="https://doi.org/10.1016/J.ENVSOFT.2010.12.006">Ten guidelines for effective data visualization in scientific publications</a>. <em>Environmental Modelling &amp; Software</em> <strong>26</strong>, 822–827 (2011).</div>
+<div class="csl-left-margin">24. </div><div class="csl-right-inline">Kelleher, C. &amp; Wagener, T. <a href="https://doi.org/10.1016/J.ENVSOFT.2010.12.006">Ten guidelines for effective data visualization in scientific publications</a>. <em>Environmental Modelling &amp; Software</em> <strong>26</strong>, 822–827 (2011).</div>
 </div>
 <div id="ref-Tufte1997" class="csl-entry" role="listitem">
-<div class="csl-left-margin">24. </div><div class="csl-right-inline">Tufte, E. <em><a href="https://www.edwardtufte.com/book/visual-explanations-images-and-quantities-evidence-and-narrative/">Visual Explanations: Images and Quantities, Evidence and Narrative</a></em>. (Graphics Press, LLC, 1997).</div>
+<div class="csl-left-margin">25. </div><div class="csl-right-inline">Tufte, E. <em><a href="https://www.edwardtufte.com/book/visual-explanations-images-and-quantities-evidence-and-narrative/">Visual Explanations: Images and Quantities, Evidence and Narrative</a></em>. (Graphics Press, LLC, 1997).</div>
 </div>
 <div id="ref-Tufte1990" class="csl-entry" role="listitem">
-<div class="csl-left-margin">25. </div><div class="csl-right-inline">Tufte, E. <em><a href="https://www.edwardtufte.com/book/envisioning-information/">Envisioning Information</a></em>. (Graphics Press, LLC, 1990).</div>
+<div class="csl-left-margin">26. </div><div class="csl-right-inline">Tufte, E. <em><a href="https://www.edwardtufte.com/book/envisioning-information/">Envisioning Information</a></em>. (Graphics Press, LLC, 1990).</div>
 </div>
 <div id="ref-William1985" class="csl-entry" role="listitem">
-<div class="csl-left-margin">26. </div><div class="csl-right-inline">Cleveland, W. <em><a href="https://www.amazon.com/exec/obidos/ASIN/0534037305/acmorg-20">The Elements of Graphing Data</a></em>. (Wadsworth Advanced Books; Software, 1985).</div>
+<div class="csl-left-margin">27. </div><div class="csl-right-inline">Cleveland, W. <em><a href="https://www.amazon.com/exec/obidos/ASIN/0534037305/acmorg-20">The Elements of Graphing Data</a></em>. (Wadsworth Advanced Books; Software, 1985).</div>
 </div>
 <div id="ref-William1995" class="csl-entry" role="listitem">
-<div class="csl-left-margin">27. </div><div class="csl-right-inline">Cleveland, W. S. <em><a href="https://www.science.org">Visualizing Data</a></em>. (Hobart Press, 1995).</div>
+<div class="csl-left-margin">28. </div><div class="csl-right-inline">Cleveland, W. S. <em><a href="https://www.science.org">Visualizing Data</a></em>. (Hobart Press, 1995).</div>
 </div>
 <div id="ref-Leland1999" class="csl-entry" role="listitem">
-<div class="csl-left-margin">28. </div><div class="csl-right-inline">Wilkinson, L. <em>The Grammar of Graphics</em>. <em>Springer</em> (Springer-Verlag, 1999). doi:<a href="https://doi.org/10.1007/0-387-28695-0">10.1007/0-387-28695-0</a>.</div>
+<div class="csl-left-margin">29. </div><div class="csl-right-inline">Wilkinson, L. <em>The Grammar of Graphics</em>. <em>Springer</em> (Springer-Verlag, 1999). doi:<a href="https://doi.org/10.1007/0-387-28695-0">10.1007/0-387-28695-0</a>.</div>
 </div>
 </div>
 </section>
