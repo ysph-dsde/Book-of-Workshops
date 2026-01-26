@@ -95,8 +95,8 @@ div.csl-indent {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-ab6496a1a679dc9f3d6952c9737550a4.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-ef14a24eb1f8e4d0e205b9889c0723ae.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-9885d1d78f100c9fc90675d40b2ad068.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-8db5b7fe6ced3c8d52bacc8a2a798cd9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-b6583a90e3e03ae49dc9f53404f4ae9b.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../../site_libs/quarto-contrib/bookup_fonts_embed-0.0/fonts-download.css" rel="stylesheet">
 <script src="../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
@@ -366,11 +366,12 @@ div.csl-indent {
 </header>
 
 
+<p><small>Updated: January 26<sup>th</sup>, 2026</small></p>
 <p>This material is presented over two workshops. Part 1 was authored by Shelby Golden, M.S., and Part 2 is a collaborative effort by Shelby Golden, M.S., and Howard Baik, M.S. You can learn more about the instructors <a href="../../index.html#meet-the-creators">here</a>.</p>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>Git and GitHub are among the most popular and widely used tools for code-based project <span class="text-term" data-hover-text="Manage, organize, and track different versions of files. Identify differences between versions and allows reverting to older versions."> version control</span>&nbsp;<span class="citation" data-cites="atlassian_video"><sup><a href="#ref-atlassian_video" role="doc-biblioref">1</a></sup></span>. Despite their prominence, they can be challenging for new users to get started with. Many resources focus on specific or non-generalizable aspects of Git or GitHub, rather than providing a comprehensive overview. Few resources offer a unified introduction that guides users from initial setup to basic use cases for both individual and collaborative projects.</p>
-<p>One common limitation of many introductory resources is that they exclusively teach using third-party <span class="text-term" data-hover-text="An interface that allows users to interact with computers through visual elements like buttons and menus."> Graphical User Interfaces (GUIs) </span> or integrations of Git in <span class="text-term" data-hover-text="A software application that combines tools for editing, building, testing, and debugging code into a single, user-friendly interface."> Integrated Development Environments (IDEs) </span> like RStudio&nbsp;<span class="citation" data-cites="gui ide"><sup><a href="#ref-gui" role="doc-biblioref">2</a>,<a href="#ref-ide" role="doc-biblioref">3</a></sup></span>. However, Git is inherently designed as a <span class="text-term" data-hover-text="A texted-base application that directly interacts with the computer’s operating system, manages files, and can run programs. It typically lacks a GUI."> Command-Line Interface (CLI)</span> tool to be executed in environments like Mac’s Terminal. Using the Git CLI allows users to directly execute Git operations, offering fine-grained control that is often not possible with third-party GUIs or IDEs. Consequently, relying solely on GUIs or IDEs can limit a learner’s growth and understanding of the full capabilities of Git and its interaction with GitHub.</p>
+<p>One common limitation of many introductory resources is that they exclusively teach using third-party <span class="text-term" data-hover-text="An interface that allows users to interact with computers through visual elements like buttons and menus."> Graphical User Interfaces (GUIs) </span> or integrations of Git in <span class="text-term" data-hover-text="A software application that combines tools for editing, building, testing, and debugging code into a single, user-friendly interface."> Integrated Development Environments (IDEs) </span> like RStudio&nbsp;<span class="citation" data-cites="gui ide"><sup><a href="#ref-gui" role="doc-biblioref">2</a>,<a href="#ref-ide" role="doc-biblioref">3</a></sup></span>. However, Git is inherently designed as a <span class="text-term" data-hover-text="A texted-base application that directly interacts with the computer’s operating system, manages files, and can run programs. It typically lacks a GUI."> Command-Line Interface (CLI)</span> tool to be executed in environments like Mac’s Terminal&nbsp;<span class="citation" data-cites="terminal_shell"><sup><a href="#ref-terminal_shell" role="doc-biblioref">4</a></sup></span>. Using the Git CLI allows users to directly execute Git operations, offering fine-grained control that is often not possible with third-party GUIs or IDEs. Consequently, relying solely on GUIs or IDEs can limit a learner’s growth and understanding of the full capabilities of Git and its interaction with GitHub.</p>
 </section>
 <section id="workshop-learning-goals" class="level2">
 <h2 class="anchored" data-anchor-id="workshop-learning-goals">Workshop Learning Goals</h2>
@@ -387,8 +388,8 @@ div.csl-indent {
 <section id="part-2-learning-goals" class="level4">
 <h4 class="anchored" data-anchor-id="part-2-learning-goals">Part 2 Learning Goals:</h4>
 <ul>
-<li>Get hands-on experience using Git and GitHub for solo projects through a worked-through example showing common workflows.</li>
-<li>Learn how to use GitHub to support collaboration and teamwork on group projects. Invite friends to have the full experience!</li>
+<li>Master essential Git and GitHub workflows for individual projects through hands-on practice.</li>
+<li>Get introduced to collaborative workflows and teamwork strategies using guided GitHub examples.</li>
 </ul>
 <p>We have prepared real-world examples for the hands-on portion of this workshop. To fully engage with these materials, please create a clean-break copy of the two GitHub repositories that have been specifically prepared for this purpose. Detailed instructions for this process can be found below under <a href="#accessing-the-codespaces">Accessing the Codespaces</a>.</p>
 </section>
@@ -414,13 +415,18 @@ div.csl-indent {
 </section>
 <section id="part-2-materials" class="level4">
 <h4 class="anchored" data-anchor-id="part-2-materials">Part 2 Materials:</h4>
+
+<a href="Materials/Part 2_Handout_Solo Projects.pdf">
+  <button class="btn"><i class="bi bi-download"></i>&nbsp; Solo Projects</button>
+</a>
+
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Coming Soon!
+More Coming Soon!
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -429,10 +435,10 @@ Coming Soon!
 </div>
 <p>Below are some helpful cheat sheets that summarize commands for navigating Git, Bash, and the command-line application text editor <code>vim</code>. These will be the primary languages and command series used in this module.</p>
 <ul>
-<li><a href="https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet">Git Cheat Sheet</a> by Atlassian&nbsp;<span class="citation" data-cites="git_cheat_sheet"><sup><a href="#ref-git_cheat_sheet" role="doc-biblioref">4</a></sup></span></li>
-<li><a href="https://vim.rtorr.com/">Vim Cheat Sheet</a> by <a href="https://www.linkedin.com/in/richard-torruellas-8ba6a758/">Richard Torruellas</a>&nbsp;<span class="citation" data-cites="Torruellas2013"><sup><a href="#ref-Torruellas2013" role="doc-biblioref">5</a></sup></span></li>
-<li><a href="https://gist.github.com/tuxfight3r/60051ac67c5f0445efee">Bash Shortcuts</a> by <a href="https://find-and-update.company-information.service.gov.uk/officers/vt4_ChxQXIwmL4wYZPLE_mhkzWA/appointments">Mohankumar Balasundaram</a>&nbsp;<span class="citation" data-cites="Balasundaram2014"><sup><a href="#ref-Balasundaram2014" role="doc-biblioref">6</a></sup></span></li>
-<li><a href="https://www.git-tower.com/blog/command-line-cheat-sheet">Command Line Cheat Sheet</a> by <a href="https://leaddev.com/community/tobias-gunther">Tobias Günther</a>&nbsp;<span class="citation" data-cites="Gunther2020"><sup><a href="#ref-Gunther2020" role="doc-biblioref">7</a></sup></span></li>
+<li><a href="https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet">Git Cheat Sheet</a> by Atlassian&nbsp;<span class="citation" data-cites="git_cheat_sheet"><sup><a href="#ref-git_cheat_sheet" role="doc-biblioref">5</a></sup></span></li>
+<li><a href="https://vim.rtorr.com/">Vim Cheat Sheet</a> by <a href="https://www.linkedin.com/in/richard-torruellas-8ba6a758/">Richard Torruellas</a>&nbsp;<span class="citation" data-cites="Torruellas2013"><sup><a href="#ref-Torruellas2013" role="doc-biblioref">6</a></sup></span></li>
+<li><a href="https://gist.github.com/tuxfight3r/60051ac67c5f0445efee">Bash Shortcuts</a> by <a href="https://find-and-update.company-information.service.gov.uk/officers/vt4_ChxQXIwmL4wYZPLE_mhkzWA/appointments">Mohankumar Balasundaram</a>&nbsp;<span class="citation" data-cites="Balasundaram2014"><sup><a href="#ref-Balasundaram2014" role="doc-biblioref">7</a></sup></span></li>
+<li><a href="https://www.git-tower.com/blog/command-line-cheat-sheet">Command Line Cheat Sheet</a> by <a href="https://leaddev.com/community/tobias-gunther">Tobias Günther</a>&nbsp;<span class="citation" data-cites="Gunther2020"><sup><a href="#ref-Gunther2020" role="doc-biblioref">8</a></sup></span></li>
 </ul>
 </section>
 </section>
@@ -478,11 +484,11 @@ Settings Used in Development
 <section id="making-a-clean-break-copy" class="level3">
 <h3 class="anchored" data-anchor-id="making-a-clean-break-copy">Making a Clean-Break Copy</h3>
 <section id="method-1-copying-using-github-importer-import_github" class="level4">
-<h4 class="anchored" data-anchor-id="method-1-copying-using-github-importer-import_github">METHOD 1: Copying Using GitHub Importer&nbsp;<span class="citation" data-cites="import_github"><sup><a href="#ref-import_github" role="doc-biblioref">8</a></sup></span></h4>
+<h4 class="anchored" data-anchor-id="method-1-copying-using-github-importer-import_github">METHOD 1: Copying Using GitHub Importer&nbsp;<span class="citation" data-cites="import_github"><sup><a href="#ref-import_github" role="doc-biblioref">9</a></sup></span></h4>
 <p>The method described here will not create a Fork. You can learn more about the GitHub Importer <a href="https://docs.github.com/en/migrations/importing-source-code/using-github-importer/importing-a-repository-with-github-importer">here</a>.</p>
 <ol type="1">
 <li><p><a href="https://github.com/login">Log in</a> to your personal GitHub account.</p></li>
-<li><p>In the top-right of the page navigation bar, select the <span style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px 5px; border-radius: 5px; vertical-align: middle;"><iconify-icon role="img" inline="" icon="octicon:plus-16" aria-label="Icon plus-16 from octicon Iconify.design set." title="Icon plus-16 from octicon Iconify.design set."></iconify-icon> <iconify-icon role="img" inline="" icon="octicon:triangle-down-24" aria-label="Icon triangle-down-24 from octicon Iconify.design set." title="Icon triangle-down-24 from octicon Iconify.design set."></iconify-icon></span> dropdown menu and click <span style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px 7px; border-radius: 5px; vertical-align: middle;"><iconify-icon role="img" inline="" icon="octicon:repo-push-24" aria-label="Icon repo-push-24 from octicon Iconify.design set." title="Icon repo-push-24 from octicon Iconify.design set."></iconify-icon> Import repository</span>&nbsp;<span class="citation" data-cites="new_repo"><sup><a href="#ref-new_repo" role="doc-biblioref">9</a></sup></span>.</p></li>
+<li><p>In the top-right of the page navigation bar, select the <span style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px 5px; border-radius: 5px; vertical-align: middle;"><iconify-icon role="img" inline="" icon="octicon:plus-16" aria-label="Icon plus-16 from octicon Iconify.design set." title="Icon plus-16 from octicon Iconify.design set."></iconify-icon> <iconify-icon role="img" inline="" icon="octicon:triangle-down-24" aria-label="Icon triangle-down-24 from octicon Iconify.design set." title="Icon triangle-down-24 from octicon Iconify.design set."></iconify-icon></span> dropdown menu and click <span style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px 7px; border-radius: 5px; vertical-align: middle;"><iconify-icon role="img" inline="" icon="octicon:repo-push-24" aria-label="Icon repo-push-24 from octicon Iconify.design set." title="Icon repo-push-24 from octicon Iconify.design set."></iconify-icon> Import repository</span>&nbsp;<span class="citation" data-cites="new_repo"><sup><a href="#ref-new_repo" role="doc-biblioref">10</a></sup></span>.</p></li>
 <li><p>Fill out the following sections:</p>
 <ol type="a">
 <li><p><strong>Your source repository details:</strong> Paste the https URL of the repositories listed above. No credentials are required for this action.</p></li>
@@ -534,7 +540,7 @@ Important
 </div>
 <div class="sourceCode" id="cb2" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="st">"/file_path/"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
-<li><p>Clone a bare copy of the original repository using its SSH Key or HTTPS URL&nbsp;<span class="citation" data-cites="duplicate_repo"><sup><a href="#ref-duplicate_repo" role="doc-biblioref">10</a></sup></span>:</p>
+<li><p>Clone a bare copy of the original repository using its SSH Key or HTTPS URL&nbsp;<span class="citation" data-cites="duplicate_repo"><sup><a href="#ref-duplicate_repo" role="doc-biblioref">11</a></sup></span>:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Command-Line Application</strong></pre>
@@ -612,7 +618,7 @@ Important
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># or using HTTPS</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/EXAMPLE-USER/NEW-REPOSITORY.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
-<li><p><strong>OPTIONAL:</strong> You can reset the repository history, which will clear the previous commits, by running the following block of code (Source: <a href="https://stackoverflow.com/questions/9683279/make-the-current-commit-the-only-initial-commit-in-a-git-repository">StackExchange by Zeelot</a>)&nbsp;<span class="citation" data-cites="prune_commits"><sup><a href="#ref-prune_commits" role="doc-biblioref">11</a></sup></span>.</p>
+<li><p><strong>OPTIONAL:</strong> You can reset the repository history, which will clear the previous commits, by running the following block of code (Source: <a href="https://stackoverflow.com/questions/9683279/make-the-current-commit-the-only-initial-commit-in-a-git-repository">StackExchange by Zeelot</a>)&nbsp;<span class="citation" data-cites="prune_commits"><sup><a href="#ref-prune_commits" role="doc-biblioref">12</a></sup></span>.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Command-Line Application</strong></pre>
@@ -665,19 +671,19 @@ Note
 </div>
 <div class="sourceCode" id="cb13" data-filename="RStudio Output"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> The library is already synchronized with the lockfile.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>If you experience any trouble with this step, you might want to confirm that you are using R (v 4.4.3) in the RStudio IDE (v 2024.12.1+563). You can also read more about <code>renv()</code> in their <a href="https://rstudio.github.io/renv/articles/renv.html">vignette</a>&nbsp;<span class="citation" data-cites="renv_intro"><sup><a href="#ref-renv_intro" role="doc-biblioref">12</a></sup></span>.</p>
+<p>If you experience any trouble with this step, you might want to confirm that you are using R (v 4.4.3) in the RStudio IDE (v 2024.12.1+563). You can also read more about <code>renv()</code> in their <a href="https://rstudio.github.io/renv/articles/renv.html">vignette</a>&nbsp;<span class="citation" data-cites="renv_intro"><sup><a href="#ref-renv_intro" role="doc-biblioref">13</a></sup></span>.</p>
 </div>
 </div>
 </section>
 </section>
 <section id="about-the-data" class="level2">
 <h2 class="anchored" data-anchor-id="about-the-data">About the Data</h2>
-<p>The <a href="https://coronavirus.jhu.edu/">Johns Hopkins Coronavirus Resource Center</a> (JHU CRC) tracked and compiled global COVID-19 pandemic data from January 22, 2020, to March 10, 2023&nbsp;<span class="citation" data-cites="jhcrc"><sup><a href="#ref-jhcrc" role="doc-biblioref">13</a></sup></span>. This data is publicly available through their two GitHub repositories. For this workshop content, we imported two datasets:</p>
+<p>The <a href="https://coronavirus.jhu.edu/">Johns Hopkins Coronavirus Resource Center</a> (JHU CRC) tracked and compiled global COVID-19 pandemic data from January 22, 2020, to March 10, 2023&nbsp;<span class="citation" data-cites="jhcrc"><sup><a href="#ref-jhcrc" role="doc-biblioref">14</a></sup></span>. This data is publicly available through their two GitHub repositories. For this workshop content, we imported two datasets:</p>
 <ul>
-<li>Cumulative vaccination counts for the U.S. from their <a href="https://github.com/govex/COVID-19/tree/master/data_tables/vaccine_data">GovEX/COVID-19</a> GitHub repository. The raw data used in the analysis script can be found in the <code>data_tables/vaccine_data/us_data/time_series</code> subdirectory (<a href="https://github.com/govex/COVID-19/blob/master/data_tables/vaccine_data/us_data/time_series/time_series_covid19_vaccine_us.csv">original source</a>)&nbsp;<span class="citation" data-cites="vaccines_time_series govex"><sup><a href="#ref-vaccines_time_series" role="doc-biblioref">14</a>,<a href="#ref-govex" role="doc-biblioref">15</a></sup></span>.</li>
-<li>Cumulative case and death counts for the U.S. from their <a href="https://github.com/CSSEGISandData/COVID-19">CSSEGISandData</a> GitHub repository. The raw data for these two datasets used in the analysis can be found in the <code>csse_covid_19_data/csse_covid_19_time_series</code> subdirectory (<a href="https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series">original source</a>). Both <code>time_series_covid19_confirmed_US.csv</code> and <code>time_series_covid19_deaths_US.csv were used</code>&nbsp;<span class="citation" data-cites="cases_time_series csse"><sup><a href="#ref-cases_time_series" role="doc-biblioref">16</a>,<a href="#ref-csse" role="doc-biblioref">17</a></sup></span>.</li>
+<li>Cumulative vaccination counts for the U.S. from their <a href="https://github.com/govex/COVID-19/tree/master/data_tables/vaccine_data">GovEX/COVID-19</a> GitHub repository. The raw data used in the analysis script can be found in the <code>data_tables/vaccine_data/us_data/time_series</code> subdirectory (<a href="https://github.com/govex/COVID-19/blob/master/data_tables/vaccine_data/us_data/time_series/time_series_covid19_vaccine_us.csv">original source</a>)&nbsp;<span class="citation" data-cites="vaccines_time_series govex"><sup><a href="#ref-vaccines_time_series" role="doc-biblioref">15</a>,<a href="#ref-govex" role="doc-biblioref">16</a></sup></span>.</li>
+<li>Cumulative case and death counts for the U.S. from their <a href="https://github.com/CSSEGISandData/COVID-19">CSSEGISandData</a> GitHub repository. The raw data for these two datasets used in the analysis can be found in the <code>csse_covid_19_data/csse_covid_19_time_series</code> subdirectory (<a href="https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series">original source</a>). Both <code>time_series_covid19_confirmed_US.csv</code> and <code>time_series_covid19_deaths_US.csv were used</code>&nbsp;<span class="citation" data-cites="cases_time_series csse"><sup><a href="#ref-cases_time_series" role="doc-biblioref">17</a>,<a href="#ref-csse" role="doc-biblioref">18</a></sup></span>.</li>
 </ul>
-<p>The data dictionaries provided by JHU CRC can be found here: <a href="https://github.com/govex/COVID-19/tree/master/data_tables/vaccine_data/us_data">Vaccinations Dataset Data Dictionary</a> and <a href="https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data#usa-daily-state-reports-csse_covid_19_daily_reports_us">Cases and Deaths Datasets Data Dictionary</a>&nbsp;<span class="citation" data-cites="vaccines_dictionary cases_dictionar"><sup><a href="#ref-vaccines_dictionary" role="doc-biblioref">18</a>,<a href="#ref-cases_dictionar" role="doc-biblioref">19</a></sup></span>. For our purposes, we conducted data cleaning, harmonization, and smoothing using isotonic regression. This included harmonizing the U.S. Census Bureau’s 2010 to 2019 population projections with the 2020 to 2023 vintages.</p>
+<p>The data dictionaries provided by JHU CRC can be found here: <a href="https://github.com/govex/COVID-19/tree/master/data_tables/vaccine_data/us_data">Vaccinations Dataset Data Dictionary</a> and <a href="https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data#usa-daily-state-reports-csse_covid_19_daily_reports_us">Cases and Deaths Datasets Data Dictionary</a>&nbsp;<span class="citation" data-cites="vaccines_dictionary cases_dictionar"><sup><a href="#ref-vaccines_dictionary" role="doc-biblioref">19</a>,<a href="#ref-cases_dictionar" role="doc-biblioref">20</a></sup></span>. For our purposes, we conducted data cleaning, harmonization, and smoothing using isotonic regression. This included harmonizing the U.S. Census Bureau’s 2010 to 2019 population projections with the 2020 to 2023 vintages.</p>
 <p>Details about these steps can be found in the <code>Git-and-GitHub/R</code> directory of this workshop’s GitHub repository (<a href="https://github.com/ysph-dsde/Book-of-Workshops/tree/main/Git-and-GitHub/R">link to code</a>). The cleaned datasets used in this workshop can be found in the <code>Git-and-GitHub/Data</code> directory of this workshop’s GitHub repository (<a href="https://github.com/ysph-dsde/Book-of-Workshops/tree/main/Git-and-GitHub/Data">link to data</a>).</p>
 </section>
 <section id="other-recommended-resources" class="level2">
@@ -686,22 +692,22 @@ Note
 <section id="fundamentals" class="level3">
 <h3 class="anchored" data-anchor-id="fundamentals">Fundamentals</h3>
 <ul>
-<li>Yale’s Center for Research Computing workshop <a href="https://www.youtube.com/watch?v=Boj3tFrTyF4">“Version Control by Git”</a> by <a href="https://research.computing.yale.edu/profile/kaylea-nelson-phd">Kaylea Nelson, Ph.D.</a>&nbsp;<span class="citation" data-cites="ycrc_module"><sup><a href="#ref-ycrc_module" role="doc-biblioref">20</a></sup></span></li>
-<li>Yale’s Harvey Cushing/John Hay Whitney Medical Library workshop <a href="https://github.com/CWML/gitdemo/tree/main">“Git &amp; GitHub: An Introduction To Version Contro”</a> by <a href="https://library.medicine.yale.edu/about/staff/justin-demayo">Justin DeMayo</a>&nbsp;<span class="citation" data-cites="med_school_module"><sup><a href="#ref-med_school_module" role="doc-biblioref">21</a></sup></span></li>
+<li>Yale’s Center for Research Computing workshop <a href="https://www.youtube.com/watch?v=Boj3tFrTyF4">“Version Control by Git”</a> by <a href="https://research.computing.yale.edu/profile/kaylea-nelson-phd">Kaylea Nelson, Ph.D.</a>&nbsp;<span class="citation" data-cites="ycrc_module"><sup><a href="#ref-ycrc_module" role="doc-biblioref">21</a></sup></span></li>
+<li>Yale’s Harvey Cushing/John Hay Whitney Medical Library workshop <a href="https://github.com/CWML/gitdemo/tree/main">“Git &amp; GitHub: An Introduction To Version Contro”</a> by <a href="https://library.medicine.yale.edu/about/staff/justin-demayo">Justin DeMayo</a>&nbsp;<span class="citation" data-cites="med_school_module"><sup><a href="#ref-med_school_module" role="doc-biblioref">22</a></sup></span></li>
 <li><a href="https://www.atlassian.com/git">“Getting Git Right”</a> by Atlassian</li>
-<li><a href="https://www.w3schools.com/git/default.asp?remote=github">Git and GitHub Tutorial</a> by W3Schools&nbsp;<span class="citation" data-cites="w3schools"><sup><a href="#ref-w3schools" role="doc-biblioref">22</a></sup></span></li>
-<li><a href="https://github.com/skills/introduction-to-github">“Introduction to GitHub”</a> by GitHub&nbsp;<span class="citation" data-cites="github_intro_course"><sup><a href="#ref-github_intro_course" role="doc-biblioref">23</a></sup></span></li>
-<li><a href="https://happygitwithr.com/"><em>Happy Git and GitHub for user</em></a> by <a href="https://jennybryan.org/">Professor Jenny Bryan</a> (and Yale alumn!) and <a href="https://www.jimhester.com/">Jim Hester</a> &nbsp;<span class="citation" data-cites="happy_git_github"><sup><a href="#ref-happy_git_github" role="doc-biblioref">24</a></sup></span></li>
+<li><a href="https://www.w3schools.com/git/default.asp?remote=github">Git and GitHub tutorials</a> by W3Schools&nbsp;<span class="citation" data-cites="w3schools"><sup><a href="#ref-w3schools" role="doc-biblioref">23</a></sup></span></li>
+<li><a href="https://github.com/skills/introduction-to-github">“Introduction to GitHub”</a> by GitHub&nbsp;<span class="citation" data-cites="github_intro_course"><sup><a href="#ref-github_intro_course" role="doc-biblioref">24</a></sup></span></li>
+<li><a href="https://happygitwithr.com/"><em>Happy Git and GitHub for the user</em></a> by <a href="https://jennybryan.org/">Professor Jenny Bryan</a> (and Yale alumn!) and <a href="https://www.jimhester.com/">Jim Hester</a> &nbsp;<span class="citation" data-cites="happy_git_github"><sup><a href="#ref-happy_git_github" role="doc-biblioref">25</a></sup></span></li>
 </ul>
 </section>
 <section id="beyond-basic-git-and-github" class="level3">
 <h3 class="anchored" data-anchor-id="beyond-basic-git-and-github">Beyond Basic Git and GitHub</h3>
 <ul>
-<li>Reviewing the developer documentation: <a href="https://git-scm.com/docs">git-scm.com/docs</a> and <a href="https://docs.github.com/en">docs.github.com</a>&nbsp;<span class="citation" data-cites="github_docs git_docs"><sup><a href="#ref-github_docs" role="doc-biblioref">25</a>,<a href="#ref-git_docs" role="doc-biblioref">26</a></sup></span></li>
-<li><a href="https://medium.com/mindorks/what-is-git-commit-push-pull-log-aliases-fetch-config-clone-56bc52a3601c">“What is Git commit, push, pull, log, aliases, fetch, config &amp; clone”</a> by <a href="https://medium.com/@thisAmit">Amit Prajapati</a>&nbsp;<span class="citation" data-cites="Prajapati2019"><sup><a href="#ref-Prajapati2019" role="doc-biblioref">27</a></sup></span></li>
-<li><a href="https://graphite.dev/guides/topic/git">“Git Guides”</a> by various Graphite contributors&nbsp;<span class="citation" data-cites="graphite_git"><sup><a href="#ref-graphite_git" role="doc-biblioref">28</a></sup></span></li>
-<li><a href="https://cbea.ms/git-commit/">“How to Write a Git Commit Message”</a> by cbeams&nbsp;<span class="citation" data-cites="write_message"><sup><a href="#ref-write_message" role="doc-biblioref">29</a></sup></span></li>
-<li><a href="https://git-scm.com/downloads/guis">Git Graphical User Interface (GUI) Clients</a> by various contributors&nbsp;<span class="citation" data-cites="git_guis"><sup><a href="#ref-git_guis" role="doc-biblioref">30</a></sup></span></li>
+<li>Reviewing the developer documentation: <a href="https://git-scm.com/docs">git-scm.com/docs</a> and <a href="https://docs.github.com/en">docs.github.com</a>&nbsp;<span class="citation" data-cites="github_docs git_docs"><sup><a href="#ref-github_docs" role="doc-biblioref">26</a>,<a href="#ref-git_docs" role="doc-biblioref">27</a></sup></span></li>
+<li><a href="https://medium.com/mindorks/what-is-git-commit-push-pull-log-aliases-fetch-config-clone-56bc52a3601c">“What is Git commit, push, pull, log, aliases, fetch, config &amp; clone”</a> by <a href="https://medium.com/@thisAmit">Amit Prajapati</a>&nbsp;<span class="citation" data-cites="Prajapati2019"><sup><a href="#ref-Prajapati2019" role="doc-biblioref">28</a></sup></span></li>
+<li><a href="https://graphite.dev/guides/topic/git">“Git Guides”</a> by various Graphite contributors&nbsp;<span class="citation" data-cites="graphite_git"><sup><a href="#ref-graphite_git" role="doc-biblioref">29</a></sup></span></li>
+<li><a href="https://cbea.ms/git-commit/">“How to Write a Git Commit Message”</a> by cbeams&nbsp;<span class="citation" data-cites="write_message"><sup><a href="#ref-write_message" role="doc-biblioref">30</a></sup></span></li>
+<li><a href="https://git-scm.com/downloads/guis">Git Graphical User Interface (GUI) clients</a> by various contributors&nbsp;<span class="citation" data-cites="git_guis"><sup><a href="#ref-git_guis" role="doc-biblioref">31</a></sup></span></li>
 </ul>
 </section>
 </section>
@@ -715,7 +721,7 @@ Note
 Command-Line Interface (CLI)
 </td>
 <td>
-A texted-base application that directly interacts with the computer’s operating system, manages files, and can run programs. It typically lacks a GUI&nbsp;<span class="citation" data-cites="terminal_shell"><sup><a href="#ref-terminal_shell" role="doc-biblioref">31</a></sup></span>.
+A texted-base application that directly interacts with the computer’s operating system, manages files, and can run programs. It typically lacks a GUI&nbsp;<span class="citation" data-cites="terminal_shell"><sup><a href="#ref-terminal_shell" role="doc-biblioref">4</a></sup></span>.
 </td>
 </tr>
 <!-- Row 2 -->
@@ -761,89 +767,89 @@ Manage, organize, and track different versions of files. Identify differences be
 <div id="ref-ide" class="csl-entry" role="listitem">
 <div class="csl-left-margin">3. </div><div class="csl-right-inline">Services, Inc. A. W. <a href="https://aws.amazon.com/what-is/ide/">What is an IDE (integrated development environment)?</a></div>
 </div>
+<div id="ref-terminal_shell" class="csl-entry" role="listitem">
+<div class="csl-left-margin">4. </div><div class="csl-right-inline">Contributor, G. <a href="https://www.geeksforgeeks.org/difference-between-terminal-console-shell-and-command-line/">Difference between terminal, console, shell, and command line</a>. (2024).</div>
+</div>
 <div id="ref-git_cheat_sheet" class="csl-entry" role="listitem">
-<div class="csl-left-margin">4. </div><div class="csl-right-inline">Atlassian. <a href="https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet">Git cheat sheet</a>. <em>Atlassian Tutorial</em>.</div>
+<div class="csl-left-margin">5. </div><div class="csl-right-inline">Atlassian. <a href="https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet">Git cheat sheet</a>. <em>Atlassian Tutorial</em>.</div>
 </div>
 <div id="ref-Torruellas2013" class="csl-entry" role="listitem">
-<div class="csl-left-margin">5. </div><div class="csl-right-inline">Torruellas, R. <a href="https://vim.rtorr.com/">Vim cheat sheet</a>. <em>Vim</em> (2013).</div>
+<div class="csl-left-margin">6. </div><div class="csl-right-inline">Torruellas, R. <a href="https://vim.rtorr.com/">Vim cheat sheet</a>. <em>Vim</em> (2013).</div>
 </div>
 <div id="ref-Balasundaram2014" class="csl-entry" role="listitem">
-<div class="csl-left-margin">6. </div><div class="csl-right-inline">Balasundaram, M. <a href="https://gist.github.com/tuxfight3r/60051ac67c5f0445efee">Bash keyboard shortcuts</a>. <em>GitHub Gist</em> (2014).</div>
+<div class="csl-left-margin">7. </div><div class="csl-right-inline">Balasundaram, M. <a href="https://gist.github.com/tuxfight3r/60051ac67c5f0445efee">Bash keyboard shortcuts</a>. <em>GitHub Gist</em> (2014).</div>
 </div>
 <div id="ref-Gunther2020" class="csl-entry" role="listitem">
-<div class="csl-left-margin">7. </div><div class="csl-right-inline">Gunther, T. <a href="https://www.git-tower.com/blog/command-line-cheat-sheet">Command line cheat sheet | tower blog</a>. (2020).</div>
+<div class="csl-left-margin">8. </div><div class="csl-right-inline">Gunther, T. <a href="https://www.git-tower.com/blog/command-line-cheat-sheet">Command line cheat sheet | tower blog</a>. (2020).</div>
 </div>
 <div id="ref-import_github" class="csl-entry" role="listitem">
-<div class="csl-left-margin">8. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/migrations/importing-source-code/using-github-importer/importing-a-repository-with-github-importer">Importing a repository with GitHub importer</a>. <em>GitHub Docs</em>.</div>
+<div class="csl-left-margin">9. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/migrations/importing-source-code/using-github-importer/importing-a-repository-with-github-importer">Importing a repository with GitHub importer</a>. <em>GitHub Docs</em>.</div>
 </div>
 <div id="ref-new_repo" class="csl-entry" role="listitem">
-<div class="csl-left-margin">9. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository">Creating a new repository</a>. <em>GitHub Docs</em>.</div>
+<div class="csl-left-margin">10. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository">Creating a new repository</a>. <em>GitHub Docs</em>.</div>
 </div>
 <div id="ref-duplicate_repo" class="csl-entry" role="listitem">
-<div class="csl-left-margin">10. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/duplicating-a-repository">Duplicating a repository</a>. <em>GitHub Docs</em>.</div>
+<div class="csl-left-margin">11. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/duplicating-a-repository">Duplicating a repository</a>. <em>GitHub Docs</em>.</div>
 </div>
 <div id="ref-prune_commits" class="csl-entry" role="listitem">
-<div class="csl-left-margin">11. </div><div class="csl-right-inline">Zeelot, A. by. <a href="https://stackoverflow.com/questions/9683279/make-the-current-commit-the-only-initial-commit-in-a-git-repository">Github - make the current commit the only (initial) commit in a git repository?</a> <em>StackOverflow</em> (2012).</div>
+<div class="csl-left-margin">12. </div><div class="csl-right-inline">Zeelot, A. by. <a href="https://stackoverflow.com/questions/9683279/make-the-current-commit-the-only-initial-commit-in-a-git-repository">Github - make the current commit the only (initial) commit in a git repository?</a> <em>StackOverflow</em> (2012).</div>
 </div>
 <div id="ref-renv_intro" class="csl-entry" role="listitem">
-<div class="csl-left-margin">12. </div><div class="csl-right-inline">Ushey, K., Wickham, H. &amp; Posit. <a href="https://rstudio.github.io/renv/articles/renv.html">Introduction to renv</a>.</div>
+<div class="csl-left-margin">13. </div><div class="csl-right-inline">Ushey, K., Wickham, H. &amp; Posit. <a href="https://rstudio.github.io/renv/articles/renv.html">Introduction to renv</a>.</div>
 </div>
 <div id="ref-jhcrc" class="csl-entry" role="listitem">
-<div class="csl-left-margin">13. </div><div class="csl-right-inline">Moss, Dr. B. <em>et al.</em> <a href="https://coronavirus.jhu.edu/">Johns hopkins coronavirus resource center</a>. (2020).</div>
+<div class="csl-left-margin">14. </div><div class="csl-right-inline">Moss, Dr. B. <em>et al.</em> <a href="https://coronavirus.jhu.edu/">Johns hopkins coronavirus resource center</a>. (2020).</div>
 </div>
 <div id="ref-vaccines_time_series" class="csl-entry" role="listitem">
-<div class="csl-left-margin">14. </div><div class="csl-right-inline">Center, J. H. U. C. R. <a href="https://github.com/govex/COVID-19/blob/master/data_tables/vaccine_data/us_data/time_series/time_series_covid19_vaccine_us.csv">Time series COVID-19 vaccine US</a>. <em>GovEX GitHub</em> (2020).</div>
+<div class="csl-left-margin">15. </div><div class="csl-right-inline">Center, J. H. U. C. R. <a href="https://github.com/govex/COVID-19/blob/master/data_tables/vaccine_data/us_data/time_series/time_series_covid19_vaccine_us.csv">Time series COVID-19 vaccine US</a>. <em>GovEX GitHub</em> (2020).</div>
 </div>
 <div id="ref-govex" class="csl-entry" role="listitem">
-<div class="csl-left-margin">15. </div><div class="csl-right-inline">Center, J. H. U. C. R. <a href="https://github.com/govex/COVID-19">GovEX</a>. <em>GovEX GitHub</em> (2020).</div>
+<div class="csl-left-margin">16. </div><div class="csl-right-inline">Center, J. H. U. C. R. <a href="https://github.com/govex/COVID-19">GovEX</a>. <em>GovEX GitHub</em> (2020).</div>
 </div>
 <div id="ref-cases_time_series" class="csl-entry" role="listitem">
-<div class="csl-left-margin">16. </div><div class="csl-right-inline">Center, J. H. U. C. R. <a href="https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series">Time series COVID-19 cases and deaths US</a>. <em>Center for Systems Science and Engineering (CSSE)</em> (2023).</div>
+<div class="csl-left-margin">17. </div><div class="csl-right-inline">Center, J. H. U. C. R. <a href="https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series">Time series COVID-19 cases and deaths US</a>. <em>Center for Systems Science and Engineering (CSSE)</em> (2023).</div>
 </div>
 <div id="ref-csse" class="csl-entry" role="listitem">
-<div class="csl-left-margin">17. </div><div class="csl-right-inline">Center, J. H. U. C. R. <a href="https://github.com/CSSEGISandData/COVID-19">CSSEGISandData</a>. <em>Center for Systems Science and Engineering (CSSE)</em> (2020).</div>
+<div class="csl-left-margin">18. </div><div class="csl-right-inline">Center, J. H. U. C. R. <a href="https://github.com/CSSEGISandData/COVID-19">CSSEGISandData</a>. <em>Center for Systems Science and Engineering (CSSE)</em> (2020).</div>
 </div>
 <div id="ref-vaccines_dictionary" class="csl-entry" role="listitem">
-<div class="csl-left-margin">18. </div><div class="csl-right-inline">Center, J. H. U. C. R. <a href="https://github.com/govex/COVID-19/blob/master/data_tables/vaccine_data/us_data/data_dictionary.csv">GovEX data dictionary</a>. <em>GovEX GitHub</em> (2020).</div>
+<div class="csl-left-margin">19. </div><div class="csl-right-inline">Center, J. H. U. C. R. <a href="https://github.com/govex/COVID-19/blob/master/data_tables/vaccine_data/us_data/data_dictionary.csv">GovEX data dictionary</a>. <em>GovEX GitHub</em> (2020).</div>
 </div>
 <div id="ref-cases_dictionar" class="csl-entry" role="listitem">
-<div class="csl-left-margin">19. </div><div class="csl-right-inline">Center, J. H. U. C. R. <a href="https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data#usa-daily-state-reports-csse_covid_19_daily_reports_us">CSSEGISandData data dictionary</a>. <em>Center for Systems Science and Engineering (CSSE)</em> (2020).</div>
+<div class="csl-left-margin">20. </div><div class="csl-right-inline">Center, J. H. U. C. R. <a href="https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data#usa-daily-state-reports-csse_covid_19_daily_reports_us">CSSEGISandData data dictionary</a>. <em>Center for Systems Science and Engineering (CSSE)</em> (2020).</div>
 </div>
 <div id="ref-ycrc_module" class="csl-entry" role="listitem">
-<div class="csl-left-margin">20. </div><div class="csl-right-inline">Ph.D., K. N. <a href="https://research.computing.yale.edu/training/version-control-git">Version control with git</a>. <em>Yale Center for Research Computing (YCRC)</em> (2021).</div>
+<div class="csl-left-margin">21. </div><div class="csl-right-inline">Ph.D., K. N. <a href="https://research.computing.yale.edu/training/version-control-git">Version control with git</a>. <em>Yale Center for Research Computing (YCRC)</em> (2021).</div>
 </div>
 <div id="ref-med_school_module" class="csl-entry" role="listitem">
-<div class="csl-left-margin">21. </div><div class="csl-right-inline">DeMayo, J. <a href="https://github.com/CWML/gitdemo/tree/main">Gitdemo</a>. <em>Harvey Cushing/John Hay Whitney Medical Library</em> (2024).</div>
+<div class="csl-left-margin">22. </div><div class="csl-right-inline">DeMayo, J. <a href="https://github.com/CWML/gitdemo/tree/main">Gitdemo</a>. <em>Harvey Cushing/John Hay Whitney Medical Library</em> (2024).</div>
 </div>
 <div id="ref-w3schools" class="csl-entry" role="listitem">
-<div class="csl-left-margin">22. </div><div class="csl-right-inline">W3Schools. <a href="https://www.w3schools.com/git/default.asp?remote=github">Git tutorial</a>. <em>W3Schools</em>.</div>
+<div class="csl-left-margin">23. </div><div class="csl-right-inline">W3Schools. <a href="https://www.w3schools.com/git/default.asp?remote=github">Git tutorial</a>. <em>W3Schools</em>.</div>
 </div>
 <div id="ref-github_intro_course" class="csl-entry" role="listitem">
-<div class="csl-left-margin">23. </div><div class="csl-right-inline">GitHub. <a href="https://github.com/skills/introduction-to-github">Introduction to GitHub</a>. <em>GitHub Skills</em>.</div>
+<div class="csl-left-margin">24. </div><div class="csl-right-inline">GitHub. <a href="https://github.com/skills/introduction-to-github">Introduction to GitHub</a>. <em>GitHub Skills</em>.</div>
 </div>
 <div id="ref-happy_git_github" class="csl-entry" role="listitem">
-<div class="csl-left-margin">24. </div><div class="csl-right-inline">Ph.D., J. B. &amp; Hester, J. <a href="https://happygitwithr.com/">Let’s git started</a>. <em>Happy Git and GitHub for the useR</em>.</div>
+<div class="csl-left-margin">25. </div><div class="csl-right-inline">Ph.D., J. B. &amp; Hester, J. <a href="https://happygitwithr.com/">Let’s git started</a>. <em>Happy Git and GitHub for the useR</em>.</div>
 </div>
 <div id="ref-github_docs" class="csl-entry" role="listitem">
-<div class="csl-left-margin">25. </div><div class="csl-right-inline">Developers, G. <a href="https://docs.github.com/en">GitHub docs</a>. <em>GitHub</em>.</div>
+<div class="csl-left-margin">26. </div><div class="csl-right-inline">Developers, G. <a href="https://docs.github.com/en">GitHub docs</a>. <em>GitHub</em>.</div>
 </div>
 <div id="ref-git_docs" class="csl-entry" role="listitem">
-<div class="csl-left-margin">26. </div><div class="csl-right-inline">Developers, G. <a href="https://git-scm.com/docs">Git - reference</a>. <em>Git</em>.</div>
+<div class="csl-left-margin">27. </div><div class="csl-right-inline">Developers, G. <a href="https://git-scm.com/docs">Git - reference</a>. <em>Git</em>.</div>
 </div>
 <div id="ref-Prajapati2019" class="csl-entry" role="listitem">
-<div class="csl-left-margin">27. </div><div class="csl-right-inline">Prajapati, A. <a href="https://medium.com/mindorks/what-is-git-commit-push-pull-log-aliases-fetch-config-clone-56bc52a3601c">What is git commit, push, pull, log, aliases, fetch, config &amp; clone</a>. <em>Medium</em> (2019).</div>
+<div class="csl-left-margin">28. </div><div class="csl-right-inline">Prajapati, A. <a href="https://medium.com/mindorks/what-is-git-commit-push-pull-log-aliases-fetch-config-clone-56bc52a3601c">What is git commit, push, pull, log, aliases, fetch, config &amp; clone</a>. <em>Medium</em> (2019).</div>
 </div>
 <div id="ref-graphite_git" class="csl-entry" role="listitem">
-<div class="csl-left-margin">28. </div><div class="csl-right-inline">contributors, V. <a href="https://graphite.dev/guides/topic/git">Git guides</a>. <em>Graphite</em>.</div>
+<div class="csl-left-margin">29. </div><div class="csl-right-inline">contributors, V. <a href="https://graphite.dev/guides/topic/git">Git guides</a>. <em>Graphite</em>.</div>
 </div>
 <div id="ref-write_message" class="csl-entry" role="listitem">
-<div class="csl-left-margin">29. </div><div class="csl-right-inline">cbeams. <a href="https://cbea.ms/git-commit/">How to write a git commit message</a>. <em>cbeams</em> (2014).</div>
+<div class="csl-left-margin">30. </div><div class="csl-right-inline">cbeams. <a href="https://cbea.ms/git-commit/">How to write a git commit message</a>. <em>cbeams</em> (2014).</div>
 </div>
 <div id="ref-git_guis" class="csl-entry" role="listitem">
-<div class="csl-left-margin">30. </div><div class="csl-right-inline">Git-SCM. <a href="https://git-scm.com/downloads/guis">Git - GUI clients</a>. <em>Git-SCM</em>.</div>
-</div>
-<div id="ref-terminal_shell" class="csl-entry" role="listitem">
-<div class="csl-left-margin">31. </div><div class="csl-right-inline">Contributor, G. <a href="https://www.geeksforgeeks.org/difference-between-terminal-console-shell-and-command-line/">Difference between terminal, console, shell, and command line</a>. (2024).</div>
+<div class="csl-left-margin">31. </div><div class="csl-right-inline">Git-SCM. <a href="https://git-scm.com/downloads/guis">Git - GUI clients</a>. <em>Git-SCM</em>.</div>
 </div>
 </div>
 </section>

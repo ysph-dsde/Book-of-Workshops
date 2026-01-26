@@ -95,8 +95,8 @@ div.csl-indent {
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-ab6496a1a679dc9f3d6952c9737550a4.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-ef14a24eb1f8e4d0e205b9889c0723ae.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-9885d1d78f100c9fc90675d40b2ad068.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-8db5b7fe6ced3c8d52bacc8a2a798cd9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-b6583a90e3e03ae49dc9f53404f4ae9b.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../../../site_libs/quarto-contrib/bookup_fonts_embed-0.0/fonts-download.css" rel="stylesheet">
 <script src="../../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
@@ -311,6 +311,7 @@ div.csl-indent {
   <li><a href="#multiple-git-configurations" id="toc-multiple-git-configurations" class="nav-link" data-scroll-target="#multiple-git-configurations">Multiple Git Configurations</a></li>
   <li><a href="#configuring-ssh-keys-to-different-hosts" id="toc-configuring-ssh-keys-to-different-hosts" class="nav-link" data-scroll-target="#configuring-ssh-keys-to-different-hosts">Configuring SSH Keys to Different Hosts</a></li>
   </ul></li>
+  <li><a href="#section-glossary" id="toc-section-glossary" class="nav-link" data-scroll-target="#section-glossary">Section Glossary</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/ysph-dsde/Book-of-Workshops/edit/main/Workshops/Git-and-GitHub/Pages/git-github-setup.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
@@ -337,7 +338,8 @@ div.csl-indent {
 </header>
 
 
-<p>If you have not yet, you will need to get a GitHub account and to install Git on your local device. This document was constructed from Atlassian’s <em><a href="https://www.atlassian.com/git/tutorials/install-git">How to install Git</a></em> tutorial and Git-SCM’s <a href="https://git-scm.com/downloads">download pages</a>&nbsp;<span class="citation" data-cites="atlassian_git git_macs git_pc git_linux"><sup><a href="#ref-atlassian_git" role="doc-biblioref">1</a>–<a href="#ref-git_linux" role="doc-biblioref">4</a></sup></span>.</p>
+<p><small>Updated: January 26<sup>th</sup>, 2026</small></p>
+<p>If you have not yet, you will need two things: a GitHub account and Git installed on your local device. This guide provides complete steps for setting up both and linking them together. Additional special setup cases I have personally encountered are covered in the <a href="#advanced-configurations"><em>Advanced Configurations</em></a> section. This document is based on Atlassian’s <em><a href="https://www.atlassian.com/git/tutorials/install-git">How to install Git</a></em> tutorial and Git-SCM’s <a href="https://git-scm.com/downloads">download pages</a>&nbsp;<span class="citation" data-cites="atlassian_git git_macs git_pc git_linux"><sup><a href="#ref-atlassian_git" role="doc-biblioref">1</a>–<a href="#ref-git_linux" role="doc-biblioref">4</a></sup></span>.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -348,7 +350,7 @@ Directions Provided in Bash
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This workshop is designed to be compatible with Bash command-line interfaces, which is the default setting for macOS with Terminal and many Linux distributions. Windows users will need to ensure their command-line interface is Bash compatible, as not all commands will work in other environments.</p>
+<p>This workshop is designed to be compatible with Bash CLIs, which is the default setting for macOS with Terminal and many Linux distributions. Windows users will need to ensure their CLI is Bash compatible, as not all commands will work in other environments.</p>
 </div>
 </div>
 <section id="sign-up-for-github-account" class="level1">
@@ -356,23 +358,23 @@ Directions Provided in Bash
 <p>To sign up for a GitHub account, navigate to <a href="https://github.com/">github.com/</a> and click the <span style="white-space: nowrap; background-color: #00023F; color: #ffffff; border: 1px solid #D0D9E0; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px">Sign up</span> button in the top right-hand corner. Fill in the required fields with your email, password, username, and country/region.</p>
 <p>Your GitHub username must consist of alphanumeric characters or single hyphens and cannot begin or end with a hyphen. It’s important to carefully consider your username choice, especially if you plan to share it with professional collaborators or include it in your professional portfolio. Below are some suggestions to consider from the <em><a href="https://happygitwithr.com/github-acct">Happy Git and GitHub for the useR</a></em>&nbsp;<span class="citation" data-cites="github_username"><sup><a href="#ref-github_username" role="doc-biblioref">5</a></sup></span>:</p>
 <ul>
-<li>Include your name.</li>
-<li>Keep it short and lowercase.</li>
-<li>Keep it consistent with other accounts you want associated with your work.</li>
-<li>Appropriate for sharing with an employer.</li>
-<li>Avoid highlighting temporary affiliations, such as the current university you attend.</li>
-<li>Ensure it’s unique and doesn’t have a special meaning in programming (e.g., avoid terms like <code>NA</code>).</li>
+<li>Include your name</li>
+<li>Keep it short and lowercase</li>
+<li>Keep it consistent with other accounts you want associated with your work</li>
+<li>Appropriate for sharing with an employer</li>
+<li>Avoid highlighting temporary affiliations, such as the current university you attend</li>
+<li>Ensure it’s unique and doesn’t have a special meaning in programming (e.g., avoid terms like <code>NA</code>)</li>
 </ul>
 <p>GitHub offers materials and short courses to help new users learn their interface: <em><a href="https://skills.github.com/">GitHub Skills</a></em>, <em><a href="https://docs.github.com/en/repositories">Repositories documentation</a></em>, and <em><a href="https://docs.github.com/en/github-cli/github-cli/about-github-cli">About GitHub Command-Line Interface (CLI)</a></em>&nbsp;<span class="citation" data-cites="github_skills github_repos_docs github_cli"><sup><a href="#ref-github_skills" role="doc-biblioref">6</a>–<a href="#ref-github_cli" role="doc-biblioref">8</a></sup></span>.</p>
 </section>
 <section id="install-git" class="level1">
 <h1>Install Git</h1>
-<p>For all systems, you can confirm Git installation in the command-line interface:</p>
+<p>For all systems, you can confirm Git installation in the <span class="text-term" data-hover-text="A texted-base application that directly interacts with the computer’s operating system, manages files, and can run programs. It typically lacks a GUI."> Command-Line Interface (CLI)</span>:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>Command-Line Application</strong></pre>
+<pre><strong>Command-Line Interface</strong></pre>
 </div>
-<div class="sourceCode" id="cb1" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -384,8 +386,7 @@ Directions Provided in Bash
 <p>If you do not get this output, you will need to install Git. In the following pages, we provide commonly applicable instructions for macOS, Windows, and the Debian/Ubuntu and Fedora Linux distributions.</p>
 <section id="windows" class="level2">
 <h2 class="anchored" data-anchor-id="windows">Windows</h2>
-<p>Windows, by default, provides the PowerShell command-line interface, which does not support Bash commands. To emulate a Linux command-line interface, you have several options. The simplest option is to install <a href="https://gitforwindows.org/">Git for Windows</a>, which provides both Git and Git Bash, a Bash shell environment&nbsp;<span class="citation" data-cites="git_for_windows"><sup><a href="#ref-git_for_windows" role="doc-biblioref">9</a></sup></span>.</p>
-<p>Alternatively, you can emulate Linux command-line interfaces through other methods, or search for alternative commands compatible with the command-line interface you are using. If the option you are choosing does not include Git, it can be installed directly from: <a href="https://git-scm.com/download/win">Git-SCM</a>&nbsp;<span class="citation" data-cites="git_scm_config git_pc"><sup><a href="#ref-git_pc" role="doc-biblioref">3</a>,<a href="#ref-git_scm_config" role="doc-biblioref">10</a></sup></span>.</p>
+<p>Windows, by default, provides the PowerShell CLI, which does not support Bash commands. To emulate a Linux CLI, you have several options. The simplest option is to install <a href="https://gitforwindows.org/">Git for Windows</a>, which provides both Git and Git Bash, a Bash <span class="text-term" data-hover-text="A program used by the CLI to mediate communication between the user and computer by interpreting commands and outputs. Examples: Bash, PowerShell, etc."> shell</span> environment&nbsp;<span class="citation" data-cites="git_for_windows terminal_shell"><sup><a href="#ref-git_for_windows" role="doc-biblioref">9</a>,<a href="#ref-terminal_shell" role="doc-biblioref">10</a></sup></span>. Alternatively, you can emulate Linux CLIs through other methods or search for compatible commands for your CLI. If your chosen option does not include Git, you can install it directly from <a href="https://git-scm.com/download/win">Git-SCM</a>&nbsp;<span class="citation" data-cites="git_scm_config git_pc"><sup><a href="#ref-git_pc" role="doc-biblioref">3</a>,<a href="#ref-git_scm_config" role="doc-biblioref">11</a></sup></span>.</p>
 <p>After you download Git for Windows, open the installer and follow the prompts. For this workshop, you can accept all default settings, but you may adjust them as desired. Below are some specific settings to consider as you go through the installer prompts.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -410,7 +411,8 @@ Install OpenSSH
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>SSH</strong> stands for “Secure Shell”, and it is the preferred secure transfer protocol used to communicate between your local device and the GitHub remote repository. You will want to ensure that OpenSSH is installed. The Git installer will provide you with the option to install OpenSSH during the setup process, and we recommend that you select this option.</p>
+<p><strong>SSH</strong> stands for “Secure Shell”, and it is the preferred secure transfer protocol used to communicate between your local device and the GitHub remote repository.</p>
+<p>To use it, you will want to ensure that OpenSSH is installed. The Git installer will provide you with the option to install OpenSSH during the setup process, and we recommend that you select this option.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -419,11 +421,11 @@ Install OpenSSH
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Suggest Beginners Use “Fast-Forward or Merge” for
+Suggest Beginners Use “Fast-Forward or Merge” for <code class="inline-code">git pull</code>
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Later in this workshop, we will discuss what Git is doing with the action. It is recommended that beginners select “Fast-Forward or Merge” by default, as rebasing is not beginner-friendly.</p>
+<p>Later in this workshop, we will discuss what Git is doing with the <span class="code-term" data-hover-text="Downloads a copy of the specified remote repository's branch and integrates it with the local copy. Combines the actions of <code>git fetch</code> followed by <code>git merge</code> or <code>git rebase</code>."> git pull</span> action. It is recommended that beginners select “Fast-Forward or Merge” by default, as rebasing is not beginner-friendly.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -436,30 +438,30 @@ Suggest Installing the Git Credential Manager
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The Git credential Mmanager will cache your authentication information, making it easier to interact with remote repositories&nbsp;<span class="citation" data-cites="credential_manager"><sup><a href="#ref-credential_manager" role="doc-biblioref">11</a></sup></span>.</p>
+<p>The Git credential Mmanager will cache your authentication information, making it easier to interact with remote repositories&nbsp;<span class="citation" data-cites="credential_manager"><sup><a href="#ref-credential_manager" role="doc-biblioref">12</a></sup></span>.</p>
 </div>
 </div>
 </section>
 <section id="mac" class="level2">
 <h2 class="anchored" data-anchor-id="mac">Mac</h2>
-<p>If XCode <em>is</em> installed in your Applications folder, Git is already available. However, you might not have the the osxkeychain credential manager, <strong>git-credential-osxkeychain</strong>, installed. If you plan to use HTTPS transfer protocols instead of SSH Keys, you might want to install this as it caches your authentication information in the macOS keychain, avoiding the need to re-enter them each time. You can skip to the directions for adding this capability if needed.</p>
-<p>If XCode <em>is not</em> installed, you can install Git with the osxkeychain credential manager through either <a href="https://brew.sh/">Homebrew</a> or <a href="https://www.macports.org/install.php">MacPorts</a>&nbsp;<span class="citation" data-cites="homebrew macports"><sup><a href="#ref-homebrew" role="doc-biblioref">12</a>,<a href="#ref-macports" role="doc-biblioref">13</a></sup></span>. Assuming you have one of these already installed:</p>
+<p>If XCode <em>is</em> installed in your Applications folder, Git is already available. However, you might not have the the osxkeychain credential manager, <strong>git-credential-osxkeychain</strong>, installed. If you plan to use <span class="code-term" data-hover-text="Facilitates secure transmission of information over an encrypted internet connection. Decryption occurs when the correct username and Personal Access Token (PAT) are provided."> Hypertext Transfer Protocol Secure (HTTPS)</span> transfer protocols instead of <span class="code-term" data-hover-text="Uses a pair of keys—a private key and a public key. Information is encrypted when sent between servers, and only the matching key pair can decrypt it upon receipt."> Secure Shell (SSH)</span>, you might want to install this as it caches your authentication information in the macOS keychain, avoiding the need to re-enter them each time&nbsp;<span class="citation" data-cites="pat setup_auth ssh_vs_https new_ssh"><sup><a href="#ref-pat" role="doc-biblioref">13</a>–<a href="#ref-new_ssh" role="doc-biblioref">16</a></sup></span>. You can skip to the directions for adding this capability if needed.</p>
+<p>If XCode <em>is not</em> installed, you can install Git with the osxkeychain credential manager through either <a href="https://brew.sh/">Homebrew</a> or <a href="https://www.macports.org/install.php">MacPorts</a>&nbsp;<span class="citation" data-cites="homebrew macports"><sup><a href="#ref-homebrew" role="doc-biblioref">17</a>,<a href="#ref-macports" role="doc-biblioref">18</a></sup></span>. Assuming you have one of these already installed:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>Command-Line Application</strong></pre>
+<pre><strong>Command-Line Interface</strong></pre>
 </div>
-<div class="sourceCode" id="cb3" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># With Homebrew</span></span>
+<div class="sourceCode" id="cb3" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># With Homebrew</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install git</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># With MacPorts</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> port install git +bash_completion +credential_osxkeychain +doc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Installing Git using Homebrew or MacPorts will automatically include the osxkeychain credential manager. You can confirm its installation by running the following command&nbsp;<span class="citation" data-cites="osxkeychain"><sup><a href="#ref-osxkeychain" role="doc-biblioref">14</a></sup></span>:</p>
+<p>Installing Git using Homebrew or MacPorts will automatically include the osxkeychain credential manager. You can confirm its installation by running the following command&nbsp;<span class="citation" data-cites="osxkeychain"><sup><a href="#ref-osxkeychain" role="doc-biblioref">19</a></sup></span>:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>Command-Line Application</strong></pre>
+<pre><strong>Command-Line Interface</strong></pre>
 </div>
-<div class="sourceCode" id="cb4" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> credential-osxkeychain</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> credential-osxkeychain</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -470,9 +472,9 @@ Suggest Installing the Git Credential Manager
 <p>If you do not get this output, run the following:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>Command-Line Application</strong></pre>
+<pre><strong>Command-Line Interface</strong></pre>
 </div>
-<div class="sourceCode" id="cb6" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Install. Linebreak does NOT denote a space in the URL.</span></span>
+<div class="sourceCode" id="cb6" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Install. Linebreak does NOT denote a space in the URL.</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-O</span> http://github-media-downloads.s3.amazonaws.com/osx/git-credential <span class="at">-osxkeychain</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Relocate to ~/bin/.</span></span>
@@ -487,9 +489,9 @@ Suggest Installing the Git Credential Manager
 <p>If your OS X version is El Capitan (OS X 10.11) or earlier, you will need to download the tarball and build Git directly from the source.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>Command-Line Application</strong></pre>
+<pre><strong>Command-Line Interface</strong></pre>
 </div>
-<div class="sourceCode" id="cb7" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. If you do not have XCode Command Line Tools, install it.</span></span>
+<div class="sourceCode" id="cb7" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. If you do not have XCode Command Line Tools, install it.</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">xcode-select</span> <span class="at">--install</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Install openssl with Homebrew.</span></span>
@@ -508,9 +510,9 @@ Suggest Installing the Git Credential Manager
 <p>Below, we have included instructions for several distributions. For information on additional systems, please visit the <a href="https://git-scm.com/downloads/linux">Git-SCM</a> download page.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>Command-Line Application</strong></pre>
+<pre><strong>Command-Line Interface</strong></pre>
 </div>
-<div class="sourceCode" id="cb8" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Stable deployment of Debian/Ubuntu</span></span>
+<div class="sourceCode" id="cb8" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Stable deployment of Debian/Ubuntu</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-get</span> install git</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Ubuntu Personal Package Archive (PPA)</span></span>
@@ -527,13 +529,13 @@ Suggest Installing the Git Credential Manager
 </section>
 <section id="configure-git" class="level1">
 <h1>Configure Git</h1>
-<p>Git associates a username and email address with the project versions you create. You have the option to configure these settings globally, applying one user profile to all repositories, or locally, applying a user profile to a specific repository. A local setting will override the global setting&nbsp;<span class="citation" data-cites="atlassian_config git_scm_config"><sup><a href="#ref-git_scm_config" role="doc-biblioref">10</a>,<a href="#ref-atlassian_config" role="doc-biblioref">15</a></sup></span>.</p>
-<p>Let’s begin by checking the current configurations on your system. Using <code>--list --show-origin</code> instead will display the file location for all configurations&nbsp;<span class="citation" data-cites="Answeredbykgf3JfUtW2017"><sup><a href="#ref-Answeredbykgf3JfUtW2017" role="doc-biblioref">16</a></sup></span>.</p>
+<p>Git associates a username and email address with the project versions you create. You have the option to configure these settings globally, applying one user profile to all repositories, or locally, applying a user profile to a specific repository. A local setting will override the global setting&nbsp;<span class="citation" data-cites="atlassian_config git_scm_config"><sup><a href="#ref-git_scm_config" role="doc-biblioref">11</a>,<a href="#ref-atlassian_config" role="doc-biblioref">20</a></sup></span>.</p>
+<p>Let’s begin by checking the current configurations on your system. Using <code>--list --show-origin</code> instead will display the file location for all configurations&nbsp;<span class="citation" data-cites="Answeredbykgf3JfUtW2017"><sup><a href="#ref-Answeredbykgf3JfUtW2017" role="doc-biblioref">21</a></sup></span>.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>Command-Line Application</strong></pre>
+<pre><strong>Command-Line Interface</strong></pre>
 </div>
-<div class="sourceCode" id="cb9" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -572,28 +574,28 @@ Suggest Installing the Git Credential Manager
 <span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="ex">user.email=shelby.golden@yale.edu</span>           <span class="co"># Email for commits</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The results above are examples of potential configurations you might see on your system. In this example, the <code>user.name</code> and <code>user.email</code> settings are already configured.</p>
-<p>If you do not see these configurations in your results, you will need to set them up on your system. We suggest you start by setting the global credential configurations. Use <code>--local</code> instead if you wish to apply the configurations to the currently open directory in your command-line interface.</p>
+<p>If you do not see these configurations in your results, you will need to set them up on your system. We suggest you start by setting the global credential configurations. Use <code>--local</code> instead if you wish to apply the configurations to the currently open directory in your CLI.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>Command-Line Application</strong></pre>
+<pre><strong>Command-Line Interface</strong></pre>
 </div>
-<div class="sourceCode" id="cb12" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"Your Name Here"</span></span>
+<div class="sourceCode" id="cb12" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"Your Name Here"</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"your@email.com"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>If you make a mistake, you can use the <code>--unset</code> command to remove the configurations through the terminal, or you can modify the .gitconfig file directly&nbsp;<span class="citation" data-cites="Foster2024"><sup><a href="#ref-Foster2024" role="doc-biblioref">17</a></sup></span>.</p>
+<p>If you make a mistake, you can use the <code>--unset</code> command to remove the configurations through the terminal, or you can modify the <code>.gitconfig</code> file directly&nbsp;<span class="citation" data-cites="Foster2024"><sup><a href="#ref-Foster2024" role="doc-biblioref">22</a></sup></span>.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>Command-Line Application</strong></pre>
+<pre><strong>Command-Line Interface</strong></pre>
 </div>
-<div class="sourceCode" id="cb13" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> <span class="at">--unset</span> user.name</span>
+<div class="sourceCode" id="cb13" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> <span class="at">--unset</span> user.name</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> <span class="at">--unset</span> user.email</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>It is possible to automatically manage multiple credentials without needing to override the global settings in each folder. This is discussed in the <strong>Appendix</strong>.</p>
+<p>It is possible to automatically manage multiple credentials without needing to override the global settings in each folder. This is discussed in the <a href="#advanced-configurations"><em>Advanced Configurations</em></a> section.</p>
 </section>
 <section id="transfer-protocols" class="level1">
 <h1>Transfer Protocols</h1>
-<p>GitHub supports two types of authentication and file transfer protocols: Hypertext Transfer Protocol Secure (HTTPS) and Secure Shell (SSH) Keys. These protocols are used to securely and accurately communicate project access levels, rules, and, most importantly, to transfer files between your local device and the remote repository&nbsp;<span class="citation" data-cites="about_auth"><sup><a href="#ref-about_auth" role="doc-biblioref">18</a></sup></span>.</p>
-<p>Below is a list of pros and cons for both&nbsp;<span class="citation" data-cites="setup_auth ssh_vs_https new_ssh pat"><sup><a href="#ref-setup_auth" role="doc-biblioref">19</a>–<a href="#ref-pat" role="doc-biblioref">22</a></sup></span>:</p>
+<p>GitHub supports two types of authentication and file transfer protocols: <span class="code-term" data-hover-text="Facilitates secure transmission of information over an encrypted internet connection. Decryption occurs when the correct username and Personal Access Token (PAT) are provided."> Hypertext Transfer Protocol Secure (HTTPS)</span> and <span class="code-term" data-hover-text="Uses a pair of keys—a private key and a public key. Information is encrypted when sent between servers, and only the matching key pair can decrypt it upon receipt."> Secure Shell (SSH)</span>&nbsp;<span class="citation" data-cites="pat setup_auth ssh_vs_https new_ssh"><sup><a href="#ref-pat" role="doc-biblioref">13</a>–<a href="#ref-new_ssh" role="doc-biblioref">16</a></sup></span>. These protocols are used to securely and accurately communicate project access levels, rules, and, most importantly, to transfer files between your local device and the remote repository&nbsp;<span class="citation" data-cites="about_auth"><sup><a href="#ref-about_auth" role="doc-biblioref">23</a></sup></span>.</p>
+<p>Below is a list of pros and cons for both&nbsp;<span class="citation" data-cites="setup_auth ssh_vs_https new_ssh pat"><sup><a href="#ref-pat" role="doc-biblioref">13</a>–<a href="#ref-new_ssh" role="doc-biblioref">16</a></sup></span>:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 16%">
@@ -610,23 +612,23 @@ Suggest Installing the Git Credential Manager
 <tbody>
 <tr class="odd">
 <td>Setup</td>
-<td>More involved.</td>
-<td>Easier for beginners.</td>
+<td>More involved</td>
+<td>Easier for beginners</td>
 </tr>
 <tr class="even">
 <td>Ease of Use</td>
-<td>Low maintenance.</td>
-<td>Requires username and PAT with each interaction.</td>
+<td>Low maintenance</td>
+<td>Requires username and PAT with each interaction</td>
 </tr>
 <tr class="odd">
 <td>Security</td>
-<td>More secure.</td>
-<td>Vulnerable to brute force attacks.</td>
+<td>More secure</td>
+<td>Vulnerable to brute force attacks</td>
 </tr>
 <tr class="even">
 <td>Permissions Control</td>
-<td>Fine- and coarse-grained options.</td>
-<td>Coarser permissions for PAT set by GitHub.</td>
+<td>Fine- and coarse-grained options</td>
+<td>Coarser permissions for PAT set by GitHub</td>
 </tr>
 <tr class="odd">
 <td>Signing</td>
@@ -635,8 +637,8 @@ Suggest Installing the Git Credential Manager
 </tr>
 <tr class="even">
 <td>Other</td>
-<td>Additional security with Hardware Keys&nbsp;<span class="citation" data-cites="hardware"><sup><a href="#ref-hardware" role="doc-biblioref">23</a></sup></span>.</td>
-<td>Never blocked by firewalls and proxies&nbsp;<span class="citation" data-cites="about_auth"><sup><a href="#ref-about_auth" role="doc-biblioref">18</a></sup></span>.</td>
+<td>Additional security with Hardware Keys&nbsp;<span class="citation" data-cites="hardware"><sup><a href="#ref-hardware" role="doc-biblioref">24</a></sup></span></td>
+<td>Never blocked by firewalls and proxies&nbsp;<span class="citation" data-cites="about_auth"><sup><a href="#ref-about_auth" role="doc-biblioref">23</a></sup></span></td>
 </tr>
 </tbody>
 </table>
@@ -650,7 +652,7 @@ PATs Replaced Username/Password
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Previously, GitHub allowed authentication with a username and password, but in 2021 the password requirement was replaced with PATs. Credential managers were adjusted to accommodate this change and should store the PAT accordingly.</p>
+<p>Previously, GitHub allowed authentication with a username and password, but in 2021 the password requirement was replaced with Personal Access Tokens (PATs). Credential managers were adjusted to accommodate this change and should store the PAT accordingly.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -663,21 +665,21 @@ Code Like a Pro
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>You can use different protocols for different projects, and it is possible to change the protocol associated with a given project later. Directions for converting between the two transfer methods can be found in the <em>Managing remote repositories</em> article provided on docs.github.com&nbsp;<span class="citation" data-cites="ssh_https https_ssh"><sup><a href="#ref-ssh_https" role="doc-biblioref">24</a>,<a href="#ref-https_ssh" role="doc-biblioref">25</a></sup></span>.</p>
+<p>You can use different protocols for different projects, and it is possible to change the protocol associated with a given project later. Directions for converting between the two transfer methods can be found in the <a href="https://docs.github.com/en/get-started/git-basics/managing-remote-repositories"><em>Managing remote repositories</em></a> article provided on docs.github.com&nbsp;<span class="citation" data-cites="ssh_https https_ssh"><sup><a href="#ref-ssh_https" role="doc-biblioref">25</a>,<a href="#ref-https_ssh" role="doc-biblioref">26</a></sup></span>.</p>
 </div>
 </div>
 <p>We provide basic instructions to configure your Git and GitHub for both methods. Advanced settings are not covered here, but relevant links are sometimes provided to help with these setups. Users are encouraged to explore these resources as needed for their individual projects.</p>
 <section id="https" class="level2">
 <h2 class="anchored" data-anchor-id="https">HTTPS</h2>
-<p>These directions were provided in the <em>Managing your personal access tokens</em> article provided on docs.github.com&nbsp;<span class="citation" data-cites="pat"><sup><a href="#ref-pat" role="doc-biblioref">22</a></sup></span>.</p>
+<p>These directions were provided in the <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens"><em>Managing your personal access tokens</em></a> article provided on docs.github.com&nbsp;<span class="citation" data-cites="pat"><sup><a href="#ref-pat" role="doc-biblioref">13</a></sup></span>.</p>
 <ol type="1">
-<li>Go to your GitHub <a href="https://github.com/settings/profile">account settings page</a>.</li>
-<li>At the end of the left sidebar, click on “<iconify-icon role="img" inline="" icon="octicon:code-16" aria-label="Icon code-16 from octicon Iconify.design set." title="Icon code-16 from octicon Iconify.design set."></iconify-icon> Developer Settings”.</li>
-<li>In the left sidebar open the “<iconify-icon role="img" inline="" icon="octicon:key-16" aria-label="Icon key-16 from octicon Iconify.design set." title="Icon key-16 from octicon Iconify.design set."></iconify-icon> Personal access tokens” drop-down menu and click on “Tokens (classic)”.</li>
-<li>In the center of the window, there is a drop-down menu. Select “Generate new token (classic)”.</li>
-<li>Add a note describing what the PAT is for and set its expiration time-frame.</li>
+<li><p>Go to your GitHub <a href="https://github.com/settings/profile">account settings page</a>.</p></li>
+<li><p>At the end of the left sidebar, click on “<iconify-icon role="img" inline="" icon="octicon:code-16" aria-label="Icon code-16 from octicon Iconify.design set." title="Icon code-16 from octicon Iconify.design set."></iconify-icon> Developer Settings”.</p></li>
+<li><p>In the left sidebar open the “<iconify-icon role="img" inline="" icon="octicon:key-16" aria-label="Icon key-16 from octicon Iconify.design set." title="Icon key-16 from octicon Iconify.design set."></iconify-icon> Personal access tokens” drop-down menu and click on “Tokens (classic)”.</p></li>
+<li><p>In the center of the window, there is a drop-down menu. Select “Generate new token (classic)”.</p></li>
+<li><p>Add a note describing what the PAT is for and set its expiration time-frame.</p></li>
 </ol>
-<div class="callout callout-style-default callout-note callout-titled" style="margin-left: 2rem">
+<div class="callout callout-style-default callout-warning callout-titled" style="margin-left: 2rem">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -703,19 +705,19 @@ Fine-Tuning Scopes
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>We do not cover the different ways repository access can be fine-tuned. If you wish to learn more about the access permission levels possible through GitHub, you can read the article provided on docs.github.com&nbsp;<span class="citation" data-cites="oath"><sup><a href="#ref-oath" role="doc-biblioref">26</a></sup></span>.</p>
+<p>We do not cover the different ways repository access can be fine-tuned. If you wish to learn more about the access permission levels possible through GitHub, you can read the article provided on docs.github.com&nbsp;<span class="citation" data-cites="oath"><sup><a href="#ref-oath" role="doc-biblioref">27</a></sup></span>.</p>
 </div>
 </div>
 <ol start="7" type="1">
-<li>At the bottom of the page, click <span style="white-space: nowrap; background-color: #1F70EB; color: #ffffff; border: 1px solid #4686EE; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px">Generate token</span>.</li>
-<li>Copy the generated PAT and save it somewhere secure for later use, as you will not be able to access it again after you exit the window.</li>
+<li><p>At the bottom of the page, click <span style="white-space: nowrap; background-color: #1F70EB; color: #ffffff; border: 1px solid #4686EE; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px">Generate token</span>.</p></li>
+<li><p>Copy the generated PAT and save it somewhere secure for later use, as you will not be able to access it again after you exit the window.</p></li>
 </ol>
 <p>Every time you interact with GitHub, you will enter your PAT instead of your account password. For example:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>Command-Line Application</strong></pre>
+<pre><strong>Command-Line Interface</strong></pre>
 </div>
-<div class="sourceCode" id="cb14" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/USERNAME/REPO.git</span>
+<div class="sourceCode" id="cb14" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/USERNAME/REPO.git</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Username:</span> YOUR-USERNAME</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Password:</span> YOUR-PERSONAL-ACCESS-TOKEN</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -723,13 +725,13 @@ Fine-Tuning Scopes
 </section>
 <section id="ssh-keys" class="level2">
 <h2 class="anchored" data-anchor-id="ssh-keys">SSH Keys</h2>
-<p>SSH Keys work by creating a private and public key pair. When interacting with the remote repository, the keys are compared to determine access permissions. We will use the command-line interface to generate these keys, and you will upload your public key to GitHub to complete the process&nbsp;<span class="citation" data-cites="new_ssh using_ssh ssh_on_github"><sup><a href="#ref-new_ssh" role="doc-biblioref">21</a>,<a href="#ref-using_ssh" role="doc-biblioref">27</a>,<a href="#ref-ssh_on_github" role="doc-biblioref">28</a></sup></span>.</p>
+<p>SSH Keys work by creating a private and public key pair. When interacting with the remote repository, the keys are compared to determine access permissions. We will use the CLI to generate these keys, and you will upload your public key to GitHub to complete the process&nbsp;<span class="citation" data-cites="new_ssh using_ssh ssh_on_github"><sup><a href="#ref-new_ssh" role="doc-biblioref">16</a>,<a href="#ref-using_ssh" role="doc-biblioref">28</a>,<a href="#ref-ssh_on_github" role="doc-biblioref">29</a></sup></span>.</p>
 <p>It is best practice to review your system for any existing private/public key pairs.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>Command-Line Application</strong></pre>
+<pre><strong>Command-Line Interface</strong></pre>
 </div>
-<div class="sourceCode" id="cb15" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> –al ~/.ssh         <span class="co"># List all elements in the .ssh directory</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> –al ~/.ssh         <span class="co"># List all elements in the .ssh directory</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -751,8 +753,8 @@ Fine-Tuning Scopes
 </div>
 <div class="sourceCode" id="cb17" data-filename="Command-Line Output - No Previous Keys Available"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ls:</span> cannot access <span class="kw">`</span><span class="ex">/c/Users/userID/.ssh</span><span class="kw">`</span>: No such file or directory</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>In this example, you can see that I have two SSH key pairs: one for authentication and one for signing. They are configured to use the Edwards-curve Digital Signature Algorithm (<code>id_ed25519</code>), a type of public-key cryptography algorithm. You might also see Rivest-Shamir-Adleman (<code>id_rsa</code>) or Elliptic Curve Digital Signature Algorithm (<code>id_ecdsa</code>)&nbsp;<span class="citation" data-cites="ssh_algorithms rsa_vs_ed25519"><sup><a href="#ref-ssh_algorithms" role="doc-biblioref">29</a>,<a href="#ref-rsa_vs_ed25519" role="doc-biblioref">30</a></sup></span>.</p>
-<p>While RSA is widely used and is compatible with SHA-1 and SHA-2 hash algorithms, ED25519 is considered to be more efficient, faster, and more secure because of its elliptic curve design. It is also a more modern method for cryptography compared to RSA&nbsp;<span class="citation" data-cites="rsa_vs_ed25519"><sup><a href="#ref-rsa_vs_ed25519" role="doc-biblioref">30</a></sup></span>.</p>
+<p>In this example, you can see that I have two SSH key pairs: one for authentication and one for signing. They are configured to use the Edwards-curve Digital Signature Algorithm (<code>id_ed25519</code>), a type of public-key cryptography algorithm. You might also see Rivest-Shamir-Adleman (<code>id_rsa</code>) or Elliptic Curve Digital Signature Algorithm (<code>id_ecdsa</code>)&nbsp;<span class="citation" data-cites="ssh_algorithms rsa_vs_ed25519"><sup><a href="#ref-ssh_algorithms" role="doc-biblioref">30</a>,<a href="#ref-rsa_vs_ed25519" role="doc-biblioref">31</a></sup></span>.</p>
+<p>While RSA is widely used and is compatible with SHA-1 and SHA-2 hash algorithms, ED25519 is considered to be more efficient, faster, and more secure because of its elliptic curve design. It is also a more modern method for cryptography compared to RSA&nbsp;<span class="citation" data-cites="rsa_vs_ed25519"><sup><a href="#ref-rsa_vs_ed25519" role="doc-biblioref">31</a></sup></span>.</p>
 <p>We will show you how to generate an <code>id_ed25519</code> or <code>id_rsa</code> SSH key. Consider the points provided below when choosing an algorithm.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -764,7 +766,7 @@ DSA Keys No Longer Supported
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>As of March 15, 2022, GitHub no longer supports the <code>ssh-dss</code> algorithm. If your setup uses this algorithm, you will need to delete those keys and replace them with either <code>id_rsa</code> or <code>id_ed25519</code>&nbsp;<span class="citation" data-cites="new_ssh"><sup><a href="#ref-new_ssh" role="doc-biblioref">21</a></sup></span>.</p>
+<p>As of March 15, 2022, GitHub no longer supports the <code>ssh-dss</code> algorithm. If your setup uses this algorithm, you will need to delete those keys and replace them with either <code>id_rsa</code> or <code>id_ed25519</code>&nbsp;<span class="citation" data-cites="new_ssh"><sup><a href="#ref-new_ssh" role="doc-biblioref">16</a></sup></span>.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -777,8 +779,8 @@ Must Specify SHA-2 Hash Length for RSA
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>SSH keys generated using the RSA algorithm after November 2, 2021, must be specified to use the SHA-2 hash algorithm length. RSA keys with a valid_after date set before this date can use either SHA-1 or SHA-2&nbsp;<span class="citation" data-cites="new_ssh ssh_algorithms"><sup><a href="#ref-new_ssh" role="doc-biblioref">21</a>,<a href="#ref-ssh_algorithms" role="doc-biblioref">29</a></sup></span>.</p>
-<p>You can verify the key length with <code>ssh-keygen -l -f ~/.ssh/id_rsa.pub</code>, changing the file name as needed. If the length is 2048, the key is using SHA-1. If the length is 4096, it is using SHA-2&nbsp;<span class="citation" data-cites="ssh_algorithms"><sup><a href="#ref-ssh_algorithms" role="doc-biblioref">29</a></sup></span>.</p>
+<p>SSH keys generated using the RSA algorithm after November 2, 2021, must be specified to use the SHA-2 hash algorithm length. RSA keys with a <code>valid_after</code> date set before this date can use either SHA-1 or SHA-2&nbsp;<span class="citation" data-cites="new_ssh ssh_algorithms"><sup><a href="#ref-new_ssh" role="doc-biblioref">16</a>,<a href="#ref-ssh_algorithms" role="doc-biblioref">30</a></sup></span>.</p>
+<p>You can verify the key length with <code>ssh-keygen -l -f ~/.ssh/id_rsa.pub</code>, changing the file name as needed. If the length is 2048, the key is using SHA-1. If the length is 4096, it is using SHA-2&nbsp;<span class="citation" data-cites="ssh_algorithms"><sup><a href="#ref-ssh_algorithms" role="doc-biblioref">30</a></sup></span>.</p>
 <p>We suggest replacing any SHA-1 configured keys with SHA-2 configured keys.</p>
 </div>
 </div>
@@ -792,7 +794,7 @@ Authentication vs Signing SSH Keys
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>GitHub requires different SSH Keys for account authentication and signing, which verify the authenticity and integrity of GitHub actions&nbsp;<span class="citation" data-cites="about_signature"><sup><a href="#ref-about_signature" role="doc-biblioref">31</a></sup></span>. At a minimum, you will need keys for authentication, while signing is optional. The same setup is applied for both options, except when specifying the purpose of the key to GitHub.</p>
+<p>GitHub requires different SSH Keys for account authentication and signing, which verify the authenticity and integrity of GitHub interactions&nbsp;<span class="citation" data-cites="about_signature"><sup><a href="#ref-about_signature" role="doc-biblioref">32</a></sup></span>. At a minimum, you will need keys for authentication, while signing is optional. The same setup is applied for both options, except when specifying the purpose of the key to GitHub.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -805,16 +807,16 @@ Code Like a Pro
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The astute student might have observed that my system is set to automatically sign all actions in GitHub with <code>commit.gpgsign=true</code> in the .gitconfig file. If you choose to create a pair of SSH keys for signing, it is recommended that you add this to your configuration with: <code>git config commit.gpgsign true</code>.</p>
-<p>The GPG Suite for macOS and Gpg4win for Windows will allow you to configure the GPG agent and save your signing credentials. You can learn more about signing commits in the <em>About commit signature verification</em> and <em>Signing commits</em> articles provided on docs.github.com&nbsp;<span class="citation" data-cites="about_signature signing_commits signing_tags"><sup><a href="#ref-about_signature" role="doc-biblioref">31</a>–<a href="#ref-signing_tags" role="doc-biblioref">33</a></sup></span>.</p>
+<p>The astute student might have observed that my system is set to automatically sign all actions in GitHub with <code>commit.gpgsign=true</code> in the <code>.gitconfig</code> file. If you choose to create a pair of SSH keys for signing, it is recommended that you add this to your configuration with: <code>git config commit.gpgsign true</code>.</p>
+<p>The GPG Suite for macOS and Gpg4win for Windows will allow you to configure the GPG agent and save your signing credentials. You can learn more about signing commits in the <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification#ssh-commit-signature-verification"><em>About commit signature verification</em></a>, <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits"><em>Signing commits</em></a>, and <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-tags"><em>Signing tags</em></a> articles provided on docs.github.com&nbsp;<span class="citation" data-cites="about_signature signing_commits signing_tags"><sup><a href="#ref-about_signature" role="doc-biblioref">32</a>–<a href="#ref-signing_tags" role="doc-biblioref">34</a></sup></span>.</p>
 </div>
 </div>
 <p>Now that you have chosen an SSH algorithm from ED25519 or RSA, we can generate the public and private key pair.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>Command-Line Application</strong></pre>
+<pre><strong>Command-Line Interface</strong></pre>
 </div>
-<div class="sourceCode" id="cb18" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ed25519</span></span>
+<div class="sourceCode" id="cb18" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ed25519</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519 <span class="at">-C</span> <span class="st">"your@email.com"</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># RSA with SHA-2</span></span>
@@ -834,7 +836,7 @@ Code Like a Pro
 <div class="sourceCode" id="cb20" data-filename="Command-Line Output - RSA"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Generating</span> public/private rsa key pair.</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Enter</span> a file in which to save the key <span class="er">(</span><span class="ex">/Users/userID/.ssh/id_rsa</span><span class="kw">)</span><span class="bu">:</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>After the keys have been created, you are given the option to specify where they will be stored, and you can modify the key name if desired. It is easier to keep the SSH key pairs stored in the ~/.ssh directory, avoiding additional configuration settings.</p>
+<p>After the keys have been created, you are given the option to specify where they will be stored, and you can modify the key name if desired. It is easier to keep the SSH key pairs stored in the <code>~/.ssh</code> directory, avoiding additional configuration settings.</p>
 <p>If you want to change the key name, you <strong>must</strong> keep the <code>id_ed25519</code> or <code>id_rsa</code> prefix, as this tells your system which algorithm to use. For example:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -847,7 +849,7 @@ Code Like a Pro
 <span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify a new file name, keeping the default location</span></span>
 <span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Enter</span> a file in which to save the key <span class="er">(</span><span class="ex">/Users/userID/.ssh/id_ed25519</span><span class="kw">)</span><span class="bu">:</span> /Users/userID/.ssh/id_ed25519_modify_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Continuing with the ED25519 example, as the steps will be the same for RSA going forward, you will be given the option to add a password to your key. We highly suggest that you use a strong password and save it somewhere secure for later use. If needed, you can change the password down the line, but you will not be able to recover it if you lose it&nbsp;<span class="citation" data-cites="using_ssh"><sup><a href="#ref-using_ssh" role="doc-biblioref">27</a></sup></span></p>
+<p>Continuing with the ED25519 example, as the steps will be the same for RSA going forward, you will be given the option to add a password to your key. We highly suggest that you use a strong password and save it somewhere secure for later use. If needed, you can change the password down the line, but you will not be able to recover it if you lose it&nbsp;<span class="citation" data-cites="using_ssh"><sup><a href="#ref-using_ssh" role="doc-biblioref">28</a></sup></span>.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Command-Line Output - ED25519</strong></pre>
@@ -877,13 +879,13 @@ Code Like a Pro
 <span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a><span class="st">+----[SHA256]-----+</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>When you have successfully created your keys, you will see the final output shown above. It is not necessary to save the fingerprint or randomart (visual representation of the fingerprint), but I personally save them in the notes section of my password manager.</p>
-<p>Similarly to HTTPS, it is possible to cache your SSH key password using agent forwarding. While we won’t cover the setup process here, you can learn more about it and find detailed instructions in the <em>Using SSH agent forwarding</em> and <em>Generating a new SSH key and adding it to the ssh-agent</em> articles on docs.github.com&nbsp;<span class="citation" data-cites="agent_forwarding adding_agent"><sup><a href="#ref-agent_forwarding" role="doc-biblioref">34</a>,<a href="#ref-adding_agent" role="doc-biblioref">35</a></sup></span>.</p>
+<p>Similarly to HTTPS, it is possible to cache your SSH key password using agent forwarding. While we won’t cover the setup process here, you can learn more about it and find detailed instructions in the <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/using-ssh-agent-forwarding"><em>Using SSH agent forwarding</em></a> and <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#adding-your-ssh-key-to-the-ssh-agent"><em>Generating a new SSH key and adding it to the ssh-agent</em></a> articles on docs.github.com&nbsp;<span class="citation" data-cites="agent_forwarding adding_agent"><sup><a href="#ref-agent_forwarding" role="doc-biblioref">35</a>,<a href="#ref-adding_agent" role="doc-biblioref">36</a></sup></span>.</p>
 <p>With our public and private SSH key pairs created, we are ready to add the public one to our GitHub account. Start by copying the recently created public key.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>Command-Line Application - ED25519</strong></pre>
+<pre><strong>Command-Line Interface - ED25519</strong></pre>
 </div>
-<div class="sourceCode" id="cb24" data-filename="Command-Line Application - ED25519"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pbcopy</span> <span class="op">&lt;</span> ~/.ssh/id_ed25519.pub</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24" data-filename="Command-Line Interface - ED25519"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pbcopy</span> <span class="op">&lt;</span> ~/.ssh/id_ed25519.pub</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol type="1">
 <li><p>Go to your GitHub <a href="https://github.com/settings/profile">account settings page</a>.</p></li>
@@ -893,14 +895,14 @@ Code Like a Pro
 <li><p>Select “Authentication key” as the key type.</p></li>
 <li><p>In the “Key” field, paste the public key you copied above.</p></li>
 <li><p>Click <span style="white-space: nowrap; background-color: #1F70EB; color: #ffffff; border: 1px solid #4686EE; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px">Add SSH key</span> and follow the prompts.</p></li>
-<li><p>To ensure a valid connection with GitHub, you will need to open the ~/.ssh/known_hosts file and copy-and-paste GitHub’s <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints">SSH key fingerprints</a>&nbsp;<span class="citation" data-cites="fingerprints"><sup><a href="#ref-fingerprints" role="doc-biblioref">36</a></sup></span>.</p></li>
+<li><p>To ensure a valid connection with GitHub, you will need to open the <code>~/.ssh/known_hosts</code> file and copy-and-paste GitHub’s <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints">SSH key fingerprints</a>&nbsp;<span class="citation" data-cites="fingerprints"><sup><a href="#ref-fingerprints" role="doc-biblioref">37</a></sup></span>.</p></li>
 </ol>
 <p>You can confirm that the keys are correctly configured with the following test. If you get the expected output shown below, then you are all set!</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>Command-Line Application</strong></pre>
+<pre><strong>Command-Line Interface</strong></pre>
 </div>
-<div class="sourceCode" id="cb25" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-T</span> git@github.com</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-T</span> git@github.com</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -914,15 +916,14 @@ Code Like a Pro
 <h1>Advanced Configurations</h1>
 <section id="multiple-git-configurations" class="level2">
 <h2 class="anchored" data-anchor-id="multiple-git-configurations">Multiple Git Configurations</h2>
-<p>Suppose you use two or more GitHub accounts and need different emails or usernames associated with Git commits made to those remote repositories. Reconfiguring every project directory for this purpose would be tedious.</p>
-<p>Instead, you can use an automatically expanded local setting to override the global configurations using “Conditional Includes”. This feature has been available since Git version 2.13&nbsp;<span class="citation" data-cites="AnsweredbyJanousek2017 Barochiya2021 Connolly2022"><sup><a href="#ref-AnsweredbyJanousek2017" role="doc-biblioref">37</a>–<a href="#ref-Connolly2022" role="doc-biblioref">39</a></sup></span>.</p>
+<p>Suppose you use two or more GitHub accounts and need different emails or usernames associated with Git commits made to those remote repositories. Reconfiguring every project directory for this purpose would be tedious. Instead, you can use an automatically expanded local setting to override the global configurations using “Conditional Includes”. This feature has been available since Git version 2.13&nbsp;<span class="citation" data-cites="AnsweredbyJanousek2017 Barochiya2021 Connolly2022"><sup><a href="#ref-AnsweredbyJanousek2017" role="doc-biblioref">38</a>–<a href="#ref-Connolly2022" role="doc-biblioref">40</a></sup></span>.</p>
 <p>In this framework, you need to organize your project directories such that those with an alternate configuration are in the same parent directory. We will refer to this parent directory as “Alternate.” The directions given here assume that you have already set up the global Git configurations.</p>
-<p>We start by locating and opening the .gitconfig file.</p>
+<p>We start by locating and opening the <code>.gitconfig</code> file.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>Command-Line Application</strong></pre>
+<pre><strong>Command-Line Interface</strong></pre>
 </div>
-<div class="sourceCode" id="cb27" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--list</span> <span class="at">--show-origin</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--list</span> <span class="at">--show-origin</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -933,7 +934,7 @@ Code Like a Pro
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="ex">file:/Users/userID/.gitconfig</span>   user.name=Shelby Golden</span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="bu">:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>When you open .gitconfig with Finder/File Explorer, you will see something like this:</p>
+<p>When you open <code>.gitconfig</code> with Finder/File Explorer, you will see something like this:</p>
 <div class="line-thick">
 
 </div>
@@ -960,7 +961,7 @@ Code Like a Pro
      process = git-lfs filter-process<br>
   [pack]<br>
      packSizeLimit = 50M</p>
-<div class="line-thin">
+<div class="line-thin" style="padding-bottom: 1rem">
 
 </div>
 <p>After the [user] section, add the conditional include statement. The order of the sections does not matter, but the indentation is important to keep consistent.</p>
@@ -980,21 +981,21 @@ Code Like a Pro
  [includeIf “gitdir:/Users/userID/Desktop/…/Alternate/”]<br>
      path = /Users/userID/Desktop/DSDE/…/Alternate/.gitconfig<br>
   :</p>
-<div class="line-thin">
+<div class="line-thin" style="padding-bottom: 1rem">
 
 </div>
-<p>Now we need to create the Git configuration file applicable to all projects stored in ~/Alternate.</p>
+<p>Now we need to create the Git configuration file applicable to all projects stored in <code>~/Alternate</code>.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>Command-Line Application</strong></pre>
+<pre><strong>Command-Line Interface</strong></pre>
 </div>
-<div class="sourceCode" id="cb29" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Navigate to the alternative account parent directory.</span></span>
+<div class="sourceCode" id="cb29" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Navigate to the alternative account parent directory.</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="st">"/FILE_PATH/Alternate"</span></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Create a new configuration file.</span></span>
 <span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> .gitconfig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Open the ~/Alternate/.gitconfig file, either using the <code>vim</code> in the command-line interface or by opening it with Finder/File Explorer, and add the relevant Git configurations you want applied to this account.</p>
+<p>Open the <code>~/Alternate/.gitconfig</code> file, either using the <code>vim</code> in the CLI or by opening it with Finder/File Explorer, and add the relevant Git configurations you want applied to this account.</p>
 <div class="line-thick">
 
 </div>
@@ -1018,19 +1019,18 @@ Code Like a Pro
 </section>
 <section id="configuring-ssh-keys-to-different-hosts" class="level2">
 <h2 class="anchored" data-anchor-id="configuring-ssh-keys-to-different-hosts">Configuring SSH Keys to Different Hosts</h2>
-<p>Suppose you want to use SSH Keys to interact with remote repositories stored on different domains, such as GitHub and GitLab. You will need to create a new document called config in the ~/.ssh directory.</p>
+<p>Suppose you want to use SSH Keys to interact with remote repositories stored on different domains, such as GitHub and GitLab. You will need to create a new document called config in the <code>~/.ssh</code> directory.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>Command-Line Application</strong></pre>
+<pre><strong>Command-Line Interface</strong></pre>
 </div>
-<div class="sourceCode" id="cb30" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Navigate to the .ssh directory.</span></span>
+<div class="sourceCode" id="cb30" data-filename="Command-Line Interface"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Navigate to the .ssh directory.</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /Users/userID/.ssh</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Create a new configuration file.</span></span>
 <span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> config</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Open the ~/.ssh/config file, either using <code>vim</code> in the command-line interface or by opening it with Finder/File Explorer, and add the relevant SSH configurations necessary to coordinate file transfers between different remote account locations.</p>
-<p>For example, my configuration document looks like this:</p>
+<p>Open the <code>~/.ssh/config</code> file, either using <code>vim</code> in the CLI or by opening it with Finder/File Explorer, and add the relevant SSH configurations necessary to coordinate file transfers between different remote account locations. For example, my configuration document looks like this:</p>
 <div class="line-thick">
 
 </div>
@@ -1053,6 +1053,58 @@ Code Like a Pro
 
 </div>
 </section>
+</section>
+<section id="section-glossary" class="level1">
+<h1>Section Glossary</h1>
+<table class="glossary-table">
+<tbody>
+<!-- Row 1 -->
+<tr>
+<td class="col1">
+Command-Line Interface (CLI)
+</td>
+<td>
+A texted-base application that directly interacts with the computer’s operating system, manages files, and can run programs. It typically lacks a GUI&nbsp;<span class="citation" data-cites="terminal_shell"><sup><a href="#ref-terminal_shell" role="doc-biblioref">10</a></sup></span>.
+</td>
+</tr>
+<!-- Row 2 -->
+<tr>
+<td class="col1">
+<code>git pull</code>
+</td>
+<td>
+Downloads a copy of the specified remote repository’s branch and integrates it with the local copy. Combines the actions of <code>git fetch</code> followed by <code>git merge</code> or <code>git rebase</code>&nbsp;<span class="citation" data-cites="git_pull"><sup><a href="#ref-git_pull" role="doc-biblioref">41</a></sup></span>.
+</td>
+</tr>
+<!-- Row 3 -->
+<tr>
+<td class="col1">
+HTTPS (Hypertext Transfer Protocol Secure)
+</td>
+<td>
+Facilitates secure transmission of information over an encrypted internet connection. Decryption occurs when the correct username and Personal Access Token (PAT) are provided&nbsp;<span class="citation" data-cites="pat setup_auth ssh_vs_https about_auth"><sup><a href="#ref-pat" role="doc-biblioref">13</a>–<a href="#ref-ssh_vs_https" role="doc-biblioref">15</a>,<a href="#ref-about_auth" role="doc-biblioref">23</a></sup></span>.
+</td>
+</tr>
+<!-- Row 4 -->
+<tr>
+<td class="col1">
+Shell
+</td>
+<td>
+A program used by the CLI to mediate communication between the user and computer by interpreting commands and outputs. Examples: Bash, PowerShell, etc&nbsp;<span class="citation" data-cites="terminal_shell"><sup><a href="#ref-terminal_shell" role="doc-biblioref">10</a></sup></span>.
+</td>
+</tr>
+<!-- Row 5 -->
+<tr>
+<td class="col1">
+SSH (Secure Shell)
+</td>
+<td>
+Uses a pair of keys—a private key and a public key. Information is encrypted when sent between servers, and only the matching key pair can decrypt it upon receipt&nbsp;<span class="citation" data-cites="new_ssh setup_auth ssh_vs_https about_auth"><sup><a href="#ref-setup_auth" role="doc-biblioref">14</a>–<a href="#ref-new_ssh" role="doc-biblioref">16</a>,<a href="#ref-about_auth" role="doc-biblioref">23</a></sup></span>.
+</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="references" class="level1">
 <h1>References</h1>
@@ -1085,95 +1137,101 @@ Code Like a Pro
 <div id="ref-git_for_windows" class="csl-entry" role="listitem">
 <div class="csl-left-margin">9. </div><div class="csl-right-inline">Windows, G. for. <a href="https://gitforwindows.org/">Git for windows</a>.</div>
 </div>
+<div id="ref-terminal_shell" class="csl-entry" role="listitem">
+<div class="csl-left-margin">10. </div><div class="csl-right-inline">Contributor, G. <a href="https://www.geeksforgeeks.org/difference-between-terminal-console-shell-and-command-line/">Difference between terminal, console, shell, and command line</a>. (2024).</div>
+</div>
 <div id="ref-git_scm_config" class="csl-entry" role="listitem">
-<div class="csl-left-margin">10. </div><div class="csl-right-inline">Git-SCM. <a href="https://git-scm.com/docs/git-config">Git config</a>. <em>Git-SCM Documents</em>.</div>
+<div class="csl-left-margin">11. </div><div class="csl-right-inline">Git-SCM. <a href="https://git-scm.com/docs/git-config">Git config</a>. <em>Git-SCM Documents</em>.</div>
 </div>
 <div id="ref-credential_manager" class="csl-entry" role="listitem">
-<div class="csl-left-margin">11. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/get-started/git-basics/caching-your-github-credentials-in-git">Caching your GitHub credentials in git</a>. <em>GitHub Docs</em>.</div>
-</div>
-<div id="ref-homebrew" class="csl-entry" role="listitem">
-<div class="csl-left-margin">12. </div><div class="csl-right-inline">Howell, M. <a href="https://brew.sh/">Homebrew - the missing package manager for macOS (or linux)</a>. <em>Homebrew</em>.</div>
-</div>
-<div id="ref-macports" class="csl-entry" role="listitem">
-<div class="csl-left-margin">13. </div><div class="csl-right-inline">contributors, V. <a href="https://www.macports.org/install.php">Download &amp; installation</a>. <em>The MacPorts Project</em>.</div>
-</div>
-<div id="ref-osxkeychain" class="csl-entry" role="listitem">
-<div class="csl-left-margin">14. </div><div class="csl-right-inline">Atlassian. <a href="https://www.atlassian.com/git/tutorials/install-git#install-the-git-credential-osx">Install git - install the git-credential-osxkeychain helper</a>. <em>Atlassian Tutorial</em>.</div>
-</div>
-<div id="ref-atlassian_config" class="csl-entry" role="listitem">
-<div class="csl-left-margin">15. </div><div class="csl-right-inline">Atlassian. <a href="https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-config">Git config</a>. <em>Atlassian Tutorial</em>.</div>
-</div>
-<div id="ref-Answeredbykgf3JfUtW2017" class="csl-entry" role="listitem">
-<div class="csl-left-margin">16. </div><div class="csl-right-inline">kgf3JfUtW, A. by. <a href="https://stackoverflow.com/questions/12254076/how-do-i-show-my-global-git-configuration">How do i show my global git configuration? - stack overflow</a>. <em>StackOverflow</em> (2017).</div>
-</div>
-<div id="ref-Foster2024" class="csl-entry" role="listitem">
-<div class="csl-left-margin">17. </div><div class="csl-right-inline">Foster, G. <a href="https://graphite.dev/guides/git-unset-config">Unsetting git configuration settings</a>. <em>Graphite</em> (2024).</div>
-</div>
-<div id="ref-about_auth" class="csl-entry" role="listitem">
-<div class="csl-left-margin">18. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github">About authentication to GitHub</a>. <em>GitHub Docs</em>.</div>
-</div>
-<div id="ref-setup_auth" class="csl-entry" role="listitem">
-<div class="csl-left-margin">19. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/get-started/getting-started-with-git/set-up-git#authenticating-with-github-from-git">Set up git - authenticating with GitHub from git</a>. <em>GitHub Docs</em>.</div>
-</div>
-<div id="ref-ssh_vs_https" class="csl-entry" role="listitem">
-<div class="csl-left-margin">20. </div><div class="csl-right-inline">Singh, Y. <a href="https://ysrazsingh.medium.com/difference-between-ssh-and-https-in-github-95ea7cf38f4c">Difference between SSH and HTTPS in GitHub</a>. <em>Medium</em> (2023).</div>
-</div>
-<div id="ref-new_ssh" class="csl-entry" role="listitem">
-<div class="csl-left-margin">21. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key">Generating a new SSH key and adding it to the ssh-agent - generating a new SSH key</a>. <em>GitHub Docs</em>.</div>
+<div class="csl-left-margin">12. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/get-started/git-basics/caching-your-github-credentials-in-git">Caching your GitHub credentials in git</a>. <em>GitHub Docs</em>.</div>
 </div>
 <div id="ref-pat" class="csl-entry" role="listitem">
-<div class="csl-left-margin">22. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens">Managing your personal access tokens</a>. <em>GitHub Docs</em>.</div>
+<div class="csl-left-margin">13. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens">Managing your personal access tokens</a>. <em>GitHub Docs</em>.</div>
+</div>
+<div id="ref-setup_auth" class="csl-entry" role="listitem">
+<div class="csl-left-margin">14. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/get-started/getting-started-with-git/set-up-git#authenticating-with-github-from-git">Set up git - authenticating with GitHub from git</a>. <em>GitHub Docs</em>.</div>
+</div>
+<div id="ref-ssh_vs_https" class="csl-entry" role="listitem">
+<div class="csl-left-margin">15. </div><div class="csl-right-inline">Singh, Y. <a href="https://ysrazsingh.medium.com/difference-between-ssh-and-https-in-github-95ea7cf38f4c">Difference between SSH and HTTPS in GitHub</a>. <em>Medium</em> (2023).</div>
+</div>
+<div id="ref-new_ssh" class="csl-entry" role="listitem">
+<div class="csl-left-margin">16. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key">Generating a new SSH key and adding it to the ssh-agent - generating a new SSH key</a>. <em>GitHub Docs</em>.</div>
+</div>
+<div id="ref-homebrew" class="csl-entry" role="listitem">
+<div class="csl-left-margin">17. </div><div class="csl-right-inline">Howell, M. <a href="https://brew.sh/">Homebrew - the missing package manager for macOS (or linux)</a>. <em>Homebrew</em>.</div>
+</div>
+<div id="ref-macports" class="csl-entry" role="listitem">
+<div class="csl-left-margin">18. </div><div class="csl-right-inline">contributors, V. <a href="https://www.macports.org/install.php">Download &amp; installation</a>. <em>The MacPorts Project</em>.</div>
+</div>
+<div id="ref-osxkeychain" class="csl-entry" role="listitem">
+<div class="csl-left-margin">19. </div><div class="csl-right-inline">Atlassian. <a href="https://www.atlassian.com/git/tutorials/install-git#install-the-git-credential-osx">Install git - install the git-credential-osxkeychain helper</a>. <em>Atlassian Tutorial</em>.</div>
+</div>
+<div id="ref-atlassian_config" class="csl-entry" role="listitem">
+<div class="csl-left-margin">20. </div><div class="csl-right-inline">Atlassian. <a href="https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-config">Git config</a>. <em>Atlassian Tutorial</em>.</div>
+</div>
+<div id="ref-Answeredbykgf3JfUtW2017" class="csl-entry" role="listitem">
+<div class="csl-left-margin">21. </div><div class="csl-right-inline">kgf3JfUtW, A. by. <a href="https://stackoverflow.com/questions/12254076/how-do-i-show-my-global-git-configuration">How do i show my global git configuration? - stack overflow</a>. <em>StackOverflow</em> (2017).</div>
+</div>
+<div id="ref-Foster2024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">22. </div><div class="csl-right-inline">Foster, G. <a href="https://graphite.dev/guides/git-unset-config">Unsetting git configuration settings</a>. <em>Graphite</em> (2024).</div>
+</div>
+<div id="ref-about_auth" class="csl-entry" role="listitem">
+<div class="csl-left-margin">23. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github">About authentication to GitHub</a>. <em>GitHub Docs</em>.</div>
 </div>
 <div id="ref-hardware" class="csl-entry" role="listitem">
-<div class="csl-left-margin">23. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key-for-a-hardware-security-key">Generating a new SSH key and adding it to the ssh-agent - generating a new SSH key for a hardware security key</a>. <em>GitHub Docs</em>.</div>
+<div class="csl-left-margin">24. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key-for-a-hardware-security-key">Generating a new SSH key and adding it to the ssh-agent - generating a new SSH key for a hardware security key</a>. <em>GitHub Docs</em>.</div>
 </div>
 <div id="ref-ssh_https" class="csl-entry" role="listitem">
-<div class="csl-left-margin">24. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories#switching-remote-urls-from-ssh-to-https">Managing remote repositories - switching remote URLs from SSH to HTTPS</a>. <em>GitHub Docs</em>.</div>
+<div class="csl-left-margin">25. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories#switching-remote-urls-from-ssh-to-https">Managing remote repositories - switching remote URLs from SSH to HTTPS</a>. <em>GitHub Docs</em>.</div>
 </div>
 <div id="ref-https_ssh" class="csl-entry" role="listitem">
-<div class="csl-left-margin">25. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories#switching-remote-urls-from-https-to-ssh">Managing remote repositories - switching remote URLs from HTTPS to SSH</a>. <em>GitHub Docs</em>.</div>
+<div class="csl-left-margin">26. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories#switching-remote-urls-from-https-to-ssh">Managing remote repositories - switching remote URLs from HTTPS to SSH</a>. <em>GitHub Docs</em>.</div>
 </div>
 <div id="ref-oath" class="csl-entry" role="listitem">
-<div class="csl-left-margin">26. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/scopes-for-oauth-apps">Scopes for OAuth apps</a>. <em>GitHub Docs</em>.</div>
+<div class="csl-left-margin">27. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/scopes-for-oauth-apps">Scopes for OAuth apps</a>. <em>GitHub Docs</em>.</div>
 </div>
 <div id="ref-using_ssh" class="csl-entry" role="listitem">
-<div class="csl-left-margin">27. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/working-with-ssh-key-passphrases">Working with SSH key passphrases</a>. <em>GitHub Docs</em>.</div>
+<div class="csl-left-margin">28. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/working-with-ssh-key-passphrases">Working with SSH key passphrases</a>. <em>GitHub Docs</em>.</div>
 </div>
 <div id="ref-ssh_on_github" class="csl-entry" role="listitem">
-<div class="csl-left-margin">28. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account">Adding a new SSH key to your GitHub account</a>. <em>GitHub Docs</em>.</div>
+<div class="csl-left-margin">29. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account">Adding a new SSH key to your GitHub account</a>. <em>GitHub Docs</em>.</div>
 </div>
 <div id="ref-ssh_algorithms" class="csl-entry" role="listitem">
-<div class="csl-left-margin">29. </div><div class="csl-right-inline">StrongDM, S. T. Z. T. P. A. M. (PAM). <a href="https://www.strongdm.com/blog/comparing-ssh-keys">Comparing SSH keys: A comprehensive guide (RSA, DSA, ECDSA)</a>. (2025).</div>
+<div class="csl-left-margin">30. </div><div class="csl-right-inline">StrongDM, S. T. Z. T. P. A. M. (PAM). <a href="https://www.strongdm.com/blog/comparing-ssh-keys">Comparing SSH keys: A comprehensive guide (RSA, DSA, ECDSA)</a>. (2025).</div>
 </div>
 <div id="ref-rsa_vs_ed25519" class="csl-entry" role="listitem">
-<div class="csl-left-margin">30. </div><div class="csl-right-inline">GeeksforGeeks. <a href="https://www.geeksforgeeks.org/devops/rsa-vs-ed25519-which-key-pair-is-right-for-your-security-needs/#what-is-ed25519">RSA vs Ed25519: Which key pair is right for your security needs?</a> <em>GeeksforGeeks</em> (2025).</div>
+<div class="csl-left-margin">31. </div><div class="csl-right-inline">GeeksforGeeks. <a href="https://www.geeksforgeeks.org/devops/rsa-vs-ed25519-which-key-pair-is-right-for-your-security-needs/#what-is-ed25519">RSA vs Ed25519: Which key pair is right for your security needs?</a> <em>GeeksforGeeks</em> (2025).</div>
 </div>
 <div id="ref-about_signature" class="csl-entry" role="listitem">
-<div class="csl-left-margin">31. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification#ssh-commit-signature-verification">About commit signature verification - SSH commit signature verification</a>. <em>GitHub Docs</em>.</div>
+<div class="csl-left-margin">32. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification#ssh-commit-signature-verification">About commit signature verification - SSH commit signature verification</a>. <em>GitHub Docs</em>.</div>
 </div>
 <div id="ref-signing_commits" class="csl-entry" role="listitem">
-<div class="csl-left-margin">32. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits">Signing commits</a>. <em>GitHub Docs</em>.</div>
+<div class="csl-left-margin">33. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits">Signing commits</a>. <em>GitHub Docs</em>.</div>
 </div>
 <div id="ref-signing_tags" class="csl-entry" role="listitem">
-<div class="csl-left-margin">33. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-tags">Signing tags</a>. <em>GitHub Docs</em>.</div>
+<div class="csl-left-margin">34. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-tags">Signing tags</a>. <em>GitHub Docs</em>.</div>
 </div>
 <div id="ref-agent_forwarding" class="csl-entry" role="listitem">
-<div class="csl-left-margin">34. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/using-ssh-agent-forwarding">Using SSH agent forwarding</a>. <em>GitHub Docs</em>.</div>
+<div class="csl-left-margin">35. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/using-ssh-agent-forwarding">Using SSH agent forwarding</a>. <em>GitHub Docs</em>.</div>
 </div>
 <div id="ref-adding_agent" class="csl-entry" role="listitem">
-<div class="csl-left-margin">35. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#adding-your-ssh-key-to-the-ssh-agent">Generating a new SSH key and adding it to the ssh-agent - adding your SSH key to the ssh-agent</a>. <em>GitHub Docs</em>.</div>
+<div class="csl-left-margin">36. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#adding-your-ssh-key-to-the-ssh-agent">Generating a new SSH key and adding it to the ssh-agent - adding your SSH key to the ssh-agent</a>. <em>GitHub Docs</em>.</div>
 </div>
 <div id="ref-fingerprints" class="csl-entry" role="listitem">
-<div class="csl-left-margin">36. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints">GitHub’s SSH key fingerprints</a>. <em>GitHub Docs</em>.</div>
+<div class="csl-left-margin">37. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints">GitHub’s SSH key fingerprints</a>. <em>GitHub Docs</em>.</div>
 </div>
 <div id="ref-AnsweredbyJanousek2017" class="csl-entry" role="listitem">
-<div class="csl-left-margin">37. </div><div class="csl-right-inline">Janousek, T. A. by. <a href="https://stackoverflow.com/questions/4220416/can-i-specify-multiple-users-for-myself-in-gitconfig">Git - can i specify multiple users for myself in .gitconfig?</a> <em>StackOverflow</em> (2017).</div>
+<div class="csl-left-margin">38. </div><div class="csl-right-inline">Janousek, T. A. by. <a href="https://stackoverflow.com/questions/4220416/can-i-specify-multiple-users-for-myself-in-gitconfig">Git - can i specify multiple users for myself in .gitconfig?</a> <em>StackOverflow</em> (2017).</div>
 </div>
 <div id="ref-Barochiya2021" class="csl-entry" role="listitem">
-<div class="csl-left-margin">38. </div><div class="csl-right-inline">Barochiya, D. <a href="https://www.freecodecamp.org/news/how-to-handle-multiple-git-configurations-in-one-machine/">How to use multiple git configs on one computer</a>. <em>freeCodeCamp</em> (2021).</div>
+<div class="csl-left-margin">39. </div><div class="csl-right-inline">Barochiya, D. <a href="https://www.freecodecamp.org/news/how-to-handle-multiple-git-configurations-in-one-machine/">How to use multiple git configs on one computer</a>. <em>freeCodeCamp</em> (2021).</div>
 </div>
 <div id="ref-Connolly2022" class="csl-entry" role="listitem">
-<div class="csl-left-margin">39. </div><div class="csl-right-inline">Connolly, K. <a href="https://connkat.medium.com/setting-up-multiple-ssh-keys-on-one-computer-75f068d972d9">Setting up multiple SSH keys on one computer</a>. <em>Medium</em> (2022).</div>
+<div class="csl-left-margin">40. </div><div class="csl-right-inline">Connolly, K. <a href="https://connkat.medium.com/setting-up-multiple-ssh-keys-on-one-computer-75f068d972d9">Setting up multiple SSH keys on one computer</a>. <em>Medium</em> (2022).</div>
+</div>
+<div id="ref-git_pull" class="csl-entry" role="listitem">
+<div class="csl-left-margin">41. </div><div class="csl-right-inline">Atlassian. <a href="https://www.atlassian.com/git/tutorials/syncing/git-pull">Git pull</a>. <em>Atlassian Tutorial</em>.</div>
 </div>
 </div>
 </section>
