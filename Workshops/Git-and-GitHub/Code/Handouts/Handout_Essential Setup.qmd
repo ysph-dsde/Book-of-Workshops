@@ -52,7 +52,7 @@ bibliography: references.bib
 csl: ../../../../Code/nature.csl
 ---
 
-If you have not yet, you will need to get a GitHub account and to install Git on your local device. This document was constructed from Atlassian's _[How to install Git](https://www.atlassian.com/git/tutorials/install-git)_ tutorial and Git-SCM's [download pages](https://git-scm.com/downloads)\ [@atlassian_git; @git_macs; @git_pc; @git_linux].
+If you have not yet, you will need two things: a GitHub account and Git installed on your local device. This guide provides complete steps for setting up both and linking them together. Additional special setup cases I have personally encountered are covered in the Advanced Configurations section. This document is based on Atlassian's _[How to install Git](https://www.atlassian.com/git/tutorials/install-git)_  tutorial and Git-SCM's [download pages](https://git-scm.com/downloads)\ [@atlassian_git; @git_macs; @git_pc; @git_linux].
 
 \vspace{2ex}
 
@@ -68,12 +68,12 @@ To sign up for a GitHub account, navigate to [https://github.com/](https://githu
 
 Your GitHub username must consist of alphanumeric characters or single hyphens and cannot begin or end with a hyphen. It's important to carefully consider your username choice, especially if you plan to share it with professional collaborators or include it in your professional portfolio. Below are some suggestions to consider from the _[Happy Git and GitHub for the useR](https://happygitwithr.com/github-acct)_\ [@github_username]:
 
-- Include your name.
-- Keep it short and lowercase.
-- Keep it consistent with other accounts you want associated with your work.
-- Appropriate for sharing with an employer.
-- Avoid highlighting temporary affiliations, such as the current university you attend.
-- Ensure it's unique and doesn't have a special meaning in programming (e.g., avoid terms like `NA`).
+- Include your name
+- Keep it short and lowercase
+- Keep it consistent with other accounts you want associated with your work
+- Appropriate for sharing with an employer
+- Avoid highlighting temporary affiliations, such as the current university you attend
+- Ensure it's unique and doesn't have a special meaning in programming (e.g., avoid terms like `NA`)
 
 GitHub offers materials and short courses to help new users learn their interface: _[GitHub Skills](https://skills.github.com/)_, _[Repositories documentation](https://docs.github.com/en/repositories)_, and _[About GitHub Command-Line Interface (CLI)](https://docs.github.com/en/github-cli/github-cli/about-github-cli)_\ [@github_skills; @github_repos_docs; @github_cli].
 
@@ -110,9 +110,7 @@ If you do not get this output, you will need to install Git. In the following pa
 
 ## Windows
 
-Windows, by default, provides the PowerShell command-line interface, which does not support Bash commands. To emulate a Linux command-line interface, you have several options. The simplest option is to install Git for Windows: [https://gitforwindows.org/](https://gitforwindows.org/), which provides both Git and Git Bash, a Bash shell environment\ [@git_for_windows].
-
-Alternatively, you can emulate Linux command-line interfaces through other methods, or search for alternative commands compatible with the command-line interface you are using. If the option you are choosing does not include Git, it can be installed directly from: [https://git-scm.com/download/win](https://git-scm.com/download/win)\ [@git_scm_config; @git_pc].
+Windows, by default, provides the PowerShell command-line interface, which does not support Bash commands. To emulate a Linux command-line interface, you have several options. The simplest option is to install Git for Windows: [https://gitforwindows.org/](https://gitforwindows.org/), which provides both Git and Git Bash, a Bash shell environment\ [@git_for_windows]. Alternatively, you can emulate Linux CLIs through other methods or search for compatible commands for your CLI. If your chosen option does not include Git, you can install it directly from [https://git-scm.com/download/win](https://git-scm.com/download/win)\ [@git_scm_config; @git_pc].
 
 After you download Git for Windows, open the installer and follow the prompts. For this workshop, you can accept all default settings, but you may adjust them as desired. Below are some specific settings to consider as you go through the installer prompts.
 
@@ -120,23 +118,27 @@ After you download Git for Windows, open the installer and follow the prompts. F
 
 ::: {.callout-note}
 ## Customize the Default Branch
+
 The legacy Git system refers to the primary branch containing your files as "master." During installation, you can prompt Git to label this branch as "main" instead.
 :::
 
 ::: {.callout-warning}
 ## Install OpenSSH
+
 **SSH** stands for "Secure Shell", and it is the preferred secure transfer protocol used to communicate between your local device and the GitHub remote repository.
 \vspace{2ex}
-You will want to ensure that OpenSSH is installed. The Git installer will provide you with the option to install OpenSSH during the setup process, and we recommend that you select this option.
+To use it, you will want to ensure that OpenSSH is installed. The Git installer will provide you with the option to install OpenSSH during the setup process, and we recommend that you select this option.
 :::
 
 ::: {.callout-tip}
 ## Suggest Beginners Use "Fast-Forward or Merge" for \texttt{git pull}
+
 Later in this workshop, we will discuss what Git is doing with the \texttt{git pull} action. It is recommended that beginners select "Fast-Forward or Merge" by default, as rebasing is not beginner-friendly.
 :::
 
 ::: {.callout-tip}
 ## Suggest Installing the Git Credential Manager
+
 The Git credential Mmanager will cache your authentication information, making it easier to interact with remote repositories\ [@credential_manager].
 :::
 

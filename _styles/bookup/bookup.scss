@@ -135,6 +135,16 @@ $dsde-blue-light: #3e70a1;
     font-size: 0.85rem;
 }
 
+/* Override In-Line Code Color Scheme for headers */
+
+.inline-code {
+    color: var(--code-color) !important;
+    background-color: var(--code-block-bg) !important;
+    padding: 2px 4px !important;
+    font-size: 85% !important;
+    border-radius: 4px !important;
+}
+
 /* Popup for Feedback */
 
 .popup {
@@ -442,12 +452,13 @@ details[open] .arrow {
 /* Text code blocks with horizontal lines */
 
 .line-thick {
-border-top: 1pt solid black;
-margin: 0.2ex 0;
+    border-top: 1pt solid black;
+    margin: 0.2ex 0;
+    margin-top: 1rem;
 }
 .line-thin {
-border-top: 0.4pt solid black;
-margin: 1ex 0ex;
+    border-top: 0.4pt solid black;
+    margin: 1ex 0ex;
 }
 
 /* Code highlighting */

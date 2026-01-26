@@ -1,0 +1,667 @@
+---
+title: "Git and GitHub Workflows for Solo Development"
+subtitle: |
+  Getting Started with Git and GitHub Part 2 \
+  Coffee, Cookies, and Coding (C-cubed) Workshops
+date: 1/26/2026
+date-format: long
+format:
+  pdf:
+    include-in-header: 
+      - text: |
+          %%%%%%%%%%%%%%%%%%%% USAGE NOTE %%%%%%%%%%%%%%%%%%%%
+          % This LaTeX script sets up consistent formatting for DSDE Workshop handouts.
+          %
+          % To use:
+          % 1. Reference this LaTeX script in the YAML header of Quarto documents
+          %    with correct relative paths based on their directory depth.
+          % 2. Ensure that the "rootdir" and "stylesdir" paths in this LaTeX script
+          %    match those relative paths. Adjust as necessary.
+          % 
+          % The LaTeX script is located in "Code/Handout Formatting/PDF Formatting Script.tex".
+          %
+          % Example:
+          % For:
+          %   \input{../Code/Handout Formatting/PDF Formatting Script.tex}
+          % Set:
+          %   \newcommand{\rootdir}{../Code/Handout Formatting}
+          %   \newcommand{\stylesdir}{../_styles/Yale_typeface}
+          %
+          % For:
+          %   \input{../../../../Code/Handout Formatting/PDF Formatting Script.tex}
+          % Set:
+          %   \newcommand{\rootdir}{../../../../Code/Handout Formatting}
+          %   \newcommand{\stylesdir}{../../../../_styles/Yale_typeface}
+          %
+          %%%%%%%%%%%%%%%%%%%%%%
+          
+          \input{../../../../Code/Handout Formatting/PDF Formatting Script.tex}
+      - text: |
+          % Define common colors for other buttons
+          \definecolor{ButtonBackground}{HTML}{010409}
+          \definecolor{ButtonBorder}{HTML}{9198A1}
+          \definecolor{ButtonFont}{HTML}{B8BBBF}
+          
+          % Define specific colors for the Clone URL button
+          \definecolor{CloneUrlButtonBackground}{HTML}{1f6feb}
+          \definecolor{CloneUrlButtonBorder}{HTML}{0d1117}
+          \definecolor{CloneUrlButtonFont}{HTML}{ffffff}
+          
+          % Command for vertically centered icons with properly specified size and vertical offset
+          \newcommand{\vcenteredinclude}[2][ButtonFont]{
+            \raisebox{-.5\height}{\textcolor{#1}{\includegraphics[height=#2]{#2}}}
+          }
+          
+          % Create New button formatting
+          \newtcbox{\CreateNewButton}[1][ButtonBackground]{
+            on line, box align=center, colframe=ButtonBorder, colback=#1, halign=center,
+            boxrule=0.5pt, arc=5pt, left=5pt, right=5pt, top=1pt, bottom=1pt, boxsep=0pt, 
+            tcbox raise base, enhanced, fontupper=\fontspec{Arial}\color{ButtonFont}
+          }
+          
+          % New Repo button formatting
+          \newtcbox{\NewRepoButton}[1][ButtonBackground]{
+            on line, box align=center, colframe=ButtonBorder, colback=#1, halign=center,
+            boxrule=0.5pt, arc=5pt, left=7pt, right=7pt, top=3pt, bottom=3pt, boxsep=0pt, 
+            tcbox raise base, enhanced, fontupper=\fontspec{Arial}\color{ButtonFont}
+          }
+          
+          % Create Clone URL button formatting with specific colors
+          \newtcbox{\CloneUrlButton}[1][CloneUrlButtonBackground]{
+            on line, box align=center, colframe=CloneUrlButtonBorder, colback=#1, halign=center,
+            boxrule=0.5pt, arc=5pt, left=7pt, right=7pt, top=3pt, bottom=3pt, boxsep=0pt,
+            tcbox raise base, enhanced, fontupper=\fontspec{Arial}\color{CloneUrlButtonFont}
+          }
+highlight-style: ../../../../_styles/idle-fingers-light.theme
+bibliography: references.bib
+csl: ../../../../Code/nature.csl
+---
+
+This workshop provides three examples demonstrating common uses of a configured Git and GitHub setup. The first two, given here, show how to establish a connection starting with either a local project directory or by cloning an existing remote repository. In a separate example, students can find a practice collaboration exercise to do with peers, where they will propose code adjustments for collaborators to review via pull requests.
+
+To effectively follow these guidelines, we suggest that you use the following file structure. By the end of this module, your workshop directory should contain:
+
+\vspace{-2ex}
+
+\begin{flushleft}
+\texttt{dsde-workshops/}\\
+\texttt{\ \ |- start-local/}\\
+\texttt{\ \ |- JHU-CRC-Vaccinations/}\\
+\texttt{\ \ |- JHU-CRC-Cases-and-Deaths/}
+\end{flushleft}
+
+
+:::{.callout-important}
+Specific directions are provided for establishing these repositories. To interact with the pre-prepared JHU-CRC examples, you must first create a "clean-break" copy in your own GitHub account. When practicing collaboration, only one team member needs to complete this step; all others can then clone that member's copy to their local device.
+
+\vspace{2ex}
+
+Find the directions for creating a "clean-break" on the Book of Workshops webpage for this workshop: [Getting Started with Git and GitHub - Accessing the Codespaces](https://ysph-dsde.github.io/Book-of-Workshops/Workshops/Git-and-GitHub/git-github-index.html#accessing-the-codespaces)
+:::
+
+# Start Locally
+
+In this example, we will create a mock project folder from scratch, initialize Git, and link it to a remote repository on GitHub. We will then test the connection by adding "Hello World" to the `README.md` file on GitHub and pulling the changes to the local repository.
+
+## Create an Empty Remote Repository
+
+1. [Log in](https://github.com/login) to your personal GitHub account.
+
+2. In the top-right of the page navigation bar, select the \CreateNewButton{
+  \raisebox{-0.1\height}{\includegraphics[width=10pt]{../../Images/octicons-plus-16-light.pdf}}
+  \raisebox{-0.2\height}{\includegraphics[width=15pt]{../../Images/octicons-triangle-down-24-light.pdf}}
+} dropdown menu and click \NewRepoButton{
+  \raisebox{-0.1\height}{\includegraphics[width=10pt]{../../Images/octicons-repo-24-light.pdf}}
+  \hspace{0.5pt}
+  New repository}\ [@new_repo].
+
+3. Fill out the following sections:
+
+    a. Adjust the GitHub account owner as needed and create the name for the new repository.
+    
+    c. It is good practice to initially set the repository to "Private".
+    
+    d. Do **[NOT]{.underline}** use a template or include a description, `README.md`, `.gitignore`, or license.
+
+## Create a New Local Project
+
+1. Open the command-line application (i.e. Terminal for Macs and Git Bash for Windows) and navigate to the file location you want to temporarily store the repository copy.
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{Command-Line Interface} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{lstlisting}[language=Bash]
+cd "~/dsde-workshops/"     # Go to workshop directory
+mkdir "start-local"        # Create project folder
+cd "start-local"           # Enter project folder
+  \end{lstlisting}
+  \end{codebox}
+
+  \vspace{-3.3ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+
+2. Confirm that Git has **[NOT]{.underline}** yet been initialized by checking the project status. If the project is initialized, you should see that Git is present and tracking files.
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{Command-Line Interface} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+
+  \begin{codebox}
+  \begin{lstlisting}[language=Bash]
+git status
+  \end{lstlisting}
+  \end{codebox}
+
+  \vspace{-3.3ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-2.5ex}
+  \item\small \textbf{Output} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+
+  \begin{codebox}
+  \begin{lstlisting}[language=Bash]
+fatal: not a git repository (or any of the parent directories): .git
+  \end{lstlisting}
+  \end{codebox}
+
+
+\vspace{-3.3ex}
+\item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+3. Initialize Git in the project directory for the first time and create the primary branch `main`.
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{Command-Line Interface} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+    \begin{lstlisting}[language=Bash]
+git init -b main
+    \end{lstlisting}
+  \end{codebox}
+  
+  \vspace{-3.3ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-2.5ex}
+  \item\small \textbf{Output} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+
+  \begin{codebox}
+    \begin{lstlisting}[language=Bash]
+Initialized empty Git repository in ~/dsde-workshops/start-local/.git/
+    \end{lstlisting}
+  \end{codebox}
+
+  \vspace{-3.3ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+
+4. Running `git status` again should no longer produce an error. Instead, it should indicate that we are on a branch called `main` with no commits yet. Before linking our project with the remote repository, we need to add a file that Git can track. Let's create an empty `README.md` file.
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{Command-Line Interface} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{lstlisting}[language=Bash]
+touch "README.md"
+  \end{lstlisting}
+  \end{codebox}
+
+  \vspace{-3.3ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+5. Running `git status` should now show an untracked file in our project directory.
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{Command-Line Interface} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+    \begin{lstlisting}[language=Bash]
+git status
+    \end{lstlisting}
+  \end{codebox}
+  
+  \vspace{-3.3ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-2.5ex}
+  \item\small \textbf{Output} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+
+  \begin{codebox}
+    \begin{lstlisting}[language=Bash]
+On branch main
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	README.md
+
+nothing added to commit but untracked files present (use "git add" to track)
+    \end{lstlisting}
+  \end{codebox}
+
+  \vspace{-3.3ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+
+6. Use `git add` to promote changes from the **Working Tree** to **Staged Edits**. You can specify individual files or use the wildcard `git add .` to add all untracked and changed files at once.
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{Command-Line Interface} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{lstlisting}[language=Bash]
+git add "README.md"       # Option #1
+git add .                 # Option #2
+  \end{lstlisting}
+  \end{codebox}
+
+  \vspace{-3.3ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+7. Running `git status` should show the untracked file is ready to be promoted to the **Committed Edits** domain. Keep in mind that only versions of the project that have been "committed" will be shared with the remote repository.
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{Command-Line Interface} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+    \begin{lstlisting}[language=Bash]
+git status
+    \end{lstlisting}
+  \end{codebox}
+  
+  \vspace{-3.3ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-2.5ex}
+  \item\small \textbf{Output} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+
+  \begin{codebox}
+    \begin{lstlisting}[language=Bash]
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+	new file:   README.md
+    \end{lstlisting}
+  \end{codebox}
+
+  \vspace{-3.3ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+8. Use `git commit` to promote changes from **Staged Edits** to **Committed Edits** and include a message describing your changes. If prompted, enter your password (for example, if you have commit signing with an SSH key configured).
+
+    \begin{callout-warning}[Commit Message Required]
+    Every commit requires a message. If you forget to include one as shown below, you will be prompted to write your message automatically. For most people, this will open an in-application text editor, such as vim, as was shown in the walk-through.
+    
+    \vspace{2ex}
+    
+    If this sounds unfamiliar, or you do not remember how to navigate the in-application text editor, refer to the \href{https://ysph-dsde.github.io/Book-of-Workshops/Workshops/Git-and-GitHub/Pages/git-github-overview.html}{Detailed Walk-Through} webpage on the Book of Workshops.
+    \end{callout-warning}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{Command-Line Interface} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{lstlisting}[language=Bash]
+git commit -m "Init repo"
+  \end{lstlisting}
+  \end{codebox}
+
+  \vspace{-3.3ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-2.5ex}
+  \item\small \textbf{Output} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+
+  \begin{codebox}
+    \begin{lstlisting}[language=Bash]
+[main (root-commit) b669479] Init repo
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 README.md
+    \end{lstlisting}
+  \end{codebox}
+
+  \vspace{-3.3ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+
+
+## Establish the Connection
+
+1. To link our local, version-controlled project directory with our empty GitHub repository, we need to define the repository location using either its HTTPS or SSH URL. Which one you choose depends on your preference and configurations (see [Configurations and Credentials - Transfer Protocols](https://ysph-dsde.github.io/Book-of-Workshops/Workshops/Git-and-GitHub/Pages/git-github-setup.html#transfer-protocols) for additional details).
+
+    In the newly created GitHub repository, under "Quick setup," you will find the repository's SSH or HTTPS URL. Copy one of these URLs to define the remote location and transfer protocol you want to use between your local device and this GitHub repository.
+
+    For example, if the repository name is "NEW-REPOSITORY," the URLs will look like this:
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  
+  \begin{codebox}
+  \begin{lstlisting}[language=Bash]
+# SSH
+git@github.com:EXAMPLE-USER/NEW-REPOSITORY.git
+
+# HTTPS
+https://github.com/EXAMPLE-USER/NEW-REPOSITORY.git
+  \end{lstlisting}
+  \end{codebox}
+
+  \vspace{-3.3ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+
+2. Designate the remote location and transfer protocol (SSH/HTTPS), and associate the URL with the `origin` repository alias.
+    
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{Command-Line Interface} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{lstlisting}[language=Bash]
+# SSH
+git remote add origin git@github.com:EXAMPLE-USER/NEW-REPOSITORY.git
+
+# HTTPS
+git remote add origin https://github.com/EXAMPLE-USER/NEW-REPOSITORY.git
+  \end{lstlisting}
+  \end{codebox}
+
+  \vspace{-2ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+
+3. Push the project contents to the remote repository. Since this is the first push from the `main` branch, we need to create a corresponding remote branch to complete the transfer. This step is only necessary when the branch doesn't already exist remotely.
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{Command-Line Interface} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{lstlisting}[language=Bash]
+git push -u origin main
+  \end{lstlisting}
+  \end{codebox}
+
+  \vspace{-3.3ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-2.5ex}
+  \item\small \textbf{Output} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+
+  \begin{codebox}
+    \begin{lstlisting}[language=Bash]
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 438 bytes | 438.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To github.com:sgolde13/start-local.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+
+    \end{lstlisting}
+  \end{codebox}
+
+  \vspace{-3.3ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+4. Refresh the GitHub page to see the changes reflected.
+
+5. You should now see a new block for the `README.md` contents on the repository GitHub page. Click to edit (top-right pencil icon), and type in "Hello World".
+
+6. Commit the changes (you can modify the default commit message if you like), then return to the repository landing page to confirm the changes were saved.
+
+7. Now let's update our local copy. In the command-line application, enter `git pull` to download the changes.
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{Command-Line Interface} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{lstlisting}[language=Bash]
+git pull
+  \end{lstlisting}
+  \end{codebox}
+
+  \vspace{-3.3ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-2.5ex}
+  \item\small \textbf{Output} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+
+  \begin{codebox}
+    \begin{lstlisting}[language=Bash]
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (3/3), 904 bytes | 226.00 KiB/s, done.
+From github.com:sgolde13/start-local
+   b669479..2ccf99e  main       -> origin/main
+Updating b669479..2ccf99e
+Fast-forward
+ README.md | 1 +
+ 1 file changed, 1 insertion(+)
+    \end{lstlisting}
+  \end{codebox}
+
+  \vspace{-3.3ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+
+\newpage
+
+# Start Remotely
+
+In this example, we are going to copy one of the pre-prepared codebases from the remote repository "ysph-dsde/JHU-CRC-Vaccinations" on GitHub to your local device. We will then test this connection by creating a small change to the plot the code generates and publishing those changes to the repository.
+
+## Making a Clean-Break Copy
+
+1. Open the [Getting Started with Git and GitHub - Accessing the Codespaces](https://ysph-dsde.github.io/Book-of-Workshops/Workshops/Git-and-GitHub/git-github-index.html#accessing-the-codespaces) webpage. From there, open the "ysph-dsde/JHU-CRC-Vaccinations" GitHub repository in a new tab and scroll down to the _Making a Clean-Break Copy_ section.
+
+2. Follow **Method #1** or **Method #2** to create a clean-break copy of the remote repository in your personal GitHub account. We recommend starting with **Method #1**, but if that takes too long or does not work, **Method #2** is available as a backup option.
+
+## Clone the Project Codebase
+
+1. Open the command-line application (i.e. Terminal for Macs and Git Bash for Windows) and navigate to the file location you want to temporarily store the repository copy.
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{Command-Line Interface} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{lstlisting}[language=Bash]
+cd "~/dsde-workshops/"     # Go to workshop directory
+  \end{lstlisting}
+  \end{codebox}
+
+  \vspace{-3.3ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+2. In the copied GitHub repository, "YOUR-USER-ID/JHU-CRC-Vaccinations", find the repository's SSH or HTTPS URL. Copy the SSH or HTTPS URL from your GitHub repository by clicking the \CloneUrlButton{
+  \raisebox{-0.1\height}{\includegraphics[width=10pt]{../../Images/octicons-code-16-white.pdf}} Code 
+  \raisebox{-0.2\height}{\includegraphics[width=15pt]{../../Images/octicons-triangle-down-24-white.pdf}}
+} button. Which one you choose depends on your preference and configurations (see [Configurations and Credentials - Transfer Protocols](https://ysph-dsde.github.io/Book-of-Workshops/Workshops/Git-and-GitHub/Pages/git-github-setup.html#transfer-protocols) for additional details).
+
+    For example the URLs will look like this:
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  
+  \begin{codebox}
+  \begin{lstlisting}[language=Bash]
+# SSH
+git@github.com:YOUR-USER-ID/JHU-CRC-Vaccinations.git
+
+# HTTPS
+https://github.com/YOUR-USER-ID/JHU-CRC-Vaccinations.git
+  \end{lstlisting}
+  \end{codebox}
+
+  \vspace{-3.3ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+3. Clone the repository to your local device.
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{Command-Line Interface} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{lstlisting}[language=Bash]
+# SSH
+git clone git@github.com:YOUR-USER-ID/JHU-CRC-Vaccinations.git
+
+# HTTPS
+git clone https://github.com/YOUR-USER-ID/JHU-CRC-Vaccinations.git
+  \end{lstlisting}
+  \end{codebox}
+
+  \vspace{-3.3ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+
+## Test the Connection
+
+1. Open the cloned project directory.
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{Command-Line Interface} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{lstlisting}[language=Bash]
+cd "JHU-CRC-Vaccinations"
+  \end{lstlisting}
+  \end{codebox}
+
+  \vspace{-3.3ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+
+2. Open the R project environment.
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{Command-Line Interface} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{lstlisting}[language=Bash]
+open JHU-CRC-Vaccinations.Rproj
+  \end{lstlisting}
+  \end{codebox}
+
+  \vspace{-3.3ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+
+3. In RStudio, open `Plot Vaccinations.R` and initialize the environment.
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{RStudio} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{lstlisting}[language=R]
+renv::init()     # Set up renv environment
+renv::restore()  # Install locked package versions
+  \end{lstlisting}
+  \end{codebox}
+
+  \vspace{-3.3ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+4. Run the code to generate a JPEG of the bar graph showing the percentage of the U.S. population with at least one COVID-19 vaccination dose by March 2023. Modify the plot code (e.g., change colors, labels, or title) as you would like before exporting the image.
+
+5. Commit and share these changes by pushing the new file and any code modifications to the remote repository on GitHub.
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{Command-Line Interface} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{lstlisting}[language=Bash]
+git add .                      # Stage all changes
+git commit -m "New plot"       # Commit staged changes
+git push                       # Push to remote repository
+  \end{lstlisting}
+  \end{codebox}
+
+  \vspace{-3.3ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+6. Refresh the GitHub page to see the changes reflected.
+
+# References

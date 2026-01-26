@@ -5,6 +5,8 @@ csl: ../../../Code/nature.csl
 
 # Configurations and Credentials {.unnumbered}
 
+<small>Updated: January 26<sup>th</sup>, 2026</small>
+
 ```{r setup}
 #| message: FALSE
 #| warning: FALSE
@@ -26,12 +28,12 @@ suppressPackageStartupMessages({
 ```
 
 
-If you have not yet, you will need to get a GitHub account and to install Git on your local device. This document was constructed from Atlassian's _[How to install Git](https://www.atlassian.com/git/tutorials/install-git)_ tutorial and Git-SCM's [download pages](https://git-scm.com/downloads)\ [@atlassian_git; @git_macs; @git_pc; @git_linux].
+If you have not yet, you will need two things: a GitHub account and Git installed on your local device. This guide provides complete steps for setting up both and linking them together. Additional special setup cases I have personally encountered are covered in the [_Advanced Configurations_](#advanced-configurations) section. This document is based on Atlassian's _[How to install Git](https://www.atlassian.com/git/tutorials/install-git)_  tutorial and Git-SCM's [download pages](https://git-scm.com/downloads)\ [@atlassian_git; @git_macs; @git_pc; @git_linux].
 
 ::: {.callout-important}
 ## Directions Provided in Bash
 
-This workshop is designed to be compatible with Bash command-line interfaces, which is the default setting for macOS with Terminal and many Linux distributions. Windows users will need to ensure their command-line interface is Bash compatible, as not all commands will work in other environments.
+This workshop is designed to be compatible with Bash CLIs, which is the default setting for macOS with Terminal and many Linux distributions. Windows users will need to ensure their CLI is Bash compatible, as not all commands will work in other environments.
 :::
 
 # Sign Up for GitHub Account
@@ -40,21 +42,22 @@ To sign up for a GitHub account, navigate to [github.com/](https://github.com/) 
 
 Your GitHub username must consist of alphanumeric characters or single hyphens and cannot begin or end with a hyphen. It's important to carefully consider your username choice, especially if you plan to share it with professional collaborators or include it in your professional portfolio. Below are some suggestions to consider from the _[Happy Git and GitHub for the useR](https://happygitwithr.com/github-acct)_\ [@github_username]:
 
-- Include your name.
-- Keep it short and lowercase.
-- Keep it consistent with other accounts you want associated with your work.
-- Appropriate for sharing with an employer.
-- Avoid highlighting temporary affiliations, such as the current university you attend.
-- Ensure it's unique and doesn't have a special meaning in programming (e.g., avoid terms like `NA`).
+- Include your name
+- Keep it short and lowercase
+- Keep it consistent with other accounts you want associated with your work
+- Appropriate for sharing with an employer
+- Avoid highlighting temporary affiliations, such as the current university you attend
+- Ensure it's unique and doesn't have a special meaning in programming (e.g., avoid terms like `NA`)
 
 GitHub offers materials and short courses to help new users learn their interface: _[GitHub Skills](https://skills.github.com/)_, _[Repositories documentation](https://docs.github.com/en/repositories)_, and _[About GitHub Command-Line Interface (CLI)](https://docs.github.com/en/github-cli/github-cli/about-github-cli)_\ [@github_skills; @github_repos_docs; @github_cli].
 
-
 # Install Git
 
-For all systems, you can confirm Git installation in the command-line interface:
+For all systems, you can confirm Git installation in the <span class="text-term" 
+  data-hover-text="A texted-base application that directly interacts with the computer’s operating system, manages files, and can run programs. It typically lacks a GUI.">
+  Command-Line Interface (CLI)</span>:
 
-```{.bash filename="Command-Line Application"}
+```{.bash filename="Command-Line Interface"}
 git --version
 ```
 
@@ -68,42 +71,61 @@ If you do not get this output, you will need to install Git. In the following pa
 
 ## Windows
 
-Windows, by default, provides the PowerShell command-line interface, which does not support Bash commands. To emulate a Linux command-line interface, you have several options. The simplest option is to install [Git for Windows](https://gitforwindows.org/), which provides both Git and Git Bash, a Bash shell environment\ [@git_for_windows].
-
-Alternatively, you can emulate Linux command-line interfaces through other methods, or search for alternative commands compatible with the command-line interface you are using. If the option you are choosing does not include Git, it can be installed directly from: [Git-SCM](https://git-scm.com/download/win)\ [@git_scm_config; @git_pc].
+Windows, by default, provides the PowerShell CLI, which does not support Bash commands. To emulate a Linux CLI, you have several options. The simplest option is to install [Git for Windows](https://gitforwindows.org/), which provides both Git and Git Bash, a Bash 
+<span class="text-term" 
+  data-hover-text="A program used by the CLI to mediate communication between the user and computer by interpreting commands and outputs. Examples: Bash, PowerShell, etc.">
+  shell</span>
+environment\ [@git_for_windows; @terminal_shell]. 
+Alternatively, you can emulate Linux CLIs through other methods or search for compatible commands for your CLI. If your chosen option does not include Git, you can install it directly from [Git-SCM](https://git-scm.com/download/win)\ [@git_scm_config; @git_pc].
 
 After you download Git for Windows, open the installer and follow the prompts. For this workshop, you can accept all default settings, but you may adjust them as desired. Below are some specific settings to consider as you go through the installer prompts.
 
 ::: {.callout-note}
 ## Customize the Default Branch
+
 The legacy Git system refers to the primary branch containing your files as "master." During installation, you can prompt Git to label this branch as "main" instead.
 :::
 
 ::: {.callout-warning}
 ## Install OpenSSH
+
 **SSH** stands for "Secure Shell", and it is the preferred secure transfer protocol used to communicate between your local device and the GitHub remote repository.
-\vspace{2ex}
-You will want to ensure that OpenSSH is installed. The Git installer will provide you with the option to install OpenSSH during the setup process, and we recommend that you select this option.
+
+To use it, you will want to ensure that OpenSSH is installed. The Git installer will provide you with the option to install OpenSSH during the setup process, and we recommend that you select this option.
 :::
 
 ::: {.callout-tip}
-## Suggest Beginners Use "Fast-Forward or Merge" for \texttt{git pull}
-Later in this workshop, we will discuss what Git is doing with the \texttt{git pull} action. It is recommended that beginners select "Fast-Forward or Merge" by default, as rebasing is not beginner-friendly.
+## Suggest Beginners Use "Fast-Forward or Merge" for <code class="inline-code">git pull</code>
+
+Later in this workshop, we will discuss what Git is doing with the
+<span class="code-term" 
+  data-hover-text="Downloads a copy of the specified remote repository's branch and integrates it with the local copy. Combines the actions of <code>git fetch</code> followed by <code>git merge</code> or <code>git rebase</code>.">
+  git pull</span>
+action. It is recommended that beginners select "Fast-Forward or Merge" by default, as rebasing is not beginner-friendly.
 :::
 
 ::: {.callout-tip}
 ## Suggest Installing the Git Credential Manager
+
 The Git credential Mmanager will cache your authentication information, making it easier to interact with remote repositories\ [@credential_manager].
 :::
 
 ## Mac
 
-If XCode _is_ installed in your Applications folder, Git is already available. However, you might not have the the osxkeychain credential manager, **git-credential-osxkeychain**, installed. If you plan to use HTTPS transfer protocols instead of SSH Keys, you might want to install this as it caches your authentication information in the macOS keychain, avoiding the need to re-enter them each time. You can skip to the directions for adding this capability if needed.
+If XCode _is_ installed in your Applications folder, Git is already available. However, you might not have the the osxkeychain credential manager, **git-credential-osxkeychain**, installed. If you plan to use
+<span class="code-term" 
+  data-hover-text="Facilitates secure transmission of information over an encrypted internet connection. Decryption occurs when the correct username and Personal Access Token (PAT) are provided.">
+  Hypertext Transfer Protocol Secure (HTTPS)</span>
+transfer protocols instead of
+<span class="code-term" 
+  data-hover-text="Uses a pair of keys—a private key and a public key. Information is encrypted when sent between servers, and only the matching key pair can decrypt it upon receipt.">
+  Secure Shell (SSH)</span>, 
+you might want to install this as it caches your authentication information in the macOS keychain, avoiding the need to re-enter them each time\ [@pat; @setup_auth; @ssh_vs_https; @new_ssh]. You can skip to the directions for adding this capability if needed.
 
 If XCode _is not_ installed, you can install Git with the osxkeychain credential manager through either [Homebrew](https://brew.sh/) or [MacPorts](https://www.macports.org/install.php)\ [@homebrew; @macports]. Assuming you have one of these already installed:
 
 
-```{.bash filename="Command-Line Application"}
+```{.bash filename="Command-Line Interface"}
 # With Homebrew
 brew install git
 
@@ -115,7 +137,7 @@ sudo port install git +bash_completion +credential_osxkeychain +doc
 Installing Git using Homebrew or MacPorts will automatically include the osxkeychain credential manager. You can confirm its installation by running the following command\ [@osxkeychain]:
 
 
-```{.bash filename="Command-Line Application"}
+```{.bash filename="Command-Line Interface"}
 git credential-osxkeychain
 ```
 
@@ -128,7 +150,7 @@ usage: git credential-osxkeychain <get|store|erase>
 
 If you do not get this output, run the following:
 
-```{.bash filename="Command-Line Application"}
+```{.bash filename="Command-Line Interface"}
 # 1. Install. Linebreak does NOT denote a space in the URL.
 curl -O http://github-media-downloads.s3.amazonaws.com/osx/git-credential -osxkeychain
 
@@ -145,7 +167,7 @@ git config --global credential.helper osxkeychain
 If your OS X version is El Capitan (OS X 10.11) or earlier, you will need to download the tarball and build Git directly from the source.
 
 
-```{.bash filename="Command-Line Application"}
+```{.bash filename="Command-Line Interface"}
 # 1. If you do not have XCode Command Line Tools, install it.
 xcode-select --install
 
@@ -165,7 +187,7 @@ Git recommends using the preferred package manager for your distribution to inst
 
 Below, we have included instructions for several distributions. For information on additional systems, please visit the [Git-SCM](https://git-scm.com/downloads/linux) download page.
 
-```{.bash filename="Command-Line Application"}
+```{.bash filename="Command-Line Interface"}
 # Stable deployment of Debian/Ubuntu
 apt-get install git
 
@@ -188,7 +210,7 @@ Git associates a username and email address with the project versions you create
 
 Let's begin by checking the current configurations on your system. Using `--list --show-origin` instead will display the file location for all configurations\ [@Answeredbykgf3JfUtW2017].
 
-```{.bash filename="Command-Line Application"}
+```{.bash filename="Command-Line Interface"}
 git config --list
 ```
 
@@ -228,64 +250,76 @@ user.email=shelby.golden@yale.edu           # Email for commits
 
 The results above are examples of potential configurations you might see on your system. In this example, the `user.name` and `user.email` settings are already configured.
 
-If you do not see these configurations in your results, you will need to set them up on your system. We suggest you start by setting the global credential configurations. Use `--local` instead if you wish to apply the configurations to the currently open directory in your command-line interface.
+If you do not see these configurations in your results, you will need to set them up on your system. We suggest you start by setting the global credential configurations. Use `--local` instead if you wish to apply the configurations to the currently open directory in your CLI.
 
-```{.bash filename="Command-Line Application"}
+```{.bash filename="Command-Line Interface"}
 git config --global user.name "Your Name Here"
 git config --global user.email "your@email.com"
 ```
 
-If you make a mistake, you can use the `--unset` command to remove the configurations through the terminal, or you can modify the .gitconfig file directly\ [@Foster2024].
+If you make a mistake, you can use the `--unset` command to remove the configurations through the terminal, or you can modify the `.gitconfig` file directly\ [@Foster2024].
 
-```{.bash filename="Command-Line Application"}
+```{.bash filename="Command-Line Interface"}
 git config --global --unset user.name
 git config --global --unset user.email
 ```
 
 
-It is possible to automatically manage multiple credentials without needing to override the global settings in each folder. This is discussed in the **Appendix**.
+It is possible to automatically manage multiple credentials without needing to override the global settings in each folder. This is discussed in the [_Advanced Configurations_](#advanced-configurations) section.
 
 # Transfer Protocols
 
-GitHub supports two types of authentication and file transfer protocols: Hypertext Transfer Protocol Secure (HTTPS) and Secure Shell (SSH) Keys. These protocols are used to securely and accurately communicate project access levels, rules, and, most importantly, to transfer files between your local device and the remote repository\ [@about_auth].
+GitHub supports two types of authentication and file transfer protocols:
+<span class="code-term" 
+  data-hover-text="Facilitates secure transmission of information over an encrypted internet connection. Decryption occurs when the correct username and Personal Access Token (PAT) are provided.">
+  Hypertext Transfer Protocol Secure (HTTPS)</span>
+and
+<span class="code-term" 
+  data-hover-text="Uses a pair of keys—a private key and a public key. Information is encrypted when sent between servers, and only the matching key pair can decrypt it upon receipt.">
+  Secure Shell (SSH)</span>\ [@pat; @setup_auth; @ssh_vs_https; @new_ssh].
+These protocols are used to securely and accurately communicate project access levels, rules, and, most importantly, to transfer files between your local device and the remote repository\ [@about_auth].
 
 Below is a list of pros and cons for both\ [@setup_auth; @ssh_vs_https; @new_ssh; @pat]:
 
 | Criteria            | SSH                                                  | HTTPS                                                 |
 |---------------------|------------------------------------------------------|-------------------------------------------------------|
-| Setup               | More involved.                                       | Easier for beginners.                                 |
-| Ease of Use         | Low maintenance.                                     | Requires username and PAT with each interaction.      |
-| Security            | More secure.                                         | Vulnerable to brute force attacks.                    |
-| Permissions Control | Fine- and coarse-grained options.                    | Coarser permissions for PAT set by GitHub.            |
+| Setup               | More involved                                        | Easier for beginners                                  |
+| Ease of Use         | Low maintenance                                      | Requires username and PAT with each interaction       |
+| Security            | More secure                                          | Vulnerable to brute force attacks                     |
+| Permissions Control | Fine- and coarse-grained options                     | Coarser permissions for PAT set by GitHub             |
 | Signing             | SSH Keys and GNU Privacy Guard (GPG)                 | GPG and S/MIME                                        |
-| Other               | Additional security with Hardware Keys\ [@hardware]. | Never blocked by firewalls and proxies\ [@about_auth]. |
+| Other               | Additional security with Hardware Keys\ [@hardware]  | Never blocked by firewalls and proxies\ [@about_auth]  |
 
 ::: {.callout-important}
 ## PATs Replaced Username/Password
 
-Previously, GitHub allowed authentication with a username and password, but in 2021 the password requirement was replaced with PATs. Credential managers were adjusted to accommodate this change and should store the PAT accordingly.
+Previously, GitHub allowed authentication with a username and password, but in 2021 the password requirement was replaced with Personal Access Tokens (PATs). Credential managers were adjusted to accommodate this change and should store the PAT accordingly.
 :::
 
 
 ::: {.callout-tip}
 # Code Like a Pro
 
-You can use different protocols for different projects, and it is possible to change the protocol associated with a given project later. Directions for converting between the two transfer methods can be found in the _Managing remote repositories_ article provided on docs.github.com\ [@ssh_https; @https_ssh].
+You can use different protocols for different projects, and it is possible to change the protocol associated with a given project later. Directions for converting between the two transfer methods can be found in the [_Managing remote repositories_](https://docs.github.com/en/get-started/git-basics/managing-remote-repositories) article provided on docs.github.com\ [@ssh_https; @https_ssh].
 :::
 
 We provide basic instructions to configure your Git and GitHub for both methods. Advanced settings are not covered here, but relevant links are sometimes provided to help with these setups. Users are encouraged to explore these resources as needed for their individual projects.
 
 ## HTTPS
 
-These directions were provided in the _Managing your personal access tokens_ article provided on docs.github.com\ [@pat].
+These directions were provided in the [_Managing your personal access tokens_](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) article provided on docs.github.com\ [@pat].
 
 1. Go to your GitHub [account settings page](https://github.com/settings/profile).
+
 2. At the end of the left sidebar, click on "{{< iconify octicon:code-16 >}} Developer Settings".
+
 3. In the left sidebar open the "{{< iconify octicon:key-16 >}} Personal access tokens" drop-down menu and click on "Tokens (classic)".
+
 4. In the center of the window, there is a drop-down menu. Select "Generate new token (classic)".
+
 5. Add a note describing what the PAT is for and set its expiration time-frame.
 
-::: {.callout-note style="margin-left: 2rem"}
+::: {.callout-warning style="margin-left: 2rem"}
 ## Set an Expiration
 
 You have the option to select "No expiration," but this option is strongly discouraged for security purposes.
@@ -300,12 +334,13 @@ We do not cover the different ways repository access can be fine-tuned. If you w
 :::
     
 7. At the bottom of the page, click [Generate token]{style="white-space: nowrap; background-color: #1F70EB; color: #ffffff; border: 1px solid #4686EE; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px"}.
+
 8. Copy the generated PAT and save it somewhere secure for later use, as you will not be able to access it again after you exit the window.
 
 Every time you interact with GitHub, you will enter your PAT instead of your account password. For example:
 
 
-```{.bash filename="Command-Line Application"}
+```{.bash filename="Command-Line Interface"}
 git clone https://github.com/USERNAME/REPO.git
 
 Username: YOUR-USERNAME
@@ -314,11 +349,11 @@ Password: YOUR-PERSONAL-ACCESS-TOKEN
 
 ## SSH Keys
 
-SSH Keys work by creating a private and public key pair. When interacting with the remote repository, the keys are compared to determine access permissions. We will use the command-line interface to generate these keys, and you will upload your public key to GitHub to complete the process\ [@new_ssh; @using_ssh; @ssh_on_github].
+SSH Keys work by creating a private and public key pair. When interacting with the remote repository, the keys are compared to determine access permissions. We will use the CLI to generate these keys, and you will upload your public key to GitHub to complete the process\ [@new_ssh; @using_ssh; @ssh_on_github].
 
 It is best practice to review your system for any existing private/public key pairs.
 
-```{.bash filename="Command-Line Application"}
+```{.bash filename="Command-Line Interface"}
 ls –al ~/.ssh         # List all elements in the .ssh directory
 ```
 
@@ -353,7 +388,7 @@ As of March 15, 2022, GitHub no longer supports the `ssh-dss` algorithm. If your
 ::: {.callout-important}
 # Must Specify SHA-2 Hash Length for RSA
 
-SSH keys generated using the RSA algorithm after November 2, 2021, must be specified to use the SHA-2 hash algorithm length. RSA keys with a valid_after date set before this date can use either SHA-1 or SHA-2\ [@new_ssh; @ssh_algorithms].
+SSH keys generated using the RSA algorithm after November 2, 2021, must be specified to use the SHA-2 hash algorithm length. RSA keys with a `valid_after` date set before this date can use either SHA-1 or SHA-2\ [@new_ssh; @ssh_algorithms].
 
 You can verify the key length with `ssh-keygen -l -f ~/.ssh/id_rsa.pub`, changing the file name as needed. If the length is 2048, the key is using SHA-1. If the length is 4096, it is using SHA-2\ [@ssh_algorithms].
 
@@ -363,20 +398,20 @@ We suggest replacing any SHA-1 configured keys with SHA-2 configured keys.
 ::: {.callout-important}
 # Authentication vs Signing SSH Keys
 
-GitHub requires different SSH Keys for account authentication and signing, which verify the authenticity and integrity of GitHub actions\ [@about_signature]. At a minimum, you will need keys for authentication, while signing is optional. The same setup is applied for both options, except when specifying the purpose of the key to GitHub.
+GitHub requires different SSH Keys for account authentication and signing, which verify the authenticity and integrity of GitHub interactions\ [@about_signature]. At a minimum, you will need keys for authentication, while signing is optional. The same setup is applied for both options, except when specifying the purpose of the key to GitHub.
 :::
 
 ::: {.callout-tip}
 # Code Like a Pro
 
-The astute student might have observed that my system is set to automatically sign all actions in GitHub with `commit.gpgsign=true` in the .gitconfig file. If you choose to create a pair of SSH keys for signing, it is recommended that you add this to your configuration with: `git config commit.gpgsign true`.
+The astute student might have observed that my system is set to automatically sign all actions in GitHub with `commit.gpgsign=true` in the `.gitconfig` file. If you choose to create a pair of SSH keys for signing, it is recommended that you add this to your configuration with: `git config commit.gpgsign true`.
 
-The GPG Suite for macOS and Gpg4win for Windows will allow you to configure the GPG agent and save your signing credentials. You can learn more about signing commits in the _About commit signature verification_ and _Signing commits_ articles provided on docs.github.com\ [@about_signature; @signing_commits; @signing_tags].
+The GPG Suite for macOS and Gpg4win for Windows will allow you to configure the GPG agent and save your signing credentials. You can learn more about signing commits in the [_About commit signature verification_](https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification#ssh-commit-signature-verification), [_Signing commits_](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits), and [_Signing tags_](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-tags) articles provided on docs.github.com\ [@about_signature; @signing_commits; @signing_tags].
 :::
 
 Now that you have chosen an SSH algorithm from ED25519 or RSA, we can generate the public and private key pair.
 
-```{.bash filename="Command-Line Application"}
+```{.bash filename="Command-Line Interface"}
 # Ed25519
 ssh-keygen -t ed25519 -C "your@email.com"
 
@@ -395,7 +430,7 @@ Generating public/private rsa key pair.
 Enter a file in which to save the key (/Users/userID/.ssh/id_rsa): 
 ```
 
-After the keys have been created, you are given the option to specify where they will be stored, and you can modify the key name if desired. It is easier to keep the SSH key pairs stored in the ~/.ssh directory, avoiding additional configuration settings.
+After the keys have been created, you are given the option to specify where they will be stored, and you can modify the key name if desired. It is easier to keep the SSH key pairs stored in the `~/.ssh` directory, avoiding additional configuration settings.
 
 If you want to change the key name, you **must** keep the `id_ed25519` or `id_rsa` prefix, as this tells your system which algorithm to use. For example:
 
@@ -408,7 +443,7 @@ Enter a file in which to save the key (/Users/userID/.ssh/id_ed25519):
 Enter a file in which to save the key (/Users/userID/.ssh/id_ed25519): /Users/userID/.ssh/id_ed25519_modify_name
 ```
 
-Continuing with the ED25519 example, as the steps will be the same for RSA going forward, you will be given the option to add a password to your key. We highly suggest that you use a strong password and save it somewhere secure for later use. If needed, you can change the password down the line, but you will not be able to recover it if you lose it\ [@using_ssh]
+Continuing with the ED25519 example, as the steps will be the same for RSA going forward, you will be given the option to add a password to your key. We highly suggest that you use a strong password and save it somewhere secure for later use. If needed, you can change the password down the line, but you will not be able to recover it if you lose it\ [@using_ssh].
 
 ```{.bash filename="Command-Line Output - ED25519"}
 Enter passphrase for "/Users/userID/.ssh/id_ed25519" (empty for no passphrase):
@@ -436,11 +471,11 @@ The key's randomart image is:
 
 When you have successfully created your keys, you will see the final output shown above. It is not necessary to save the fingerprint or randomart (visual representation of the fingerprint), but I personally save them in the notes section of my password manager.
 
-Similarly to HTTPS, it is possible to cache your SSH key password using agent forwarding. While we won't cover the setup process here, you can learn more about it and find detailed instructions in the _Using SSH agent forwarding_ and _Generating a new SSH key and adding it to the ssh-agent_ articles on docs.github.com\ [@agent_forwarding; @adding_agent].
+Similarly to HTTPS, it is possible to cache your SSH key password using agent forwarding. While we won't cover the setup process here, you can learn more about it and find detailed instructions in the [_Using SSH agent forwarding_](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/using-ssh-agent-forwarding) and [_Generating a new SSH key and adding it to the ssh-agent_](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#adding-your-ssh-key-to-the-ssh-agent) articles on docs.github.com\ [@agent_forwarding; @adding_agent].
 
 With our public and private SSH key pairs created, we are ready to add the public one to our GitHub account. Start by copying the recently created public key.
 
-```{.bash filename="Command-Line Application - ED25519"}
+```{.bash filename="Command-Line Interface - ED25519"}
 pbcopy < ~/.ssh/id_ed25519.pub
 ```
 
@@ -458,11 +493,11 @@ pbcopy < ~/.ssh/id_ed25519.pub
 
 7. Click [Add SSH key]{style="white-space: nowrap; background-color: #1F70EB; color: #ffffff; border: 1px solid #4686EE; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px"} and follow the prompts.
 
-8. To ensure a valid connection with GitHub, you will need to open the ~/.ssh/known_hosts file and copy-and-paste GitHub's [SSH key fingerprints](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints)\ [@fingerprints].
+8. To ensure a valid connection with GitHub, you will need to open the `~/.ssh/known_hosts` file and copy-and-paste GitHub's [SSH key fingerprints](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints)\ [@fingerprints].
 
 You can confirm that the keys are correctly configured with the following test. If you get the expected output shown below, then you are all set!
 
-```{.bash filename="Command-Line Application"}
+```{.bash filename="Command-Line Interface"}
 ssh -T git@github.com
 ```
 
@@ -475,15 +510,13 @@ Hi USERNAME! You've successfully authenticated, but GitHub does not provide shel
 
 ## Multiple Git Configurations
 
-Suppose you use two or more GitHub accounts and need different emails or usernames associated with Git commits made to those remote repositories. Reconfiguring every project directory for this purpose would be tedious.
-
-Instead, you can use an automatically expanded local setting to override the global configurations using "Conditional Includes". This feature has been available since Git version 2.13\ [@AnsweredbyJanousek2017; @Barochiya2021; @Connolly2022].
+Suppose you use two or more GitHub accounts and need different emails or usernames associated with Git commits made to those remote repositories. Reconfiguring every project directory for this purpose would be tedious. Instead, you can use an automatically expanded local setting to override the global configurations using "Conditional Includes". This feature has been available since Git version 2.13\ [@AnsweredbyJanousek2017; @Barochiya2021; @Connolly2022].
 
 In this framework, you need to organize your project directories such that those with an alternate configuration are in the same parent directory. We will refer to this parent directory as "Alternate." The directions given here assume that you have already set up the global Git configurations.
 
-We start by locating and opening the .gitconfig file.
+We start by locating and opening the `.gitconfig` file.
 
-```{.bash filename="Command-Line Application"}
+```{.bash filename="Command-Line Interface"}
 git config --list --show-origin
 ```
 
@@ -494,7 +527,7 @@ file:/Users/userID/.gitconfig   user.name=Shelby Golden
 :
 ```
 
-When you open .gitconfig with Finder/File Explorer, you will see something like this:
+When you open `.gitconfig` with Finder/File Explorer, you will see something like this:
 
 <div class="line-thick"></div>
 <p style="margin-top: 0.4ex; margin-bottom: -0.3ex; margin-left: 1.2ex"><strong>~/Users/userID/.gitconfig</strong></p>
@@ -518,7 +551,7 @@ When you open .gitconfig with Finder/File Explorer, you will see something like 
 &emsp; [pack]\
 &emsp;&emsp;&emsp;&emsp; packSizeLimit = 50M
 
-<div class="line-thin"></div>
+<div class="line-thin" style="padding-bottom: 1rem"></div>
 
 After the [user] section, add the conditional include statement. The order of the sections does not matter, but the indentation is important to keep consistent.
 
@@ -534,11 +567,11 @@ After the [user] section, add the conditional include statement. The order of th
 &emsp;&emsp;&emsp;&emsp; path = /Users/userID/Desktop/DSDE/.../Alternate/.gitconfig\
 &emsp; :
 
-<div class="line-thin"></div>
+<div class="line-thin" style="padding-bottom: 1rem"></div>
 
-Now we need to create the Git configuration file applicable to all projects stored in ~/Alternate.
+Now we need to create the Git configuration file applicable to all projects stored in `~/Alternate`.
 
-```{.bash filename="Command-Line Application"}
+```{.bash filename="Command-Line Interface"}
 # 1. Navigate to the alternative account parent directory.
 cd "/FILE_PATH/Alternate"
 
@@ -546,7 +579,7 @@ cd "/FILE_PATH/Alternate"
 touch .gitconfig
 ```
 
-Open the ~/Alternate/.gitconfig file, either using the `vim` in the command-line interface or by opening it with Finder/File Explorer, and add the relevant Git configurations you want applied to this account.
+Open the `~/Alternate/.gitconfig` file, either using the `vim` in the CLI or by opening it with Finder/File Explorer, and add the relevant Git configurations you want applied to this account.
 
 <div class="line-thick"></div>
 <p style="margin-top: 0.4ex; margin-bottom: -0.3ex; margin-left: 1.2ex"><strong>~/Alternate/.gitconfig</strong></p>
@@ -565,9 +598,9 @@ Open the ~/Alternate/.gitconfig file, either using the `vim` in the command-line
 
 ## Configuring SSH Keys to Different Hosts 
 
-Suppose you want to use SSH Keys to interact with remote repositories stored on different domains, such as GitHub and GitLab. You will need to create a new document called config in the ~/.ssh directory.
+Suppose you want to use SSH Keys to interact with remote repositories stored on different domains, such as GitHub and GitLab. You will need to create a new document called config in the `~/.ssh` directory.
 
-```{.bash filename="Command-Line Application"}
+```{.bash filename="Command-Line Interface"}
 # 1. Navigate to the .ssh directory.
 cd /Users/userID/.ssh
 
@@ -575,9 +608,7 @@ cd /Users/userID/.ssh
 touch config
 ```
 
-Open the ~/.ssh/config file, either using `vim` in the command-line interface or by opening it with Finder/File Explorer, and add the relevant SSH configurations necessary to coordinate file transfers between different remote account locations.
-
-For example, my configuration document looks like this:
+Open the `~/.ssh/config` file, either using `vim` in the CLI or by opening it with Finder/File Explorer, and add the relevant SSH configurations necessary to coordinate file transfers between different remote account locations. For example, my configuration document looks like this:
 
 <div class="line-thick"></div>
 <p style="margin-top: 0.4ex; margin-bottom: -0.3ex; margin-left: 1.2ex"><strong>~/.ssh/config</strong></p>
@@ -594,5 +625,47 @@ For example, my configuration document looks like this:
 &emsp;&emsp;&emsp;&emsp; IdentityFile ~/.ssh/id_ed25519_gitlab
 
 <div class="line-thin"></div>
+
+# Section Glossary
+
+<table class="glossary-table">
+    <tbody>
+        <!-- Row 1 -->
+        <tr>
+            <td class="col1">Command-Line Interface (CLI)</td>
+            <td>
+              A texted-base application that directly interacts with the computer’s operating system, manages files, and can run programs. It typically lacks a GUI\ [@terminal_shell].
+            </td>
+        </tr>
+        <!-- Row 2 -->
+        <tr>
+            <td class="col1"><code>git pull</code></td>
+            <td>
+              Downloads a copy of the specified remote repository's branch and integrates it with the local copy. Combines the actions of <code>git fetch</code> followed by <code>git merge</code> or <code>git rebase</code>\ [@git_pull].
+            </td>
+        </tr>
+        <!-- Row 3 -->
+        <tr>
+            <td class="col1">HTTPS (Hypertext Transfer Protocol Secure)</td>
+            <td>
+              Facilitates secure transmission of information over an encrypted internet connection. Decryption occurs when the correct username and Personal Access Token (PAT) are provided\ [@pat; @setup_auth; @ssh_vs_https; @about_auth].
+            </td>
+        </tr>
+        <!-- Row 4 -->
+        <tr>
+            <td class="col1">Shell</td>
+            <td>
+              A program used by the CLI to mediate communication between the user and computer by interpreting commands and outputs. Examples: Bash, PowerShell, etc\ [@terminal_shell].
+            </td>
+        </tr>
+        <!-- Row 5 -->
+        <tr>
+            <td class="col1">SSH (Secure Shell)</td>
+            <td>
+                Uses a pair of keys—a private key and a public key. Information is encrypted when sent between servers, and only the matching key pair can decrypt it upon receipt\ [@new_ssh; @setup_auth; @ssh_vs_https; @about_auth].
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 # References

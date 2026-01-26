@@ -135,7 +135,7 @@ git config --global user.email "your@email.com"
 \vspace{-5ex}
 \noindent\rule[0.3ex]{\textwidth}{0.4pt}
 
-If you make a mistake, you can use the `--unset` command to remove the configurations through the terminal, or you can modify the .gitconfig file directly\ [@Foster2024].
+If you make a mistake, you can use the `--unset` command to remove the configurations through the terminal, or you can modify the \texttt{.gitconfig} file directly\ [@Foster2024].
 
 \vspace{-2.5ex}
 \noindent\rule[0.3ex]{\textwidth}{1pt}\vspace{-2.5ex}
@@ -160,17 +160,17 @@ Below is a list of pros and cons for both\ [@setup_auth; @ssh_vs_https; @new_ssh
 
 | Criteria            | SSH                                                  | HTTPS                                                 |
 |---------------------|------------------------------------------------------|-------------------------------------------------------|
-| Setup               | More involved.                                       | Easier for beginners.                                 |
-| Ease of Use         | Low maintenance.                                     | Requires username and PAT with each interaction.      |
-| Security            | More secure.                                         | Vulnerable to brute force attacks.                    |
-| Permissions Control | Fine- and coarse-grained options.                    | Coarser permissions for PAT set by GitHub.            |
+| Setup               | More involved                                        | Easier for beginners                                  |
+| Ease of Use         | Low maintenance                                      | Requires username and PAT with each interaction       |
+| Security            | More secure                                          | Vulnerable to brute force attacks                     |
+| Permissions Control | Fine- and coarse-grained options                     | Coarser permissions for PAT set by GitHub             |
 | Signing             | SSH Keys and GNU Privacy Guard (GPG)                 | GPG and S/MIME                                        |
-| Other               | Additional security with Hardware Keys\ [@hardware]. | Never blocked by firewalls and proxies\ [@about_auth]. |
+| Other               | Additional security with Hardware Keys\ [@hardware]  | Never blocked by firewalls and proxies\ [@about_auth]  |
 
 ::: {.callout-important}
 ## PATs Replaced Username/Password
 
-Previously, GitHub allowed authentication with a username and password, but in 2021 the password requirement was replaced with PATs. Credential managers were adjusted to accommodate this change and should store the PAT accordingly.
+Previously, GitHub allowed authentication with a username and password, but in 2021 the password requirement was replaced with Personal Access Tokens (PATs). Credential managers were adjusted to accommodate this change and should store the PAT accordingly.
 :::
 
 
@@ -194,9 +194,9 @@ These directions were provided in the _Managing your personal access tokens_ art
 4. In the center of the window, there is a drop-down menu. Select "Generate new token (classic)".
 5. Add a note describing what the PAT is for and set its expiration time-frame.
 
-    \begin{callout-note}[Set an Expiration]
+    \begin{callout-warning}[Set an Expiration]
     You have the option to select "No expiration," but this option is strongly discouraged for security purposes.
-    \end{callout-note}
+    \end{callout-warning}
 
 6. In the "Select scopes" section, check “repo” for full control of private repositories.
     
@@ -289,7 +289,7 @@ As of March 15, 2022, GitHub no longer supports the `ssh-dss` algorithm. If your
 ::: {.callout-important}
 # Must Specify SHA-2 Hash Length for RSA
 
-SSH keys generated using the RSA algorithm after November 2, 2021, must be specified to use the SHA-2 hash algorithm length. RSA keys with a valid_after date set before this date can use either SHA-1 or SHA-2\ [@new_ssh; @ssh_algorithms].
+SSH keys generated using the RSA algorithm after November 2, 2021, must be specified to use the SHA-2 hash algorithm length. RSA keys with a \texttt{valid_after} date set before this date can use either SHA-1 or SHA-2\ [@new_ssh; @ssh_algorithms].
 
 \vspace{2ex}
 
@@ -303,7 +303,7 @@ We suggest replacing any SHA-1 configured keys with SHA-2 configured keys.
 ::: {.callout-important}
 # Authentication vs Signing SSH Keys
 
-GitHub requires different SSH Keys for account authentication and signing, which verify the authenticity and integrity of GitHub actions\ [@about_signature]. At a minimum, you will need keys for authentication, while signing is optional. The same setup is applied for both options, except when specifying the purpose of the key to GitHub.
+GitHub requires different SSH Keys for account authentication and signing, which verify the authenticity and integrity of GitHub interactions\ [@about_signature]. At a minimum, you will need keys for authentication, while signing is optional. The same setup is applied for both options, except when specifying the purpose of the key to GitHub.
 :::
 
 \vspace{2ex}
@@ -311,11 +311,11 @@ GitHub requires different SSH Keys for account authentication and signing, which
 ::: {.callout-tip}
 # Code Like a Pro
 
-The astute student might have observed that my system is set to automatically sign all actions in GitHub with `commit.gpgsign=true` in the .gitconfig file. If you choose to create a pair of SSH keys for signing, it is recommended that you add this to your configuration with: `git config commit.gpgsign true`.
+The astute student might have observed that my system is set to automatically sign all actions in GitHub with `commit.gpgsign=true` in the \texttt{.gitconfig} file. If you choose to create a pair of SSH keys for signing, it is recommended that you add this to your configuration with: `git config commit.gpgsign true`.
 
 \vspace{2ex}
 
-The GPG Suite for macOS and Gpg4win for Windows will allow you to configure the GPG agent and save your signing credentials. You can learn more about signing commits in the _About commit signature verification_ and _Signing commits_ articles provided on docs.github.com\ [@about_signature; @signing_commits; @signing_tags].
+The GPG Suite for macOS and Gpg4win for Windows will allow you to configure the GPG agent and save your signing credentials. You can learn more about signing commits in the _About commit signature verification_, _Signing commits_, and _Signing tags_ articles provided on docs.github.com\ [@about_signature; @signing_commits; @signing_tags].
 :::
 
 \vspace{2ex}
@@ -360,7 +360,7 @@ Enter a file in which to save the key (/Users/userID/.ssh/id_rsa):
 \vspace{-5ex}
 \noindent\rule[0.3ex]{\textwidth}{0.4pt}
 
-After the keys have been created, you are given the option to specify where they will be stored, and you can modify the key name if desired. It is easier to keep the SSH key pairs stored in the ~/.ssh directory, avoiding additional configuration settings.
+After the keys have been created, you are given the option to specify where they will be stored, and you can modify the key name if desired. It is easier to keep the SSH key pairs stored in the \texttt{~/.ssh} directory, avoiding additional configuration settings.
 
 If you want to change the key name, you **must** keep the `id_ed25519` or `id_rsa` prefix, as this tells your system which algorithm to use. For example:
 
@@ -382,7 +382,7 @@ Enter a file in which to save the key (/Users/userID/.ssh/id_ed25519): /Users/us
 \noindent\rule[0.3ex]{\textwidth}{0.4pt}
 
 
-Continuing with the ED25519 example, as the steps will be the same for RSA going forward, you will be given the option to add a password to your key. We highly suggest that you use a strong password and save it somewhere secure for later use. If needed, you can change the password down the line, but you will not be able to recover it if you lose it\ [@using_ssh]
+Continuing with the ED25519 example, as the steps will be the same for RSA going forward, you will be given the option to add a password to your key. We highly suggest that you use a strong password and save it somewhere secure for later use. If needed, you can change the password down the line, but you will not be able to recover it if you lose it\ [@using_ssh].
 
 
 \vspace{-2.5ex}
@@ -460,7 +460,7 @@ pbcopy < ~/.ssh/id_ed25519.pub
 
 7. Click \GitHubButton{Add SSH key} and follow the prompts.
 
-8. To ensure a valid connection with GitHub, you will need to open the ~/.ssh/known_hosts file and copy-and-paste GitHub's SSH key fingerprints from [https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints)\ [@fingerprints].
+8. To ensure a valid connection with GitHub, you will need to open the \texttt{~/.ssh/known_hosts} file and copy-and-paste GitHub's SSH key fingerprints from [https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints)\ [@fingerprints].
 
 You can confirm that the keys are correctly configured with the following test. If you get the expected output shown below, then you are all set!
 
@@ -490,13 +490,11 @@ Hi USERNAME! You've successfully authenticated, but GitHub does not provide shel
 
 ## Multiple Git Configurations
 
-Suppose you use two or more GitHub accounts and need different emails or usernames associated with Git commits made to those remote repositories. Reconfiguring every project directory for this purpose would be tedious.
-
-Instead, you can use an automatically expanded local setting to override the global configurations using "Conditional Includes". This feature has been available since Git version 2.13\ [@AnsweredbyJanousek2017; @Barochiya2021; @Connolly2022].
+Suppose you use two or more GitHub accounts and need different emails or usernames associated with Git commits made to those remote repositories. Reconfiguring every project directory for this purpose would be tedious. Instead, you can use an automatically expanded local setting to override the global configurations using "Conditional Includes". This feature has been available since Git version 2.13\ [@AnsweredbyJanousek2017; @Barochiya2021; @Connolly2022].
 
 In this framework, you need to organize your project directories such that those with an alternate configuration are in the same parent directory. We will refer to this parent directory as "Alternate." The directions given here assume that you have already set up the global Git configurations.
 
-We start by locating and opening the .gitconfig file.
+We start by locating and opening the \texttt{.gitconfig} file.
 
 \vspace{-2.5ex}
 \noindent\rule[0.3ex]{\textwidth}{1pt}\vspace{-2.5ex}
@@ -519,7 +517,7 @@ file:/Users/userID/.gitconfig   user.name=Shelby Golden
 :
 ```
 
-When you open .gitconfig with Finder/File Explorer, you will see something like this:
+When you open \texttt{.gitconfig} with Finder/File Explorer, you will see something like this:
 
 \vspace{-2.5ex}
 \noindent\rule[0.3ex]{\textwidth}{1pt}\vspace{-2.5ex}
@@ -567,7 +565,7 @@ After the [user] section, add the conditional include statement. The order of th
 
 \newpage
 
-Now we need to create the Git configuration file applicable to all projects stored in ~/Alternate.
+Now we need to create the Git configuration file applicable to all projects stored in \texttt{~/Alternate}.
 
 \vspace{-2.5ex}
 \noindent\rule[0.3ex]{\textwidth}{1pt}\vspace{-2.5ex}
@@ -585,7 +583,7 @@ touch .gitconfig
 \vspace{-4ex}
 \noindent\rule[0.3ex]{\textwidth}{0.4pt}\normalsize
 
-Open the ~/Alternate/.gitconfig file, either using the `vim` in the command-line interface or by opening it with Finder/File Explorer, and add the relevant Git configurations you want applied to this account.
+Open the \texttt{~/Alternate/.gitconfig} file, either using the `vim` in the command-line interface or by opening it with Finder/File Explorer, and add the relevant Git configurations you want applied to this account.
 
 \vspace{-2.5ex}
 \noindent\rule[0.3ex]{\textwidth}{1pt}\vspace{-2.5ex}
@@ -608,7 +606,7 @@ Open the ~/Alternate/.gitconfig file, either using the `vim` in the command-line
 
 ## Configuring SSH Keys to Different Hosts 
 
-Suppose you want to use SSH Keys to interact with remote repositories stored on different domains, such as GitHub and GitLab. You will need to create a new document called config in the ~/.ssh directory.
+Suppose you want to use SSH Keys to interact with remote repositories stored on different domains, such as GitHub and GitLab. You will need to create a new document called config in the \texttt{~/.ssh} directory.
 
 \vspace{-2.5ex}
 \noindent\rule[0.3ex]{\textwidth}{1pt}\vspace{-2.5ex}
@@ -626,9 +624,7 @@ touch config
 \vspace{-4ex}
 \noindent\rule[0.3ex]{\textwidth}{0.4pt}\normalsize
 
-Open the ~/.ssh/config file, either using `vim` in the command-line interface or by opening it with Finder/File Explorer, and add the relevant SSH configurations necessary to coordinate file transfers between different remote account locations.
-
-For example, my configuration document looks like this:
+Open the \texttt{~/.ssh/config} file, either using `vim` in the command-line interface or by opening it with Finder/File Explorer, and add the relevant SSH configurations necessary to coordinate file transfers between different remote account locations. For example, my configuration document looks like this:
 
 \vspace{-2.5ex}
 \noindent\rule[0.3ex]{\textwidth}{1pt}\vspace{-2.5ex}

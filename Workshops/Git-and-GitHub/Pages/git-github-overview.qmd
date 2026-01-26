@@ -344,7 +344,7 @@ In actuality, `git pull` is two Git actions wrapped into one command: `git fetch
 
 ``` {.bash filename="Command-Line Application"}
 # -----------
-# Pull with one command.
+# Pull in One Command
 
 # OPTION #1: Integrate the fetched copy of "origin/main" into "main" with merge.
 git pull                        # Assuming the default protocol is a merge
@@ -355,22 +355,21 @@ git pull --rebase               # Override the default merge to do a rebase
 
 ``` {.bash filename="Command-Line Application"}
 # -----------
-# Two-step pull.
+# Two-Step Pull
 
 # Download branch main from the remote repository, origin.
 git fetch origin main
 
-# If needed, return to the local copy of main, not the fetched branch.
-git checkout main
+# Inspect changes.
+git branch -a    # Lists all local branches, including remote copies
+git status       # Summary of status differences between the two versions
+git diff main    # Summary of code differences between the two versions
 
 # OPTION #1: Integrate the fetched copy of "origin/main" into "main" with merge.
 git merge FETCH_HEAD
 
 # OPTION #2: Rebases "main" with the new parent history reflected in "origin/main".
 git rebase FETCH_HEAD
-
-# If needed, remove the fetched copy of "origin/main" saved as a branch.
-git branch -d FETCH_HEAD
 ```
 
 If you are new to Git and uncomfortable discerning when to use one option over the other, it is best to employ a `git merge`. Fortunately, this is the default protocol used by `git pull`! Regardless of your comfort level with Git, it is important to understand the different protocols and that there are times when one is better to use over the other.

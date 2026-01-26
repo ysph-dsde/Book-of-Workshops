@@ -6,6 +6,8 @@ csl: ../../Code/nature.csl
 
 # Getting Started with Git and GitHub {.unnumbered}
 
+<small>Updated: January 26<sup>th</sup>, 2026</small>
+
 This material is presented over two workshops. Part 1 was authored by Shelby Golden, M.S., and Part 2 is a collaborative effort by Shelby Golden, M.S., and Howard Baik, M.S. You can learn more about the instructors [here](../../index.html#meet-the-creators).
 
 ## Introduction
@@ -26,7 +28,7 @@ like RStudio\ [@gui; @ide]. However, Git is inherently designed as a
 <span class="text-term" 
   data-hover-text="A texted-base application that directly interacts with the computer’s operating system, manages files, and can run programs. It typically lacks a GUI.">
   Command-Line Interface (CLI)</span>
-tool to be executed in environments like Mac's Terminal. Using the Git CLI allows users to directly execute Git operations, offering fine-grained control that is often not possible with third-party GUIs or IDEs. Consequently, relying solely on GUIs or IDEs can limit a learner's growth and understanding of the full capabilities of Git and its interaction with GitHub.
+tool to be executed in environments like Mac's Terminal\ [@terminal_shell]. Using the Git CLI allows users to directly execute Git operations, offering fine-grained control that is often not possible with third-party GUIs or IDEs. Consequently, relying solely on GUIs or IDEs can limit a learner's growth and understanding of the full capabilities of Git and its interaction with GitHub.
 
 ## Workshop Learning Goals
 
@@ -42,8 +44,8 @@ Over the course of the workshop chapter, we will take you through:
 
 #### Part 2 Learning Goals:
 
-- Get hands-on experience using Git and GitHub for solo projects through a worked-through example showing common workflows.
-- Learn how to use GitHub to support collaboration and teamwork on group projects. Invite friends to have the full experience!
+- Master essential Git and GitHub workflows for individual projects through hands-on practice.
+- Get introduced to collaborative workflows and teamwork strategies using guided GitHub examples.
 
 We have prepared real-world examples for the hands-on portion of this workshop. To fully engage with these materials, please create a clean-break copy of the two GitHub repositories that have been specifically prepared for this purpose. Detailed instructions for this process can be found below under [Accessing the Codespaces](#accessing-the-codespaces).
 
@@ -72,10 +74,18 @@ Download the complete slide decks with annotations and the in-person workshop ha
 
 #### Part 2 Materials:
 
-::: {.callout-tip}
-## Coming Soon!
-:::
+```{=html}
 
+<a href="Materials/Part 2_Handout_Solo Projects.pdf">
+  <button class="btn"><i class="bi bi-download"></i>&nbsp Solo Projects</button>
+</a>
+
+```
+
+
+::: {.callout-tip}
+## More Coming Soon!
+:::
 
 Below are some helpful cheat sheets that summarize commands for navigating Git, Bash, and the command-line application text editor `vim`. These will be the primary languages and command series used in this module.
 
@@ -307,9 +317,9 @@ Although there are numerous resources available on Git and GitHub, we have curat
 -   Yale’s Center for Research Computing workshop ["Version Control by Git"](https://www.youtube.com/watch?v=Boj3tFrTyF4) by [Kaylea Nelson, Ph.D.](https://research.computing.yale.edu/profile/kaylea-nelson-phd)\ [@ycrc_module]
 -   Yale’s Harvey Cushing/John Hay Whitney Medical Library workshop ["Git & GitHub: An Introduction To Version Contro"](https://github.com/CWML/gitdemo/tree/main) by [Justin DeMayo](https://library.medicine.yale.edu/about/staff/justin-demayo)\ [@med_school_module]
 -   ["Getting Git Right"](https://www.atlassian.com/git) by Atlassian
--   [Git and GitHub Tutorial](https://www.w3schools.com/git/default.asp?remote=github) by W3Schools\ [@w3schools]
+-   [Git and GitHub tutorials](https://www.w3schools.com/git/default.asp?remote=github) by W3Schools\ [@w3schools]
 -   ["Introduction to GitHub"](https://github.com/skills/introduction-to-github) by GitHub\ [@github_intro_course]
--   [*Happy Git and GitHub for user*](https://happygitwithr.com/) by [Professor Jenny Bryan](https://jennybryan.org/) (and Yale alumn!) and [Jim Hester](https://www.jimhester.com/)
+-   [*Happy Git and GitHub for the user*](https://happygitwithr.com/) by [Professor Jenny Bryan](https://jennybryan.org/) (and Yale alumn!) and [Jim Hester](https://www.jimhester.com/)
 \ [@happy_git_github]
 
 ### Beyond Basic Git and GitHub
@@ -318,7 +328,7 @@ Although there are numerous resources available on Git and GitHub, we have curat
 -   ["What is Git commit, push, pull, log, aliases, fetch, config & clone"](https://medium.com/mindorks/what-is-git-commit-push-pull-log-aliases-fetch-config-clone-56bc52a3601c) by [Amit Prajapati](https://medium.com/@thisAmit)\ [@Prajapati2019]
 -   ["Git Guides"](https://graphite.dev/guides/topic/git) by various Graphite contributors\ [@graphite_git]
 -   ["How to Write a Git Commit Message"](https://cbea.ms/git-commit/) by cbeams\ [@write_message]
--   [Git Graphical User Interface (GUI) Clients](https://git-scm.com/downloads/guis) by various contributors\ [@git_guis]
+-   [Git Graphical User Interface (GUI) clients](https://git-scm.com/downloads/guis) by various contributors\ [@git_guis]
 
 
 ## Section Glossary
