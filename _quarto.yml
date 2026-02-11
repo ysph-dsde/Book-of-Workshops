@@ -24,7 +24,7 @@ book:
       chapters: 
         - Workshops/Git-and-GitHub/Pages/git-github-what-is.qmd
         - Workshops/Git-and-GitHub/Pages/git-github-setup.qmd
-        - Workshops/Git-and-GitHub/Pages/git-github-overview.qmd
+        - Workshops/Git-and-GitHub/Pages/git-github-detailed-walkthrough.qmd
         - Workshops/Git-and-GitHub/Pages/git-github-more-to-come.qmd
     - part: Workshops/Data-Visualization-with-ggplot2/visualization-index.qmd
       chapters: 

@@ -1,0 +1,1453 @@
+---
+title: "Collaborative Coding with Git and GitHub"
+subtitle: |
+  Getting Started with Git and GitHub Part 2 \
+  Coffee, Cookies, and Coding (C-cubed) Workshops
+date: 1/26/2026
+date-format: long
+format:
+  pdf:
+    include-in-header: 
+      - text: |
+          %%%%%%%%%%%%%%%%%%%% USAGE NOTE %%%%%%%%%%%%%%%%%%%%
+          % This LaTeX script sets up consistent formatting for DSDE Workshop handouts.
+          %
+          % To use:
+          % 1. Reference this LaTeX script in the YAML header of Quarto documents
+          %    with correct relative paths based on their directory depth.
+          % 2. Ensure that the "rootdir" and "stylesdir" paths in this LaTeX script
+          %    match those relative paths. Adjust as necessary.
+          % 
+          % The LaTeX script is located in "Code/Handout Formatting/PDF Formatting Script.tex".
+          %
+          % Example:
+          % For:
+          %   \input{../Code/Handout Formatting/PDF Formatting Script.tex}
+          % Set:
+          %   \newcommand{\rootdir}{../Code/Handout Formatting}
+          %   \newcommand{\stylesdir}{../_styles/Yale_typeface}
+          %
+          % For:
+          %   \input{../../../../Code/Handout Formatting/PDF Formatting Script.tex}
+          % Set:
+          %   \newcommand{\rootdir}{../../../../Code/Handout Formatting}
+          %   \newcommand{\stylesdir}{../../../../_styles/Yale_typeface}
+          %
+          %%%%%%%%%%%%%%%%%%%%%%
+          
+          \input{../../../../Code/Handout Formatting/PDF Formatting Script.tex}
+      - text: |
+          % Define common colors for the buttons
+          \definecolor{ButtonBackground}{HTML}{010409}
+          \definecolor{ButtonBorder}{HTML}{9198A1}
+          \definecolor{ButtonFont}{HTML}{B8BBBF}
+          
+          \definecolor{SettingsFont}{HTML}{f0f6fc}
+          
+          \definecolor{CloneUrlButtonBackground}{HTML}{1f6feb}
+          \definecolor{CloneUrlButtonBorder}{HTML}{0d1117}
+          \definecolor{CloneUrlButtonFont}{HTML}{ffffff}
+          
+          \definecolor{AddPeopleBackground}{HTML}{212830}
+          \definecolor{AddPeopleBorder}{HTML}{3d444d}
+          \definecolor{AddPeopleFont}{HTML}{f0f6fc}
+          
+          \definecolor{SectionShieldBackground}{HTML}{656c76}
+          \definecolor{SectionShieldFont}{HTML}{ffffff}
+          
+          % Command for vertically centered icons with properly specified size and vertical offset
+          \newcommand{\vcenteredinclude}[2][ButtonFont]{
+            \raisebox{-.5\height}{\textcolor{#1}{\includegraphics[height=#2]{#2}}}
+          }
+          
+          % Create New button formatting
+          \newtcbox{\CreateNewButton}[1][ButtonBackground]{
+            on line, box align=center, colframe=ButtonBorder, colback=#1, halign=center,
+            boxrule=0.5pt, arc=2pt, left=5pt, right=5pt, top=3pt, bottom=3pt, boxsep=0pt, 
+            tcbox raise base, enhanced, fontupper=\fontspec{Arial}\color{ButtonFont}
+          }
+          
+          % New Repo button formatting
+          \newtcbox{\NewRepoButton}[1][ButtonBackground]{
+            on line, box align=center, colframe=ButtonBorder, colback=#1, halign=center,
+            boxrule=0.5pt, arc=2pt, left=7pt, right=7pt, top=3pt, bottom=3pt, boxsep=0pt, 
+            tcbox raise base, enhanced, fontupper=\fontspec{Arial}\color{ButtonFont}
+          }
+          
+          % Settings buttons formatting
+          \newtcbox{\SettingsButton}[1][ButtonBackground]{
+            on line, box align=center, colframe=ButtonBorder, colback=#1, halign=center,
+            boxrule=0.5pt, arc=2pt, left=7pt, right=7pt, top=3pt, bottom=3pt, boxsep=0pt, 
+            tcbox raise base, enhanced, fontupper=\fontspec{Arial}\color{SettingsFont}
+          }
+          
+          % Add People button formatting
+          \newtcbox{\AddPeopleButton}[1][AddPeopleBackground]{
+            on line, box align=center, colframe=AddPeopleBorder, colback=#1, halign=center,
+            boxrule=0.5pt, arc=2pt, left=7pt, right=7pt, top=4pt, bottom=4pt, boxsep=0pt, 
+            tcbox raise base, enhanced, fontupper=\fontsize{10pt}{10pt}\selectfont\fontspec{Arial}\color{AddPeopleFont}
+          }
+          
+          % Create Clone URL button formatting with specific colors
+          \newtcbox{\CloneUrlButton}[1][CloneUrlButtonBackground]{
+            on line, box align=center, colframe=CloneUrlButtonBorder, colback=#1, halign=center,
+            boxrule=0.5pt, arc=5pt, left=7pt, right=7pt, top=3pt, bottom=3pt, boxsep=0pt,
+            tcbox raise base, enhanced, fontupper=\fontspec{Arial}\color{CloneUrlButtonFont}
+          }
+          
+          % Section Shield button formatting
+          \newtcbox{\SectionShieldButton}[1][SectionShieldBackground]{
+            on line, box align=center, colframe=ButtonBorder, colback=#1, halign=center,
+            boxrule=0.5pt, arc=2pt, left=5pt, right=5pt, top=3pt, bottom=3pt, boxsep=0pt, 
+            tcbox raise base, enhanced, fontupper=\fontspec{Arial}\color{SectionShieldFont}
+          }
+highlight-style: ../../../../_styles/idle-fingers-light.theme
+bibliography: references.bib
+csl: ../../../../Code/nature.csl
+---
+
+This workshop provides three examples demonstrating common uses of a configured Git and GitHub setup. The first two, in another handout, show how to establish a connection by starting with either a local project directory or an existing remote repository. In this example, students will find a practice collaboration exercise to complete with peers, where they propose code adjustments for collaborators to review via Pull Requests.
+
+To effectively follow these guidelines, we suggest that you use the following file structure. By the end of this module, your workshop directory should contain:
+
+\vspace{-2ex}
+
+\begin{flushleft}
+\texttt{dsde-workshops/}\\
+\texttt{\ \ |- start-local/}\\
+\texttt{\ \ |- JHU-CRC-Vaccinations/}\\
+\texttt{\ \ |- JHU-CRC-Cases-and-Deaths/}
+\end{flushleft}
+
+::: callout-important
+Specific directions are provided for establishing these repositories. To interact with the pre-prepared JHU-CRC examples, you must first create a "clean-break" copy in your own GitHub account. When practicing collaboration, only one team member needs to complete this step; all others can then clone that member's copy to their local device.
+
+\vspace{2ex}
+
+Find the directions for creating a "clean-break" on the Book of Workshops webpage for this workshop: [Getting Started with Git and GitHub - Accessing the Codespaces](https://ysph-dsde.github.io/Book-of-Workshops/Workshops/Git-and-GitHub/git-github-index.html#accessing-the-codespaces)
+:::
+
+# Exercise Framework and Approach
+
+In the following exercises, you and your team are going to assume roles commonly seen in DevOps teams. DevOps teams—combining software development (Dev) and IT operations (Ops)—embody a collaborative philosophy where everyone shares responsibility, to varying degrees, for different phases of code development, integration, and deployment\ [@github_devop]. This team structure and distribution of responsibilities is popular across code development teams of all types. Git's version control and code history management, combined with GitHub's codebase distribution and collaboration features, have become instrumental tools in supporting these workflows\ [@gitops].
+
+DevOps is commonly understood as a continuous cycle of development, testing, integration, and deployment. Canonically, there are eight distinct phases in a DevOps cycle, where team members may be responsible for specific aspects and different pieces of the codebase may exist in different phases of the process at any given time\ [@devops]. In your professional lives, you may experience the DevOps framework on a spectrum, as roles are separated and divided depending on factors such as the scope and complexity of the project, as well as the bandwidth and expertise of each team member.
+
+![The DevOps lifecycle from Atlassian's ["What Is DevOps?"](https://www.atlassian.com/devops) article\ [@devops].](../../Images/Atlassian_DevOps%20Loop_Downloaded%2002.03.2026.png){width="100%"}
+
+\newpage
+
+For data analysis projects, where there is no code-based product that requires deployment or continual integration, team members will assume to varying degrees the roles of Developer, Reviewer, and codebase Maintainer:
+
+:::{style="margin-left: 2rem"}
+- **Developer:** Create and implement features through code changes.
+- **Reviewer:** Review and approve proposed changes submitted through Pull Requests.
+- **Maintainer:** Manage the repository and ensure branch protection rules are configured correctly to enforce review structures and code integrity for the team.
+:::
+
+In practice, project administrators or team leads configure protection rules for the codebase, which is beyond the scope of this exercise. We'll provide these rules, and each person will take turns maintaining code alignment with these standards and discussing their implications.
+
+**Why do we need protection rules?** In this framework, the main branch on GitHub serves as the most current version of the project—the basis everyone uses for their work. To preserve its integrity, collaborators use branches to create isolated work environments where they can test and implement intended changes\ [@git_branch; @create_branch; @gitops].
+
+Additionally, since the codebase is intentionally simple, participants are not restricted to one role. Instead, the exercises encourage collaborative participation where students discuss outcomes as team members propose code changes and review results together. The exercises are designed for teams of 2 to 4 people. We encourage everyone to go through each step together to experience the process from different perspectives and encounter various challenges.
+
+# Accessing the Codebase
+
+In this example, you will copy a pre-prepared codebase from the remote repository "ysph-dsde/JHU-CRC-Cases-and-Deaths" on GitHub. One team member will copy this repository to their GitHub account (directions below) and add the remaining members as collaborators. Each team member can then clone the copied repository to their local device.
+
+Using this codebase, you will be guided through collaborative GitHub workflows. What you explore is ultimately up to your team, but we have included simple exercises covering branching and merge rules, submitting Pull Requests, and resolving merge conflict. Articles are provided at each section that every team member is recommended to reference and review so they can fully participate in the exercises.
+
+## Making a Clean-Break Copy
+
+1.  Open the [Getting Started with Git and GitHub - Accessing the Codespaces](https://ysph-dsde.github.io/Book-of-Workshops/Workshops/Git-and-GitHub/git-github-index.html#accessing-the-codespaces) webpage. From there, open the "ysph-dsde/JHU-CRC-Cases-and-Deaths" GitHub repository in a new tab and scroll down to the *Making a Clean-Break Copy* section.
+
+2.  Follow **Method #1** or **Method #2** to create a clean-break copy of the remote repository in your personal GitHub account. We recommend starting with **Method #1**, but if that takes too long or does not work, **Method #2** is available as a backup option.
+
+## Inviting Team Members
+
+1.  In the YOUR-USER-ID/JHU-CRC-Cases-and-Deaths repository, click the \SettingsButton{
+      \raisebox{-0.12\height}{\includegraphics[width=10pt]{../../Images/Icons/octicons-gear-16-b8bbbf.pdf}}
+      Settings} tab at the top.
+
+2.  In the left sidebar under the "Access" heading, click \SettingsButton{
+      \raisebox{-0.12\height}{\includegraphics[width=10pt]{../../Images/Icons/octicons-people-16-b8bbbf.pdf}}
+      Collaborators and teams}.
+
+3.  Under "Manage Access," click \AddPeopleButton{Add people} and enter your teammates' GitHub usernames. Because this workshop is intended to allow everyone the opportunity to play different roles on a DevOps team, we suggest you give each teammate "Admin" rights.
+
+4.  Your teammates will receive email invitations that they must accept to gain access. Once they have accepted the invitations, they are ready to proceed with cloning the repository.
+
+
+## Clone the Project Codebase
+
+1.  Open the command-line application (i.e. Terminal for Macs and Git Bash for Windows) and navigate to the file location you want to temporarily store the repository copy.
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{Command-Line Interface} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+\func{cd} \str{"~/dsde-workshops/"}     \com{# Go to workshop directory}
+  \end{Verbatim}
+  \end{codebox}
+
+  \vspace{-4.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+2.  In the copied GitHub repository, "YOUR-USER-ID/JHU-CRC-Cases-and-Deaths", find the repository's SSH or HTTPS URL. Copy the SSH or HTTPS URL from your GitHub repository by clicking the \CloneUrlButton{
+      \raisebox{-0.1\height}{\includegraphics[width=10pt]{../../Images/Icons/octicons-code-16-white.pdf}} Code 
+      \raisebox{-0.1\height}{\includegraphics[width=10pt]{../../Images/Icons/octicons-triangle-down-24-white.pdf}}
+    } button. Which one you choose depends on your preference and configurations (see [Configurations and Credentials - Transfer Protocols](https://ysph-dsde.github.io/Book-of-Workshops/Workshops/Git-and-GitHub/Pages/git-github-setup.html#transfer-protocols) for additional details).
+
+    For example the URLs will look like this:
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+\com{# SSH}
+\str{git@github.com:YOUR-USER-ID/JHU-CRC-Cases-and-Deaths.git}
+
+\com{# HTTPS}
+\str{https://github.com/YOUR-USER-ID/JHU-CRC-Cases-and-Deaths.git}
+  \end{Verbatim}
+  \end{codebox}
+
+  \vspace{-4.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+3.  Clone the repository to your local device.
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{Command-Line Interface} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+\com{# SSH}
+\func{git} clone \str{git@github.com:YOUR-USER-ID/JHU-CRC-Cases-and-Deaths.git}
+
+\com{# HTTPS}
+\func{git} clone \str{https://github.com/YOUR-USER-ID/JHU-CRC-Cases-and-Deaths.git}
+  \end{Verbatim}
+  \end{codebox}
+
+  \vspace{-4.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+4.  Open the cloned project directory.
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{Command-Line Interface} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+\func{cd} \str{"JHU-CRC-Cases-and-Deaths"}
+  \end{Verbatim}
+  \end{codebox}
+
+  \vspace{-4.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+\newpage
+
+5.  Open the R project environment.
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{Command-Line Interface} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+\func{open} \str{JHU-CRC-Cases-and-Deaths.Rproj}
+  \end{Verbatim}
+  \end{codebox}
+
+  \vspace{-4.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+6.  In RStudio, open "`Plot Cases and Deaths.R`" and initialize the environment.
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{RStudio} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+renv\op{::}\func{init}()     \com{# Set up renv environment}
+renv\op{::}\func{restore}()  \com{# Install locked package versions}
+  \end{Verbatim}
+  \end{codebox}
+
+  \vspace{-4.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+\newpage
+
+# 1. Pull Requests
+
+Most new users of GitHub know it for its role in codebase sharing, acting as the central server for distributed version control. GitHub also provides valuable tools that support collaborative workflows by establishing clear expectations, roles, and project timelines. Pull Requests are one such central feature.
+
+Pull Requests allow teams to systematically organize and review proposed modifications to the project's core code, typically stored on the `main` branch. They also serve as a way to inform your team about individual work, create a contribution track record, and refine changes before finalizing a merge\ [@pull_requests]. Because of its core role in collaborative projects, this is one of the most important tools to learn and implement in an effective collaborative team.
+
+There are many ways to use the Pull Request feature, including setting rulesets, which we will briefly cover later. Unfortunately, we do not have time to explore all of these options here. Instead, we will focus on a general introduction to creating, reviewing, and approving Pull Requests in GitHub. Below are GitHub Docs links for additional Pull Request features and uses.
+
+- [Creating a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request?tool=webui): Step-by-step guides for initiating and managing Pull Requests using different operating systems, the GitHub browser, or the Git Command-Line Interface (CLI)\ [@create_pull_requests].
+
+- [Reviewing proposed changes in a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/reviewing-proposed-changes-in-a-pull-request): How-to guide for accessing, viewing, and managing Pull Request reviews\ [@pull_request_review].
+
+- [Requesting a pull request review](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/requesting-a-pull-request-review): Step-by-step guide to requesting review from a specific reviewer\ [@pull_request_request_review].
+
+- [About pull request merges](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/about-pull-request-merges): An explanation of how merges are interpreted in the project's version control history, their default settings and restrictions, what a "squash" merge means, and how to initiate different types of merge protocols\ [@pull_request_merges].
+
+
+\newpage
+
+1.  Create a new branch from `main` where you can modify the provided script and submit your changes as a pull request. Each team member should use a unique branch name. In the example below, the branch is called `little-feature`.
+
+    \begin{callout-note}[Note]
+    This assumes you haven't modified \texttt{main} since cloning. If you have, either sync with the remote repository and have everyone pull the changes, or revert to the original version.
+    \end{callout-note}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{Command-Line Interface} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+\func{git} checkout \op{-b} little-feature  \com{# Create and switch to branch}
+  \end{Verbatim}
+  \end{codebox}
+
+  \vspace{-4.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+
+2.  In RStudio, open "`Plot Cases and Deaths.R`" and initialize the environment.
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{Command-Line Interface} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+\func{open} \str{JHU-CRC-Cases-and-Deaths.Rproj}       \com{# Open the R Project}
+  \end{Verbatim}
+  \end{codebox}
+
+  \vspace{-4.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{RStudio} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+renv\op{::}\func{init}()     \com{# Set up renv environment}
+renv\op{::}\func{restore}()  \com{# Install locked package versions}
+  \end{Verbatim}
+  \end{codebox}
+
+  \vspace{-4.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+
+3.  Each team member should implement one of the following code changes. Make sure each person chooses a different change to avoid conflicts for now—we'll cover handling conflicts in the next section.
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{RStudio - Team Member 1: Add Captions} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+plot\_cases \op{<-} plot\_cases \op{+}
+    \func{labs}(\atr{subtitle =} \str{"Data Source: CSSE at Johns Hopkins University"},
+         \atr{caption =} \str{"Visualization by YOUR-TEAM-NAME"})
+
+\func{ggsave}(\str{"plot\_cases\_captioned.jpeg"}, plot\_cases, \atr{width =} \op{20}, \atr{height =} \op{12}, \atr{units =} \str{"cm"})
+
+plot\_deaths \op{<-} plot\_deaths \op{+}
+    \func{labs}(\atr{subtitle =} \str{"Data Source: CSSE at Johns Hopkins University"},
+         \atr{caption =} \str{"Visualization by YOUR-TEAM-NAME"})
+         
+\func{ggsave}(\str{"plot\_deaths\_captioned.jpeg"}, plot\_deaths, \atr{width =} \op{20}, \atr{height =} \op{12}, \atr{units =} \str{"cm"})
+  \end{Verbatim}
+  \end{codebox}
+
+  \vspace{-4.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{RStudio - Team Member 2: Change} \texttt{plot\_cases} \textbf{to Show Data for "New England"} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+plot\_cases \op{<-} covid19\_cases\_deaths \op{|>}
+  \com{# Filter out the "New England" census division}
+  \func{filter}(Province\_State \op{==} \str{"New England"}) \op{|>}
+  \func{ggplot}(\func{aes}(Week, Confirmed\_Cases\_Daily)) \op{+}
+    \func{geom\_line}(\atr{color =} \str{"#00356b"}) \op{+}
+    \func{scale\_y\_continuous}(\atr{labels =} \func{unit\_format}(\atr{unit =} \str{"M"}, \atr{scale =} \op{1e-6})) \op{+}
+    \func{scale\_x\_date}(\atr{date\_breaks =} \str{"4 month"}, \atr{date\_labels =} \str{"\%b \%Y"}) \op{+}
+    \func{labs}(\atr{x =} \kw{NULL}, \atr{y =} \str{"Daily Counts"}, 
+         \atr{title =} \str{"Daily Confirmed Counts of COVID-19 in New England"}) \op{+}
+    \func{theme\_minimal}()
+
+\func{ggsave}(\str{"plot\_cases\_NE.jpeg"}, plot\_cases, \atr{width =} \op{20}, \atr{height =} \op{12}, \atr{units =} \str{"cm"})
+  \end{Verbatim}
+  \end{codebox}
+
+  \vspace{-4ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{RStudio - Team Member 3: Change} \texttt{plot\_deaths} \textbf{to Show Data for "New England"} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+plot\_deaths \op{<-} covid19\_cases\_deaths \op{\%>\%}
+  \com{# Filter out the "New England" census division}
+  \func{filter}(Province\_State \op{==} \str{"New England"}) \op{|>}
+  \func{ggplot}(\func{aes}(Week, Deaths\_Daily)) \op{+}
+    \func{geom\_line}(\atr{color =} \str{"#A353FF"}) \op{+}
+    \func{scale\_x\_date}(\atr{date\_labels =} \str{"\%m/\%Y"},
+                 \atr{breaks =} \func{as.Date}(\func{c}(\str{"2020-01-01"}, \str{"2020-06-30"},
+                                    \str{"2021-01-01"}, \str{"2021-06-30"},
+                                    \str{"2022-01-01"}, \str{"2022-06-30"},
+                                    \str{"2023-01-01"}, \str{"2023-06-30"}))) \op{+}
+    \func{scale\_y\_continuous}(\atr{labels =} scales\op{::}\func{label\_comma}()) \op{+}
+    \func{labs}(\atr{x =} \kw{NULL}, \atr{y =} \str{"Daily Counts"},
+         \atr{title =} \str{"Daily Death Counts of COVID-19 in New England"}) \op{+}
+    \func{theme\_minimal}()
+    
+\func{ggsave}(\str{"plot\_deaths\_NE.jpeg"}, plot\_deaths, \atr{width =} \op{20}, \atr{height =} \op{12}, \atr{units =} \str{"cm"})
+  \end{Verbatim}
+  \end{codebox}
+
+  \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{RStudio - Team Member 4: Create a Third Graph for Two Districts} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+plot\_districts \op{<-} covid19\_cases\_deaths \op{|>}
+  \func{filter}(Province\_State \op{\%in\%} \func{c}(\str{"West South Central"}, \str{"Pacific"})) \op{|>}
+  \func{ggplot}(\func{aes}(Week, Confirmed\_Cases\_Daily, \atr{color =} Province\_State)) \op{+}
+    \func{geom\_line}() \op{+}
+    \func{scale\_color\_manual}(\atr{values =} \func{c}(\atr{\str{"West South Central"} =} \str{"#A353FF"}, 
+                                  \atr{\str{"Pacific"} =} \str{"#00356b"})) \op{+}
+    \func{scale\_y\_continuous}(\atr{labels =} \func{unit\_format}(\atr{unit =} \str{"K"}, \atr{scale =} \op{1e-3})) \op{+}
+    \func{scale\_x\_date}(\atr{date\_breaks =} \str{"4 month"}, \atr{date\_labels =} \str{"\%b \%Y"}) \op{+}
+    \func{labs}(\atr{x =} \kw{NULL}, \atr{y =} \str{"Daily Counts"}, 
+         \atr{title =} \str{"Daily Confirmed Counts of COVID-19 in the West South Central and Pacific"},
+         \atr{color =} \str{"Districts"}) \op{+}
+    \func{theme\_minimal}()
+
+plot\_districts
+
+\func{ggsave}(\str{"plot\_districts.jpeg"}, plot\_districts, \atr{width =} \op{20}, \atr{height =} \op{12}, \atr{units =} \str{"cm"})
+  \end{Verbatim}
+  \end{codebox}
+
+  \vspace{-4ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+\newpage
+
+4.  Commit your changes to "`Plot Cases and Deaths.R`" and the corresponding plot JPEG with a descriptive commit message. For example, here's the message I used for my changes:
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{Command-Line Interface} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+\func{git} add .
+\func{git} commit \op{-m} \str{"Move some details to the Book of Workshops. Update README.md to reflect these changes, and simplify the repo contents."}
+  \end{Verbatim}
+  \end{codebox}
+
+  \vspace{-4.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+
+\begin{enumerate}[start=5]
+    \item Push these changes to your branch on the GitHub repository. If this is your first time pushing from this branch, you will need to set the upstream (remote URL). There are two approaches for this, but Option \#1 is most appropriate since we have already made local changes.
+    \begin{enumerate}[label=\alph*.]
+        \item \textbf{Option \#1:} Push and set the upstream from your local device. Use this when local changes have already been made to this branch.
+    \end{enumerate}
+        
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{Command-Line Interface} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+\func{git} push \op{-u} origin little-feature     \com{# Set origin as upstream}
+  \end{Verbatim}
+  \end{codebox}
+
+  \vspace{-4.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 5em\relax}{0.4pt}
+\end{list}
+
+    \begin{enumerate}[label=\alph*., start=2]
+        \item \textbf{Option \#2:} Create the branch manually on GitHub first, then pull it to your local device. This approach is only for when you are first setting up the branch on your device.
+        
+        On the repository landing page, click \SettingsButton{ \raisebox{-0.12\height}{\includegraphics[width=10pt]{../../Images/Icons/octicons-git-branch-16-b8bbbf.pdf}} main \raisebox{-0.12\height}{\includegraphics[width=10pt]{../../Images/Icons/octicons-triangle-down-24-b8bbbf.pdf}}} $\longrightarrow$ "View all branches." Click \CloneUrlButton{New branch} and enter the exact name of your local branch. Keep the source as \texttt{main}, then click \CloneUrlButton{Create branch}. Finally, push your changes from your local device.
+\end{enumerate}
+    
+\newpage
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{Command-Line Interface} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 5em\relax}{0.4pt}\vspace{-0.8ex}
+
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+\func{git} fetch origin little-feature    \com{# Fetch remote branch}
+
+\com{# Make local copy with upstream}
+\func{git} checkout \op{-b} little-feature origin/little-feature
+  \end{Verbatim}
+  \end{codebox}
+
+  \vspace{-4.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 5em\relax}{0.4pt}\vspace{-2.5ex}
+  \item\small \textbf{Output} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 5em\relax}{0.4pt}\vspace{-0.8ex}
+
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+\str{branch 'little-feature'} set up to track \str{'origin/little-feature'}.
+\str{Switched} to a new branch \str{'little-feature'}
+  \end{Verbatim}
+  \end{codebox}
+
+\vspace{-4.5ex}
+\item\noindent\rule[0.3ex]{\dimexpr\textwidth - 5em\relax}{0.4pt}
+\end{list}
+\end{enumerate}
+
+
+6.  Refresh the GitHub page. A yellow banner should appear at the top prompting you to create a Pull Request. Click \CloneUrlButton{Compare \& pull request}. If no banner appears, navigate to the \SettingsButton{ \raisebox{-0.12\height}{\includegraphics[width=10pt]{../../Images/Icons/octicons-git-pull-request-16-b8bbbf.pdf}} Pull requests \raisebox{-0.12\height}{\includegraphics[width=10pt]{../../Images/Icons/octicons-triangle-down-24-b8bbbf.pdf}}} tab and create one manually. \vspace{1ex}
+
+    \begin{callout-note}[One Reviewer, One Pull Request]
+    GitHub's default settings require only one approval to merge a Pull Request. Have each person select one Pull Request to review and merge into \texttt{main}.
+    \end{callout-note}
+
+\vspace{-2.5ex}
+\begin{flushright}
+  \includegraphics[width=0.93\textwidth]{../../Images/PullRequest_pt1.png}
+\end{flushright}
+
+\newpage
+
+7. **OPTIONAL:** Edit the title or add a description for the Pull Request.
+
+\vspace{-2.5ex}
+\begin{flushright}
+  \includegraphics[width=0.93\textwidth]{../../Images/PullRequest_pt2.png}
+\end{flushright}
+
+\newpage
+
+8. Clicking \CloneUrlButton{Create pull request \raisebox{-0.12\height}{\includegraphics[width=10pt]{../../Images/Icons/octicons-triangle-down-24-white.pdf}}} opens the Pull Request and compares your branch with `main` for potential merge conflicts. Since each team member modified different parts of the code, no conflicts should be detected.
+
+\vspace{-2.5ex}
+\begin{flushright}
+  \includegraphics[width=0.93\textwidth]{../../Images/PullRequest_pt3.png}
+\end{flushright}
+
+9. Clicking \CloneUrlButton{Merge pull request \raisebox{-0.12\height}{\includegraphics[width=10pt]{../../Images/Icons/octicons-triangle-down-24-white.pdf}}} merges the Pull Request, with the option to include a custom merge commit message.
+
+\vspace{-2.5ex}
+\begin{flushright}
+  \includegraphics[width=0.93\textwidth]{../../Images/PullRequest_pt4.png}
+\end{flushright}
+
+\newpage
+
+10. Clicking \CloneUrlButton{Confirm merge} completes the merge and closes the Pull Request.
+
+\vspace{-2.5ex}
+\begin{flushright}
+  \includegraphics[width=0.93\textwidth]{../../Images/PullRequest_pt5.png}
+\end{flushright}
+
+
+11. As a final step, ensure your local repository reflects these changes and clean up branches based on the old version of `main`.
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{Command-Line Interface} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+\func{git} checkout main                 \com{# Checkout main branch}
+\func{git} pull                          \com{# Pull in the latest changes}
+\func{git} branch \op{-D} little-feature      \com{# Delete the outdated branch}
+  \end{Verbatim}
+  \end{codebox}
+
+  \vspace{-4.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+\newpage
+
+# 2. Reconciling Merge Conflicts
+
+As seen in the previous section, GitHub calls the branch receiving changes (in this case, `main`) the "base" and the branch proposing changes (in this case, `little-feature`) the "compare." Merge conflicts arise when the base and compare branches propose contradictory edits to the same line of code. In these cases, Git cannot automatically reconcile the differences and prompts you to either integrate both changes manually or choose which version to keep.
+
+While we call this a "merge" conflict, it can arise from any coalescing operation, whether a `git merge` or `git rebase`\ [@merge_vs_rebase]. Merge conflicts can occur when directly merging two branch heads, cherry-picking a historical commit, or when one branch deletes a file that the other branch modifies\ [@merge_conflicts_atlassian; @merge_conflicts_gitkraken]. Regardless of how the merge conflict arises, there are two approaches for reviewing and reconciling the differences: resolving conflicts in GitHub or locally through the CLI\ [@merge_conflicts_github; @merge_conflicts_cli].
+
+Resolving conflicts works the same in both places, but GitHub only handles simple conflicts while the CLI can resolve any conflict. We'll walk you through a local resolution example, as this approach applies to all merge conflicts. After that, we've prepared two scenarios to try: one simple conflict resolvable in GitHub, and one complex conflict requiring local resolution.
+
+Before jumping into the exercises, let's look at how Git highlights code impacted by merge conflicts. Consider the following scenario: two team members are updating the study inclusion/exclusion criteria saved in the project repository. They each create a branch (`john-revisions` and `alice-updates`), make their edits, and commit their changes. Before merging into `main`, they first merge their branches together to combine their work. The file on each branch looks like:
+
+\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{1pt}\vspace{-2.5ex}
+\small \texttt{inclusion\_exclusion\_criteria.txt} \textbf{on} \texttt{john-revisions} \normalsize\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-0.8ex}
+
+```{.bash}
+# Study Protocol
+
+1. Inclusion Criteria
+   - Age above 18
+   - Confirmed diagnosis of condition X
+
+2. Exclusion Criteria
+   - Diagnosis of condition Y
+```
+
+\vspace{-7ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}
+
+
+\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{1pt}\vspace{-2.5ex}
+\small \texttt{inclusion\_exclusion\_criteria.txt} \textbf{on} \texttt{alice-updates} \normalsize\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-0.8ex}
+
+```{.bash}
+# Study Protocol
+
+1. Inclusion Criteria
+   - Age above 21
+   - Diagnosis of condition X
+
+2. Exclusion Criteria
+   - Diagnosis of condition Y
+   - Recent major surgery
+```
+
+\vspace{-7ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}
+
+As you can see, some lines differ between the branches, and some lines appear in only one version. When they attempt to merge Alice's branch into John's, a conflict occurs.
+
+\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{1pt}\vspace{-2.5ex}
+\small \textbf{Command-Line Interface} \normalsize\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-0.8ex}
+
+```{.bash}
+git checkout john-revisions     # Switch to the john-revisions branch
+git merge alice-updates         # Merge changes from the alice-updates branch
+```
+
+\vspace{-7ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-2.2ex}
+\small \textbf{Output} \normalsize\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-0.8ex}
+
+```{.bash}
+Auto-merging inclusion_exclusion_criteria.txt
+CONFLICT (add/add): Merge conflict in inclusion_exclusion_criteria.txt
+Automatic merge failed; fix conflicts and then commit the result.
+```
+
+\vspace{-7ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}
+
+A status check shows the merge has been paused, awaiting user input to resolve the conflicts. The repository stays in merge mode until you either resolve the conflicts and finish the merge or abort it.
+
+\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{1pt}\vspace{-2.5ex}
+\small \textbf{Command-Line Interface} \normalsize\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-0.8ex}
+
+```{.bash}
+git status    # Show current status
+```
+
+\vspace{-7ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-2.2ex}
+\small \textbf{Output} \normalsize\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-0.8ex}
+
+```{.bash}
+On branch john-revisions
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+	both added:      inclusion_exclusion_criteria.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+\vspace{-7ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}
+
+
+Opening the conflicted file shows that Git has added annotations highlighting the problem areas:
+
+
+\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{1pt}\vspace{-2.5ex}
+\small \textbf{Command-Line Interface} \normalsize\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-0.8ex}
+
+```{.bash}
+cat inclusion_exclusion_criteria.txt      # Display file content
+```
+
+\vspace{-7ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-2.2ex}
+\small \textbf{Output} \normalsize\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-0.8ex}
+
+```{.bash}
+# Study Protocol
+
+1. Inclusion Criteria
+<<<<<<< HEAD
+   - Age above 18
+   - Confirmed diagnosis of condition X
+
+2. Exclusion Criteria
+   - Diagnosis of condition Y
+=======
+   - Age above 21
+   - Diagnosis of condition X
+
+2. Exclusion Criteria
+   - Diagnosis of condition Y
+   - Recent major surgery
+>>>>>>> alice-updates
+```
+
+\vspace{-7ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}
+
+
+The conflicting lines are marked by `<<<<<<< HEAD` at the top and `>>>>>>> alice-updates` at the bottom; non-conflicting content falls outside these markers. This shows that `alice-updates` is being merged into `HEAD` (the latest commit of `john-revisions`). The section between `<<<<<<< HEAD` and `=======` contains `john-revisions` content, while the section between `=======` and `>>>>>>> alice-updates` contains `alice-updates` content.
+
+\vspace{1ex}
+
+::: {.callout-tip}
+# Code Like a Pro
+
+Git frequently uses the `HEAD` nomenclature to indicate that you are referencing or interacting with the most recent commit status of that branch, as reflected in the project's `.git` directory.
+:::
+
+\vspace{1ex}
+
+To reconcile these changes, edit the file and remove all conflict markers.
+
+\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{1pt}\vspace{-2.5ex}
+\small \textbf{Command-Line Interface} \normalsize\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-0.8ex}
+
+```{.bash}
+vim inclusion_exclusion_criteria.txt      # Edit the file in the CLI
+cat inclusion_exclusion_criteria.txt      # Display file content
+```
+
+\vspace{-7ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-2.2ex}
+\small \textbf{Output} \normalsize\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-0.8ex}
+
+```{.bash}
+# Study Protocol
+
+1. Inclusion Criteria
+   - Age above 21
+   - Confirmed diagnosis of condition X
+
+2. Exclusion Criteria
+   - Diagnosis of condition Y
+   - Recent major surgery
+```
+
+\vspace{-7ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}
+
+With these changes made, we are ready to reattempt coalescing the two branches.
+
+\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{1pt}\vspace{-2.5ex}
+\small \textbf{Command-Line Interface} \normalsize\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-0.8ex}
+
+```{.bash}
+git add .     # Stage the updated file
+git status    # Show current status
+```
+
+\vspace{-7ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-2.2ex}
+\small \textbf{Output} \normalsize\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-0.8ex}
+
+```{.bash}
+On branch john-revisions
+All conflicts fixed but you are still merging.
+  (use "git commit" to conclude merge)
+
+Changes to be committed:
+	modified:   inclusion_exclusion_criteria.txt
+```
+
+\vspace{-7ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}
+
+
+\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{1pt}\vspace{-2.5ex}
+\small \textbf{Command-Line Interface} \normalsize\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-0.8ex}
+
+```{.bash}
+git commit -m "Merged and resolved the conflict in inclusion_exclusion_criteria.txt."
+```
+
+\vspace{-7ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-2.2ex}
+\small \textbf{Output} \normalsize\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-0.8ex}
+
+```{.bash}
+[john-revisions cf29589] Merged and resolved the conflict in inclusion_exclusion_criteria.txt.
+```
+
+\vspace{-7ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}
+
+Best practice is to delete branches that are no longer active or based on outdated code. Since Alice's updates have been merged, we can now delete the `alice-updates` branch locally and remotely\ [@delete_branch].
+
+\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{1pt}\vspace{-2.5ex}
+\small \textbf{Command-Line Interface} \normalsize\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-0.8ex}
+
+```{.bash}
+git push -d origin alice-updates    # Delete remote copy first
+git branch -D alice-updates         # Delete local copy
+```
+
+\vspace{-7ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-2.2ex}
+\small \textbf{Output} \normalsize\vspace{-2.5ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}\vspace{-0.8ex}
+
+```{.bash}
+Deleted branch alice-updates (was e00a860).
+```
+
+\vspace{-7ex}
+\noindent\rule[0.3ex]{\textwidth}{0.4pt}
+
+\newpage
+
+## 2.a. Reconciling Merge Conflicts in GitHub
+
+1. Two team members should propose minor edits from their local machines. Each team member starts by creating a branch based on `main` to make their edits.
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item \small \textbf{Command-Line Interface} \normalsize\vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+\func{git} checkout main                         \com{# Ensure base is main}
+
+\func{git} checkout \op{-b} modify-x-axis-plot-cases  \com{# Team member 1 ONLY}
+\func{git} checkout \op{-b} change-title-plot-cases   \com{# Team member 2 ONLY}
+
+\func{open} \str{JHU-CRC-Cases-and-Deaths.Rproj}       \com{# Open the R Project}
+  \end{Verbatim}
+  \end{codebox}
+
+  \vspace{-4.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+
+2. Both team members should modify the $x$-axis of `plot_cases`: change the breaks from every four months to every two months and add an $x$-axis label that says "Week" (currently blank). One team member should also modify the plot title.
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item \small \textbf{RStudio - Team Member 1: Change} $x$\textbf{-axis Breaks and Label} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+plot\_cases \op{<-} covid19\_cases\_deaths \op{|>}
+  \func{filter}(Province\_State \op{==} \str{"New England"}) \op{|>}
+  \func{ggplot}(\func{aes}(Week, Confirmed\_Cases\_Daily)) \op{+}
+    \func{geom\_line}(\atr{color =} \str{"#00356b"}) \op{+}
+    \func{scale\_y\_continuous}(\atr{labels =} \func{unit\_format}(\atr{unit =} \str{"M"}, \atr{scale =} \op{1e-6})) \op{+}
+    \com{# Format the x-axis to show dates as Jan 2020 from 01/01/2020,}
+    \com{# spaced every two months (changed from four months).}
+    \func{scale\_x\_date}(\atr{date\_breaks =} \str{"2 month"}, \atr{date\_labels =} \str{"\%b \%Y"}) \op{+}
+    \com{# Add labels and title to the plot (x-axis label changed }
+    \com{# from NULL to "Week")}
+    \func{labs}(\atr{x =} \str{"Week"}, \atr{y =} \str{"Daily Counts"}, 
+         \atr{title =} \str{"Daily Confirmed Counts of COVID-19 in New England"}) \op{+}
+    \func{theme\_minimal}()
+  \end{Verbatim}
+  \end{codebox}
+
+  \vspace{-4.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+\newpage
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item \small \textbf{RStudio - Team Member 2: Change} $x$\textbf{-axis Breaks and Label with New Title} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+plot\_cases \op{<-} covid19\_cases\_deaths \op{|>}
+  \func{filter}(Province\_State \op{==} \str{"New England"}) \op{|>}
+  \func{ggplot}(\func{aes}(Week, Confirmed\_Cases\_Daily)) \op{+}
+    \func{geom\_line}(\atr{color =} \str{"#00356b"}) \op{+}
+    \func{scale\_y\_continuous}(\atr{labels =} \func{unit\_format}(\atr{unit =} \str{"M"}, \atr{scale =} \op{1e-6})) \op{+}
+    \com{# Format the x-axis to show dates as Jan 2020 from 01/01/2020,}
+    \com{# spaced every two months (changed from four months).}
+    \func{scale\_x\_date}(\atr{date\_breaks =} \str{"2 month"}, \atr{date\_labels =} \str{"\%b \%Y"}) \op{+}
+    \com{# Add labels and title to the plot (x-axis label changed }
+    \com{# from NULL to "Week" and new title)}
+    \func{labs}(\atr{x =} \str{"Week"}, \atr{y =} \str{"Daily Counts"}, 
+         \atr{title =} \str{"Daily COVID-19 Confirmed Counts in New England"}) \op{+}
+    \func{theme\_minimal}()
+  \end{Verbatim}
+  \end{codebox}
+
+  \vspace{-4.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+
+3. Both team members commit their local changes and push them to the GitHub repository. GitHub will then prompt them to create a Pull Request for each branch.
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item \small \textbf{Command-Line Interface} \normalsize\vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+\func{git} add \str{"Plot Cases and Deaths.R"}         \com{# Stage the edits}
+\func{git} commit \op{-m} \str{"Update plot-cases x-axis"}  \com{# Commit changes}
+
+\func{git} push origin modify-x-axis-plot-cases  \com{# Team member 1 ONLY}
+\func{git} push origin change-title-plot-cases   \com{# Team member 2 ONLY}
+  \end{Verbatim}
+  \end{codebox}
+
+  \vspace{-4.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+
+4. On GitHub, open the \SettingsButton{ \raisebox{-0.12\height}{\includegraphics[width=10pt]{../../Images/Icons/octicons-git-pull-request-16-b8bbbf.pdf}} Pull requests} page and click \CloneUrlButton{Compare \& pull request} next to `change-title-plot-cases`. This generates a Pull Request merging `change-title-plot-cases` (compare branch) into the base branch (`main` by default). \vspace{1ex}
+
+    \begin{callout-note}[Note]
+    Notice that the merge of \texttt{change-title-plot-cases} (compare branch) into \texttt{main} (base branch) can be completed automatically, indicating no conflicts are detected.
+    \end{callout-note}
+
+\vspace{1ex}
+
+5. Change the base branch from `main` to `modify-x-axis-plot-cases`. Update the merge title and description as desired, then click \CloneUrlButton{Create pull request \raisebox{-0.12\height}{\includegraphics[width=10pt]{../../Images/Icons/octicons-triangle-down-24-white.pdf}}}. \vspace{1ex}
+
+    \begin{callout-note}[Note]
+    Notice that GitHub now shows that merge conflicts have been detected.
+    \end{callout-note}
+
+\vspace{1ex}
+
+6. On the opened Pull Request page, scroll to the merge assessment section, marked with \SectionShieldButton{\raisebox{-0.12\height}{\includegraphics[width=13pt]{../../Images/Icons/octicons-git-merge-24-white.pdf}}} on the left of the box. A warning will indicate that merge conflicts were detected in "`Plot Cases and Deaths.R`." Click \AddPeopleButton{Resolve conflicts} to continue.
+
+7. This will open a text editor on the GitHub page where you can reconcile the changes as demonstrated above. When you are done, click \AddPeopleButton{Mark as resolved} in the top-right corner of the text editor and then click \CloneUrlButton{Commit merge} to finalize the changes. \vspace{1ex}
+
+    \begin{callout-note}[Note]
+    Notice that GitHub provides three hyperlinked options to quickly implement changes.
+    
+    \vspace{2ex}
+    
+    Also note that the base branch version is labeled "(Current change)" and the compare branch version is labeled "(Incoming change)" in their respective sections.
+    \end{callout-note}
+
+\vspace{1ex}
+
+8. Complete the Pull Request by merging it into the base branch as shown above.
+
+\newpage
+
+## 2.b. Reconciling Merge Conflicts in the CLI
+
+1. Two team members should propose minor edits from their local machines. Each team member starts by creating a branch based on `main` to make their edits.
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item \small \textbf{Command-Line Interface} \normalsize\vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+\func{git} checkout main                     \com{# Ensure base is main}
+
+\func{git} checkout \op{-b} modify-plot-deaths    \com{# Team member 1 ONLY}
+\func{git} checkout \op{-b} delete-plot-deaths    \com{# Team member 2 ONLY}
+
+\func{open} \str{JHU-CRC-Cases-and-Deaths.Rproj}   \com{# Open the R Project}
+  \end{Verbatim}
+  \end{codebox}
+
+  \vspace{-4.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+
+2. The team member on `modify-plot-deaths` should change the title of `plot_deaths` and save the updated plot.
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item \small \textbf{RStudio - Team Member 2: Adjust the Title} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+plot\_deaths \op{<-} covid19\_cases\_deaths \op{\%>\%} 
+  \func{filter}(Province\_State \op{==} \str{"New England"}) \op{|>}
+  \func{ggplot}(\func{aes}(Week, Deaths\_Daily)) \op{+}
+    \func{geom\_line}(\atr{color =} \str{"#A353FF"}) \op{+}
+    \func{scale\_x\_date}(\atr{date\_labels =} \str{"\%m/\%Y"},
+                 \atr{breaks =} \func{as.Date}(\func{c}(\str{"2020-01-01"}, \str{"2020-06-30"},
+                                    \str{"2021-01-01"}, \str{"2021-06-30"},
+                                    \str{"2022-01-01"}, \str{"2022-06-30"},
+                                    \str{"2023-01-01"}, \str{"2023-06-30"}))) \op{+}
+    \func{scale\_y\_continuous}(\atr{labels =} scales\op{::}\func{label\_comma}()) \op{+}
+    \com{# Add labels and title to the plot (adjust the title)}
+    \func{labs}(\atr{x =} \kw{NULL}, \atr{y =} \str{"Daily Counts"},
+         \atr{title =} \str{"Daily COVID-19 Death Counts in New England"}) \op{+}
+    \func{theme\_minimal}()
+
+\func{ggsave}(\str{"plot\_deaths\_NE.jpeg"}, plot\_deaths, \atr{width =} \op{20}, \atr{height =} \op{12}, \atr{units =} \str{"cm"})
+  \end{Verbatim}
+  \end{codebox}
+
+  \vspace{-4.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+\newpage
+
+3. The same team member should then commit and push their changes to GitHub.
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item \small \textbf{Command-Line Interface} \normalsize\vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+\func{git} add .                                 \com{# Stage all edits}
+\func{git} commit \op{-m} \str{"Update plot\_deaths title"}  \com{# Commit changes}
+\func{git} push origin modify-plot-deaths        \com{# Push to GitHub}
+  \end{Verbatim}
+  \end{codebox}
+
+  \vspace{-4.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+
+4. The team member on the `delete-plot-deaths` branch should delete the `plot _deaths_NE.jpeg` file.
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item \small \textbf{Command-Line Interface} \normalsize\vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+\func{rm} \str{plot\_deaths\_NE.jpeg}                    \com{# Delete the plot}
+
+\func{git} add \str{plot\_deaths\_NE.jpeg}               \com{# Stage all edits}
+\func{git} commit \op{-m} \str{"Delete plot\_deaths JPEG"}   \com{# Commit changes}
+\func{git} push origin delete-plot-deaths        \com{# Push to GitHub}
+  \end{Verbatim}
+  \end{codebox}
+
+  \vspace{-4.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+5. On GitHub, open the \SettingsButton{ \raisebox{-0.12\height}{\includegraphics[width=10pt]{../../Images/Icons/octicons-git-pull-request-16-b8bbbf.pdf}} Pull requests} page and click \CloneUrlButton{Compare \& pull request} next to `delete-plot-deaths`. This generates a Pull Request merging `delete-plot-deaths` (compare branch) into the base branch (`main` by default).
+
+
+6. Change the base branch from `main` to `modify-plot-deaths`. Update the merge title and description as desired, then click \CloneUrlButton{Create pull request \raisebox{-0.12\height}{\includegraphics[width=10pt]{../../Images/Icons/octicons-triangle-down-24-white.pdf}}}.
+
+
+7. On the Pull Request page, scroll to the merge assessment section (marked with \SectionShieldButton{\raisebox{-0.12\height}{\includegraphics[width=13pt]{../../Images/Icons/octicons-git-merge-24-white.pdf}}} on the left). A warning indicates merge conflicts were detected but the merge status cannot be loaded. This means you must resolve the conflict locally using the CLI.
+
+
+8. On one team member's device, pull the missing branch from GitHub, check out the `modify-plot-deaths` branch, and attempt to merge `delete-plot-deaths` into it. In the example below, `modify-plot-deaths` is already local, so we fetch `delete-plot-deaths` from GitHub to prepare for the merge. \vspace{1ex}
+
+    \begin{callout-tip}[Code Like a Pro]
+    We use fetch here instead of pull because we don't need a fully integrated local copy of \texttt{delete-plot-deaths}. Our goal is simply to merge our team member's remote changes into \texttt{modify-plot-deaths}, then merge the result into \texttt{main}. Once complete, these feature branches can be deleted.
+    \end{callout-tip}
+
+\vspace{0.5ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{Command-Line Interface} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+\func{git} checkout modify-plot-deaths     \com{# Ensure on modify-plot-deaths}
+\func{git} fetch origin delete-plot-deaths \com{# Retrieve delete-plot-deaths}
+  \end{Verbatim}
+  \end{codebox}
+
+  \vspace{-4.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-2.5ex}
+  \item\small \textbf{Output} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+\str{From} github.com:EXAMPLE-USER/JHU-CRC-Cases-and-Deaths
+ \str{*} branch            delete-plot-deaths \op{->} FETCH\_HEAD
+  \end{Verbatim}
+  \end{codebox}
+
+\vspace{-4.5ex}
+\item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{Command-Line Interface} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+\func{git} merge origin/delete-plot-deaths   \com{# Merge from FETCH-HEAD}
+  \end{Verbatim}
+  \end{codebox}
+
+  \vspace{-4.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-2.5ex}
+  \item\small \textbf{Output} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+\str{CONFLICT (modify/delete)}: plot_deaths_NE.jpeg deleted in HEAD and modified in origin/delete-plot-deaths.  Version origin/delete-plot-deaths of plot_deaths_NE.jpeg left in tree.
+Automatic merge failed; fix conflicts and then commit the result.
+  \end{Verbatim}
+  \end{codebox}
+
+\vspace{-4.5ex}
+\item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+\newpage
+
+9. In this example, we will implement the plot modifications and keep the resulting JPEG.
+    
+    \begin{callout-discussion}[Discussion Questions]
+    To complete this scenario, we did not need to remove conflict markers like we did in previous examples, and we did not need to recreate the plot. Why was that the case?
+    
+    \vspace{2ex}
+    
+    How would the commit progression on each branch need to change in order to produce conflict markers during this step?
+    \end{callout-discussion}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{Command-Line Interface} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+\func{git} status      \com{# Show current status}
+  \end{Verbatim}
+  \end{codebox}
+
+  \vspace{-4.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-2.5ex}
+  \item\small \textbf{Output} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+\str{On} branch modify-plot-deaths
+\str{You} have unmerged paths.
+  (\str{fix} conflicts and run \str{"git commit"})
+  (\str{use "git merge --abort"} to abort the merge)
+
+\str{Unmerged} paths:
+  (\str{use "git add/rm <file>..."} as appropriate to mark resolution)
+	\str{deleted} by them:   \str{plot\_deaths\_NE.jpeg}
+  \end{Verbatim}
+  \end{codebox}
+
+\vspace{-4.5ex}
+\item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{Command-Line Interface} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+\func{git} add \str{plot\_deaths\_NE.jpeg}               \com{# Keep the plot}
+\func{git} commit \op{-m} \str{"Merged and resolved the conflict with plot_deaths_NE.jpeg."}   \com{# Commit changes}
+  \end{Verbatim}
+  \end{codebox}
+
+  \vspace{-4.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-2.5ex}
+  \item\small \textbf{Output} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+[\str{modify-plot-deaths} 8625245] Merged and resolved the conflict with \str{plot\_deaths\_NE.jpeg}.
+  \end{Verbatim}
+  \end{codebox}
+
+\vspace{-4.5ex}
+\item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+8. Push the changes to GitHub and delete the `delete-plot-deaths` branch, if you have a local copy, as it no longer contains unique information\ [@delete_branch].
+
+    \begin{callout-discussion}[Discussion Questions]
+    How would the process differ if you instead merged \texttt{modify-plot-deaths} into \texttt{delete-plot-deaths}?
+    \end{callout-discussion}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item \small \textbf{Command-Line Interface} \normalsize\vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+\func{git} push origin modify-plot-deaths        \com{# Push to GitHub}
+\func{git} push -d origin delete-plot-deaths     \com{# Delete remote copy first}
+\func{git} branch -D delete-plot-deaths          \com{# Delete local copy}
+  \end{Verbatim}
+  \end{codebox}
+
+  \vspace{-4.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+
+\newpage
+
+# 3. Branch Rules
+
+Branch protection rules in GitHub help maintain the integrity of important branches by enforcing certain policies before changes can be merged. Common rules used by DevOps teams include requiring Pull Request reviews, passing status checks, and restricting who can push changes directly to the branch. To learn more, see GitHub's documentation on [About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches) and [Managing a branch protection rule](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule)\ [@merge_protection_rule; @about_protect_branches].
+
+\vspace{2ex}
+
+::: {.callout-tip}
+## Code Like a Pro
+
+More generally, you can set rulesets that are applicable to branches and tags in the repository. You can learn more about the generalized application of rulesets in [About rulesets](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets) and [Creating rulesets for a repository](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/creating-rulesets-for-a-repository), where the usage of `fnmatch` syntax for setting "Target branches" patterns is explained\ [@create_rulesets; @about_rulesets].
+:::
+
+\vspace{2ex}
+
+Only one team member needs to do this part. We recommend either taking turns setting up rulesets that will automatically enforce codebase maintenance expectations, or having one person screenshare the configuration process so everyone can observe.
+
+\vspace{2ex}
+
+::: {.callout-note}
+Branch protection rulesets may require the repository to be Public. If the ruleset doesn't apply, convert the repository from Private to Public.
+:::
+
+\vspace{2ex}
+
+1.  In the YOUR-USER-ID/JHU-CRC-Cases-and-Deaths repository, click the \SettingsButton{
+      \raisebox{-0.12\height}{\includegraphics[width=10pt]{../../Images/Icons/octicons-gear-16-b8bbbf.pdf}}
+      Settings} tab at the top.
+
+2.  In the left sidebar under the "Code and automation" heading, click \SettingsButton{
+      \raisebox{-0.12\height}{\includegraphics[width=10pt]{../../Images/Icons/octicons-git-branch-16-b8bbbf.pdf}}
+      Branches} then the \AddPeopleButton{Add branch ruleset} under the "Branch protection rules" section.
+      
+      Alternatively, click \SettingsButton{
+      \raisebox{-0.12\height}{\includegraphics[width=10pt]{../../Images/Icons/octicons-repo-push-16-b8bbbf.pdf}}
+      Rules} then "Rulesets" followed by \CloneUrlButton{New ruleset
+      \raisebox{-0.1\height}{\includegraphics[width=10pt]{../../Images/Icons/octicons-triangle-down-24-white.pdf}}
+    } $\longrightarrow$ "New branch ruleset" under the "Rulesets" section.
+
+3.  In the ruleset window, fill out the fields with the following settings, then click \CloneUrlButton{Create}.
+
+    - **Ruleset Name:** Main Branch Protection
+    - **Enforcement status:** \SettingsButton{\raisebox{-0.1\height}{\includegraphics[width=10pt]{../../Images/Icons/octicons-play-16-58a6ff.pdf}} Active \raisebox{-0.1\height}{\includegraphics[width=10pt]{../../Images/Icons/octicons-triangle-down-24-white.pdf}}}
+    - **Bypass list:** Since we recommend all team members have administrator rights, leave this blank for now so the ruleset applies to everyone. If you later adjust roles, you can use this list to exempt specific collaborators from these rules.
+    - **Target branches:** Click \SettingsButton{Add target \raisebox{-0.1\height}{\includegraphics[width=10pt]{../../Images/Icons/octicons-triangle-down-24-white.pdf}}} $\longrightarrow$ \SettingsButton{\raisebox{-0.1\height}{\includegraphics[width=10pt]{../../Images/Icons/octicons-plus-circle-16-58a6ff.pdf}} Include by pattern}. In the popup window, type "main" to apply the ruleset to the `main` branch.
+    - **Rules:** Check "Require a pull request before merging" and "Block force pushes". Leave the default pull request settings, but set the number of required approvals to one less than your total team size.
+
+4.  With the branch ruleset in place, try pushing changes directly to the main branch to test the protection rules.
+
+\vspace{-2ex}
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{Command-Line Interface} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+\func{git} checkout main                         \com{# Checkout main branch}
+\func{echo} \str{"Direct push test"} \op{>>} \str{test-file.txt}  \com{# Create test file}
+\func{git} add \str{test-file.txt}                     \com{# Stage changes}
+\func{git} commit \op{-m} \str{"Test direct push to main"}  \com{# Commit changes}
+\func{git} push origin main                      \com{# Push to main branch}
+  \end{Verbatim}
+  \end{codebox}
+
+  \vspace{-4.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+5.  Confirm that this commit attempt was blocked.
+
+    \begin{callout-discussion}[Discussion Questions]
+    How does this ruleset help maintain the integrity of the main branch?
+    
+    Do you see this helping in your own project workflows?
+    \end{callout-discussion}
+
+6.  Try creating a Pull Request to merge changes from your feature branch to `main`. Confirm that it requires the configured number of reviewers before allowing the merge.
+
+    \begin{callout-discussion}[Discussion Questions]
+    How does this ruleset help maintain the integrity of the main branch?
+    
+    Thinking of your own projects, what other rulesets would be helpful to apply?
+    \end{callout-discussion}
+
+# References

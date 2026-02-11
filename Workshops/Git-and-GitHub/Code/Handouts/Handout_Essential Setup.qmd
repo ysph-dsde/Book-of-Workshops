@@ -52,8 +52,7 @@ bibliography: references.bib
 csl: ../../../../Code/nature.csl
 ---
 
-If you have not yet, you will need two things: a GitHub account and Git installed on your local device. This guide provides complete steps for setting up both and linking them together. Additional special setup cases I have personally encountered are covered in the Advanced Configurations section. This document is based on Atlassian's _[How to install Git](https://www.atlassian.com/git/tutorials/install-git)_  tutorial and Git-SCM's [download pages](https://git-scm.com/downloads)\ [@atlassian_git; @git_macs; @git_pc; @git_linux].
-
+If you have not yet, you will need two things: a GitHub account and Git installed on your local device. This guide provides complete steps for setting up both and linking them together. Additional special setup cases I have personally encountered are covered in the Advanced Configurations section. This document is based on Atlassian's ["How to install Git"](https://www.atlassian.com/git/tutorials/install-git)  tutorial and Git-SCM's [download pages](https://git-scm.com/downloads)\ [@atlassian_git; @git_macs; @git_pc; @git_linux].
 \vspace{2ex}
 
 ::: {.callout-important}
@@ -75,7 +74,7 @@ Your GitHub username must consist of alphanumeric characters or single hyphens a
 - Avoid highlighting temporary affiliations, such as the current university you attend
 - Ensure it's unique and doesn't have a special meaning in programming (e.g., avoid terms like `NA`)
 
-GitHub offers materials and short courses to help new users learn their interface: _[GitHub Skills](https://skills.github.com/)_, _[Repositories documentation](https://docs.github.com/en/repositories)_, and _[About GitHub Command-Line Interface (CLI)](https://docs.github.com/en/github-cli/github-cli/about-github-cli)_\ [@github_skills; @github_repos_docs; @github_cli].
+GitHub offers materials and short courses to help new users learn their interface: _[GitHub Skills](https://skills.github.com/)_, _[Repositories documentation](https://docs.github.com/en/repositories)_, and ["About GitHub Command-Line Interface (CLI)"](https://docs.github.com/en/github-cli/github-cli/about-github-cli)\ [@github_skills; @github_repos_docs; @github_cli].
 
 
 # Install Git

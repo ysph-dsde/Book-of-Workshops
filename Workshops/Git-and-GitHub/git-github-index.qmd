@@ -76,16 +76,21 @@ Download the complete slide decks with annotations and the in-person workshop ha
 
 ```{=html}
 
+<a href="Materials/Part 2_Workshop Slide Deck_Annotated.pdf">
+  <button class="btn"><i class="bi bi-download"></i>&nbsp Annotated Slide Deck</button>
+</a>
+
 <a href="Materials/Part 2_Handout_Solo Projects.pdf">
   <button class="btn"><i class="bi bi-download"></i>&nbsp Solo Projects</button>
 </a>
 
+<a href="Materials/Part 2_Handout_Collaborations.pdf">
+  <button class="btn"><i class="bi bi-download"></i>&nbsp Collaborations</button>
+</a>
+
 ```
 
-
-::: {.callout-tip}
-## More Coming Soon!
-:::
+\
 
 Below are some helpful cheat sheets that summarize commands for navigating Git, Bash, and the command-line application text editor `vim`. These will be the primary languages and command series used in this module.
 
@@ -311,6 +316,7 @@ Details about these steps can be found in the `Git-and-GitHub/R` directory of th
 ## Other Recommended Resources
 
 Although there are numerous resources available on Git and GitHub, we have curated a selection of additional sites and tutorials that complement and expand upon our content. Some of these resources will reinforce the fundamentals covered in this workshop, while others offer advanced materials and guides to help you further develop your skills as you gain experience.
+
 
 ### Fundamentals
 

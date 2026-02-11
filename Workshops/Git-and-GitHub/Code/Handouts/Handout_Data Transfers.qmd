@@ -177,20 +177,18 @@ Previously, GitHub allowed authentication with a username and password, but in 2
 ::: {.callout-tip}
 # Code Like a Pro
 
-You can use different protocols for different projects, and it is possible to change the protocol associated with a given project later. Directions for converting between the two transfer methods can be found in the _Managing remote repositories_ article provided on docs.github.com\ [@ssh_https; @https_ssh].
+You can use different protocols for different projects, and it is possible to change the protocol associated with a given project later. Directions for converting between the two transfer methods can be found in the "Managing remote repositories" article provided on docs.github.com\ [@ssh_https; @https_ssh].
 :::
-
-\vspace{2ex}
 
 We provide basic instructions to configure your Git and GitHub for both methods. Advanced settings are not covered here, but relevant links are sometimes provided to help with these setups. Users are encouraged to explore these resources as needed for their individual projects.
 
 ## HTTPS
 
-These directions were provided in the _Managing your personal access tokens_ article provided on docs.github.com\ [@pat].
+These directions were provided in the "Managing your personal access tokens" article provided on docs.github.com\ [@pat].
 
 1. Go to your GitHub account settings page: [https://github.com/settings/profile](https://github.com/settings/profile).
-2. At the end of the left sidebar, click on "\vcenteredinclude{../../Images/octicons-code-16.pdf} Developer Settings".
-3. In the left sidebar open the "\vcenteredinclude{../../Images/octicons-key-16.pdf} Personal access tokens" drop-down menu and click on "Tokens (classic)".
+2. At the end of the left sidebar, click on "\vcenteredinclude{../../Images/Icons/octicons-code-16-dsdeblue.pdf} Developer Settings".
+3. In the left sidebar open the "\vcenteredinclude{../../Images/Icons/octicons-key-16-dsdeblue.pdf} Personal access tokens" drop-down menu and click on "Tokens (classic)".
 4. In the center of the window, there is a drop-down menu. Select "Generate new token (classic)".
 5. Add a note describing what the PAT is for and set its expiration time-frame.
 
@@ -289,7 +287,7 @@ As of March 15, 2022, GitHub no longer supports the `ssh-dss` algorithm. If your
 ::: {.callout-important}
 # Must Specify SHA-2 Hash Length for RSA
 
-SSH keys generated using the RSA algorithm after November 2, 2021, must be specified to use the SHA-2 hash algorithm length. RSA keys with a \texttt{valid_after} date set before this date can use either SHA-1 or SHA-2\ [@new_ssh; @ssh_algorithms].
+SSH keys generated using the RSA algorithm after November 2\textsuperscript{nd}, 2021, must be specified to use the SHA-2 hash algorithm length. RSA keys with a \texttt{valid\_after} date set before this date can use either SHA-1 or SHA-2\ [@new_ssh; @ssh_algorithms].
 
 \vspace{2ex}
 
@@ -315,7 +313,7 @@ The astute student might have observed that my system is set to automatically si
 
 \vspace{2ex}
 
-The GPG Suite for macOS and Gpg4win for Windows will allow you to configure the GPG agent and save your signing credentials. You can learn more about signing commits in the _About commit signature verification_, _Signing commits_, and _Signing tags_ articles provided on docs.github.com\ [@about_signature; @signing_commits; @signing_tags].
+The GPG Suite for macOS and Gpg4win for Windows will allow you to configure the GPG agent and save your signing credentials. You can learn more about signing commits in the "About commit signature verification", "Signing commits", and "Signing tags" articles provided on docs.github.com\ [@about_signature; @signing_commits; @signing_tags].
 :::
 
 \vspace{2ex}
@@ -430,7 +428,7 @@ The key's randomart image is:
 
 When you have successfully created your keys, you will see the final output shown above. It is not necessary to save the fingerprint or randomart (visual representation of the fingerprint), but I personally save them in the notes section of my password manager.
 
-Similarly to HTTPS, it is possible to cache your SSH key password using agent forwarding. While we won't cover the setup process here, you can learn more about it and find detailed instructions in the _Using SSH agent forwarding_ and _Generating a new SSH key and adding it to the ssh-agent_ articles on docs.github.com\ [@agent_forwarding; @adding_agent].
+Similarly to HTTPS, it is possible to cache your SSH key password using agent forwarding. While we won't cover the setup process here, you can learn more about it and find detailed instructions in the "Using SSH agent forwarding" and "Generating a new SSH key and adding it to the ssh-agent" articles on docs.github.com\ [@agent_forwarding; @adding_agent].
 
 With our public and private SSH key pairs created, we are ready to add the public one to our GitHub account. Start by copying the recently created public key.
 
@@ -448,7 +446,7 @@ pbcopy < ~/.ssh/id_ed25519.pub
 
 1. Go to your GitHub account settings page: [https://github.com/settings/profile](https://github.com/settings/profile).
 
-2. In the "Access" section of the left sidebar, click on "\vcenteredinclude{../../Images/octicons-key-16.pdf} SSH and GPG Keys".
+2. In the "Access" section of the left sidebar, click on "\vcenteredinclude{../../Images/Icons/octicons-key-16-dsdeblue.pdf} SSH and GPG Keys".
 
 3. Click the \GitHubButton{New SSH key} button in the top right.
 
@@ -460,7 +458,7 @@ pbcopy < ~/.ssh/id_ed25519.pub
 
 7. Click \GitHubButton{Add SSH key} and follow the prompts.
 
-8. To ensure a valid connection with GitHub, you will need to open the \texttt{~/.ssh/known_hosts} file and copy-and-paste GitHub's SSH key fingerprints from [https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints)\ [@fingerprints].
+8. To ensure a valid connection with GitHub, you will need to open the \texttt{~/.ssh/known\_hosts} file and copy-and-paste GitHub's SSH key fingerprints from [https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints)\ [@fingerprints].
 
 You can confirm that the keys are correctly configured with the following test. If you get the expected output shown below, then you are all set!
 
