@@ -1,0 +1,85 @@
+---
+title: "Code Highlighting Formatting for Verbatim"
+format:
+  pdf:
+    include-in-header: 
+      - text: |
+          %%%%%%%%%%%%%%%%%%%% USAGE NOTE %%%%%%%%%%%%%%%%%%%%
+          % This LaTeX script sets up consistent formatting for DSDE Workshop handouts.
+          %
+          % To use:
+          % 1. Reference this LaTeX script in the YAML header of Quarto documents
+          %    with correct relative paths based on their directory depth.
+          % 2. Ensure that the "rootdir" and "stylesdir" paths in this LaTeX script
+          %    match those relative paths. Adjust as necessary.
+          % 
+          % The LaTeX script is located in "Code/Handout Formatting/PDF Formatting Script.tex".
+          %
+          % Example:
+          % For:
+          %   \input{../Code/Handout Formatting/PDF Formatting Script.tex}
+          % Set:
+          %   \newcommand{\rootdir}{../Code/Handout Formatting}
+          %   \newcommand{\stylesdir}{../_styles/Yale_typeface}
+          %
+          % For:
+          %   \input{../../../../Code/Handout Formatting/PDF Formatting Script.tex}
+          % Set:
+          %   \newcommand{\rootdir}{../../../../Code/Handout Formatting}
+          %   \newcommand{\stylesdir}{../../../../_styles/Yale_typeface}
+          %
+          %%%%%%%%%%%%%%%%%%%%%%
+          
+          \input{Handout Formatting/PDF Formatting Script.tex}
+highlight-style: ../_styles/idle-fingers-light.theme
+---
+
+```{r}
+#| include: false
+#| echo: false
+
+source("Code Highlighting Functions_Verbatim.R")
+
+# Read all your bash snippets
+bash_snippets <- list(
+  "branch 'test-r' set up to track 'origin/test-r'.
+Switched to a new branch 'test-r'"
+)
+
+# Generate all formatted code
+formatted <- lapply(bash_snippets, format_bash)
+#formatted <- lapply(bash_snippets, format_r)
+
+# Write to a file you can copy-paste from
+writeLines(unlist(formatted), "formatted_bash.tex")
+
+```
+
+
+\begin{list}{}{\setlength\leftmargin{2.5em}}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{1pt}\vspace{-2.5ex}
+  \item\small \textbf{Command-Line Interface} \normalsize \vspace{-2.5ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}\vspace{-0.8ex}
+  
+  \begin{codebox}
+  \begin{Verbatim}[breaklines = true, breaksymbol = \textcolor{idlelinnum}{\scriptsize$\hookrightarrow$}, commandchars = \\\{\}]
+\func{git} add .                      \com{# Stage all changes}
+\func{git} commit \op{-m} \str{"New plot"}       \com{# Commit staged changes}
+\func{git} push                       \com{# Push to remote repository}
+  \end{Verbatim}
+  \end{codebox}
+
+  \vspace{-4ex}
+  \item\noindent\rule[0.3ex]{\dimexpr\textwidth - 2.5em\relax}{0.4pt}
+\end{list}
+
+
+
+```{.bash}
+git add .                      # Stage all changes
+git commit -m "New plot"       # Commit staged changes
+git push                       # Push to remote repository
+```
+
+
+

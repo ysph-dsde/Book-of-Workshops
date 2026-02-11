@@ -41,6 +41,9 @@
 \newcommand{\rootdir}{../../../../Code/Handout Formatting} % Adjust relative path accordingly
 \newcommand{\stylesdir}{../../../../_styles/Yale_typeface} % Adjust relative path accordingly
 
+% \newcommand{\rootdir}{Handout Formatting} % Adjust relative path accordingly
+% \newcommand{\stylesdir}{../_styles/Yale_typeface} % Adjust relative path accordingly
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Global settings
 \usepackage{geometry}
@@ -56,7 +59,7 @@
 \usepackage{stackengine}
 \usepackage{fvextra}
 \usepackage{fancyvrb}
-\usepackage{mdframed}
+\usepackage[framemethod=tikz]{mdframed}
 \usepackage{framed}
 \usepackage{listings}
 \usepackage{etoolbox}
@@ -71,6 +74,10 @@
 \captionsetup{justification=raggedright, singlelinecheck=false, font=small}
 \usepackage{array}
 \usepackage{marginnote}
+\usepackage[backend=bibtex]{biblatex}
+\usepackage[utf8]{inputenc}
+\usepackage{enumitem}
+\usepackage{amsmath}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Color and formatting
@@ -223,6 +230,7 @@
   skipabove=10pt,
   skipbelow=10pt,
   innertopmargin=15pt,
+  innerbottommargin=-5pt,
   innerleftmargin=13pt,
   innerrightmargin=10pt,
   roundcorner=0pt
@@ -237,17 +245,17 @@
 
 % Redefine coded shaded environment
 % Comment/uncomment if shading environment for code is needed
-% \renewenvironment{Shaded}{
-%   \begin{mdframed}[style=highlighting]
-%   \setlength{\parindent}{0pt}
-%   \setlength{\leftskip}{1em}  % Padding inside the left side of the shaded box
-%   \setlength{\rightskip}{1em} % Padding inside the right side of the shaded box
-%   \setlength{\topsep}{0.5em}  % Padding above the shaded content
-%   \setlength{\partopsep}{0.5em} % Padding below the shaded content
-%   \setlength{\parskip}{0pt}\small}
-% {
-%   \end{mdframed}
-% }
+\renewenvironment{Shaded}{
+  \begin{mdframed}[style=highlighting]
+  \setlength{\parindent}{0pt}
+  \setlength{\leftskip}{1em}  % Padding inside the left side of the shaded box
+  \setlength{\rightskip}{1em} % Padding inside the right side of the shaded box
+  \setlength{\topsep}{0.5em}  % Padding above the shaded content
+  \setlength{\partopsep}{0.5em} % Padding below the shaded content
+  \setlength{\parskip}{0pt}\small}
+{
+  \end{mdframed}
+}
 
 % Define style for output
 \newtcolorbox{outputbox}{
@@ -267,6 +275,75 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Code Highlighting - lstlisting
 % Allows indentation, but has code highlighting in LaTeX
+% Decommissioned due to lack of code line-breaks and poor code highlighting outcomes.
+
+% % Define idle-fingers light theme colors and styles
+% \definecolor{idletext}{HTML}{333333}
+% \definecolor{idlebackground}{HTML}{FFFFFF}
+% \definecolor{idlelinnum}{HTML}{666666}
+% \definecolor{alertcolor}{HTML}{a40000}
+% \definecolor{annotationcolor}{HTML}{8f5902}
+% \definecolor{attributecolor}{HTML}{d33682}
+% \definecolor{basecolor}{HTML}{b58900}
+% \definecolor{charcolor}{HTML}{2aa198}
+% \definecolor{commentcolor}{HTML}{586e75}
+% \definecolor{constantcolor}{HTML}{2aa198}
+% \definecolor{datatypecolor}{HTML}{b58900}
+% \definecolor{extensioncolor}{HTML}{2aa198}
+% \definecolor{functioncolor}{HTML}{268bd2}
+% \definecolor{importcolor}{HTML}{2aa198}
+% \definecolor{keywordcolor}{HTML}{6c71c4}
+% \definecolor{operatorcolor}{HTML}{b58900}
+% \definecolor{stringcolor}{HTML}{2aa198}
+% \definecolor{variablecolor}{HTML}{b58900}
+% \definecolor{errorcolor}{HTML}{dc322f}
+% 
+% % Other colors
+% \definecolor{bordercolor}{rgb}{0.8,0.8,0.8}
+% \definecolor{backcolor}{rgb}{0.97,0.97,0.95}
+% 
+% % Apply colors to code highlighting
+% \lstdefinestyle{idle-fingers-light}{
+%   backgroundcolor=\color{backcolor},
+%   basicstyle=\ttfamily\small\color{idletext},
+%   breaklines=true, % Enable line breaking
+%   breakatwhitespace=true, % Ensure breaking occurs at whitespace
+%   breakautoindent=true, % Auto indentation for broken lines
+%   commentstyle=\color{commentcolor}\textit,
+%   keywordstyle=\color{keywordcolor}\textbf,
+%   numberstyle=\color{idlelinnum},
+%   stringstyle=\color{stringcolor},
+%   identifierstyle=\color{idletext},
+%   showstringspaces=false,
+%   frame=none,
+%   rulecolor=\color{bordercolor},
+%   xleftmargin=0em,
+%   framexleftmargin=0em,
+%   breakindent=0pt, % no additional indent for broken lines
+%   postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}} % symbol in front of broken lines
+% }
+% 
+% % Define the newmdenv for the codebox
+% \newmdenv[
+%   style=highlighting,
+%   backgroundcolor=backcolor,
+%   linecolor=bordercolor,
+%   linewidth=0.5pt,
+%   skipabove=10pt,
+%   skipbelow=10pt,
+%   innertopmargin=15pt,
+%   innerleftmargin=13pt,
+%   innerrightmargin=10pt,
+%   roundcorner=0pt
+% ]{codebox}
+% 
+% \lstset{style=idle-fingers-light, language=Bash}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Code Highlighting - Verbatim
+% Allows indentation, but has code highlighting in LaTeX,
+% code line-breaks, and improved highlighting from lstlisting
 
 % Define idle-fingers light theme colors and styles
 \definecolor{idletext}{HTML}{333333}
@@ -292,44 +369,37 @@
 % Other colors
 \definecolor{bordercolor}{rgb}{0.8,0.8,0.8}
 \definecolor{backcolor}{rgb}{0.97,0.97,0.95}
-
-% Apply colors to code highlighting
-\lstdefinestyle{idle-fingers-light}{
-  backgroundcolor=\color{backcolor},
-  basicstyle=\ttfamily\small\color{idletext},
-  breaklines=true, % Enable line breaking
-  breakatwhitespace=true, % Ensure breaking occurs at whitespace
-  breakautoindent=true, % Auto indentation for broken lines
-  commentstyle=\color{commentcolor}\textit,
-  keywordstyle=\color{keywordcolor}\textbf,
-  numberstyle=\color{idlelinnum},
-  stringstyle=\color{stringcolor},
-  identifierstyle=\color{idletext},
-  showstringspaces=false,
-  frame=none,
-  rulecolor=\color{bordercolor},
-  xleftmargin=0em,
-  framexleftmargin=0em,
-  breakindent=0pt, % no additional indent for broken lines
-  postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}} % symbol in front of broken lines
-}
+\definecolor{breakarrowcolor}{HTML}{999999}
 
 % Define the newmdenv for the codebox
 \newmdenv[
-  style=highlighting,
   backgroundcolor=backcolor,
   linecolor=bordercolor,
   linewidth=0.5pt,
   skipabove=10pt,
   skipbelow=10pt,
-  innertopmargin=15pt,
+  innertopmargin=10pt,
   innerleftmargin=13pt,
   innerrightmargin=10pt,
   roundcorner=0pt
 ]{codebox}
 
-\lstset{style=idle-fingers-light, language=Bash}
+% Define custom Verbatim style with idle-fingers colors
+\fvset{
+  formatcom=\color{idletext},
+  fontsize=\small,
+  baselinestretch=1,
+  breaklines=true,
+  breaksymbol=\textcolor{breakarrowcolor}{\scriptsize$\hookrightarrow$}
+}
 
+% Define shorthand commands for colors - THIS IS WHAT WAS MISSING!
+\newcommand{\kw}[1]{\textcolor{keywordcolor}{\textbf{#1}}}
+\newcommand{\str}[1]{\textcolor{stringcolor}{#1}}
+\newcommand{\com}[1]{\textcolor{commentcolor}{\textit{#1}}}
+\newcommand{\func}[1]{\textcolor{functioncolor}{#1}}
+\newcommand{\op}[1]{\textcolor{operatorcolor}{\textbf{#1}}}
+\newcommand{\atr}[1]{\textcolor{attributecolor}{#1}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Callout Blocks for indenting
@@ -427,6 +497,27 @@
   colframe=CautionBordercolor,
   title={\textcolor{CautiontIconcolor}{\faFire}\ \  #1},
   colbacktitle=CautionpHeadercolor,
+  colback=white,
+  coltitle=black,
+  boxrule=0.2mm,
+  leftrule=0.8mm,
+  toptitle=1mm,
+  bottomtitle=1mm,
+  titlerule=0pt,
+  left=2mm,
+  right=2mm,
+  before skip=10pt,
+  after skip=10pt
+}
+
+\definecolor{DiscussionBordercolor}{HTML}{7634A6}
+\definecolor{DiscussionHeadercolor}{HTML}{eedcff}
+\definecolor{DiscussionIconcolor}{HTML}{7634A6}
+
+\newtcolorbox{callout-discussion}[1][]{
+  colframe=DiscussionBordercolor,
+  title={\textcolor{DiscussionIconcolor}{\faComments}\ \  #1},
+  colbacktitle=DiscussionHeadercolor,
   colback=white,
   coltitle=black,
   boxrule=0.2mm,
