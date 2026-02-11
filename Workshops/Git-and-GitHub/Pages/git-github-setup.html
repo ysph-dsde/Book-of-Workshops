@@ -84,7 +84,7 @@ div.csl-indent {
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../Workshops/Git-and-GitHub/Pages/git-github-overview.html" rel="next">
+<link href="../../../Workshops/Git-and-GitHub/Pages/git-github-detailed-walkthrough.html" rel="next">
 <link href="../../../Workshops/Git-and-GitHub/Pages/git-github-what-is.html" rel="prev">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
@@ -248,7 +248,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../Workshops/Git-and-GitHub/Pages/git-github-overview.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../Workshops/Git-and-GitHub/Pages/git-github-detailed-walkthrough.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Detailed Walk-Through</span></a>
   </div>
 </li>
@@ -306,6 +306,7 @@ div.csl-indent {
   <li><a href="#https" id="toc-https" class="nav-link" data-scroll-target="#https">HTTPS</a></li>
   <li><a href="#ssh-keys" id="toc-ssh-keys" class="nav-link" data-scroll-target="#ssh-keys">SSH Keys</a></li>
   </ul></li>
+  <li><a href="#additional-helpful-articles" id="toc-additional-helpful-articles" class="nav-link" data-scroll-target="#additional-helpful-articles">Additional Helpful Articles</a></li>
   <li><a href="#advanced-configurations" id="toc-advanced-configurations" class="nav-link" data-scroll-target="#advanced-configurations">Advanced Configurations</a>
   <ul class="collapse">
   <li><a href="#multiple-git-configurations" id="toc-multiple-git-configurations" class="nav-link" data-scroll-target="#multiple-git-configurations">Multiple Git Configurations</a></li>
@@ -665,13 +666,13 @@ Code Like a Pro
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>You can use different protocols for different projects, and it is possible to change the protocol associated with a given project later. Directions for converting between the two transfer methods can be found in the <a href="https://docs.github.com/en/get-started/git-basics/managing-remote-repositories"><em>Managing remote repositories</em></a> article provided on docs.github.com&nbsp;<span class="citation" data-cites="ssh_https https_ssh"><sup><a href="#ref-ssh_https" role="doc-biblioref">25</a>,<a href="#ref-https_ssh" role="doc-biblioref">26</a></sup></span>.</p>
+<p>You can use different protocols for different projects, and it is possible to change the protocol associated with a given project later. Directions for converting between the two transfer methods can be found in the <a href="https://docs.github.com/en/get-started/git-basics/managing-remote-repositories">“Managing remote repositories”</a> article provided on docs.github.com&nbsp;<span class="citation" data-cites="ssh_https https_ssh"><sup><a href="#ref-ssh_https" role="doc-biblioref">25</a>,<a href="#ref-https_ssh" role="doc-biblioref">26</a></sup></span>.</p>
 </div>
 </div>
 <p>We provide basic instructions to configure your Git and GitHub for both methods. Advanced settings are not covered here, but relevant links are sometimes provided to help with these setups. Users are encouraged to explore these resources as needed for their individual projects.</p>
 <section id="https" class="level2">
 <h2 class="anchored" data-anchor-id="https">HTTPS</h2>
-<p>These directions were provided in the <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens"><em>Managing your personal access tokens</em></a> article provided on docs.github.com&nbsp;<span class="citation" data-cites="pat"><sup><a href="#ref-pat" role="doc-biblioref">13</a></sup></span>.</p>
+<p>These directions were provided in the <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens">“Managing your personal access tokens”</a> article provided on docs.github.com&nbsp;<span class="citation" data-cites="pat"><sup><a href="#ref-pat" role="doc-biblioref">13</a></sup></span>.</p>
 <ol type="1">
 <li><p>Go to your GitHub <a href="https://github.com/settings/profile">account settings page</a>.</p></li>
 <li><p>At the end of the left sidebar, click on “<iconify-icon role="img" inline="" icon="octicon:code-16" aria-label="Icon code-16 from octicon Iconify.design set." title="Icon code-16 from octicon Iconify.design set."></iconify-icon> Developer Settings”.</p></li>
@@ -808,7 +809,7 @@ Code Like a Pro
 </div>
 <div class="callout-body-container callout-body">
 <p>The astute student might have observed that my system is set to automatically sign all actions in GitHub with <code>commit.gpgsign=true</code> in the <code>.gitconfig</code> file. If you choose to create a pair of SSH keys for signing, it is recommended that you add this to your configuration with: <code>git config commit.gpgsign true</code>.</p>
-<p>The GPG Suite for macOS and Gpg4win for Windows will allow you to configure the GPG agent and save your signing credentials. You can learn more about signing commits in the <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification#ssh-commit-signature-verification"><em>About commit signature verification</em></a>, <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits"><em>Signing commits</em></a>, and <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-tags"><em>Signing tags</em></a> articles provided on docs.github.com&nbsp;<span class="citation" data-cites="about_signature signing_commits signing_tags"><sup><a href="#ref-about_signature" role="doc-biblioref">32</a>–<a href="#ref-signing_tags" role="doc-biblioref">34</a></sup></span>.</p>
+<p>The GPG Suite for macOS and Gpg4win for Windows will allow you to configure the GPG agent and save your signing credentials. You can learn more about signing commits in the <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification#ssh-commit-signature-verification">“About commit signature verification”</a>, <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits">“Signing commits”</a>, and <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-tags">“Signing tags”</a> articles provided on docs.github.com&nbsp;<span class="citation" data-cites="about_signature signing_commits signing_tags"><sup><a href="#ref-about_signature" role="doc-biblioref">32</a>–<a href="#ref-signing_tags" role="doc-biblioref">34</a></sup></span>.</p>
 </div>
 </div>
 <p>Now that you have chosen an SSH algorithm from ED25519 or RSA, we can generate the public and private key pair.</p>
@@ -879,7 +880,7 @@ Code Like a Pro
 <span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a><span class="st">+----[SHA256]-----+</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>When you have successfully created your keys, you will see the final output shown above. It is not necessary to save the fingerprint or randomart (visual representation of the fingerprint), but I personally save them in the notes section of my password manager.</p>
-<p>Similarly to HTTPS, it is possible to cache your SSH key password using agent forwarding. While we won’t cover the setup process here, you can learn more about it and find detailed instructions in the <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/using-ssh-agent-forwarding"><em>Using SSH agent forwarding</em></a> and <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#adding-your-ssh-key-to-the-ssh-agent"><em>Generating a new SSH key and adding it to the ssh-agent</em></a> articles on docs.github.com&nbsp;<span class="citation" data-cites="agent_forwarding adding_agent"><sup><a href="#ref-agent_forwarding" role="doc-biblioref">35</a>,<a href="#ref-adding_agent" role="doc-biblioref">36</a></sup></span>.</p>
+<p>Similarly to HTTPS, it is possible to cache your SSH key password using agent forwarding. While we won’t cover the setup process here, you can learn more about it and find detailed instructions in the <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/using-ssh-agent-forwarding">“Using SSH agent forwarding”</a> and <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#adding-your-ssh-key-to-the-ssh-agent">“Generating a new SSH key and adding it to the ssh-agent”</a> articles on docs.github.com&nbsp;<span class="citation" data-cites="agent_forwarding adding_agent"><sup><a href="#ref-agent_forwarding" role="doc-biblioref">35</a>,<a href="#ref-adding_agent" role="doc-biblioref">36</a></sup></span>.</p>
 <p>With our public and private SSH key pairs created, we are ready to add the public one to our GitHub account. Start by copying the recently created public key.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -912,11 +913,24 @@ Code Like a Pro
 </div>
 </section>
 </section>
+<section id="additional-helpful-articles" class="level1">
+<h1>Additional Helpful Articles</h1>
+<p>Throughout this document, I reference articles from GitHub’s documentation, which often focus narrowly on individual setup steps. This fragmented approach can be difficult to navigate without knowing which other articles fill in the gaps. To address this, I have curated additional links to help you use your setup more effectively, customize it, and explore intermediate or advanced features. Unless otherwise noted, all links are from GitHub.</p>
+<ul>
+<li><a href="https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-ssh-urls">“Cloning with SSH URL’s”</a> and <a href="https://docs.github.com/en/authentication/troubleshooting-ssh">“Troubleshooting SSH”</a>&nbsp;<span class="citation" data-cites="cloning_ssh troubleshoot_ssh"><sup><a href="#ref-cloning_ssh" role="doc-biblioref">38</a>,<a href="#ref-troubleshoot_ssh" role="doc-biblioref">39</a></sup></span></li>
+<li><a href="https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls">“Cloning with HTTPS URL’s”</a> and <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens">“Managing your PATs”</a>&nbsp;<span class="citation" data-cites="pat cloning_https"><sup><a href="#ref-pat" role="doc-biblioref">13</a>,<a href="#ref-cloning_https" role="doc-biblioref">40</a></sup></span></li>
+<li><a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification">“About commit signiture verification”</a> (sign <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits">commits</a> and <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-tags">tags</a>)&nbsp;<span class="citation" data-cites="signing_tags signing_commits about_signature"><sup><a href="#ref-about_signature" role="doc-biblioref">32</a>–<a href="#ref-signing_tags" role="doc-biblioref">34</a></sup></span></li>
+<li><a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/managing-deploy-keys">“Managing deploy keys”</a>&nbsp;<span class="citation" data-cites="deploy_keys"><sup><a href="#ref-deploy_keys" role="doc-biblioref">41</a></sup></span></li>
+<li><a href="https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories#switching-remote-urls-from-ssh-to-https">“Switching remote URLs from SSH to HTTPS”</a> and <a href="https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories#switching-remote-urls-from-ssh-to-https">“… SSH to HTTPS”</a>&nbsp;<span class="citation" data-cites="https_ssh ssh_https"><sup><a href="#ref-ssh_https" role="doc-biblioref">25</a>,<a href="#ref-https_ssh" role="doc-biblioref">26</a></sup></span></li>
+<li><a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/using-ssh-agent-forwarding">“Using SSH agent forwarding”</a>&nbsp;<span class="citation" data-cites="agent_forwarding"><sup><a href="#ref-agent_forwarding" role="doc-biblioref">35</a></sup></span></li>
+<li><a href="https://docs.github.com/en/get-started/git-basics/caching-your-github-credentials-in-git">“Caching your GitHub credentials in Git”</a> for Windows by GitHub and <a href="https://www.atlassian.com/git/tutorials/install-git#install-the-git-credential-osx">“Install the git-credential-osxkeychain helper”</a> for Macs by Atlassian&nbsp;<span class="citation" data-cites="credential_manager osxkeychain"><sup><a href="#ref-credential_manager" role="doc-biblioref">12</a>,<a href="#ref-osxkeychain" role="doc-biblioref">19</a></sup></span></li>
+</ul>
+</section>
 <section id="advanced-configurations" class="level1">
 <h1>Advanced Configurations</h1>
 <section id="multiple-git-configurations" class="level2">
 <h2 class="anchored" data-anchor-id="multiple-git-configurations">Multiple Git Configurations</h2>
-<p>Suppose you use two or more GitHub accounts and need different emails or usernames associated with Git commits made to those remote repositories. Reconfiguring every project directory for this purpose would be tedious. Instead, you can use an automatically expanded local setting to override the global configurations using “Conditional Includes”. This feature has been available since Git version 2.13&nbsp;<span class="citation" data-cites="AnsweredbyJanousek2017 Barochiya2021 Connolly2022"><sup><a href="#ref-AnsweredbyJanousek2017" role="doc-biblioref">38</a>–<a href="#ref-Connolly2022" role="doc-biblioref">40</a></sup></span>.</p>
+<p>Suppose you use two or more GitHub accounts and need different emails or usernames associated with Git commits made to those remote repositories. Reconfiguring every project directory for this purpose would be tedious. Instead, you can use an automatically expanded local setting to override the global configurations using “Conditional Includes”. This feature has been available since Git version 2.13&nbsp;<span class="citation" data-cites="AnsweredbyJanousek2017 Barochiya2021 Connolly2022"><sup><a href="#ref-AnsweredbyJanousek2017" role="doc-biblioref">42</a>–<a href="#ref-Connolly2022" role="doc-biblioref">44</a></sup></span>.</p>
 <p>In this framework, you need to organize your project directories such that those with an alternate configuration are in the same parent directory. We will refer to this parent directory as “Alternate.” The directions given here assume that you have already set up the global Git configurations.</p>
 <p>We start by locating and opening the <code>.gitconfig</code> file.</p>
 <div class="code-with-filename">
@@ -1073,13 +1087,13 @@ A texted-base application that directly interacts with the computer’s operatin
 <code>git pull</code>
 </td>
 <td>
-Downloads a copy of the specified remote repository’s branch and integrates it with the local copy. Combines the actions of <code>git fetch</code> followed by <code>git merge</code> or <code>git rebase</code>&nbsp;<span class="citation" data-cites="git_pull"><sup><a href="#ref-git_pull" role="doc-biblioref">41</a></sup></span>.
+Downloads a copy of the specified remote repository’s branch and integrates it with the local copy. Combines the actions of <code>git fetch</code> followed by <code>git merge</code> or <code>git rebase</code>&nbsp;<span class="citation" data-cites="git_pull"><sup><a href="#ref-git_pull" role="doc-biblioref">45</a></sup></span>.
 </td>
 </tr>
 <!-- Row 3 -->
 <tr>
 <td class="col1">
-HTTPS (Hypertext Transfer Protocol Secure)
+Hypertext Transfer Protocol Secure (HTTPS)
 </td>
 <td>
 Facilitates secure transmission of information over an encrypted internet connection. Decryption occurs when the correct username and Personal Access Token (PAT) are provided&nbsp;<span class="citation" data-cites="pat setup_auth ssh_vs_https about_auth"><sup><a href="#ref-pat" role="doc-biblioref">13</a>–<a href="#ref-ssh_vs_https" role="doc-biblioref">15</a>,<a href="#ref-about_auth" role="doc-biblioref">23</a></sup></span>.
@@ -1097,7 +1111,7 @@ A program used by the CLI to mediate communication between the user and computer
 <!-- Row 5 -->
 <tr>
 <td class="col1">
-SSH (Secure Shell)
+Secure Shell (SSH)
 </td>
 <td>
 Uses a pair of keys—a private key and a public key. Information is encrypted when sent between servers, and only the matching key pair can decrypt it upon receipt&nbsp;<span class="citation" data-cites="new_ssh setup_auth ssh_vs_https about_auth"><sup><a href="#ref-setup_auth" role="doc-biblioref">14</a>–<a href="#ref-new_ssh" role="doc-biblioref">16</a>,<a href="#ref-about_auth" role="doc-biblioref">23</a></sup></span>.
@@ -1221,17 +1235,29 @@ Uses a pair of keys—a private key and a public key. Information is encrypted w
 <div id="ref-fingerprints" class="csl-entry" role="listitem">
 <div class="csl-left-margin">37. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints">GitHub’s SSH key fingerprints</a>. <em>GitHub Docs</em>.</div>
 </div>
+<div id="ref-cloning_ssh" class="csl-entry" role="listitem">
+<div class="csl-left-margin">38. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-ssh-urls">About remote repositories - cloning with SSH URLs</a>. <em>GitHub Docs</em>.</div>
+</div>
+<div id="ref-troubleshoot_ssh" class="csl-entry" role="listitem">
+<div class="csl-left-margin">39. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/troubleshooting-ssh">Troubleshooting SSH</a>. <em>GitHub Docs</em>.</div>
+</div>
+<div id="ref-cloning_https" class="csl-entry" role="listitem">
+<div class="csl-left-margin">40. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls">About remote repositories - cloning with HTTPS URLs</a>. <em>GitHub Docs</em>.</div>
+</div>
+<div id="ref-deploy_keys" class="csl-entry" role="listitem">
+<div class="csl-left-margin">41. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/managing-deploy-keys">Managing deploy keys</a>. <em>GitHub Docs</em>.</div>
+</div>
 <div id="ref-AnsweredbyJanousek2017" class="csl-entry" role="listitem">
-<div class="csl-left-margin">38. </div><div class="csl-right-inline">Janousek, T. A. by. <a href="https://stackoverflow.com/questions/4220416/can-i-specify-multiple-users-for-myself-in-gitconfig">Git - can i specify multiple users for myself in .gitconfig?</a> <em>StackOverflow</em> (2017).</div>
+<div class="csl-left-margin">42. </div><div class="csl-right-inline">Janousek, T. A. by. <a href="https://stackoverflow.com/questions/4220416/can-i-specify-multiple-users-for-myself-in-gitconfig">Git - can i specify multiple users for myself in .gitconfig?</a> <em>StackOverflow</em> (2017).</div>
 </div>
 <div id="ref-Barochiya2021" class="csl-entry" role="listitem">
-<div class="csl-left-margin">39. </div><div class="csl-right-inline">Barochiya, D. <a href="https://www.freecodecamp.org/news/how-to-handle-multiple-git-configurations-in-one-machine/">How to use multiple git configs on one computer</a>. <em>freeCodeCamp</em> (2021).</div>
+<div class="csl-left-margin">43. </div><div class="csl-right-inline">Barochiya, D. <a href="https://www.freecodecamp.org/news/how-to-handle-multiple-git-configurations-in-one-machine/">How to use multiple git configs on one computer</a>. <em>freeCodeCamp</em> (2021).</div>
 </div>
 <div id="ref-Connolly2022" class="csl-entry" role="listitem">
-<div class="csl-left-margin">40. </div><div class="csl-right-inline">Connolly, K. <a href="https://connkat.medium.com/setting-up-multiple-ssh-keys-on-one-computer-75f068d972d9">Setting up multiple SSH keys on one computer</a>. <em>Medium</em> (2022).</div>
+<div class="csl-left-margin">44. </div><div class="csl-right-inline">Connolly, K. <a href="https://connkat.medium.com/setting-up-multiple-ssh-keys-on-one-computer-75f068d972d9">Setting up multiple SSH keys on one computer</a>. <em>Medium</em> (2022).</div>
 </div>
 <div id="ref-git_pull" class="csl-entry" role="listitem">
-<div class="csl-left-margin">41. </div><div class="csl-right-inline">Atlassian. <a href="https://www.atlassian.com/git/tutorials/syncing/git-pull">Git pull</a>. <em>Atlassian Tutorial</em>.</div>
+<div class="csl-left-margin">45. </div><div class="csl-right-inline">Atlassian. <a href="https://www.atlassian.com/git/tutorials/syncing/git-pull">Git pull</a>. <em>Atlassian Tutorial</em>.</div>
 </div>
 </div>
 </section>
@@ -1805,7 +1831,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../Workshops/Git-and-GitHub/Pages/git-github-overview.html" class="pagination-link" aria-label="Detailed Walk-Through">
+      <a href="../../../Workshops/Git-and-GitHub/Pages/git-github-detailed-walkthrough.html" class="pagination-link" aria-label="Detailed Walk-Through">
         <span class="nav-page-text">Detailed Walk-Through</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
