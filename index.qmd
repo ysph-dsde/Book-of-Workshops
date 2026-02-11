@@ -46,11 +46,11 @@ and
     </div>
   </summary>
   
-  <p>Find the session materials and other related content in the <a href="Git-and-GitHub/index.qmd">Book of Workshops</a> chapter. All code can be found on its <a href="https://github.com/ysph-dsde/Book-of-Workshops/tree/main/Git-and-GitHub">GitHub</a> page.</p>
+  <p>Session materials, interactive learning assignments, codebase links, and other related content are available in the <a href="Workshops/Git-and-GitHub/git-github-index.qmd">Book of Workshops</a> chapter.
   
   <div class="instructors">
     <h3>Part 1 Instructor:</h3>
-    <p><a href="https://www.linkedin.com/in/shelby-golden/">Shelby Golden, M.S.</a>, Data Scientist I</p>
+    <p><a href="https://ysph.yale.edu/profile/shelby-golden/">Shelby Golden, M.S.</a>, Data Scientist I</p>
   </div>
   
   <div class="learning-goals">
@@ -64,7 +64,7 @@ and
   
   <div class="instructors">
     <h3>Part 2 Instructors:</h3>
-    <p><a href="https://www.linkedin.com/in/shelby-golden/">Shelby Golden, M.S.</a>, Data Scientist I</p>
+    <p><a href="https://ysph.yale.edu/profile/shelby-golden/">Shelby Golden, M.S.</a>, Data Scientist I</p>
     <p><a href="https://www.linkedin.com/in/howard-baik/">Howard Baik, M.S.</a>, Former Data Scientist I at Yale School of Public Health</p>
   </div>
 
@@ -72,8 +72,8 @@ and
     <h3>Part 2 Learning Goals:</h3>
     <ul>
       <li>Understand the purpose and value of Git and GitHub in managing coding projects.</li>
-      <li>Get hands-on experience using Git and GitHub for solo projects through a worked through example showing common workflows.</li>
-      <li>Learn how to use GitHub to support collaboration and teamwork on group projects.</li>
+      <li>Master essential Git and GitHub workflows for individual projects through hands-on practice.</li>
+      <li>Get introduced to collaborative workflows and teamwork strategies using guided GitHub examples.</li>
     </ul>
   </div>
 </details>
@@ -90,11 +90,11 @@ and
     </div>
   </summary>
   
-  <p>Find the session materials and other related content in the <a href="Data-Visualization-with-ggplot2/index.qmd">Book of Workshops</a> chapter. All code can be found on its <a href="https://github.com/ysph-dsde/Book-of-Workshops/tree/main/Data-Visualization-with-ggplot2">GitHub</a> page.</p>
+  <p>Session materials, the interactive learning assignment codebase, and other related content are available in the <a href="Workshops/Data-Visualization-with-ggplot2/visualization-index.qmd">Book of Workshops</a> chapter.
   
   <div class="instructors">
     <h3>Instructor:</h3>
-    <p><a href="https://www.linkedin.com/in/shelby-golden/">Shelby Golden, M.S.</a>, Data Scientist I</p>
+    <p><a href="https://ysph.yale.edu/profile/shelby-golden/">Shelby Golden, M.S.</a>, Data Scientist I</p>
   </div>
 
   <div class="learning-goals">

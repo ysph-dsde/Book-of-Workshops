@@ -6,7 +6,7 @@ csl: ../../Code/nature.csl
 
 # Getting Started with Git and GitHub {.unnumbered}
 
-<small>Updated: January 26<sup>th</sup>, 2026</small>
+<small>Updated: February 11<sup>th</sup>, 2026</small>
 
 This material is presented over two workshops. Part 1 was authored by Shelby Golden, M.S., and Part 2 is a collaborative effort by Shelby Golden, M.S., and Howard Baik, M.S. You can learn more about the instructors [here](../../index.html#meet-the-creators).
 
