@@ -4,11 +4,13 @@ bibliography: Pages/references.bib
 csl: ../../Code/nature.csl
 ---
 
-# Introduction to Programming in R and Data Wrangling with `tidyverse` {.unnumbered}
+# Introduction to Programming in R and Data Wrangling with <code>tidyverse</code> {.unnumbered}
 
-<small>Updated: February 15<sup>th</sup>, 2026</small>
+<small>Updated: February 16<sup>th</sup>, 2026</small>
 
-This material represents two versions of the same workshop: one for graduate students during the academic year, and one for undergraduate students in the [Big Data Summer Immersion at Yale (BDSY)](https://www.bdsy.org/) program, which includes an R programming introduction. The introduction to programming in R was authored by Shelby Golden, M.S., and the introduction to tidyverse is a collaborative effort by Shelby Golden, M.S., and Howard Baik, M.S. You can learn more about the instructors [here](../../index.html#meet-the-creators).
+This material represents two versions of the same workshop: one for graduate students during the academic year, and one for undergraduate students in the [Big Data Summer Immersion at Yale (BDSY)](https://www.bdsy.org/) program, which includes an R programming introduction. The introduction to programming in R was authored by Shelby Golden, M.S., and the introduction to tidyverse is a collaborative effort by Shelby Golden, M.S., and Howard Baik, M.S.
+
+You can learn more about the instructors [here](../../index.html#meet-the-creators).
 
 ## Workshop Learning Goals
 
@@ -40,13 +42,9 @@ Download the complete slide decks with annotations and the in-person workshop ha
 
 #### Data Wrangling with `tidyverse` Materials:
 
-```{=html}
-
-<a href="Materials/Part 2_Workshop Slide Deck_Annotated.pdf">
-  <button class="btn"><i class="bi bi-download"></i>&nbsp Annotated Slide Deck</button>
-</a>
-
-```
+::: {.callout-tip}
+## Coming Soon!
+:::
 
 ## Accessing the Codespaces
 
@@ -61,7 +59,7 @@ Please note that all materials provided in this workshop, including any code add
 ::: {.callout-note collapse="true"}
 ## Settings Used in Development
 
-This workshop was created using R (v 4.5.1) in the RStudio IDE (v 2025.09.2+418). The `renv()` package (v 1.1.5) is included to reproduce the same coding environment, ensuring all relevant packages and package versions are stored. If you encounter issues running the scripts, please check that the environment is initialized and that you are using the same versions of R and RStudio.
+This workshop was created using R (v 4.5.2) in the RStudio IDE (v 2026.01.0+392). The `renv()` package (v 1.1.7) is included to reproduce the same coding environment, ensuring all relevant packages and package versions are stored. If you encounter issues running the scripts, please check that the environment is initialized and that you are using the same versions of R and RStudio.
 :::
 
 ### Initializing the Environment

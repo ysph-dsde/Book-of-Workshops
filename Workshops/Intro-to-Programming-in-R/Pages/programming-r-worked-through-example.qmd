@@ -4,7 +4,9 @@ bibliography: references.bib
 csl: ../../../Code/nature.csl
 ---
 
-# Worked-Through Example {.unnumbered}
+# `tidyverse` Worked-Through Example {.unnumbered}
+
+<small>Updated: February 16<sup>th</sup>, 2026</small>
 
 ## Introduction
 
@@ -18,6 +20,11 @@ First, we will load the necessary libraries and any special functions used in th
 #| message: FALSE
 #| warning: FALSE
 
+# NOTE: renv initialization might need to be run twice after the repo is
+#       first copied.
+#renv::init()
+renv::restore()
+
 suppressPackageStartupMessages({
   library("readr")      # For reading in the data
   library("tidyr")      # For tidying data 
@@ -28,12 +35,11 @@ suppressPackageStartupMessages({
   library("scales")     # For formatting plots axis
 })
 
-
 # Function to select "Not In"
 '%!in%' <- function(x,y)!('%in%'(x,y))
 ```
 
-Now we will fetch the semi-cleaned COVID-19 deaths data set that has been prepared for this example. 
+Now we will fetch the semi-cleaned COVID-19 deaths data set that has been prepared for this example.
 
 ::: {.callout-note collapse="true"}
 ## Data Source and Preparation Methods
@@ -51,10 +57,10 @@ df_raw  <- read_csv(file = df_url, show_col_types = FALSE)
 
 Before cleaning data, it's good practice to review several aspects of your raw data:
 
-- Review the variable Data Dictionary
-- Check the dataset dimensions (rows and columns)
-- Examine the first and/or last few rows
-- Check the variable type for each column
+-   Review the variable Data Dictionary
+-   Check the dataset dimensions (rows and columns)
+-   Examine the first and/or last few rows
+-   Check the variable type for each column
 
 Most of these operations can be accomplished using dplyr's `glimpse()` function. Notice that only the first 7 columns are displayed here for readability; the full dataset contains 39 date columns.
 
@@ -67,9 +73,29 @@ We can see that the dataset contains `r nrow(df_raw)` unique regions throughout 
 
 Regional identifier columns are classified as characters (`<chr>`), which is appropriate for text-based data. Death count columns are classified as double, meaning they are double-precision floating-point numbers—a numeric type that allows decimal values. Since deaths must be whole numbers (you can't have a fractional death), we need to convert these to integers, rounding down.
 
+```{=html}
+<div class="callout-discussion">
+    <h2>
+        <i class="fa-regular fa-comments"></i>
+        Discussion Question
+    </h2>
+    <p>Is the data in a “tidy” format? Why or why not?</p>
+</div> 
+```
+
 In the following sections, we will continue reviewing additional aspects of our dataset. Before we proceed, however, we need to tidy our data first.
 
 ## Clean Messy Data Using `tidyr`
+
+Messy data might come in a multitude of forms, but the core data reshaping actions needed to achieve a tidy data format can be reduced to five operations:
+
+- **Pivoting –** converts between long forms (observations added as new rows) and wide forms (observations added as new columns).
+- **Rectangling –** turns deeply nested lists (as from JSON) into tidy tibbles, the tidyverse version of a dataframe object.
+- **Nesting –** converts grouped data to a form where each group becomes a single row containing a nested data frame, and unnesting does the opposite.
+- **Splitting/combining –** pulls a single character column into multiple columns or combines multiple columns into a single character column.
+- **Managing `NAs` –** ensures that explicitly included `NAs` represent data that is actually missing or suppresses them so they are implicitly present instead.
+
+`tidyr` offers multiple tools that achieve the same outcome, and these can be used interchangeably. However, sometimes one function will flow better in your script or read more intuitively.
 
 As we saw in the previous section, observations are stored as columns, creating a wide dataset. To transform this into our target "tidy" format, columns need to represent only variables—not individual observations. We achieve this by converting date columns into rows, creating a long dataset. Fortunately, `tidyr` provides the perfect function for this transformation: `pivot_longer()`. We simply tell it which columns to pivot into rows.
 
@@ -123,6 +149,10 @@ Technically, our dataset is now "tidy." But remember: tidy is just one step. We 
 
 ## Manipulate Data Using `dplyr`
 
+While `tidyr` focuses on the mechanics of achieving the “tidy” format, this alone may not fully prepare your data. For example, you may need to transform or calculate new values from existing columns, combine datasets, or condense information unnecessarily spread across multiple columns. This process creates what's sometimes called the "minimally informative” form of a dataset—where all necessary values are included or derivable without redundancy or unnecessary information.
+
+Functions available in the `dply` package is often used to create this “complete tidy” data frame.
+
 Suppose we want to plot COVID-19 deaths across the entire U.S. First, we need to calculate total counts by summing deaths for each region (`Combined_Key`) on each date (`Date`). However, our dataset contains cumulative counts, which are difficult to interpret for visualization. We'll need to back-calculate monthly counts to show new deaths each month.
 
 The `dplyr` package offers a suite of functions for data manipulation tasks like these. In the next four code blocks, we'll show how to generate counts for the entire U.S.
@@ -142,9 +172,9 @@ df_filtered <- df_long |>
 
 The full dataset has `r nrow(df_long)` rows. After filtering, we have `r nrow(df_filtered)` remaining—one for each U.S. state plus the District of Columbia across all months. Recall that observations were recorded over 39 months during the pandemic, so we expect `r nrow(df_filtered)`/39 = 51 unique regions.
 
-Using this filtered dataset, we'll group rows by month using `group_by()`. The table below uses `tally()` to show how many rows are in each monthly group. 
+Using this filtered dataset, we'll group rows by month using `group_by()`. The table below uses `tally()` to show how many rows are in each monthly group.
 
-:::{.callout-tip}
+::: callout-tip
 ## Code Like a Pro
 
 It's crucial to verify that your dataset is structured correctly and contains expected values. Since most datasets are too large for line-by-line inspection, use a different strategy: identify what features you expect in your data (like the 51 regions above) and verify them systematically.
@@ -189,7 +219,10 @@ After these four operations, we get the following data set:
 head(df_US)
 ```
 
-Next, we'll merge this data back with the main dataframe using `bind_rows()`, a tidyverse function similar to` do.call()` that fills missing columns with `NA` to maintain all uniquely defined variables. However, `df_US` is currently missing the `Combined_Key` and `Country_Region` columns. If we merge now, both will be filled with `NA`. Instead, we want them to contain "US". We can add these columns using `mutate()`, which creates new columns from functions of existing columns or static values.
+Next, we'll merge this data back with the main dataframe using `bind_rows()`, a tidyverse function similar to base R's `do.call()` with notable differences. `bind_rows()` combines dataframes by matching column names, while `do.call()` appends data in the exact order given. Additionally, `bind_rows()` keeps all unique columns from all datasets being combined, filling missing columns with `NA`.
+
+However, `df_US` is currently missing the `Combined_Key` and `Country_Region` columns. If we merge now, both will be filled with `NA`. Instead, we want them to contain "US." We can add these columns using `mutate()`, which creates new columns from functions of existing columns or static values.
+
 
 ```{r}
 df_US <- df_US |>
@@ -208,6 +241,13 @@ tail(df)
 ```
 
 The `select()` function is used to keep, drop, or organize columns. In our case, we will use it to reorganize the columns. We want to arrange the columns such that we have the region first, followed by the month the record was made, and then the cumulative deaths recorded.
+
+:::{.callout-important}
+## Building Reproducible Workflows Through Good Documentation Practices
+
+Remember that when cleaning data, you're preparing it not only for your use but potentially for others as well. Make your work well documented, sequentially organized, and easy to understand.
+If you've ever kept a wet-lab notebook, think of how scientists document their work for future reference, collaborators, and auditors. Organizing rows and columns to reflect the logical progression of information improves readability and clarity of the final "cleaned tidy" format.
+:::
 
 ```{r}
 df <- df |>
@@ -293,6 +333,19 @@ rm(a, b)
 
 After completing data wrangling and tidying, it's good practice to review variable classifications and naming conventions before proceeding with calculations. For instance, if you have a variable for participant sex, ensure all entries are consistently labeled (e.g., "M" for Male, "F" for Female). Also confirm that zeros aren't used in place of `NA` for missing values, or vice versa.
 
+`stringr` provides a comprehensive and consistently designed set of string manipulation functions based on `stringi`. It uses UTF-8, the standard encoding that includes most characters, and handles alternative encodings when needed.
+
+While base R has similar functions, `stringr` offers key advantages:
+
+- Consistent syntax across functions, seamless integration with tidyverse
+- Regular updates to match operations in languages like Ruby or Python (base R updates more slowly)
+
+:::{.callout-tip}
+## Code Like a Pro
+
+You can perform advanced operations using regular expressions, often referred to as “regex.” This workshop doesn't cover regex, but we encourage you to explore the additional resources provided earlier for an introduction to that topic.
+:::
+
 Let's start by examining the variable classifications again.
 
 ```{r}
@@ -303,7 +356,7 @@ sapply(df, class) |>
 
 The variables are mostly assigned to appropriate data classes. One exception: `Date` is a character but would be better as a date class for easier manipulation. We can convert it using the `lubridate` package from tidyverse. This package isn't covered in this introductory lecture, but you can review the documentation here: [lubridate](https://lubridate.tidyverse.org/).
 
-The data is reported in` yyyy/mm/dd` format, so we use `ymd()` to convert the character to the date class.
+The data is reported in`yyyy/mm/dd` format, so we use `ymd()` to convert the character to the date class.
 
 ```{r}
 df$Date <- ymd(df$Date)
@@ -339,11 +392,19 @@ df_filtered <- df[!str_detect(df$Province_State, "Princess") %in% TRUE, ]
 df_filtered <- df[-str_which(df$Province_State, "Princess"), ]
 ```
 
-:::{.callout-warning}
-While `str_which(df$Combined_Key, "Princess", negate = TRUE)` works in many scenarios, it would exclude rows where `Combined_Key` is `NA`. The version above preserves those rows.
-:::
+```{=html}
+<div class="callout-discussion">
+    <h2>
+        <i class="fa-regular fa-comments"></i>
+        Discussion Question
+    </h2>
+    <p>An alternative form of <code>str_which()</code> is to use its native negate setting: <code>str_which(df$Combined_Key, "Princess", negate = TRUE)</code>.
 
-This filtering removes the following number of rows, representing two unique regions with 39 dates each, as expected.
+This works in many scenarios, but it's not appropriate here. Why?</p>
+</div> 
+```
+
+This filtering removes the following number of rows, representing two unique regions with 39 dates each, as expected. 
 
 ```{r}
 (nrow(df) - nrow(df_filtered))/2
@@ -351,7 +412,7 @@ This filtering removes the following number of rows, representing two unique reg
 
 ### Generating New String Vectors
 
-A common task is creating new string vectors from existing ones. `Combined_Key` combines information from `County`, `Province_State`, and `Country_Region.` Suppose we only have county-level data and want to generate state- and country-level `Combined_Key` values. We can do this with `str_c()` or `str_split()`.
+A common task is creating new string vectors from existing ones. Take `Combined_Key`, for example, which combines information from `County`, `Province_State`, and `Country_Region`. Suppose we only have county-level data and want to generate the corresponding state- and country-level `Combined_Key` values. We can approach this in two ways: using `str_c()` to combine separate columns, or using `str_split()` to extract components from existing strings.
 
 For this example, we'll first subset to county-level data only. We can use `str_count()` to count how many times a pattern appears in each string. Since county-level data contains two commas, we'll filter using that pattern.
 
@@ -367,7 +428,7 @@ str_c(df_state_level$Province_State, df_state_level$Country_Region, sep = ", ") 
 
 **Option #2:** Split the string only to the first observation of the deliminator.
 
-::: callout-note
+:::{.callout-note}
 By setting `n = 2`, we are restricting `str_split()` to return a maximum of 2 new vectors after the split operation. This means the function will split the string only at the first occurrence of the delimiter. Including the `simplify = TRUE` argument converts the output from a list (with each output as a separate list element) to a matrix, making it easier to handle the resulting data.
 :::
 
@@ -393,7 +454,7 @@ Going forward, we only require the `Combined_Key` variable, as the `Country_Regi
 df_filtered[, "Combined_Key"] <- str_replace(df_filtered[, "Combined_Key"],  "Virgin Islands", "US Virgin Islands")
 ```
 
-We can adjust multiple columns at once using the higher-order function `sapply()`. However, the base R pipe's _ placeholder doesn't work with `sapply()`. To work around this, we wrap `sapply()` within the pipe and define our own placeholder for the incoming data. Here we use `x` within a temporary function. This temporary function is called an "anonymous function"—a concept we've used earlier in this example.
+We can adjust multiple columns at once using the higher-order function `sapply()`. However, the base R pipe's \_ placeholder doesn't work with `sapply()`. To work around this, we wrap `sapply()` within the pipe and define our own placeholder for the incoming data. Here we use `x` within a temporary function. This temporary function is called an "anonymous function"—a concept we've used earlier in this example.
 
 ```{r}
 # Identify the row indices where "Virgin Islands" is detected in "Province_State".
@@ -442,44 +503,15 @@ plot_deaths <- df |>
 plot_deaths
 ```
 
-## Discussion Questions
-
-1.  Calculate the average monthly death counts for each state by year and determine the year with the highest average monthly death counts for each state. Are there any states that had more than one year with the same mean cases? **HINT:** You will need the `year()` function from `lubridate`.
-
-```{r}
+```{=html}
+<div class="callout-discussion">
+    <h2>
+        <i class="fa-regular fa-comments"></i>
+        Discussion Question
+    </h2>
+    <p>Work with your neighbors to answer the two questions in “<code>Questions.R</code>.”
+    
+    If you haven't downloaded the workshop code, see <a href="../programming-r-index.html#accessing-the-codespaces">Accessing the Codespace</a> for the code and setup instructions.</p>
+</div> 
 ```
 
-2.  We want to see how many counties called "Clark" are represented in the data set.
-    a)  How many counties include the word Clark?
-
-        -   Make two variables: one that subsets `df` for matches and one listing the unique county names found.
-        -   Use `stringr` to extract the county name only.
-        -   Finish the `str_c()` statement started below to summarize your findings.
-
-    b)  Are the results what we expected, or what we wanted? If we strictly wanted counties named "Clark", how might we improve the script to achieve this?
-
-```{r}
-## --------------------
-## part a
-
-# Var #1
-#__
-
-# Var #2
-#__
-
-
-# Finish the summary statement. 
-# HINT: We expect 39 replicates per county for the 39 dates recorded.
-str_c("There are ", 
-      # Number of unique counties represented in the dataset.
-      #__
-      " counties with 'Clark' in the name: "
-      # The unique ways "Clark" is represented in these counties.
-      #__
-)
-
-## --------------------
-## part b
-
-```
