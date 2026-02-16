@@ -741,7 +741,7 @@ df_byMonth |>
 # on their local device by removing the comment.
 #write.csv(df_final, "COVID-19 Deaths_Cleaned.csv", row.names = FALSE)
 
-write.csv(df_byMonth, "COVID-19 Deaths_Cleaned_Aggregated by Month.csv", row.names = FALSE)
+write.csv(df_byMonth, "Workshops/Intro-to-Programming-in-R/Data/Deaths and Cases Aggregated by Month.csv", row.names = FALSE)
 
 
 
