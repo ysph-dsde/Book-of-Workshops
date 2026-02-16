@@ -26,6 +26,10 @@ book:
         - Workshops/Git-and-GitHub/Pages/git-github-setup.qmd
         - Workshops/Git-and-GitHub/Pages/git-github-detailed-walkthrough.qmd
         - Workshops/Git-and-GitHub/Pages/git-github-more-to-come.qmd
+    - part: Workshops/Intro-to-Programming-in-R/programming-r-index.qmd
+      chapters: 
+        - Workshops/Intro-to-Programming-in-R/Pages/programming-r-worked-through-example.qmd
+        - Workshops/Intro-to-Programming-in-R/Pages/programming-r-more-to-come.qmd
     - part: Workshops/Data-Visualization-with-ggplot2/visualization-index.qmd
       chapters: 
         - Workshops/Data-Visualization-with-ggplot2/Pages/visualization-worked-through-example.qmd

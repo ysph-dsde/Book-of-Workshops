@@ -1,0 +1,253 @@
+---
+bibliography: Pages/references.bib
+csl: ../../Code/nature.csl
+---
+
+# Data Visualization with ggplot2 {.unnumbered}
+
+This material was authored by Shelby Golden, M.S. You can learn more about the instructors [here](../../index.html#meet-the-creators). Special thanks to [Professor Daniel Weinberger](https://ysph.yale.edu/profile/daniel-weinberger/) for allowing us to use his plot code in this workshop.
+
+## Introduction
+
+> "the grammar of graphics takes us beyond a limited set of charts (words) to an almost unlimited world of graphical forms (statements).” 
+— Professor [Leland Wilkinson](https://www.niss.org/people/leland-wilkinson), Yale alumnus, in [*The Grammar of Graphics*](https://link.springer.com/book/10.1007/0-387-28695-0?page=1)
+
+Throughout the data processing pipeline—whether immediately after data import for exploratory data analysis or in preparation for communicating results—researchers frequently visualize their data. Before Professor [Hadley Wickham](https://hadley.nz/) and his colleagues developed the `ggplot2` package as part of the `tidyverse`, creating complex or customized graphics beyond typical chart types was a challenging task. It often required tedious, verbose, and less maintainable code.
+
+In this workshop, we will explore the evolution of graphical representations of data, which led to the development of the Grammar of Graphics used by `ggplot2`. This approach transforms visualization principles from rigid chart types to flexible, customizable rules for generating graphs. In this session, you will come to realize that different chart types, such as pie charts and bar charts, often represent the same data visualization with only minor adjustments.
+
+With a better understanding of the domain language used by `ggplot2`, we will examine each grammatical layer that constitutes a graphical object. We will discuss how these layers are procedurally processed relative to one another, how data and aesthetic mappings are inherited in subsequent layers, and how to correctly utilize layers by their design.
+
+While the core focus of this workshop is on introducing students to the paradigm-shifting approach of visualizing data using graphical grammar instead of traditional charts, we will also discuss some of the advanced features that `ggplot2` offers. For example, we will briefly touch on map projections and interactive plots, although these topics will not be covered in-depth.
+
+## Workshop Learning Goals
+
+- Classify the Grammar of Graphics layers used in `ggplot2` syntax.
+- Applications of different geometries, effective use of layering, and polishing the result.
+- Interactive plots, map projections, and leveraging AI-assisted coding.
+
+We have prepared real-world examples, including challenge questions and answers, for the hands-on portion of this workshop. To fully engage with these materials, please download the provided codebase. Detailed instructions for this process can be found below under [Accessing the Codespaces](#accessing-the-codespaces).
+
+## Slides and Handouts
+
+You can download the complete slide deck with annotations and the in-person workshop handout. Comments are saved in the bottom left corner of each slide, and references for this webpage are located in the **Appendix**. As you go through the workshop materials, you might find it helpful to refer to the [ggplot2 package documentation](https://ggplot2.tidyverse.org/) and the [tidyverse cheat sheets](https://rstudio.github.io/cheatsheets/html/data-visualization.html), especially the [function references](https://ggplot2.tidyverse.org/reference/) page\ [@function_index; @cheat_sheet; @ggplot_docs].
+
+Notice that layer-specific code is summarized at the top of each slide, with unique aspects highlighted in purple. These summaries are not comprehensive but are intended to illustrate the components used in each layer. Students are encouraged to explore the ggplot2 documentation for complete details.
+
+The code used to generate the example graphs demonstrates how each layer contributes to the final figure. To view the entire code, please follow the instructions on the [Worked-Through Example](Pages/visualization-worked-through-example.html) page.
+
+
+```{=html}
+<a href="Materials/Main Slide Deck_Annotated.pdf">
+  <button class="btn"><i class="bi bi-download"></i>&nbsp Annotated Slide Deck</button>
+</a>
+
+<a href="Materials/Handout.pdf">
+  <button class="btn"><i class="bi bi-download"></i>&nbsp Handout</button>
+</a>
+
+```
+
+## Accessing the Codespaces
+
+In this workshop, you'll need to access the R code prepared for the workshop discussions and challenge questions. If you haven't already, please download the latest version of [R](https://cran.r-project.org/) to your device. We also recommend using the latest version of [RStudio](https://posit.co/download/rstudio-desktop/) as your
+<span class="text-term" 
+  data-hover-text="A software application that combines tools for editing, building, testing, and debugging code into a single, user-friendly interface.">
+  Integrated Development Environment (IDE) </span>\ [@ide].
+
+::: {.callout-important}
+## Attribution and Ownership
+
+Please note that all materials provided in this workshop, including any code added to your personal repository, belongs to DSDE. When using or referencing this material, please ensure to cite it correctly to give proper credit to the original authors.
+:::
+
+::: {.callout-note collapse="true"}
+## Settings Used in Development
+
+This workshop was created using R (v 4.5.1) in the RStudio IDE (v 2025.09.2+418). The `renv()` package (v 1.1.5) is included to reproduce the same coding environment, ensuring all relevant packages and package versions are stored. If you encounter issues running the scripts, please check that the environment is initialized and that you are using the same versions of R and RStudio.
+:::
+
+### Initializing the Environment
+
+1. Download the prepared codespace, which contains a comprehensive code environment configured with the RStudio IDE for in-class discussions and challenge questions with solutions.
+
+::: {style="margin-left: 2rem"}
+```{=html}
+<a href="Materials/Data-Visualization-with-ggplot2.zip">
+  <button class="btn" style="margin-bottom: 1rem;"><i class="bi bi-download"></i>&nbsp Codespace</button>
+</a>
+
+```
+:::
+
+2. Unzipped the downloaded directory and move it to the file location you wish to house the project.
+
+    ```{.bash filename="Command-Line Application"}
+    cd "file_path/Downloads/"                         # Open the directory the file was downloaded into.
+    unzip Data-Visualization-with-ggplot2.zip         # Unzip the file.
+    mv Data-Visualization-with-ggplot2 /new_path/     # Move the unzipped directory to the new location.
+    ```
+
+3.  Launch the project by opening the `*.Rproj` file in RStudio.
+
+    ```{.bash filename="Command-Line Application"}
+    cd "/new_path/Data-Visualization-with-ggplot2"    # Navigate to the new location directory.
+    
+    # Open the *.Rproj file using RStudio
+    open Data-Visualization-with-ggplot2.Rproj        # For macOS
+    start "" "Data-Visualization-with-ggplot2.Rproj"  # For Windows
+    ```
+
+4.  Open `Discussion and Challenge Questions.R`. To ensure this script opens in the correct project RStudio window, you can use the "Files" pane inside RStudio to launch the scripts.
+
+5.  In the R console, activate the environment by running the following lines of code. Please note that some of the packages used in this workshop, such as `arrow`, may take a while to install.
+
+    ```{.r filename="RStudio Console"}
+    renv::init()          # Initialize the project.
+    renv::restore()       # Download packages and their version saved in the lockfile.
+    ```
+
+:::{.callout-note style="margin-left: 2rem"}
+If you are asked to update packages, say no. The `renv()` is intended to recreate the same environment under which the project was created, making it reproducible. You are ready to proceed when running `renv::restore()` gives the output:
+
+```{.r filename="RStudio Output"}
+- The library is already synchronized with the lockfile.
+```
+
+If you experience any trouble with this step, you might want to confirm that you are using R (v 4.5.1) in the RStudio IDE (v 2025.09.2+418). You can also read more about `renv()` in their [vignette](https://rstudio.github.io/renv/articles/renv.html)\ [@renv_intro].
+:::
+
+:::{.callout-note style="margin-left: 2rem"}
+A `.gitignore` file has been included in the directory, specifying the files and file types that do not need to be version controlled or shared with GitHub. Please note that on some devices, this file might be hidden depending on your settings.
+:::
+
+### Deploying to GitHub
+
+With a Git-initialized project, you can add it to a remote repository on GitHub. Below are instructions to help you establish a remote copy of this codebase on GitHub. If you are new to using Git and GitHub for code-based projects, please check out our workshop on the topic: [Getting Started with Git and GitHub](../Git-and-GitHub/git-github-index.html).
+
+1. [Log in](https://github.com/login) to your personal GitHub account.
+
+2.  In the top-right of the page navigation bar, select the [ {{< iconify octicon:plus-16 >}} {{< iconify octicon:triangle-down-24 >}} ]{style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px 5px; border-radius: 5px; vertical-align: middle;"} dropdown menu and click [ {{< iconify octicon:repo-24 >}} New repository]{style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px 7px; border-radius: 5px; vertical-align: middle;"}\ [@new_repo].
+
+3. Fill out the following sections:
+
+    a. Adjust the GitHub account owner as needed and create the name for the new repository.
+    
+    c. It is good practice to initially set the repository to "Private".
+    
+    d. Do **[NOT]{.underline}** use a template or include a description, `README.md`, `.gitignore`, or license.
+
+4. Open the command-line application (i.e. Terminal for Macs and Git Bash for Windows) and navigate to the file location you want to temporarily store the repository copy.
+
+    ```{.bash filename="Command-Line Application"}
+    cd "/file_path/Data-Visualization-with-ggplot2"
+    ```
+
+5. Confirm that Git has been initialized by checking the project status. If the project is initialized, you should see that Git is present and tracking files.
+
+    ```{.bash filename="Command-Line Application"}    
+    git status
+    ```
+    
+    If instead, you see the following message, you will need to initialize Git as shown above in the section [Initializing the Environment](#initializing-the-environment).
+
+    ```{.bash filename="Command-Line Output"}    
+    fatal: not a git repository (or any of the parent directories): .git
+    ```
+
+6. If `git status` shows untracked files or untracked changes to tracked files, add and commit these to the project's `.git` directory. If this is your first time committing the directory contents, you will see all files listed as untracked.
+
+    ```{.bash filename="Command-Line Application"} 
+    git add .                       # Stage all changed and new files for version tracking.
+    git commit -m "first commit"`   # Commit the changes with a message.
+    ```
+
+7. Create a branch named `main`.
+
+    ```{.bash filename="Command-Line Application"} 
+    git branch -a                   # Check that the branch 'main' does not exist.
+    git branch -M main              # If the main branch doesn’t exist, create it.
+    ```
+
+8. In the newly created GitHub repository, under "Quick setup," you will find the repository's SSH or HTTPS URL. Copy one of these URLs to define the remote location and transfer protocol you want to use between your local device and this GitHub repository.
+
+    For example, if the repository name is "NEW-REPOSITORY," the URLs will look like this:
+
+    ```{.bash}
+    # SSH
+    git@github.com:EXAMPLE-USER/NEW-REPOSITORY.git
+
+    # HTTPS
+    https://github.com/EXAMPLE-USER/NEW-REPOSITORY.git
+    ```
+
+9. Set the GitHub repository location and save it as `origin`. Replace the placeholder URL with the repository URL you copied from GitHub in the previous step.
+
+    ```{.bash filename="Command-Line Application"}
+    # using SSH
+    git remote add origin git@github.com:EXAMPLE-USER/NEW-REPOSITORY.git
+
+    # or using HTTPS
+    git remote add origin https://github.com/EXAMPLE-USER/NEW-REPOSITORY.git
+    ```
+
+10. Finally, push the directory to your empty GitHub repository. Since you are establishing a new repository, use `-u origin main` to create and set the upstream branch in the GitHub repository.
+
+    ```{.bash filename="Command-Line Application"}  
+    git push -u origin main         # Push to remote and set upstream.
+    ```
+
+11. Refresh the page to confirm the transfer and linking were successful.
+
+## About the Data
+
+Respiratory syncytial virus (RSV) is a common virus that infects the nose, throat, and lungs, spreading mainly in fall and winter, with peaks in December and January. While it often causes mild illness in healthy individuals, it can lead to hospitalization in infants under six months and older adults. RSV can cause severe illnesses like bronchiolitis and pneumonia, especially in children under one year, making it a leading cause of these conditions. For more information, visit the CDC's [About RSV](https://www.cdc.gov/rsv/about/index.html) page\ [@about_rsv].
+
+National trends of RSV infections are monitored through the Centers for Disease Control and Prevention’s (CDC) Respiratory Virus Hospitalization Surveillance Network, known as RSV-NET. RSV-NET is one of three programs that make up the Respiratory Virus Hospitalization Surveillance Network (RESP-NET), alongside the Coronavirus Disease 2019 (COVID-19) Hospitalization Surveillance Network (COVID-NET) and the Influenza Hospitalization Surveillance Network (FluSurv-NET)\ [@resp_net_dashboard].
+
+As of this writing, 161 counties and county equivalents across 13 states participate in RSV-NET by submitting data on laboratory-confirmed, RSV-associated hospitalizations among children and adults. This surveillance network covers approximately 30 million people, representing about 9% of the U.S. population. Although its demographic representation is comparable to the overall U.S. population, it may not be fully generalizable to the entire country. For more information, visit the CDC's information page about [RSV-NET](https://www.cdc.gov/rsv/php/surveillance/rsv-net.html)\ [@rsv_net].
+
+The cleaned and harmonized version of the RSV-NET dataset was compiled as part of YSPH’s [PopHIVE](https://www.pophive.org/) project\ [@pophive]. It reflects data downloaded from the *Weekly Rates of Laboratory-Confirmed RSV Hospitalizations from the RSV-NET Surveillance System* page on [data.gov](https://data.cdc.gov/Public-Health-Surveillance/Weekly-Rates-of-Laboratory-Confirmed-RSV-Hospitali/29hc-w46k/about_data), which is updated weekly and accessible via the RSV-NET surveillance program's [interactive dashboard](https://www.cdc.gov/rsv/php/surveillance/rsv-net.html)\ [@data_source; @rsv_net]. The original data used was downloaded on December 23^rd^, 2024. The code used to prepare the dataset for this module can be found in the YSPH DSDE's Book of Workshops GitHub repository: [Data-Visualization-with-ggplot2/Code/Cleaning Script.R](https://github.com/ysph-dsde/Book-of-Workshops/blob/main/Workshops/Data-Visualization-with-ggplot2/Code/Cleaning%20Script.R)\ [@hong_ooi; @Zhu2024; @mmwr_definition].
+
+
+## Other Recommended Resources
+
+In this workshop, we have limited time to cover deep concepts that normally take years to master in scientific data visualization. Below, you will find key resources we referenced, along with additional links to help you fully utilize `ggplot2`, identify and communicate data insights effectively, and apply these skills in advanced applications like package development.
+
+### Fundamentals
+
+-   [*R for Data Science (2e)*](https://r4ds.hadley.nz/) by [Hadley Wickham](https://hadley.nz/), [Mine &Ccedil;etinkaya-Rundel](https://mine-cr.com/about/), and [Garrett Grolemund](https://education.rstudio.com/author/garrett/)\ [@r_for_data_sci]
+-   [*ggplot2: Elegant Graphics for Data Analysis (3e)*](https://ggplot2-book.org/) by [Hadley Wickham](https://hadley.nz/), [Danielle Navarro](https://djnavarro.net/), and [Thomas Lin Pedersen](https://thomaslinpedersen.art/)\ [@elegant_graphs]
+-   "ggplot2 workshop" [part 1](https://www.youtube.com/watch?v=h29g21z0a68) and [part 2](https://www.youtube.com/watch?v=0m4yywqNPVY) by [Thomas Lin Pedersen](https://thomaslinpedersen.art/)\ [@pedersen_workshop1; @pedersen_workshop2]
+
+### Beyond the Basics
+
+-   Community managed ["ggplot2 extensions gallery"](https://exts.ggplot2.tidyverse.org/gallery/)\ [@extensions_gallery]
+-   ["R Graph Gallery"](https://r-graph-gallery.com/) – fucuses on applications with `ggplot2`\ [@graph_gallery]
+-   Additional topics from *ggplot2: Elegant Graphics for Data Analysis (3e)*: ["Chapter 5 Statistical summaries"](https://ggplot2-book.org/statistical-summaries.html), [Chapter 7 Networks](https://ggplot2-book.org/networks.html), ["Chapter 8 Annotations"](https://ggplot2-book.org/annotations.html), ["Chapter 18 Programming with ggplo2"](https://ggplot2-book.org/programming.html), and ["Chapter 20 Extending ggplot2"](https://ggplot2-book.org/extensions.html)\ [@elegant_graphs]
+-   ["Extending ggplot2"](https://ggplot2.tidyverse.org/articles/extending-ggplot2.html) vignette\ [@extending_ggplot2]
+-   ["Using ggplot2 in packages"](https://ggplot2.tidyverse.org/articles/ggplot2-in-packages.html) vignette\ [@ggplot_in_packages]
+
+### Communicating Effectively with Graphics
+
+-   [*The Visual Display of Quantitative Information*](https://www.edwardtufte.com/book/the-visual-display-of-quantitative-information/) by Professor -   [Edward Tufte](https://www.edwardtufte.com/?_gl=1*eiltsb*_up*MQ..*_gs*MQ..&gclid=EAIaIQobChMI8IbFo_OJjAMVhm1HAR0xdyJaEAAYASAAEgLELPD_BwE)\ [@Tufte1983]
+-   [*Ten guidelines for effective data visualization in scientific publications*](https://www.sciencedirect.com/science/article/pii/S1364815210003270#bib10) by [Christa Kelleher](https://ce.lafayette.edu/people/christa-kelleher/) and [Thorsten Wagener](https://www.uni-potsdam.de/en/umwelt/institut/alle-mitarbeiterinnen/wagener-thorsten)\ [@Kelleher2011]
+-   Recommendations from Professor [Wilkinson](https://www.niss.org/people/leland-wilkinson)’s [*The Grammar of Graphics*](https://link.springer.com/book/10.1007/0-387-28695-0?page=1): [William Cleveland](https://www.stat.purdue.edu/~wsc/), [1985](https://www.amazon.com/exec/obidos/ASIN/0534037305/acmorg-20), [1995](https://www.amazon.com/Visualizing-Data-William-S-Cleveland/dp/0963488406) and [Edward Tufte](https://www.edwardtufte.com/?_gl=1*eiltsb*_up*MQ..*_gs*MQ..&gclid=EAIaIQobChMI8IbFo_OJjAMVhm1HAR0xdyJaEAAYASAAEgLELPD_BwE), [1990](https://www.edwardtufte.com/book/envisioning-information/), [1997](https://www.edwardtufte.com/book/visual-and-statistical-thinking-displays-of-evidence-for-making-decisions/)\ [@Tufte1997; @Tufte1990; @William1985; @William1995; @Leland1999]
+
+
+## Section Glossary
+
+<table class="glossary-table">
+    <tbody>
+        <!-- Row 1 -->
+        <tr>
+            <td class="col1">Integrated Development Environment (IDE)</td>
+            <td>
+              A software application that combines tools for editing, building, testing, and debugging code into a single, user-friendly interface\ [@ide].
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+## References
+

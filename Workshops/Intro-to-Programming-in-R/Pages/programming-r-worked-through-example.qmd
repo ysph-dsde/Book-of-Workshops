@@ -2,7 +2,7 @@
   title: "Worked Through Example"
   authors: Shelby Golden, M.S. and Howard Baik, M.S.
   format: html
-  editor: visual
+  editor: source
   markdown: 
   editor_options: 
   chunk_output_type: console

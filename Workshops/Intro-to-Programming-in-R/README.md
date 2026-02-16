@@ -1,4 +1,4 @@
-# Getting Started with Git and GitHub
+# A Journey into the World of Tidyverse
 
 ## About The Coffee, Cookie and Coding $\left(C^3\right)$ Workshops
 
@@ -10,27 +10,23 @@ You can find out more about past and upcoming work on our [website](https://ysph
 
 All workshop details and content, including slides, handouts, and adaptations for asynchronous learning, are available on our [Book of Workshops](https://ysph-dsde.github.io/Book-of-Workshops/Workshops/Git-and-GitHub/git-github-index.html) webpage for the session.
 
-**Part 1 Instructor:**
-- [Shelby Golden, M.S.](https://www.linkedin.com/in/shelby-golden/), Data Scientist I
-
-**Part 2 Instructors:**
+**Instructors:**
 - [Shelby Golden, M.S.](https://www.linkedin.com/in/shelby-golden/), Data Scientist I
 - [Howard Baik, M.S.](https://www.linkedin.com/in/howard-baik/), Former Data Scientist I at Yale School of Public Health
 
-**Part 1 Learning Goals:**
+**Learning Goals:**
 
-- Understand the purpose and value of Git and GitHub in managing coding projects.
-- Learn how Git manages files for version control locally and distributes them through GitHub.
-- Set up and configure your local Git and GitHub accounts using either HTTPS or SSH Keys.
+- Explore the tidyverse ecosystem and its integrated approach to data analysis using domain specific language.
+- Develop proficiency with `tidyr`, `dplyr`, and `stringr`with a real-world worked-through example.
+- Practice data manipulation skills by answering prepared questions using COVID-19 data.
 
-**Part 2 Learning Goals**
-
-- Get hands-on experience using Git and GitHub for solo projects through a worked-through example showing common workflows.
-- Learn how to use GitHub to support collaboration and teamwork on group projects. Invite friends to have the full experience!
-
-We have prepared real-world examples for the hands-on portion of this workshop. To fully engage with these materials, please create a clean-break copy of the two GitHub repositories that have been specifically prepared for this purpose. Detailed instructions for this process can be found below under [Accessing the Codespaces](https://ysph-dsde.github.io/Book-of-Workshops/Workshops/Git-and-GitHub/git-github-index.html#accessing-the-codespaces).
+We have prepared real-world examples, including challenge questions and answers, for the hands-on portion of this workshop. To fully engage with these materials, please download the provided codebase. Detailed instructions for this process can be found below under [Accessing the Codespaces](https://ysph-dsde.github.io/Book-of-Workshops/Workshops/Data-Visualization-with-ggplot2/visualization-index.html#accessing-the-codespaces).
 
 ## Overview Of Contents
 
-This directory contains all the code (`*.R`, `*.qmd`), data, and media used to prepare the Book of Workshops pages and selected in-class materials. PDF versions of `*.docx` and `*.pptx` files are available here for download, while the raw forms of these documents are kept internally. Workshop code includes its own `*.RProj` project. Therefore, only the `*.zip` file for this codebase is included in this directory, while the complete version is maintained in an internal repository.
+This directory contains all the code (`*.R`, `*.qmd`), data, and media used to prepare the Book of Workshops pages and selected in-class materials. PDF versions of `*.docx` and `*.pptx` files are available here for download, while the original documents are kept internally.
+
+Codebases are either delivered as separate GitHub repositories or `*.zip` files. In both cases, the complete versions are maintained in an internal repository or project mirror.
+
+Workshop code includes its own `*.RProj` project with `renv` to create a self-contained and reproducible coding environment. We strive to keep the code up to date with the current versions of R and RStudio, but if you experience problems, check the version of R and RStudio the codebase was designed for. For any issues or questions, please email [admin.dsdeysph@yale.edu](mailto:admin.dsdeysph@yale.edu).
 
