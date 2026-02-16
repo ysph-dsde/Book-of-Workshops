@@ -57,8 +57,8 @@ $footer-fg: #cad2dd;
     --callout-caution-title: #ffe3ce;
     --callout-tip-bg: #5f8d5f;
     --callout-tip-title: #bafcd0;
-    --callout-attention-bg: #453258;
-    --callout-attention-title: #E09EFF;
+    --callout-discussion-bg: #453258;
+    --callout-discussion-title: #E09EFF;
 
     --listing-card-border: #5d6173;
     --listing-card-shadow: rgba(255, 255, 255, 0.04);
@@ -513,6 +513,30 @@ code span.kw {
             margin: -8px -9px -10px -9px !important;
             z-index: 1;
         }
+    }
+
+    .callout-discussion {
+        background-color: transparent !important;
+        border-right: 1px solid var(--callout-discussion-title) !important;
+        border-top: 1px solid var(--callout-discussion-title) !important;
+        border-bottom: 1px solid var(--callout-discussion-title) !important;
+        z-index: 0;
+    }
+    .callout-discussion h2 {
+        background-color: hsl(from var(--callout-discussion-bg) h s l / 30%) !important;
+        position: absolute;  /* Use absolute positioning */
+        top: 0;
+        left: 0;
+        right: 0;
+        padding-top: 15px !important;
+        padding-bottom: 15px !important;
+        padding-left: 0.5em !important;
+        z-index: 1;
+    }
+    .callout-discussion p {
+        font-size: 0.9rem;
+        padding: 4rem 0.5em 0 0.5em;
+        margin-bottom: 0.1 !important;
     }
 
 /* Inline code in callout */
