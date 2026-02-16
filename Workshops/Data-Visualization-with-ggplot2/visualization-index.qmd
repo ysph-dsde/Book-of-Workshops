@@ -50,7 +50,7 @@ The code used to generate the example graphs demonstrates how each layer contrib
 
 ## Accessing the Codespaces
 
-In this workshop, you'll need to access the R code prepared for the workshop discussions and challenge questions. If you haven't already, please download the latest version of [R](https://cran.r-project.org/) to your device. We also recommend using the latest version of [RStudio](https://posit.co/download/rstudio-desktop/) as your
+In this workshop, you'll use R code for discussions and challenge questions. If you haven't already, please download the latest version of [R](https://cran.r-project.org/) to your device. o your device. We also recommend using the latest version of [RStudio](https://posit.co/download/rstudio-desktop/) as your
 <span class="text-term" 
   data-hover-text="A software application that combines tools for editing, building, testing, and debugging code into a single, user-friendly interface.">
   Integrated Development Environment (IDE) </span>\ [@ide].
@@ -69,7 +69,7 @@ This workshop was created using R (v 4.5.1) in the RStudio IDE (v 2025.09.2+418)
 
 ### Initializing the Environment
 
-1. Download the prepared codespace, which contains a comprehensive code environment configured with the RStudio IDE for in-class discussions and challenge questions with solutions.
+1. Download the prepared codebase, which is configured as an RStudio project and includes code for in-class discussions and challenge questions with solutions.
 
 ::: {style="margin-left: 2rem"}
 ```{=html}
@@ -85,7 +85,7 @@ This workshop was created using R (v 4.5.1) in the RStudio IDE (v 2025.09.2+418)
     ```{.bash filename="Command-Line Application"}
     cd "file_path/Downloads/"                         # Open the directory the file was downloaded into.
     unzip Data-Visualization-with-ggplot2.zip         # Unzip the file.
-    mv Data-Visualization-with-ggplot2 /new_path/     # Move the unzipped directory to the new location.
+    mv Data-Visualization-with-ggplot2 "/new_path/"   # Move the unzipped directory to the new location.
     ```
 
 3.  Launch the project by opening the `*.Rproj` file in RStudio.
@@ -149,10 +149,14 @@ With a Git-initialized project, you can add it to a remote repository on GitHub.
     git status
     ```
     
-    If instead, you see the following message, you will need to initialize Git as shown above in the section [Initializing the Environment](#initializing-the-environment).
+    If instead, you see the following message, you will need to initialize Git for the first time.
 
     ```{.bash filename="Command-Line Output"}    
     fatal: not a git repository (or any of the parent directories): .git
+    ```
+    
+    ```{.bash filename="Command-Line Application"}    
+    git init      # Initialize Git tracking.
     ```
 
 6. If `git status` shows untracked files or untracked changes to tracked files, add and commit these to the project's `.git` directory. If this is your first time committing the directory contents, you will see all files listed as untracked.

@@ -1,114 +1,137 @@
 ---
-  title: "Worked Through Example"
-  authors: Shelby Golden, M.S. and Howard Baik, M.S.
-  format: html
-  editor: source
-  markdown: 
-  editor_options: 
-  chunk_output_type: console
+from: markdown+emoji
+bibliography: references.bib
+csl: ../../../Code/nature.csl
 ---
+
+# Worked-Through Example {.unnumbered}
 
 ## Introduction
 
-In this workshop, we will explore the **tidyverse** collection of R packages to clean, analyze, and visualize COVID-19 daily death counts in the United States. Additionally, we will make our visualizations interactive using the `plotly` package.
+We will explore the `tidyverse` packages `tidyr`, `dplyr`, and `stingr` further with a worked-through example cleaning and visualizing COVID-19 daily death counts in the United States. The visualization will be prepared using another `tidyverse` package that was not discussed in this module. If you are interested in learning more about the `ggplot2` package, please check out our workshop on the topic: [Data Visualization with ggplot2](../../Data-Visualization-with-ggplot2/visualization-index.qmd).
 
-## Setup
+## Set Up the Environment
 
 First, we will load the necessary libraries and any special functions used in the script.
 
-```{r message = FALSE, warning = FALSE}
-library(readr)      # For reading in the data
-library(tidyr)      # For tidying data 
-library(dplyr)      # For data manipulation 
-library(stringr)    # For string manipulation
-library(lubridate)  # For date manipulation
-library(ggplot2)    # For creating static visualizations
-library(plotly)     # For interactive plots
-library(scales)     # For formatting plots axis
+```{r}
+#| message: FALSE
+#| warning: FALSE
+
+suppressPackageStartupMessages({
+  library("readr")      # For reading in the data
+  library("tidyr")      # For tidying data 
+  library("dplyr")      # For data manipulation 
+  library("stringr")    # For string manipulation
+  library("lubridate")  # For date manipulation
+  library("ggplot2")    # For creating static visualizations
+  library("scales")     # For formatting plots axis
+})
 
 
 # Function to select "Not In"
 '%!in%' <- function(x,y)!('%in%'(x,y))
 ```
 
-Now we will fetch the semi-cleaned COVID-19 deaths data set that has been prepared for this example. The original, raw data comes from the Johns Hopkins University Coronavirus Resource Center (JHU CRC) Center for Systems Science and Engineering (CSSE) GitHub page: CSSEGISandData. The full data cleaning script and links to the original raw data set can be found in the GitHub page for this workshop.
+Now we will fetch the semi-cleaned COVID-19 deaths data set that has been prepared for this example. 
+
+::: {.callout-note collapse="true"}
+## Data Source and Preparation Methods
+
+The original, raw data comes from the Johns Hopkins University Coronavirus Resource Center (JHU CRC) Center for Systems Science and Engineering (CSSE) GitHub page: [CSSEGISandData](https://github.com/CSSEGISandData/COVID-19/tree/master). Details about these steps can be found in the `Intro-to-Programming-in-R/Code` directory ([link to code](https://github.com/ysph-dsde/Book-of-Workshops/tree/main/Workshops/Intro-to-Programming-in-R/Code)). The cleaned datasets are in the `Intro-to-Programming-in-R/Data` directory ([link to data](https://github.com/ysph-dsde/Book-of-Workshops/tree/main/Workshops/Intro-to-Programming-in-R/Data)).
+:::
 
 ```{r}
-# Save the GitHub raw URL associated with our data set.
-df_url  <- "https://raw.githubusercontent.com/ysph-dsde/A-Journey-Into-The-World-of-tidyverse-Workshop/refs/heads/main/Data%20Sets/Data%20for%20the%20Workshop_Aggregated%20by%20Month.csv"
+# Save the GitHub raw URL associated with our data set
+df_url  <- "https://raw.githubusercontent.com/ysph-dsde/Book-of-Workshops/refs/heads/main/Workshops/Intro-to-Programming-in-R/Data/Data%20for%20the%20Workshop_Aggregated%20by%20Month.csv"
 
-# Read in the data set using the URL via the readr package.
+# Read in the data set using the URL via the readr package
 df_raw  <- read_csv(file = df_url, show_col_types = FALSE)
 ```
 
-It's good practice to review aspects of your raw data before proceeding with cleaning it. This includes:\
-- Reviewing the variable data dictionary.\
-- Looking at the dimensions of the data set.\
-- Looking at the first and/or last few rows.\
-- Looking at the variable classification for each column of information.
+Before cleaning data, it's good practice to review several aspects of your raw data:
 
-```{r results = "hold", tidy = FALSE}
-# Take a look at the first few rows and columns of the raw data.
-head(df_raw)
-```
+- Review the variable Data Dictionary
+- Check the dataset dimensions (rows and columns)
+- Examine the first and/or last few rows
+- Check the variable type for each column
 
-We see that the data set has `r nrow(df_raw)` unique regions in the U.S. at the county- and state-level with `r ncol(df_raw)` columns of information. The first four columns denotes the region in different formats, and the remaining 39 columns represent the date when COVID-19 deaths were added to the running tally. All counts are reported as cumulative (monotonically increasing), and have been summarized to monthly updates.
-
-In following sections we will continue reviewing aspects of our data set, including confirming the variable classes are correct. Before we continue, we need to tidy our data, which is done in the next section.
-
-## Data tidying using tidyr
-
-As noted in the previous section, observations are added as new columns, creating what is referred to as a wide data set. To render the raw data into the target "tidy" format we need columns to only represent variables. This can be achieved by transforming the array of dates into new rows instead of columns, referred to as a long data set.
-
-`tidyr` provides us with a convenient function that will do such a transformation in one expression, `pivot_longer()`. In that function, we need to indicate which array of columns need to be transposed from columns to rows.
+Most of these operations can be accomplished using dplyr's `glimpse()` function. Notice that only the first 7 columns are displayed here for readability; the full dataset contains 39 date columns.
 
 ```{r}
-# Find which dates constitute the start and end of our array.
+# Preview the raw data
+glimpse(df_raw[, 1:7])
+```
+
+We can see that the dataset contains `r nrow(df_raw)` unique regions throughout the U.S. at the county- and state-level, with `r ncol(df_raw)` columns of information in total. The first 4 columns denote the geographic region in different formats, while the remaining 39 columns represent specific dates when COVID-19 deaths were added to the running tally. Importantly, all counts are reported as cumulative values (monotonically increasing) and have been summarized at monthly time intervals.
+
+Regional identifier columns are classified as characters (`<chr>`), which is appropriate for text-based data. Death count columns are classified as double, meaning they are double-precision floating-point numbers—a numeric type that allows decimal values. Since deaths must be whole numbers (you can't have a fractional death), we need to convert these to integers, rounding down.
+
+In the following sections, we will continue reviewing additional aspects of our dataset. Before we proceed, however, we need to tidy our data first.
+
+## Clean Messy Data Using `tidyr`
+
+As we saw in the previous section, observations are stored as columns, creating a wide dataset. To transform this into our target "tidy" format, columns need to represent only variables—not individual observations. We achieve this by converting date columns into rows, creating a long dataset. Fortunately, `tidyr` provides the perfect function for this transformation: `pivot_longer()`. We simply tell it which columns to pivot into rows.
+
+```{r}
+# Find the first and last dates in our array
 str_c(c("Start date: ", "End date: "), colnames(df_raw)[c(5, ncol(df_raw))])
 ```
 
-Using the start and end column names of the dates array, we can pivot the raw data into a long-format.
-
-Notice that we also need to provide the names of two new columns generated by this operation: one column to store the pivoted column names and one column to store the values previously expanded under those columns. Also notice that the colon in `"2020-01-01":"2023-03-01"` is prompting the function to use all consecutive columns between the first and last column name denoted.
+Using the start and end column names, we can pivot the date columns into a long format. We need to name two new columns for this operation: one to hold the pivoted column names (our dates), and another to hold their corresponding values. Note that the colon in "`r colnames(df_raw)[5]`:`r colnames(df_raw)[ncol(df_raw)]`" tells the function to include all consecutive columns between the start and end positions.
 
 ```{r}
 df_long <- df_raw |> 
-  # Step 1: Convert wide-format date columns to long-format.
+  # Step 1: Convert wide format date columns to long format
   pivot_longer(
-    # Designate which columns need to be pivoted.
+    # Designate which columns need to be pivoted
     cols = "2020-01-01":"2023-03-01", 
-    # Name the variable that will store newly pivoted column names.
+    # Name the variable that will store newly pivoted column names
     names_to = "Date",
-    # Name the variable that will store respective cell values.
+    # Name the variable that will store respective cell values
     values_to = "Deaths_Count_Cumulative"
   ) |> 
-  # Step 2: Change table format to "data frame" class for convenience.
+  # Step 2: Change table format to "data frame" class for convenience
   as.data.frame()
 
-# Inspect the pivoted data.
-head(df_long)
+# Inspect the pivoted data
+glimpse(df_long)
 ```
 
-```{r echo = FALSE}
-# Report the dimensions of the pivoted data set.
+```{r}
+#| echo: FALSE
+
+# Report the dimensions of the pivoted data set
 str_c(c("Number of rows: ", "Number of columns: "), c(nrow(df_long), ncol(df_long)) )
 ```
 
-This formatting looks quite a lot better. We see that each column represents its own variable, and each row represents a new observation over a range of dates for each county- and state-level region. Technically, our data set is now "tidy", but might still require some additional preparations or cleaning.
+This looks much better! Each column now represents one variable, and each row represents one observation—matching a specific region with a specific date. Notice that we waited until now to change the death counts from doubles to integers. Why? Because with tidy data, this conversion is much simpler.
 
-In following sections we will continue reviewing and processing the data so that it is ready for visualization and statistical analyses.
+```{r}
+# Convert double to integer
+df_long$Deaths_Count_Cumulative <- as.integer(df_long$Deaths_Count_Cumulative)
 
-## Data manipulation using dplyr
+# Use the Higher-Order function sapply() to get all variable classes
+sapply(df_long, class) |> 
+  # Convert from a vector to a data frame for easier reading
+  as.data.frame() |> 
+  # Change the column name for clarity
+  `colnames<-`("Variable Class")
+```
 
-Let's say we want to plot deaths as a result of the COVID-19 pandemic for the whole U.S. We will need to generate these counts from the data set we have. This can be accomplished by summing cumulative deaths counts grouped by region (`Combined_Key`) and the month when new deaths were reported (`Date`). Cumulative counts are difficult to interpret, and so we will also want to back-calculate the monthly counts.
+Technically, our dataset is now "tidy." But remember: tidy is just one step. We may still need additional cleaning and standardization. In the following sections, we'll continue preparing the data for visualization and analysis.
 
-`dplyr` provides us with a series of functions that allow us to do such data manipulation tasks. Over the next four code blocks, we will show how to generate counts for the whole U.S.
+## Manipulate Data Using `dplyr`
 
-### Calculate total U.S. counts
+Suppose we want to plot COVID-19 deaths across the entire U.S. First, we need to calculate total counts by summing deaths for each region (`Combined_Key`) on each date (`Date`). However, our dataset contains cumulative counts, which are difficult to interpret for visualization. We'll need to back-calculate monthly counts to show new deaths each month.
 
-Recall that the imported data set includes values for U.S. counties, states, and territories. We need to calculate U.S. values over the U.S. states, including the District of Columbia, only. This can be achieved by first filtering for `Combined_Key` entries that match those state names using `filter()`.
+The `dplyr` package offers a suite of functions for data manipulation tasks like these. In the next four code blocks, we'll show how to generate counts for the entire U.S.
 
-Notice that we are using a `stringr` function, `str_c()` or string concatenate, to create a vector of names that can be matched with entries in `Combined_Key`. This function will be discussed in the next section covering `stringr`.
+### Calculate Total U.S. Counts
+
+Recall that the imported dataset includes values for U.S. counties, states, and territories. To calculate values for the U.S. as a whole, we need to focus only on the 50 states plus the District of Columbia. We can achieve this by filtering for `Combined_Key` entries that match those state names using the `filter()` function.
+
+We're using `str_c()` from the `stringr` package here (string concatenate) to create a vector of state names for matching. We'll explore this function in detail in the next section.
 
 **Step 1:** Filter subsets the data set by rows that match the condition.
 
@@ -117,18 +140,29 @@ df_filtered <- df_long |>
   filter(Combined_Key %in% str_c(c(datasets::state.name, "District of Columbia"), ", US"))
 ```
 
-The full data set has `r nrow(df_long)` rows and after filtering we only have `r nrow(df_filtered)` remaining. These each represent the observations for all U.S. states, including the District of Columbia which was reported separately. Recall that there were 39 months within the span of the pandemic where observations were recorded, meaning we have `r nrow(df_long)`/39 = 51 unique regions reported.
+The full dataset has `r nrow(df_long)` rows. After filtering, we have `r nrow(df_filtered)` remaining—one for each U.S. state plus the District of Columbia across all months. Recall that observations were recorded over 39 months during the pandemic, so we expect `r nrow(df_filtered)`/39 = 51 unique regions.
 
-Using this filtered data set, we will want to group row entries by unique months. We accomplish that using `group_by()`. In the table that follows this grouping, we show how many rows are being grouped with each unique month using `tally()`.
+Using this filtered dataset, we'll group rows by month using `group_by()`. The table below uses `tally()` to show how many rows are in each monthly group. 
 
-**Step 2:** Groups the table by unique entries in `Date`.
+:::{.callout-tip}
+## Code Like a Pro
+
+It's crucial to verify that your dataset is structured correctly and contains expected values. Since most datasets are too large for line-by-line inspection, use a different strategy: identify what features you expect in your data (like the 51 regions above) and verify them systematically.
+
+This approach allows you to thoroughly validate that your dataset meets all expectations and requirements.
+:::
+
+**Step 2:** Group the table by unique entries in `Date`.
 
 ```{r}
 df_grouped <- df_filtered |>
   group_by(Date)
 
-# Display the number of entries associated with each group using tally().
-df_grouped |> tally() |> head()
+# Display the number of entries associated with each group using tally()
+df_grouped |> tally() |> 
+  # Use an "anonymous function" to help pass the object from the
+  # left side to the right side of the pipe
+  (\(x) list("Tally" = head(x), "Unique n" = unique(x$n)))()
 ```
 
 As expected, we have 51 row entries that are being grouped by each month recorded. Now we are ready to calculate the total U.S. counts. The function `summarize()` allows us to iterate a function over each grouping. If necessary, the function can be prompted to retain previously designated groups using `.groups = "keep"`.
@@ -137,12 +171,12 @@ As expected, we have 51 row entries that are being grouped by each month recorde
 
 ```{r}
 df_US <- df_grouped |>
-  summarise(Deaths_Count_Cumulative = sum(Deaths_Count_Cumulative), .groups = "keep")
+  summarize(Deaths_Count_Cumulative = sum(Deaths_Count_Cumulative), .groups = "keep")
 ```
 
 Finally, we need to remove the groupings so we can work with the whole data set again.
 
-**Step 4:** Remove grouping to work with the full data frame again.
+**Step 4:** Remove grouping applied to the dataset object.
 
 ```{r}
 df_US <- df_US |>
@@ -155,110 +189,171 @@ After these four operations, we get the following data set:
 head(df_US)
 ```
 
-Now we are ready to merge this back with the main data frame. `bind_rows()` is a tidyverse function that is similar to `do.call()`, but it will also fill missing columns with `NA` so that the maximum number of uniquely defined variables are maintained.
-
-Right now, the data frame `df_US` is missing the `Combined_Key` column. If we use `bind_rows()` at this stage, then `Combined_Key` for all U.S. rows will be `NA`. Instead, we want to add a new `Combined_Key` that says `"US"`. This is achieved using `mutate()`, which generates a new column using a functions of existing columns or static operations.
+Next, we'll merge this data back with the main dataframe using `bind_rows()`, a tidyverse function similar to` do.call()` that fills missing columns with `NA` to maintain all uniquely defined variables. However, `df_US` is currently missing the `Combined_Key` and `Country_Region` columns. If we merge now, both will be filled with `NA`. Instead, we want them to contain "US". We can add these columns using `mutate()`, which creates new columns from functions of existing columns or static values.
 
 ```{r}
 df_US <- df_US |>
   mutate(Combined_Key = "US", Country_Region = "US")
 
-# Inspect the mutated data.
 head(df_US)
 ```
 
-Great, now that we have all the columns we need, we are ready to merge it with `df_long`, which contains all of the county- and state-level data.
+Great, now that we have all the columns we need we are ready to merge it with `df_long`.
 
 ```{r}
-df <- bind_rows(df_US, df_long) |> 
-  # Change table format to "data frame" class for convenience.
-  as.data.frame()
+df <- bind_rows(df_US, df_long)
 
-# Inspect the merged data.
 head(df)
 tail(df)
 ```
 
-The `select()` function is used to keep or drop columns. It can also be used to organize the existing columns. We would like to organize the columns by region followed by the month the record was made and then the cumulative deaths recorded.
+The `select()` function is used to keep, drop, or organize columns. In our case, we will use it to reorganize the columns. We want to arrange the columns such that we have the region first, followed by the month the record was made, and then the cumulative deaths recorded.
 
 ```{r}
 df <- df |>
-  # Generate new columns using mutate.
   select(Combined_Key, County, Province_State, Country_Region, Date, Deaths_Count_Cumulative)
 
-# Inspect the merged data.
 head(df)
 ```
 
-### Backcalculate monthly updates
+### Back-Calculate Monthly Updates
 
-Now we are ready to calculate the monthly death counts from the cumulative counts. Earlier we implied that `mutate()` can be used to generate new columns that are functions of existing columns. Here, we generate a new vector using `diff()` to back-calculated values added each month.
+Now we are ready to calculate the monthly death counts from the cumulative counts. Earlier, we mentioned that `mutate()` can be used to generate new columns as functions of existing columns. Here, we will generate a new column using `diff()` to back-calculate the values added each month.
 
 ```{r}
-# Calculate daily monthly deaths counts using mutate.
-df <- df |>  
-  mutate(Deaths_Count_Monthly = c(Deaths_Count_Cumulative[1], diff(Deaths_Count_Cumulative)))
+df <- df |> 
+  # Group data by Combined_Key
+  group_by(Combined_Key) |>
+  # Ensure data is sorted by Date within each group
+  arrange(Date) |>
+  # Calculate daily monthly deaths counts using mutate
+  mutate(Deaths_Count_Monthly =  Deaths_Count_Cumulative - lag(Deaths_Count_Cumulative, default = 0)) |>
+  ungroup() |> 
+  # Change table format to "data frame" for convenience
+  as.data.frame()
 
-# Inspect the wrangled data set.
 head(df)
 ```
 
-As a last step, we will inspect the classifications for each variable and ensure that they are correctly classified.
+::: {.callout-tip collapse="true"}
+## Code Like a Pro
+
+It is important to ensure that your methods are accurate! For example, suppose you want to confirm the accuracy of directly calculating the cumulative counts for the U.S. over all 39 months. To do this, you can compare this direct approach (call this method "a") with an indirect method (call this method "b"). The indirect method first calculates the daily counts, sums these counts across all states, and then generates the cumulative counts.
 
 ```{r}
-sapply(df, class)
+## --------------------
+## Aggregate states directly from the cumulative counts
+a <- df_filtered |>
+  # Group data by Date
+  group_by(Date) |>
+  # Calculate the total cumulative deaths for each Date
+  summarize(total_method_a = sum(Deaths_Count_Cumulative))
+
+## --------------------
+## First calculate the daily value, then recalculate the cumulative count
+b <- df_filtered |>
+  # Group data by Combined_Key
+  group_by(Combined_Key) |>
+  # Ensure data is sorted by Date within each group
+  arrange(Date) |>
+  # Calculate daily increments
+  mutate(increment = Deaths_Count_Cumulative - lag(Deaths_Count_Cumulative, default = 0)) |>
+  # Ungroup to remove group structure
+  ungroup()
+
+b <- b |>
+  # Group data by Date
+  group_by(Date) |>
+  # Sum daily increments for each Date to get total increments
+  summarize(total_increment = sum(increment)) |>
+  # Calculate the cumulative sum of the total increments for each Date
+  reframe(total_method_b = cumsum(total_increment)) |>
+  ungroup()
+
+## --------------------
+## Compare the two methods to confirm they are the same. If they are, then the return
+## value should be zero.
+bind_cols(a, b) |>
+  # Apply row-wise operations
+  rowwise() |>
+  # Calculate the absolute difference between the two cumulative totals
+  summarize(diff = abs(total_method_a - total_method_b)) |>
+  # Extract unique values of the differences
+  (\(x) unique(x$diff))()
 ```
 
-Currently, `Date` is classified as a character. We can change the class to date using the lubridate package from tidyverse. This package is not covered in this introductory workshop, but those interested to find out more can review the package documentation: https://lubridate.tidyverse.org/
+```{r}
+#| echo: false
 
-Notice that the data has been reported in yyyy/mm/dd format. Therefore, we use `ymd()` to correctly convert the character to the date class. We also format these to only report the year followed by the month abbreviation.
+rm(a, b)
+```
+:::
+
+## String Manipulation Using `stringr`
+
+After completing data wrangling and tidying, it's good practice to review variable classifications and naming conventions before proceeding with calculations. For instance, if you have a variable for participant sex, ensure all entries are consistently labeled (e.g., "M" for Male, "F" for Female). Also confirm that zeros aren't used in place of `NA` for missing values, or vice versa.
+
+Let's start by examining the variable classifications again.
+
+```{r}
+sapply(df, class) |> 
+  as.data.frame() |> 
+  `colnames<-`("Variable Class")
+```
+
+The variables are mostly assigned to appropriate data classes. One exception: `Date` is a character but would be better as a date class for easier manipulation. We can convert it using the `lubridate` package from tidyverse. This package isn't covered in this introductory lecture, but you can review the documentation here: [lubridate](https://lubridate.tidyverse.org/).
+
+The data is reported in` yyyy/mm/dd` format, so we use `ymd()` to convert the character to the date class.
 
 ```{r}
 df$Date <- ymd(df$Date)
 ```
 
-## String manipulation using stringr
+### Validate the Accuracy of Entries
 
-After completing bulk data wrangling operations, like the ones completed above, it is good practice to examine variable classifications and nomenclature before any calculations. For example, if you have a variable for the sex of a participant, you will want to confirm that all entries of that variable say `"M"` and `"F"` for Male and Female, respectively. You might also need to confirm that zero's are not being used in place of `NA` when the value is not determined.
-
-In this scenario, we are going to assume that the county-level entries are correct. We expect that the U.S. states and territories are represented for state-level entries. We can examine other state-level entries by reporting the complement of matches to unique entries of `Combined_Key` to `datasets::state.name` and the District of Columbia.
+For simplicity, we'll assume county-level entries are accurate and skip validation here, though in real analysis you'd want to verify this. We will, however, check that all U.S. states and territories appear in the state-level data by comparing unique `Combined_Key` values to `datasets::state.name` and the District of Columbia.
 
 ```{r}
-# Find the non-states represented in the state-level data set.
+# Find the non-states represented in the state-level data set
 unique(df$Province_State)[unique(df$Province_State) %!in% c(datasets::state.name, "District of Columbia")]
 ```
 
-Notice that there are `NA` detected. This should be correct, since the country-level counts are `NA` at the state-level. We can confirm this by showing all `Combined_Key` entries are "US" for rows with `"Province_State" = NA`.
+`NA` values appear in the results. This makes sense because country-level aggregates don't have state values, so they show as `NA` at the state level. We can verify this to ensure all rows where `Province_State = NA` the `Combined_Key = "US"`.
 
 ```{r}
+# Confirm assumption to check for possible source of irregularity
 df[df$Province_State %in% NA, "Combined_Key"] |> unique()
 ```
 
-In addition to the five U.S. territories, there are entries for two cruise ships. These are not relevant to our analysis, and so we exclude them using `str_detect()` or `str_which()`. Both of these functions will find the rows where a string pattern is matched, and report the findings as either a Boolean (`TRUE`/`FALSE`) or row-index.
+Beyond the five U.S. territories, we also see entries for two cruise ships. Since these aren't relevant to our analysis, we'll exclude them using `str_detect()` or `str_which()`. Both functions identify rows matching a string pattern—`str_detect()` returns Boolean values (`TRUE`/`FALSE`) while `str_which()` returns row indices.
 
-**Option #1:** Use the Boolean test that detects the `"Princess"` string. Note that the added `%in% TRUE` is used to address NA outcomes that need to be interpreted as `FALSE`.
+**Option #1:** Use the Boolean test to detect the presence of the "Princess" string and pull the matches. The added `%in% TRUE` expression ensures that `NA` outcomes are interpreted as `FALSE`.
 
 ```{r}
 df_filtered <- df[!str_detect(df$Province_State, "Princess") %in% TRUE, ]
 ```
 
-**Option #2:** Find the index that detects the "Princess" string and use the indexes that do not contain that string to subset.
+**Option #2:** Identify indices containing "Princess", then subset using the indices that don't.
 
 ```{r}
 df_filtered <- df[-str_which(df$Province_State, "Princess"), ]
 ```
 
-Notice one could use `str_which(df$Combined_Key, "Princess", negate = TRUE)`. However, because there are `NA` in the "Combined_Key" vector the version displayed above needs to be used to maintain those rows.
+:::{.callout-warning}
+While `str_which(df$Combined_Key, "Princess", negate = TRUE)` works in many scenarios, it would exclude rows where `Combined_Key` is `NA`. The version above preserves those rows.
+:::
 
-Doing this removes the following number of rows from the larger data set; this translates to two unique regions with 39 dates associated with each, as expected.
+This filtering removes the following number of rows, representing two unique regions with 39 dates each, as expected.
 
 ```{r}
-nrow(df) - nrow(df_filtered)
+(nrow(df) - nrow(df_filtered))/2
 ```
 
-The `Combined_Key` variable combines information from `County`, `Province_State`, and `Country_Region`. Assume we only have the county-level data and wish to generate the state- and country-level `Combined_Key` variable. We can do this in two ways: `str_c()` or `str_split()`.
+### Generating New String Vectors
 
-For this example we will subset the data by county-level information only. We use `str_count()` to represent the number of times a string pattern is detected within any given string. County-level data will have two commas, so this is one method we can use to subset our data.
+A common task is creating new string vectors from existing ones. `Combined_Key` combines information from `County`, `Province_State`, and `Country_Region.` Suppose we only have county-level data and want to generate state- and country-level `Combined_Key` values. We can do this with `str_c()` or `str_split()`.
+
+For this example, we'll first subset to county-level data only. We can use `str_count()` to count how many times a pattern appears in each string. Since county-level data contains two commas, we'll filter using that pattern.
 
 ```{r}
 df_state_level <- df_filtered[str_count(df_filtered$Combined_Key, ",") == 2, ]
@@ -270,16 +365,27 @@ df_state_level <- df_filtered[str_count(df_filtered$Combined_Key, ",") == 2, ]
 str_c(df_state_level$Province_State, df_state_level$Country_Region, sep = ", ") |> unique()
 ```
 
-**Option #2:** Split the string only to the first observation of the string match.
+**Option #2:** Split the string only to the first observation of the deliminator.
+
+::: callout-note
+By setting `n = 2`, we are restricting `str_split()` to return a maximum of 2 new vectors after the split operation. This means the function will split the string only at the first occurrence of the delimiter. Including the `simplify = TRUE` argument converts the output from a list (with each output as a separate list element) to a matrix, making it easier to handle the resulting data.
+:::
 
 ```{r}
-str_split(df_state_level$Combined_Key, ",", simplify = TRUE, n = 2)[, 2] |> 
+str_split(df_state_level$Combined_Key, ",", simplify = TRUE, n = 2) |>
+  
+  # Save the second column of information containing the state- and country-level
+  # regional information. Notice the use of the underscore as a placeholder for 
+  # the piped data.
+  _[, 2] |>
+  
+  # Trim whitespace from both sides of the resulting strings
   str_trim(side = "both") |> unique()
 ```
 
-### Bonus: Iterating Operations Over Columns
+### Standardizing Nomenclature
 
-Say we wish to specify that the Virgin Islands entries only reflect results for the U.S. territory. We can replace specific strings exactly using `str_replace()`.
+As a final step, we'll refine the naming for clarity and consistency. Suppose we want to specify that Virgin Islands entries refer only to the U.S. territory. We can do this using `str_replace()` to replace specific string patterns.
 
 Going forward, we only require the `Combined_Key` variable, as the `Country_Region`, `Province_State`, and `County` variables are succinctly represented there. We can adjust the `"Virgin Islands"` entries for that column only.
 
@@ -287,16 +393,14 @@ Going forward, we only require the `Combined_Key` variable, as the `Country_Regi
 df_filtered[, "Combined_Key"] <- str_replace(df_filtered[, "Combined_Key"],  "Virgin Islands", "US Virgin Islands")
 ```
 
-Note that it is possible to adjust multiple columns at once using `sapply()`. Notice that with the base pipe `|>` the standard placeholder `_` does not move information into the `sapply()` function. To fix this, we wrap the `sapply()` pipe level and specify a placeholder for the values being passed from the left-side to `sapply()`. In this scenario, we are calling that information `x`.
-
-`sapply()` is one of a few useful functions that repeats operations over columns, rows, or lists. `sapply()` will only apply the function over a the columns of a data frame.
+We can adjust multiple columns at once using the higher-order function `sapply()`. However, the base R pipe's _ placeholder doesn't work with `sapply()`. To work around this, we wrap `sapply()` within the pipe and define our own placeholder for the incoming data. Here we use `x` within a temporary function. This temporary function is called an "anonymous function"—a concept we've used earlier in this example.
 
 ```{r}
 # Identify the row indices where "Virgin Islands" is detected in "Province_State".
 index = str_which(df_filtered[, c("Province_State")], "Virgin Islands")
 
 df_filtered[index, c("Province_State", "Combined_Key")] |>
-  # Define the wrapper of this pipe-level and specify the information from
+  # Define the anonymous function of this pipe-level and specify the information from
   # the left to be "x".
   (\(x) {
     # Apply the str_replace() function over "Province_State" and "Combined_Key".
@@ -305,38 +409,77 @@ df_filtered[index, c("Province_State", "Combined_Key")] |>
     sapply(x, function(y) str_replace(y,  "^Virgin Islands", "US Virgin Islands"))
   }) () |> 
   # Show that the changes have been completed.
-  _[1:15, ]
+  _[1:10, ]
+```
+
+Now we commit our changes to the primary dataframe label.
+
+```{r}
+df <- df_filtered
 ```
 
 ## Visualization: Daily COVID-19 Death Counts
 
-We will calculate the daily COVID-19 death counts across the U.S. and create a line plot showing the daily COVID-19 death counts in the U.S.
+To conclude the example, we will plot our tidy dataset and display the newly calculated country-wide counts.
 
 ```{r}
 
 plot_deaths <- df |>
+  # Select entries only reflecting country-level data
   filter(Combined_Key == "US") |>
-  # Rename column names so they look nicer in plotly
-  rename(Date = Month, Count = Deaths_Count) |>  
-  ggplot(aes(x = Date, y = Count)) +
-  geom_line(aes(x = Date, y = Count), color = "#880808", size = 1) +
-  # Format the y-axis to show values in terms of thousands.
-  scale_y_continuous(labels = unit_format(unit = "K", scale = 1e-3)) +
-  # Format the x-axis to show dates as Jan 2020 from 01/01/2020, spaced
-  # every four months.
-  scale_x_date(date_breaks = "4 month", date_labels =  "%b %Y") +
-  labs(x = "Date Recorded", y = "COVID-19 Deaths",
-       title = "COVID-19 Deaths in the US - Grouped by Month") +
-  theme_minimal()
+  ggplot(aes(x = Date, y = Deaths_Count_Monthly)) +
+    # Visualize as a line-plot
+    geom_line(color = "#7634A6", linewidth = 1) +
+    # Format the y-axis to show values in terms of thousands
+    scale_y_continuous(labels = unit_format(unit = "K", scale = 1e-3)) +
+    # Format the x-axis to show dates as Jan 2020 from 01/01/2020, spaced
+    # every four months
+    scale_x_date(date_breaks = "4 month", date_labels =  "%b %Y") +
+    labs(x = "Date Recorded", y = "COVID-19 Deaths",
+         title = "COVID-19 Deaths in the US - Grouped by Month") +
+    theme_minimal()
 
-# Make plot interactive
-ggplotly(plot_deaths)
+plot_deaths
 ```
 
-## Challenge Questions
+## Discussion Questions
 
-1.  Filter the `df` data set to include only rows from 2021.
-2.  With the data set filtered for rows from 2021, determine the day with the highest death count along with the corresponding count.
-3.  We want to see how many counties called "Adams" are represented in the data set.
-    a)  Subset the data set by string matches in `County` and find how many rows you see. Remember that each county is expected to have 39 different dates reported.
-    b)  Table your subset results by `County` and `Province_State`. Does this change the answer you got from part a?
+1.  Calculate the average monthly death counts for each state by year and determine the year with the highest average monthly death counts for each state. Are there any states that had more than one year with the same mean cases? **HINT:** You will need the `year()` function from `lubridate`.
+
+```{r}
+```
+
+2.  We want to see how many counties called "Clark" are represented in the data set.
+    a)  How many counties include the word Clark?
+
+        -   Make two variables: one that subsets `df` for matches and one listing the unique county names found.
+        -   Use `stringr` to extract the county name only.
+        -   Finish the `str_c()` statement started below to summarize your findings.
+
+    b)  Are the results what we expected, or what we wanted? If we strictly wanted counties named "Clark", how might we improve the script to achieve this?
+
+```{r}
+## --------------------
+## part a
+
+# Var #1
+#__
+
+# Var #2
+#__
+
+
+# Finish the summary statement. 
+# HINT: We expect 39 replicates per county for the 39 dates recorded.
+str_c("There are ", 
+      # Number of unique counties represented in the dataset.
+      #__
+      " counties with 'Clark' in the name: "
+      # The unique ways "Clark" is represented in these counties.
+      #__
+)
+
+## --------------------
+## part b
+
+```
