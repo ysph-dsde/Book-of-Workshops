@@ -10,7 +10,7 @@
   number-sections: false
 ---
 
-# Worked-Through Example {.unnumbered}
+# `ggplot2` Worked-Through Example {.unnumbered}
 
 ## Environment Set-Up and Data Description
 
