@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Worked-Through Example – Book of Workshops</title>
+<title>tidyverse Worked-Through Example – Book of Workshops</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -80,7 +80,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../../site_libs/bootstrap/bootstrap-e8155f0b02e7633ab0f18263ae77acdf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-c1b0fef8746b956425ce5d03f29fb411.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-6cae30f32ab78690c163cfaac0b55837.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../../../site_libs/bootstrap/bootstrap-e8155f0b02e7633ab0f18263ae77acdf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../../../site_libs/quarto-contrib/bookup_fonts_embed-0.0/fonts-download.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -331,7 +331,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title">Worked-Through Example</h1>
+          <h1 class="quarto-secondary-nav-title"><code>tidyverse</code> Worked-Through Example</h1>
         </a>     
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -409,7 +409,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../../Workshops/Intro-to-Programming-in-R/programming-r-index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Introduction to Programming in R and Data Wrangling with `tidyverse`</span></a>
+ <span class="menu-text">Introduction to Programming in R and Data Wrangling with <code>tidyverse</code></span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -418,7 +418,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../Workshops/Intro-to-Programming-in-R/Pages/programming-r-worked-through-example.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Worked-Through Example</span></a>
+ <span class="menu-text"><code>tidyverse</code> Worked-Through Example</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -441,7 +441,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../Workshops/Data-Visualization-with-ggplot2/Pages/visualization-worked-through-example.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Worked-Through Example</span></a>
+ <span class="menu-text"><code>ggplot2</code> Worked-Through Example</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -477,7 +477,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#standardizing-nomenclature" id="toc-standardizing-nomenclature" class="nav-link" data-scroll-target="#standardizing-nomenclature">Standardizing Nomenclature</a></li>
   </ul></li>
   <li><a href="#visualization-daily-covid-19-death-counts" id="toc-visualization-daily-covid-19-death-counts" class="nav-link" data-scroll-target="#visualization-daily-covid-19-death-counts">Visualization: Daily COVID-19 Death Counts</a></li>
-  <li><a href="#discussion-questions" id="toc-discussion-questions" class="nav-link" data-scroll-target="#discussion-questions">Discussion Questions</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/ysph-dsde/Book-of-Workshops/edit/main/Workshops/Intro-to-Programming-in-R/Pages/programming-r-worked-through-example.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -487,7 +486,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Worked-Through Example</h1>
+<h1 class="title d-none d-lg-block"><code>tidyverse</code> Worked-Through Example</h1>
 </div>
 
 
@@ -504,6 +503,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<p><small>Updated: February 16<sup>th</sup>, 2026</small></p>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>We will explore the <code>tidyverse</code> packages <code>tidyr</code>, <code>dplyr</code>, and <code>stingr</code> further with a worked-through example cleaning and visualizing COVID-19 daily death counts in the United States. The visualization will be prepared using another <code>tidyverse</code> package that was not discussed in this module. If you are interested in learning more about the <code>ggplot2</code> package, please check out our workshop on the topic: <a href="../../../Workshops/Data-Visualization-with-ggplot2/visualization-index.html">Data Visualization with ggplot2</a>.</p>
@@ -512,19 +512,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="set-up-the-environment">Set Up the Environment</h2>
 <p>First, we will load the necessary libraries and any special functions used in the script.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>({</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(<span class="st">"readr"</span>)      <span class="co"># For reading in the data</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(<span class="st">"tidyr"</span>)      <span class="co"># For tidying data </span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(<span class="st">"dplyr"</span>)      <span class="co"># For data manipulation </span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(<span class="st">"stringr"</span>)    <span class="co"># For string manipulation</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(<span class="st">"lubridate"</span>)  <span class="co"># For date manipulation</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(<span class="st">"ggplot2"</span>)    <span class="co"># For creating static visualizations</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(<span class="st">"scales"</span>)     <span class="co"># For formatting plots axis</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to select "Not In"</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="st">'%!in%'</span> <span class="ot">&lt;-</span> <span class="cf">function</span>(x,y)<span class="sc">!</span>(<span class="st">'%in%'</span>(x,y))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: renv initialization might need to be run twice after the repo is</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#       first copied.</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#renv::init()</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>- The library is already synchronized with the lockfile.</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>({</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(<span class="st">"readr"</span>)      <span class="co"># For reading in the data</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(<span class="st">"tidyr"</span>)      <span class="co"># For tidying data </span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(<span class="st">"dplyr"</span>)      <span class="co"># For data manipulation </span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(<span class="st">"stringr"</span>)    <span class="co"># For string manipulation</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(<span class="st">"lubridate"</span>)  <span class="co"># For date manipulation</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(<span class="st">"ggplot2"</span>)    <span class="co"># For creating static visualizations</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(<span class="st">"scales"</span>)     <span class="co"># For formatting plots axis</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to select "Not In"</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="st">'%!in%'</span> <span class="ot">&lt;-</span> <span class="cf">function</span>(x,y)<span class="sc">!</span>(<span class="st">'%in%'</span>(x,y))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now we will fetch the semi-cleaned COVID-19 deaths data set that has been prepared for this example.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -544,11 +550,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the GitHub raw URL associated with our data set</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df_url  <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/ysph-dsde/Book-of-Workshops/refs/heads/main/Workshops/Intro-to-Programming-in-R/Data/Data%20for%20the%20Workshop_Aggregated%20by%20Month.csv"</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in the data set using the URL via the readr package</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>df_raw  <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> df_url, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the GitHub raw URL associated with our data set</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df_url  <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/ysph-dsde/Book-of-Workshops/refs/heads/main/Workshops/Intro-to-Programming-in-R/Data/Data%20for%20the%20Workshop_Aggregated%20by%20Month.csv"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in the data set using the URL via the readr package</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>df_raw  <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> df_url, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Before cleaning data, it’s good practice to review several aspects of your raw data:</p>
 <ul>
@@ -559,8 +565,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>Most of these operations can be accomplished using dplyr’s <code>glimpse()</code> function. Notice that only the first 7 columns are displayed here for readability; the full dataset contains 39 date columns.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Preview the raw data</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_raw[, <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Preview the raw data</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_raw[, <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 3,394
 Columns: 7
@@ -575,35 +581,51 @@ $ `2020-03-01`   &lt;dbl&gt; 23, 3, 0, 25, 8, 170, 69, 69, 3, 9, 85, 111, 2, 0, 
 </div>
 <p>We can see that the dataset contains 3394 unique regions throughout the U.S. at the county- and state-level, with 43 columns of information in total. The first 4 columns denote the geographic region in different formats, while the remaining 39 columns represent specific dates when COVID-19 deaths were added to the running tally. Importantly, all counts are reported as cumulative values (monotonically increasing) and have been summarized at monthly time intervals.</p>
 <p>Regional identifier columns are classified as characters (<code>&lt;chr&gt;</code>), which is appropriate for text-based data. Death count columns are classified as double, meaning they are double-precision floating-point numbers—a numeric type that allows decimal values. Since deaths must be whole numbers (you can’t have a fractional death), we need to convert these to integers, rounding down.</p>
+<div class="callout-discussion">
+    <h2 class="anchored">
+        <i class="fa-regular fa-comments"></i>
+        Discussion Question
+    </h2>
+    <p>Is the data in a “tidy” format? Why or why not?</p>
+</div> 
 <p>In the following sections, we will continue reviewing additional aspects of our dataset. Before we proceed, however, we need to tidy our data first.</p>
 </section>
 <section id="clean-messy-data-using-tidyr" class="level2">
 <h2 class="anchored" data-anchor-id="clean-messy-data-using-tidyr">Clean Messy Data Using <code>tidyr</code></h2>
+<p>Messy data might come in a multitude of forms, but the core data reshaping actions needed to achieve a tidy data format can be reduced to five operations:</p>
+<ul>
+<li><strong>Pivoting –</strong> converts between long forms (observations added as new rows) and wide forms (observations added as new columns).</li>
+<li><strong>Rectangling –</strong> turns deeply nested lists (as from JSON) into tidy tibbles, the tidyverse version of a dataframe object.</li>
+<li><strong>Nesting –</strong> converts grouped data to a form where each group becomes a single row containing a nested data frame, and unnesting does the opposite.</li>
+<li><strong>Splitting/combining –</strong> pulls a single character column into multiple columns or combines multiple columns into a single character column.</li>
+<li><strong>Managing <code>NAs</code> –</strong> ensures that explicitly included <code>NAs</code> represent data that is actually missing or suppresses them so they are implicitly present instead.</li>
+</ul>
+<p><code>tidyr</code> offers multiple tools that achieve the same outcome, and these can be used interchangeably. However, sometimes one function will flow better in your script or read more intuitively.</p>
 <p>As we saw in the previous section, observations are stored as columns, creating a wide dataset. To transform this into our target “tidy” format, columns need to represent only variables—not individual observations. We achieve this by converting date columns into rows, creating a long dataset. Fortunately, <code>tidyr</code> provides the perfect function for this transformation: <code>pivot_longer()</code>. We simply tell it which columns to pivot into rows.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the first and last dates in our array</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_c</span>(<span class="fu">c</span>(<span class="st">"Start date: "</span>, <span class="st">"End date: "</span>), <span class="fu">colnames</span>(df_raw)[<span class="fu">c</span>(<span class="dv">5</span>, <span class="fu">ncol</span>(df_raw))])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the first and last dates in our array</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_c</span>(<span class="fu">c</span>(<span class="st">"Start date: "</span>, <span class="st">"End date: "</span>), <span class="fu">colnames</span>(df_raw)[<span class="fu">c</span>(<span class="dv">5</span>, <span class="fu">ncol</span>(df_raw))])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Start date: 2020-01-01" "End date: 2023-03-01"  </code></pre>
 </div>
 </div>
 <p>Using the start and end column names, we can pivot the date columns into a long format. We need to name two new columns for this operation: one to hold the pivoted column names (our dates), and another to hold their corresponding values. Note that the colon in “2020-01-01:2023-03-01” tells the function to include all consecutive columns between the start and end positions.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df_long <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span> </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 1: Convert wide format date columns to long format</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Designate which columns need to be pivoted</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="st">"2020-01-01"</span><span class="sc">:</span><span class="st">"2023-03-01"</span>, </span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Name the variable that will store newly pivoted column names</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"Date"</span>,</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Name the variable that will store respective cell values</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"Deaths_Count_Cumulative"</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 2: Change table format to "data frame" class for convenience</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect the pivoted data</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_long)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df_long <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 1: Convert wide format date columns to long format</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Designate which columns need to be pivoted</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="st">"2020-01-01"</span><span class="sc">:</span><span class="st">"2023-03-01"</span>, </span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Name the variable that will store newly pivoted column names</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"Date"</span>,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Name the variable that will store respective cell values</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"Deaths_Count_Cumulative"</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 2: Change table format to "data frame" class for convenience</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect the pivoted data</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_long)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 132,366
 Columns: 6
@@ -622,15 +644,15 @@ $ Deaths_Count_Cumulative &lt;dbl&gt; 0, 0, 23, 272, 630, 950, 1580, 2182, 2540,
 </div>
 <p>This looks much better! Each column now represents one variable, and each row represents one observation—matching a specific region with a specific date. Notice that we waited until now to change the death counts from doubles to integers. Why? Because with tidy data, this conversion is much simpler.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert double to integer</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>df_long<span class="sc">$</span>Deaths_Count_Cumulative <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(df_long<span class="sc">$</span>Deaths_Count_Cumulative)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the Higher-Order function sapply() to get all variable classes</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(df_long, class) <span class="sc">|&gt;</span> </span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Convert from a vector to a data frame for easier reading</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Change the column name for clarity</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">colnames&lt;-</span><span class="st">`</span>(<span class="st">"Variable Class"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert double to integer</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>df_long<span class="sc">$</span>Deaths_Count_Cumulative <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(df_long<span class="sc">$</span>Deaths_Count_Cumulative)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the Higher-Order function sapply() to get all variable classes</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(df_long, class) <span class="sc">|&gt;</span> </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Convert from a vector to a data frame for easier reading</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Change the column name for clarity</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">colnames&lt;-</span><span class="st">`</span>(<span class="st">"Variable Class"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                        Variable Class
 Combined_Key                 character
@@ -645,6 +667,8 @@ Deaths_Count_Cumulative        integer</code></pre>
 </section>
 <section id="manipulate-data-using-dplyr" class="level2">
 <h2 class="anchored" data-anchor-id="manipulate-data-using-dplyr">Manipulate Data Using <code>dplyr</code></h2>
+<p>While <code>tidyr</code> focuses on the mechanics of achieving the “tidy” format, this alone may not fully prepare your data. For example, you may need to transform or calculate new values from existing columns, combine datasets, or condense information unnecessarily spread across multiple columns. This process creates what’s sometimes called the “minimally informative” form of a dataset—where all necessary values are included or derivable without redundancy or unnecessary information.</p>
+<p>Functions available in the <code>dply</code> package is often used to create this “complete tidy” data frame.</p>
 <p>Suppose we want to plot COVID-19 deaths across the entire U.S. First, we need to calculate total counts by summing deaths for each region (<code>Combined_Key</code>) on each date (<code>Date</code>). However, our dataset contains cumulative counts, which are difficult to interpret for visualization. We’ll need to back-calculate monthly counts to show new deaths each month.</p>
 <p>The <code>dplyr</code> package offers a suite of functions for data manipulation tasks like these. In the next four code blocks, we’ll show how to generate counts for the entire U.S.</p>
 <section id="calculate-total-u.s.-counts" class="level3">
@@ -653,8 +677,8 @@ Deaths_Count_Cumulative        integer</code></pre>
 <p>We’re using <code>str_c()</code> from the <code>stringr</code> package here (string concatenate) to create a vector of state names for matching. We’ll explore this function in detail in the next section.</p>
 <p><strong>Step 1:</strong> Filter subsets the data set by rows that match the condition.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df_filtered <span class="ot">&lt;-</span> df_long <span class="sc">|&gt;</span> </span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Combined_Key <span class="sc">%in%</span> <span class="fu">str_c</span>(<span class="fu">c</span>(datasets<span class="sc">::</span>state.name, <span class="st">"District of Columbia"</span>), <span class="st">", US"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df_filtered <span class="ot">&lt;-</span> df_long <span class="sc">|&gt;</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Combined_Key <span class="sc">%in%</span> <span class="fu">str_c</span>(<span class="fu">c</span>(datasets<span class="sc">::</span>state.name, <span class="st">"District of Columbia"</span>), <span class="st">", US"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The full dataset has 132366 rows. After filtering, we have 1989 remaining—one for each U.S. state plus the District of Columbia across all months. Recall that observations were recorded over 39 months during the pandemic, so we expect 1989/39 = 51 unique regions.</p>
 <p>Using this filtered dataset, we’ll group rows by month using <code>group_by()</code>. The table below uses <code>tally()</code> to show how many rows are in each monthly group.</p>
@@ -674,14 +698,14 @@ Deaths_Count_Cumulative        integer</code></pre>
 </div>
 <p><strong>Step 2:</strong> Group the table by unique entries in <code>Date</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df_grouped <span class="ot">&lt;-</span> df_filtered <span class="sc">|&gt;</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Date)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the number of entries associated with each group using tally()</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>df_grouped <span class="sc">|&gt;</span> <span class="fu">tally</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Use an "anonymous function" to help pass the object from the</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># left side to the right side of the pipe</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  (\(x) <span class="fu">list</span>(<span class="st">"Tally"</span> <span class="ot">=</span> <span class="fu">head</span>(x), <span class="st">"Unique n"</span> <span class="ot">=</span> <span class="fu">unique</span>(x<span class="sc">$</span>n)))()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df_grouped <span class="ot">&lt;-</span> df_filtered <span class="sc">|&gt;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Date)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the number of entries associated with each group using tally()</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>df_grouped <span class="sc">|&gt;</span> <span class="fu">tally</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Use an "anonymous function" to help pass the object from the</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># left side to the right side of the pipe</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  (\(x) <span class="fu">list</span>(<span class="st">"Tally"</span> <span class="ot">=</span> <span class="fu">head</span>(x), <span class="st">"Unique n"</span> <span class="ot">=</span> <span class="fu">unique</span>(x<span class="sc">$</span>n)))()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$Tally
 # A tibble: 6 × 2
@@ -701,18 +725,18 @@ $`Unique n`
 <p>As expected, we have 51 row entries that are being grouped by each month recorded. Now we are ready to calculate the total U.S. counts. The function <code>summarize()</code> allows us to iterate a function over each grouping. If necessary, the function can be prompted to retain previously designated groups using <code>.groups = "keep"</code>.</p>
 <p><strong>Step 3:</strong> Calculate the cumulative deaths variable for the U.S. by summing over the grouped rows.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df_US <span class="ot">&lt;-</span> df_grouped <span class="sc">|&gt;</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Deaths_Count_Cumulative =</span> <span class="fu">sum</span>(Deaths_Count_Cumulative), <span class="at">.groups =</span> <span class="st">"keep"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df_US <span class="ot">&lt;-</span> df_grouped <span class="sc">|&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Deaths_Count_Cumulative =</span> <span class="fu">sum</span>(Deaths_Count_Cumulative), <span class="at">.groups =</span> <span class="st">"keep"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Finally, we need to remove the groupings so we can work with the whole data set again.</p>
 <p><strong>Step 4:</strong> Remove grouping applied to the dataset object.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df_US <span class="ot">&lt;-</span> df_US <span class="sc">|&gt;</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df_US <span class="ot">&lt;-</span> df_US <span class="sc">|&gt;</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>After these four operations, we get the following data set:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_US)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_US)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 2
   Date       Deaths_Count_Cumulative
@@ -725,12 +749,13 @@ $`Unique n`
 6 2020-06-01                  127302</code></pre>
 </div>
 </div>
-<p>Next, we’ll merge this data back with the main dataframe using <code>bind_rows()</code>, a tidyverse function similar to<code>do.call()</code> that fills missing columns with <code>NA</code> to maintain all uniquely defined variables. However, <code>df_US</code> is currently missing the <code>Combined_Key</code> and <code>Country_Region</code> columns. If we merge now, both will be filled with <code>NA</code>. Instead, we want them to contain “US”. We can add these columns using <code>mutate()</code>, which creates new columns from functions of existing columns or static values.</p>
+<p>Next, we’ll merge this data back with the main dataframe using <code>bind_rows()</code>, a tidyverse function similar to base R’s <code>do.call()</code> with notable differences. <code>bind_rows()</code> combines dataframes by matching column names, while <code>do.call()</code> appends data in the exact order given. Additionally, <code>bind_rows()</code> keeps all unique columns from all datasets being combined, filling missing columns with <code>NA</code>.</p>
+<p>However, <code>df_US</code> is currently missing the <code>Combined_Key</code> and <code>Country_Region</code> columns. If we merge now, both will be filled with <code>NA</code>. Instead, we want them to contain “US.” We can add these columns using <code>mutate()</code>, which creates new columns from functions of existing columns or static values.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df_US <span class="ot">&lt;-</span> df_US <span class="sc">|&gt;</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Combined_Key =</span> <span class="st">"US"</span>, <span class="at">Country_Region =</span> <span class="st">"US"</span>)</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_US)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df_US <span class="ot">&lt;-</span> df_US <span class="sc">|&gt;</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Combined_Key =</span> <span class="st">"US"</span>, <span class="at">Country_Region =</span> <span class="st">"US"</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_US)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 4
   Date       Deaths_Count_Cumulative Combined_Key Country_Region
@@ -745,9 +770,9 @@ $`Unique n`
 </div>
 <p>Great, now that we have all the columns we need we are ready to merge it with <code>df_long</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(df_US, df_long)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(df_US, df_long)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 6
   Date  Deaths_Count_Cumulat…¹ Combined_Key Country_Region County Province_State
@@ -760,7 +785,7 @@ $`Unique n`
 6 2020…                 127302 US           US             &lt;NA&gt;   &lt;NA&gt;          
 # ℹ abbreviated name: ¹​Deaths_Count_Cumulative</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 6
   Date  Deaths_Count_Cumulat…¹ Combined_Key Country_Region County Province_State
@@ -775,11 +800,24 @@ $`Unique n`
 </div>
 </div>
 <p>The <code>select()</code> function is used to keep, drop, or organize columns. In our case, we will use it to reorganize the columns. We want to arrange the columns such that we have the region first, followed by the month the record was made, and then the cumulative deaths recorded.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Building Reproducible Workflows Through Good Documentation Practices
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Remember that when cleaning data, you’re preparing it not only for your use but potentially for others as well. Make your work well documented, sequentially organized, and easy to understand. If you’ve ever kept a wet-lab notebook, think of how scientists document their work for future reference, collaborators, and auditors. Organizing rows and columns to reflect the logical progression of information improves readability and clarity of the final “cleaned tidy” format.</p>
+</div>
+</div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Combined_Key, County, Province_State, Country_Region, Date, Deaths_Count_Cumulative)</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Combined_Key, County, Province_State, Country_Region, Date, Deaths_Count_Cumulative)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 6
   Combined_Key County Province_State Country_Region Date  Deaths_Count_Cumulat…¹
@@ -798,18 +836,18 @@ $`Unique n`
 <h3 class="anchored" data-anchor-id="back-calculate-monthly-updates">Back-Calculate Monthly Updates</h3>
 <p>Now we are ready to calculate the monthly death counts from the cumulative counts. Earlier, we mentioned that <code>mutate()</code> can be used to generate new columns as functions of existing columns. Here, we will generate a new column using <code>diff()</code> to back-calculate the values added each month.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Group data by Combined_Key</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Combined_Key) <span class="sc">|&gt;</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ensure data is sorted by Date within each group</span></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Date) <span class="sc">|&gt;</span></span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate daily monthly deaths counts using mutate</span></span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Deaths_Count_Monthly =</span>  Deaths_Count_Cumulative <span class="sc">-</span> <span class="fu">lag</span>(Deaths_Count_Cumulative, <span class="at">default =</span> <span class="dv">0</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Change table format to "data frame" for convenience</span></span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Group data by Combined_Key</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Combined_Key) <span class="sc">|&gt;</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ensure data is sorted by Date within each group</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Date) <span class="sc">|&gt;</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate daily monthly deaths counts using mutate</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Deaths_Count_Monthly =</span>  Deaths_Count_Cumulative <span class="sc">-</span> <span class="fu">lag</span>(Deaths_Count_Cumulative, <span class="at">default =</span> <span class="dv">0</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Change table format to "data frame" for convenience</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        Combined_Key County Province_State Country_Region       Date
 1                 US   &lt;NA&gt;           &lt;NA&gt;             US 2020-01-01
@@ -828,7 +866,7 @@ $`Unique n`
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -837,49 +875,49 @@ $`Unique n`
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>It is important to ensure that your methods are accurate! For example, suppose you want to confirm the accuracy of directly calculating the cumulative counts for the U.S. over all 39 months. To do this, you can compare this direct approach (call this method “a”) with an indirect method (call this method “b”). The indirect method first calculates the daily counts, sums these counts across all states, and then generates the cumulative counts.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="do">## --------------------</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Aggregate states directly from the cumulative counts</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> df_filtered <span class="sc">|&gt;</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Group data by Date</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Date) <span class="sc">|&gt;</span></span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate the total cumulative deaths for each Date</span></span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_method_a =</span> <span class="fu">sum</span>(Deaths_Count_Cumulative))</span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="do">## --------------------</span></span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="do">## First calculate the daily value, then recalculate the cumulative count</span></span>
-<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> df_filtered <span class="sc">|&gt;</span></span>
-<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Group data by Combined_Key</span></span>
-<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Combined_Key) <span class="sc">|&gt;</span></span>
-<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ensure data is sorted by Date within each group</span></span>
-<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Date) <span class="sc">|&gt;</span></span>
-<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate daily increments</span></span>
-<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">increment =</span> Deaths_Count_Cumulative <span class="sc">-</span> <span class="fu">lag</span>(Deaths_Count_Cumulative, <span class="at">default =</span> <span class="dv">0</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ungroup to remove group structure</span></span>
-<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> b <span class="sc">|&gt;</span></span>
-<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Group data by Date</span></span>
-<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Date) <span class="sc">|&gt;</span></span>
-<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Sum daily increments for each Date to get total increments</span></span>
-<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_increment =</span> <span class="fu">sum</span>(increment)) <span class="sc">|&gt;</span></span>
-<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate the cumulative sum of the total increments for each Date</span></span>
-<span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reframe</span>(<span class="at">total_method_b =</span> <span class="fu">cumsum</span>(total_increment)) <span class="sc">|&gt;</span></span>
-<span id="cb29-28"><a href="#cb29-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb29-29"><a href="#cb29-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-30"><a href="#cb29-30" aria-hidden="true" tabindex="-1"></a><span class="do">## --------------------</span></span>
-<span id="cb29-31"><a href="#cb29-31" aria-hidden="true" tabindex="-1"></a><span class="do">## Compare the two methods to confirm they are the same. If they are, then the return</span></span>
-<span id="cb29-32"><a href="#cb29-32" aria-hidden="true" tabindex="-1"></a><span class="do">## value should be zero.</span></span>
-<span id="cb29-33"><a href="#cb29-33" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_cols</span>(a, b) <span class="sc">|&gt;</span></span>
-<span id="cb29-34"><a href="#cb29-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Apply row-wise operations</span></span>
-<span id="cb29-35"><a href="#cb29-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">|&gt;</span></span>
-<span id="cb29-36"><a href="#cb29-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate the absolute difference between the two cumulative totals</span></span>
-<span id="cb29-37"><a href="#cb29-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">diff =</span> <span class="fu">abs</span>(total_method_a <span class="sc">-</span> total_method_b)) <span class="sc">|&gt;</span></span>
-<span id="cb29-38"><a href="#cb29-38" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Extract unique values of the differences</span></span>
-<span id="cb29-39"><a href="#cb29-39" aria-hidden="true" tabindex="-1"></a>  (\(x) <span class="fu">unique</span>(x<span class="sc">$</span>diff))()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="do">## --------------------</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Aggregate states directly from the cumulative counts</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> df_filtered <span class="sc">|&gt;</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Group data by Date</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Date) <span class="sc">|&gt;</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate the total cumulative deaths for each Date</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_method_a =</span> <span class="fu">sum</span>(Deaths_Count_Cumulative))</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="do">## --------------------</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="do">## First calculate the daily value, then recalculate the cumulative count</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> df_filtered <span class="sc">|&gt;</span></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Group data by Combined_Key</span></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Combined_Key) <span class="sc">|&gt;</span></span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ensure data is sorted by Date within each group</span></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Date) <span class="sc">|&gt;</span></span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate daily increments</span></span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">increment =</span> Deaths_Count_Cumulative <span class="sc">-</span> <span class="fu">lag</span>(Deaths_Count_Cumulative, <span class="at">default =</span> <span class="dv">0</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ungroup to remove group structure</span></span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> b <span class="sc">|&gt;</span></span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Group data by Date</span></span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Date) <span class="sc">|&gt;</span></span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Sum daily increments for each Date to get total increments</span></span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_increment =</span> <span class="fu">sum</span>(increment)) <span class="sc">|&gt;</span></span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate the cumulative sum of the total increments for each Date</span></span>
+<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reframe</span>(<span class="at">total_method_b =</span> <span class="fu">cumsum</span>(total_increment)) <span class="sc">|&gt;</span></span>
+<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-30"><a href="#cb31-30" aria-hidden="true" tabindex="-1"></a><span class="do">## --------------------</span></span>
+<span id="cb31-31"><a href="#cb31-31" aria-hidden="true" tabindex="-1"></a><span class="do">## Compare the two methods to confirm they are the same. If they are, then the return</span></span>
+<span id="cb31-32"><a href="#cb31-32" aria-hidden="true" tabindex="-1"></a><span class="do">## value should be zero.</span></span>
+<span id="cb31-33"><a href="#cb31-33" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_cols</span>(a, b) <span class="sc">|&gt;</span></span>
+<span id="cb31-34"><a href="#cb31-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Apply row-wise operations</span></span>
+<span id="cb31-35"><a href="#cb31-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">|&gt;</span></span>
+<span id="cb31-36"><a href="#cb31-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate the absolute difference between the two cumulative totals</span></span>
+<span id="cb31-37"><a href="#cb31-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">diff =</span> <span class="fu">abs</span>(total_method_a <span class="sc">-</span> total_method_b)) <span class="sc">|&gt;</span></span>
+<span id="cb31-38"><a href="#cb31-38" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Extract unique values of the differences</span></span>
+<span id="cb31-39"><a href="#cb31-39" aria-hidden="true" tabindex="-1"></a>  (\(x) <span class="fu">unique</span>(x<span class="sc">$</span>diff))()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0</code></pre>
 </div>
@@ -892,11 +930,30 @@ $`Unique n`
 <section id="string-manipulation-using-stringr" class="level2">
 <h2 class="anchored" data-anchor-id="string-manipulation-using-stringr">String Manipulation Using <code>stringr</code></h2>
 <p>After completing data wrangling and tidying, it’s good practice to review variable classifications and naming conventions before proceeding with calculations. For instance, if you have a variable for participant sex, ensure all entries are consistently labeled (e.g., “M” for Male, “F” for Female). Also confirm that zeros aren’t used in place of <code>NA</code> for missing values, or vice versa.</p>
+<p><code>stringr</code> provides a comprehensive and consistently designed set of string manipulation functions based on <code>stringi</code>. It uses UTF-8, the standard encoding that includes most characters, and handles alternative encodings when needed.</p>
+<p>While base R has similar functions, <code>stringr</code> offers key advantages:</p>
+<ul>
+<li>Consistent syntax across functions, seamless integration with tidyverse</li>
+<li>Regular updates to match operations in languages like Ruby or Python (base R updates more slowly)</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Code Like a Pro
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You can perform advanced operations using regular expressions, often referred to as “regex.” This workshop doesn’t cover regex, but we encourage you to explore the additional resources provided earlier for an introduction to that topic.</p>
+</div>
+</div>
 <p>Let’s start by examining the variable classifications again.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(df, class) <span class="sc">|&gt;</span> </span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">colnames&lt;-</span><span class="st">`</span>(<span class="st">"Variable Class"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(df, class) <span class="sc">|&gt;</span> </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">colnames&lt;-</span><span class="st">`</span>(<span class="st">"Variable Class"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                        Variable Class
 Combined_Key                 character
@@ -911,14 +968,14 @@ Deaths_Count_Monthly           integer</code></pre>
 <p>The variables are mostly assigned to appropriate data classes. One exception: <code>Date</code> is a character but would be better as a date class for easier manipulation. We can convert it using the <code>lubridate</code> package from tidyverse. This package isn’t covered in this introductory lecture, but you can review the documentation here: <a href="https://lubridate.tidyverse.org/">lubridate</a>.</p>
 <p>The data is reported in<code>yyyy/mm/dd</code> format, so we use <code>ymd()</code> to convert the character to the date class.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Date <span class="ot">&lt;-</span> <span class="fu">ymd</span>(df<span class="sc">$</span>Date)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Date <span class="ot">&lt;-</span> <span class="fu">ymd</span>(df<span class="sc">$</span>Date)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="validate-the-accuracy-of-entries" class="level3">
-<h3 class="anchored" data-anchor-id="validate-the-accuracy-of-entries">Validate the Accuracy of Entries</h3>
+<h3 class="anchored">Validate the Accuracy of Entries</h3>
 <p>For simplicity, we’ll assume county-level entries are accurate and skip validation here, though in real analysis you’d want to verify this. We will, however, check that all U.S. states and territories appear in the state-level data by comparing unique <code>Combined_Key</code> values to <code>datasets::state.name</code> and the District of Columbia.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the non-states represented in the state-level data set</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(df<span class="sc">$</span>Province_State)[<span class="fu">unique</span>(df<span class="sc">$</span>Province_State) <span class="sc">%!in%</span> <span class="fu">c</span>(datasets<span class="sc">::</span>state.name, <span class="st">"District of Columbia"</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the non-states represented in the state-level data set</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(df<span class="sc">$</span>Province_State)[<span class="fu">unique</span>(df<span class="sc">$</span>Province_State) <span class="sc">%!in%</span> <span class="fu">c</span>(datasets<span class="sc">::</span>state.name, <span class="st">"District of Columbia"</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NA                         "American Samoa"          
 [3] "Guam"                     "Northern Mariana Islands"
@@ -928,8 +985,8 @@ Deaths_Count_Monthly           integer</code></pre>
 </div>
 <p><code>NA</code> values appear in the results. This makes sense because country-level aggregates don’t have state values, so they show as <code>NA</code> at the state level. We can verify this to ensure all rows where <code>Province_State = NA</code> the <code>Combined_Key = "US"</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Confirm assumption to check for possible source of irregularity</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>df[df<span class="sc">$</span>Province_State <span class="sc">%in%</span> <span class="cn">NA</span>, <span class="st">"Combined_Key"</span>] <span class="sc">|&gt;</span> <span class="fu">unique</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Confirm assumption to check for possible source of irregularity</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>df[df<span class="sc">$</span>Province_State <span class="sc">%in%</span> <span class="cn">NA</span>, <span class="st">"Combined_Key"</span>] <span class="sc">|&gt;</span> <span class="fu">unique</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "US"</code></pre>
 </div>
@@ -937,28 +994,24 @@ Deaths_Count_Monthly           integer</code></pre>
 <p>Beyond the five U.S. territories, we also see entries for two cruise ships. Since these aren’t relevant to our analysis, we’ll exclude them using <code>str_detect()</code> or <code>str_which()</code>. Both functions identify rows matching a string pattern—<code>str_detect()</code> returns Boolean values (<code>TRUE</code>/<code>FALSE</code>) while <code>str_which()</code> returns row indices.</p>
 <p><strong>Option #1:</strong> Use the Boolean test to detect the presence of the “Princess” string and pull the matches. The added <code>%in% TRUE</code> expression ensures that <code>NA</code> outcomes are interpreted as <code>FALSE</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>df_filtered <span class="ot">&lt;-</span> df[<span class="sc">!</span><span class="fu">str_detect</span>(df<span class="sc">$</span>Province_State, <span class="st">"Princess"</span>) <span class="sc">%in%</span> <span class="cn">TRUE</span>, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>df_filtered <span class="ot">&lt;-</span> df[<span class="sc">!</span><span class="fu">str_detect</span>(df<span class="sc">$</span>Province_State, <span class="st">"Princess"</span>) <span class="sc">%in%</span> <span class="cn">TRUE</span>, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Option #2:</strong> Identify indices containing “Princess”, then subset using the indices that don’t.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>df_filtered <span class="ot">&lt;-</span> df[<span class="sc">-</span><span class="fu">str_which</span>(df<span class="sc">$</span>Province_State, <span class="st">"Princess"</span>), ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>df_filtered <span class="ot">&lt;-</span> df[<span class="sc">-</span><span class="fu">str_which</span>(df<span class="sc">$</span>Province_State, <span class="st">"Princess"</span>), ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>While <code>str_which(df$Combined_Key, "Princess", negate = TRUE)</code> works in many scenarios, it would exclude rows where <code>Combined_Key</code> is <code>NA</code>. The version above preserves those rows.</p>
-</div>
-</div>
+<div class="callout-discussion">
+    <h2 class="anchored" data-anchor-id="validate-the-accuracy-of-entries">
+        <i class="fa-regular fa-comments"></i>
+        Discussion Question
+    </h2>
+    <p>An alternative form of <code>str_which()</code> is to use its native negate setting: <code>str_which(df$Combined_Key, "Princess", negate = TRUE)</code>.
+
+This works in many scenarios, but it's not appropriate here. Why?</p>
+</div> 
 <p>This filtering removes the following number of rows, representing two unique regions with 39 dates each, as expected.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">nrow</span>(df) <span class="sc">-</span> <span class="fu">nrow</span>(df_filtered))<span class="sc">/</span><span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">nrow</span>(df) <span class="sc">-</span> <span class="fu">nrow</span>(df_filtered))<span class="sc">/</span><span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 39</code></pre>
 </div>
@@ -966,14 +1019,14 @@ Warning
 </section>
 <section id="generating-new-string-vectors" class="level3">
 <h3 class="anchored" data-anchor-id="generating-new-string-vectors">Generating New String Vectors</h3>
-<p>A common task is creating new string vectors from existing ones. <code>Combined_Key</code> combines information from <code>County</code>, <code>Province_State</code>, and <code>Country_Region.</code> Suppose we only have county-level data and want to generate state- and country-level <code>Combined_Key</code> values. We can do this with <code>str_c()</code> or <code>str_split()</code>.</p>
+<p>A common task is creating new string vectors from existing ones. Take <code>Combined_Key</code>, for example, which combines information from <code>County</code>, <code>Province_State</code>, and <code>Country_Region</code>. Suppose we only have county-level data and want to generate the corresponding state- and country-level <code>Combined_Key</code> values. We can approach this in two ways: using <code>str_c()</code> to combine separate columns, or using <code>str_split()</code> to extract components from existing strings.</p>
 <p>For this example, we’ll first subset to county-level data only. We can use <code>str_count()</code> to count how many times a pattern appears in each string. Since county-level data contains two commas, we’ll filter using that pattern.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>df_state_level <span class="ot">&lt;-</span> df_filtered[<span class="fu">str_count</span>(df_filtered<span class="sc">$</span>Combined_Key, <span class="st">","</span>) <span class="sc">==</span> <span class="dv">2</span>, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>df_state_level <span class="ot">&lt;-</span> df_filtered[<span class="fu">str_count</span>(df_filtered<span class="sc">$</span>Combined_Key, <span class="st">","</span>) <span class="sc">==</span> <span class="dv">2</span>, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Option #1:</strong> Generate a new column by combining the desired columns with <code>", "</code> as the separator.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_c</span>(df_state_level<span class="sc">$</span>Province_State, df_state_level<span class="sc">$</span>Country_Region, <span class="at">sep =</span> <span class="st">", "</span>) <span class="sc">|&gt;</span> <span class="fu">unique</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_c</span>(df_state_level<span class="sc">$</span>Province_State, df_state_level<span class="sc">$</span>Country_Region, <span class="at">sep =</span> <span class="st">", "</span>) <span class="sc">|&gt;</span> <span class="fu">unique</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "South Carolina, US"       "Louisiana, US"           
  [3] "Virginia, US"             "Idaho, US"               
@@ -1018,15 +1071,15 @@ Note
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split</span>(df_state_level<span class="sc">$</span>Combined_Key, <span class="st">","</span>, <span class="at">simplify =</span> <span class="cn">TRUE</span>, <span class="at">n =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Save the second column of information containing the state- and country-level</span></span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># regional information. Notice the use of the underscore as a placeholder for </span></span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># the piped data.</span></span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>  _[, <span class="dv">2</span>] <span class="sc">|&gt;</span></span>
-<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Trim whitespace from both sides of the resulting strings</span></span>
-<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_trim</span>(<span class="at">side =</span> <span class="st">"both"</span>) <span class="sc">|&gt;</span> <span class="fu">unique</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split</span>(df_state_level<span class="sc">$</span>Combined_Key, <span class="st">","</span>, <span class="at">simplify =</span> <span class="cn">TRUE</span>, <span class="at">n =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Save the second column of information containing the state- and country-level</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># regional information. Notice the use of the underscore as a placeholder for </span></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># the piped data.</span></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>  _[, <span class="dv">2</span>] <span class="sc">|&gt;</span></span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Trim whitespace from both sides of the resulting strings</span></span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_trim</span>(<span class="at">side =</span> <span class="st">"both"</span>) <span class="sc">|&gt;</span> <span class="fu">unique</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "South Carolina, US"       "Louisiana, US"           
  [3] "Virginia, US"             "Idaho, US"               
@@ -1062,24 +1115,24 @@ Note
 <p>As a final step, we’ll refine the naming for clarity and consistency. Suppose we want to specify that Virgin Islands entries refer only to the U.S. territory. We can do this using <code>str_replace()</code> to replace specific string patterns.</p>
 <p>Going forward, we only require the <code>Combined_Key</code> variable, as the <code>Country_Region</code>, <code>Province_State</code>, and <code>County</code> variables are succinctly represented there. We can adjust the <code>"Virgin Islands"</code> entries for that column only.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>df_filtered[, <span class="st">"Combined_Key"</span>] <span class="ot">&lt;-</span> <span class="fu">str_replace</span>(df_filtered[, <span class="st">"Combined_Key"</span>],  <span class="st">"Virgin Islands"</span>, <span class="st">"US Virgin Islands"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>df_filtered[, <span class="st">"Combined_Key"</span>] <span class="ot">&lt;-</span> <span class="fu">str_replace</span>(df_filtered[, <span class="st">"Combined_Key"</span>],  <span class="st">"Virgin Islands"</span>, <span class="st">"US Virgin Islands"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We can adjust multiple columns at once using the higher-order function <code>sapply()</code>. However, the base R pipe’s _ placeholder doesn’t work with <code>sapply()</code>. To work around this, we wrap <code>sapply()</code> within the pipe and define our own placeholder for the incoming data. Here we use <code>x</code> within a temporary function. This temporary function is called an “anonymous function”—a concept we’ve used earlier in this example.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify the row indices where "Virgin Islands" is detected in "Province_State".</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>index <span class="ot">=</span> <span class="fu">str_which</span>(df_filtered[, <span class="fu">c</span>(<span class="st">"Province_State"</span>)], <span class="st">"Virgin Islands"</span>)</span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>df_filtered[index, <span class="fu">c</span>(<span class="st">"Province_State"</span>, <span class="st">"Combined_Key"</span>)] <span class="sc">|&gt;</span></span>
-<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Define the anonymous function of this pipe-level and specify the information from</span></span>
-<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># the left to be "x".</span></span>
-<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>  (\(x) {</span>
-<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Apply the str_replace() function over "Province_State" and "Combined_Key".</span></span>
-<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Notice that the added "^ " is a regex statement that defines a hard</span></span>
-<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># boundary on the string.</span></span>
-<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sapply</span>(x, <span class="cf">function</span>(y) <span class="fu">str_replace</span>(y,  <span class="st">"^Virgin Islands"</span>, <span class="st">"US Virgin Islands"</span>))</span>
-<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>  }) () <span class="sc">|&gt;</span> </span>
-<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Show that the changes have been completed.</span></span>
-<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a>  _[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify the row indices where "Virgin Islands" is detected in "Province_State".</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>index <span class="ot">=</span> <span class="fu">str_which</span>(df_filtered[, <span class="fu">c</span>(<span class="st">"Province_State"</span>)], <span class="st">"Virgin Islands"</span>)</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>df_filtered[index, <span class="fu">c</span>(<span class="st">"Province_State"</span>, <span class="st">"Combined_Key"</span>)] <span class="sc">|&gt;</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Define the anonymous function of this pipe-level and specify the information from</span></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># the left to be "x".</span></span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>  (\(x) {</span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Apply the str_replace() function over "Province_State" and "Combined_Key".</span></span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Notice that the added "^ " is a regex statement that defines a hard</span></span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># boundary on the string.</span></span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sapply</span>(x, <span class="cf">function</span>(y) <span class="fu">str_replace</span>(y,  <span class="st">"^Virgin Islands"</span>, <span class="st">"US Virgin Islands"</span>))</span>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a>  }) () <span class="sc">|&gt;</span> </span>
+<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Show that the changes have been completed.</span></span>
+<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a>  _[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      Province_State      Combined_Key           
  [1,] "US Virgin Islands" "US Virgin Islands, US"
@@ -1096,7 +1149,7 @@ Note
 </div>
 <p>Now we commit our changes to the primary dataframe label.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df_filtered</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df_filtered</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
@@ -1104,22 +1157,22 @@ Note
 <h2 class="anchored" data-anchor-id="visualization-daily-covid-19-death-counts">Visualization: Daily COVID-19 Death Counts</h2>
 <p>To conclude the example, we will plot our tidy dataset and display the newly calculated country-wide counts.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>plot_deaths <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Select entries only reflecting country-level data</span></span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Combined_Key <span class="sc">==</span> <span class="st">"US"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Date, <span class="at">y =</span> Deaths_Count_Monthly)) <span class="sc">+</span></span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Visualize as a line-plot</span></span>
-<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"#7634A6"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Format the y-axis to show values in terms of thousands</span></span>
-<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">unit_format</span>(<span class="at">unit =</span> <span class="st">"K"</span>, <span class="at">scale =</span> <span class="fl">1e-3</span>)) <span class="sc">+</span></span>
-<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Format the x-axis to show dates as Jan 2020 from 01/01/2020, spaced</span></span>
-<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># every four months</span></span>
-<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_date</span>(<span class="at">date_breaks =</span> <span class="st">"4 month"</span>, <span class="at">date_labels =</span>  <span class="st">"%b %Y"</span>) <span class="sc">+</span></span>
-<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Date Recorded"</span>, <span class="at">y =</span> <span class="st">"COVID-19 Deaths"</span>,</span>
-<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">"COVID-19 Deaths in the US - Grouped by Month"</span>) <span class="sc">+</span></span>
-<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
-<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>plot_deaths</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>plot_deaths <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Select entries only reflecting country-level data</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Combined_Key <span class="sc">==</span> <span class="st">"US"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Date, <span class="at">y =</span> Deaths_Count_Monthly)) <span class="sc">+</span></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Visualize as a line-plot</span></span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"#7634A6"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Format the y-axis to show values in terms of thousands</span></span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">unit_format</span>(<span class="at">unit =</span> <span class="st">"K"</span>, <span class="at">scale =</span> <span class="fl">1e-3</span>)) <span class="sc">+</span></span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Format the x-axis to show dates as Jan 2020 from 01/01/2020, spaced</span></span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># every four months</span></span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_date</span>(<span class="at">date_breaks =</span> <span class="st">"4 month"</span>, <span class="at">date_labels =</span>  <span class="st">"%b %Y"</span>) <span class="sc">+</span></span>
+<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Date Recorded"</span>, <span class="at">y =</span> <span class="st">"COVID-19 Deaths"</span>,</span>
+<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">"COVID-19 Deaths in the US - Grouped by Month"</span>) <span class="sc">+</span></span>
+<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
+<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a>plot_deaths</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1128,50 +1181,15 @@ Note
 </div>
 </div>
 </div>
-</section>
-<section id="discussion-questions" class="level2">
-<h2 class="anchored" data-anchor-id="discussion-questions">Discussion Questions</h2>
-<ol type="1">
-<li>Calculate the average monthly death counts for each state by year and determine the year with the highest average monthly death counts for each state. Are there any states that had more than one year with the same mean cases? <strong>HINT:</strong> You will need the <code>year()</code> function from <code>lubridate</code>.</li>
-</ol>
-<ol start="2" type="1">
-<li>We want to see how many counties called “Clark” are represented in the data set.
-<ol type="a">
-<li><p>How many counties include the word Clark?</p>
-<ul>
-<li>Make two variables: one that subsets <code>df</code> for matches and one listing the unique county names found.</li>
-<li>Use <code>stringr</code> to extract the county name only.</li>
-<li>Finish the <code>str_c()</code> statement started below to summarize your findings.</li>
-</ul></li>
-<li><p>Are the results what we expected, or what we wanted? If we strictly wanted counties named “Clark”, how might we improve the script to achieve this?</p></li>
-</ol></li>
-</ol>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="do">## --------------------</span></span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="do">## part a</span></span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Var #1</span></span>
-<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="co">#__</span></span>
-<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Var #2</span></span>
-<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a><span class="co">#__</span></span>
-<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Finish the summary statement. </span></span>
-<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a><span class="co"># HINT: We expect 39 replicates per county for the 39 dates recorded.</span></span>
-<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a><span class="fu">str_c</span>(<span class="st">"There are "</span>, </span>
-<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Number of unique counties represented in the dataset.</span></span>
-<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a>      <span class="co">#__</span></span>
-<span id="cb52-16"><a href="#cb52-16" aria-hidden="true" tabindex="-1"></a>      <span class="st">" counties with 'Clark' in the name: "</span></span>
-<span id="cb52-17"><a href="#cb52-17" aria-hidden="true" tabindex="-1"></a>      <span class="co"># The unique ways "Clark" is represented in these counties.</span></span>
-<span id="cb52-18"><a href="#cb52-18" aria-hidden="true" tabindex="-1"></a>      <span class="co">#__</span></span>
-<span id="cb52-19"><a href="#cb52-19" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "There are  counties with 'Clark' in the name: "</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="do">## --------------------</span></span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="do">## part b</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<div class="callout-discussion">
+    <h2 class="anchored">
+        <i class="fa-regular fa-comments"></i>
+        Discussion Question
+    </h2>
+    <p>Work with your neighbors to answer the two questions in “<code>Questions.R</code>.”
+    
+    If you haven't downloaded the workshop code, see <a href="../programming-r-index.html#accessing-the-codespaces">Accessing the Codespace</a> for the code and setup instructions.</p>
+</div> 
 
 </section>
 
@@ -1591,7 +1609,7 @@ Note
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../Workshops/Intro-to-Programming-in-R/programming-r-index.html" class="pagination-link" aria-label="Introduction to Programming in R and Data Wrangling with `tidyverse`">
+      <a href="../../../Workshops/Intro-to-Programming-in-R/programming-r-index.html" class="pagination-link" aria-label="Introduction to Programming in R and Data Wrangling with <code>tidyverse</code>">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Introduction to Programming in R and Data Wrangling with <code>tidyverse</code></span>
       </a>          
   </div>
