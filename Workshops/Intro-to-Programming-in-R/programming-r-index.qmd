@@ -26,7 +26,7 @@ Over the course of the workshop chapter, we will take you through:
 - Develop proficiency with `tidyr`, `dplyr`, and `stringr` with a real-world worked-through example.
 - Practice data manipulation skills by answering prepared questions using COVID-19 data.
 
-We have prepared real-world examples, including challenge questions and answers, for the hands-on portion of this workshop. To fully engage with these materials, please download the provided codebase. Detailed instructions for this process can be found below under [Accessing the Codespaces](#accessing-the-codespaces).
+We have prepared real-world examples, including questions and solutions, for the hands-on portion of this workshop. To fully engage with these materials, please download the provided codebase. Detailed instructions for this process can be found below under [Accessing the Codespaces](#accessing-the-codespaces).
 
 ## Slides and Handouts
 
@@ -50,7 +50,7 @@ Download the complete slide decks with annotations and the in-person workshop ha
 
 ## Accessing the Codespaces
 
-In this workshop, you'll access R code for challenge questions. If you haven't already, please download the latest version of [R](https://cran.r-project.org/) to your device. We also recommend using the latest version of [RStudio](https://posit.co/download/rstudio-desktop/) as your Integrated Development Environment (IDE).
+In this workshop, you'll access questions outlined in R. If you haven't already, please download the latest version of [R](https://cran.r-project.org/) to your device. We also recommend using the latest version of [RStudio](https://posit.co/download/rstudio-desktop/) as your Integrated Development Environment (IDE).
 
 ::: {.callout-important}
 ## Attribution and Ownership
@@ -66,7 +66,7 @@ This workshop was created using R (v 4.5.1) in the RStudio IDE (v 2025.09.2+418)
 
 ### Initializing the Environment
 
-1. Download the prepared codebase, which is configured as an RStudio project and includes code for in-class challenge questions with solutions.
+1. Download the prepared codebase, which is configured as an RStudio project and includes code for in-class questions with solutions.
 
 ::: {style="margin-left: 2rem"}
 ```{=html}
@@ -95,7 +95,7 @@ This workshop was created using R (v 4.5.1) in the RStudio IDE (v 2025.09.2+418)
     start "" "A-Journey-into-the-World-of-tidyverse.Rproj"  # For Windows
     ```
 
-4.  Open `Challenge Questions.R`. To ensure this script opens in the correct project RStudio window, you can use the "Files" pane inside RStudio to launch the scripts.
+4.  Open `Questions.R`. To ensure this script opens in the correct project RStudio window, you can use the "Files" pane inside RStudio to launch the scripts.
 
 5.  In the R console, activate the environment by running the following lines of code.
 
