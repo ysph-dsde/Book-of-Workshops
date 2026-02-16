@@ -137,7 +137,7 @@ DevOps is commonly understood as a continuous cycle of development, testing, int
 
 \newpage
 
-For data analysis projects, where there is no code-based product that requires deployment or continual integration, team members will assume to varying degrees the roles of Developer, Reviewer, and codebase Maintainer:
+For data analysis projects, where there typically is no code-based product that requires deployment or continual integration, team members will assume to varying degrees the roles of Developer, Reviewer, and codebase Maintainer:
 
 :::{style="margin-left: 2rem"}
 - **Developer:** Create and implement features through code changes.
@@ -147,9 +147,9 @@ For data analysis projects, where there is no code-based product that requires d
 
 In practice, project administrators or team leads configure protection rules for the codebase, which is beyond the scope of this exercise. We'll provide these rules, and each person will take turns maintaining code alignment with these standards and discussing their implications.
 
-**Why do we need protection rules?** In this framework, the main branch on GitHub serves as the most current version of the project—the basis everyone uses for their work. To preserve its integrity, collaborators use branches to create isolated work environments where they can test and implement intended changes\ [@git_branch; @create_branch; @gitops].
+**Why do we need protection rules?** In this framework, the `main` branch on GitHub serves as the most current version of the project—the basis everyone uses for their work. To preserve its integrity, collaborators use branches to create isolated work environments where they can test and implement intended changes\ [@git_branch; @create_branch; @gitops].
 
-Additionally, since the codebase is intentionally simple, participants are not restricted to one role. Instead, the exercises encourage collaborative participation where students discuss outcomes as team members propose code changes and review results together. The exercises are designed for teams of 2 to 4 people. We encourage everyone to go through each step together to experience the process from different perspectives and encounter various challenges.
+Additionally, since this codebase is intentionally simple, participants are not restricted to one role. Instead, the exercises encourage collaborative participation where students discuss outcomes as team members propose code changes and review results together. The exercises are designed for teams of 2 to 4 people. We encourage everyone to go through each step together to experience the process from different perspectives and encounter various challenges.
 
 # Accessing the Codebase
 
