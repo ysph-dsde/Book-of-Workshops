@@ -42,9 +42,13 @@ Download the complete slide decks with annotations and the in-person workshop ha
 
 #### Data Wrangling with `tidyverse` Materials:
 
-::: {.callout-tip}
-## Coming Soon!
-:::
+```{=html}
+
+<a href="Materials/Workshop Slide Deck_Annotated.pdf">
+  <button class="btn"><i class="bi bi-download"></i>&nbsp Annotated Slide Deck</button>
+</a>
+
+```
 
 ## Accessing the Codespaces
 
