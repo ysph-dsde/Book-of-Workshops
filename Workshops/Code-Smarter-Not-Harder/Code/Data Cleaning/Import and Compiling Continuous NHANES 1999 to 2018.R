@@ -889,7 +889,7 @@ write_csv(demo_calc, file.path(getwd(), "Workshops/Code-Smarter-Not-Harder/Data"
 
 df_merged <- demo_sub |>
   left_join(smoking_status, by = c("seqn")) |>
-  left_join(body_measures_sub, by = c("seqn")) |>
+  left_join(bmi, by = c("seqn")) |>
   left_join(physical_scores, by = c("seqn")) |>
   left_join(MeDi_scores, by = c("seqn")) |>
   left_join(phenoage_advancement, by = c("seqn"))
@@ -955,10 +955,10 @@ nrow(df_filtered) - 52738
 ##    complete a medical examination.
 
 # The paper selected out 2,425 participants, but we select out almost 1,000 more.
-table(is.na(df_filtered$bmxbmi))
+table(is.na(df_filtered$bmi_category))
 
 df_filtered <- df_filtered |>
-  filter(!is.na(bmxbmi))
+  filter(!is.na(bmi_category))
 
 
 ## 5. Exclude participants with NA for leisure of dietary data. Note that this
