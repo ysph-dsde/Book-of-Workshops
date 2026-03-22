@@ -1,7 +1,7 @@
 ## ----------------------------------------------------------------------------
 ## From Yale's Public Health Data Science and Data Equity (DSDE) Team
 ## 
-## Workshop: Code Smarter, Not Harder: Unlocking AI Assisted Coding
+## Workshop: Code Smarter, Not Harder: Unlocking AI-Assisted Coding
 ##  Authors: Shelby Golden, M.S.
 ##     Date: 2026-03-09
 ## 
@@ -56,6 +56,12 @@ suppressPackageStartupMessages({
 
 ## This function will check if an element is not in a vector.
 "%!in%" <- function(x,y)!('%in%'(x,y))
+
+# This function will return NA if all values in a vector are NA, otherwise 
+# it will return the sum of the vector with NA values removed.
+sum_or_na <- function(x) {
+  if (all(is.na(x))) NA_real_ else sum(x, na.rm = TRUE)
+}
 
 
 
@@ -191,21 +197,21 @@ physical_1999to05 |> pull(padactiv) |> unique()
 
 ## Thomas et al. (2023) assessed participants' Mediterranean diet adherence 
 ## using a "MeDi score":
-##    1) Sex-specific medians are calculated for each food category as reference 
-##       values. Alcohol and fat consumption is scored using different criteria.
-## 
-##    2) For beneficial foods (vegetables, potatoes, fruits, legumes and nuts, 
+##    1) For beneficial foods (vegetables, potatoes, fruits, legumes and nuts, 
 ##       fish, cereals), participants receive +1 point if their caloric intake 
 ##       meets or exceeds the median.
 ## 
-##    3) For detrimental foods (meat, poultry, dairy products), participants 
+##    2) For detrimental foods (meat, poultry, dairy products), participants 
 ##       receive +1 point if their caloric intake is below the median.
 ## 
-##    4) For alcohol, +1 point is awarded for mild-to-moderate consumption (0–1 
+##    3) For alcohol, +1 point is awarded for mild-to-moderate consumption (0–1 
 ##       drink per day for females; 0–2 drinks per day for males).
 ## 
-##    5) For fats, particiants with a high monosaturated to saturated ratio
+##    4) For fats, particiants with a high monosaturated to saturated ratio
 ##       receive +1 point if their caloric intake meets or exceeds the median.
+##
+##    5) Sex-specific medians are calculated for each food category as reference 
+##       values. Alcohol and fat consumption is scored using different criteria.
 
 # Summarize the number of FNDDS 
 scoring_groups <- mediterranean_groups |>
@@ -216,12 +222,6 @@ scoring_groups <- mediterranean_groups |>
 scoring_groups |> filter(Yes > 0)
 scoring_groups |> filter(No > 0)
 scoring_groups |> filter(`N/A` > 0)
-
-# Some participants only completed one 24-hour dietary recall (either Day 1 or 
-# Day 2). We process each day separately, then merge them when averaging dietary 
-# records across days.
-all(diet1_annotated$seqn %in% diet2_annotated$seqn == TRUE)
-all(diet2_annotated$seqn %in% diet1_annotated$seqn == TRUE)
 
 # Isolate the relevant columns needed for the following calculations and merge
 # in participant gender from the DEMO file. NOTE: the dataset contains a gender
@@ -235,6 +235,12 @@ diet2_sub <- diet2 |>
   select(seqn, dr2ifdcd, dr2ikcal, dr2iprot, dr2icarb, dr2isugr, dr2itfat, 
          dr2imfat, dr2isfat, dr2icalc, dr2ialco) |>
   left_join(demo |> select(seqn, riagendr), by = c("seqn"))
+
+# Some participants only completed one 24-hour dietary recall (either Day 1 or 
+# Day 2). We process each day separately, then merge them when averaging dietary 
+# records across days.
+all(diet1_sub$seqn %in% diet2_sub$seqn == TRUE)
+all(diet2_sub$seqn %in% diet1_sub$seqn == TRUE)
 
 # Annotate individual food records using the Mediterranean diet classification 
 # scheme described above.
@@ -284,10 +290,10 @@ diet2_annotated <- diet2_annotated |> filter(is.na(dr2ikcal))
 diet1_fat_alc <- diet1_annotated |>
   group_by(seqn, riagendr) |>
   summarise(
-    total_dr1ikcal = sum(dr1ikcal, na.rm = TRUE),
-    total_dr1imfat = sum(dr1imfat, na.rm = TRUE),
-    total_dr1isfat = sum(dr1isfat, na.rm = TRUE),
-    total_dr1ialco = sum(dr1ialco, na.rm = TRUE),
+    total_dr1ikcal = sum_or_na(dr1ikcal),
+    total_dr1imfat = sum_or_na(dr1imfat),
+    total_dr1isfat = sum_or_na(dr1isfat),
+    total_dr1ialco = sum_or_na(dr1ialco),
     .groups = "drop"
   ) |>
   ungroup()
@@ -295,10 +301,10 @@ diet1_fat_alc <- diet1_annotated |>
 diet2_fat_alc <- diet2_annotated |>
   group_by(seqn, riagendr) |>
   summarise(
-    total_dr2ikcal = sum(dr2ikcal, na.rm = TRUE),
-    total_dr2imfat = sum(dr2imfat, na.rm = TRUE),
-    total_dr2isfat = sum(dr2isfat, na.rm = TRUE),
-    total_dr2ialco = sum(dr2ialco, na.rm = TRUE),
+    total_dr2ikcal = sum_or_na(dr2ikcal),
+    total_dr2imfat = sum_or_na(dr2imfat),
+    total_dr2isfat = sum_or_na(dr2isfat),
+    total_dr2ialco = sum_or_na(dr2ialco),
     .groups = "drop"
   ) |>
   ungroup()
@@ -313,31 +319,36 @@ diet_fat_alc <- full_join(diet1_fat_alc, diet2_fat_alc, by = c("seqn", "riagendr
     sd_kcal  = sd(c(total_dr1imfat, total_dr2imfat), na.rm = TRUE),
     avg_mono = mean(c(total_dr1imfat, total_dr2imfat), na.rm = TRUE),
     sd_mono  = sd(c(total_dr1imfat, total_dr2imfat), na.rm = TRUE),
+    avg_mono_sq = mean(c(total_dr1imfat^2, total_dr2imfat^2), na.rm = TRUE),
     avg_sat  = mean(c(total_dr1isfat, total_dr2isfat), na.rm = TRUE),
     sd_sat   = sd(c(total_dr1isfat, total_dr2isfat), na.rm = TRUE),
+    inv_avg_sat = mean(c(1/total_dr1isfat, 1/total_dr2isfat), na.rm = TRUE),
+    inv_avg_sat_sq = mean(c(1/(total_dr1isfat^2), 1/(total_dr2isfat^2)), na.rm = TRUE),
     avg_drialco = mean(c(total_dr1ialco, total_dr2ialco), na.rm = TRUE),
+    sd_drialco_per_day  = sd(c(total_dr1ialco, total_dr2ialco), na.rm = TRUE),
     avg_drinks_per_day = round(avg_drialco / 14),
-    sd_drinks_per_day  = sd(c(total_dr1ialco, total_dr2ialco), na.rm = TRUE),
-    ratio_mono_to_sat  = avg_mono / avg_sat,
-    sd_ratio_mono_to_sat = abs(ratio_mono_to_sat) * sqrt((sd_mono / avg_mono)^2 + (sd_sat / avg_sat)^2),
+    sd_drinks_per_day  = round(sd_drialco_per_day / 14),
+    ratio_mono_to_sat  = round(avg_mono * inv_avg_sat, 2),
+    sd_ratio_mono_to_sat = sqrt(abs(avg_mono_sq * inv_avg_sat_sq - (avg_mono * inv_avg_sat)^2)) |> round(digits = 2)
   ) |>
   ungroup() |>
-  select(-total_dr1ikcal, -total_dr2ikcal, -total_dr1imfat, -total_dr1isfat, 
-         -total_dr1ialco, -total_dr2imfat, -total_dr2isfat, -total_dr2ialco,
-         -avg_drialco, -avg_mono, -sd_mono, -avg_sat, -sd_sat)
+  select(-total_dr1ikcal, -total_dr2ikcal,
+         -total_dr1ialco, -total_dr2ialco,
+         -avg_drialco, -sd_drialco_per_day, -avg_mono, -sd_mono, -avg_sat, 
+         -sd_sat, -avg_mono_sq, -inv_avg_sat, -inv_avg_sat_sq)
 
 # Calculate the total caloric intake (kcal) by both beneficial and deleterious
 # food groups.
 diet1_food_groups <- diet1_annotated |>
   filter(benefice != "N/A", med_group != "alcoholic beverages") |>
   group_by(seqn, riagendr, med_group, benefice) |>
-  summarise(total_dr1ikcal = sum(dr1ikcal, na.rm = TRUE), .groups = "drop") |>
+  summarise(total_dr1ikcal = sum_or_na(dr1ikcal), .groups = "drop") |>
   ungroup()
 
 diet2_food_groups <- diet2_annotated |>
   filter(benefice != "N/A", med_group != "alcoholic beverages") |>
   group_by(seqn, riagendr, med_group, benefice) |>
-  summarise(total_dr2ikcal = sum(dr2ikcal, na.rm = TRUE), .groups = "drop") |>
+  summarise(total_dr2ikcal = sum_or_na(dr2ikcal), .groups = "drop") |>
   ungroup()
 
 # Average the results over the two days recorded. 

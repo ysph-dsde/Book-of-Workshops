@@ -1,7 +1,7 @@
 ## ----------------------------------------------------------------------------
 ## From Yale's Public Health Data Science and Data Equity (DSDE) Team
 ## 
-## Workshop: Code Smarter, Not Harder: Unlocking AI Assisted Coding
+## Workshop: Code Smarter, Not Harder: Unlocking AI-Assisted Coding
 ##  Authors: Shelby Golden, M.S.
 ##     Date: 2026-03-09
 ## 
