@@ -287,7 +287,7 @@ diet2_annotated <- diet2_annotated |> filter(is.na(dr2ikcal))
 
 # Calculate the monosaturated:saturated ratio, number of drinks consumed per
 # day, and total calories consumed.
-diet1_fat_alc <- diet1_annotated |>
+diet1_fat_calc <- diet1_annotated |>
   group_by(seqn, riagendr) |>
   summarise(
     total_dr1ikcal = sum_or_na(dr1ikcal),
@@ -298,7 +298,7 @@ diet1_fat_alc <- diet1_annotated |>
   ) |>
   ungroup()
 
-diet2_fat_alc <- diet2_annotated |>
+diet2_fat_calc <- diet2_annotated |>
   group_by(seqn, riagendr) |>
   summarise(
     total_dr2ikcal = sum_or_na(dr2ikcal),
@@ -312,7 +312,7 @@ diet2_fat_alc <- diet2_annotated |>
 # Average the results for monosaturated:saturated ratio and number of drinks 
 # consumed per day over the two days recorded, as defined by the National 
 # Institute on Alcohol Abuse and Alcoholism (NIAAA).
-diet_fat_alc <- full_join(diet1_fat_alc, diet2_fat_alc, by = c("seqn", "riagendr")) |>
+diet_fat_calc <- full_join(diet1_fat_calc, diet2_fat_calc, by = c("seqn", "riagendr")) |>
   rowwise() |>
   mutate(
     avg_kcal = mean(c(total_dr1ikcal, total_dr2ikcal), na.rm = TRUE),
@@ -332,8 +332,8 @@ diet_fat_alc <- full_join(diet1_fat_alc, diet2_fat_alc, by = c("seqn", "riagendr
     sd_ratio_mono_to_sat = sqrt(abs(avg_mono_sq * inv_avg_sat_sq - (avg_mono * inv_avg_sat)^2)) |> round(digits = 2)
   ) |>
   ungroup() |>
-  select(-total_dr1ikcal, -total_dr2ikcal,
-         -total_dr1ialco, -total_dr2ialco,
+  select(-total_dr1ikcal, -total_dr2ikcal, -total_dr1imfat, -total_dr1isfat,
+         -total_dr1ialco, -total_dr2ialco, -total_dr2imfat, -total_dr2isfat,
          -avg_drialco, -sd_drialco_per_day, -avg_mono, -sd_mono, -avg_sat, 
          -sd_sat, -avg_mono_sq, -inv_avg_sat, -inv_avg_sat_sq)
 
@@ -361,7 +361,7 @@ diet_food_groups <- full_join(diet1_food_groups, diet2_food_groups, by = c("seqn
   ungroup()
 
 # Calculate the threshold (sex-based mean) for all eating outcomes.
-mean_fat_cal_groups <- diet_fat_alc |>
+mean_fat_cal_groups <- diet_fat_calc |>
   group_by(riagendr) |>
   summarise(mean_ratio_mono_to_sat = mean(ratio_mono_to_sat, na.rm = TRUE),
             .groups = "drop") |>
@@ -374,7 +374,7 @@ mean_food_groups <- diet_food_groups |>
 
 # Calculate the MeDi scores and then combine the MeDi scores from both sources
 # into one final table.
-diet_fat_alc_MeDi <- diet_fat_alc |>
+diet_fat_calc_MeDi <- diet_fat_calc |>
   left_join(mean_fat_cal_groups, by = c("riagendr")) |>
   mutate(
     MeDi_mono_to_sat = if_else(ratio_mono_to_sat >= mean_ratio_mono_to_sat, 1, 0, missing = 0),
@@ -398,7 +398,7 @@ diet_food_groups_MeDi <- diet_food_groups |>
   group_by(seqn) |>
   summarise(sum_MeDi = sum(MeDi_food_groups), .groups = "drop")
 
-MeDi_scores <- diet_fat_alc_MeDi |>
+MeDi_scores <- diet_fat_calc_MeDi |>
   full_join(diet_food_groups_MeDi, by = c("seqn")) |>
   (\(x) x |> mutate(sum_MeDi = rowSums(select(x, sum_MeDi.x, sum_MeDi.y), na.rm = TRUE)))() |>
   select(-riagendr, -sum_MeDi.x, -sum_MeDi.y) |>
