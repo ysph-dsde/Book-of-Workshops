@@ -3,7 +3,7 @@ bibliography: Pages/references.bib
 csl: ../../Code/nature.csl
 ---
 
-# Data Visualization with ggplot2 {.unnumbered}
+# Data Visualization with <code>ggplot2</code> {.unnumbered}
 
 This material was authored by Shelby Golden, M.S. You can learn more about the instructors [here](../../index.html#meet-the-creators). Special thanks to [Professor Daniel Weinberger](https://ysph.yale.edu/profile/daniel-weinberger/) for allowing us to use his plot code in this workshop.
 

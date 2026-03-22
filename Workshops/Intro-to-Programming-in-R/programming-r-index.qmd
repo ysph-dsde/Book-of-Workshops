@@ -8,9 +8,9 @@ csl: ../../Code/nature.csl
 
 <small>Updated: February 16<sup>th</sup>, 2026</small>
 
-This material represents two versions of the same workshop: one for graduate students during the academic year, and one for undergraduate students in the [Big Data Summer Immersion at Yale (BDSY)](https://www.bdsy.org/) program, which includes an R programming introduction. The introduction to programming in R was authored by Shelby Golden, M.S., and the introduction to tidyverse is a collaborative effort by Shelby Golden, M.S., and Howard Baik, M.S.
+This material represents two versions of the same workshop: one for graduate students during the academic year, and one for undergraduate students in the [Big Data Summer Immersion at Yale (BDSY)](https://www.bdsy.org/) program, which includes an introduction to programming in R.
 
-You can learn more about the instructors [here](../../index.html#meet-the-creators).
+The introduction to programming in R was authored by Shelby Golden, M.S., and the introduction to tidyverse is a collaborative effort by Shelby Golden, M.S., and Howard Baik, M.S. You can learn more about the instructors [here](../../index.html#meet-the-creators).
 
 ## Workshop Learning Goals
 

@@ -45,8 +45,8 @@ format:
           % Define specific colors for the Clone URL button
           \definecolor{CloneUrlButtonBackground}{HTML}{1f6feb}
           \definecolor{CloneUrlButtonBorder}{HTML}{0d1117}
-          \definecolor{CloneUrlButtonFont}{HTML}{ffffff}
           
+          \definecolor{CloneUrlButtonFont}{HTML}{ffffff}
           % Command for vertically centered icons with properly specified size and vertical offset
           \newcommand{\vcenteredinclude}[2][ButtonFont]{
             \raisebox{-.5\height}{\textcolor{#1}{\includegraphics[height=#2]{#2}}}
