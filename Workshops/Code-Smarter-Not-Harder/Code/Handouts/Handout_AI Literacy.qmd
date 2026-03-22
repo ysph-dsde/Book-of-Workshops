@@ -1,0 +1,317 @@
+---
+title: "AI: Our Quest to Understand the Nature of Intelligence Itself"
+subtitle: |
+  Code Smarter, Not Harder: Unlocking AI-Assisted Coding \
+  _Coffee, Cookies, and Coding_ (C-cubed) Workshops
+date: 3/23/2026
+date-format: long
+format:
+  pdf:
+    include-in-header: 
+      - text: |
+          %%%%%%%%%%%%%%%%%%%% USAGE NOTE %%%%%%%%%%%%%%%%%%%%
+          % This LaTeX script sets up consistent formatting for DSDE Workshop handouts.
+          %
+          % To use:
+          % 1. Reference this LaTeX script in the YAML header of Quarto documents
+          %    with correct relative paths based on their directory depth.
+          % 2. Ensure that the "rootdir" and "stylesdir" paths in this LaTeX script
+          %    match those relative paths. Adjust as necessary.
+          % 
+          % The LaTeX script is located in "Code/Handout Formatting/PDF Formatting Script.tex".
+          %
+          % Example:
+          % For:
+          %   \input{../Code/Handout Formatting/PDF Formatting Script.tex}
+          % Set:
+          %   \newcommand{\rootdir}{../Code/Handout Formatting}
+          %   \newcommand{\stylesdir}{../_styles/Yale_typeface}
+          %
+          % For:
+          %   \input{../../../../Code/Handout Formatting/PDF Formatting Script.tex}
+          % Set:
+          %   \newcommand{\rootdir}{../../../../Code/Handout Formatting}
+          %   \newcommand{\stylesdir}{../../../../_styles/Yale_typeface}
+          %
+          %%%%%%%%%%%%%%%%%%%%%%
+          
+          \input{../../../../Code/Handout Formatting/PDF Formatting Script.tex}
+      - text: |
+          % GitHub button formatting.
+          \definecolor{GitHubBackground}{HTML}{00023F}
+          \definecolor{GitHubBorder}{HTML}{D0D9E0}
+          \definecolor{GitHubFont}{HTML}{ffffff}
+          
+          \newtcbox{\GitHubSignUp}[1][GitHubBackground]{
+            on line, box align=center, colframe=GitHubBorder, colback=#1, halign=center,
+            boxrule=0.5pt, arc=3pt, left=6pt, right=6pt, top=3pt, bottom=3pt, boxsep=0pt, 
+            tcbox raise base, enhanced, fontupper=\fontspec{Arial}\color{GitHubFont}
+          }
+highlight-style: ../../../../_styles/idle-fingers-light.theme
+bibliography: references.bib
+csl: ../../../../Code/nature.csl
+---
+
+> “The story of AI is an exhilarating saga of new programs and new hardware, yet it is also the story of a slow but steady acquisition of knowledge about how humans think.” – author\ [@crevier1993]
+
+The concept of artificially begetting life and intelligence has ancient roots. Throughout most of human history, such creation was attributed to divine power or alchemical mysticism\ [@shashkevich_stanford_2019; @truitt_mitPress_2021; @mayor2018]. The Enlightenment and First Industrial Revolution marked a pivotal shift: an increasingly secularized society posited that the human body and mind were scientifically describable and replicable\ [@descarte; @kantosalo2021]. This transition laid the conceptual foundation for contemporary efforts to develop intelligence artificially through machines.
+
+Our pursuit of artificial intelligence reveals fundamental human desires (perfection, relief from rote work), fears (creations rebelling against creators), and spurs moral and societal questions (what would happen if machines become indistinguishable from humans?). Humanity has grappled with these themes and philosophical questions long before contemporary AI discourse emerged.
+
+For most of history, we lacked the technology and science to attempt creating artificial intelligence. Today, our limitations stem less from technical constraints than from incomplete understanding of the origins of consciousness, creativity, and thought itself.
+
+Amidst the humdrum and hype lies a story that reveals much about ourselves and a transformative, powerful technology in its own right, even though it's far from achieving true artificial intelligence. Let's meet the real AI so you can ride the wave of excitement without getting pulled under.
+
+\newpage
+
+\begin{callout-discussion}[Discussion Question]
+Do we agree with the definitions for AI and Machine Learning recorded in The Code of Laws of the United States of America?
+\end{callout-discussion}
+
+\begin{figure}[H]\captionsetup{format=hang}
+  \centering
+  \includegraphics[width=0.85\textwidth]{../../Images/New York Times Article_07081958.png}
+  \caption{New York Times \href{https://timesmachine.nytimes.com/timesmachine/1958/07/08/83417341.html?pageNumber=25}{"Times Machine"} article from Tuesday July 8\textsuperscript{th}, 1958 page 25.}
+  \label{news_clipping}
+\end{figure}
+
+\newpage
+
+# A Field Guide to AI Typologies and Systems
+
+\vspace{-1em}
+
+All existing AI is weak AI (Type I or II), while "strong" and "super" AI remain theoretical with no field consensus on their achievability. Type II systems currently dominate the market due to their flexibility, natural user interaction, and ability to adapt based on recent input\ [@taulli2019; @mayor2018].
+
+Notably, I intentionally qualify or avoid the terms "learning" or "understanding" when describing "weak" AI, as it overstates these systems' capabilities. Though commonly used in the field, it is more accurately a mathematical process of adjusting weights and parameters, also referred to as "tuning," "optimizing," or "updating."
+
+\begin{figure}[h]\captionsetup{format=hang}
+  \centering
+  \includegraphics[width=0.9\textwidth]{../../Images/Typology of AI.png}
+  \caption{AI categories and types with definitions.}
+  \label{categories_types}
+\end{figure}
+
+\begin{callout-discussion}[Discussion Question]
+Identify the applicable category and type for each AI system below (both theoretical and actual). Note that "Expert Systems" refers to "Good Old-Fashioned AI (GOFAI)," which saw a brief resurgence during the 20\textsuperscript{th}century AI winters.
+\end{callout-discussion}
+
+\begin{figure}[h]\captionsetup{format=hang}
+  \centering
+  \includegraphics[width=0.9\textwidth]{../../Images/Discussion_Type and Classify These AI.png}
+  \label{discussion_classify}
+\end{figure}
+
+\newpage
+
+\begin{wrapfigure}{l}{0.56\textwidth}
+  \includegraphics[width=8.4cm]{../../Images/AI Systems_by Tom Taulli.png}
+  \captionsetup{justification=raggedright}
+  \caption{Venn diagram illustrating different AI systems. Adapted from Figure 1-3 (page 5) in \textit{AI-Assisted Programming - Better Planning, Coding, Testing, And Deployment} by Tom Taulli.}
+  \label{systems_ven_diagram}
+  \vspace{-23pt}
+\end{wrapfigure}
+
+**Artificial intelligence** is the broadest category, encompassing all AI systems (theoretical and actual), including "weak," "strong," and "super" classifications, as well as Types I-IV\ [@taulli2019].
+
+**Machine learning** is a category of Type II "weak" AI that uses mathematical techniques to optimize predictions modeled on training data, rather than relying on explicitly coded logic. Some systems can "learn" by iteratively adjusting model parameters to reduce prediction errors when evaluated against new or unseen data\ [@taulli2019; @ibm_machine_learning].
+
+Training approaches can take different forms, yet most stem from or are related to three core methods:
+
+\vspace{-1em}
+
+  - Supervised learning: using labeled data showing correct answers.
+  - Unsupervised learning: detecting patterns through clustering and other techniques.
+  - Reinforcement learning: trial and error via environmental rewards and penalties, such with sensor on self-driving cars.
+
+**Neural networks** are a subset of machine learning that use pattern recognition techniques loosely inspired by biological neuron propagation. Contemporary networks typically leverage many layers — giving rise to the term **deep learning**\ [@taulli2019; @mayor2018; @ibm_neural_net; @bishop2006]. Due to their abstract mathematics and probabilistic nature, their decision-making process is difficult to interpret or explain in real-world terms, which is why AI is often referred to as a "black box."
+
+**Generative AI** refers to neural networks that create new content (images, audio, video, text) based on learned patterns. This advancement occurred after the development of **Natural Language Processing (NLP)**, a machine learning-based modeling technique that trains computers to generate responses relevant to a given prompt in a human-esque manner\ [@ibm_nlp]. These models train on massive datasets using unsupervised deep learning. They often undergo fine-tuning through reinforcement learning from human feedback (RLHF) to shift from generalist to specialized performance with higher accuracy and fidelity\ [@ibm_generative_ai; @taulli2019].
+
+**Large Language Models (LLMs)** are generative AI models specialized for text generation. Popular foundation models include GPT, Gemini, Claude, and LLaMA—tools we'll use for code generation through chatbots or IDE integrations\ [@taulli2019; @ibm_llms].
+
+
+\begin{wrapfigure}{r}{0.60\textwidth}
+  \includegraphics[width=9cm]{../../Images/Backpropagation and Feedforward ANN_By SaffronEdge.png}
+  \captionsetup{justification=raggedright}
+  \caption{Simplified diagram of a neural network. Were more hidden layers shown, this would make it a deep learning neural network diagram. Adapted from the \href{https://www.linkedin.com/pulse/feedforward-vs-backpropagation-ann-saffronedge1/}{"Feedforward vs Backpropagation ANN"} LinkedIn post by SaffronEdge.}
+  \label{ann}
+  \vspace{-10pt}
+\end{wrapfigure}
+
+**Neural networks** are loosely inspired by biological neurons, with mathematical units called perceptrons serving as their counterpart (Figure: \ref{ann})\ [@saffronedge_ann_2023]. Between each layer, signals are modified by weights (scaling importance) and biases (shifting importance), then passed through non-linear activation functions that determine what gets propagated to the next layer. This continues until a final activation function on the output layer generates the prediction $\hat{Y}$\ [@bishop2006; @ibm_neural_net; @forward_backpropagation_medium].
+
+The feedforward pass first processes signals from input to output, after which backpropagation works in reverse — efficiently identifying where weights and biases should be adjusted to minimize prediction error\ [@forward_backpropagation_medium; @ibm_neural_net]. Backpropagation uses
+
+\begin{wrapfigure}{l}{0.6\textwidth}
+  \vspace{-10pt}
+  \includegraphics[width=9cm]{../../Images/Modified Version of Fig 5-1_Bishop.png}
+  \captionsetup{justification=raggedright}
+  \caption{Modified version of Figure 5.1 (page 228) in \textit{Pattern Recognition and Machine Learning} by Christopher Bishop.}
+  \label{simple_ann}
+  \vspace{-30pt}
+\end{wrapfigure}
+
+the results of the feedforward process to optimize the model, generating gradient descents to find possible optimal solutions. Unlike some mathematical setups that guarantee a single optimal solution, this is not the case with neural networks\ [@bishop2006; @ibm_backpropagation].
+
+I'll illustrate the feedforward process with a simplified example from Bishop, leaving backpropagation for you to explore on your own\ [@bishop2006]. Consider the neural network in Figure \ref{simple_ann}, which has one hidden layer and two transformation layers\ [@bishop2006]. Reading from the input to output layer $i = 1, \dots, D$, $j = 1, \dots, M$, and $k = 1, \dots, K$ represent the unique perceptrons in each layer. The signal from the input layer $\left(x_1, \dots, x_D\right)$ gets weighted $\left(w^{(1)}_{ji}\right)$ and biased $\left(w^{(1)}_{j0}\right)$ to create $a_j$:
+\begin{align*}
+  a_j &= \sum^D_{i=1} w^{(1)}_{ji}x_i + w^{(1)}_{j0} \tag{5.2}
+\end{align*}
+
+Then the layer-to-layer, nonlinear activation function $h(\cdot)$ (i.e. logistic sigmoid or hyperbolic tangential) is applied:
+\begin{align*}
+  z_j &= h\left(a_j\right) \tag{5.3}
+  \intertext{Using the first layer transformation's output, $z_j$, we again apply weights and biases linearly:}
+  a_k &= \sum^M_{j=1} w^{(2)}_{ki}z_j + w^{(2)}_{k0} \tag{5.4}
+  \intertext{A new activation function, $\sigma$, suited to the nature of the data is used to translate the last hidden layer's output, $a_k$, to the final output, $y_k$:}
+  y_k &= \sigma\left(a_k\right) \tag{5.5}
+\end{align*}
+
+The overall network function for the feedforward process of this neural network yields:
+\begin{align*}
+  y_k \left(\mathbf{x}, \mathbf{w}\right) = \sigma \left( \sum^M_{j=1} w^{(2)}_{kj} h\left( \sum^D_{i=1} w^{(1)}_{ji}x_i + w^{(1)}_{j0} \right) + w^{(2)}_{k0} \right) \tag{5.7}
+\end{align*}
+
+\newpage
+
+\begin{callout-discussion}[Discussion Question]
+Do we agree with the definitions for AI and Machine Learning recorded in The Code of Laws of the United States of America?
+\end{callout-discussion}
+
+\begin{figure}[H]\captionsetup{format=hang}
+  \centering
+  \includegraphics[width=0.80\linewidth]{../../Images/US House of Representatives_Definition of AI.png}
+  \captionsetup{justification=raggedright}
+  \caption{U.S. code definitions codified by the House of Representatives for AI and related mathematical techniques: \href{https://uscode.house.gov/view.xhtml?hl=false&edition=2020&req=granuleid\%3AUSC-2021-title10-section2358&num=0}{10 USC 2358} and \href{https://uscode.house.gov/view.xhtml?req=(title:15\%20section:9401\%20edition:prelim)}{15 USC 9401}.}
+  \label{us_code}
+\end{figure}
+
+# Glossary
+
+\renewcommand{\arraystretch}{1}
+\begin{longtable}{p{0.25\linewidth}p{0.75\linewidth}}
+\specialrule{.15em}{0em}{0em}
+\large \vspace{2px} \textbf{Term} \vspace{5px} & \large \vspace{2px} \textbf{Definition} \vspace{5px} \\
+\specialrule{.15em}{0em}{0em}
+\endfirsthead
+\specialrule{.15em}{0em}{0em}
+\large \vspace{2px} \textbf{Term} \vspace{5px} & \large \vspace{2px} \textbf{Definition} \vspace{5px} \\
+\specialrule{.15em}{0em}{0em}
+\endhead
+
+\addlinespace[4pt]
+\textbf{Artificial Intelligence (AI)} & Intelligence or mind displayed by artificial life or machines, analogous to the natural intelligence of animals and humans, capable of perceiving its environment and taking action. AI can be classified by category ("weak," "strong," or "super") and by type (Types I–IV), representing varying degrees to which the technology has achieved true artificial intelligence. \\
+\addlinespace[4pt]
+\hline
+\addlinespace[4pt]
+\textbf{Automaton, Automata} & A self-moving mechanical device, typically resembling an animal or human, that operates without direct human control. Some automata follow predetermined instructions, while others can produce a range of responses to varying circumstances. Might be considered an early Type I "weak" AI. \\
+\addlinespace[4pt]
+\hline
+\addlinespace[4pt]
+\textbf{Black Box} & Complex entity, machine, or system whose outputs are known or observable but whose inner contents and internal workings are hidden, unknown, opaque, and mysterious to the user. \\
+\addlinespace[4pt]
+\hline
+\addlinespace[4pt]
+\textbf{Big Data} & A shift in data collection marked by increased volume and velocity (speed of collection), where data expanded beyond traditional tabular formats to include greater variety: images, free text, audio, and spatial data. Maintaining data veracity became more challenging, increasing the need for valuable (i.e. reliable) data. Big Data also exacerbates the "curse of dimensionality," where the number of variables (columns) outpaces the number of observations (rows). \\
+\addlinespace[4pt]
+\hline
+\addlinespace[4pt]
+\textbf{Central Processing Unit (CPU)} & Electronic circuitry that run a computer's operating system and apps and manage a variety of other computer operations. Thought of as the "brain" of the computer. \\
+\addlinespace[4pt]
+\hline
+\addlinespace[4pt]
+\textbf{Connectionism} & A movement in cognitive science that hopes to explain intellectual abilities using artificial neural networks (also known as "neural networks" or "neural nets"). \\
+\addlinespace[4pt]
+\hline
+\addlinespace[4pt]
+\textbf{Computer Vision} & A field of AI that enables machines to interpret and understand visual information from the world, such as images and video. \\
+\addlinespace[4pt]
+\hline
+\addlinespace[4pt]
+\textbf{Deep Networks} & A type of neural network characterized by many hidden layers. Made computationally feasible through theoretical advances such as backpropagation, deep networks support deep learning-based machine learning — a core technique underlying generative AI. \\
+\addlinespace[4pt]
+\hline
+\addlinespace[4pt]
+\textbf{Disambiguate} & To resolve ambiguity by clarifying or distinguishing the intended meaning of a word, phrase, or concept. "Weak" AI algorithms lack the ability to understand context beyond modeled patterns and typically underperform in this regard. \\
+\addlinespace[4pt]
+\hline
+\addlinespace[4pt]
+\textbf{Generative AI} & A type of AI based on neural network/deep learning machine learning that generates new content, such as text, images, audio, or video, by learning patterns from existing data. \\
+\addlinespace[4pt]
+\hline
+\addlinespace[4pt]
+\textbf{Good Old-Fashioned AI (GOFAI)} & An early approach to AI based on explicit, hand-coded rules and logical reasoning. All Type I "weak" AI are GOFAI. \\
+\addlinespace[4pt]
+\hline
+\addlinespace[4pt]
+\textbf{Graphics Processing Units (GPU)} & A computer circuit designed for fast graphic and image processing. Its greater number of processing cores and memory also make it ideal for complex mathematical calculations and were necessary in the advancement of AI development. \\
+\addlinespace[4pt]
+\hline
+\addlinespace[4pt]
+\textbf{Large Language Models (LLMs)} & Generative AI models designed specifically for text generation, i.e. chat bots. Popular foundation models behind these tools include ChatGPT, Gemini, Claude, and LLaMA. \\
+\addlinespace[4pt]
+\hline
+\addlinespace[4pt]
+\textbf{Machine} & A mechanical structure or device based on one or more components (such as lever, pulley, wheel and axle, inclined plane, screw, wedge) that changes the direction or magnitude of a force. \\
+\addlinespace[4pt]
+\hline
+\addlinespace[4pt]
+\textbf{Machine Learning} & "Weak" AI with Type II capabilities; limited memory and the ability to optimize based on new input. Canonically refers to mathematical techniques where an algorithm optimizes criteria to minimize prediction errors based on answers it generates from training data. \\
+\addlinespace[4pt]
+\hline
+\addlinespace[4pt]
+\textbf{Mechanism, Mechanical} & Something made of parts that move or work together to perform an action; a machine or something resembling a machine. \\
+\addlinespace[4pt]
+\hline
+\addlinespace[4pt]
+\textbf{Natural Language Processing (NLPs)} & A technology that uses machine learning-based modeling to train computers to generate responses relevant to a given prompt in a human-esque manner, effectively emulating human communication. This advancement served as a foundational development that enabled the field of generative AI. \\
+\addlinespace[4pt]
+\hline
+\addlinespace[4pt]
+\textbf{Neural Networks} & A subset of machine learning that use pattern recognition techniques loosely inspired by biological neuron propagation. Contemporary networks typically leverage many layers — giving rise to the term \textbf{deep learning}. Due to their abstract mathematics and probabilistic nature, their decision-making process is difficult to interpret or explain in real-world terms, which is why AI is often referred to as a "black box." \\
+\addlinespace[4pt]
+\hline
+\addlinespace[4pt]
+\textbf{Perceptron} & An alternative term used to describe individual "neurons," the most basic unit of a neural network, modeled loosely after a biological neuron in the human brain. It is used to distinguish the differences between machine learning-based neural networks and biological neural connections. \\
+\addlinespace[4pt]
+\hline
+\addlinespace[4pt]
+\textbf{Programmed} & Supplied with a predetermined set of (coded) instructions for automatic performance. \\
+\addlinespace[4pt]
+\hline
+\addlinespace[4pt]
+\textbf{Reinforcement learning with human feedback (RLHF)} & Human users respond to generated content with evaluations and scores the model can use to update the model for greater accuracy or relevance. \\
+\addlinespace[4pt]
+\hline
+\addlinespace[4pt]
+\textbf{Robot, Bot} & Complex and ambiguous to define, but a robot usually is a machine or self-moving object with a power source that provides energy. It can be "programmed" to "sense" its surroundings, and has a kind of "intelligence" or way of processing data to "decide" to interact with the environment to perform actions or tasks. Talos, the bronze animated statue powered by ichor, fits this definition. \\
+\addlinespace[4pt]
+\hline
+\addlinespace[4pt]
+\textbf{Strong AI} & A theoretical AI capable of learning, understanding, and reasoning at a human level. \\
+\addlinespace[4pt]
+\hline
+\addlinespace[4pt]
+\textbf{Super AI} & A theoretical AI capable of creativity and holding belief systems at a human level. Also, might possess additional cognitive abilities that surpass human capacity. \\
+\addlinespace[4pt]
+\hline
+\addlinespace[4pt]
+\textbf{Weak AI} & Also referred to as "narrow AI," a system designed to perform specific tasks, either explicitly defined or determined by probabilistic models from detected patterns in a training dataset. Though some systems can mimic human-esque responses, they lack genuine understanding or reasoning capacities. Type II "weak" AI has limited "memory" and "learning" capacity —that is, the ability to tune model parameters based on recent input. \\
+\addlinespace[4pt]
+\specialrule{.15em}{0em}{0em}
+
+\end{longtable}
+\renewcommand{\arraystretch}{1}
+
+# Appendix
+
+This document was created using Quarto, which uses Pandoc as a primary method of parsing BibTeX citations. Unfortunately, this does not compile with LaTeX formatted citations. Where LaTeX was used (such as formatting pictures and tables), references were either embedded in nearby, relevant text or in this appendix.
+
+New York Times references:\ [@nyt_article]
+
+U.S. Code references:\ [@us_house_picture; @us_house_seal; @us_codebook_10definitions; @us_codebook_15definitions; @legal_def_ai]
+
+Glossary references:\ [@gofai; @ibm_big_data; @ibm_gpu; @mayor2018; @taulli2019; @taulli2024; @ibm_cpu; @connectionism; @bishop2006; @ibm_llms; @ibm_generative_ai; @ibm_nlp; @ibm_machine_learning; @ibm_neural_net; @types_AI_Westpoint; @strong_vs_weak_ai]
+
+# References

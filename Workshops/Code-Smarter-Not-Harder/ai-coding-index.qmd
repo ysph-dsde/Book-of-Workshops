@@ -1,0 +1,222 @@
+---
+include-in-header: ../../_includes/feedback_popup.html
+bibliography: Pages/references.bib
+csl: ../../Code/nature.csl
+---
+
+# Code Smarter, Not Harder: Unlocking AI-Assisted Coding {.unnumbered}
+
+<small>Updated: March 17<sup>th</sup>, 2026</small>
+
+This material was authored by Shelby Golden, M.S. You can learn more about the instructors [here](../../index.html#meet-the-creators).
+
+## Introduction
+
+
+## Workshop Learning Goals
+
+Over the course of the workshop chapter, we will take you through:
+
+- Foundational AI Literacy: Explain AI's evolution from Alan Turing to the modern day, distinguish between AI system types, and better articulate what AI is and isn't.
+- Understand the AI coding tool landscape, learn best practices for prompts and verification, and identify and navigate common pitfalls.
+- Replicate the results of a paper using Yale's AI Clarity LLM and Positron's native IDE assistant, practicing prompting, iteration, debugging, and comparing the systems.
+
+We have prepared real-world examples, including challenge questions and answers, for the hands-on portion of this workshop. To fully engage with these materials, please download the provided codebase. Detailed instructions for this process can be found below under [Accessing the Codespaces](#accessing-the-codespaces).
+
+## Slides and Handouts
+
+Download the complete slide decks with annotations and the in-person workshop handouts. Comments have been saved in the bottom left corner of each slide, and references for this webpage are located in the **Appendix**.
+
+```{=html}
+
+<a href="Materials/Part 1_Workshop Slide Deck_Annotated.pdf">
+  <button class="btn"><i class="bi bi-download"></i>&nbsp Annotated Slide Deck</button>
+</a>
+
+<a href="Materials/Part 1_Handout_Essential Setup.pdf">
+  <button class="btn"><i class="bi bi-download"></i>&nbsp Essential Setup</button>
+</a>
+
+```
+
+## Accessing the Codespaces
+
+In this workshop, you will need to access the R code we have prepared for the worked-through examples and challenge questions. If you haven't already, please download [R](https://cran.r-project.org/) to your local device. We also recommend using the IDE software [RStudio](https://posit.co/download/rstudio-desktop/). To access the code for this workshop, you will need Git installed on your local device, a GitHub account, and both configured. If you have not set this up yet, please follow the instructions in [Configurations and Credentials](Pages/git-github-setup.html) first.
+
+::: {.callout-important}
+## Attribution and Ownership
+
+Please note that all materials provided in this workshop, including any code added to your personal repository, belongs to DSDE. When using or referencing this material, please ensure to cite it correctly to give proper credit to the original authors.
+:::
+
+::: {.callout-note collapse="true"}
+## Settings Used in Development
+
+This workshop was created using R (v 4.5.2) in the RStudio IDE (v 2026.01.0+392). The `renv()` package (v 1.1.7) is included to reproduce the same coding environment, ensuring all relevant packages and package versions are stored. If you encounter issues running the scripts, please check that the environment is initialized and that you are using the same versions of R and RStudio.
+:::
+
+
+### Making a Clean-Break Copy
+
+This workshop is in R using the Positron IDE. To access the Claude coding assistant, users will  the AWS Bedrock API
+
+1. If you 
+
+1. [Download](https://positron.posit.co/download.html) the Positron IDE.
+
+2. OPTIONAL: Link the Positron IDE with your GitHub account.
+
+:::{style="margin-left: 2rem"}
+a. Click [ {{< iconify codicon:account >}} ]{style="font-size: 20px; width: 20pz; height: 20px; background-color: #32495b; color: #adbfcf; padding: 2px; padding-left: 3px; padding-right: 3px; border-radius: 2px;"} (at the bottom of the left sidebar) and select "Sign into GitHub to use GitHub Pull Requests (1)".
+
+b. Copy the code and click [ Copy and Continue to GitHub ]{style="white-space: nowrap; background-color: #ffa500; color: #ffffff; border: 1px solid #0d1117; padding: 3px; padding-left: 16px; padding-right: 16px; border-radius: 12px; vertical-align: middle;"}
+
+c. This will take you to GitHub and prompt for authorization to connect the GitHub account with Visual Studio Code. Click [ Authorize Visual-Studio-Code ]{style="white-space: nowrap; background-color: #1f6feb; color: #ffffff; border: 1px solid #0d1117; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px; vertical-align: middle;"} to complete the connection.
+:::
+
+3. [ {{< iconify bi:robot >}} ]{style="font-size: 20px; width: 20pz; height: 20px; background-color: #32495b; color: #adbfcf; padding: 2px; padding-left: 3px; padding-right: 3px; border-radius: 2px;"}
+
+### Cloning the Copied Repository
+
+Now that you have copied this repository into your own GitHub, you are ready to proceed with a standard clone to your local device.
+  
+1. Copy the SSH or HTTPS URL from your GitHub repository by clicking the [ {{< iconify octicon:code-16 >}} Code {{< iconify octicon:triangle-down-24 >}} ]{style="white-space: nowrap; background-color: #1f6feb; color: #ffffff; border: 1px solid #0d1117; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px; vertical-align: middle;"} button.
+
+    ```{.bash}
+    # SSH
+    git@github.com:ysph-dsde/NEW-REPOSITORY.git
+
+    # HTTPS
+    https://github.com/ysph-dsde/NEW-REPOSITORY.git
+    ```
+  
+2. In the command-line application (i.e. Terminal for Macs and Git Bash for Windows) navigate to the file location you want to store the repository.
+
+    ```{.bash filename="Command-Line Application"}
+    cd "/file_path/"
+    ```
+   
+3. Clone the repository.
+
+    ```{.bash filename="Command-Line Application"}
+    # using SSH
+    git clone git@github.com:EXAMPLE-USER/NEW-REPOSITORY.git
+
+    # or using HTTPS
+    git clone https://github.com/EXAMPLE-USER/NEW-REPOSITORY.git
+    ```
+
+4. **OPTIONAL:** You can reset the repository history, which will clear the previous commits, by running the following block of code (Source: [StackExchange by Zeelot](https://stackoverflow.com/questions/9683279/make-the-current-commit-the-only-initial-commit-in-a-git-repository))\ [@prune_commits].
+    
+    ```{.bash filename="Command-Line Application"}
+    git checkout --orphan tempBranch         # Create a temporary branch
+    git add -A                               # Add all files and commit them
+    git commit -m "Reset the repo"
+    git branch -D main                       # Deletes the main branch
+    git branch -m main                       # Rename the current branch to main
+    git push -f origin main                  # Force push main branch to GitHub
+    git gc --aggressive --prune=all          # Remove the old files
+    ```
+
+
+### Initializing the Environment
+
+After cloning the codespace to your local device, you will need to initialize the environment using `renv()`. This step will install all the packages and versions used in the workshop, ensuring a reproducible coding environment.
+
+1. In the command-line application (i.e., Terminal for Macs or Git Bash for Windows) navigate to the file location you want to store the repository.
+
+    ```{.bash filename="Command-Line Application"}
+    cd "/file_path/"
+    ```
+
+2. Launch the project by opening the `*.Rproj` file in RStudio.
+
+3. In the R console, activate the environment by running the following lines of code:
+
+    ```{.r filename="RStudio Console"}
+    renv::init()          # Initialize the project.
+    renv::restore()       # Download packages and their version saved in the lockfile.
+    ```
+
+:::{.callout-note style="margin-left: 2rem"}
+If you are asked to update packages, say no. The `renv()` is intended to recreate the same environment under which the project was created, making it reproducible. You are ready to proceed when running `renv::restore()` gives the output:
+
+```{.r filename="RStudio Output"}
+- The library is already synchronized with the lockfile.
+```
+
+If you experience any trouble with this step, you might want to confirm that you are using R (v 4.4.3) in the RStudio IDE (v 2024.12.1+563). You can also read more about `renv()` in their [vignette](https://rstudio.github.io/renv/articles/renv.html)\ [@renv_intro].
+:::
+
+## About the Data
+
+The [Johns Hopkins Coronavirus Resource Center](https://coronavirus.jhu.edu/) (JHU CRC) tracked and compiled global COVID-19 pandemic data from January 22, 2020, to March 10, 2023\ [@jhcrc]. This data is publicly available through their two GitHub repositories. For this workshop content, we imported two datasets:
+
+- Cumulative vaccination counts for the U.S. from their [GovEX/COVID-19](https://github.com/govex/COVID-19) GitHub repository. The raw data used in the analysis script can be found in the `data_tables/vaccine_data/us_data/time_series` subdirectory ([original source](https://github.com/govex/COVID-19/blob/master/data_tables/vaccine_data/us_data/time_series/time_series_covid19_vaccine_us.csv))\ [@vaccines_time_series; @govex].
+- Cumulative case and death counts for the U.S. from their [CSSEGISandData](https://github.com/CSSEGISandData/COVID-19) GitHub repository. The raw data for these two datasets used in the analysis can be found in the `csse_covid_19_data/csse_covid_19_time_series` subdirectory ([original source](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series)). Both `time_series_covid19_confirmed_US.csv` and `time_series_covid19_deaths_US.csv` were used\ [@cases_time_series; @csse].
+
+The data dictionaries provided by JHU CRC can be found here: [Vaccinations Dataset Data Dictionary](https://github.com/govex/COVID-19/tree/master/data_tables/vaccine_data/us_data) and [Cases and Deaths Datasets Data Dictionary](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data#usa-daily-state-reports-csse_covid_19_daily_reports_us)\ [@vaccines_dictionary; @cases_dictionary]. For our purposes, we conducted data cleaning, harmonization, and smoothing using isotonic regression. This included harmonizing the U.S. Census Bureau's 2010 to 2019 population projections with the 2020 to 2023 vintages.
+
+Details about these steps can be found in the `Git-and-GitHub/Code/Data Cleaning` and `Git-and-GitHub/Code/Population Estimates and Projections` directories ([link to code](https://github.com/ysph-dsde/Book-of-Workshops/tree/main/Workshops/Git-and-GitHub/Code)). The cleaned datasets are in the `Git-and-GitHub/Data` directory ([link to data](https://github.com/ysph-dsde/Book-of-Workshops/tree/main/Workshops/Git-and-GitHub/Data)).
+
+
+## Other Recommended Resources
+
+Although there are numerous resources available on Git and GitHub, we have curated a selection of additional sites and tutorials that complement and expand upon our content. Some of these resources will reinforce the fundamentals covered in this workshop, while others offer advanced materials and guides to help you further develop your skills as you gain experience.
+
+
+### Fundamentals
+
+-   Yale’s Center for Research Computing workshop ["Version Control by Git"](https://www.youtube.com/watch?v=Boj3tFrTyF4) by [Kaylea Nelson, Ph.D.](https://research.computing.yale.edu/profile/kaylea-nelson-phd)\ [@ycrc_module]
+-   Yale’s Harvey Cushing/John Hay Whitney Medical Library workshop ["Git & GitHub: An Introduction To Version Contro"](https://github.com/CWML/gitdemo/tree/main) by [Justin DeMayo](https://library.medicine.yale.edu/about/staff/justin-demayo)\ [@med_school_module]
+-   ["Getting Git Right"](https://www.atlassian.com/git) by Atlassian
+-   [Git and GitHub tutorials](https://www.w3schools.com/git/default.asp?remote=github) by W3Schools\ [@w3schools]
+-   ["Introduction to GitHub"](https://github.com/skills/introduction-to-github) by GitHub\ [@github_intro_course]
+-   [*Happy Git and GitHub for the user*](https://happygitwithr.com/) by [Professor Jenny Bryan](https://jennybryan.org/) (and Yale alumn!) and [Jim Hester](https://www.jimhester.com/)
+\ [@happy_git_github]
+
+### Beyond Basic Git and GitHub
+
+-   Reviewing the developer documentation: [git-scm.com/docs](https://git-scm.com/docs) and [docs.github.com](https://docs.github.com/en)\ [@github_docs; @git_docs]
+-   ["What is Git commit, push, pull, log, aliases, fetch, config & clone"](https://medium.com/mindorks/what-is-git-commit-push-pull-log-aliases-fetch-config-clone-56bc52a3601c) by [Amit Prajapati](https://medium.com/@thisAmit)\ [@Prajapati2019]
+-   ["Git Guides"](https://graphite.dev/guides/topic/git) by various Graphite contributors\ [@graphite_git]
+-   ["How to Write a Git Commit Message"](https://cbea.ms/git-commit/) by cbeams\ [@write_message]
+-   [Git Graphical User Interface (GUI) clients](https://git-scm.com/downloads/guis) by various contributors\ [@git_guis]
+
+
+## Section Glossary
+
+<table class="glossary-table">
+    <tbody>
+        <!-- Row 1 -->
+        <tr>
+            <td class="col1">Command-Line Interface (CLI)</td>
+            <td>
+              A texted-base application that directly interacts with the computer’s operating system, manages files, and can run programs. It typically lacks a GUI\ [@terminal_shell].
+            </td>
+        </tr>
+        <!-- Row 2 -->
+        <tr>
+            <td class="col1">Graphical User Interface (GUI)</td>
+            <td>
+              An interface that allows users to interact with computers through visual elements like buttons and menus\ [@gui].
+            </td>
+        </tr>
+        <!-- Row 3 -->
+        <tr>
+            <td class="col1">Integrated Development Environment (IDE)</td>
+            <td>
+              A software application that combines tools for editing, building, testing, and debugging code into a single, user-friendly interface\ [@ide].
+            </td>
+        </tr>
+        <!-- Row 4 -->
+        <tr>
+            <td class="col1">Version Control</td>
+            <td>
+              Manage, organize, and track different versions of files. Identify differences between versions and allows reverting to older versions\ [@atlassian_video].
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+## References

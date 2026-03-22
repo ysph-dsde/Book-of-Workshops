@@ -1,0 +1,160 @@
+---
+from: markdown+emoji
+bibliography: references.bib
+csl: ../../../Code/nature.csl
+---
+
+# AI Assisted Coding Worked-Through Example {.unnumbered}
+
+## The Art of Shrewd AI-Assisted Programming
+
+
+A common academic use case for AI-assisted coding is replicating published research. Some papers come with ready-to-run code that's easy to pick up, while others leave you hunting for clues without any code at all. A complete A-Z replication would take more time than we have in this workshop, but the provided example shows how AI-assisted coding can help you expedite your replication process.
+
+Undoubtedly, integrating AI into your workflows can quicken your process, but it also has the potential to create new headaches or amplify problems that arise when quality checks are skipped. As a data scientist or analyst, it's essential to always scrutinize your data processing and cleaning methods to ensure accurate data preparation. For example, check that nomenclature is informative and consistent, confirm that NAs aren't standing in for zeros (or vice versa), and verify that subsetting, grouping, or processing are performed in the right order to produce your expected outcome.
+
+An AI is not going to be much help for you in this area—at least not reliably. You cannot expect it to completely or correctly identify all the data wrangling needed for a dataset, especially if your starting raw data is messy! Be especially careful when it suggests code that runs perfectly but doesn't actually do what you need. It may even produce results that kind of look right, but after further quality checking, you might discover it missed or miscalculated something important.
+
+The shrewd AI-assisted coder knows how to leverage AI's strengths while catching its inevitable mistakes; remeber you are the brains of the operation, not the AI. Whether you're coding with AI assistance or doing it alone, always take time to thoroughly review your data, prepare it into a complete tidy format, and run quality checks to verify your assumptions and calculations.
+
+If you would like guidance on how to best prepare your data into a complete tidy format, review concepts of data wrangling, tidy data structures, and best practices for data inclusion and exclusion in our ["Introduction to Programming in R and Data Wrangling with `tidyverse`"](../../Intro-to-Programming-in-R/Pages/programming-r-worked-through-example.html) workshop.
+
+## Paper in Focus: Study Context, Data Description, and Replication Plan
+
+::: img-float
+![Figure 2.c. from Thomas et al. (2023). Accessed from</br>PubMed March 10th, 2025.](../Images/Figure 2c.png){style="float: left; position: relative; top: 0px; padding-right: 30px; margin-top: -1.7em !important; margin: -1em auto -1.5em auto;" width="350"}
+:::
+
+In this example, we aim to reproduce selected summary statistics and figures from Thomas et al. (2023), [“Healthy Lifestyle Behaviors and Biological Aging in the U.S. National Health and Nutrition Examination Surveys, 1999–2018”](https://pmc.ncbi.nlm.nih.gov/articles/PMC10460553/)\ [@thomas2023]. Specifically, we want to recreate plots like the one shown on the left, which depicts the associations of Mediterranean diet adherence and physical activity with PhenoAge advancement.
+
+Thomas et al. investigated whether healthier lifestyle behaviors are associated with more favorable epigenetic markers of aging, drawing on the prevailing concensus that diet quality and physical activity are linked to reduced chronic disease risk and increased longevity. Aging is accompanied by measurable molecular changes, including increases in DNA methylation (DNAm), increased inflammation, and diminished cellular stress- and damage-response capacity\ [@maslov2009; @rutledge2022]. Rather than implementing a prospective longitudinal design, the authors adopted a cross-sectional strategy that estimates biological age via a machine-learning model trained to predict individuals’ biological age from epigenetic biomarkers measured at the time of assessment.
+
+We do not attempt to evaluate the validity of the study’s design choices. For instance, it is not obvious that a single 24-hour dietary recall collected during an NHANES visit provides a reliable proxy for long-run dietary patterns. Consequentially, biomarker measurements taken at a single time point—without information on participants’ cumulative history of diet and physical activity—could plausibly bias estimated associations. Instead, our focus is narrower: we examine whether the age-stratified panels in Figure 3 might be influenced by compositional differences across age groups, such as uneven distributions of sex or BMI.
+
+To address this, we first examine the distribution of sex and BMI within the 40–60 age group, then replicate the figure above with an equal number of males and females represented at each BMI level.
+
+### Data Source Considerations
+
+This paper used the Continuous [National Health and Nutrition Examination Survey (NHANES)](https://www.cdc.gov/nchs/nhanes/index.html) dataset, which provides information on participants' eating and exercise habits, anthropometric measurements, and lab results\ [@nhanes_home]. The continuous series launched in 1999 and has been conducted biennially since then. NHANES is a cross-sectional study that uses a stratified, multistage, probability-clustered sample of approximately 5,000 participants from 15 counties and includes sampling weights to generate nationally representative estimates\ [@nhanes_analyses_datasets; @nhanes_analyses_guides; @thomas2023]. The authors applied the PhenoAge algorithm to predict participants' biological age using the "Levine Original" formula (9 biomarkers) from the `BioAge` R package, which was trained on NHANES-III data (collected 1988–94): package [paper](https://link.springer.com/article/10.1007/s11357-021-00480-5) and [documentation](https://github.com/dayoonkwon/BioAge)\ [@kwon2021; @bioage_github; @levine2018].
+
+:::{.callout-tip collapse="true"}
+## Other DSDE Data Resources
+
+Our team puts together other resources for the Yale community and public health and epidemiological researchers at large. If you would like to learn more about NHANES and how to access the data, please review our webpage about this resource: [Resource Navigation Tool - NHANES](https://ysph-dsde.github.io/resources-page/Pages/More-Info-Pages/Freely-Accessible/NCHS%20NHANES.html).
+:::
+
+Based on the methods section, the paper implies the use of sample weights to generate national estimates. Weight selection varies depending on which data files you're combining, and weighted datasets require survey-specific functions for analysis (e.g., `svyglm` instead of `glm`)\ [@nhanes_analyses_weighting; @ucla_survey; @kyle_suvey]. However, the `BioAge` R package doesn't appear to use weighted NHANES-III data when training the PhenoAge model. For consistency and simplicity, we'll skip the weights in this example and focus on participant-level results instead.
+
+Minimal differences in sample size were observed between our pipeline and the paper up until the pre-calculated PhenoAge values were assessed. At this point, approximately 10,000 more participants were identified as having missing PhenoAge values than reported in the paper.
+
+### Data Dictionary
+
+Understanding what each variable represents and its associated method specifics is essential. This publication draws on seven NHANES datasets that were combined to compile the data:
+
+- Demographic Variables & Sample Weights (DEMO) ([codebook](https://wwwn.cdc.gov/nchs/data/nhanes/public/1999/datafiles/DEMO.htm#DMDMARTL))\ [@codebook_demo]
+- Dietary Interview - Individual Foods, First Day (DR1IFF_L) ([codebook](https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DR1IFF_L.htm#DR1IKCAL))\ [@codebook_diet_day1]
+- Dietary Interview - Individual Foods, Second Day (DR2IFF_L) ([codebook](https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DR2IFF_L.htm))\ [@codebook_diet_day2]
+- Physical Activity - Individual Activities (PAQIAF) for 1999 to 2005 ([codebook](https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/1999/DataFiles/PAQIAF.htm#PADTIMES))\ [@codebook_paqiaf_1999to05]
+- Physical Activity (PAQ_E) for 2007 and onward ([codebook](https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2007/DataFiles/PAQ_E.htm#PAD615))\ [@codebook_paq_2007plus]
+- Smoking - Cigarette/Tobacco Use - Adult (SMQ) ([codebook](https://wwwn.cdc.gov/nchs/data/nhanes/public/1999/datafiles/SMQ.htm))\ [@codebook_smoking]
+- Body Measures (BMX) ([codebook](https://wwwn.cdc.gov/nchs/data/nhanes/public/1999/datafiles/BMX.htm))\ [@codebook_bmx]
+
+Data were accessed through the nhanesdata R package, which maintains a stable cloud storage of Continuous NHANES biennial datasets harmonized across cycles: [package webpage](https://www.kylegrealis.com/nhanesdata/index.html) and [documentation](https://github.com/kyleGrealis/nhanesdata)\ [@nhanesdata; @nhanesdata_github]. The majority of data curation and processing has been handled prior to this example; the prepared dataset variables and details are listed below. The two dietary datasets are the only exception and will be processed here, with further details provided in that section. Additionally, pre-calculated PhenoAge projections estimated using NHANES-III have been merged into the Continuous NHANES data.
+
+Pre-processed dataset variables:
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- **seqn:** Respondent sequence number
+- **year:** Year the participant was recorded
+- **sddsrvyr:** Continuous NHANES biennial survey cycle
+- **ridageyr:** Adjudicated age at screening in years
+- **ridreth1:** Reported race and ethnicity
+- **dmdeduc2:** Education level for Adults 20+
+- **dmdmartl:** Marital status
+- **indfmpir:** Family poverty income ratio (PIR) - a ratio of family income to poverty threshold
+- **ridexprg:** Pregnancy status at exam
+- **smoking_status:** Current smoking behavior and history
+- **bmxbmi:** Body mass index (BMI)
+- **MET:** Metabolic equivalent of task (MET) - calculated from moderate and vigorous physical activity tracking
+- **activity_level:** Classification of the MET score
+:::
+
+::: {.column width="50%"}
+- **avg_kcal:** Total calories consumed during the 24-hour recall, averaged over two interview days
+- **sd_kcal:** Standard deviation associated with the two interview days
+- **MeDi:** Scale of Mediterranean diet adherence
+- **phenoage_original:** "Levine Original" formula using 9 biomarkers\ [@levine2018; @kwon2021]
+- **phenoage_modified:** "Modified Levine" formula using 12 biomarkers\ [@levine2018; @kwon2021]
+- **advancement_original:** "Levine Original" PhenoAge - Chronological Age
+- **advancement_modified:** "Modified Levine" PhenoAge - Chronological Age
+- **advancement_original_std:** Standardized advancement using "Levine Original" PhenoAge (mean = 0, sd = 1)
+- **advancement_modified_std:** Standardized advancement using "Modified Levine" PhenoAge (mean = 0, sd = 1)
+:::
+
+::::
+
+:::{.callout-note collapse="true"}
+## Raw Data and Preparation
+
+Much of the data preparation has been conducted in the background so this example can remain focused on AI-assisted coding techniques. If you want to review the complete data processing steps, along with links to the full data dictionary associated with the NHANES datasets used, see ["Code/Data Cleaning/Import and Compiling Continuous NHANES 1999 to 2018.R"](../Code/Data Cleaning/).
+:::
+
+## Environment Set-Up
+
+First, we will load the necessary libraries and any special functions used in the script.
+
+```{r setup}
+#| message: FALSE
+#| warning: FALSE
+#| output: FALSE
+
+## renv() will install all of the packages and their correct version used here.
+#renv::init()
+renv::restore()
+
+## Load in the R packages used in this script from the project library.
+suppressPackageStartupMessages({
+  library("nhanesdata") # Access compiled NHANES data
+  library("readr")      # For reading in the data
+  library("tidyr")      # For tidying data 
+  library("dplyr")      # For data manipulation
+  library("stringr")    # For string manipulation
+  library("ggplot2")    # For creating static visualizations
+  library("gridExtra")  # Format multiple plots together
+})
+
+
+## This function will check if an element is not in a vector.
+"%!in%" <- function(x,y)!('%in%'(x,y))
+
+```
+
+## Mediterranean Diet Scoring
+
+\ [@nhanes_analyses_dietary; @fndds_table1; @fndds_table2; @codebook_diet_day1; @codebook_diet_day2; @trichopoulou2003; @trichopoulou1995]
+
+Thomas et al. (2023) assessed participants' Mediterranean diet adherence using a "MeDi score"\ [@trichopoulou2003; @trichopoulou1995; @thomas2023]:
+
+1) Sex-specific medians are calculated for each food category as reference values. Alcohol and fat consumption is scored using different criteria.
+2) For beneficial foods (vegetables, potatoes, fruits, legumes and nuts, fish, cereals), participants receive +1 point if their caloric intake meets or exceeds the median.
+3) For detrimental foods (meat, poultry, dairy products), participants receive +1 point if their caloric intake is below the median.
+4) For alcohol, +1 point is awarded for mild-to-moderate consumption (0–1 drink per day for females; 0–2 drinks per day for males).
+5) For fats, particiants with a high monosaturated to saturated ratio receive +1 point if their caloric intake meets or exceeds the median.
+
+
+```{r}
+#| message: FALSE
+#| warning: FALSE
+#| output: FALSE
+
+
+```
+
+## Summary Statistics
+
+## Plot Generation
+
+## References
+

@@ -63,7 +63,7 @@
 \usepackage{framed}
 \usepackage{listings}
 \usepackage{etoolbox}
-\usepackage{caption}
+\usepackage[justification=centering,singlelinecheck=false,labelfont=bf,font=small]{caption}
 \usepackage[none]{hyphenat}
 \usepackage{fontawesome5}
 \usepackage{graphicx}
@@ -71,13 +71,15 @@
 \usepackage{hyperref}
 \usepackage{float}
 \usepackage{adjustbox}
-\captionsetup{justification=raggedright, singlelinecheck=false, font=small}
 \usepackage{array}
 \usepackage{marginnote}
 \usepackage[backend=bibtex]{biblatex}
 \usepackage[utf8]{inputenc}
 \usepackage{enumitem}
 \usepackage{amsmath}
+\usepackage{subcaption}
+\usepackage{circuitikz}
+\usepackage{booktabs}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Color and formatting
@@ -245,17 +247,17 @@
 
 % Redefine coded shaded environment
 % Comment/uncomment if shading environment for code is needed
-\renewenvironment{Shaded}{
-  \begin{mdframed}[style=highlighting]
-  \setlength{\parindent}{0pt}
-  \setlength{\leftskip}{1em}  % Padding inside the left side of the shaded box
-  \setlength{\rightskip}{1em} % Padding inside the right side of the shaded box
-  \setlength{\topsep}{0.5em}  % Padding above the shaded content
-  \setlength{\partopsep}{0.5em} % Padding below the shaded content
-  \setlength{\parskip}{0pt}\small}
-{
-  \end{mdframed}
-}
+% \renewenvironment{Shaded}{
+%   \begin{mdframed}[style=highlighting]
+%   \setlength{\parindent}{0pt}
+%   \setlength{\leftskip}{1em}  % Padding inside the left side of the shaded box
+%   \setlength{\rightskip}{1em} % Padding inside the right side of the shaded box
+%   \setlength{\topsep}{0.5em}  % Padding above the shaded content
+%   \setlength{\partopsep}{0.5em} % Padding below the shaded content
+%   \setlength{\parskip}{0pt}\small}
+% {
+%   \end{mdframed}
+% }
 
 % Define style for output
 \newtcolorbox{customoutputbox}{

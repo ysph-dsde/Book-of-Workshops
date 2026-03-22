@@ -1,0 +1,64 @@
+code,med_group,benefice
+1,dairy products,No
+11,dairy products,No
+12,dairy products,No
+13,dairy products,No
+14,dairy products,No
+2,meat,No
+20,meat,No
+21,meat,No
+22,meat,No
+23,meat,No
+24,meat,No
+25,meat,No
+26,fish,Yes
+27,meat,No
+28,N/A,N/A
+3,eggs,N/A
+31,eggs,N/A
+32,eggs,N/A
+33,N/A,N/A
+34,eggs,N/A
+35,N/A,N/A
+4,legumes and nuts,Yes
+41,legumes and nuts,Yes
+42,legumes and nuts,Yes
+43,legumes and nuts,Yes
+44,legumes and nuts,Yes
+5,cereals,Yes
+50,cereals,Yes
+51,cereals,Yes
+52,cereals,Yes
+53,sugar and sweets,N/A
+54,cereals,Yes
+55,cereals,Yes
+56,cereals,Yes
+57,cereals,Yes
+58,cereals,Yes
+59,N/A,N/A
+6,fruits,Yes
+61,fruits,Yes
+62,fruits,Yes
+63,fruits,Yes
+64,sugar and sweets,N/A
+67,N/A,N/A
+7,vegetables,Yes
+71,potatoes,Yes
+72,vegetables,Yes
+73,vegetables,Yes
+74,vegetables,Yes
+75,vegetables,Yes
+76,vegetables,Yes
+77,vegetables,Yes
+78,vegetables,Yes
+8,other fats,N/A
+81,fats,N/A
+82,oils,N/A
+83,other fats,N/A
+89,other fats,N/A
+9,sugar and sweets,N/A
+91,sugar and sweets,N/A
+92,nonalcoholic beverages,N/A
+93,alcoholic beverages,No
+94,nonalcoholic beverages,N/A
+95,nonalcoholic beverages,N/A
