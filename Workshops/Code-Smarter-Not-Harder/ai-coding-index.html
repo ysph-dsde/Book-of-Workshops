@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Code Smarter, Not Harder: Unlocking AI-Assisted Coding – Book of Workshops</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../Workshops/Code-Smarter-Not-Harder/Pages/ai-coding-worked-through-example.html" rel="next">
+<link href="../../Workshops/Intro-to-Programming-in-R/Pages/programming-r-more-to-come.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-4711a9c5645ea7bef0850688b668343a.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-1578f313420fe876b0cee9aa9dbd3f15.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-4711a9c5645ea7bef0850688b668343a.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-e8155f0b02e7633ab0f18263ae77acdf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-6cae30f32ab78690c163cfaac0b55837.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-e8155f0b02e7633ab0f18263ae77acdf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/bookup_fonts_embed-0.0/fonts-download.css" rel="stylesheet">
+<script src="../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<!--
+ * This script integrates Google Analytics with your webpage, enabling you to 
+ * track and analyze visitor traffic.
+ * 
+ * It includes the following features:
+ *    1. Asynchronously loading the Google Analytics tracking library.
+ *    2. Setting up the global `dataLayer` array used by Google Analytics.
+ *    3. Defining the `gtag` function for configuring and sending data to Google Analytics.
+ *    4. Initializing Google Analytics with your tracking ID.
+ *
+ * Author: Shelby Golden, M.S.
+ *   Date: November 2025
+-->
+
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-DCJ5HZFKG7"></script>
+<script>
+  // Initialize the dataLayer array if it doesn't already exist
+  window.dataLayer = window.dataLayer || [];
+  
+  // Define the gtag function to push arguments onto the dataLayer
+  function gtag(){dataLayer.push(arguments);}
+  
+  // Record a pageview with the current timestamp
+  gtag('js', new Date());
+
+  // Configure Google Analytics with your tracking ID
+  gtag('config', 'G-DCJ5HZFKG7');
+</script>
+<!--
+ * This script handles the functionality for displaying definitions as hover tooltips on the webpage.
+ * 
+ * It includes the following features:
+ *    1. Displaying a tooltip with additional information when hovering over specific terms or elements.
+ *    2. Customizable definitions that can be added to any term on the webpage.
+ *
+ * Author: Shelby Golden, M.S.
+ *   Date: November 2025
+ * 
+ * Note: Written with the assistance of Yale's AI, Clarity.
+ -->
+
+<!-- Include definition script -->
+<script src="../../Code/definition_script.js"></script>
+<!--
+ * This script handles the functionality for a timed feedback popup modal that
+ * appears after a specified delay when users visit the webpage.
+ * 
+ * It includes the following features:
+ *    1. Displaying a feedback popup after a configurable time delay.
+ *    2. Opening multiple Microsoft Forms links in new tabs.
+ *    3. Configurable delay timing with common preset options commented.
+ *
+ * Author: Shelby Golden, M.S.
+ *   Date: November 2025
+ * 
+ * Note: Written with the assistance of Yale's AI, Clarity.
+ -->
+ 
+ </head><body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script><div id="formsPopup" class="popup">
+    <div class="popup-content">
+        <span class="close-button">×</span>
+        <h2>We'd Love Your Feedback!</h2>
+        <p>Thank you for visiting our website! We value your feedback and use it to continually enhance our services. At the end of the feedback survey, you will have the chance to suggest new workshops and asynchronous materials.</p>
+        
+        <div class="form-links">
+            <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=u76M3Tkh-E20EU4-h6vrXH-TvKDg8gZHqoE3FAMavy5UMjhSTjVOWjQ0MkFIM0hDS0pVQ0tZN1kzMi4u" target="_blank" class="form-link">Link for Yale Affiliates</a>
+            <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=u76M3Tkh-E20EU4-h6vrXH-TvKDg8gZHqoE3FAMavy5URFBRQ1ZVUFlFVEY0MElSNTlSSzJTWkhXNS4u" target="_blank" class="form-link">Link for Non-Yale Affiliates</a>
+        </div>
+        
+        <p><small>Forms will open in a new tab</small></p>
+    </div>
+</div>
+
+<script src="../../Code/popup.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/devicon/2.14.0/devicon.min.css">
+
+
+
+
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+          <h1 class="quarto-secondary-nav-title">Code Smarter, Not Harder: Unlocking AI-Assisted Coding</h1>
+        </a>     
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Book of Workshops</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/ysph-dsde/Book-of-Workshops" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=|url|" title="LinkedIn" class="quarto-navigation-tool px-1" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../Workshops/Git-and-GitHub/git-github-index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting Started with Git and GitHub</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Workshops/Git-and-GitHub/Pages/git-github-what-is.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The What, Why, and How of Git and GitHub</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Workshops/Git-and-GitHub/Pages/git-github-setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Configurations and Credentials</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Workshops/Git-and-GitHub/Pages/git-github-detailed-walkthrough.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Detailed Walk-Through</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Workshops/Git-and-GitHub/Pages/git-github-more-to-come.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pages In Progress</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../Workshops/Intro-to-Programming-in-R/programming-r-index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Programming in R and Data Wrangling with <code>tidyverse</code></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Workshops/Intro-to-Programming-in-R/Pages/programming-r-worked-through-example.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><code>tidyverse</code> Worked-Through Example</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Workshops/Intro-to-Programming-in-R/Pages/programming-r-more-to-come.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pages In Progress</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../Workshops/Code-Smarter-Not-Harder/ai-coding-index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Code Smarter, Not Harder: Unlocking AI-Assisted Coding</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Workshops/Code-Smarter-Not-Harder/Pages/ai-coding-worked-through-example.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">AI Assisted Coding Worked-Through Example</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../Workshops/Data-Visualization-with-ggplot2/visualization-index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Visualization with <code>ggplot2</code></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Workshops/Data-Visualization-with-ggplot2/Pages/visualization-worked-through-example.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><code>ggplot2</code> Worked-Through Example</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Workshops/Data-Visualization-with-ggplot2/Pages/visualization-more-to-come.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pages In Progress</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#workshop-learning-goals" id="toc-workshop-learning-goals" class="nav-link active" data-scroll-target="#workshop-learning-goals">Workshop Learning Goals</a></li>
+  <li><a href="#slides-and-handouts" id="toc-slides-and-handouts" class="nav-link" data-scroll-target="#slides-and-handouts">Slides and Handouts</a></li>
+  <li><a href="#accessing-the-codespaces" id="toc-accessing-the-codespaces" class="nav-link" data-scroll-target="#accessing-the-codespaces">Accessing the Codespaces</a>
+  <ul class="collapse">
+  <li><a href="#configure-your-ai-assistant-in-positron" id="toc-configure-your-ai-assistant-in-positron" class="nav-link" data-scroll-target="#configure-your-ai-assistant-in-positron">Configure Your AI Assistant in Positron</a></li>
+  <li><a href="#initializing-the-environment" id="toc-initializing-the-environment" class="nav-link" data-scroll-target="#initializing-the-environment">Initializing the Environment</a></li>
+  <li><a href="#deploying-to-github" id="toc-deploying-to-github" class="nav-link" data-scroll-target="#deploying-to-github">Deploying to GitHub</a></li>
+  </ul></li>
+  <li><a href="#about-the-data" id="toc-about-the-data" class="nav-link" data-scroll-target="#about-the-data">About the Data</a></li>
+  <li><a href="#other-recommended-resources" id="toc-other-recommended-resources" class="nav-link" data-scroll-target="#other-recommended-resources">Other Recommended Resources</a>
+  <ul class="collapse">
+  <li><a href="#ai-literacy-fundamentals" id="toc-ai-literacy-fundamentals" class="nav-link" data-scroll-target="#ai-literacy-fundamentals">AI Literacy Fundamentals</a></li>
+  <li><a href="#ai-assisted-coding" id="toc-ai-assisted-coding" class="nav-link" data-scroll-target="#ai-assisted-coding">AI-Assisted Coding</a></li>
+  </ul></li>
+  <li><a href="#section-glossary" id="toc-section-glossary" class="nav-link" data-scroll-target="#section-glossary">Section Glossary</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/ysph-dsde/Book-of-Workshops/edit/main/Workshops/Code-Smarter-Not-Harder/ai-coding-index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Code Smarter, Not Harder: Unlocking AI-Assisted Coding</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><small>Updated: March 23<sup>rd</sup>, 2026</small></p>
+<p>This material was authored by Shelby Golden, M.S. You can learn more about the instructors <a href="../../index.html#meet-the-creators">here</a>.</p>
+<section id="workshop-learning-goals" class="level2">
+<h2 class="anchored" data-anchor-id="workshop-learning-goals">Workshop Learning Goals</h2>
+<p>Over the course of the workshop chapter, we will take you through:</p>
+<ul>
+<li><strong>Foundational AI Literacy:</strong> Explain AI’s evolution from Alan Turing to the modern day, distinguish between AI system types, and better articulate what AI is and isn’t.</li>
+<li>Understand the AI coding tool landscape, learn best practices for prompts and verification, and identify and navigate common pitfalls.</li>
+<li>Replicate the results of a paper using <a href="https://ai.yale.edu/yales-ai-tools-and-resources/clarity-platform">Yale’s AI Clarity LLM</a> and Positron’s native IDE assistant, practicing prompting, iteration, debugging, and comparing the systems.</li>
+</ul>
+<p>We have prepared a script outline (with solutions) for the workshop’s hands-on component. To use these materials, download the codebase and complete the setup steps. Participants will also need access to an LLM chatbot and the ability to configure an IDE-based AI assistant with a provider. Full setup instructions—including steps for enabling GitHub Copilot—are provided below under <a href="#accessing-the-codespaces">Accessing the Codespaces</a>.</p>
+</section>
+<section id="slides-and-handouts" class="level2">
+<h2 class="anchored" data-anchor-id="slides-and-handouts">Slides and Handouts</h2>
+<p>Download the complete slide decks with annotations and the in-person workshop handouts. Comments have been saved in the bottom left corner of each slide, and references for this webpage are located in the <strong>Appendix</strong>.</p>
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Coming Soon!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</section>
+<section id="accessing-the-codespaces" class="level2">
+<h2 class="anchored" data-anchor-id="accessing-the-codespaces">Accessing the Codespaces</h2>
+<p>We have prepared a script outline (with solutions) for the workshop’s hands-on component. To use these materials, download the codebase and complete the setup steps listed below. Participants will also need access to an LLM chatbot and the ability to configure an IDE-based AI assistant with a provider.</p>
+<p>If you haven’t already, please ensure you have a current installation of <a href="https://cran.r-project.org/">R</a> and the new <a href="https://positron.posit.co/">Positron</a> <span class="text-term" data-hover-text="A software application that combines tools for editing, building, testing, and debugging code into a single, user-friendly interface."> Integrated Development Environment (IDE) </span>, a VS Code-based text editor developed by the same team behind Posit (formerly RStudio)&nbsp;<span class="citation" data-cites="ide"><sup><a href="#ref-ide" role="doc-biblioref">1</a></sup></span>. If this is your first time installing Positron or configuring the AI assistant, you will need to complete a few setup steps:</p>
+<ol type="1">
+<li><strong>OPTIONAL:</strong> Log into your GitHub account through the Positron Accounts tab</li>
+<li>Enable the “Positron Assistant,” the IDE’s integrated AI coding assistant</li>
+<li>Connect the “Positron Assistant” to a provider of your choice (e.g., Anthropic, Amazon Bedrock, GitHub Copilot)</li>
+</ol>
+<p>Below are the full steps for configuring Positron with GitHub Copilot as your AI assistant. You are welcome to use any other supported provider, and for setup instructions for other compatible providers, refer to the Positron <a href="https://positron.posit.co/assistant-getting-started.html">Getting Started</a> page. We recommend using GitHub Copilot as your provider, as it offers a free standard tier, a 30-day Pro trial, and free Pro access for qualifying faculty and students.</p>
+<p>To access the code for this workshop, you will need Git installed on your local device, a GitHub account, and both configured. If you have not set this up yet, please follow the instructions in <a href="Pages/git-github-setup.html">Configurations and Credentials</a> first.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Attribution and Ownership
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Please note that all materials provided in this workshop, including any code added to your personal repository, belongs to DSDE. When using or referencing this material, please ensure to cite it correctly to give proper credit to the original authors.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Settings Used in Development
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This workshop was created using R (v 4.5.2) in the Positron IDE (v 2026.03.0 build 212). The <code>renv()</code> package (v 1.1.7) is included to reproduce the same coding environment, ensuring all relevant packages and package versions are stored. If you encounter issues running the scripts, please check that the environment is initialized and that you are using the same versions of R and Positron.</p>
+</div>
+</div>
+</div>
+<section id="configure-your-ai-assistant-in-positron" class="level3">
+<h3 class="anchored" data-anchor-id="configure-your-ai-assistant-in-positron">Configure Your AI Assistant in Positron</h3>
+<ol type="1">
+<li><p><a href="https://github.com/login">Log in</a> to your personal GitHub account. If you don’t have one, follow the sign-up steps on our Book of Workshops page <a href="https://ysph-dsde.github.io/Book-of-Workshops/Workshops/Git-and-GitHub/Pages/git-github-setup.html#sign-up-for-github-account">Sign Up for GitHub Account</a>.</p></li>
+<li><p>Review and select a <a href="https://docs.github.com/en/billing/concepts/product-billing/github-copilot-licenses">GitHub Copilot license</a> that works best for you: GitHub Copilot licenses. Follow GitHub’s setup instructions relevant to the license you selected.</p></li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled" style="margin-left: 2rem">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Faculty and students signing up for the free Pro option will be told setup takes up to 3 days, though in practice it is often completed is less time. Plan accordingly.</p>
+</div>
+</div>
+<ol start="3" type="1">
+<li><p>If you have not already, <a href="https://positron.posit.co/download.html">download</a> the Positron IDE.</p></li>
+<li><p>Open a new Positron window. In the left sidebar, click the icon that looks like <span style="font-size: 20px; width: 20px; height: 20px; background-color: #32495b; border: 1px solid #adbfcf; color: #adbfcf; padding: 2px; padding-left: 3px; padding-right: 3px; border-radius: 2px;"><iconify-icon role="img" inline="" icon="bi:robot" aria-label="Icon robot from bi Iconify.design set." title="Icon robot from bi Iconify.design set."></iconify-icon></span> to open the “Positron Assistant” window&nbsp;<span class="citation" data-cites="positron_video"><sup><a href="#ref-positron_video" role="doc-biblioref">2</a></sup></span>.</p></li>
+<li><p>First-time Positron Assistant users will need to make sure it is enabled. Click <a href="positron://settings/positron.assistant.enable">Enable Positron Assistant</a> to open the settings and enable it.</p></li>
+<li><p>Next, link the GitHub Copilot AI model provider. To confirm it is enabled, search for <a href="positron://settings/positron.assistant.provider.githubCopilot.enable">positron.assistant.provider.githubCopilot.enable</a> in the settings tab. You may need to restart Positron for this to take effect.</p></li>
+<li><p>In the same settings view, you’ll see a hyperlink labeled “language model provider dialog.” Click it to open the “Configure Language Model Providers” window.</p></li>
+<li><p>The default settings will show Anthropic and GitHub Copilot as available providers. Select <span style="display:inline-flex; flex-direction:column; align-items:center; justify-content:center; background-color:#26557f; border: 2px solid #2388db; color:#2388db; border-radius:2px; padding-top: 0px; padding-right: 0px; padding-bottom: 5px; padding-left: 0px; width:80px;"> <span><span style="font-size:30px; width:30px; height:30px; color:#cccccc;"><iconify-icon role="img" inline="" icon="bxl:github-copilot" aria-label="Icon github-copilot from bxl Iconify.design set." title="Icon github-copilot from bxl Iconify.design set."></iconify-icon></span></span> <span style="font-size:10px; font-weight: 500; line-height:1; margin-top: -8px; color:#cccccc;">GitHub Copilot</span> </span> to configure it as your AI model provider, then click <span style="font-weight: 600; width: 20px; height: 20px; background-color: #e5e5e5; color: #343434; padding: 2px; padding-left: 6px; padding-right: 6px; border-radius: 2px;">Sign in</span> to continue the configuration on GitHub.</p></li>
+<li><p>A second window will pop up displaying your configuration code. Click <span style="white-space: nowrap; background-color: #027bff; color: #94dfff; font-weight: 400; border: 1px solid #373737; padding: 3px; padding-left: 16px; padding-right: 16px; border-radius: 12px; vertical-align: middle;">Copy &amp; Continue to GitHub</span> to be taken to GitHub for device activation. When prompted, paste the copied code and authorize the connection.</p></li>
+<li><p>Restart Positron for this to take effect. You’ll know the integration is complete when you can successfully interact with the assistant through its pop-up sidebar chat box.</p></li>
+<li><p><strong>OPTIONAL:</strong> If you chose not to use GitHub Copilot, you can still link Positron to your GitHub account to access additional GitHub interactions from within Positron.</p></li>
+</ol>
+<div style="margin-left: 2rem">
+<ol type="a">
+<li><p>Click <span style="font-size: 20px; width: 20px; height: 20px; background-color: #32495b; border: 1px solid #adbfcf; color: #adbfcf; padding: 2px; padding-left: 3px; padding-right: 3px; border-radius: 2px;"><iconify-icon role="img" inline="" icon="codicon:account" aria-label="Icon account from codicon Iconify.design set." title="Icon account from codicon Iconify.design set."></iconify-icon></span> (at the bottom of the left sidebar) and select “Sign into GitHub to use GitHub Pull Requests (1)”.</p></li>
+<li><p>A window will pop up displaying your configuration code. Click <span style="white-space: nowrap; background-color: #027bff; color: #94dfff; font-weight: 400; border: 1px solid #373737; padding: 3px; padding-left: 16px; padding-right: 16px; border-radius: 12px; vertical-align: middle;">Copy &amp; Continue to GitHub</span> to be taken to GitHub for device activation. When prompted, paste the copied code and authorize the connection.</p></li>
+<li><p>Restart Positron for this to take effect. You’ll know the integration is complete when you can successfully interact with the assistant through its pop-up sidebar chat box.</p></li>
+</ol>
+</div>
+</section>
+<section id="initializing-the-environment" class="level3">
+<h3 class="anchored" data-anchor-id="initializing-the-environment">Initializing the Environment</h3>
+<ol type="1">
+<li>Download the prepared codebase, which is configured as Positron project and includes code for the hands-on portion of the workshop.</li>
+</ol>
+<div style="margin-left: 2rem">
+<a href="Materials/Code-Smarter-Not-Harder-Unlocking-AI-Assisted-Coding.zip">
+  <button class="btn" style="margin-bottom: 1rem;"><i class="bi bi-download"></i>&nbsp; Codespace</button>
+</a>
+
+</div>
+<ol start="2" type="1">
+<li><p>Unzipped the downloaded directory and move it to the file location you wish to house the project.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Application</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="st">"file_path/Downloads/"</span>                                              <span class="co"># Open the directory the file was downloaded into.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span> Code-Smarter-Not-Harder-Unlocking-AI-Assisted-Coding.zip         <span class="co"># Unzip the file.</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> Code-Smarter-Not-Harder-Unlocking-AI-Assisted-Coding <span class="st">"/new_path/"</span>   <span class="co"># Move the unzipped directory to the new location.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></li>
+<li><p>Open a new Positron window and select <span style="display:inline-flex; flex-direction:column; align-items:center; justify-content:center; background-color:#32495b; border: 1px solid #adbfcf; color:#adbfcf; border-radius:2px; padding-top: 0px; padding-right: 0px; padding-bottom: 5px; padding-left: 0px; width:45px;"> <span><span style="font-size:30px; width:30px; height:30px; color:#adbfcf;"><iconify-icon role="img" inline="" icon="ph:folder-open-light" aria-label="Icon folder-open-light from ph Iconify.design set." title="Icon folder-open-light from ph Iconify.design set."></iconify-icon></span></span> <span style="font-size:6px; line-height:1; margin-top: -8px; color:#adbfcf;">Open Folder…</span> </span> to open a new folder from the main view. Navigate to the <code>~/Code-Smarter-Not-Harder-Unlocking-AI-Assisted-Coding</code> directory and open it.</p></li>
+<li><p>From the left sidebar, click <span style="font-size: 20px; width: 20px; height: 20px; background-color: #32495b; border: 1px solid #adbfcf; color: #adbfcf; padding: 2px; padding-left: 3px; padding-right: 3px; border-radius: 2px;"><iconify-icon role="img" inline="" icon="codicon:files" aria-label="Icon files from codicon Iconify.design set." title="Icon files from codicon Iconify.design set."></iconify-icon></span> to see the project directory contents and click <code>Worked-Through Example.R</code> to open it.</p></li>
+<li><p>In the R console, activate the environment by running the following lines of code.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>RStudio Console</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-filename="RStudio Console"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">init</span>()          <span class="co"># Initialize the project.</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()       <span class="co"># Download packages and their version saved in the lockfile.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled" style="margin-left: 2rem">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you are asked to update packages, say no. The <code>renv()</code> is intended to recreate the same environment under which the project was created, making it reproducible. You are ready to proceed when running <code>renv::restore()</code> gives the output:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>RStudio Output</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-filename="RStudio Output"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> The library is already synchronized with the lockfile.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>If you experience any trouble with this step, you might want to confirm that you are using R (v 4.5.1) in the Positron IDE (v 2026.03.0 build 212). You can also read more about <code>renv()</code> in their <a href="https://rstudio.github.io/renv/articles/renv.html">vignette</a>&nbsp;<span class="citation" data-cites="renv_intro"><sup><a href="#ref-renv_intro" role="doc-biblioref">3</a></sup></span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" style="margin-left: 2rem">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A <code>.gitignore</code> file has been included in the directory, specifying the files and file types that do not need to be version controlled or shared with GitHub. Please note that on some devices, this file might be hidden depending on your settings.</p>
+</div>
+</div>
+</section>
+<section id="deploying-to-github" class="level3">
+<h3 class="anchored" data-anchor-id="deploying-to-github">Deploying to GitHub</h3>
+<p>With a Git-initialized project, you can add it to a remote repository on GitHub. Below are instructions to help you establish a remote copy of this codebase on GitHub. If you are new to using Git and GitHub for code-based projects, please check out our workshop on the topic: <a href="../Git-and-GitHub/git-github-index.html">Getting Started with Git and GitHub</a>.</p>
+<ol type="1">
+<li><p><a href="https://github.com/login">Log in</a> to your personal GitHub account.</p></li>
+<li><p>In the top-right of the page navigation bar, select the <span style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px 5px; border-radius: 5px; vertical-align: middle;"><iconify-icon role="img" inline="" icon="octicon:plus-16" aria-label="Icon plus-16 from octicon Iconify.design set." title="Icon plus-16 from octicon Iconify.design set."></iconify-icon> <iconify-icon role="img" inline="" icon="octicon:triangle-down-24" aria-label="Icon triangle-down-24 from octicon Iconify.design set." title="Icon triangle-down-24 from octicon Iconify.design set."></iconify-icon></span> dropdown menu and click <span style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px 7px; border-radius: 5px; vertical-align: middle;"><iconify-icon role="img" inline="" icon="octicon:repo-24" aria-label="Icon repo-24 from octicon Iconify.design set." title="Icon repo-24 from octicon Iconify.design set."></iconify-icon> New repository</span>&nbsp;<span class="citation" data-cites="new_repo"><sup><a href="#ref-new_repo" role="doc-biblioref">4</a></sup></span>.</p></li>
+<li><p>Fill out the following sections:</p>
+<ol type="a">
+<li><p>Adjust the GitHub account owner as needed and create the name for the new repository.</p></li>
+<li><p>It is good practice to initially set the repository to “Private”.</p></li>
+<li><p>Do <strong><u>NOT</u></strong> use a template or include a description, <code>README.md</code>, <code>.gitignore</code>, or license.</p></li>
+</ol></li>
+<li><p>Open the command-line application (i.e.&nbsp;Terminal for Macs and Git Bash for Windows) and navigate to the file location you want to temporarily store the repository copy.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Application</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="st">"/file_path/Code-Smarter-Not-Harder-Unlocking-AI-Assisted-Coding"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></li>
+<li><p>Confirm that Git has been initialized by checking the project status. If the project is initialized, you should see that Git is present and tracking files.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Application</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>If instead, you see the following message, you will need to initialize Git for the first time.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Output</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-filename="Command-Line Output"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fatal:</span> not a git repository <span class="er">(</span><span class="ex">or</span> any of the parent directories<span class="kw">)</span><span class="bu">:</span> .git</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Application</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init      <span class="co"># Initialize Git tracking.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></li>
+<li><p>If <code>git status</code> shows untracked files or untracked changes to tracked files, add and commit these to the project’s <code>.git</code> directory. If this is your first time committing the directory contents, you will see all files listed as untracked.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Application</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .                       <span class="co"># Stage all changed and new files for version tracking.</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"first commit"</span><span class="kw">`</span>   <span class="co"># Commit the changes with a message.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></li>
+<li><p>Create a branch named <code>main</code>.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Application</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-a</span>                   <span class="co"># Check that the branch 'main' does not exist.</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-M</span> main              <span class="co"># If the main branch doesn’t exist, create it.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></li>
+<li><p>In the newly created GitHub repository, under “Quick setup,” you will find the repository’s SSH or HTTPS URL. Copy one of these URLs to define the remote location and transfer protocol you want to use between your local device and this GitHub repository.</p>
+<p>For example, if the repository name is “NEW-REPOSITORY,” the URLs will look like this:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SSH</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">git@github.com:EXAMPLE-USER/NEW-REPOSITORY.git</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># HTTPS</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="ex">https://github.com/EXAMPLE-USER/NEW-REPOSITORY.git</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Set the GitHub repository location and save it as <code>origin</code>. Replace the placeholder URL with the repository URL you copied from GitHub in the previous step.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Application</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using SSH</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin git@github.com:EXAMPLE-USER/NEW-REPOSITORY.git</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># or using HTTPS</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin https://github.com/EXAMPLE-USER/NEW-REPOSITORY.git</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></li>
+<li><p>Finally, push the directory to your empty GitHub repository. Since you are establishing a new repository, use <code>-u origin main</code> to create and set the upstream branch in the GitHub repository.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Command-Line Application</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12" data-filename="Command-Line Application"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin main         <span class="co"># Push to remote and set upstream.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></li>
+<li><p>Refresh the page to confirm the transfer and linking were successful.</p></li>
+</ol>
+</section>
+</section>
+<section id="about-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="about-the-data">About the Data</h2>
+<p>In this workshop, we aim to reproduce selected summary statistics and figures from Thomas et al.&nbsp;(2023), <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10460553/">“Healthy Lifestyle Behaviors and Biological Aging in the U.S. National Health and Nutrition Examination Surveys, 1999–2018”</a>&nbsp;<span class="citation" data-cites="thomas2023"><sup><a href="#ref-thomas2023" role="doc-biblioref">5</a></sup></span>. This paper used the Continuous <a href="https://www.cdc.gov/nchs/nhanes/index.html">National Health and Nutrition Examination Survey (NHANES)</a> dataset, which provides information on participants’ eating and exercise habits, anthropometric measurements, and lab results&nbsp;<span class="citation" data-cites="nhanes_home"><sup><a href="#ref-nhanes_home" role="doc-biblioref">6</a></sup></span>.</p>
+<p>The continuous series was launched in 1999 and has been conducted biennially since then. NHANES is a cross-sectional study that uses a stratified, multistage, probability-clustered sample of approximately 5,000 participants from 15 counties and includes sampling weights to generate nationally representative estimates&nbsp;<span class="citation" data-cites="nhanes_analyses_datasets nhanes_analyses_guides thomas2023"><sup><a href="#ref-thomas2023" role="doc-biblioref">5</a>,<a href="#ref-nhanes_analyses_datasets" role="doc-biblioref">7</a>,<a href="#ref-nhanes_analyses_guides" role="doc-biblioref">8</a></sup></span>. The authors applied the PhenoAge algorithm to predict participants’ biological age using the “Levine Original” formula (9 biomarkers) from the <code>BioAge</code> R package, which was trained on NHANES-III data (collected 1988–94): package <a href="https://link.springer.com/article/10.1007/s11357-021-00480-5">paper</a> and <a href="https://github.com/dayoonkwon/BioAge">documentation</a>&nbsp;<span class="citation" data-cites="kwon2021 bioage_github levine2018"><sup><a href="#ref-kwon2021" role="doc-biblioref">9</a>–<a href="#ref-levine2018" role="doc-biblioref">11</a></sup></span>.</p>
+<p>Based on the methods section, the paper implies the use of sample weights to generate national estimates. Weight selection varies depending on which data files you’re combining, and weighted datasets require survey-specific functions for analysis (e.g., <code>svyglm</code> instead of <code>glm</code>)&nbsp;<span class="citation" data-cites="nhanes_analyses_weighting ucla_survey kyle_suvey"><sup><a href="#ref-nhanes_analyses_weighting" role="doc-biblioref">12</a>–<a href="#ref-kyle_suvey" role="doc-biblioref">14</a></sup></span>. However, the <code>BioAge</code> R package doesn’t appear to use weighted NHANES-III data when training the PhenoAge model. For consistency and simplicity, we skipped the weights in this example and focused on participant-level results instead.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Minimal differences in sample size were observed between our pipeline and the paper up until the pre-calculated PhenoAge values were assessed. At that step, approximately 10,000 more participants were identified as having missing PhenoAge values than reported in the paper.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Raw Data and Preparation
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Much of the data preparation has been conducted in the background so this example can remain focused on AI-assisted coding techniques. If you want to review the complete data processing steps, along with links to the full data dictionary associated with the NHANES datasets used, see <a href="../Code/Data Cleaning/">“Code/Data Cleaning/Import and Compiling Continuous NHANES 1999 to 2018.R”</a>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="other-recommended-resources" class="level2">
+<h2 class="anchored" data-anchor-id="other-recommended-resources">Other Recommended Resources</h2>
+<p>This workshop only had so much time to cover the breadth of concepts we tackled. Below you’ll find the key resources we referenced to help you step into your next chapter of learning and implementing AI in your own work.</p>
+<section id="ai-literacy-fundamentals" class="level3">
+<h3 class="anchored" data-anchor-id="ai-literacy-fundamentals">AI Literacy Fundamentals</h3>
+<ul>
+<li><a href="https://ai.yale.edu/">AI at Yale</a>&nbsp;<span class="citation" data-cites="ai_at_yale"><sup><a href="#ref-ai_at_yale" role="doc-biblioref">15</a></sup></span></li>
+<li>Yale’s Data-Intensive Social Science Center (DISSC) <a href="https://dissc.yale.edu/dissc-programs/artificial-intelligence-and-machine-learning">“Artificial Intelligence and Machine Learning for Social Science Research”</a> page for events and content lead by <a href="https://dissc.yale.edu/profile/nicholas-warren">Nick Warren</a>&nbsp;<span class="citation" data-cites="dissc"><sup><a href="#ref-dissc" role="doc-biblioref">16</a></sup></span></li>
+<li><a href="https://link.springer.com/book/10.1007/978-1-4842-5028-0"><em>Artificial Intelligence Basics: A Non-Technical Introduction</em></a> by <a href="https://www.linkedin.com/in/tomtaulli/?profileId=ACoAAAABLJ4BMM_RzZgfeQAZk_23snolJPtKNoU">Tom Taulli</a></li>
+<li><a href="https://www.cambridge.org/core/books/cambridge-handbook-of-artificial-intelligence/3DCB2E04739722A99EDE86B7A34A30E3#fndtn-information"><em>The Cambridge Handbook of Artificial Intelligence</em></a> edited by <a href="https://www.keithfrankish.com/">Keith Frankish</a> and <a href="https://www.unlv.edu/people/william-ramsey">William M. Ramsey</a>&nbsp;<span class="citation" data-cites="keith2014"><sup><a href="#ref-keith2014" role="doc-biblioref">17</a></sup></span></li>
+<li><a href="https://www.ibm.com/think/topics/neural-networks">“What is a neural network?”</a>, <a href="https://www.ibm.com/think/topics/machine-learning">“… machine learning?”</a>, <a href="https://www.ibm.com/think/topics/generative-ai">“… generative AI?”</a>, <a href="https://www.ibm.com/think/topics/large-language-models">“… large language models (LLMs)?”</a> from IBM&nbsp;<span class="citation" data-cites="ibm_neural_net ibm_machine_learning ibm_generative_ai ibm_llms"><sup><a href="#ref-ibm_neural_net" role="doc-biblioref">18</a>–<a href="#ref-ibm_llms" role="doc-biblioref">21</a></sup></span></li>
+<li><a href="https://medium.com/@harrpreet/what-is-good-old-fashioned-ai-59ff4a4719ce">“What is Good Old-Fashioned AI?”</a> by <a href="https://medium.com/@harrpreet/about">Harpreet Singh Kalsi</a>&nbsp;<span class="citation" data-cites="gofai"><sup><a href="#ref-gofai" role="doc-biblioref">22</a></sup></span></li>
+</ul>
+</section>
+<section id="ai-assisted-coding" class="level3">
+<h3 class="anchored" data-anchor-id="ai-assisted-coding">AI-Assisted Coding</h3>
+<ul>
+<li>Yale’s Harvey Cushing/John Hay Whitney Medical Library workshop <a href="https://schedule.yale.edu/event/16424915?hs=a">“Code with Clarity: AI-Powered Programming for Researchers”</a> by <a href="https://medicine.yale.edu/profile/justin-demayo/">Justin DeMayo</a> and <a href="https://medicine.yale.edu/profile/maximilian-wegener/">Max Wegener</a>&nbsp;<span class="citation" data-cites="med_lib_coding"><sup><a href="#ref-med_lib_coding" role="doc-biblioref">23</a></sup></span></li>
+<li>Yale’s Data-Intensive Social Science Center (DISSC) <a href="https://dissc.yale.edu/dissc-programs/artificial-intelligence-and-machine-learning">“Artificial Intelligence and Machine Learning for Social Science Research”</a> page for events and content lead by <a href="https://dissc.yale.edu/profile/nicholas-warren">Nick Warren</a>&nbsp;<span class="citation" data-cites="dissc"><sup><a href="#ref-dissc" role="doc-biblioref">16</a></sup></span></li>
+<li>Yale’s Library <a href="https://library.yale.edu/help-and-research-support/research-support/using-ai-research">“Using AI in Research”</a> webpage&nbsp;<span class="citation" data-cites="yale_library"><sup><a href="#ref-yale_library" role="doc-biblioref">24</a></sup></span></li>
+<li><a href="https://link.springer.com/book/10.1007/978-1-4842-5028-0"><em>AI-Assisted Programming - Better Planning, Coding, Testing, And Deployment</em></a> by <a href="https://www.linkedin.com/in/tomtaulli/?profileId=ACoAAAABLJ4BMM_RzZgfeQAZk_23snolJPtKNoU">Tom Taulli</a>&nbsp;<span class="citation" data-cites="taulli2024"><sup><a href="#ref-taulli2024" role="doc-biblioref">25</a></sup></span></li>
+</ul>
+</section>
+</section>
+<section id="section-glossary" class="level2">
+<h2 class="anchored" data-anchor-id="section-glossary">Section Glossary</h2>
+<table class="glossary-table">
+<tbody>
+<!-- Row 1 
+        <tr>
+            <td class="col1">Command-Line Interface (CLI)</td>
+            <td>
+              A texted-base application that directly interacts with the computer’s operating system, manages files, and can run programs. It typically lacks a GUI\ [@terminal_shell].
+            </td>
+        </tr> -->
+<!-- Row 2 
+        <tr>
+            <td class="col1">Graphical User Interface (GUI)</td>
+            <td>
+              An interface that allows users to interact with computers through visual elements like buttons and menus\ [@gui].
+            </td>
+        </tr> -->
+<!-- Row 3 -->
+<tr>
+<td class="col1">
+Integrated Development Environment (IDE)
+</td>
+<td>
+A software application that combines tools for editing, building, testing, and debugging code into a single, user-friendly interface&nbsp;<span class="citation" data-cites="ide"><sup><a href="#ref-ide" role="doc-biblioref">1</a></sup></span>.
+</td>
+</tr>
+<!-- Row 4
+        <tr>
+            <td class="col1">Version Control</td>
+            <td>
+              Manage, organize, and track different versions of files. Identify differences between versions and allows reverting to older versions\ [@atlassian_video].
+            </td>
+        </tr> -->
+</tbody>
+</table>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-ide" class="csl-entry" role="listitem">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">Services, Inc. A. W. <a href="https://aws.amazon.com/what-is/ide/">What is an IDE (integrated development environment)?</a></div>
+</div>
+<div id="ref-positron_video" class="csl-entry" role="listitem">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline"><em><a href="https://www.youtube.com/watch?v=T8dCQ6iIFXo">Use <span>GitHub</span> Copilot with Positron Assistant</a></em>. (2026).</div>
+</div>
+<div id="ref-renv_intro" class="csl-entry" role="listitem">
+<div class="csl-left-margin">3. </div><div class="csl-right-inline">Ushey, K., Wickham, H. &amp; Posit. <a href="https://rstudio.github.io/renv/articles/renv.html">Introduction to renv</a>.</div>
+</div>
+<div id="ref-new_repo" class="csl-entry" role="listitem">
+<div class="csl-left-margin">4. </div><div class="csl-right-inline">GitHub. <a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository">Creating a new repository</a>. <em>GitHub Docs</em>.</div>
+</div>
+<div id="ref-thomas2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">5. </div><div class="csl-right-inline">Thomas, A., Belsky, D. W. &amp; Gu, Y. <a href="https://doi.org/10.1093/gerona/glad082">Healthy lifestyle behaviors and biological aging in the u.s. National health and nutrition examination surveys 1999–2018</a>. <em>J Gerontol A Biol Sci Med Sci</em> <strong>78</strong>, 1535–1542 (2023).</div>
+</div>
+<div id="ref-nhanes_home" class="csl-entry" role="listitem">
+<div class="csl-left-margin">6. </div><div class="csl-right-inline">CDC. National health and nutrition examination survey. National health and nutrition examination survey. <a href="https://www.cdc.gov/nchs/nhanes/index.html">https://www.cdc.gov/nchs/nhanes/index.html</a> (2026).</div>
+</div>
+<div id="ref-nhanes_analyses_datasets" class="csl-entry" role="listitem">
+<div class="csl-left-margin">7. </div><div class="csl-right-inline">Centers for Disease Control and Prevention (CDC) &amp; National Center for Health Statistics (NCHS). Datasets and documentation. National health and nutrition examination survey. <a href="https://wwwn.cdc.gov/nchs/nhanes/tutorials/Datasets.aspx">https://wwwn.cdc.gov/nchs/nhanes/tutorials/Datasets.aspx</a>.</div>
+</div>
+<div id="ref-nhanes_analyses_guides" class="csl-entry" role="listitem">
+<div class="csl-left-margin">8. </div><div class="csl-right-inline">Centers for Disease Control and Prevention (CDC) &amp; National Center for Health Statistics (NCHS). Guidelines for high quality analyses of <span>NHANES</span> data. National health and nutrition examination survey. <a href="https://wwwn.cdc.gov/nchs/nhanes/QualityAnalysesGuidelines.aspx">https://wwwn.cdc.gov/nchs/nhanes/QualityAnalysesGuidelines.aspx</a> (2026).</div>
+</div>
+<div id="ref-kwon2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">9. </div><div class="csl-right-inline">Kwon, D. &amp; Belsky, D. W. <a href="https://doi.org/10.1007/s11357-021-00480-5">A toolkit for quantification of biological age from blood chemistry and organ function test data: <span>BioAge</span></a>. <em><span>GeroScience</span></em> <strong>43</strong>, 2795–2808 (2021).</div>
+</div>
+<div id="ref-bioage_github" class="csl-entry" role="listitem">
+<div class="csl-left-margin">10. </div><div class="csl-right-inline">Kwon, D. <a href="https://github.com/dayoonkwon/BioAge"><span>BioAge</span> <span>GitHub</span> repository</a>. (2026).</div>
+</div>
+<div id="ref-levine2018" class="csl-entry" role="listitem">
+<div class="csl-left-margin">11. </div><div class="csl-right-inline">Levine, M. E. <em>et al.</em> <a href="https://doi.org/10.18632/aging.101414">An epigenetic biomarker of aging for lifespan and healthspan</a>. <em>Aging (Albany <span>NY</span>)</em> <strong>10</strong>, 573–591 (2018).</div>
+</div>
+<div id="ref-nhanes_analyses_weighting" class="csl-entry" role="listitem">
+<div class="csl-left-margin">12. </div><div class="csl-right-inline">Health Statistics (NCHS), N. C. for &amp; Disease Control {and} Prevention (CDC), C. for. <span>NHANES</span> weighting. <span>NHANES</span> tutorials. <a href="https://wwwn.cdc.gov/nchs/nhanes/tutorials/Weighting.aspx">https://wwwn.cdc.gov/nchs/nhanes/tutorials/Weighting.aspx</a>.</div>
+</div>
+<div id="ref-ucla_survey" class="csl-entry" role="listitem">
+<div class="csl-left-margin">13. </div><div class="csl-right-inline">UCLA: Statistical Consulting Group. Survey data analysis with r. Seminars. <a href="https://stats.oarc.ucla.edu/r/seminars/survey-data-analysis-with-r/">https://stats.oarc.ucla.edu/r/seminars/survey-data-analysis-with-r/</a>.</div>
+</div>
+<div id="ref-kyle_suvey" class="csl-entry" role="listitem">
+<div class="csl-left-margin">14. </div><div class="csl-right-inline">Kyle Grealis. <a href="https://cran.r-project.org/web/packages/nhanesdata/vignettes/survey-design.html">Why survey weights matter</a>. (2026).</div>
+</div>
+<div id="ref-ai_at_yale" class="csl-entry" role="listitem">
+<div class="csl-left-margin">15. </div><div class="csl-right-inline"><span>AI</span> at yale. <a href="https://ai.yale.edu/">https://ai.yale.edu/</a> (2026).</div>
+</div>
+<div id="ref-dissc" class="csl-entry" role="listitem">
+<div class="csl-left-margin">16. </div><div class="csl-right-inline">Data-Intensive Social Science Center. Artificial intelligence and machine learning. Programs. <a href="https://dissc.yale.edu/dissc-programs/artificial-intelligence-and-machine-learning">https://dissc.yale.edu/dissc-programs/artificial-intelligence-and-machine-learning</a> (2025).</div>
+</div>
+<div id="ref-keith2014" class="csl-entry" role="listitem">
+<div class="csl-left-margin">17. </div><div class="csl-right-inline"><em>The Cambridge Handbook of Artificial Intelligence</em>. (Cambridge University Press, Cambridge, 2014). doi:<a href="https://doi.org/10.1017/CBO9781139046855">10.1017/CBO9781139046855</a>.</div>
+</div>
+<div id="ref-ibm_neural_net" class="csl-entry" role="listitem">
+<div class="csl-left-margin">18. </div><div class="csl-right-inline">Fangfang Lee. What is a neural network? <span>IBM</span> think topics. <a href="https://www.ibm.com/think/topics/neural-networks">https://www.ibm.com/think/topics/neural-networks</a> (2021).</div>
+</div>
+<div id="ref-ibm_machine_learning" class="csl-entry" role="listitem">
+<div class="csl-left-margin">19. </div><div class="csl-right-inline">Dave Bergmann. What is machine learning? <span>IBM</span> think topics. <a href="https://www.ibm.com/think/topics/machine-learning">https://www.ibm.com/think/topics/machine-learning</a> (2025).</div>
+</div>
+<div id="ref-ibm_generative_ai" class="csl-entry" role="listitem">
+<div class="csl-left-margin">20. </div><div class="csl-right-inline">Cole Stryker &amp; Mark Scapicchio. What is generative <span>AI</span>? <span>IBM</span> think topics. <a href="https://www.ibm.com/think/topics/generative-ai">https://www.ibm.com/think/topics/generative-ai</a> (2024).</div>
+</div>
+<div id="ref-ibm_llms" class="csl-entry" role="listitem">
+<div class="csl-left-margin">21. </div><div class="csl-right-inline">Cole Stryker. What are large language models (<span>LLMs</span>)? <span>IBM</span> think topics. <a href="https://www.ibm.com/think/topics/large-language-models">https://www.ibm.com/think/topics/large-language-models</a> (2021).</div>
+</div>
+<div id="ref-gofai" class="csl-entry" role="listitem">
+<div class="csl-left-margin">22. </div><div class="csl-right-inline">Kalsi, H. S. What is good old-fashioned <span>AI</span>? Medium. <a href="https://medium.com/@harrpreet/what-is-good-old-fashioned-ai-59ff4a4719ce">https://medium.com/@harrpreet/what-is-good-old-fashioned-ai-59ff4a4719ce</a> (2024).</div>
+</div>
+<div id="ref-med_lib_coding" class="csl-entry" role="listitem">
+<div class="csl-left-margin">23. </div><div class="csl-right-inline">Justin DeMayo &amp; Max Wegener. Code with clarity: <span>AI</span>-powered programming for researchers. Yale library study spaces scheduling. <a href="https://schedule.yale.edu/event/16424915">https://schedule.yale.edu/event/16424915</a> (2026).</div>
+</div>
+<div id="ref-yale_library" class="csl-entry" role="listitem">
+<div class="csl-left-margin">24. </div><div class="csl-right-inline">Yale Library. Using <span>AI</span> in research. Using <span>AI</span> in research. <a href="https://library.yale.edu/help-and-research-support/research-support/using-ai-research">https://library.yale.edu/help-and-research-support/research-support/using-ai-research</a>.</div>
+</div>
+<div id="ref-taulli2024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">25. </div><div class="csl-right-inline">Tom Taulli. <em><a href="https://research.ebsco.com/c/rkfpff/ebook-viewer/pdf/afemdntevz/page/pp_18"><span>AI</span>-Assisted Programming - Better Planning, Coding, Testing, and Deployment</a></em>. (O’Reilly Media, Sebastopol, <span>CA</span>, 2024).</div>
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../Workshops/Intro-to-Programming-in-R/Pages/programming-r-more-to-come.html" class="pagination-link" aria-label="Pages In Progress">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Pages In Progress</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../Workshops/Code-Smarter-Not-Harder/Pages/ai-coding-worked-through-example.html" class="pagination-link" aria-label="AI Assisted Coding Worked-Through Example">
+        <span class="nav-page-text">AI Assisted Coding Worked-Through Example</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>This site was built on a ysph-dsde.github.io page. It was rendered using Quarto (v 1.6.3) and theme <a href="https://github.com/juba/bookup-html/tree/main">bookup-html</a>.</p>
+</div>   
+    <div class="nav-footer-center">
+
+<div style="margin-top: 10px;">
+Have thoughts about this resource?<br>Yale affiliates, provide feedback <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=u76M3Tkh-E20EU4-h6vrXH-TvKDg8gZHqoE3FAMavy5UMjhSTjVOWjQ0MkFIM0hDS0pVQ0tZN1kzMi4u">here</a>.<br>Non-affiliates, provide feedback <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=u76M3Tkh-E20EU4-h6vrXH-TvKDg8gZHqoE3FAMavy5URFBRQ1ZVUFlFVEY0MElSNTlSSzJTWkhXNS4u">here</a>.
+</div>
+<ul class="footer-items list-unstyled" style="display:none;">
+<p>:::</p>
+<div class="hidden quarto-markdown-envelope-contents" data-render-id="Zm9vdGVyLXJpZ2h0LSgyMDMpIDczNy04NjQ0">
+<ol start="203" type="1">
+<li>737-8644</li>
+</ol>
+</div>
+<p>:::</p>
+
+</ul><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ysph-dsde/Book-of-Workshops/edit/main/Workshops/Code-Smarter-Not-Harder/ai-coding-index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://ysph.yale.edu/public-health-research-and-practice/research-centers-and-initiatives/public-health-data-science-and-data-equity/">
+      <i class="bi bi-globe" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ysph-dsde">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/showcase/public-health-data-science-and-data-equity-at-yale/">
+      <i class="bi bi-linkedin" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:admin.dsdeysph@yale.edu">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item">
+ (203) 737-8644
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
