@@ -6,42 +6,43 @@ csl: ../../Code/nature.csl
 
 # Code Smarter, Not Harder: Unlocking AI-Assisted Coding {.unnumbered}
 
-<small>Updated: March 17<sup>th</sup>, 2026</small>
+<small>Updated: March 23<sup>rd</sup>, 2026</small>
 
 This material was authored by Shelby Golden, M.S. You can learn more about the instructors [here](../../index.html#meet-the-creators).
-
-## Introduction
-
 
 ## Workshop Learning Goals
 
 Over the course of the workshop chapter, we will take you through:
 
-- Foundational AI Literacy: Explain AI's evolution from Alan Turing to the modern day, distinguish between AI system types, and better articulate what AI is and isn't.
+- **Foundational AI Literacy:** Explain AI's evolution from Alan Turing to the modern day, distinguish between AI system types, and better articulate what AI is and isn't.
 - Understand the AI coding tool landscape, learn best practices for prompts and verification, and identify and navigate common pitfalls.
-- Replicate the results of a paper using Yale's AI Clarity LLM and Positron's native IDE assistant, practicing prompting, iteration, debugging, and comparing the systems.
+- Replicate the results of a paper using [Yale's AI Clarity LLM](https://ai.yale.edu/yales-ai-tools-and-resources/clarity-platform) and Positron's native IDE assistant, practicing prompting, iteration, debugging, and comparing the systems.
 
-We have prepared real-world examples, including challenge questions and answers, for the hands-on portion of this workshop. To fully engage with these materials, please download the provided codebase. Detailed instructions for this process can be found below under [Accessing the Codespaces](#accessing-the-codespaces).
+We have prepared a script outline (with solutions) for the workshop’s hands-on component. To use these materials, download the codebase and complete the setup steps. Participants will also need access to an LLM chatbot and the ability to configure an IDE-based AI assistant with a provider. Full setup instructions—including steps for enabling GitHub Copilot—are provided below under [Accessing the Codespaces](#accessing-the-codespaces).
 
 ## Slides and Handouts
 
 Download the complete slide decks with annotations and the in-person workshop handouts. Comments have been saved in the bottom left corner of each slide, and references for this webpage are located in the **Appendix**.
 
-```{=html}
-
-<a href="Materials/Part 1_Workshop Slide Deck_Annotated.pdf">
-  <button class="btn"><i class="bi bi-download"></i>&nbsp Annotated Slide Deck</button>
-</a>
-
-<a href="Materials/Part 1_Handout_Essential Setup.pdf">
-  <button class="btn"><i class="bi bi-download"></i>&nbsp Essential Setup</button>
-</a>
-
-```
+:::{.callout-tip}
+## Coming Soon!
+:::
 
 ## Accessing the Codespaces
 
-In this workshop, you will need to access the R code we have prepared for the worked-through examples and challenge questions. If you haven't already, please download [R](https://cran.r-project.org/) to your local device. We also recommend using the IDE software [RStudio](https://posit.co/download/rstudio-desktop/). To access the code for this workshop, you will need Git installed on your local device, a GitHub account, and both configured. If you have not set this up yet, please follow the instructions in [Configurations and Credentials](Pages/git-github-setup.html) first.
+We have prepared a script outline (with solutions) for the workshop’s hands-on component. To use these materials, download the codebase and complete the setup steps listed below. Participants will also need access to an LLM chatbot and the ability to configure an IDE-based AI assistant with a provider.
+
+If you haven't already, please ensure you have a current installation of [R](https://cran.r-project.org/) and the new [Positron](https://positron.posit.co/) <span class="text-term" 
+  data-hover-text="A software application that combines tools for editing, building, testing, and debugging code into a single, user-friendly interface.">
+  Integrated Development Environment (IDE) </span>, a VS Code-based text editor developed by the same team behind Posit (formerly RStudio)\ [@ide]. If this is your first time installing Positron or configuring the AI assistant, you will need to complete a few setup steps:
+
+1. **OPTIONAL:** Log into your GitHub account through the Positron Accounts tab
+2. Enable the “Positron Assistant,” the IDE's integrated AI coding assistant
+3. Connect the “Positron Assistant” to a provider of your choice (e.g., Anthropic, Amazon Bedrock, GitHub Copilot)
+
+Below are the full steps for configuring Positron with GitHub Copilot as your AI assistant. You are welcome to use any other supported provider, and for setup instructions for other compatible providers, refer to the Positron [Getting Started](https://positron.posit.co/assistant-getting-started.html) page. We recommend using GitHub Copilot as your provider, as it offers a free standard tier, a 30-day Pro trial, and free Pro access for qualifying faculty and students.
+
+To access the code for this workshop, you will need Git installed on your local device, a GitHub account, and both configured. If you have not set this up yet, please follow the instructions in [Configurations and Credentials](Pages/git-github-setup.html) first.
 
 ::: {.callout-important}
 ## Attribution and Ownership
@@ -52,86 +53,78 @@ Please note that all materials provided in this workshop, including any code add
 ::: {.callout-note collapse="true"}
 ## Settings Used in Development
 
-This workshop was created using R (v 4.5.2) in the RStudio IDE (v 2026.01.0+392). The `renv()` package (v 1.1.7) is included to reproduce the same coding environment, ensuring all relevant packages and package versions are stored. If you encounter issues running the scripts, please check that the environment is initialized and that you are using the same versions of R and RStudio.
+This workshop was created using R (v 4.5.2) in the Positron IDE (v 2026.03.0 build 212). The `renv()` package (v 1.1.7) is included to reproduce the same coding environment, ensuring all relevant packages and package versions are stored. If you encounter issues running the scripts, please check that the environment is initialized and that you are using the same versions of R and Positron.
 :::
 
 
-### Making a Clean-Break Copy
+### Configure Your AI Assistant in Positron
 
-This workshop is in R using the Positron IDE. To access the Claude coding assistant, users will  the AWS Bedrock API
+1. [Log in](https://github.com/login) to your personal GitHub account. If you don't have one, follow the sign-up steps on our Book of Workshops page [Sign Up for GitHub Account](https://ysph-dsde.github.io/Book-of-Workshops/Workshops/Git-and-GitHub/Pages/git-github-setup.html#sign-up-for-github-account).
 
-1. If you 
+2. Review and select a [GitHub Copilot license](https://docs.github.com/en/billing/concepts/product-billing/github-copilot-licenses) that works best for you: GitHub Copilot licenses. Follow GitHub's setup instructions relevant to the license you selected.
 
-1. [Download](https://positron.posit.co/download.html) the Positron IDE.
+:::{.callout-note style="margin-left: 2rem"}
+Faculty and students signing up for the free Pro option will be told setup takes up to 3 days, though in practice it is often completed is less time. Plan accordingly.
+:::
 
-2. OPTIONAL: Link the Positron IDE with your GitHub account.
+3. If you have not already, [download](https://positron.posit.co/download.html) the Positron IDE.
+
+4. Open a new Positron window. In the left sidebar, click the icon that looks like [ {{< iconify bi:robot >}} ]{style="font-size: 20px; width: 20px; height: 20px; background-color: #32495b; border: 1px solid #adbfcf; color: #adbfcf; padding: 2px; padding-left: 3px; padding-right: 3px; border-radius: 2px;"} to open the "Positron Assistant" window\ [@positron_video].
+
+5. First-time Positron Assistant users will need to make sure it is enabled. Click [Enable Positron Assistant](positron://settings/positron.assistant.enable) to open the settings and enable it.
+
+6. Next, link the GitHub Copilot AI model provider. To confirm it is enabled, search for [positron.assistant.provider.githubCopilot.enable](positron://settings/positron.assistant.provider.githubCopilot.enable) in the settings tab. You may need to restart Positron for this to take effect.
+
+7. In the same settings view, you'll see a hyperlink labeled "language model provider dialog." Click it to open the "Configure Language Model Providers" window.
+
+8. The default settings will show Anthropic and GitHub Copilot as available providers. Select <span style="display:inline-flex; flex-direction:column; align-items:center; justify-content:center; background-color:#26557f; border: 2px solid #2388db; color:#2388db; border-radius:2px; padding-top: 0px; padding-right: 0px; padding-bottom: 5px; padding-left: 0px; width:80px;">
+  <span>[ {{< iconify bxl:github-copilot >}} ]{style="font-size:30px; width:30px; height:30px; color:#cccccc;"}</span>
+  <span style="font-size:10px; font-weight: 500; line-height:1; margin-top: -8px; color:#cccccc;">GitHub Copilot</span>
+</span> to configure it as your AI model provider, then click [ Sign in ]{style="font-weight: 600; width: 20px; height: 20px; background-color: #e5e5e5; color: #343434; padding: 2px; padding-left: 6px; padding-right: 6px; border-radius: 2px;"} to continue the configuration on GitHub.
+
+9. A second window will pop up displaying your configuration code. Click [ Copy & Continue to GitHub ]{style="white-space: nowrap; background-color: #027bff; color: #94dfff; font-weight: 400; border: 1px solid #373737; padding: 3px; padding-left: 16px; padding-right: 16px; border-radius: 12px; vertical-align: middle;"} to be taken to GitHub for device activation. When prompted, paste the copied code and authorize the connection.
+
+10. Restart Positron for this to take effect. You'll know the integration is complete when you can successfully interact with the assistant through its pop-up sidebar chat box.
+
+10. **OPTIONAL:** If you chose not to use GitHub Copilot, you can still link Positron to your GitHub account to access additional GitHub interactions from within Positron.
 
 :::{style="margin-left: 2rem"}
-a. Click [ {{< iconify codicon:account >}} ]{style="font-size: 20px; width: 20pz; height: 20px; background-color: #32495b; color: #adbfcf; padding: 2px; padding-left: 3px; padding-right: 3px; border-radius: 2px;"} (at the bottom of the left sidebar) and select "Sign into GitHub to use GitHub Pull Requests (1)".
+a. Click [ {{< iconify codicon:account >}} ]{style="font-size: 20px; width: 20px; height: 20px; background-color: #32495b; border: 1px solid #adbfcf; color: #adbfcf; padding: 2px; padding-left: 3px; padding-right: 3px; border-radius: 2px;"} (at the bottom of the left sidebar) and select "Sign into GitHub to use GitHub Pull Requests (1)".
 
-b. Copy the code and click [ Copy and Continue to GitHub ]{style="white-space: nowrap; background-color: #ffa500; color: #ffffff; border: 1px solid #0d1117; padding: 3px; padding-left: 16px; padding-right: 16px; border-radius: 12px; vertical-align: middle;"}
+b. A window will pop up displaying your configuration code. Click [ Copy & Continue to GitHub ]{style="white-space: nowrap; background-color: #027bff; color: #94dfff; font-weight: 400; border: 1px solid #373737; padding: 3px; padding-left: 16px; padding-right: 16px; border-radius: 12px; vertical-align: middle;"} to be taken to GitHub for device activation. When prompted, paste the copied code and authorize the connection.
 
-c. This will take you to GitHub and prompt for authorization to connect the GitHub account with Visual Studio Code. Click [ Authorize Visual-Studio-Code ]{style="white-space: nowrap; background-color: #1f6feb; color: #ffffff; border: 1px solid #0d1117; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px; vertical-align: middle;"} to complete the connection.
+c. Restart Positron for this to take effect. You'll know the integration is complete when you can successfully interact with the assistant through its pop-up sidebar chat box.
 :::
-
-3. [ {{< iconify bi:robot >}} ]{style="font-size: 20px; width: 20pz; height: 20px; background-color: #32495b; color: #adbfcf; padding: 2px; padding-left: 3px; padding-right: 3px; border-radius: 2px;"}
-
-### Cloning the Copied Repository
-
-Now that you have copied this repository into your own GitHub, you are ready to proceed with a standard clone to your local device.
-  
-1. Copy the SSH or HTTPS URL from your GitHub repository by clicking the [ {{< iconify octicon:code-16 >}} Code {{< iconify octicon:triangle-down-24 >}} ]{style="white-space: nowrap; background-color: #1f6feb; color: #ffffff; border: 1px solid #0d1117; padding: 3px; padding-left: 7px; padding-right: 7px; border-radius: 5px; vertical-align: middle;"} button.
-
-    ```{.bash}
-    # SSH
-    git@github.com:ysph-dsde/NEW-REPOSITORY.git
-
-    # HTTPS
-    https://github.com/ysph-dsde/NEW-REPOSITORY.git
-    ```
-  
-2. In the command-line application (i.e. Terminal for Macs and Git Bash for Windows) navigate to the file location you want to store the repository.
-
-    ```{.bash filename="Command-Line Application"}
-    cd "/file_path/"
-    ```
-   
-3. Clone the repository.
-
-    ```{.bash filename="Command-Line Application"}
-    # using SSH
-    git clone git@github.com:EXAMPLE-USER/NEW-REPOSITORY.git
-
-    # or using HTTPS
-    git clone https://github.com/EXAMPLE-USER/NEW-REPOSITORY.git
-    ```
-
-4. **OPTIONAL:** You can reset the repository history, which will clear the previous commits, by running the following block of code (Source: [StackExchange by Zeelot](https://stackoverflow.com/questions/9683279/make-the-current-commit-the-only-initial-commit-in-a-git-repository))\ [@prune_commits].
-    
-    ```{.bash filename="Command-Line Application"}
-    git checkout --orphan tempBranch         # Create a temporary branch
-    git add -A                               # Add all files and commit them
-    git commit -m "Reset the repo"
-    git branch -D main                       # Deletes the main branch
-    git branch -m main                       # Rename the current branch to main
-    git push -f origin main                  # Force push main branch to GitHub
-    git gc --aggressive --prune=all          # Remove the old files
-    ```
-
 
 ### Initializing the Environment
 
-After cloning the codespace to your local device, you will need to initialize the environment using `renv()`. This step will install all the packages and versions used in the workshop, ensuring a reproducible coding environment.
+1. Download the prepared codebase, which is configured as Positron project and includes code for the hands-on portion of the workshop.
 
-1. In the command-line application (i.e., Terminal for Macs or Git Bash for Windows) navigate to the file location you want to store the repository.
+::: {style="margin-left: 2rem"}
+```{=html}
+<a href="Materials/Code-Smarter-Not-Harder-Unlocking-AI-Assisted-Coding.zip">
+  <button class="btn" style="margin-bottom: 1rem;"><i class="bi bi-download"></i>&nbsp Codespace</button>
+</a>
+
+```
+:::
+
+2. Unzipped the downloaded directory and move it to the file location you wish to house the project.
 
     ```{.bash filename="Command-Line Application"}
-    cd "/file_path/"
+    cd "file_path/Downloads/"                                              # Open the directory the file was downloaded into.
+    unzip Code-Smarter-Not-Harder-Unlocking-AI-Assisted-Coding.zip         # Unzip the file.
+    mv Code-Smarter-Not-Harder-Unlocking-AI-Assisted-Coding "/new_path/"   # Move the unzipped directory to the new location.
     ```
 
-2. Launch the project by opening the `*.Rproj` file in RStudio.
+3.  Open a new Positron window and select <span style="display:inline-flex; flex-direction:column; align-items:center; justify-content:center; background-color:#32495b; border: 1px solid #adbfcf; color:#adbfcf; border-radius:2px; padding-top: 0px; padding-right: 0px; padding-bottom: 5px; padding-left: 0px; width:45px;">
+  <span>[ {{< iconify ph:folder-open-light >}} ]{style="font-size:30px; width:30px; height:30px; color:#adbfcf;"}</span>
+  <span style="font-size:6px; line-height:1; margin-top: -8px; color:#adbfcf;">Open Folder...</span>
+</span> to open a new folder from the main view. Navigate to the `~/Code-Smarter-Not-Harder-Unlocking-AI-Assisted-Coding` directory and open it.
 
-3. In the R console, activate the environment by running the following lines of code:
+4.  From the left sidebar, click [ {{< iconify codicon:files >}} ]{style="font-size: 20px; width: 20px; height: 20px; background-color: #32495b; border: 1px solid #adbfcf; color: #adbfcf; padding: 2px; padding-left: 3px; padding-right: 3px; border-radius: 2px;"} to see the project directory contents and click `Worked-Through Example.R` to open it.
+
+5.  In the R console, activate the environment by running the following lines of code.
 
     ```{.r filename="RStudio Console"}
     renv::init()          # Initialize the project.
@@ -145,63 +138,153 @@ If you are asked to update packages, say no. The `renv()` is intended to recreat
 - The library is already synchronized with the lockfile.
 ```
 
-If you experience any trouble with this step, you might want to confirm that you are using R (v 4.4.3) in the RStudio IDE (v 2024.12.1+563). You can also read more about `renv()` in their [vignette](https://rstudio.github.io/renv/articles/renv.html)\ [@renv_intro].
+If you experience any trouble with this step, you might want to confirm that you are using R (v 4.5.1) in the Positron IDE (v 2026.03.0 build 212). You can also read more about `renv()` in their [vignette](https://rstudio.github.io/renv/articles/renv.html)\ [@renv_intro].
 :::
+
+:::{.callout-note style="margin-left: 2rem"}
+A `.gitignore` file has been included in the directory, specifying the files and file types that do not need to be version controlled or shared with GitHub. Please note that on some devices, this file might be hidden depending on your settings.
+:::
+
+### Deploying to GitHub
+
+With a Git-initialized project, you can add it to a remote repository on GitHub. Below are instructions to help you establish a remote copy of this codebase on GitHub. If you are new to using Git and GitHub for code-based projects, please check out our workshop on the topic: [Getting Started with Git and GitHub](../Git-and-GitHub/git-github-index.html).
+
+1. [Log in](https://github.com/login) to your personal GitHub account.
+
+2.  In the top-right of the page navigation bar, select the [ {{< iconify octicon:plus-16 >}} {{< iconify octicon:triangle-down-24 >}} ]{style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px 5px; border-radius: 5px; vertical-align: middle;"} dropdown menu and click [ {{< iconify octicon:repo-24 >}} New repository]{style="white-space: nowrap; background-color: #010409; color: #b8bbbf; border: 1px solid #9198a1; padding: 3px 7px; border-radius: 5px; vertical-align: middle;"}\ [@new_repo].
+
+3. Fill out the following sections:
+
+    a. Adjust the GitHub account owner as needed and create the name for the new repository.
+    
+    c. It is good practice to initially set the repository to "Private".
+    
+    d. Do **[NOT]{.underline}** use a template or include a description, `README.md`, `.gitignore`, or license.
+
+4. Open the command-line application (i.e. Terminal for Macs and Git Bash for Windows) and navigate to the file location you want to temporarily store the repository copy.
+
+    ```{.bash filename="Command-Line Application"}
+    cd "/file_path/Code-Smarter-Not-Harder-Unlocking-AI-Assisted-Coding"
+    ```
+
+5. Confirm that Git has been initialized by checking the project status. If the project is initialized, you should see that Git is present and tracking files.
+
+    ```{.bash filename="Command-Line Application"}    
+    git status
+    ```
+    
+    If instead, you see the following message, you will need to initialize Git for the first time.
+
+    ```{.bash filename="Command-Line Output"}    
+    fatal: not a git repository (or any of the parent directories): .git
+    ```
+    
+    ```{.bash filename="Command-Line Application"}    
+    git init      # Initialize Git tracking.
+    ```
+
+6. If `git status` shows untracked files or untracked changes to tracked files, add and commit these to the project's `.git` directory. If this is your first time committing the directory contents, you will see all files listed as untracked.
+
+    ```{.bash filename="Command-Line Application"} 
+    git add .                       # Stage all changed and new files for version tracking.
+    git commit -m "first commit"`   # Commit the changes with a message.
+    ```
+
+7. Create a branch named `main`.
+
+    ```{.bash filename="Command-Line Application"} 
+    git branch -a                   # Check that the branch 'main' does not exist.
+    git branch -M main              # If the main branch doesn’t exist, create it.
+    ```
+
+8. In the newly created GitHub repository, under "Quick setup," you will find the repository's SSH or HTTPS URL. Copy one of these URLs to define the remote location and transfer protocol you want to use between your local device and this GitHub repository.
+
+    For example, if the repository name is "NEW-REPOSITORY," the URLs will look like this:
+
+    ```{.bash}
+    # SSH
+    git@github.com:EXAMPLE-USER/NEW-REPOSITORY.git
+
+    # HTTPS
+    https://github.com/EXAMPLE-USER/NEW-REPOSITORY.git
+    ```
+
+9. Set the GitHub repository location and save it as `origin`. Replace the placeholder URL with the repository URL you copied from GitHub in the previous step.
+
+    ```{.bash filename="Command-Line Application"}
+    # using SSH
+    git remote add origin git@github.com:EXAMPLE-USER/NEW-REPOSITORY.git
+
+    # or using HTTPS
+    git remote add origin https://github.com/EXAMPLE-USER/NEW-REPOSITORY.git
+    ```
+
+10. Finally, push the directory to your empty GitHub repository. Since you are establishing a new repository, use `-u origin main` to create and set the upstream branch in the GitHub repository.
+
+    ```{.bash filename="Command-Line Application"}  
+    git push -u origin main         # Push to remote and set upstream.
+    ```
+
+11. Refresh the page to confirm the transfer and linking were successful.
+
 
 ## About the Data
 
-The [Johns Hopkins Coronavirus Resource Center](https://coronavirus.jhu.edu/) (JHU CRC) tracked and compiled global COVID-19 pandemic data from January 22, 2020, to March 10, 2023\ [@jhcrc]. This data is publicly available through their two GitHub repositories. For this workshop content, we imported two datasets:
+In this workshop, we aim to reproduce selected summary statistics and figures from Thomas et al. (2023), [“Healthy Lifestyle Behaviors and Biological Aging in the U.S. National Health and Nutrition Examination Surveys, 1999–2018”](https://pmc.ncbi.nlm.nih.gov/articles/PMC10460553/)\ [@thomas2023]. This paper used the Continuous [National Health and Nutrition Examination Survey (NHANES)](https://www.cdc.gov/nchs/nhanes/index.html) dataset, which provides information on participants' eating and exercise habits, anthropometric measurements, and lab results\ [@nhanes_home].
 
-- Cumulative vaccination counts for the U.S. from their [GovEX/COVID-19](https://github.com/govex/COVID-19) GitHub repository. The raw data used in the analysis script can be found in the `data_tables/vaccine_data/us_data/time_series` subdirectory ([original source](https://github.com/govex/COVID-19/blob/master/data_tables/vaccine_data/us_data/time_series/time_series_covid19_vaccine_us.csv))\ [@vaccines_time_series; @govex].
-- Cumulative case and death counts for the U.S. from their [CSSEGISandData](https://github.com/CSSEGISandData/COVID-19) GitHub repository. The raw data for these two datasets used in the analysis can be found in the `csse_covid_19_data/csse_covid_19_time_series` subdirectory ([original source](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series)). Both `time_series_covid19_confirmed_US.csv` and `time_series_covid19_deaths_US.csv` were used\ [@cases_time_series; @csse].
+The continuous series was launched in 1999 and has been conducted biennially since then. NHANES is a cross-sectional study that uses a stratified, multistage, probability-clustered sample of approximately 5,000 participants from 15 counties and includes sampling weights to generate nationally representative estimates\ [@nhanes_analyses_datasets; @nhanes_analyses_guides; @thomas2023]. The authors applied the PhenoAge algorithm to predict participants' biological age using the "Levine Original" formula (9 biomarkers) from the `BioAge` R package, which was trained on NHANES-III data (collected 1988–94): package [paper](https://link.springer.com/article/10.1007/s11357-021-00480-5) and [documentation](https://github.com/dayoonkwon/BioAge)\ [@kwon2021; @bioage_github; @levine2018].
 
-The data dictionaries provided by JHU CRC can be found here: [Vaccinations Dataset Data Dictionary](https://github.com/govex/COVID-19/tree/master/data_tables/vaccine_data/us_data) and [Cases and Deaths Datasets Data Dictionary](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data#usa-daily-state-reports-csse_covid_19_daily_reports_us)\ [@vaccines_dictionary; @cases_dictionary]. For our purposes, we conducted data cleaning, harmonization, and smoothing using isotonic regression. This included harmonizing the U.S. Census Bureau's 2010 to 2019 population projections with the 2020 to 2023 vintages.
+Based on the methods section, the paper implies the use of sample weights to generate national estimates. Weight selection varies depending on which data files you're combining, and weighted datasets require survey-specific functions for analysis (e.g., `svyglm` instead of `glm`)\ [@nhanes_analyses_weighting; @ucla_survey; @kyle_suvey]. However, the `BioAge` R package doesn't appear to use weighted NHANES-III data when training the PhenoAge model. For consistency and simplicity, we skipped the weights in this example and focused on participant-level results instead.
 
-Details about these steps can be found in the `Git-and-GitHub/Code/Data Cleaning` and `Git-and-GitHub/Code/Population Estimates and Projections` directories ([link to code](https://github.com/ysph-dsde/Book-of-Workshops/tree/main/Workshops/Git-and-GitHub/Code)). The cleaned datasets are in the `Git-and-GitHub/Data` directory ([link to data](https://github.com/ysph-dsde/Book-of-Workshops/tree/main/Workshops/Git-and-GitHub/Data)).
+:::{.callout-warning}
+Minimal differences in sample size were observed between our pipeline and the paper up until the pre-calculated PhenoAge values were assessed. At that step, approximately 10,000 more participants were identified as having missing PhenoAge values than reported in the paper.
+:::
 
+:::{.callout-note collapse="true"}
+## Raw Data and Preparation
+
+Much of the data preparation has been conducted in the background so this example can remain focused on AI-assisted coding techniques. If you want to review the complete data processing steps, along with links to the full data dictionary associated with the NHANES datasets used, see ["Code/Data Cleaning/Import and Compiling Continuous NHANES 1999 to 2018.R"](../Code/Data Cleaning/).
+:::
 
 ## Other Recommended Resources
 
-Although there are numerous resources available on Git and GitHub, we have curated a selection of additional sites and tutorials that complement and expand upon our content. Some of these resources will reinforce the fundamentals covered in this workshop, while others offer advanced materials and guides to help you further develop your skills as you gain experience.
+This workshop only had so much time to cover the breadth of concepts we tackled. Below you'll find the key resources we referenced to help you step into your next chapter of learning and implementing AI in your own work.
 
+### AI Literacy Fundamentals
 
-### Fundamentals
+- [AI at Yale](https://ai.yale.edu/)\ [@ai_at_yale]
+- Yale’s Data-Intensive Social Science Center (DISSC) ["Artificial Intelligence and Machine Learning for Social Science Research"](https://dissc.yale.edu/dissc-programs/artificial-intelligence-and-machine-learning) page for events and content lead by [Nick Warren](https://dissc.yale.edu/profile/nicholas-warren)\ [@dissc]
+- [_Artificial Intelligence Basics: A Non-Technical Introduction_](https://link.springer.com/book/10.1007/978-1-4842-5028-0) by [Tom Taulli](https://www.linkedin.com/in/tomtaulli/?profileId=ACoAAAABLJ4BMM_RzZgfeQAZk_23snolJPtKNoU)
+- [_The Cambridge Handbook of Artificial Intelligence_](https://www.cambridge.org/core/books/cambridge-handbook-of-artificial-intelligence/3DCB2E04739722A99EDE86B7A34A30E3#fndtn-information) edited by [Keith Frankish](https://www.keithfrankish.com/) and [William M. Ramsey](https://www.unlv.edu/people/william-ramsey)\ [@keith2014]
+- ["What is a neural network?"](https://www.ibm.com/think/topics/neural-networks), ["... machine learning?"](https://www.ibm.com/think/topics/machine-learning), ["... generative AI?"](https://www.ibm.com/think/topics/generative-ai), ["... large language models (LLMs)?”](https://www.ibm.com/think/topics/large-language-models) from IBM\ [@ibm_neural_net; @ibm_machine_learning; @ibm_generative_ai; @ibm_llms]
+- ["What is Good Old-Fashioned AI?”](https://medium.com/@harrpreet/what-is-good-old-fashioned-ai-59ff4a4719ce) by [Harpreet Singh Kalsi](https://medium.com/@harrpreet/about)\ [@gofai]
 
--   Yale’s Center for Research Computing workshop ["Version Control by Git"](https://www.youtube.com/watch?v=Boj3tFrTyF4) by [Kaylea Nelson, Ph.D.](https://research.computing.yale.edu/profile/kaylea-nelson-phd)\ [@ycrc_module]
--   Yale’s Harvey Cushing/John Hay Whitney Medical Library workshop ["Git & GitHub: An Introduction To Version Contro"](https://github.com/CWML/gitdemo/tree/main) by [Justin DeMayo](https://library.medicine.yale.edu/about/staff/justin-demayo)\ [@med_school_module]
--   ["Getting Git Right"](https://www.atlassian.com/git) by Atlassian
--   [Git and GitHub tutorials](https://www.w3schools.com/git/default.asp?remote=github) by W3Schools\ [@w3schools]
--   ["Introduction to GitHub"](https://github.com/skills/introduction-to-github) by GitHub\ [@github_intro_course]
--   [*Happy Git and GitHub for the user*](https://happygitwithr.com/) by [Professor Jenny Bryan](https://jennybryan.org/) (and Yale alumn!) and [Jim Hester](https://www.jimhester.com/)
-\ [@happy_git_github]
+### AI-Assisted Coding
 
-### Beyond Basic Git and GitHub
-
--   Reviewing the developer documentation: [git-scm.com/docs](https://git-scm.com/docs) and [docs.github.com](https://docs.github.com/en)\ [@github_docs; @git_docs]
--   ["What is Git commit, push, pull, log, aliases, fetch, config & clone"](https://medium.com/mindorks/what-is-git-commit-push-pull-log-aliases-fetch-config-clone-56bc52a3601c) by [Amit Prajapati](https://medium.com/@thisAmit)\ [@Prajapati2019]
--   ["Git Guides"](https://graphite.dev/guides/topic/git) by various Graphite contributors\ [@graphite_git]
--   ["How to Write a Git Commit Message"](https://cbea.ms/git-commit/) by cbeams\ [@write_message]
--   [Git Graphical User Interface (GUI) clients](https://git-scm.com/downloads/guis) by various contributors\ [@git_guis]
+- Yale’s Harvey Cushing/John Hay Whitney Medical Library workshop ["Code with Clarity: AI-Powered Programming for Researchers"](https://schedule.yale.edu/event/16424915?hs=a) by [Justin DeMayo](https://medicine.yale.edu/profile/justin-demayo/) and [Max Wegener](https://medicine.yale.edu/profile/maximilian-wegener/)\ [@med_lib_coding]
+- Yale’s Data-Intensive Social Science Center (DISSC) ["Artificial Intelligence and Machine Learning for Social Science Research"](https://dissc.yale.edu/dissc-programs/artificial-intelligence-and-machine-learning) page for events and content lead by [Nick Warren](https://dissc.yale.edu/profile/nicholas-warren)\ [@dissc]
+- Yale’s Library ["Using AI in Research”](https://library.yale.edu/help-and-research-support/research-support/using-ai-research) webpage\ [@yale_library]
+- [_AI-Assisted Programming - Better Planning, Coding, Testing, And Deployment_](https://link.springer.com/book/10.1007/978-1-4842-5028-0) by [Tom Taulli](https://www.linkedin.com/in/tomtaulli/?profileId=ACoAAAABLJ4BMM_RzZgfeQAZk_23snolJPtKNoU)\ [@taulli2024]
 
 
 ## Section Glossary
 
 <table class="glossary-table">
     <tbody>
-        <!-- Row 1 -->
+        <!-- Row 1 
         <tr>
             <td class="col1">Command-Line Interface (CLI)</td>
             <td>
               A texted-base application that directly interacts with the computer’s operating system, manages files, and can run programs. It typically lacks a GUI\ [@terminal_shell].
             </td>
-        </tr>
-        <!-- Row 2 -->
+        </tr> -->
+        <!-- Row 2 
         <tr>
             <td class="col1">Graphical User Interface (GUI)</td>
             <td>
               An interface that allows users to interact with computers through visual elements like buttons and menus\ [@gui].
             </td>
-        </tr>
+        </tr> -->
         <!-- Row 3 -->
         <tr>
             <td class="col1">Integrated Development Environment (IDE)</td>
@@ -209,13 +292,13 @@ Although there are numerous resources available on Git and GitHub, we have curat
               A software application that combines tools for editing, building, testing, and debugging code into a single, user-friendly interface\ [@ide].
             </td>
         </tr>
-        <!-- Row 4 -->
+        <!-- Row 4
         <tr>
             <td class="col1">Version Control</td>
             <td>
               Manage, organize, and track different versions of files. Identify differences between versions and allows reverting to older versions\ [@atlassian_video].
             </td>
-        </tr>
+        </tr> -->
     </tbody>
 </table>
 

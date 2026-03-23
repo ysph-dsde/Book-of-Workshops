@@ -825,12 +825,12 @@ smoking_status <- smoking_sub %>%
   select(-smq020, -smq040)
 
 # Confirm the correct attribute was applied
-smoking_sub %>%
+smoking_status %>%
   select(-seqn) %>%
   distinct()
 
 # Save the result
-write_csv(smoking_sub, file.path(getwd(), "Workshops/Code-Smarter-Not-Harder/Data", "Smoking Status.csv"))
+write_csv(smoking_status, file.path(getwd(), "Workshops/Code-Smarter-Not-Harder/Data", "Smoking Status.csv"))
 
 
 # -----------------------------
@@ -887,7 +887,7 @@ write_csv(demo_calc, file.path(getwd(), "Workshops/Code-Smarter-Not-Harder/Data"
 ## With all of our metrics calculated, we are ready to merge everything together
 ## for our analysis. This dataframe will be 
 
-df_merged <- demo_sub |>
+df_merged <- demo_calc |>
   left_join(smoking_status, by = c("seqn")) |>
   left_join(bmi, by = c("seqn")) |>
   left_join(physical_scores, by = c("seqn")) |>
@@ -981,9 +981,9 @@ table(
 
 
 df_filtered <- df_filtered |>
-  filter(!is.na(activity_level) | !is.na(MeDi))
+  filter(!is.na(activity_level) & !is.na(MeDi))
 
-# At this stage, we have filtered out about 800 more participants than the paper
+# At this stage, we have filtered out about 11000 more participants than the paper
 46132 - nrow(df_filtered)
 
 ## 6. Filter out missing PhenoAge values. Given that PhenoAge projections have 
@@ -997,9 +997,9 @@ table(
 )
 
 df_filtered <- df_filtered |>
-  filter(!is.na(phenoage_original) | !is.na(phenoage_modified))
+  filter(!is.na(phenoage_original) & !is.na(phenoage_modified))
 
-# At this stage, we have filtered out about 11,000 more participants than
+# At this stage, we have filtered out about 20,000 more participants than
 # the paper
 42625 - nrow(df_filtered)
 
