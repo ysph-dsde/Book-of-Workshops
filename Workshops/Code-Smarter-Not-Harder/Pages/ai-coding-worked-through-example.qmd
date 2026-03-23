@@ -99,17 +99,16 @@ Pre-processed dataset variables:
 :::{.callout-note collapse="true"}
 ## Raw Data and Preparation
 
-Much of the data preparation has been conducted in the background so this example can remain focused on AI-assisted coding techniques. If you want to review the complete data processing steps, along with links to the full data dictionary associated with the NHANES datasets used, see ["Code/Data Cleaning/Import and Compiling Continuous NHANES 1999 to 2018.R"](../Code/Data Cleaning/).
+Much of the data preparation has been conducted in the background so this example can remain focused on AI-assisted coding techniques. If you want to review the complete data processing steps, along with links to the full data dictionary associated with the NHANES datasets used, see ["Code/Data Cleaning/Import and Compiling Continuous NHANES 1999 to 2018.R"](https://github.com/ysph-dsde/Book-of-Workshops/tree/main/Workshops/Code-Smarter-Not-Harder/Code/Data%20Cleaning/).
 :::
 
-## Environment Set-Up
-
-First, we will load the necessary libraries and any special functions used in the script.
+## Put It Into Practice
 
 ```{r setup}
 #| message: FALSE
 #| warning: FALSE
 #| output: FALSE
+#| echo: false
 
 ## renv() will install all of the packages and their correct version used here.
 #renv::init()
@@ -132,7 +131,6 @@ suppressPackageStartupMessages({
 
 ```
 
-## Put It Into Practice
 
 The following three exercises walk you through a pre-prepared guided analysis plan aimed at replicating figures from Thomas et al. Some steps can get complex, so rather than focusing on developing the analysis yourself, we encourage you to explore how different foundational models and AI agents respond to your prompts.
 
