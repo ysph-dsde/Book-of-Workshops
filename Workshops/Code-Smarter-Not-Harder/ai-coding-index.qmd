@@ -24,8 +24,16 @@ We have prepared a script outline (with solutions) for the workshop’s hands-on
 
 Download the complete slide decks with annotations and the in-person workshop handouts. Comments have been saved in the bottom left corner of each slide, and references for this webpage are located in the **Appendix**.
 
+```{=html}
+
+<a href="Materials/Handout_AI Literacy.pdf">
+  <button class="btn"><i class="bi bi-download"></i>&nbsp AI Literacy Handout</button>
+</a>
+
+```
+
 :::{.callout-tip}
-## Coming Soon!
+## Slides Coming Soon!
 :::
 
 ## Accessing the Codespaces

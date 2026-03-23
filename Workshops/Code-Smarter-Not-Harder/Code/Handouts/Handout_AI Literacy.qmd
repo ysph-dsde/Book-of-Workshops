@@ -52,7 +52,7 @@ bibliography: references.bib
 csl: ../../../../Code/nature.csl
 ---
 
-> “The story of AI is an exhilarating saga of new programs and new hardware, yet it is also the story of a slow but steady acquisition of knowledge about how humans think.” – author\ [@crevier1993]
+> “The story of AI is an exhilarating saga of new programs and new hardware, yet it is also the story of a slow but steady acquisition of knowledge about how humans think.” – Daniel Crevier\ [@crevier1993]
 
 The concept of artificially begetting life and intelligence has ancient roots. Throughout most of human history, such creation was attributed to divine power or alchemical mysticism\ [@shashkevich_stanford_2019; @truitt_mitPress_2021; @mayor2018]. The Enlightenment and First Industrial Revolution marked a pivotal shift: an increasingly secularized society posited that the human body and mind were scientifically describable and replicable\ [@descarte; @kantosalo2021]. This transition laid the conceptual foundation for contemporary efforts to develop intelligence artificially through machines.
 
@@ -65,7 +65,7 @@ Amidst the humdrum and hype lies a story that reveals much about ourselves and a
 \newpage
 
 \begin{callout-discussion}[Discussion Question]
-Do we agree with the definitions for AI and Machine Learning recorded in The Code of Laws of the United States of America?
+What did Rosenblatt get right and wrong, how did his perspective shape AI, and do today's prominent figures still think this way?
 \end{callout-discussion}
 
 \begin{figure}[H]\captionsetup{format=hang}
@@ -130,7 +130,6 @@ Training approaches can take different forms, yet most stem from or are related 
 
 **Large Language Models (LLMs)** are generative AI models specialized for text generation. Popular foundation models include GPT, Gemini, Claude, and LLaMA—tools we'll use for code generation through chatbots or IDE integrations\ [@taulli2019; @ibm_llms].
 
-
 \begin{wrapfigure}{r}{0.60\textwidth}
   \includegraphics[width=9cm]{../../Images/Backpropagation and Feedforward ANN_By SaffronEdge.png}
   \captionsetup{justification=raggedright}
@@ -141,7 +140,7 @@ Training approaches can take different forms, yet most stem from or are related 
 
 **Neural networks** are loosely inspired by biological neurons, with mathematical units called perceptrons serving as their counterpart (Figure: \ref{ann})\ [@saffronedge_ann_2023]. Between each layer, signals are modified by weights (scaling importance) and biases (shifting importance), then passed through non-linear activation functions that determine what gets propagated to the next layer. This continues until a final activation function on the output layer generates the prediction $\hat{Y}$\ [@bishop2006; @ibm_neural_net; @forward_backpropagation_medium].
 
-The feedforward pass first processes signals from input to output, after which backpropagation works in reverse — efficiently identifying where weights and biases should be adjusted to minimize prediction error\ [@forward_backpropagation_medium; @ibm_neural_net]. Backpropagation uses
+The feedforward pass first processes signals from input to output, after which backpropagation works in reverse — efficiently identifying where weights and biases
 
 \begin{wrapfigure}{l}{0.6\textwidth}
   \vspace{-10pt}
@@ -149,10 +148,10 @@ The feedforward pass first processes signals from input to output, after which b
   \captionsetup{justification=raggedright}
   \caption{Modified version of Figure 5.1 (page 228) in \textit{Pattern Recognition and Machine Learning} by Christopher Bishop.}
   \label{simple_ann}
-  \vspace{-30pt}
+  \vspace{-55pt}
 \end{wrapfigure}
 
-the results of the feedforward process to optimize the model, generating gradient descents to find possible optimal solutions. Unlike some mathematical setups that guarantee a single optimal solution, this is not the case with neural networks\ [@bishop2006; @ibm_backpropagation].
+should be adjusted to minimize prediction error\ [@forward_backpropagation_medium; @ibm_neural_net]. Backpropagation uses the results of the feedforward process to optimize the model, generating gradient descents to find possible optimal solutions. Unlike some mathematical setups that guarantee a single optimal solution, this is not the case with neural networks\ [@bishop2006; @ibm_backpropagation].
 
 I'll illustrate the feedforward process with a simplified example from Bishop, leaving backpropagation for you to explore on your own\ [@bishop2006]. Consider the neural network in Figure \ref{simple_ann}, which has one hidden layer and two transformation layers\ [@bishop2006]. Reading from the input to output layer $i = 1, \dots, D$, $j = 1, \dots, M$, and $k = 1, \dots, K$ represent the unique perceptrons in each layer. The signal from the input layer $\left(x_1, \dots, x_D\right)$ gets weighted $\left(w^{(1)}_{ji}\right)$ and biased $\left(w^{(1)}_{j0}\right)$ to create $a_j$:
 \begin{align*}
