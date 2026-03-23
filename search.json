@@ -579,17 +579,6 @@
     ]
   },
   {
-    "objectID": "Workshops/Code-Smarter-Not-Harder/Pages/ai-coding-worked-through-example.html#environment-set-up",
-    "href": "Workshops/Code-Smarter-Not-Harder/Pages/ai-coding-worked-through-example.html#environment-set-up",
-    "title": "AI Assisted Coding Worked-Through Example",
-    "section": "Environment Set-Up",
-    "text": "Environment Set-Up\nFirst, we will load the necessary libraries and any special functions used in the script.\n\n## renv() will install all of the packages and their correct version used here.\n#renv::init()\nrenv::restore()\n\n## Load in the R packages used in this script from the project library.\nsuppressPackageStartupMessages({\n  library(\"nhanesdata\") # Access compiled NHANES data\n  library(\"readr\")      # For reading in the data\n  library(\"tidyr\")      # For tidying data \n  library(\"dplyr\")      # For data manipulation\n  library(\"stringr\")    # For string manipulation\n  library(\"ggplot2\")    # For creating static visualizations\n  library(\"gridExtra\")  # Format multiple plots together\n})\n\n\n## This function will check if an element is not in a vector.\n\"%!in%\" &lt;- function(x,y)!('%in%'(x,y))",
-    "crumbs": [
-      "Code Smarter, Not Harder: Unlocking AI-Assisted Coding",
-      "AI Assisted Coding Worked-Through Example"
-    ]
-  },
-  {
     "objectID": "Workshops/Code-Smarter-Not-Harder/Pages/ai-coding-worked-through-example.html#put-it-into-practice",
     "href": "Workshops/Code-Smarter-Not-Harder/Pages/ai-coding-worked-through-example.html#put-it-into-practice",
     "title": "AI Assisted Coding Worked-Through Example",
