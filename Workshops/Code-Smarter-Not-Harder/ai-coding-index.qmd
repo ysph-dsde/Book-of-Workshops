@@ -14,11 +14,13 @@ This material was authored by Shelby Golden, M.S. You can learn more about the i
 
 Over the course of the workshop chapter, we will take you through:
 
-- **Foundational AI Literacy:** Explain AI's evolution from Alan Turing to the modern day, distinguish between AI system types, and better articulate what AI is and isn't.
+- **Foundational AI Literacy:** Trace the long (and short) history of AI and its evolution from Alan Turing to the present day, distinguish between AI system types, and clarify what AI is — and isn't.
 - Understand the AI coding tool landscape, learn best practices for prompts and verification, and identify and navigate common pitfalls.
 - Replicate the results of a paper using [Yale's AI Clarity LLM](https://ai.yale.edu/yales-ai-tools-and-resources/clarity-platform) and Positron's native IDE assistant, practicing prompting, iteration, debugging, and comparing the systems.
 
-We have prepared a script outline (with solutions) for the workshop’s hands-on component. To use these materials, download the codebase and complete the setup steps. Participants will also need access to an LLM chatbot and the ability to configure an IDE-based AI assistant with a provider. Full setup instructions—including steps for enabling GitHub Copilot—are provided below under [Accessing the Codespaces](#accessing-the-codespaces).
+We have prepared a script outline (with solutions) for the workshop’s hands-on component. To use these materials, download the codebase and complete the setup steps. Participants will also need access to an LLM chatbot and the ability to configure an <span class="text-term" 
+  data-hover-text="A software application that combines tools for editing, building, testing, and debugging code into a single, user-friendly interface.">
+  Integrated Development Environment (IDE)</span> based AI assistant with a provider. Full setup instructions—including steps for enabling GitHub Copilot—are provided below under [Accessing the Codespaces](#accessing-the-codespaces).
 
 ## Slides and Handouts
 
@@ -26,23 +28,22 @@ Download the complete slide decks with annotations and the in-person workshop ha
 
 ```{=html}
 
+<a href="Materials/Main Slide Deck_Annotated_03.26.2026.pdf">
+  <button class="btn"><i class="bi bi-download"></i>&nbsp Annotated Slide Deck</button>
+</a>
+
 <a href="Materials/Handout_AI Literacy.pdf">
   <button class="btn"><i class="bi bi-download"></i>&nbsp AI Literacy Handout</button>
 </a>
 
 ```
 
-:::{.callout-tip}
-## Slides Coming Soon!
-:::
 
 ## Accessing the Codespaces
 
 We have prepared a script outline (with solutions) for the workshop’s hands-on component. To use these materials, download the codebase and complete the setup steps listed below. Participants will also need access to an LLM chatbot and the ability to configure an IDE-based AI assistant with a provider.
 
-If you haven't already, please ensure you have a current installation of [R](https://cran.r-project.org/) and the new [Positron](https://positron.posit.co/) <span class="text-term" 
-  data-hover-text="A software application that combines tools for editing, building, testing, and debugging code into a single, user-friendly interface.">
-  Integrated Development Environment (IDE) </span>, a VS Code-based text editor developed by the same team behind Posit (formerly RStudio)\ [@ide]. If this is your first time installing Positron or configuring the AI assistant, you will need to complete a few setup steps:
+If you haven't already, please ensure you have a current installation of [R](https://cran.r-project.org/) and the new [Positron](https://positron.posit.co/) IDE, a VS Code-based text editor developed by the same team behind Posit (formerly RStudio)\ [@ide]. If this is your first time installing Positron or configuring the AI assistant, you will need to complete a few setup steps:
 
 1. **OPTIONAL:** Log into your GitHub account through the Positron Accounts tab
 2. Enable the “Positron Assistant,” the IDE's integrated AI coding assistant
@@ -50,7 +51,7 @@ If you haven't already, please ensure you have a current installation of [R](htt
 
 Below are the full steps for configuring Positron with GitHub Copilot as your AI assistant. You are welcome to use any other supported provider, and for setup instructions for other compatible providers, refer to the Positron [Getting Started](https://positron.posit.co/assistant-getting-started.html) page. We recommend using GitHub Copilot as your provider, as it offers a free standard tier, a 30-day Pro trial, and free Pro access for qualifying faculty and students.
 
-To access the code for this workshop, you will need Git installed on your local device, a GitHub account, and both configured. If you have not set this up yet, please follow the instructions in [Configurations and Credentials](Pages/git-github-setup.html) first.
+This example also includes instructions for initializing a GitHub repository. Git and a GitHub account must be installed and configured beforehand. If you have not yet completed this setup, refer to [Configurations and Credentials](Pages/git-github-setup.html) first.
 
 ::: {.callout-important}
 ## Attribution and Ownership
@@ -273,6 +274,7 @@ This workshop only had so much time to cover the breadth of concepts we tackled.
 - Yale’s Data-Intensive Social Science Center (DISSC) ["Artificial Intelligence and Machine Learning for Social Science Research"](https://dissc.yale.edu/dissc-programs/artificial-intelligence-and-machine-learning) page for events and content lead by [Nick Warren](https://dissc.yale.edu/profile/nicholas-warren)\ [@dissc]
 - Yale’s Library ["Using AI in Research”](https://library.yale.edu/help-and-research-support/research-support/using-ai-research) webpage\ [@yale_library]
 - [_AI-Assisted Programming - Better Planning, Coding, Testing, And Deployment_](https://link.springer.com/book/10.1007/978-1-4842-5028-0) by [Tom Taulli](https://www.linkedin.com/in/tomtaulli/?profileId=ACoAAAABLJ4BMM_RzZgfeQAZk_23snolJPtKNoU)\ [@taulli2024]
+- [What is a recurrent neural network?](https://www.ibm.com/think/topics/recurrent-neural-networks) and [What is a transformer model?](https://www.ibm.com/think/topics/transformer-model) from IBM\ [@ibm_rnn; @ibm_transformer]
 
 
 ## Section Glossary

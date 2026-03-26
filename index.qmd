@@ -20,7 +20,7 @@ listing:
 
 ## Preface {.unnumbered}
 
-Yale's [Public Health Data Science and Data Equity (DSDE)](https://ysph.yale.edu/research/research-centers-and-initiatives/public-health-data-science-and-data-equity/) team hosts workshops, tutorials, and information sessions known as Coffee, Cookie and Coding $\left(C^3\right)$ Workshops. These sessions are designed to help Public Health and Biostatistics masters-level students at Yale effectively leverage computational tools and analytical methods in their educational and professional endeavors. While primarily intended for the Yale community, all are welcome and encouraged to attend and benefit from our offerings.
+Yale's [Public Health Data Science and Data Equity (DSDE)](https://ysph.yale.edu/research/research-centers-and-initiatives/public-health-data-science-and-data-equity/) team hosts workshops, tutorials, and information sessions known as Coffee, Cookies, and Coding $\left(C^3\right)$ Workshops. These sessions are designed to help Public Health and Biostatistics masters-level students at Yale effectively leverage computational tools and analytical methods in their educational and professional endeavors. While primarily intended for the Yale community, all are welcome and encouraged to attend and benefit from our offerings.
 
 You can find out more about past and upcoming work on our [website](https://ysph.yale.edu/public-health-research-and-practice/research-centers-and-initiatives/public-health-data-science-and-data-equity/events/). Additional tutorials will soon be available on our YouTube channel. If you are affiliated with Yale, you can set up an office hour appointment with one of our data scientists on our [Bookings Page](https://outlook.office365.com/book/DataScienceDataEquityOfficeHours@yale.edu/?ismsaljsauthenabled=true).
 
@@ -125,6 +125,34 @@ and
 </details>
 ```
 
+```{=html}
+<details class="session-details">
+  <summary>
+    <div class="summary-content">
+      <h2>Code Smarter, Not Harder: Unlocking AI-Assisted Coding</h2>
+      <span class="arrow">&gt;</span>
+    </div>
+  </summary>
+  
+  <p>Session materials, the interactive learning assignment codebase, and other related content are available in the <a href="Workshops/Code-Smarter-Not-Harder/ai-coding-index.qmd">Book of Workshops</a> chapter.
+  
+  <div class="instructors">
+    <h3>Instructor:</h3>
+    <ul>
+      <li><a href="https://ysph.yale.edu/profile/shelby-golden/">Shelby Golden, M.S.</a>, Data Scientist I</li>
+    </ul>
+  </div>
+
+  <div class="learning-goals">
+    <h3>Learning Goals:</h3>
+    <ul>
+      <li><strong>Foundational AI Literacy:</strong> Trace the long (and short) history of AI and its evolution from Alan Turing to the present day, distinguish between AI system types, and clarify what AI is — and isn't.</li>
+      <li>Understand the AI coding tool landscape, learn best practices for prompts and verification, and identify and navigate common pitfalls.</li>
+      <li>Replicate the results of a paper using <a href="https://ai.yale.edu/yales-ai-tools-and-resources/clarity-platform">Yale's AI Clarity LLM</a> and Positron's native IDE assistant, practicing prompting, iteration, debugging, and comparing the systems.</li>
+    </ul>
+  </div>
+</details>
+```
 
 ```{=html}
 <details class="session-details">

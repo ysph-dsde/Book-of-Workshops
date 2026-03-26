@@ -8,14 +8,27 @@ csl: ../../../Code/nature.csl
 
 ## The Art of Shrewd AI-Assisted Programming
 
-
-A common academic use case for AI-assisted coding is replicating published research. Some papers come with ready-to-run code that's easy to pick up, while others leave you hunting for clues without any code at all. A complete A-Z replication would take more time than we have in this workshop, but the provided example shows how AI-assisted coding can help you expedite your replication process.
+A common academic use case for AI-assisted coding is replicating published research. Some papers come with ready-to-run code that's easy to pick up, while others leave you hunting for clues without any code at all. A complete A-Z replication would take more time than we have in this workshop, but the provided example shows how <span class="text-term" data-hover-text="The use of AI tools to support software development tasks, such as generating, completing, explaining, or debugging code based on natural language prompts or existing code context. Reliance on AI for coding support exists on a spectrum, ranging from no use to full, unsupervised dependence." data-popup-width="320px">
+  AI-assisted coding
+</span>can help you expedite your replication process.
 
 Undoubtedly, integrating AI into your workflows can quicken your process, but it also has the potential to create new headaches or amplify problems that arise when quality checks are skipped. As a data scientist or analyst, it's essential to always scrutinize your data processing and cleaning methods to ensure accurate data preparation. For example, check that nomenclature is informative and consistent, confirm that NAs aren't standing in for zeros (or vice versa), and verify that subsetting, grouping, or processing are performed in the right order to produce your expected outcome.
 
 An AI is not going to be much help for you in this area—at least not reliably. You cannot expect it to completely or correctly identify all the data wrangling needed for a dataset, especially if your starting raw data is messy! Be especially careful when it suggests code that runs perfectly but doesn't actually do what you need. It may even produce results that kind of look right, but after further quality checking, you might discover it missed or miscalculated something important.
 
-The shrewd AI-assisted coder knows how to leverage AI's strengths while catching its inevitable mistakes; remeber you are the brains of the operation, not the AI. Whether you're coding with AI assistance or doing it alone, always take time to thoroughly review your data, prepare it into a complete tidy format, and run quality checks to verify your assumptions and calculations.
+```{=html}
+<figure style="float: center; position: relative; margin-top: 0.5em; margin-bottom: 0.5em;">
+  <img src="../Images/AI Coding Levels_from BCG Blog.png" alt="AI Coding Levels" style="margin-bottom: 1em;" width="100%">
+  
+  <figcaption style="text-align: left; margin-bottom: 1.5em;">
+    The Generative Engineering automation spectrum by <a href="https://www.bcg.com/x/the-multiplier/ai-assisted-coding-generative-engineering">Max Struever, Matthew Kropp, and Julie Bedard</a>. Accessed March 21<sup>st</sup>, 2026.
+  </figcaption>
+</figure>
+```
+
+The shrewd AI-assisted coder knows how to leverage AI's strengths while catching its inevitable mistakes; remeber you are the brains of the operation, not the AI. Whether you're coding with AI assistance or doing it alone, always take time to thoroughly review your data, prepare it into a complete tidy format, and run quality checks to verify your assumptions and calculations. Your goal is to stay within the L1–L3 AI reliance range and avoid over-relying on <span class="text-term" data-hover-text="An approach to software development where developers use natural language to describe what they want, and AI handles the technical implementation — requiring little to no coding knowledge. While fast, it risks errors, security issues, and unreliable software, and is not recommended when the goal is a working, production-ready product." data-popup-width="320px">
+  vibe coding
+</span>\ [@anthropic_study; @ai_assistance_scale; @best_practices].
 
 If you would like guidance on how to best prepare your data into a complete tidy format, review concepts of data wrangling, tidy data structures, and best practices for data inclusion and exclusion in our ["Introduction to Programming in R and Data Wrangling with `tidyverse`"](../../Intro-to-Programming-in-R/Pages/programming-r-worked-through-example.html) workshop.
 
@@ -132,24 +145,38 @@ suppressPackageStartupMessages({
 ```
 
 
-The following three exercises walk you through a pre-prepared guided analysis plan aimed at replicating figures from Thomas et al. Some steps can get complex, so rather than focusing on developing the analysis yourself, we encourage you to explore how different foundational models and AI agents respond to your prompts.
+The following three exercises walk you through a pre-prepared guided analysis aimed at replicating figures from Thomas et al. If you have not already done so, download the pre-prepared codespace and configure your device with Positron and a coding assistant provider: [Accessing the Codespace](../ai-coding-index.html#accessing-the-codespaces). As some steps can be complex, rather than developing the analysis independently, we encourage you to explore how different foundational models and AI agents respond to your prompts.
 
 As you go through each exercise, keep these approaches in mind:
 
-- Move from broad to specific prompts, starting with something like "Generate `ggplot2` code that will plot this screenshot of a figure from a paper" to something like "Plot `df` with `x = activity_MeDi`, `y = mean_adv`, and `color = activity_level`. Facet wrap over `age_group` and relabel the x-axis with `rep(c("Low", "Moderate", "High"), times = 4)`."
-- Solve the same problem using [Yale's AI Clarity](https://ai.yale.edu/yales-ai-tools-and-resources/clarity-platform) chatbot and GitHub Copilot in Positron, then compare the results
-- Test different foundational models (i.e. GPT, Claude, Gemini) to see how each performs
+i. Move from broad to specific prompts, starting with something like "Generate `ggplot2` code that will plot this screenshot of a figure from a paper" to something like "Plot `df` with `x = activity_MeDi`, `y = mean_adv`, and `color = activity_level`. Facet wrap over `age_group` and relabel the x-axis with `rep(c("Low", "Moderate", "High"), times = 4)`."
 
-Take a moment to discuss with your neighbor:
+ii. Solve the same problem using [Yale's AI Clarity](https://ai.yale.edu/yales-ai-tools-and-resources/clarity-platform) chatbot and GitHub Copilot in Positron, then compare the results
 
-- Were the prompts you used in Yale's AI Clarity chatbot effective in the Positron Assistant, and vice versa?
-- Which tool needed more context to give useful responses?
+iii. Test different foundational models (i.e. GPT, Claude, Gemini) to see how each performs
+
+Take a moment to ask yourself or discuss with your neighbor:
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- Were the prompts effective across both Yale's AI Clarity and the Positron Assistant, or did they need adjustment between tools?
+- Which tool required more context to produce useful responses?
 - At what point did your prompts become too vague for the Positron Assistant?
-- Do different models tend to answer questions similarly, or do their responses differ meaningfully?
-- How much back-and-forth was typically needed to fully solve a problem?
-- How often did you have to step in to troubleshoot something the AI couldn't handle?
-- When asking the AI to explain code or provide analysis guidance, how relevant and accurate were its responses?
-- How often did you feel unequipped to judge whether a chatbot's response was correct?
+- Did different models tend to respond similarly, or were there meaningful differences?
+:::
+
+::: {.column width="50%"}
+- How much back-and-forth and refactoring was typically needed to fully resolve a problem?
+- How often did you need to intervene on something the AI could not handle?
+- When asking the AI to explain code or guide analysis, how relevant and accurate were its responses?
+- How often did you feel unequipped to evaluate whether a response was correct?
+
+
+:::
+
+::::
 
 ### Mediterranean Diet Scoring
 
@@ -244,15 +271,21 @@ A few example responses are included for those who may lack access to an alterna
 
 I asked Yale's AI Clarity - ChatGPT 5.2:
 
-:::{style="margin-left: 2rem"}
+<div style="margin-left: 2rem">
+***
+
 "My data has a variable, ridageyr, that represents participants age on a continuous scale. I want to group the ages into "[20,40)", "[40,60)", "[60,+)". Help me do this in R."
-:::
 
-This question used approximately 2,772 tokens. Tokens are the basic text units a model uses to process language — whole words, word parts, or punctuation — and in English, one token averages roughly 3–4 characters. Token counts matter because they determine context-length limits, factor into API billing, and generally affect processing and generation speed.
+***
+</div>
 
-The model's response for 296 tokens was:
+This question used approximately 2,772 <span class="text-term" data-hover-text="Tokens are the basic text units — whole words, word parts, or punctuation — that an AI language model uses to process and generate language. In English, one token averages roughly 3–4 characters. Tokenization is simply the process of breaking input text into these units before the model processes it. Token counts matter because they determine a model's context-length limit, drive API billing costs, and affect processing and generation speed." data-popup-width="320px">
+  tokens
+</span>. The model's response for 296 tokens was:
 
-:::{style="margin-left: 2rem"}
+<div style="margin-left: 2rem">
+***
+
 You can do this cleanly with cut() (base R) or dplyr::case_when().
 
 **Base R (cut)**
@@ -303,7 +336,8 @@ To check:
 table(df$age_group, useNA = "ifany")
 ```
 
-:::
+***
+</div>
 
 ```{r}
 #| message: FALSE
@@ -542,13 +576,19 @@ grid.arrange(
 
 Using a screenshot of Figure 2c from the paper, the following question was posed to Yale's AI Clarity — ChatGPT 5.2:
 
-:::{style="margin-left: 2rem"}
+
+<div style="margin-left: 2rem">
+***
+
 "Using this screenshot, please outline the ggplot expression that would generate that image."
-:::
+
+***
+</div>
 
 This question used approximately 4368 tokens. The model's response for 360 tokens was:
 
-:::{style="margin-left: 2rem"}
+<div style="margin-left: 2rem">
+***
 
 ```{r filename="r"}
 #| message: FALSE
@@ -588,11 +628,13 @@ ggplot(df, aes(x = medi_adherence, y = estimate, colour = ltpa_level)) +
 
 (Assumes df has: medi_adherence = Low/Moderate/High; ltpa_level = Sedentary/Low/Moderate/High; estimate, conf.low, conf.high.)
 
-:::
+***
+</div>
 
 I next asked:
 
-:::{style="margin-left: 2rem"}
+<div style="margin-left: 2rem">
+***
 
 "Using the following table, make the plot use `geom_point` with a 95% confidence interval. The x-axis is `activity_MeDi` and the y-axus is `advancement_modified_std` while the plotted values are color coded by `activity_level`."
 
@@ -617,11 +659,13 @@ df |> select(activity_MeDi, activity_level, advancement_modified_std)
 10 Low - Moderate      Low                             -0.565 
 ```
 
-:::
+***
+</div>
 
 This question used approximately 4,048 tokens. The model's 275-token response, along with the plot it's suggested code generated, is shown below.
 
-:::{style="margin-left: 2rem"}
+<div style="margin-left: 2rem">
+***
 
 ```{r filename="r"}
 #| fig-width: 8
@@ -656,7 +700,37 @@ ggplot(sum_df, aes(x = activity_MeDi, y = mean, colour = activity_level)) +
   theme_classic()
 ```
 
-:::
+***
+</div>
+
+## Section Glossary
+
+<table class="glossary-table">
+    <tbody>
+        <!-- Row 1 -->
+        <tr>
+            <td class="col1">AI-Assisted Coding</td>
+            <td>
+              The use of AI tools to support software development tasks, such as generating, completing, explaining, or debugging code based on natural language prompts or existing code context. Reliance on AI for coding support exists on a spectrum, ranging from no use to full, unsupervised dependence\ [@ai_assistance_scale; @taulli2024].
+            </td>
+        </tr>
+        <!-- Row 2 -->
+        <tr>
+            <td class="col1">Tokens, Tokenization</td>
+            <td>
+              Tokens are the basic text units — whole words, word parts, or punctuation — that an AI language model uses to process and generate language. In English, one token averages roughly 3–4 characters. Tokenization is simply the process of breaking input text into these units before the model processes it. Token counts matter because they determine a model's context-length limit, drive API billing costs, and affect processing and generation speed\ [@llm_tokens].
+            </td>
+        </tr>
+        <!-- Row 23-->
+        <tr>
+            <td class="col1">Vibe Coding</td>
+            <td>
+              An approach to software development where developers use natural language to describe what they want, and AI handles the technical implementation — requiring little to no coding knowledge. While fast, it risks errors, security issues, and unreliable software, and is not recommended when the goal is a working, production-ready product\ [@best_practices].
+            </td>
+        </tr>
+    </tbody>
+</table>
+
 
 ## References
 
