@@ -580,45 +580,36 @@ div.csl-indent {
 <h2 class="anchored" data-anchor-id="workshop-learning-goals">Workshop Learning Goals</h2>
 <p>Over the course of the workshop chapter, we will take you through:</p>
 <ul>
-<li><strong>Foundational AI Literacy:</strong> Explain AI’s evolution from Alan Turing to the modern day, distinguish between AI system types, and better articulate what AI is and isn’t.</li>
+<li><strong>Foundational AI Literacy:</strong> Trace the long (and short) history of AI and its evolution from Alan Turing to the present day, distinguish between AI system types, and clarify what AI is — and isn’t.</li>
 <li>Understand the AI coding tool landscape, learn best practices for prompts and verification, and identify and navigate common pitfalls.</li>
 <li>Replicate the results of a paper using <a href="https://ai.yale.edu/yales-ai-tools-and-resources/clarity-platform">Yale’s AI Clarity LLM</a> and Positron’s native IDE assistant, practicing prompting, iteration, debugging, and comparing the systems.</li>
 </ul>
-<p>We have prepared a script outline (with solutions) for the workshop’s hands-on component. To use these materials, download the codebase and complete the setup steps. Participants will also need access to an LLM chatbot and the ability to configure an IDE-based AI assistant with a provider. Full setup instructions—including steps for enabling GitHub Copilot—are provided below under <a href="#accessing-the-codespaces">Accessing the Codespaces</a>.</p>
+<p>We have prepared a script outline (with solutions) for the workshop’s hands-on component. To use these materials, download the codebase and complete the setup steps. Participants will also need access to an LLM chatbot and the ability to configure an <span class="text-term" data-hover-text="A software application that combines tools for editing, building, testing, and debugging code into a single, user-friendly interface."> Integrated Development Environment (IDE)</span> based AI assistant with a provider. Full setup instructions—including steps for enabling GitHub Copilot—are provided below under <a href="#accessing-the-codespaces">Accessing the Codespaces</a>.</p>
 </section>
 <section id="slides-and-handouts" class="level2">
 <h2 class="anchored" data-anchor-id="slides-and-handouts">Slides and Handouts</h2>
 <p>Download the complete slide decks with annotations and the in-person workshop handouts. Comments have been saved in the bottom left corner of each slide, and references for this webpage are located in the <strong>Appendix</strong>.</p>
 
+<a href="Materials/Main Slide Deck_Annotated_03.26.2026.pdf">
+  <button class="btn"><i class="bi bi-download"></i>&nbsp; Annotated Slide Deck</button>
+</a>
+
 <a href="Materials/Handout_AI Literacy.pdf">
   <button class="btn"><i class="bi bi-download"></i>&nbsp; AI Literacy Handout</button>
 </a>
 
-<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Slides Coming Soon!
-</div>
-</div>
-<div class="callout-body-container callout-body">
-
-</div>
-</div>
 </section>
 <section id="accessing-the-codespaces" class="level2">
 <h2 class="anchored" data-anchor-id="accessing-the-codespaces">Accessing the Codespaces</h2>
 <p>We have prepared a script outline (with solutions) for the workshop’s hands-on component. To use these materials, download the codebase and complete the setup steps listed below. Participants will also need access to an LLM chatbot and the ability to configure an IDE-based AI assistant with a provider.</p>
-<p>If you haven’t already, please ensure you have a current installation of <a href="https://cran.r-project.org/">R</a> and the new <a href="https://positron.posit.co/">Positron</a> <span class="text-term" data-hover-text="A software application that combines tools for editing, building, testing, and debugging code into a single, user-friendly interface."> Integrated Development Environment (IDE) </span>, a VS Code-based text editor developed by the same team behind Posit (formerly RStudio)&nbsp;<span class="citation" data-cites="ide"><sup><a href="#ref-ide" role="doc-biblioref">1</a></sup></span>. If this is your first time installing Positron or configuring the AI assistant, you will need to complete a few setup steps:</p>
+<p>If you haven’t already, please ensure you have a current installation of <a href="https://cran.r-project.org/">R</a> and the new <a href="https://positron.posit.co/">Positron</a> IDE, a VS Code-based text editor developed by the same team behind Posit (formerly RStudio)&nbsp;<span class="citation" data-cites="ide"><sup><a href="#ref-ide" role="doc-biblioref">1</a></sup></span>. If this is your first time installing Positron or configuring the AI assistant, you will need to complete a few setup steps:</p>
 <ol type="1">
 <li><strong>OPTIONAL:</strong> Log into your GitHub account through the Positron Accounts tab</li>
 <li>Enable the “Positron Assistant,” the IDE’s integrated AI coding assistant</li>
 <li>Connect the “Positron Assistant” to a provider of your choice (e.g., Anthropic, Amazon Bedrock, GitHub Copilot)</li>
 </ol>
 <p>Below are the full steps for configuring Positron with GitHub Copilot as your AI assistant. You are welcome to use any other supported provider, and for setup instructions for other compatible providers, refer to the Positron <a href="https://positron.posit.co/assistant-getting-started.html">Getting Started</a> page. We recommend using GitHub Copilot as your provider, as it offers a free standard tier, a 30-day Pro trial, and free Pro access for qualifying faculty and students.</p>
-<p>To access the code for this workshop, you will need Git installed on your local device, a GitHub account, and both configured. If you have not set this up yet, please follow the instructions in <a href="Pages/git-github-setup.html">Configurations and Credentials</a> first.</p>
+<p>This example also includes instructions for initializing a GitHub repository. Git and a GitHub account must be installed and configured beforehand. If you have not yet completed this setup, refer to <a href="Pages/git-github-setup.html">Configurations and Credentials</a> first.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -633,7 +624,7 @@ div.csl-indent {
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -642,7 +633,7 @@ div.csl-indent {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>This workshop was created using R (v 4.5.2) in the Positron IDE (v 2026.03.0 build 212). The <code>renv()</code> package (v 1.1.7) is included to reproduce the same coding environment, ensuring all relevant packages and package versions are stored. If you encounter issues running the scripts, please check that the environment is initialized and that you are using the same versions of R and Positron.</p>
 </div>
@@ -855,7 +846,7 @@ Warning
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -864,7 +855,7 @@ Warning
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Much of the data preparation has been conducted in the background so this example can remain focused on AI-assisted coding techniques. If you want to review the complete data processing steps, along with links to the full data dictionary associated with the NHANES datasets used, see <a href="../Code/Data Cleaning/">“Code/Data Cleaning/Import and Compiling Continuous NHANES 1999 to 2018.R”</a>.</p>
 </div>
@@ -892,6 +883,7 @@ Warning
 <li>Yale’s Data-Intensive Social Science Center (DISSC) <a href="https://dissc.yale.edu/dissc-programs/artificial-intelligence-and-machine-learning">“Artificial Intelligence and Machine Learning for Social Science Research”</a> page for events and content lead by <a href="https://dissc.yale.edu/profile/nicholas-warren">Nick Warren</a>&nbsp;<span class="citation" data-cites="dissc"><sup><a href="#ref-dissc" role="doc-biblioref">16</a></sup></span></li>
 <li>Yale’s Library <a href="https://library.yale.edu/help-and-research-support/research-support/using-ai-research">“Using AI in Research”</a> webpage&nbsp;<span class="citation" data-cites="yale_library"><sup><a href="#ref-yale_library" role="doc-biblioref">24</a></sup></span></li>
 <li><a href="https://link.springer.com/book/10.1007/978-1-4842-5028-0"><em>AI-Assisted Programming - Better Planning, Coding, Testing, And Deployment</em></a> by <a href="https://www.linkedin.com/in/tomtaulli/?profileId=ACoAAAABLJ4BMM_RzZgfeQAZk_23snolJPtKNoU">Tom Taulli</a>&nbsp;<span class="citation" data-cites="taulli2024"><sup><a href="#ref-taulli2024" role="doc-biblioref">25</a></sup></span></li>
+<li><a href="https://www.ibm.com/think/topics/recurrent-neural-networks">What is a recurrent neural network?</a> and <a href="https://www.ibm.com/think/topics/transformer-model">What is a transformer model?</a> from IBM&nbsp;<span class="citation" data-cites="ibm_rnn ibm_transformer"><sup><a href="#ref-ibm_rnn" role="doc-biblioref">26</a>,<a href="#ref-ibm_transformer" role="doc-biblioref">27</a></sup></span></li>
 </ul>
 </section>
 </section>
@@ -1010,6 +1002,12 @@ A software application that combines tools for editing, building, testing, and d
 </div>
 <div id="ref-taulli2024" class="csl-entry" role="listitem">
 <div class="csl-left-margin">25. </div><div class="csl-right-inline">Tom Taulli. <em><a href="https://research.ebsco.com/c/rkfpff/ebook-viewer/pdf/afemdntevz/page/pp_18"><span>AI</span>-Assisted Programming - Better Planning, Coding, Testing, and Deployment</a></em>. (O’Reilly Media, Sebastopol, <span>CA</span>, 2024).</div>
+</div>
+<div id="ref-ibm_rnn" class="csl-entry" role="listitem">
+<div class="csl-left-margin">26. </div><div class="csl-right-inline">Cole Stryker. What is a recurrent neural network (<span>RNN</span>)? <span>IBM</span> think topics. <a href="https://www.ibm.com/think/topics/recurrent-neural-networks">https://www.ibm.com/think/topics/recurrent-neural-networks</a> (2021).</div>
+</div>
+<div id="ref-ibm_transformer" class="csl-entry" role="listitem">
+<div class="csl-left-margin">27. </div><div class="csl-right-inline">Dave Bergmann &amp; Cole Stryker. What is a transformer model? <span>IBM</span> think topics. <a href="https://www.ibm.com/think/topics/transformer-model">https://www.ibm.com/think/topics/transformer-model</a> (2025).</div>
 </div>
 </div>
 </section>

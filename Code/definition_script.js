@@ -31,6 +31,11 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Use innerHTML to set the content of the popup from the data-hover-text attribute of the span
         popup.innerHTML = span.getAttribute('data-hover-text');
+
+        // Override max-width if data-popup-width is specified
+        if (span.dataset.popupWidth) {
+            popup.style.maxWidth = span.dataset.popupWidth;
+        }
         
         // Append the created popup element to the span
         span.appendChild(popup);

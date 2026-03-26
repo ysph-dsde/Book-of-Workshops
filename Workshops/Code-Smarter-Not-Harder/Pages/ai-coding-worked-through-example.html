@@ -512,6 +512,7 @@ div.csl-indent {
   <li><a href="#summary-statistics" id="toc-summary-statistics" class="nav-link" data-scroll-target="#summary-statistics">Summary Statistics</a></li>
   <li><a href="#plot-generation" id="toc-plot-generation" class="nav-link" data-scroll-target="#plot-generation">Plot Generation</a></li>
   </ul></li>
+  <li><a href="#section-glossary" id="toc-section-glossary" class="nav-link" data-scroll-target="#section-glossary">Section Glossary</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/ysph-dsde/Book-of-Workshops/edit/main/Workshops/Code-Smarter-Not-Harder/Pages/ai-coding-worked-through-example.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
@@ -541,10 +542,17 @@ div.csl-indent {
 
 <section id="the-art-of-shrewd-ai-assisted-programming" class="level2">
 <h2 class="anchored" data-anchor-id="the-art-of-shrewd-ai-assisted-programming">The Art of Shrewd AI-Assisted Programming</h2>
-<p>A common academic use case for AI-assisted coding is replicating published research. Some papers come with ready-to-run code that’s easy to pick up, while others leave you hunting for clues without any code at all. A complete A-Z replication would take more time than we have in this workshop, but the provided example shows how AI-assisted coding can help you expedite your replication process.</p>
+<p>A common academic use case for AI-assisted coding is replicating published research. Some papers come with ready-to-run code that’s easy to pick up, while others leave you hunting for clues without any code at all. A complete A-Z replication would take more time than we have in this workshop, but the provided example shows how <span class="text-term" data-hover-text="The use of AI tools to support software development tasks, such as generating, completing, explaining, or debugging code based on natural language prompts or existing code context. Reliance on AI for coding support exists on a spectrum, ranging from no use to full, unsupervised dependence." data-popup-width="320px"> AI-assisted coding </span>can help you expedite your replication process.</p>
 <p>Undoubtedly, integrating AI into your workflows can quicken your process, but it also has the potential to create new headaches or amplify problems that arise when quality checks are skipped. As a data scientist or analyst, it’s essential to always scrutinize your data processing and cleaning methods to ensure accurate data preparation. For example, check that nomenclature is informative and consistent, confirm that NAs aren’t standing in for zeros (or vice versa), and verify that subsetting, grouping, or processing are performed in the right order to produce your expected outcome.</p>
 <p>An AI is not going to be much help for you in this area—at least not reliably. You cannot expect it to completely or correctly identify all the data wrangling needed for a dataset, especially if your starting raw data is messy! Be especially careful when it suggests code that runs perfectly but doesn’t actually do what you need. It may even produce results that kind of look right, but after further quality checking, you might discover it missed or miscalculated something important.</p>
-<p>The shrewd AI-assisted coder knows how to leverage AI’s strengths while catching its inevitable mistakes; remeber you are the brains of the operation, not the AI. Whether you’re coding with AI assistance or doing it alone, always take time to thoroughly review your data, prepare it into a complete tidy format, and run quality checks to verify your assumptions and calculations.</p>
+<figure style="float: center; position: relative; margin-top: 0.5em; margin-bottom: 0.5em;" class="figure">
+  <img src="../Images/AI Coding Levels_from BCG Blog.png" alt="AI Coding Levels" style="margin-bottom: 1em;" width="100%" class="figure-img">
+  
+  <figcaption style="text-align: left; margin-bottom: 1.5em;">
+    The Generative Engineering automation spectrum by <a href="https://www.bcg.com/x/the-multiplier/ai-assisted-coding-generative-engineering">Max Struever, Matthew Kropp, and Julie Bedard</a>. Accessed March 21<sup>st</sup>, 2026.
+  </figcaption>
+</figure>
+<p>The shrewd AI-assisted coder knows how to leverage AI’s strengths while catching its inevitable mistakes; remeber you are the brains of the operation, not the AI. Whether you’re coding with AI assistance or doing it alone, always take time to thoroughly review your data, prepare it into a complete tidy format, and run quality checks to verify your assumptions and calculations. Your goal is to stay within the L1–L3 AI reliance range and avoid over-relying on <span class="text-term" data-hover-text="An approach to software development where developers use natural language to describe what they want, and AI handles the technical implementation — requiring little to no coding knowledge. While fast, it risks errors, security issues, and unreliable software, and is not recommended when the goal is a working, production-ready product." data-popup-width="320px"> vibe coding </span>&nbsp;<span class="citation" data-cites="anthropic_study ai_assistance_scale best_practices"><sup><a href="#ref-anthropic_study" role="doc-biblioref">1</a>–<a href="#ref-best_practices" role="doc-biblioref">3</a></sup></span>.</p>
 <p>If you would like guidance on how to best prepare your data into a complete tidy format, review concepts of data wrangling, tidy data structures, and best practices for data inclusion and exclusion in our <a href="../../Intro-to-Programming-in-R/Pages/programming-r-worked-through-example.html">“Introduction to Programming in R and Data Wrangling with <code>tidyverse</code>”</a> workshop.</p>
 </section>
 <section id="paper-in-focus-study-context-data-description-and-replication-plan" class="level2">
@@ -557,12 +565,12 @@ div.csl-indent {
 </figure>
 </div>
 </div>
-<p>In this example, we aim to reproduce selected summary statistics and figures from Thomas et al.&nbsp;(2023), <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10460553/">“Healthy Lifestyle Behaviors and Biological Aging in the U.S. National Health and Nutrition Examination Surveys, 1999–2018”</a>&nbsp;<span class="citation" data-cites="thomas2023"><sup><a href="#ref-thomas2023" role="doc-biblioref">1</a></sup></span>. Specifically, we want to recreate plots like the one shown on the left, which depicts the associations of Mediterranean diet adherence and physical activity with PhenoAge advancement.</p>
-<p>Thomas et al.&nbsp;investigated whether healthier lifestyle behaviors are associated with more favorable epigenetic markers of aging, drawing on the prevailing concensus that diet quality and physical activity are linked to reduced chronic disease risk and increased longevity. Aging is accompanied by measurable molecular changes, including increases in DNA methylation (DNAm), increased inflammation, and diminished cellular stress- and damage-response capacity&nbsp;<span class="citation" data-cites="maslov2009 rutledge2022"><sup><a href="#ref-maslov2009" role="doc-biblioref">2</a>,<a href="#ref-rutledge2022" role="doc-biblioref">3</a></sup></span>. Rather than implementing a prospective longitudinal design, the authors adopted a cross-sectional strategy that estimates biological age via a machine-learning model trained to predict individuals’ biological age from epigenetic biomarkers measured at the time of assessment.</p>
+<p>In this example, we aim to reproduce selected summary statistics and figures from Thomas et al.&nbsp;(2023), <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10460553/">“Healthy Lifestyle Behaviors and Biological Aging in the U.S. National Health and Nutrition Examination Surveys, 1999–2018”</a>&nbsp;<span class="citation" data-cites="thomas2023"><sup><a href="#ref-thomas2023" role="doc-biblioref">4</a></sup></span>. Specifically, we want to recreate plots like the one shown on the left, which depicts the associations of Mediterranean diet adherence and physical activity with PhenoAge advancement.</p>
+<p>Thomas et al.&nbsp;investigated whether healthier lifestyle behaviors are associated with more favorable epigenetic markers of aging, drawing on the prevailing concensus that diet quality and physical activity are linked to reduced chronic disease risk and increased longevity. Aging is accompanied by measurable molecular changes, including increases in DNA methylation (DNAm), increased inflammation, and diminished cellular stress- and damage-response capacity&nbsp;<span class="citation" data-cites="maslov2009 rutledge2022"><sup><a href="#ref-maslov2009" role="doc-biblioref">5</a>,<a href="#ref-rutledge2022" role="doc-biblioref">6</a></sup></span>. Rather than implementing a prospective longitudinal design, the authors adopted a cross-sectional strategy that estimates biological age via a machine-learning model trained to predict individuals’ biological age from epigenetic biomarkers measured at the time of assessment.</p>
 <p>We do not attempt to evaluate the validity of the study’s design choices. For instance, it is not obvious that a single 24-hour dietary recall collected during an NHANES visit provides a reliable proxy for long-run dietary patterns. Consequentially, biomarker measurements taken at a single time point—without information on participants’ cumulative history of diet and physical activity—could plausibly bias estimated associations. Instead, our focus is narrower: we examine whether the age-stratified panels in Figure 3 might be influenced by compositional differences across age groups, such as uneven distributions of sex or BMI.</p>
 <section id="data-source-considerations" class="level3">
 <h3 class="anchored" data-anchor-id="data-source-considerations">Data Source Considerations</h3>
-<p>This paper used the Continuous <a href="https://www.cdc.gov/nchs/nhanes/index.html">National Health and Nutrition Examination Survey (NHANES)</a> dataset, which provides information on participants’ eating and exercise habits, anthropometric measurements, and lab results&nbsp;<span class="citation" data-cites="nhanes_home"><sup><a href="#ref-nhanes_home" role="doc-biblioref">4</a></sup></span>. The continuous series was launched in 1999 and has been conducted biennially since then. NHANES is a cross-sectional study that uses a stratified, multistage, probability-clustered sample of approximately 5,000 participants from 15 counties and includes sampling weights to generate nationally representative estimates&nbsp;<span class="citation" data-cites="nhanes_analyses_datasets nhanes_analyses_guides thomas2023"><sup><a href="#ref-thomas2023" role="doc-biblioref">1</a>,<a href="#ref-nhanes_analyses_datasets" role="doc-biblioref">5</a>,<a href="#ref-nhanes_analyses_guides" role="doc-biblioref">6</a></sup></span>. The authors applied the PhenoAge algorithm to predict participants’ biological age using the “Levine Original” formula (9 biomarkers) from the <code>BioAge</code> R package, which was trained on NHANES-III data (collected 1988–94): package <a href="https://link.springer.com/article/10.1007/s11357-021-00480-5">paper</a> and <a href="https://github.com/dayoonkwon/BioAge">documentation</a>&nbsp;<span class="citation" data-cites="kwon2021 bioage_github levine2018"><sup><a href="#ref-kwon2021" role="doc-biblioref">7</a>–<a href="#ref-levine2018" role="doc-biblioref">9</a></sup></span>.</p>
+<p>This paper used the Continuous <a href="https://www.cdc.gov/nchs/nhanes/index.html">National Health and Nutrition Examination Survey (NHANES)</a> dataset, which provides information on participants’ eating and exercise habits, anthropometric measurements, and lab results&nbsp;<span class="citation" data-cites="nhanes_home"><sup><a href="#ref-nhanes_home" role="doc-biblioref">7</a></sup></span>. The continuous series was launched in 1999 and has been conducted biennially since then. NHANES is a cross-sectional study that uses a stratified, multistage, probability-clustered sample of approximately 5,000 participants from 15 counties and includes sampling weights to generate nationally representative estimates&nbsp;<span class="citation" data-cites="nhanes_analyses_datasets nhanes_analyses_guides thomas2023"><sup><a href="#ref-thomas2023" role="doc-biblioref">4</a>,<a href="#ref-nhanes_analyses_datasets" role="doc-biblioref">8</a>,<a href="#ref-nhanes_analyses_guides" role="doc-biblioref">9</a></sup></span>. The authors applied the PhenoAge algorithm to predict participants’ biological age using the “Levine Original” formula (9 biomarkers) from the <code>BioAge</code> R package, which was trained on NHANES-III data (collected 1988–94): package <a href="https://link.springer.com/article/10.1007/s11357-021-00480-5">paper</a> and <a href="https://github.com/dayoonkwon/BioAge">documentation</a>&nbsp;<span class="citation" data-cites="kwon2021 bioage_github levine2018"><sup><a href="#ref-kwon2021" role="doc-biblioref">10</a>–<a href="#ref-levine2018" role="doc-biblioref">12</a></sup></span>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -579,7 +587,7 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>Based on the methods section, the paper implies the use of sample weights to generate national estimates. Weight selection varies depending on which data files you’re combining, and weighted datasets require survey-specific functions for analysis (e.g., <code>svyglm</code> instead of <code>glm</code>)&nbsp;<span class="citation" data-cites="nhanes_analyses_weighting ucla_survey kyle_suvey"><sup><a href="#ref-nhanes_analyses_weighting" role="doc-biblioref">10</a>–<a href="#ref-kyle_suvey" role="doc-biblioref">12</a></sup></span>. However, the <code>BioAge</code> R package doesn’t appear to use weighted NHANES-III data when training the PhenoAge model. For consistency and simplicity, we’ll skip the weights in this example and focus on participant-level results instead.</p>
+<p>Based on the methods section, the paper implies the use of sample weights to generate national estimates. Weight selection varies depending on which data files you’re combining, and weighted datasets require survey-specific functions for analysis (e.g., <code>svyglm</code> instead of <code>glm</code>)&nbsp;<span class="citation" data-cites="nhanes_analyses_weighting ucla_survey kyle_suvey"><sup><a href="#ref-nhanes_analyses_weighting" role="doc-biblioref">13</a>–<a href="#ref-kyle_suvey" role="doc-biblioref">15</a></sup></span>. However, the <code>BioAge</code> R package doesn’t appear to use weighted NHANES-III data when training the PhenoAge model. For consistency and simplicity, we’ll skip the weights in this example and focus on participant-level results instead.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -598,15 +606,15 @@ Warning
 <h3 class="anchored" data-anchor-id="data-dictionary">Data Dictionary</h3>
 <p>Understanding what each variable represents and its associated method specifics is essential. This publication draws on seven NHANES datasets that were combined to compile the data:</p>
 <ul>
-<li>Demographic Variables &amp; Sample Weights (DEMO) (<a href="https://wwwn.cdc.gov/nchs/data/nhanes/public/1999/datafiles/DEMO.htm#DMDMARTL">codebook</a>)&nbsp;<span class="citation" data-cites="codebook_demo"><sup><a href="#ref-codebook_demo" role="doc-biblioref">13</a></sup></span></li>
-<li>Dietary Interview - Individual Foods, First Day (DR1IFF_L) (<a href="https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DR1IFF_L.htm#DR1IKCAL">codebook</a>)&nbsp;<span class="citation" data-cites="codebook_diet_day1"><sup><a href="#ref-codebook_diet_day1" role="doc-biblioref">14</a></sup></span></li>
-<li>Dietary Interview - Individual Foods, Second Day (DR2IFF_L) (<a href="https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DR2IFF_L.htm">codebook</a>)&nbsp;<span class="citation" data-cites="codebook_diet_day2"><sup><a href="#ref-codebook_diet_day2" role="doc-biblioref">15</a></sup></span></li>
-<li>Physical Activity - Individual Activities (PAQIAF) for 1999 to 2005 (<a href="https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/1999/DataFiles/PAQIAF.htm#PADTIMES">codebook</a>)&nbsp;<span class="citation" data-cites="codebook_paqiaf_1999to05"><sup><a href="#ref-codebook_paqiaf_1999to05" role="doc-biblioref">16</a></sup></span></li>
-<li>Physical Activity (PAQ_E) for 2007 and onward (<a href="https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2007/DataFiles/PAQ_E.htm#PAD615">codebook</a>)&nbsp;<span class="citation" data-cites="codebook_paq_2007plus"><sup><a href="#ref-codebook_paq_2007plus" role="doc-biblioref">17</a></sup></span></li>
-<li>Smoking - Cigarette/Tobacco Use - Adult (SMQ) (<a href="https://wwwn.cdc.gov/nchs/data/nhanes/public/1999/datafiles/SMQ.htm">codebook</a>)&nbsp;<span class="citation" data-cites="codebook_smoking"><sup><a href="#ref-codebook_smoking" role="doc-biblioref">18</a></sup></span></li>
-<li>Body Measures (BMX) (<a href="https://wwwn.cdc.gov/nchs/data/nhanes/public/1999/datafiles/BMX.htm">codebook</a>)&nbsp;<span class="citation" data-cites="codebook_bmx"><sup><a href="#ref-codebook_bmx" role="doc-biblioref">19</a></sup></span></li>
+<li>Demographic Variables &amp; Sample Weights (DEMO) (<a href="https://wwwn.cdc.gov/nchs/data/nhanes/public/1999/datafiles/DEMO.htm#DMDMARTL">codebook</a>)&nbsp;<span class="citation" data-cites="codebook_demo"><sup><a href="#ref-codebook_demo" role="doc-biblioref">16</a></sup></span></li>
+<li>Dietary Interview - Individual Foods, First Day (DR1IFF_L) (<a href="https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DR1IFF_L.htm#DR1IKCAL">codebook</a>)&nbsp;<span class="citation" data-cites="codebook_diet_day1"><sup><a href="#ref-codebook_diet_day1" role="doc-biblioref">17</a></sup></span></li>
+<li>Dietary Interview - Individual Foods, Second Day (DR2IFF_L) (<a href="https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DR2IFF_L.htm">codebook</a>)&nbsp;<span class="citation" data-cites="codebook_diet_day2"><sup><a href="#ref-codebook_diet_day2" role="doc-biblioref">18</a></sup></span></li>
+<li>Physical Activity - Individual Activities (PAQIAF) for 1999 to 2005 (<a href="https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/1999/DataFiles/PAQIAF.htm#PADTIMES">codebook</a>)&nbsp;<span class="citation" data-cites="codebook_paqiaf_1999to05"><sup><a href="#ref-codebook_paqiaf_1999to05" role="doc-biblioref">19</a></sup></span></li>
+<li>Physical Activity (PAQ_E) for 2007 and onward (<a href="https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2007/DataFiles/PAQ_E.htm#PAD615">codebook</a>)&nbsp;<span class="citation" data-cites="codebook_paq_2007plus"><sup><a href="#ref-codebook_paq_2007plus" role="doc-biblioref">20</a></sup></span></li>
+<li>Smoking - Cigarette/Tobacco Use - Adult (SMQ) (<a href="https://wwwn.cdc.gov/nchs/data/nhanes/public/1999/datafiles/SMQ.htm">codebook</a>)&nbsp;<span class="citation" data-cites="codebook_smoking"><sup><a href="#ref-codebook_smoking" role="doc-biblioref">21</a></sup></span></li>
+<li>Body Measures (BMX) (<a href="https://wwwn.cdc.gov/nchs/data/nhanes/public/1999/datafiles/BMX.htm">codebook</a>)&nbsp;<span class="citation" data-cites="codebook_bmx"><sup><a href="#ref-codebook_bmx" role="doc-biblioref">22</a></sup></span></li>
 </ul>
-<p>Data were accessed through the nhanesdata R package, which maintains a stable cloud storage of Continuous NHANES biennial datasets harmonized across cycles: <a href="https://www.kylegrealis.com/nhanesdata/index.html">package webpage</a> and <a href="https://github.com/kyleGrealis/nhanesdata">documentation</a>&nbsp;<span class="citation" data-cites="nhanesdata nhanesdata_github"><sup><a href="#ref-nhanesdata" role="doc-biblioref">20</a>,<a href="#ref-nhanesdata_github" role="doc-biblioref">21</a></sup></span>. The majority of data curation and processing has been handled prior to this example; the prepared dataset variables and details are listed below. The two dietary datasets are the only exception and will be processed here, with further details provided in that section. Additionally, pre-calculated PhenoAge projections estimated using NHANES-III have been merged into the Continuous NHANES data.</p>
+<p>Data were accessed through the nhanesdata R package, which maintains a stable cloud storage of Continuous NHANES biennial datasets harmonized across cycles: <a href="https://www.kylegrealis.com/nhanesdata/index.html">package webpage</a> and <a href="https://github.com/kyleGrealis/nhanesdata">documentation</a>&nbsp;<span class="citation" data-cites="nhanesdata nhanesdata_github"><sup><a href="#ref-nhanesdata" role="doc-biblioref">23</a>,<a href="#ref-nhanesdata_github" role="doc-biblioref">24</a></sup></span>. The majority of data curation and processing has been handled prior to this example; the prepared dataset variables and details are listed below. The two dietary datasets are the only exception and will be processed here, with further details provided in that section. Additionally, pre-calculated PhenoAge projections estimated using NHANES-III have been merged into the Continuous NHANES data.</p>
 <p>Pre-processed dataset variables:</p>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -631,8 +639,8 @@ Warning
 <li><strong>avg_kcal:</strong> Total calories consumed during the 24-hour recall, averaged over two interview days</li>
 <li><strong>sd_kcal:</strong> Standard deviation associated with the two interview days</li>
 <li><strong>MeDi:</strong> Scale of Mediterranean diet adherence</li>
-<li><strong>phenoage_original:</strong> “Levine Original” formula using 9 biomarkers&nbsp;<span class="citation" data-cites="levine2018 kwon2021"><sup><a href="#ref-kwon2021" role="doc-biblioref">7</a>,<a href="#ref-levine2018" role="doc-biblioref">9</a></sup></span></li>
-<li><strong>phenoage_modified:</strong> “Modified Levine” formula using 12 biomarkers&nbsp;<span class="citation" data-cites="levine2018 kwon2021"><sup><a href="#ref-kwon2021" role="doc-biblioref">7</a>,<a href="#ref-levine2018" role="doc-biblioref">9</a></sup></span></li>
+<li><strong>phenoage_original:</strong> “Levine Original” formula using 9 biomarkers&nbsp;<span class="citation" data-cites="levine2018 kwon2021"><sup><a href="#ref-kwon2021" role="doc-biblioref">10</a>,<a href="#ref-levine2018" role="doc-biblioref">12</a></sup></span></li>
+<li><strong>phenoage_modified:</strong> “Modified Levine” formula using 12 biomarkers&nbsp;<span class="citation" data-cites="levine2018 kwon2021"><sup><a href="#ref-kwon2021" role="doc-biblioref">10</a>,<a href="#ref-levine2018" role="doc-biblioref">12</a></sup></span></li>
 <li><strong>advancement_original:</strong> “Levine Original” PhenoAge - Chronological Age</li>
 <li><strong>advancement_modified:</strong> “Modified Levine” PhenoAge - Chronological Age</li>
 <li><strong>advancement_original_std:</strong> Standardized advancement using “Levine Original” PhenoAge (mean = 0, sd = 1)</li>
@@ -660,27 +668,34 @@ Warning
 </section>
 <section id="put-it-into-practice" class="level2">
 <h2 class="anchored" data-anchor-id="put-it-into-practice">Put It Into Practice</h2>
-<p>The following three exercises walk you through a pre-prepared guided analysis plan aimed at replicating figures from Thomas et al.&nbsp;Some steps can get complex, so rather than focusing on developing the analysis yourself, we encourage you to explore how different foundational models and AI agents respond to your prompts.</p>
+<p>The following three exercises walk you through a pre-prepared guided analysis aimed at replicating figures from Thomas et al.&nbsp;If you have not already done so, download the pre-prepared codespace and configure your device with Positron and a coding assistant provider: <a href="../ai-coding-index.html#accessing-the-codespaces">Accessing the Codespace</a>. As some steps can be complex, rather than developing the analysis independently, we encourage you to explore how different foundational models and AI agents respond to your prompts.</p>
 <p>As you go through each exercise, keep these approaches in mind:</p>
+<ol type="i">
+<li><p>Move from broad to specific prompts, starting with something like “Generate <code>ggplot2</code> code that will plot this screenshot of a figure from a paper” to something like “Plot <code>df</code> with <code>x = activity_MeDi</code>, <code>y = mean_adv</code>, and <code>color = activity_level</code>. Facet wrap over <code>age_group</code> and relabel the x-axis with <code>rep(c("Low", "Moderate", "High"), times = 4)</code>.”</p></li>
+<li><p>Solve the same problem using <a href="https://ai.yale.edu/yales-ai-tools-and-resources/clarity-platform">Yale’s AI Clarity</a> chatbot and GitHub Copilot in Positron, then compare the results</p></li>
+<li><p>Test different foundational models (i.e.&nbsp;GPT, Claude, Gemini) to see how each performs</p></li>
+</ol>
+<p>Take a moment to ask yourself or discuss with your neighbor:</p>
+<div class="columns">
+<div class="column" style="width:50%;">
 <ul>
-<li>Move from broad to specific prompts, starting with something like “Generate <code>ggplot2</code> code that will plot this screenshot of a figure from a paper” to something like “Plot <code>df</code> with <code>x = activity_MeDi</code>, <code>y = mean_adv</code>, and <code>color = activity_level</code>. Facet wrap over <code>age_group</code> and relabel the x-axis with <code>rep(c("Low", "Moderate", "High"), times = 4)</code>.”</li>
-<li>Solve the same problem using <a href="https://ai.yale.edu/yales-ai-tools-and-resources/clarity-platform">Yale’s AI Clarity</a> chatbot and GitHub Copilot in Positron, then compare the results</li>
-<li>Test different foundational models (i.e.&nbsp;GPT, Claude, Gemini) to see how each performs</li>
-</ul>
-<p>Take a moment to discuss with your neighbor:</p>
-<ul>
-<li>Were the prompts you used in Yale’s AI Clarity chatbot effective in the Positron Assistant, and vice versa?</li>
-<li>Which tool needed more context to give useful responses?</li>
+<li>Were the prompts effective across both Yale’s AI Clarity and the Positron Assistant, or did they need adjustment between tools?</li>
+<li>Which tool required more context to produce useful responses?</li>
 <li>At what point did your prompts become too vague for the Positron Assistant?</li>
-<li>Do different models tend to answer questions similarly, or do their responses differ meaningfully?</li>
-<li>How much back-and-forth was typically needed to fully solve a problem?</li>
-<li>How often did you have to step in to troubleshoot something the AI couldn’t handle?</li>
-<li>When asking the AI to explain code or provide analysis guidance, how relevant and accurate were its responses?</li>
-<li>How often did you feel unequipped to judge whether a chatbot’s response was correct?</li>
+<li>Did different models tend to respond similarly, or were there meaningful differences?</li>
 </ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>How much back-and-forth and refactoring was typically needed to fully resolve a problem?</li>
+<li>How often did you need to intervene on something the AI could not handle?</li>
+<li>When asking the AI to explain code or guide analysis, how relevant and accurate were its responses?</li>
+<li>How often did you feel unequipped to evaluate whether a response was correct?</li>
+</ul>
+</div>
+</div>
 <section id="mediterranean-diet-scoring" class="level3">
 <h3 class="anchored" data-anchor-id="mediterranean-diet-scoring">Mediterranean Diet Scoring</h3>
-<p>Our paper scored adherence to the Mediterranean Diet using the method developed by Trichopoulou et al.&nbsp;(1995 and 2003)&nbsp;<span class="citation" data-cites="trichopoulou2003 trichopoulou1995"><sup><a href="#ref-trichopoulou2003" role="doc-biblioref">22</a>,<a href="#ref-trichopoulou1995" role="doc-biblioref">23</a></sup></span>. To calculate each participant’s score, individual 24-hour food recall records were used. Thomas et al.&nbsp;averaged across both assessment days, though in many cases only the first day was available&nbsp;<span class="citation" data-cites="nhanes_analyses_dietary thomas2023"><sup><a href="#ref-thomas2023" role="doc-biblioref">1</a>,<a href="#ref-nhanes_analyses_dietary" role="doc-biblioref">24</a></sup></span>. Food types were classified by NHANES using the USDA’s Food and Nutrient Database for Dietary Studies (FNDDS) encoding: <a href="https://www.ars.usda.gov/ARSUserFiles/80400530/pdf/fndds/fndds_doc.pdf">Appendix B</a> and <a href="https://www.ars.usda.gov/ARSUserFiles/80400530/pdf/fndds/2021_2023_FNDDS_Doc.pdf">Appendix H</a>&nbsp;<span class="citation" data-cites="fndds_table1 fndds_table2"><sup><a href="#ref-fndds_table1" role="doc-biblioref">25</a>,<a href="#ref-fndds_table2" role="doc-biblioref">26</a></sup></span>.</p>
+<p>Our paper scored adherence to the Mediterranean Diet using the method developed by Trichopoulou et al.&nbsp;(1995 and 2003)&nbsp;<span class="citation" data-cites="trichopoulou2003 trichopoulou1995"><sup><a href="#ref-trichopoulou2003" role="doc-biblioref">25</a>,<a href="#ref-trichopoulou1995" role="doc-biblioref">26</a></sup></span>. To calculate each participant’s score, individual 24-hour food recall records were used. Thomas et al.&nbsp;averaged across both assessment days, though in many cases only the first day was available&nbsp;<span class="citation" data-cites="nhanes_analyses_dietary thomas2023"><sup><a href="#ref-thomas2023" role="doc-biblioref">4</a>,<a href="#ref-nhanes_analyses_dietary" role="doc-biblioref">27</a></sup></span>. Food types were classified by NHANES using the USDA’s Food and Nutrient Database for Dietary Studies (FNDDS) encoding: <a href="https://www.ars.usda.gov/ARSUserFiles/80400530/pdf/fndds/fndds_doc.pdf">Appendix B</a> and <a href="https://www.ars.usda.gov/ARSUserFiles/80400530/pdf/fndds/2021_2023_FNDDS_Doc.pdf">Appendix H</a>&nbsp;<span class="citation" data-cites="fndds_table1 fndds_table2"><sup><a href="#ref-fndds_table1" role="doc-biblioref">28</a>,<a href="#ref-fndds_table2" role="doc-biblioref">29</a></sup></span>.</p>
 <p>The FNDDS encodings are already included and have been translated for Mediterranean Diet scoring according to Trichopoulou et al.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the Mediterranean diet food group reference data</span></span>
@@ -700,7 +715,7 @@ $ benefice  &lt;chr&gt; "No", "No", "No", "No", "No", "No", "No", "No", "No", "N
 <ol type="1">
 <li><p>For beneficial foods (vegetables, potatoes, fruits, legumes and nuts, fish, cereals), participants receive +1 point if their caloric intake meets or exceeds the median.</p></li>
 <li><p>For detrimental foods (meat, poultry, dairy products), participants receive +1 point if their caloric intake is below the median.</p></li>
-<li><p>For alcohol, +1 point is awarded for mild-to-moderate consumption (0–1 drink per day for females; 0–2 drinks per day for males). The National Institute on Alcohol Abuse and Alcoholism (NIAAA) defines one standard drink as 14 grams of pure alcohol&nbsp;<span class="citation" data-cites="niaaa_drink"><sup><a href="#ref-niaaa_drink" role="doc-biblioref">27</a></sup></span>.</p></li>
+<li><p>For alcohol, +1 point is awarded for mild-to-moderate consumption (0–1 drink per day for females; 0–2 drinks per day for males). The National Institute on Alcohol Abuse and Alcoholism (NIAAA) defines one standard drink as 14 grams of pure alcohol&nbsp;<span class="citation" data-cites="niaaa_drink"><sup><a href="#ref-niaaa_drink" role="doc-biblioref">30</a></sup></span>.</p></li>
 <li><p>For fats, particiants with a high monosaturated to saturated ratio receive +1 point if their caloric intake meets or exceeds the median.</p></li>
 <li><p>Sex-specific medians are calculated for each food category as reference values. Alcohol and fat consumption is scored using different criteria.</p></li>
 </ol>
@@ -766,11 +781,13 @@ $ benefice  &lt;chr&gt; "No", "No", "No", "No", "No", "No", "No", "No", "No", "N
 </div>
 <p>I asked Yale’s AI Clarity - ChatGPT 5.2:</p>
 <div style="margin-left: 2rem">
+<hr>
 <p>“My data has a variable, ridageyr, that represents participants age on a continuous scale. I want to group the ages into”[20,40)“,”[40,60)“,”[60,+)“. Help me do this in R.”</p>
+<hr>
 </div>
-<p>This question used approximately 2,772 tokens. Tokens are the basic text units a model uses to process language — whole words, word parts, or punctuation — and in English, one token averages roughly 3–4 characters. Token counts matter because they determine context-length limits, factor into API billing, and generally affect processing and generation speed.</p>
-<p>The model’s response for 296 tokens was:</p>
+<p>This question used approximately 2,772 <span class="text-term" data-hover-text="Tokens are the basic text units — whole words, word parts, or punctuation — that an AI language model uses to process and generate language. In English, one token averages roughly 3–4 characters. Tokenization is simply the process of breaking input text into these units before the model processes it. Token counts matter because they determine a model's context-length limit, drive API billing costs, and affect processing and generation speed." data-popup-width="320px"> tokens </span>. The model’s response for 296 tokens was:</p>
 <div style="margin-left: 2rem">
+<hr>
 <p>You can do this cleanly with cut() (base R) or dplyr::case_when().</p>
 <p><strong>Base R (cut)</strong></p>
 <div class="cell">
@@ -818,6 +835,7 @@ $ benefice  &lt;chr&gt; "No", "No", "No", "No", "No", "No", "No", "No", "No", "N
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df<span class="sc">$</span>age_group, <span class="at">useNA =</span> <span class="st">"ifany"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<hr>
 </div>
 </section>
 </section>
@@ -856,10 +874,13 @@ $ benefice  &lt;chr&gt; "No", "No", "No", "No", "No", "No", "No", "No", "No", "N
 </div>
 <p>Using a screenshot of Figure 2c from the paper, the following question was posed to Yale’s AI Clarity — ChatGPT 5.2:</p>
 <div style="margin-left: 2rem">
+<hr>
 <p>“Using this screenshot, please outline the ggplot expression that would generate that image.”</p>
+<hr>
 </div>
 <p>This question used approximately 4368 tokens. The model’s response for 360 tokens was:</p>
 <div style="margin-left: 2rem">
+<hr>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -897,9 +918,11 @@ $ benefice  &lt;chr&gt; "No", "No", "No", "No", "No", "No", "No", "No", "No", "N
 </div>
 </div>
 <p>(Assumes df has: medi_adherence = Low/Moderate/High; ltpa_level = Sedentary/Low/Moderate/High; estimate, conf.low, conf.high.)</p>
+<hr>
 </div>
 <p>I next asked:</p>
 <div style="margin-left: 2rem">
+<hr>
 <p>“Using the following table, make the plot use <code>geom_point</code> with a 95% confidence interval. The x-axis is <code>activity_MeDi</code> and the y-axus is <code>advancement_modified_std</code> while the plotted values are color coded by <code>activity_level</code>.”</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: FALSE</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: FALSE</span></span>
@@ -919,9 +942,11 @@ $ benefice  &lt;chr&gt; "No", "No", "No", "No", "No", "No", "No", "No", "No", "N
 <span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a> <span class="dv">8</span> Moderate <span class="sc">-</span> Moderate Moderate                         <span class="fl">0.0477</span></span>
 <span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a> <span class="dv">9</span> Moderate <span class="sc">-</span> High     Moderate                        <span class="sc">-</span><span class="fl">1.74</span>  </span>
 <span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> Low <span class="sc">-</span> Moderate      Low                             <span class="sc">-</span><span class="fl">0.565</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
 </div>
 <p>This question used approximately 4,048 tokens. The model’s 275-token response, along with the plot it’s suggested code generated, is shown below.</p>
 <div style="margin-left: 2rem">
+<hr>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -963,94 +988,144 @@ $ benefice  &lt;chr&gt; "No", "No", "No", "No", "No", "No", "No", "No", "No", "N
 </div>
 </div>
 </div>
+<hr>
 </div>
 </section>
 </section>
+</section>
+<section id="section-glossary" class="level2">
+<h2 class="anchored" data-anchor-id="section-glossary">Section Glossary</h2>
+<table class="glossary-table">
+<tbody>
+<!-- Row 1 -->
+<tr>
+<td class="col1">
+AI-Assisted Coding
+</td>
+<td>
+The use of AI tools to support software development tasks, such as generating, completing, explaining, or debugging code based on natural language prompts or existing code context. Reliance on AI for coding support exists on a spectrum, ranging from no use to full, unsupervised dependence&nbsp;<span class="citation" data-cites="ai_assistance_scale taulli2024"><sup><a href="#ref-ai_assistance_scale" role="doc-biblioref">2</a>,<a href="#ref-taulli2024" role="doc-biblioref">31</a></sup></span>.
+</td>
+</tr>
+<!-- Row 2 -->
+<tr>
+<td class="col1">
+Tokens, Tokenization
+</td>
+<td>
+Tokens are the basic text units — whole words, word parts, or punctuation — that an AI language model uses to process and generate language. In English, one token averages roughly 3–4 characters. Tokenization is simply the process of breaking input text into these units before the model processes it. Token counts matter because they determine a model’s context-length limit, drive API billing costs, and affect processing and generation speed&nbsp;<span class="citation" data-cites="llm_tokens"><sup><a href="#ref-llm_tokens" role="doc-biblioref">32</a></sup></span>.
+</td>
+</tr>
+<!-- Row 23-->
+<tr>
+<td class="col1">
+Vibe Coding
+</td>
+<td>
+An approach to software development where developers use natural language to describe what they want, and AI handles the technical implementation — requiring little to no coding knowledge. While fast, it risks errors, security issues, and unreliable software, and is not recommended when the goal is a working, production-ready product&nbsp;<span class="citation" data-cites="best_practices"><sup><a href="#ref-best_practices" role="doc-biblioref">3</a></sup></span>.
+</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
 
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-anthropic_study" class="csl-entry" role="listitem">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">Anthropic. How <span>AI</span> assistance impacts the formation of coding skills. Research. <a href="https://www.anthropic.com/research/AI-assistance-coding-skills">https://www.anthropic.com/research/AI-assistance-coding-skills</a> (2026).</div>
+</div>
+<div id="ref-ai_assistance_scale" class="csl-entry" role="listitem">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">Max Struever, Matthew Kropp &amp; Julie Bedard. From dev speed to business impact: The case for <span>AI</span>-assisted coding and generative engineering. <span>BCG</span> x. <a href="https://www.bcg.com/x/the-multiplier/ai-assisted-coding-generative-engineering">https://www.bcg.com/x/the-multiplier/ai-assisted-coding-generative-engineering</a> (2025).</div>
+</div>
+<div id="ref-best_practices" class="csl-entry" role="listitem">
+<div class="csl-left-margin">3. </div><div class="csl-right-inline">Longo, C. Best practices i learned for <span>AI</span> assisted coding. Medium. <a href="https://statistician-in-stilettos.medium.com/best-practices-i-learned-for-ai-assisted-coding-70ff7359d403">https://statistician-in-stilettos.medium.com/best-practices-i-learned-for-ai-assisted-coding-70ff7359d403</a> (2025).</div>
+</div>
 <div id="ref-thomas2023" class="csl-entry" role="listitem">
-<div class="csl-left-margin">1. </div><div class="csl-right-inline">Thomas, A., Belsky, D. W. &amp; Gu, Y. <a href="https://doi.org/10.1093/gerona/glad082">Healthy lifestyle behaviors and biological aging in the u.s. National health and nutrition examination surveys 1999–2018</a>. <em>J Gerontol A Biol Sci Med Sci</em> <strong>78</strong>, 1535–1542 (2023).</div>
+<div class="csl-left-margin">4. </div><div class="csl-right-inline">Thomas, A., Belsky, D. W. &amp; Gu, Y. <a href="https://doi.org/10.1093/gerona/glad082">Healthy lifestyle behaviors and biological aging in the u.s. National health and nutrition examination surveys 1999–2018</a>. <em>J Gerontol A Biol Sci Med Sci</em> <strong>78</strong>, 1535–1542 (2023).</div>
 </div>
 <div id="ref-maslov2009" class="csl-entry" role="listitem">
-<div class="csl-left-margin">2. </div><div class="csl-right-inline">Maslov, A. Y. &amp; Vijg, J. <a href="https://doi.org/10.1016/j.bbagen.2009.03.020">Genome instability, cancer and aging</a>. <em>Biochim Biophys Acta</em> <strong>1790</strong>, 963–969 (2009).</div>
+<div class="csl-left-margin">5. </div><div class="csl-right-inline">Maslov, A. Y. &amp; Vijg, J. <a href="https://doi.org/10.1016/j.bbagen.2009.03.020">Genome instability, cancer and aging</a>. <em>Biochim Biophys Acta</em> <strong>1790</strong>, 963–969 (2009).</div>
 </div>
 <div id="ref-rutledge2022" class="csl-entry" role="listitem">
-<div class="csl-left-margin">3. </div><div class="csl-right-inline">Rutledge, J., Oh, H. &amp; Wyss-Coray, T. <a href="https://doi.org/10.1038/s41576-022-00511-7">Measuring biological age using omics data</a>. <em>Nat Rev Genet</em> <strong>23</strong>, 715–727 (2022).</div>
+<div class="csl-left-margin">6. </div><div class="csl-right-inline">Rutledge, J., Oh, H. &amp; Wyss-Coray, T. <a href="https://doi.org/10.1038/s41576-022-00511-7">Measuring biological age using omics data</a>. <em>Nat Rev Genet</em> <strong>23</strong>, 715–727 (2022).</div>
 </div>
 <div id="ref-nhanes_home" class="csl-entry" role="listitem">
-<div class="csl-left-margin">4. </div><div class="csl-right-inline">CDC. National health and nutrition examination survey. National health and nutrition examination survey. <a href="https://www.cdc.gov/nchs/nhanes/index.html">https://www.cdc.gov/nchs/nhanes/index.html</a> (2026).</div>
+<div class="csl-left-margin">7. </div><div class="csl-right-inline">CDC. National health and nutrition examination survey. National health and nutrition examination survey. <a href="https://www.cdc.gov/nchs/nhanes/index.html">https://www.cdc.gov/nchs/nhanes/index.html</a> (2026).</div>
 </div>
 <div id="ref-nhanes_analyses_datasets" class="csl-entry" role="listitem">
-<div class="csl-left-margin">5. </div><div class="csl-right-inline">Centers for Disease Control and Prevention (CDC) &amp; National Center for Health Statistics (NCHS). Datasets and documentation. National health and nutrition examination survey. <a href="https://wwwn.cdc.gov/nchs/nhanes/tutorials/Datasets.aspx">https://wwwn.cdc.gov/nchs/nhanes/tutorials/Datasets.aspx</a>.</div>
+<div class="csl-left-margin">8. </div><div class="csl-right-inline">Centers for Disease Control and Prevention (CDC) &amp; National Center for Health Statistics (NCHS). Datasets and documentation. National health and nutrition examination survey. <a href="https://wwwn.cdc.gov/nchs/nhanes/tutorials/Datasets.aspx">https://wwwn.cdc.gov/nchs/nhanes/tutorials/Datasets.aspx</a>.</div>
 </div>
 <div id="ref-nhanes_analyses_guides" class="csl-entry" role="listitem">
-<div class="csl-left-margin">6. </div><div class="csl-right-inline">Centers for Disease Control and Prevention (CDC) &amp; National Center for Health Statistics (NCHS). Guidelines for high quality analyses of <span>NHANES</span> data. National health and nutrition examination survey. <a href="https://wwwn.cdc.gov/nchs/nhanes/QualityAnalysesGuidelines.aspx">https://wwwn.cdc.gov/nchs/nhanes/QualityAnalysesGuidelines.aspx</a> (2026).</div>
+<div class="csl-left-margin">9. </div><div class="csl-right-inline">Centers for Disease Control and Prevention (CDC) &amp; National Center for Health Statistics (NCHS). Guidelines for high quality analyses of <span>NHANES</span> data. National health and nutrition examination survey. <a href="https://wwwn.cdc.gov/nchs/nhanes/QualityAnalysesGuidelines.aspx">https://wwwn.cdc.gov/nchs/nhanes/QualityAnalysesGuidelines.aspx</a> (2026).</div>
 </div>
 <div id="ref-kwon2021" class="csl-entry" role="listitem">
-<div class="csl-left-margin">7. </div><div class="csl-right-inline">Kwon, D. &amp; Belsky, D. W. <a href="https://doi.org/10.1007/s11357-021-00480-5">A toolkit for quantification of biological age from blood chemistry and organ function test data: <span>BioAge</span></a>. <em><span>GeroScience</span></em> <strong>43</strong>, 2795–2808 (2021).</div>
+<div class="csl-left-margin">10. </div><div class="csl-right-inline">Kwon, D. &amp; Belsky, D. W. <a href="https://doi.org/10.1007/s11357-021-00480-5">A toolkit for quantification of biological age from blood chemistry and organ function test data: <span>BioAge</span></a>. <em><span>GeroScience</span></em> <strong>43</strong>, 2795–2808 (2021).</div>
 </div>
 <div id="ref-bioage_github" class="csl-entry" role="listitem">
-<div class="csl-left-margin">8. </div><div class="csl-right-inline">Kwon, D. <a href="https://github.com/dayoonkwon/BioAge"><span>BioAge</span> <span>GitHub</span> repository</a>. (2026).</div>
+<div class="csl-left-margin">11. </div><div class="csl-right-inline">Kwon, D. <a href="https://github.com/dayoonkwon/BioAge"><span>BioAge</span> <span>GitHub</span> repository</a>. (2026).</div>
 </div>
 <div id="ref-levine2018" class="csl-entry" role="listitem">
-<div class="csl-left-margin">9. </div><div class="csl-right-inline">Levine, M. E. <em>et al.</em> <a href="https://doi.org/10.18632/aging.101414">An epigenetic biomarker of aging for lifespan and healthspan</a>. <em>Aging (Albany <span>NY</span>)</em> <strong>10</strong>, 573–591 (2018).</div>
+<div class="csl-left-margin">12. </div><div class="csl-right-inline">Levine, M. E. <em>et al.</em> <a href="https://doi.org/10.18632/aging.101414">An epigenetic biomarker of aging for lifespan and healthspan</a>. <em>Aging (Albany <span>NY</span>)</em> <strong>10</strong>, 573–591 (2018).</div>
 </div>
 <div id="ref-nhanes_analyses_weighting" class="csl-entry" role="listitem">
-<div class="csl-left-margin">10. </div><div class="csl-right-inline">Health Statistics (NCHS), N. C. for &amp; Disease Control {and} Prevention (CDC), C. for. <span>NHANES</span> weighting. <span>NHANES</span> tutorials. <a href="https://wwwn.cdc.gov/nchs/nhanes/tutorials/Weighting.aspx">https://wwwn.cdc.gov/nchs/nhanes/tutorials/Weighting.aspx</a>.</div>
+<div class="csl-left-margin">13. </div><div class="csl-right-inline">Health Statistics (NCHS), N. C. for &amp; Disease Control {and} Prevention (CDC), C. for. <span>NHANES</span> weighting. <span>NHANES</span> tutorials. <a href="https://wwwn.cdc.gov/nchs/nhanes/tutorials/Weighting.aspx">https://wwwn.cdc.gov/nchs/nhanes/tutorials/Weighting.aspx</a>.</div>
 </div>
 <div id="ref-ucla_survey" class="csl-entry" role="listitem">
-<div class="csl-left-margin">11. </div><div class="csl-right-inline">UCLA: Statistical Consulting Group. Survey data analysis with r. Seminars. <a href="https://stats.oarc.ucla.edu/r/seminars/survey-data-analysis-with-r/">https://stats.oarc.ucla.edu/r/seminars/survey-data-analysis-with-r/</a>.</div>
+<div class="csl-left-margin">14. </div><div class="csl-right-inline">UCLA: Statistical Consulting Group. Survey data analysis with r. Seminars. <a href="https://stats.oarc.ucla.edu/r/seminars/survey-data-analysis-with-r/">https://stats.oarc.ucla.edu/r/seminars/survey-data-analysis-with-r/</a>.</div>
 </div>
 <div id="ref-kyle_suvey" class="csl-entry" role="listitem">
-<div class="csl-left-margin">12. </div><div class="csl-right-inline">Kyle Grealis. <a href="https://cran.r-project.org/web/packages/nhanesdata/vignettes/survey-design.html">Why survey weights matter</a>. (2026).</div>
+<div class="csl-left-margin">15. </div><div class="csl-right-inline">Kyle Grealis. <a href="https://cran.r-project.org/web/packages/nhanesdata/vignettes/survey-design.html">Why survey weights matter</a>. (2026).</div>
 </div>
 <div id="ref-codebook_demo" class="csl-entry" role="listitem">
-<div class="csl-left-margin">13. </div><div class="csl-right-inline">Group, F. S. R., Health Statistics (NCHS), N. C. for &amp; Disease Control {and} Prevention (CDC), C. for. <a href="https://wwwn.cdc.gov/nchs/data/nhanes/public/1999/datafiles/DEMO.htm">Demographic variables &amp; sample weights (<span>DEMO</span>) data documentation, codebook, and frequencies dietary interview - 1999-2000</a>. (2002).</div>
+<div class="csl-left-margin">16. </div><div class="csl-right-inline">Group, F. S. R., Health Statistics (NCHS), N. C. for &amp; Disease Control {and} Prevention (CDC), C. for. <a href="https://wwwn.cdc.gov/nchs/data/nhanes/public/1999/datafiles/DEMO.htm">Demographic variables &amp; sample weights (<span>DEMO</span>) data documentation, codebook, and frequencies dietary interview - 1999-2000</a>. (2002).</div>
 </div>
 <div id="ref-codebook_diet_day1" class="csl-entry" role="listitem">
-<div class="csl-left-margin">14. </div><div class="csl-right-inline">Group, F. S. R., Health Statistics (NCHS), N. C. for &amp; Disease Control {and} Prevention (CDC), C. for. <a href="https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DR1IFF_L.htm">Individual foods, second day (<span>DR</span>1IFF_l) data documentation, codebook, and frequencies dietary interview - august 2021-august 2023</a>. (2024).</div>
+<div class="csl-left-margin">17. </div><div class="csl-right-inline">Group, F. S. R., Health Statistics (NCHS), N. C. for &amp; Disease Control {and} Prevention (CDC), C. for. <a href="https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DR1IFF_L.htm">Individual foods, second day (<span>DR</span>1IFF_l) data documentation, codebook, and frequencies dietary interview - august 2021-august 2023</a>. (2024).</div>
 </div>
 <div id="ref-codebook_diet_day2" class="csl-entry" role="listitem">
-<div class="csl-left-margin">15. </div><div class="csl-right-inline">Group, F. S. R., Health Statistics (NCHS), N. C. for &amp; Disease Control {and} Prevention (CDC), C. for. <a href="https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DR2IFF_L.htm">Individual foods, second day (<span>DR</span>2IFF_l) data documentation, codebook, and frequencies dietary interview - august 2021-august 2023</a>. (2024).</div>
+<div class="csl-left-margin">18. </div><div class="csl-right-inline">Group, F. S. R., Health Statistics (NCHS), N. C. for &amp; Disease Control {and} Prevention (CDC), C. for. <a href="https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DR2IFF_L.htm">Individual foods, second day (<span>DR</span>2IFF_l) data documentation, codebook, and frequencies dietary interview - august 2021-august 2023</a>. (2024).</div>
 </div>
 <div id="ref-codebook_paqiaf_1999to05" class="csl-entry" role="listitem">
-<div class="csl-left-margin">16. </div><div class="csl-right-inline">Group, F. S. R., Health Statistics (NCHS), N. C. for &amp; Disease Control {and} Prevention (CDC), C. for. <a href="https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/1999/DataFiles/PAQIAF.htm#PADTIMES">Physical activity - individual activities (<span>PAQIAF</span>) data documentation, codebook, and frequencies dietary interview - 1999-2000</a>. (2004).</div>
+<div class="csl-left-margin">19. </div><div class="csl-right-inline">Group, F. S. R., Health Statistics (NCHS), N. C. for &amp; Disease Control {and} Prevention (CDC), C. for. <a href="https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/1999/DataFiles/PAQIAF.htm#PADTIMES">Physical activity - individual activities (<span>PAQIAF</span>) data documentation, codebook, and frequencies dietary interview - 1999-2000</a>. (2004).</div>
 </div>
 <div id="ref-codebook_paq_2007plus" class="csl-entry" role="listitem">
-<div class="csl-left-margin">17. </div><div class="csl-right-inline">Group, F. S. R., Health Statistics (NCHS), N. C. for &amp; Disease Control {and} Prevention (CDC), C. for. <a href="https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2007/DataFiles/PAQ_E.htm#PAD615">Physical activity (<span>PAQ</span>_e) data documentation, codebook, and frequencies dietary interview - 1999-2000</a>. (2017).</div>
+<div class="csl-left-margin">20. </div><div class="csl-right-inline">Group, F. S. R., Health Statistics (NCHS), N. C. for &amp; Disease Control {and} Prevention (CDC), C. for. <a href="https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2007/DataFiles/PAQ_E.htm#PAD615">Physical activity (<span>PAQ</span>_e) data documentation, codebook, and frequencies dietary interview - 1999-2000</a>. (2017).</div>
 </div>
 <div id="ref-codebook_smoking" class="csl-entry" role="listitem">
-<div class="csl-left-margin">18. </div><div class="csl-right-inline">Group, F. S. R., Health Statistics (NCHS), N. C. for &amp; Disease Control {and} Prevention (CDC), C. for. <a href="https://wwwn.cdc.gov/nchs/data/nhanes/public/1999/datafiles/SMQ.htm">Smoking - cigarette/tobacco use - adult (<span>SMQ</span>) data documentation, codebook, and frequencies dietary interview - 1999-2000</a>. (2003).</div>
+<div class="csl-left-margin">21. </div><div class="csl-right-inline">Group, F. S. R., Health Statistics (NCHS), N. C. for &amp; Disease Control {and} Prevention (CDC), C. for. <a href="https://wwwn.cdc.gov/nchs/data/nhanes/public/1999/datafiles/SMQ.htm">Smoking - cigarette/tobacco use - adult (<span>SMQ</span>) data documentation, codebook, and frequencies dietary interview - 1999-2000</a>. (2003).</div>
 </div>
 <div id="ref-codebook_bmx" class="csl-entry" role="listitem">
-<div class="csl-left-margin">19. </div><div class="csl-right-inline">Group, F. S. R., Health Statistics (NCHS), N. C. for &amp; Disease Control {and} Prevention (CDC), C. for. <a href="https://wwwn.cdc.gov/nchs/data/nhanes/public/1999/datafiles/BMX.htm">Body measures (<span>BMX</span>) data documentation, codebook, and frequencies dietary interview - 1999-2000</a>. (2002).</div>
+<div class="csl-left-margin">22. </div><div class="csl-right-inline">Group, F. S. R., Health Statistics (NCHS), N. C. for &amp; Disease Control {and} Prevention (CDC), C. for. <a href="https://wwwn.cdc.gov/nchs/data/nhanes/public/1999/datafiles/BMX.htm">Body measures (<span>BMX</span>) data documentation, codebook, and frequencies dietary interview - 1999-2000</a>. (2002).</div>
 </div>
 <div id="ref-nhanesdata" class="csl-entry" role="listitem">
-<div class="csl-left-margin">20. </div><div class="csl-right-inline">Kyle Grealis. Nhanesdata webpage. <a href="https://www.kylegrealis.com/nhanesdata/index.html">https://www.kylegrealis.com/nhanesdata/index.html</a>.</div>
+<div class="csl-left-margin">23. </div><div class="csl-right-inline">Kyle Grealis. Nhanesdata webpage. <a href="https://www.kylegrealis.com/nhanesdata/index.html">https://www.kylegrealis.com/nhanesdata/index.html</a>.</div>
 </div>
 <div id="ref-nhanesdata_github" class="csl-entry" role="listitem">
-<div class="csl-left-margin">21. </div><div class="csl-right-inline">Kyle Grealis. <a href="https://github.com/kyleGrealis/nhanesdata">Nhanesdata <span>GitHub</span> repository</a>.</div>
+<div class="csl-left-margin">24. </div><div class="csl-right-inline">Kyle Grealis. <a href="https://github.com/kyleGrealis/nhanesdata">Nhanesdata <span>GitHub</span> repository</a>.</div>
 </div>
 <div id="ref-trichopoulou2003" class="csl-entry" role="listitem">
-<div class="csl-left-margin">22. </div><div class="csl-right-inline">Trichopoulou, A., Costacou, T., Bamia, C. &amp; Trichopoulos, D. <a href="https://doi.org/10.1056/NEJMoa025039">Adherence to a mediterranean diet and survival in a greek population</a>. <em>New England Journal of Medicine</em> <strong>348</strong>, 2599–2608 (2003).</div>
+<div class="csl-left-margin">25. </div><div class="csl-right-inline">Trichopoulou, A., Costacou, T., Bamia, C. &amp; Trichopoulos, D. <a href="https://doi.org/10.1056/NEJMoa025039">Adherence to a mediterranean diet and survival in a greek population</a>. <em>New England Journal of Medicine</em> <strong>348</strong>, 2599–2608 (2003).</div>
 </div>
 <div id="ref-trichopoulou1995" class="csl-entry" role="listitem">
-<div class="csl-left-margin">23. </div><div class="csl-right-inline">Trichopoulou, A. <em>et al.</em> <a href="https://doi.org/10.1136/bmj.311.7018.1457">Diet and overall survival in elderly people</a>. <em><span>BMJ</span></em> <strong>311</strong>, 1457–1460 (1995).</div>
+<div class="csl-left-margin">26. </div><div class="csl-right-inline">Trichopoulou, A. <em>et al.</em> <a href="https://doi.org/10.1136/bmj.311.7018.1457">Diet and overall survival in elderly people</a>. <em><span>BMJ</span></em> <strong>311</strong>, 1457–1460 (1995).</div>
 </div>
 <div id="ref-nhanes_analyses_dietary" class="csl-entry" role="listitem">
-<div class="csl-left-margin">24. </div><div class="csl-right-inline">Health Statistics (NCHS), N. C. for &amp; Disease Control {and} Prevention (CDC), C. for. <span>NHANES</span> dietary analyses module. <span>NHANES</span> tutorials. <a href="https://wwwn.cdc.gov/nchs/nhanes/tutorials/dietaryanalyses.aspx">https://wwwn.cdc.gov/nchs/nhanes/tutorials/dietaryanalyses.aspx</a>.</div>
+<div class="csl-left-margin">27. </div><div class="csl-right-inline">Health Statistics (NCHS), N. C. for &amp; Disease Control {and} Prevention (CDC), C. for. <span>NHANES</span> dietary analyses module. <span>NHANES</span> tutorials. <a href="https://wwwn.cdc.gov/nchs/nhanes/tutorials/dietaryanalyses.aspx">https://wwwn.cdc.gov/nchs/nhanes/tutorials/dietaryanalyses.aspx</a>.</div>
 </div>
 <div id="ref-fndds_table1" class="csl-entry" role="listitem">
-<div class="csl-left-margin">25. </div><div class="csl-right-inline">Agriculture (USDA), F. S. R. G. U. S. D. of, Health Statistics (NCHS), N. C. for &amp; Disease Control {and} Prevention (CDC), C. for. <a href="https://www.ars.usda.gov/ARSUserFiles/80400530/pdf/fndds/2021_2023_FNDDS_Doc.pdf">2021-2023 food and nutrient database for dietary studies documentation</a>. (2024).</div>
+<div class="csl-left-margin">28. </div><div class="csl-right-inline">Agriculture (USDA), F. S. R. G. U. S. D. of, Health Statistics (NCHS), N. C. for &amp; Disease Control {and} Prevention (CDC), C. for. <a href="https://www.ars.usda.gov/ARSUserFiles/80400530/pdf/fndds/2021_2023_FNDDS_Doc.pdf">2021-2023 food and nutrient database for dietary studies documentation</a>. (2024).</div>
 </div>
 <div id="ref-fndds_table2" class="csl-entry" role="listitem">
-<div class="csl-left-margin">26. </div><div class="csl-right-inline">Agriculture (USDA), F. S. R. G. U. S. D. of, Health Statistics (NCHS), N. C. for &amp; Disease Control {and} Prevention (CDC), C. for. <a href="https://www.ars.usda.gov/ARSUserFiles/80400530/pdf/fndds/fndds_doc.pdf">The <span>USDA</span> food and nutrient database for dietary studies, 1.0</a>. (2024).</div>
+<div class="csl-left-margin">29. </div><div class="csl-right-inline">Agriculture (USDA), F. S. R. G. U. S. D. of, Health Statistics (NCHS), N. C. for &amp; Disease Control {and} Prevention (CDC), C. for. <a href="https://www.ars.usda.gov/ARSUserFiles/80400530/pdf/fndds/fndds_doc.pdf">The <span>USDA</span> food and nutrient database for dietary studies, 1.0</a>. (2024).</div>
 </div>
 <div id="ref-niaaa_drink" class="csl-entry" role="listitem">
-<div class="csl-left-margin">27. </div><div class="csl-right-inline">Alcohol Abuse {and} Alcoholism (NIAAA), N. I. on. What is a standard drink? Alcohol’s effects on health. <a href="https://www.niaaa.nih.gov/alcohols-effects-health/what-standard-drink">https://www.niaaa.nih.gov/alcohols-effects-health/what-standard-drink</a>.</div>
+<div class="csl-left-margin">30. </div><div class="csl-right-inline">Alcohol Abuse {and} Alcoholism (NIAAA), N. I. on. What is a standard drink? Alcohol’s effects on health. <a href="https://www.niaaa.nih.gov/alcohols-effects-health/what-standard-drink">https://www.niaaa.nih.gov/alcohols-effects-health/what-standard-drink</a>.</div>
+</div>
+<div id="ref-taulli2024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">31. </div><div class="csl-right-inline">Tom Taulli. <em><a href="https://research.ebsco.com/c/rkfpff/ebook-viewer/pdf/afemdntevz/page/pp_18"><span>AI</span>-Assisted Programming - Better Planning, Coding, Testing, and Deployment</a></em>. (O’Reilly Media, Sebastopol, <span>CA</span>, 2024).</div>
+</div>
+<div id="ref-llm_tokens" class="csl-entry" role="listitem">
+<div class="csl-left-margin">32. </div><div class="csl-right-inline">Tahir. What is <span>LLM</span> tokenization? A guide to language model efficiency. Medium. <a href="https://medium.com/@tahirbalarabe2/what-is-llm-tokenization-a-guide-to-language-model-efficiency-1b4ae57c180b">https://medium.com/@tahirbalarabe2/what-is-llm-tokenization-a-guide-to-language-model-efficiency-1b4ae57c180b</a> (2025).</div>
 </div>
 </div>
 </section>
