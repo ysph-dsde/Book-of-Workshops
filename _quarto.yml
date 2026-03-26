@@ -33,6 +33,7 @@ book:
     - part: Workshops/Code-Smarter-Not-Harder/ai-coding-index.qmd
       chapters: 
         - Workshops/Code-Smarter-Not-Harder/Pages/ai-coding-worked-through-example.qmd
+        - Workshops/Code-Smarter-Not-Harder/Pages/ai-coding-more-to-come.qmd
     - part: Workshops/Data-Visualization-with-ggplot2/visualization-index.qmd
       chapters: 
         - Workshops/Data-Visualization-with-ggplot2/Pages/visualization-worked-through-example.qmd

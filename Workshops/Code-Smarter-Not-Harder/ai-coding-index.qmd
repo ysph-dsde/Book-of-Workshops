@@ -6,7 +6,7 @@ csl: ../../Code/nature.csl
 
 # Code Smarter, Not Harder: Unlocking AI-Assisted Coding {.unnumbered}
 
-<small>Updated: March 23<sup>rd</sup>, 2026</small>
+<small>Updated: March 26<sup>th</sup>, 2026</small>
 
 This material was authored by Shelby Golden, M.S. You can learn more about the instructors [here](../../index.html#meet-the-creators).
 

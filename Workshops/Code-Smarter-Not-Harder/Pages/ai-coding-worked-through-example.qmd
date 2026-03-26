@@ -6,6 +6,8 @@ csl: ../../../Code/nature.csl
 
 # AI Assisted Coding Worked-Through Example {.unnumbered}
 
+<small>Updated: March 26<sup>th</sup>, 2026</small>
+
 ## The Art of Shrewd AI-Assisted Programming
 
 A common academic use case for AI-assisted coding is replicating published research. Some papers come with ready-to-run code that's easy to pick up, while others leave you hunting for clues without any code at all. A complete A-Z replication would take more time than we have in this workshop, but the provided example shows how <span class="text-term" data-hover-text="The use of AI tools to support software development tasks, such as generating, completing, explaining, or debugging code based on natural language prompts or existing code context. Reliance on AI for coding support exists on a spectrum, ranging from no use to full, unsupervised dependence." data-popup-width="320px">

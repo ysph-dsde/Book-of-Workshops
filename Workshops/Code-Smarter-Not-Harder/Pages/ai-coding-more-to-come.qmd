@@ -1,0 +1,37 @@
+---
+  editor: source
+  markdown: 
+  editor_options: 
+  chunk_output_type: console
+  number-sections: false
+  toc: true
+  toc-depth: 3
+---
+
+# Pages In Progress {.unnumbered}
+
+Welcome! We are currently working on the following pages for the workshop, so please check back later to see them:
+
+- "The Long (and Short) History of the Search for Artificial Intelligence"
+- "A Field Guide to AI Typologies and Systems"
+- "You Steer, AI Gears: A Practical Guide to AI-Assisted Coding"
+
+Additionally, we are in the process of adding vocabulary-building glossaries and all references. Although some pages might not be fully completed yet, you can find all references and glossary terms in the slide decks.
+
+```{=html}
+<figure>
+  <a href="https://www.youtube.com/watch?v=XfR9iY5y94s"><video loop="true" autoplay="true" controls="false" style="padding-bottom: 10px;" width="100%">
+  <source src="../../../Images/Men-at-Work_Down-Under-Clip.mp4" type="video/mp4">
+  </video></a>
+  
+  <figcaption style="text-align: left;">
+    Men At Work - Down Under (Official HD Video) from YouTube
+  </figcaption>
+</figure>
+```
+
+
+
+
+
+
