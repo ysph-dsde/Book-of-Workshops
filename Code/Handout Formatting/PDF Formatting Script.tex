@@ -1,22 +1,26 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% DSDE Workshop Handout PDF Formatting
+% =========================================================
+% =========================================================
+% For Yale's Public Health Data Science and Data Equity (DSDE) Team
+% Coffee, Cookies, and Coding (C-Cubed) Workshop LaTeX Formatting
 %
-% This LaTeX script is designed to format PDF handouts for the DSDE Workshop.
-% It ensures consistent styling, fonts, and layouts throughout the document.
+% This LaTeX script formats Quarto-generated PDF handouts for DSDE workshops
+% It centralizes all PDF styling so documents render consistently across 
+% authors and over time.
 %
-% The script should be included in the YAML header of Quarto (.qmd) documents
-% structured within different workshop directories. The script manages:
+% The script manages:
+% - Global packages and layout defaults (geometry, fonts, colors, lists, math)
+% - Headers/footers with dynamic metadata (date/version/tooling)
+% - Brand typography and section styling (YaleNew/Barlow + DSDE palette)
+% - Title page layout and page backgrounds (first page vs subsequent pages)
+% - Code blocks with consistent indentation and highlighting (Verbatim-based)
+% - Indented callout blocks compatible with Quarto callouts, including a
+%   workshop-only custom “Discussion” callout type
 %
-% - Configuring global settings and packages for geometry, color, fonts, etc.
-% - Defining custom headers and footers with dynamic content
-% - Setting custom title page, section fonts, and callout boxes
-% - Including specific images and backgrounds
-%
-% To use, reference this LaTeX script in the YAML header of Quarto documents
-% with correct relative paths based on their directory depth, and ensure 
-% that the "rootdir" and "stylesdir" paths in this LaTeX script match those 
-% relative paths. Adjust as necessary.
-%
+% Usage:
+% Reference this file from the Quarto YAML header (include-in-header or
+% template inclusion) and ensure path variables (e.g., \rootdir, \stylesdir)
+% match the document’s directory depth and repository layout.
+% 
 % Examples:
 % For Quarto document located at "Workshops/proj1.qmd":
 % "format:
@@ -34,7 +38,11 @@
 %
 % Author: Shelby Golden, M.S. (with assistance from Yale's AI Clarity)
 % Date: September 23rd, 2025
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Date updated: April 23rd, 2026
+% Updated by: Shelby Golden
+% =========================================================
+% =========================================================
 
 % Define root and styles directories using relative paths
 % Ensure "rootdir" and "stylesdir" are adjusted to match the paths referenced in the YAML.
@@ -44,187 +52,285 @@
 % \newcommand{\rootdir}{Handout Formatting} % Adjust relative path accordingly
 % \newcommand{\stylesdir}{../_styles/Yale_typeface} % Adjust relative path accordingly
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% =========================================================
 % Global settings
-\usepackage{geometry}
-\usepackage{fontspec}
-\usepackage{color}
-\usepackage{xcolor}
-\usepackage[automark,headsepline,footsepline,markcase=upper,plainfootsepline]{scrlayer-scrpage}
-\usepackage[most]{tcolorbox}
-\usepackage{background}
-\usepackage{tikz}
-\usepackage{eso-pic}
-\usepackage{atbegshi}
-\usepackage{stackengine}
-\usepackage{fvextra}
-\usepackage{fancyvrb}
-\usepackage[framemethod=tikz]{mdframed}
-\usepackage{framed}
-\usepackage{listings}
-\usepackage{etoolbox}
-\usepackage[justification=centering,singlelinecheck=false,labelfont=bf,font=small]{caption}
-\usepackage[none]{hyphenat}
-\usepackage{fontawesome5}
-\usepackage{graphicx}
-\usepackage{wrapfig}
-\usepackage{hyperref}
-\usepackage{float}
-\usepackage{adjustbox}
-\usepackage{array}
-\usepackage{marginnote}
-\usepackage[backend=bibtex]{biblatex}
-\usepackage[utf8]{inputenc}
-\usepackage{enumitem}
-\usepackage{amsmath}
-\usepackage{subcaption}
-\usepackage{circuitikz}
-\usepackage{booktabs}
+% =========================================================
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ------------------------------
+% Page layout & geometry
+% ------------------------------
+\usepackage{geometry} % Set page size, margins, header/footer dimensions, etc.
+
+% ------------------------------
+% Fonts & text encoding
+% ------------------------------
+\usepackage{fontspec}       % Modern font selection (XeLaTeX/LuaLaTeX)
+\usepackage[utf8]{inputenc} % UTF-8 input (primarily for pdfLaTeX; redundant with fontspec)
+
+% ------------------------------
+% Color
+% ------------------------------
+\usepackage{color}  % Basic color support (older; mostly superseded by xcolor)
+\usepackage{xcolor} % Extended color support (models, named colors, mixing, etc.)
+
+% ------------------------------
+% Headers/footers (KOMA-Script page styles)
+% ------------------------------
+\usepackage[
+  automark,headsepline,footsepline,markcase=upper,plainfootsepline
+]{scrlayer-scrpage} % KOMA-Script header/footer management
+
+% ------------------------------
+% Graphics, figures, and floats
+% ------------------------------
+\usepackage{graphicx}  % Include/scale/rotate images
+\usepackage{wrapfig}   % Wrap text around figures/tables
+\usepackage{float}     % Improved float placement + [H]
+\usepackage{adjustbox} % Scale/trim/align content (often used with \includegraphics)
+\usepackage{subcaption}% Subfigures/subcaptions (pairs with caption)
+
+% Captions
+\usepackage[
+  justification=centering,
+  singlelinecheck=false,
+  labelfont=bf,
+  font=small
+]{caption} % Caption formatting for figures/tables
+
+% ------------------------------
+% Tables
+% ------------------------------
+\usepackage{array}    % Extended column types and table formatting
+\usepackage{booktabs} % Professional-quality table rules (\toprule, \midrule, \bottomrule)
+
+% ------------------------------
+% Links & PDF metadata
+% ------------------------------
+\usepackage{hyperref} % Clickable links, URLs, cross-references, PDF metadata
+
+% ------------------------------
+% Lists
+% ------------------------------
+\usepackage{enumitem} % Control list spacing/labels (itemize/enumerate/description)
+
+% ------------------------------
+% Math
+% ------------------------------
+\usepackage{amsmath} % AMS math environments and enhancements
+
+% ------------------------------
+% Bibliography
+% ------------------------------
+\usepackage[backend=bibtex]{biblatex} % Bibliographies/citations (configured to use BibTeX)
+
+% ------------------------------
+% Hyphenation / line breaking tweaks
+% ------------------------------
+\usepackage[none]{hyphenat} % Disable hyphenation (can increase overfull lines)
+
+% ------------------------------
+% Icons/symbols
+% ------------------------------
+\usepackage{fontawesome5} % Font Awesome 5 icons
+
+% ------------------------------
+% Margin notes
+% ------------------------------
+\usepackage{marginnote} % Margin notes (often more flexible than \marginpar)
+
+% ------------------------------
+% Drawing, overlays, backgrounds
+% ------------------------------
+\usepackage{tikz}       % PGF/TikZ drawing/diagrams
+\usepackage{circuitikz} % Circuit diagrams built on TikZ
+\usepackage{background} % Page background material
+\usepackage{eso-pic}    % Place material at absolute positions on the page
+\usepackage{atbegshi}   % Hooks for shipout (useful for overlays/backgrounds)
+
+% ------------------------------
+% Boxes, frames, and shaded environments
+% ------------------------------
+\usepackage[most]{tcolorbox}          % Highly customizable colored boxes (breakable, skins, etc.)
+\usepackage[framemethod=tikz]{mdframed} % Framed environments (TikZ-based framing)
+\usepackage{framed}                  % Simple framed/shaded environments (lightweight)
+
+% ------------------------------
+% Verbatim, code listings, and code styling
+% ------------------------------
+\usepackage{fancyvrb} % Enhanced verbatim environments
+\usepackage{fvextra}  % Extensions to fancyvrb (line breaking, extra options, etc.)
+\usepackage{listings} % Source-code listings (syntax highlighting via listings)
+
+% ------------------------------
+% Programming utilities / patching
+% ------------------------------
+\usepackage{etoolbox} % Robust programming tools (patch commands, conditionals, toggles)
+
+% ------------------------------
+% Text stacking / layout tricks
+% ------------------------------
+\usepackage{stackengine} % Stack/overlay text and objects (custom constructions)
+
+
+% =========================================================
 % Color and formatting
+% =========================================================
 
-% Adjust space to avoid overlapping script lines
-\setstackgap{L}{1.5\baselineskip}
-\tcbuselibrary{listingsutf8}
+% ------------------------------
+% Global spacing / tcolorbox setup
+% ------------------------------
+\setstackgap{L}{1.5\baselineskip} % Prevent overlap when stacking elements (stackengine)
+\tcbuselibrary{listingsutf8}      % Enable UTF-8-safe listings support in tcolorbox
 
-% Define colors used in the document
-\definecolor{DSDEPurple}{HTML}{A353FF}
+% ------------------------------
+% Brand color palette
+% ------------------------------
+\definecolor{DSDEPurple}{HTML}{7634A6}
 \definecolor{DSDEBlue}{HTML}{00356B}
 
-% Custom header and footer settings
+% ------------------------------
+% Page style: headers/footers (scrlayer-scrpage)
+% ------------------------------
 \clearpairofpagestyles
-\ihead[]{}
-\ohead[]{\hfill \footnotesize\itshape\color{DSDEBlue} Printed \today}
+\ihead[]{} % Inner header (blank)
+\ohead[]{{\hfill \footnotesize\itshape\color{DSDEBlue} Printed \today}} % Outer header (print date)
 
-% Use graphics paths for footers
 \ifoot[{%
-  \stackon[2mm]{\includegraphics[height=1cm]{\rootdir/Wordmark-Data-Science-and-Data-Equity-blues.png}}{}
+  \stackon[2mm]{\includegraphics[height=1cm]{\rootdir/Wordmark-Data-Science-and-Data-Equity-blues.png}}{}%
 }]{%
-  \stackon[2mm]{\includegraphics[height=1cm]{\rootdir/Wordmark-Data-Science-and-Data-Equity-blues.png}}{}
-}
+  \stackon[2mm]{\includegraphics[height=1cm]{\rootdir/Wordmark-Data-Science-and-Data-Equity-blues.png}}{}%
+} % Inner footer: wordmark/logo
 
-% Page numbering
-\cfoot[\pagemark]{\pagemark}
+\cfoot[\pagemark]{\pagemark} % Center footer: page number
 
-% Additional footer text & design
 \ofoot[%
-       \footnotesize\itshape\color{DSDEBlue} Version: 004.02.11.26\\%
-       Generated using Quarto (v. 1.8.27)\\%
-       and RStudio (v. 2026.01.0+392)\\%
-       By Shelby Golden, M.S.
+  \footnotesize\itshape\color{DSDEBlue} Version: 004.02.11.26\\%
+  Generated using Quarto (v. 1.8.27)\\%
+  and RStudio (v. 2026.01.0+392)\\%
+  By Shelby Golden, M.S.
 ]{%
   \footnotesize\itshape\color{DSDEBlue} Version: 004.02.11.26\\%
   Generated using Quarto (v. 1.8.27)\\%
   and RStudio (v. 2026.01.0+392)\\%
   By Shelby Golden, M.S.
-}
+} % Outer footer: document metadata block
 
-% Disable "draft" watermark
-\backgroundsetup{
-  scale=1,
-  color=black,
-  opacity=1,
-  angle=0,
-  position=current page.center,
-  vshift=0cm,
-  hshift=0cm,
+% ------------------------------
+% Backgrounds / watermarks (background + eso-pic + shipout hooks)
+% ------------------------------
+\backgroundsetup{ % Disable any default/draft watermark by setting empty contents
+  scale=1, color=black, opacity=1, angle=0,
+  position=current page.center, vshift=0cm, hshift=0cm,
   contents={}
 }
 
-% Define Backgrounds
-% Background for the first page
-\newcommand{\SetFirstPageBackground}{%
+\newcommand{\SetFirstPageBackground}{% First page full-bleed background image
   \AddToShipoutPictureBG*{%
     \put(0,0){%
       \includegraphics[width=\paperwidth,height=\paperheight]{\rootdir/Background_Binary Code.png}%
-    }
-  }
+    }%
+  }%
 }
 
-% Background for other pages
-\newcommand{\SetOtherPagesBackground}{%
+\newcommand{\SetOtherPagesBackground}{% Subsequent pages background image
   \AddToShipoutPictureBG*{%
     \put(0,0){%
       \includegraphics[width=\paperwidth,height=\paperheight]{\rootdir/Background.png}%
-    }
-  }
+    }%
+  }%
 }
 
-% Ensure correct header/footer setup for all pages
-\AtBeginDocument{%
+% Use this version when the first page is not skipped.
+% \AtBeginDocument{% Apply backgrounds at shipout: first page vs later pages
+%   \AtBeginShipoutFirst{\SetFirstPageBackground}
+%   \AtBeginShipout{%
+%     \ifnum\value{page}>1 \SetOtherPagesBackground \fi
+%   }%
+% }
+
+% Use this version when the first page is skipped.
+% In the Quarto documents first few lines of code:
+% \clearpage
+% \null
+% \thispagestyle{empty}
+% \newpage
+% \setcounter{page}{1}
+\AtBeginDocument{% Apply backgrounds at shipout: first page vs later pages
   \AtBeginShipoutFirst{%
     \SetFirstPageBackground
   }
   \AtBeginShipout{%
-    \ifnum\value{page}>1
+    \ifnum\value{page}>0
     \SetOtherPagesBackground
     \fi
   }
 }
 
-% Define font for title, subtitle, author, and date
-% Ensure the specified path correctly points to the fonts directory
-\newcommand{\customtitlefont}{%
+% ------------------------------
+% Fonts & typography (fontspec + KOMA section fonts)
+% ------------------------------
+\newcommand{\customtitlefont}{% Title font (uses local font files via \stylesdir)
   \fontspec[
-    Path=\stylesdir/, % Correctly set the path to the font directory
+    Path=\stylesdir/,
     UprightFont=*-Roman,
     BoldFont=*-Bold,
     ItalicFont=*-Italic,
     BoldItalicFont=*-BoldItalic
   ]{YaleNew}\fontsize{30}{35}\selectfont\color{DSDEBlue}\bfseries
 }
-
 \newcommand{\customsubtitlefont}{\fontspec{Barlow}\fontsize{15}{14}\selectfont\color{DSDEBlue}}
 \newcommand{\customauthorfont}{\fontspec{Barlow}\fontsize{11}{0}\selectfont\color{DSDEBlue}\itshape}
 \newcommand{\customdatefont}{\fontspec{Barlow}\fontsize{11}{0}\selectfont\color{DSDEBlue}\itshape}
 
-% Define fonts for sectioning commands
 \newfontfamily\sectionfont[Color=DSDEBlue]{YaleNew}
 \newfontfamily\subsectionfont[Color=DSDEBlue]{Barlow}
 \newfontfamily\subsubsectionfont[Color=DSDEBlue]{Barlow}
-
 \addtokomafont{section}{\sectionfont}
 \addtokomafont{subsection}{\subsectionfont}
 \addtokomafont{subsubsection}{\subsubsectionfont}
 
-% Set main font for normal text
-\setmainfont{Barlow}
-\renewcommand{\normalsize}{\fontsize{11}{14}\selectfont\color{DSDEBlue}}
-\setlength{\parskip}{1em}
+\setmainfont{Barlow} % Body font
+\renewcommand{\normalsize}{\fontsize{11}{14}\selectfont\color{DSDEBlue}} % Base size + body color
+\setlength{\parskip}{1em} % Paragraph spacing
 
-% Set title page formatting
+% ------------------------------
+% Custom title page layout
+% ------------------------------
 \makeatletter
 \def\@maketitle{%
   \newpage
   \null
   \begin{center}%
-  {\customtitlefont\@title\par}%
-  \ifx\@subtitle\@empty\else%
-  \vskip 2em%
-  {\customsubtitlefont\@subtitle\par}%
-  \fi%
-  \ifx\@author\@empty\else%
-  \vskip 1em%
-  {\customauthorfont\@author\par}%
-  \fi%
-  \ifx\b@date\@empty\else%
-  \vskip 1em%
-  {\customdatefont\@date\par}%
-  \fi%
+    {\customtitlefont\@title\par}%
+    \ifx\@subtitle\@empty\else%
+      \vskip 2em%
+      {\customsubtitlefont\@subtitle\par}%
+    \fi%
+    \ifx\@author\@empty\else%
+      \vskip 1em%
+      {\customauthorfont\@author\par}%
+    \fi%
+    \ifx\b@date\@empty\else%
+      \vskip 1em%
+      {\customdatefont\@date\par}%
+    \fi%
   \end{center}%
   \vskip 1em%
 }
 \makeatother
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% =========================================================
 % Code Highlighting - Codeblock
+% =========================================================
 
 % Custom environment for code blocks
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{backcolor}{rgb}{0.97,0.97,0.95}
 \definecolor{bordercolor}{rgb}{0.8,0.8,0.8}
 
+% mdframed style named "highlighting":
+% controls the visual box around the code block
 \mdfdefinestyle{highlighting}{
   backgroundcolor=backcolor,
   linecolor=bordercolor,
@@ -238,6 +344,8 @@
   roundcorner=0pt
 }
 
+% Verbatim environment named "Highlighting":
+% controls how the code is typeset (line breaks, special command escapes, etc.)
 \DefineVerbatimEnvironment{Highlighting}{Verbatim}{
   commandchars=\\\{\},
   breaklines=true,
@@ -245,8 +353,13 @@
   rulecolor=\color{bordercolor}
 }
 
+% ---------------------------------------------------------
 % Redefine coded shaded environment
-% Comment/uncomment if shading environment for code is needed
+% 
+% This needs to be uncoded when Quarto's native codeblock is used.
+% If there are no native codeblocks in the document, then comment the
+% codeblock out.
+
 % \renewenvironment{Shaded}{
 %   \begin{mdframed}[style=highlighting]
 %   \setlength{\parindent}{0pt}
@@ -258,6 +371,8 @@
 % {
 %   \end{mdframed}
 % }
+
+% ---------------------------------------------------------
 
 % Define style for output
 \newtcolorbox{customoutputbox}{
@@ -274,12 +389,22 @@
 % Redefine environment for knitr output
 \renewenvironment{verbatim}{\begin{customoutputbox}}{\end{customoutputbox}}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Code Highlighting - lstlisting
-% Allows indentation, but has code highlighting in LaTeX
-% Decommissioned due to lack of code line-breaks and poor code highlighting outcomes.
 
-% % Define idle-fingers light theme colors and styles
+% =========================================================
+% Code Highlighting - lstlisting
+% =========================================================
+
+% LaTeX supports multiple code-block approaches. This section uses the listings 
+% (lstlisting) method for code blocks, providing syntax highlighting while 
+% preserving indentation (with different wrapping and feature tradeoffs vs. 
+% Verbatim).
+% 
+% This method was decommissioned in favor of the Verbatim method, which includes
+% all desired formatting features.
+
+% % ------------------------------
+% % Theme palette (idle-fingers light)
+% % ------------------------------
 % \definecolor{idletext}{HTML}{333333}
 % \definecolor{idlebackground}{HTML}{FFFFFF}
 % \definecolor{idlelinnum}{HTML}{666666}
@@ -300,32 +425,44 @@
 % \definecolor{variablecolor}{HTML}{b58900}
 % \definecolor{errorcolor}{HTML}{dc322f}
 % 
-% % Other colors
-% \definecolor{bordercolor}{rgb}{0.8,0.8,0.8}
-% \definecolor{backcolor}{rgb}{0.97,0.97,0.95}
+% % ------------------------------
+% % Code block chrome (frame/background)
+% % ------------------------------
+% \definecolor{bordercolor}{rgb}{0.8,0.8,0.8}  % Frame/rule color
+% \definecolor{backcolor}{rgb}{0.97,0.97,0.95} % Box background
 % 
-% % Apply colors to code highlighting
+% % ------------------------------
+% % listings style definition
+% % ------------------------------
 % \lstdefinestyle{idle-fingers-light}{
-%   backgroundcolor=\color{backcolor},
-%   basicstyle=\ttfamily\small\color{idletext},
-%   breaklines=true, % Enable line breaking
-%   breakatwhitespace=true, % Ensure breaking occurs at whitespace
-%   breakautoindent=true, % Auto indentation for broken lines
-%   commentstyle=\color{commentcolor}\textit,
-%   keywordstyle=\color{keywordcolor}\textbf,
-%   numberstyle=\color{idlelinnum},
-%   stringstyle=\color{stringcolor},
-%   identifierstyle=\color{idletext},
-%   showstringspaces=false,
-%   frame=none,
-%   rulecolor=\color{bordercolor},
+%   backgroundcolor=\color{backcolor},                   % Background fill
+%   basicstyle=\ttfamily\small\color{idletext},          % Base font + base color
+% 
+%   breaklines=true,                                     % Enable line wrapping
+%   breakatwhitespace=true,                              % Prefer breaking at whitespace
+%   breakautoindent=true,                                % Preserve indentation on wrapped lines
+%   breakindent=0pt,                                     % No extra indent on wrapped lines
+%   postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}}, % Marker for wrapped lines
+% 
+%   commentstyle=\color{commentcolor}\textit,            % Comment tokens
+%   keywordstyle=\color{keywordcolor}\textbf,            % Keywords
+%   stringstyle=\color{stringcolor},                     % Strings
+%   identifierstyle=\color{idletext},                    % Identifiers/default text
+% 
+%   numbers=none,                                        % (not enabled here) line numbers off
+%   numberstyle=\color{idlelinnum},                      % Line number color (if enabled)
+% 
+%   showstringspaces=false,                              % Do not render spaces in strings
+%   frame=none,                                          % No listings frame (handled externally if desired)
+%   rulecolor=\color{bordercolor},                       % Rule color (relevant if frame is enabled)
+% 
 %   xleftmargin=0em,
-%   framexleftmargin=0em,
-%   breakindent=0pt, % no additional indent for broken lines
-%   postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}} % symbol in front of broken lines
+%   framexleftmargin=0em
 % }
 % 
-% % Define the newmdenv for the codebox
+% % ------------------------------
+% % Optional framed container around listings (mdframed)
+% % ------------------------------
 % \newmdenv[
 %   style=highlighting,
 %   backgroundcolor=backcolor,
@@ -339,15 +476,23 @@
 %   roundcorner=0pt
 % ]{codebox}
 % 
-% \lstset{style=idle-fingers-light, language=Bash}
+% % ------------------------------
+% % Global listings defaults
+% % ------------------------------
+% \lstset{style=idle-fingers-light, language=Bash} % Default style + default language
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% =========================================================
 % Code Highlighting - Verbatim
-% Allows indentation, but has code highlighting in LaTeX,
-% code line-breaks, and improved highlighting from lstlisting
+% =========================================================
 
-% Define idle-fingers light theme colors and styles
+% LaTeX supports multiple code-block approaches. This section uses a Verbatim-
+% based method (fancyvrb/fvextra), optionally boxed with mdframed, to preserve
+% indentation while enabling code styling/highlighting.
+
+% ------------------------------
+% Theme palette (idle-fingers light)
+% ------------------------------
 \definecolor{idletext}{HTML}{333333}
 \definecolor{idlebackground}{HTML}{FFFFFF}
 \definecolor{idlelinnum}{HTML}{666666}
@@ -368,12 +513,16 @@
 \definecolor{variablecolor}{HTML}{b58900}
 \definecolor{errorcolor}{HTML}{dc322f}
 
-% Other colors
-\definecolor{bordercolor}{rgb}{0.8,0.8,0.8}
-\definecolor{backcolor}{rgb}{0.97,0.97,0.95}
-\definecolor{breakarrowcolor}{HTML}{999999}
+% ------------------------------
+% Code block chrome (frame/background + line-break marker)
+% ------------------------------
+\definecolor{bordercolor}{rgb}{0.8,0.8,0.8}         % Frame color
+\definecolor{backcolor}{rgb}{0.97,0.97,0.95}        % Box background
+\definecolor{breakarrowcolor}{HTML}{999999}         % Wrapped-line indicator color
 
-% Define the newmdenv for the codebox
+% ------------------------------
+% Framed container for code (mdframed)
+% ------------------------------
 \newmdenv[
   backgroundcolor=backcolor,
   linecolor=bordercolor,
@@ -386,48 +535,69 @@
   roundcorner=0pt
 ]{codebox}
 
-% Define custom Verbatim style with idle-fingers colors
+% ------------------------------
+% Verbatim defaults (fancyvrb/fvextra)
+% ------------------------------
 \fvset{
-  formatcom=\color{idletext},
-  fontsize=\small,
-  baselinestretch=1,
-  breaklines=true,
-  breaksymbol=\textcolor{breakarrowcolor}{\scriptsize$\hookrightarrow$}
+  formatcom=\color{idletext}, % Base text color inside verbatim
+  fontsize=\small,            % Code font size
+  baselinestretch=1,          % Line spacing for code
+  breaklines=true,            % Wrap long lines
+  breaksymbol=\textcolor{breakarrowcolor}{\scriptsize$\hookrightarrow$} % Marker for wrapped lines
 }
 
-% Define shorthand commands for colors - THIS IS WHAT WAS MISSING!
-\newcommand{\kw}[1]{\textcolor{keywordcolor}{\textbf{#1}}}
-\newcommand{\str}[1]{\textcolor{stringcolor}{#1}}
-\newcommand{\com}[1]{\textcolor{commentcolor}{\textit{#1}}}
-\newcommand{\func}[1]{\textcolor{functioncolor}{#1}}
-\newcommand{\op}[1]{\textcolor{operatorcolor}{\textbf{#1}}}
-\newcommand{\atr}[1]{\textcolor{attributecolor}{#1}}
+% ------------------------------
+% Inline highlighting macros (manual token coloring)
+% ------------------------------
+\newcommand{\kw}[1]{\textcolor{keywordcolor}{\textbf{#1}}}     % Keywords
+\newcommand{\str}[1]{\textcolor{stringcolor}{#1}}              % Strings
+\newcommand{\com}[1]{\textcolor{commentcolor}{\textit{#1}}}    % Comments
+\newcommand{\func}[1]{\textcolor{functioncolor}{#1}}           % Function names
+\newcommand{\op}[1]{\textcolor{operatorcolor}{\textbf{#1}}}    % Operators
+\newcommand{\atr}[1]{\textcolor{attributecolor}{#1}}           % Attributes/fields
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Callout Blocks for indenting
 
-% Custom callout boxes to allow proper formatting
-\definecolor{NoteBordercolor}{HTML}{4581EC}
-\definecolor{NoteHeadercolor}{HTML}{F0F5FD}
-\definecolor{NoteIconcolor}{HTML}{0858E5}
+% =========================================================
+% Callout Blocks for Indenting
+% =========================================================
 
-\newtcolorbox{callout-note}[1][]{
-  colframe=NoteBordercolor,
-  title={\textcolor{NoteIconcolor}{\faInfo}\ \  #1},
-  colbacktitle=NoteHeadercolor,
-  colback=white,
-  coltitle=black,
-  boxrule=0.2mm, 
-  leftrule=0.8mm, 
-  toptitle=1mm,
-  bottomtitle=1mm, 
-  titlerule=0pt,
-  left=2mm, 
-  right=2mm,
-  before skip=10pt,
-  after skip=10pt
+% These tcolorbox “callout” environments recreate Quarto’s native callout blocks
+% (Note/Warning/Important/Tip/Caution/Discussion) but with consistent indentation.
+% Quarto callouts do not otherwise indent. These wrappers provide an indented, 
+% framed block with a colored left rule, a light header band, and an icon + 
+% optional title argument.
+%
+% The "Discussion" callout is a workshop-only custom callout type. Use this
+% formatting available for both indented and non-indented callout-discussion
+% usage.
+
+% ------------------------------
+% Callout Note
+% ------------------------------
+\definecolor{NoteBordercolor}{HTML}{4581EC}  % Frame + left rule color
+\definecolor{NoteHeadercolor}{HTML}{F0F5FD}  % Title/header background band
+\definecolor{NoteIconcolor}{HTML}{0858E5}    % Icon (and title accent) color
+
+\newtcolorbox{callout-note}[1][]{%
+  colframe=NoteBordercolor, % Outer frame color
+  leftrule=0.8mm,           % Emphasized left rule thickness
+  boxrule=0.2mm,            % Thin border on other sides
+  colback=white,            % Body background
+  colbacktitle=NoteHeadercolor, % Header background
+  coltitle=black,           % Header text color
+  title={\textcolor{NoteIconcolor}{\faInfo}\ \  #1}, % Icon + optional title text
+  titlerule=0pt,            % No line separating title and body
+  toptitle=1mm,             % Padding above title text
+  bottomtitle=1mm,          % Padding below title text
+  left=2mm, right=2mm,      % Inner left/right padding
+  before skip=10pt,         % Space before the box
+  after skip=10pt           % Space after the box
 }
 
+
+% ------------------------------
+% Callout Warning
+% ------------------------------
 \definecolor{WarningBordercolor}{HTML}{F0AD4E}
 \definecolor{WarningHeadercolor}{HTML}{FEF8F1}
 \definecolor{WarningIconcolor}{HTML}{EB9114}
@@ -449,6 +619,9 @@
   after skip=10pt
 }
 
+% ------------------------------
+% Callout Important
+% ------------------------------
 \definecolor{ImportantBordercolor}{HTML}{D9534F}
 \definecolor{ImportantHeadercolor}{HTML}{FCF1F1}
 \definecolor{ImportantIconcolor}{HTML}{CC1915}
@@ -470,13 +643,16 @@
   after skip=10pt
 }
 
+% ------------------------------
+% Callout Tip
+% ------------------------------
 \definecolor{TipBordercolor}{HTML}{06B875}
 \definecolor{TipHeadercolor}{HTML}{F0FAF4}
-\definecolor{TiptIconcolor}{HTML}{01A047}
+\definecolor{TipIconcolor}{HTML}{01A047}
 
 \newtcolorbox{callout-tip}[1][]{
   colframe=TipBordercolor,
-  title={\textcolor{TiptIconcolor}{\faLightbulb}\ \  #1},
+  title={\textcolor{TipIconcolor}{\faLightbulb}\ \  #1},
   colbacktitle=TipHeadercolor,
   colback=white,
   coltitle=black,
@@ -491,14 +667,17 @@
   after skip=10pt
 }
 
+% ------------------------------
+% Callout Caution
+% ------------------------------
 \definecolor{CautionBordercolor}{HTML}{FD7E14}
-\definecolor{CautionpHeadercolor}{HTML}{FFF5F0}
-\definecolor{CautiontIconcolor}{HTML}{FC5401}
+\definecolor{CautionHeadercolor}{HTML}{FFF5F0}
+\definecolor{CautionIconcolor}{HTML}{FC5401}
 
 \newtcolorbox{callout-caution}[1][]{
   colframe=CautionBordercolor,
-  title={\textcolor{CautiontIconcolor}{\faFire}\ \  #1},
-  colbacktitle=CautionpHeadercolor,
+  title={\textcolor{CautionIconcolor}{\faFire}\ \  #1},
+  colbacktitle=CautionHeadercolor,
   colback=white,
   coltitle=black,
   boxrule=0.2mm,
@@ -512,6 +691,9 @@
   after skip=10pt
 }
 
+% ------------------------------
+% Callout Discussion
+% ------------------------------
 \definecolor{DiscussionBordercolor}{HTML}{7634A6}
 \definecolor{DiscussionHeadercolor}{HTML}{eedcff}
 \definecolor{DiscussionIconcolor}{HTML}{7634A6}

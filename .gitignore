@@ -19,13 +19,22 @@
 /_book/
 /_includes/
 /site_libs/
-*.docx
-*.html
-*_files
-
-/_quarto_internal_scss_error.scss
-Yale_typeface/
 
 
+# --------------------
+# Catch-all for specific file types and incompletely rendered page outputs
 
+**/*.docx
+**/*.pptx
+
+**/_quarto_internal_scss_error.scss
+**/*.html
+**/*_files
 **/*.quarto_ipynb
+
+
+# --------------------
+# Catch-all to ensure all KEEP LOCAL directories are ignored
+
+**/Yale_typeface/
+**/KEEP LOCAL/
