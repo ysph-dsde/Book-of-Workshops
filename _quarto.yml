@@ -3,7 +3,7 @@ project:
   output-dir: _book
   render:
     - "*.qmd"
-    - "!Local Only/"
+    - "!KEEP LOCAL/"
 
 book:
   title: "Book of Workshops"
