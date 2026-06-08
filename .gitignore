@@ -26,10 +26,10 @@
 
 **/*.docx
 **/*.pptx
-
-**/_quarto_internal_scss_error.scss
 **/*.html
 **/*_files
+
+**/_quarto_internal_scss_error.scss
 **/*.quarto_ipynb
 
 
@@ -38,3 +38,6 @@
 
 **/Yale_typeface/
 **/KEEP LOCAL/
+
+**/formatted_bash.tex
+**/Code-Highlighting-Formatting_Verbatim-blx.bib
