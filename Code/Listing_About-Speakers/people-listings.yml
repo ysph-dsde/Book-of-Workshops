@@ -10,24 +10,21 @@
 items:
   tiles:
     - name: Shelby Golden, M.S.
-      date-added: 2025-10-18
-      date-updated: 2025-10-18
+      date-added: 2025-06-11
+      date-updated: 2025-06-11
       titles: | 
-        Data Scientist I
+        Fomer Data Scientist at the Yale School of Public Health, Data Science and Data Equity (DSDE) Department
       bio: |
-        Shelby Golden is a data scientist with a background in computational mathematics, molecular biology, and biochemistry. She holds a Master of Science in Applied Computational Mathematics from Johns Hopkins University and dual Bachelor of Science degrees in Molecular, Cellular, Developmental Biology and Biochemistry with a minor in Engineering in Applied Mathematics.
-      image: /Images/Core People/shelby-golden.jpeg
-      email: shelby.golden@yale.edu
-      phone: 203-737-8644
-      ysph-site: https://ysph.yale.edu/profile/shelby-golden/
-      group: https://ysph-dsde.github.io/mukherjee-lab/
+        Shelby Golden has a background in computational mathematics, molecular biology, and biochemistry. She holds a Master of Science in Applied Computational Mathematics from Johns Hopkins University and dual Bachelor of Science degrees in Molecular, Cellular, Developmental Biology and Biochemistry with a minor in Engineering in Applied Mathematics.
+      image: ../Images/People/shelby-golden.jpeg
+      email: sgolde13@alumni.jh.edu
       linkedin: https://www.linkedin.com/in/shelby-golden/
       github: https://github.com/sgolde13
     - name: Howard Baik, M.S.
       date-added: 2025-10-18
       date-updated: 2025-10-18
       titles: |
-        Former Data Scientist I at Yale School of Public Health
+        Former Data Scientist at the Yale School of Public Health, Data Science and Data Equity (DSDE) Department
       bio: |
         Howard Baik is a Data Scientist with a background in biostatistics and computer science. He holds a Master of Science in Biostatistics, and a Bachelor of Science in Statistics with a minor in Mathematics, both from the University of Washington. He is working towards a Post-Baccalaureate Degree in Computer Science from Oregon State University.
       image: /Images/Core People/howard-baik.jpeg
